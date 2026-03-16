@@ -1,5 +1,7 @@
 # HexClaw Site
 
+[![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](./LICENSE)
+
 `hexclaw-site` 是 `HexClaw` 的官方网站仓库，承载官网首页、下载入口、产品文档和生态导航，面向产品用户、技术用户和生态访问者。
 
 ## 仓库定位
@@ -57,6 +59,6 @@
 
 ## License
 
-本仓库代码采用 `Apache-2.0` 协议，详见 [LICENSE](/Users/guoyanjun/work/hexclaw-site/LICENSE)。
+本仓库代码采用 `Apache-2.0` 协议，详见 [LICENSE](./LICENSE)。
 
 除非另有明确说明，`HexClaw` 名称、Logo、品牌素材和官网文案不因软件开源协议而默认授予商标或品牌使用权。

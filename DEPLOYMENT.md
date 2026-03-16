@@ -41,7 +41,7 @@ wrangler pages dev .
 
 ## 自定义域名
 
-当前仓库已经通过 [functions/_middleware.js](/Users/guoyanjun/work/hexclaw-site/functions/_middleware.js) 声明了：
+当前仓库已经通过 [`functions/_middleware.js`](./functions/_middleware.js) 声明了：
 
 - `www.hexclaw.net/*` 永久跳转到 `https://hexclaw.net/:splat`
 
