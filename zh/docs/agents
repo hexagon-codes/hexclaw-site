@@ -1,0 +1,6 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<meta http-equiv="refresh" content="0; url=agents.html">
+<script>location.replace("agents.html");</script>
+<title>Redirecting...</title>
+<p><a href="agents.html">Continue</a></p>

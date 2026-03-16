@@ -1,0 +1,17 @@
+/ /zh/ 302
+/index.html / 301
+/en /en/ 301
+/en/index.html /en/ 301
+/en/docs /en/docs/ 301
+/en/docs/index.html /en/docs/ 301
+/zh /zh/ 301
+/zh/index.html /zh/ 301
+/zh/docs /zh/docs/ 301
+/zh/docs/index.html /zh/docs/ 301
+/download https://github.com/hexagon-codes/hexclaw-desktop/releases 302
+/github https://github.com/hexagon-codes/hexclaw-desktop 302
+/issues https://github.com/hexagon-codes/hexclaw-desktop/issues 302
+/docs /en/docs/ 301
+/docs/ /en/docs/ 301
+/docs/index.html /en/docs/ 301
+/docs/* /en/docs/:splat 301
