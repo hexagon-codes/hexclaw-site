@@ -54,3 +54,9 @@
 - Build output directory：`.`
 
 详细部署步骤见 `DEPLOYMENT.md`。
+
+## License
+
+本仓库代码采用 `Apache-2.0` 协议，详见 [LICENSE](/Users/guoyanjun/work/hexclaw-site/LICENSE)。
+
+除非另有明确说明，`HexClaw` 名称、Logo、品牌素材和官网文案不因软件开源协议而默认授予商标或品牌使用权。
