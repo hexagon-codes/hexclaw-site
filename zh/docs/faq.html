@@ -4,59 +4,71 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/favicon-32.png">
-<title>常见问题 — HexClaw 文档</title>
-<meta name="description" content="故障排查与常见问答。">
+<title>常见问题 — 河蟹 AI 文档</title>
+<meta name="description" content="汇总河蟹 AI 桌面端在安装启动、模型配置、数据隐私、工作流和 MCP 连接上的常见问题与排查方法。">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="theme-color" content="#ffffff">
-<meta property="og:site_name" content="HexClaw">
+<meta property="og:site_name" content="河蟹 AI">
 <meta property="og:type" content="article">
-<meta property="og:title" content="常见问题 — HexClaw 文档">
-<meta property="og:description" content="故障排查与常见问答。">
+<meta property="og:title" content="常见问题 — 河蟹 AI 文档">
+<meta property="og:description" content="汇总河蟹 AI 桌面端在安装启动、模型配置、数据隐私、工作流和 MCP 连接上的常见问题与排查方法。">
 <meta property="og:url" content="https://hexclaw.net/zh/docs/faq">
 <meta property="og:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
-<meta property="og:image:alt" content="HexClaw logo">
+<meta property="og:image:alt" content="河蟹 AI 标志">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:locale:alternate" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="常见问题 — HexClaw 文档">
-<meta name="twitter:description" content="故障排查与常见问答。">
+<meta name="twitter:title" content="常见问题 — 河蟹 AI 文档">
+<meta name="twitter:description" content="汇总河蟹 AI 桌面端在安装启动、模型配置、数据隐私、工作流和 MCP 连接上的常见问题与排查方法。">
 <meta name="twitter:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta name="twitter:image:alt" content="河蟹 AI 标志">
 <link rel="canonical" href="https://hexclaw.net/zh/docs/faq">
 <link rel="alternate" hreflang="en" href="https://hexclaw.net/en/docs/faq">
 <link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/docs/faq">
 <link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/docs/faq">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"TechArticle","headline":"常见问题 — 河蟹 AI 文档","description":"汇总河蟹 AI 桌面端在安装启动、模型配置、数据隐私、工作流和 MCP 连接上的常见问题与排查方法。","url":"https://hexclaw.net/zh/docs/faq","inLanguage":"zh-CN","image":"https://hexclaw.net/assets/brand/hexclaw-logo.png","isPartOf":{"@type":"CreativeWorkSeries","name":"河蟹 AI 文档","url":"https://hexclaw.net/zh/docs/"},"publisher":{"@type":"Organization","name":"hexagon-codes","url":"https://hexclaw.net/"},"about":{"@type":"SoftwareApplication","name":"河蟹 AI","operatingSystem":"macOS, Windows, Linux","applicationCategory":"BusinessApplication"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"河蟹 AI","item":"https://hexclaw.net/zh/"},{"@type":"ListItem","position":2,"name":"河蟹 AI 使用文档","item":"https://hexclaw.net/zh/docs/"},{"@type":"ListItem","position":3,"name":"常见问题 — 河蟹 AI 文档","item":"https://hexclaw.net/zh/docs/faq"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"应用启动后白屏或无法加载？","acceptedAnswer":{"@type":"Answer","text":"先看日志页错误信息，确认 16060 端口未被占用，再重启应用等待 Go Sidecar 拉起。"}},{"@type":"Question","name":"macOS 提示无法验证开发者？","acceptedAnswer":{"@type":"Answer","text":"可右键应用选择打开，或执行 xattr -cr /Applications/HexClaw.app 清除隔离属性。"}},{"@type":"Question","name":"如何开机自启动？","acceptedAnswer":{"@type":"Answer","text":"在 设置 > 通用 中开启开机自启动。"}},{"@type":"Question","name":"API 请求返回 401 或 403 错误？","acceptedAnswer":{"@type":"Answer","text":"检查模型服务商配置中的 API Key、额度和账户状态。"}},{"@type":"Question","name":"如何使用本地模型且不联网？","acceptedAnswer":{"@type":"Answer","text":"安装 Ollama 后，在河蟹 AI 中用本地 Base URL 添加服务商并填入已下载模型名。"}},{"@type":"Question","name":"MCP 服务器连接失败怎么办？","acceptedAnswer":{"@type":"Answer","text":"确认服务器已启动、协议类型匹配，并检查配置的命令、地址或端口。"}}]}
+</script>
 <link rel="stylesheet" href="../../assets/css/docs.css?v=1773751342">
 </head>
 <body class="docs-page">
 <nav class="tn">
-<a href="/zh/" class="tn-b"><img src="../../assets/brand/hexclaw-icon-72.png" class="tn-l" alt="HexClaw"><span class="tn-n">HexClaw</span></a>
-<button class="tn-burger" onclick="document.querySelector('.tn-r').classList.toggle('open')" aria-label="菜单"><span></span><span></span><span></span></button><div class="tn-r"><a href="/zh/">首页</a><a href="/zh/#features">产品能力</a><a href="/zh/#quickstart">快速上手</a><a href="/zh/#cases">使用场景</a><a href="/zh/#ecosystem">开源生态</a><a href="index.html" class="is-active">文档</a><a href="../../en/docs/faq.html">EN</a><button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"><svg class="ti-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="ti-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="nav-cta">GitHub</a></div>
+<a href="/zh/" class="tn-b"><img src="../../assets/brand/hexclaw-icon-72.png" class="tn-l" alt="河蟹 AI"><span class="tn-n">河蟹 AI</span></a>
+<button class="tn-burger" onclick="document.querySelector('.tn-r').classList.toggle('open')" aria-label="菜单"><span></span><span></span><span></span></button><div class="tn-r"><a href="/zh/">首页</a><a href="/zh/#features">产品能力</a><a href="/zh/#quickstart">快速上手</a><a href="/zh/#cases">使用场景</a><a href="/zh/#ecosystem">开源生态</a><a href="/zh/docs/" class="is-active">文档</a><a href="/en/docs/faq">EN</a><button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"><svg class="ti-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="ti-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="nav-cta">GitHub</a></div>
 </nav>
 <div class="mobile-doc-nav">
-<a href="getting-started.html">快速上手</a>
-<a href="chat.html">对话与会话</a>
-<a href="agents.html">Agent</a>
-<a href="canvas.html">工作流</a>
-<a href="providers.html">模型服务商</a>
-<a href="advanced.html">高级功能</a>
-<a href="shortcuts.html">快捷键</a>
-<a href="faq.html" class="on">FAQ</a>
+<a href="/zh/docs/getting-started">快速上手</a>
+<a href="/zh/docs/chat">对话与会话</a>
+<a href="/zh/docs/agents">Agent</a>
+<a href="/zh/docs/canvas">工作流</a>
+<a href="/zh/docs/providers">模型服务商</a>
+<a href="/zh/docs/advanced">高级功能</a>
+<a href="/zh/docs/shortcuts">快捷键</a>
+<a href="/zh/docs/faq" class="on">FAQ</a>
 </div>
 <aside class="sb"><div class="sb-t">文档导航</div>
-<a href="getting-started.html">快速上手</a>
-<a href="chat.html" >对话与会话</a>
-<a href="agents.html" >Agent 管理</a>
-<a href="canvas.html" >工作流画布</a>
-<a href="providers.html" >模型服务商</a>
-<a href="advanced.html" >高级功能</a>
-<a href="shortcuts.html" >快捷键参考</a>
-<a href="faq.html" class="on">常见问题</a>
+<a href="/zh/docs/getting-started">快速上手</a>
+<a href="/zh/docs/chat" >对话与会话</a>
+<a href="/zh/docs/agents" >Agent 管理</a>
+<a href="/zh/docs/canvas" >工作流画布</a>
+<a href="/zh/docs/providers" >模型服务商</a>
+<a href="/zh/docs/advanced" >高级功能</a>
+<a href="/zh/docs/shortcuts" >快捷键参考</a>
+<a href="/zh/docs/faq" class="on">常见问题</a>
 </aside>
 <main class="m">
 <header class="page-lead">
-<div class="page-kicker">HexClaw Docs</div>
+<div class="page-kicker">河蟹 AI 文档</div>
 <h1>常见问题</h1>
-<p class="sub">故障排查与常见问答。</p>
+<p class="sub">汇总河蟹 AI 桌面端在安装启动、模型配置、数据隐私、工作流和 MCP 连接上的常见问题与排查方法。</p>
 </header>
 
 <h2>安装与启动</h2>
@@ -80,7 +92,7 @@
 <p>API Key 无效或过期。进入 <strong>设置 → 模型服务商</strong>，检查 Key 是否正确，确认账户余额充足。</p>
 
 <h3>Q: 如何使用本地模型（不联网）？</h3>
-<p>安装 <strong>Ollama</strong> 后，在 HexClaw 中添加 Ollama 服务商：</p>
+<p>安装 <strong>Ollama</strong> 后，在河蟹 AI 中添加 Ollama 服务商：</p>
 <ul>
 <li>Base URL: <code>http://localhost:11434/v1</code></li>
 <li>API Key: 留空</li>
@@ -101,7 +113,7 @@
 </ul>
 
 <h3>Q: 数据会发送到第三方服务器吗？</h3>
-<p>不会。HexClaw 仅与你配置的 AI API 端点通信。如果使用 Ollama 本地模型，所有数据完全离线。</p>
+<p>不会。河蟹 AI 仅与你配置的 AI API 端点通信。如果使用 Ollama 本地模型，所有数据完全离线。</p>
 
 <h2>工作流与 Agent</h2>
 <h3>Q: 工作流执行失败了怎么办？</h3>
@@ -145,7 +157,7 @@
 
 <h2>性能与优化</h2>
 <h3>Q: 应用占用内存较高？</h3>
-<p>HexClaw 使用 WebView 渲染界面。正常内存占用约 200~400MB。如果超过 1GB，尝试：</p>
+<p>河蟹 AI 使用 WebView 渲染界面。正常内存占用约 200~400MB。如果超过 1GB，尝试：</p>
 <ul>
 <li>关闭不必要的会话标签</li>
 <li>清理日志缓存（日志页面 → 清除）</li>
@@ -155,8 +167,31 @@
 <h3>Q: 如何查看引擎运行状态？</h3>
 <p>仪表盘页面显示 Sidecar 引擎健康状态，包括连接状态、API 端口等信息。引擎每 5 秒自动检测一次。</p>
 
+<h2>与其他产品的区别</h2>
+
+<h3>Q: HexClaw 和 ChatGPT Desktop / Claude Desktop 有什么不同？</h3>
+<p>ChatGPT Desktop 和 Claude Desktop 是特定服务商的官方客户端，只能连接自家模型。HexClaw 是<strong>模型无关</strong>的 —— 你可以同时接入 OpenAI、Claude、DeepSeek、Gemini、Ollama 等多个服务商，并在同一个界面中切换。此外，HexClaw 内置了 Agent 引擎、MCP 工具协议、工作流画布和 RAG 知识库，是一个完整的 AI Agent 运行平台，而不仅仅是对话客户端。</p>
+
+<h3>Q: HexClaw 和 Cursor 有什么不同？</h3>
+<p>Cursor 是一款 AI 代码编辑器，专注于编程场景。HexClaw 定位是通用 AI Agent 桌面客户端，覆盖对话、Agent 编排、工作流自动化、知识库等多种场景，不限于代码生成。</p>
+
+<h2>数据管理</h2>
+
+<h3>Q: 如何备份/迁移数据？</h3>
+<p>HexClaw 的所有数据存储在本地数据目录中（可在 设置 → 通用 → 数据目录 查看）。备份时只需复制该目录。迁移到新电脑时，将数据目录复制到对应位置即可。</p>
+
+<h3>Q: 知识库支持多大的文档？</h3>
+<p>单个文档建议不超过 50MB。知识库总容量取决于本地磁盘空间。文档上传后会自动分块（chunking）和向量嵌入，检索效率不受文档总量影响。</p>
+
+<hr>
+<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-top:32px;margin-bottom:24px">
+<div><a href="/zh/docs/shortcuts" style="color:var(--blue-deep)">← 快捷键参考</a></div>
+<div></div>
+</div>
+<p style="text-align:center;margin-top:24px"><a href="https://github.com/hexagon-codes/hexclaw-site/edit/main/zh/docs/faq.html" target="_blank" rel="noopener noreferrer" style="font-size:14px;color:var(--text-muted)">✏️ 在 GitHub 上编辑此页</a></p>
+
 </main>
-<div class="footer"><a href="/zh/">HexClaw 首页</a> · <a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer">GitHub</a> · <a href="mailto:ai@hexclaw.net">业务咨询：ai@hexclaw.net</a> · <a href="mailto:support@hexclaw.net">问题反馈：support@hexclaw.net</a> · © 2025–2026 hexagon-codes</div>
+<div class="footer"><a href="/zh/">河蟹 AI</a> · <a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer">GitHub</a> · <a href="mailto:ai@hexclaw.net">业务咨询：ai@hexclaw.net</a> · <a href="mailto:support@hexclaw.net">问题反馈：support@hexclaw.net</a> · © 2025–2026 hexagon-codes</div>
 <script src="../../assets/js/docs-nav.js"></script>
 <script>
 function toggleTheme(){var c=document.documentElement.getAttribute("data-theme");var n=c==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);localStorage.setItem("hexclaw-theme",n)}

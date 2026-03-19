@@ -3,23 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HexClaw — Your Personal AI Agent Desktop Client</title>
-<meta name="description" content="Powered by the Hexagon engine, HexClaw is an open-source AI agent desktop client with local deployment, private data, and one-click setup.">
+<title>HexClaw CrabAI — Your Personal AI Agent Desktop Client</title>
+<meta name="description" content="Powered by the in-house Hexagon AI Agent engine, HexClaw is a ready-to-use AI Agent desktop client. Local deployment, private data, and fully open source.">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="theme-color" content="#e8f6ff">
 <meta property="og:site_name" content="HexClaw">
 <meta property="og:type" content="website">
-<meta property="og:title" content="HexClaw — Your Personal AI Agent Desktop Client">
-<meta property="og:description" content="Open-source AI agent desktop client with local-first deployment, private data, visual workflows, and one-click setup.">
+<meta property="og:title" content="HexClaw CrabAI — Your Personal AI Agent Desktop Client">
+<meta property="og:description" content="Powered by the in-house Hexagon AI Agent engine, HexClaw is a ready-to-use AI Agent desktop client. Local deployment, private data, and fully open source.">
 <meta property="og:url" content="https://hexclaw.net/en/">
 <meta property="og:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
 <meta property="og:image:alt" content="HexClaw logo">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
 <meta property="og:locale" content="en_US">
 <meta property="og:locale:alternate" content="zh_CN">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="HexClaw — Your Personal AI Agent Desktop Client">
-<meta name="twitter:description" content="Open-source AI agent desktop client with local-first deployment, private data, visual workflows, and one-click setup.">
+<meta name="twitter:title" content="HexClaw CrabAI — Your Personal AI Agent Desktop Client">
+<meta name="twitter:description" content="Powered by the in-house Hexagon AI Agent engine, HexClaw is a ready-to-use AI Agent desktop client. Local deployment, private data, and fully open source.">
 <meta name="twitter:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta name="twitter:image:alt" content="HexClaw logo">
 <meta name="application-name" content="HexClaw">
 <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="../assets/icons/favicon-16.png">
@@ -27,9 +30,9 @@
 <link rel="canonical" href="https://hexclaw.net/en/">
 <link rel="alternate" hreflang="en" href="https://hexclaw.net/en/">
 <link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/">
-<link rel="alternate" hreflang="x-default" href="https://hexclaw.net/">
+<link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"SoftwareApplication","name":"HexClaw","applicationCategory":"BusinessApplication","operatingSystem":"macOS, Windows","url":"https://hexclaw.net/en/","image":"https://hexclaw.net/assets/brand/hexclaw-logo.png","description":"Open-source AI agent desktop client with local-first deployment, private data, visual workflows, and one-click setup.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"HexClaw CrabAI","applicationCategory":"BusinessApplication","operatingSystem":"macOS, Windows, Linux","url":"https://hexclaw.net/en/","image":"https://hexclaw.net/assets/brand/hexclaw-logo.png","description":"Powered by the in-house Hexagon AI Agent engine, HexClaw is a ready-to-use AI Agent desktop client. Local deployment, private data, and fully open source.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"downloadUrl":"https://hexclaw.net/download"}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebSite","name":"HexClaw","url":"https://hexclaw.net/","inLanguage":"en","publisher":{"@type":"Organization","name":"hexagon-codes","url":"https://hexclaw.net/"}}
@@ -87,13 +90,29 @@
   .hero-vtag { font-size:14px; font-weight:600; color:var(--blue-deep); background:rgba(255,255,255,.74); border:1px solid rgba(63,143,212,.14); padding:4px 10px; border-radius:999px; }
   .hero-vsep { font-size:12px; color:rgba(18,50,76,.22); }
   .hero-vmeta { font-size:13px; color:rgba(18,50,76,.54); }
-  .hero-buttons { display:flex; gap:12px; flex-wrap:wrap; justify-content:center; }
     .btn { display:inline-flex; align-items:center; gap:8px; padding:13px 28px; border-radius:999px; font-size:16px; font-weight:600; text-decoration:none; transition:all .2s; cursor:pointer; border:none; }
   .btn svg { width:18px; height:18px; flex-shrink:0; }
-  .btn-primary { background:linear-gradient(180deg,#ffffff 0%, #f6fbff 100%); color:var(--blue-deep); border:1px solid rgba(63,143,212,.12); backdrop-filter:blur(8px); box-shadow:0 12px 30px rgba(95,179,234,.16); }
-  .btn-primary:hover { background:#fff; transform:translateY(-1px); box-shadow:0 14px 34px rgba(95,179,234,.22); }
-  .btn-ghost { color:var(--blue-deep); border:1px solid rgba(63,143,212,.12); background:rgba(255,255,255,.58); }
-  .btn-ghost:hover { color:var(--blue-deep); border-color:rgba(63,143,212,.18); background:rgba(255,255,255,.8); }
+  .dl-section { margin-top:28px; text-align:center; }
+  .dl-cards { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; max-width:540px; margin:0 auto 14px; }
+  .dl-card { padding:22px 14px 18px; border-radius:16px; background:rgba(255,255,255,.72); border:1px solid rgba(63,143,212,.06); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); text-align:center; transition:all .3s cubic-bezier(.4,0,.2,1); cursor:default; }
+  .dl-card:hover { background:rgba(255,255,255,.96); box-shadow:0 8px 32px rgba(95,179,234,.1); transform:translateY(-2px); }
+  .dl-card-icon { width:34px; height:34px; margin:0 auto 10px; display:block; opacity:.82; transition:opacity .3s, transform .3s; }
+  .dl-card:hover .dl-card-icon { opacity:1; transform:scale(1.06); }
+  .dl-icon-apple path { fill:#1d1d1f; }
+  .dl-icon-linux { object-fit:contain; }
+  .dl-card-name { font-size:15px; font-weight:700; letter-spacing:-.3px; color:var(--text-primary); margin-bottom:0; transition:margin .3s; }
+  .dl-card-hint { font-size:11px; color:var(--text-muted); margin-top:6px; opacity:.7; transition:opacity .3s; }
+  .dl-card-links { display:flex; flex-direction:column; gap:6px; max-height:0; opacity:0; overflow:hidden; transition:max-height .35s cubic-bezier(.4,0,.2,1), opacity .3s, margin-top .3s; margin-top:0; }
+  .dl-card-links a { display:block; padding:8px 12px; border-radius:8px; font-size:13px; font-weight:500; text-decoration:none; color:var(--blue-deep); background:rgba(63,143,212,.06); border:1px solid transparent; transition:all .2s; }
+  .dl-card-links a:hover { background:rgba(63,143,212,.14); border-color:rgba(63,143,212,.1); }
+  @media (hover:hover) {
+    .dl-card:hover .dl-card-name { margin-bottom:0; }
+    .dl-card:hover .dl-card-hint { opacity:0; max-height:0; margin-top:0; overflow:hidden; }
+    .dl-card:hover .dl-card-links { max-height:120px; opacity:1; margin-top:12px; }
+  }
+  @media (hover:none) { .dl-card-links { max-height:120px; opacity:1; margin-top:12px; } .dl-card-hint { display:none; } }
+  .dl-all-link { display:inline-block; margin-top:8px; font-size:13px; color:var(--blue-deep); opacity:.5; text-decoration:none; transition:opacity .2s; }
+  .dl-all-link:hover { opacity:1; }
 
   /* Sections */
   section { position:relative; z-index:1; padding:64px 32px; }
@@ -221,7 +240,7 @@
 
   /* Responsive */
   @media(max-width:768px) { .nav { padding:10px 16px; } .nav-burger { display:block; padding:8px; } .nav-links { display:none; position:absolute; top:100%; left:0; right:0; flex-direction:column; background:rgba(244,251,255,.96); backdrop-filter:blur(24px); -webkit-backdrop-filter:blur(24px); padding:12px 20px; gap:0; border-bottom:1px solid rgba(63,143,212,.08); } .nav-links.open { display:flex; } .nav-links a { padding:14px 0; border-bottom:1px solid rgba(63,143,212,.06); font-size:15px; color:rgba(18,50,76,.72); } .nav-links a:last-child { border-bottom:none; } .nav-cta { margin-top:8px; text-align:center; } .nav-name { font-size:16px; } .features,.steps { grid-template-columns:repeat(2,1fr); } .cases { grid-template-columns:1fr; } .engine-stack { flex-direction:column; overflow:hidden; } .stack-row { flex-wrap:wrap; overflow-x:auto; } .engine-caps { white-space:normal; font-size:12px; } .stack-item { flex:1 1 auto; min-width:0; } .hero-title { font-size:clamp(28px,5vw,40px); } .hero-tagline { font-size:17px; } .btn { padding:12px 22px; font-size:16px; } .hero-logo { width:128px; height:128px; } section { padding:52px 24px; } }
-  @media(max-width:640px) { .hero { padding:84px 20px 36px; } section { padding:42px 16px; } .features,.steps { grid-template-columns:1fr; } .eco-apps { grid-template-columns:1fr; max-width:240px; } .cta-card { padding:28px 22px; border-radius:24px; } .hero-title { font-size:24px; line-height:1.28; } .hero-tagline { font-size:15px; } .hero-buttons { flex-direction:column; align-items:center; } .btn { width:100%; max-width:290px; justify-content:center; } .hero-logo { width:104px; height:104px; } .hero-version { flex-wrap:wrap; justify-content:center; } .sec-title { font-size:26px; } .sec-desc { font-size:16px; } .engine-logo { width:36px; height:36px; } .engine-name { font-size:15px; } .engine-caps { white-space:normal; } .section-inner { max-width:100%; } .engine-bar { flex-direction:column; align-items:flex-start; } .engine-caps { font-size:11px; white-space:normal; line-height:1.5; } .stack-row { display:grid; grid-template-columns:1fr 1fr; gap:6px; } .stack-item { white-space:normal; padding:8px 10px; font-size:13px; } .stack-label { font-size:13px; } .stack-sub { font-size:11px; } }
+  @media(max-width:640px) { .hero { padding:84px 20px 36px; } section { padding:42px 16px; } .features,.steps { grid-template-columns:1fr; } .eco-apps { grid-template-columns:1fr; max-width:240px; } .cta-card { padding:28px 22px; border-radius:24px; } .hero-title { font-size:24px; line-height:1.28; } .hero-tagline { font-size:15px; } .dl-cards { grid-template-columns:1fr; max-width:240px; } .dl-card { padding:18px 14px 14px; } .dl-card-icon { width:28px; height:28px; } .dl-card-name { font-size:14px; } .hero-logo { width:104px; height:104px; } .hero-version { flex-wrap:wrap; justify-content:center; } .sec-title { font-size:26px; } .sec-desc { font-size:16px; } .engine-logo { width:36px; height:36px; } .engine-name { font-size:15px; } .engine-caps { white-space:normal; } .section-inner { max-width:100%; } .engine-bar { flex-direction:column; align-items:flex-start; } .engine-caps { font-size:11px; white-space:normal; line-height:1.5; } .stack-row { display:grid; grid-template-columns:1fr 1fr; gap:6px; } .stack-item { white-space:normal; padding:8px 10px; font-size:13px; } .stack-label { font-size:13px; } .stack-sub { font-size:11px; } }
   /* ===== ENHANCEMENT: Hero Particle / Stardust Background ===== */
   .hero-particle { position:absolute; border-radius:50%; background:var(--blue); pointer-events:none; z-index:0; }
   @keyframes particle-drift { 0%{transform:translateY(0) translateX(0); opacity:0;} 10%{opacity:var(--p-opacity);} 90%{opacity:var(--p-opacity);} 100%{transform:translateY(calc(-1 * var(--p-travel))) translateX(var(--p-sway)); opacity:0;} }
@@ -233,7 +252,7 @@
   .feat:hover::after { background-position:0% 0%; }
 
   /* ===== ENHANCEMENT: Case / Step / Card Hover Glow Ring ===== */
-  .case:hover, .step:hover { box-shadow:0 0 0 1px rgba(95,179,234,0.2), 0 16px 36px rgba(95,179,234,0.12); } 50%{background-position:0% 0;} }
+  .case:hover, .step:hover { box-shadow:0 0 0 1px rgba(95,179,234,0.2), 0 16px 36px rgba(95,179,234,0.12); }
 
   /* ===== ENHANCEMENT: Staggered Reveal Animations ===== */
   /* Features grid — each card from slightly different direction */
@@ -398,42 +417,48 @@
     --blue-light: #9dd4f5;
     --blue-pale: rgba(95,179,234,0.12);
   }
-  [data-theme="dark"] body { background:linear-gradient(180deg,#0a1220 0%,#0f1724 18%,#121e30 100%); color:var(--text-primary); }
-  [data-theme="dark"] .nav.scrolled { background:rgba(15,23,36,0.82); border-bottom-color:rgba(255,255,255,0.06); box-shadow:0 10px 30px rgba(0,0,0,0.3); }
+  [data-theme="dark"] body { background:linear-gradient(180deg,#0b1525 0%,#0e1b2e 14%,#112240 38%,#0e1b2e 68%,#0b1525 100%); color:var(--text-primary); }
+  [data-theme="dark"] .nav.scrolled { background:rgba(12,20,34,0.88); border-bottom-color:rgba(95,179,234,0.06); box-shadow:0 10px 30px rgba(0,0,0,0.3); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); }
   [data-theme="dark"] .nav-links a { color:rgba(232,236,240,0.7); }
-  [data-theme="dark"] .nav-cta { background:rgba(255,255,255,0.08)!important; border-color:rgba(255,255,255,0.1); color:var(--blue-light)!important; box-shadow:0 8px 24px rgba(0,0,0,0.2); }
+  [data-theme="dark"] .nav-cta { background:rgba(95,179,234,0.1)!important; border-color:rgba(95,179,234,0.14); color:var(--blue-light)!important; box-shadow:0 8px 24px rgba(0,0,0,0.2); }
   [data-theme="dark"] .nav-burger span { background:var(--text-primary); }
-  [data-theme="dark"] .hero-bg { background:radial-gradient(circle at 50% 0%, rgba(15,23,36,.98) 0%, rgba(18,30,48,.92) 18%, rgba(20,40,65,.62) 42%, rgba(15,23,36,0) 84%), linear-gradient(180deg, #0a1220 0%, #0f1724 28%, #121e30 58%, #0f1724 100%); }
-  [data-theme="dark"] .hero-bg::after { background:linear-gradient(180deg,rgba(15,23,36,.24) 0%, rgba(15,23,36,0) 38%, var(--bg) 100%); }
-  [data-theme="dark"] .hero-badge { background:rgba(255,255,255,0.08); border-color:rgba(95,179,234,0.16); color:rgba(232,236,240,0.8); }
-  [data-theme="dark"] .btn-primary { background:linear-gradient(180deg,rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.06) 100%); color:var(--blue-light); border-color:rgba(255,255,255,0.1); box-shadow:0 12px 30px rgba(0,0,0,0.2); }
-  [data-theme="dark"] .btn-primary:hover { background:rgba(255,255,255,0.14); box-shadow:0 14px 34px rgba(0,0,0,0.3); }
-  [data-theme="dark"] .btn-ghost { color:var(--blue-light); border-color:rgba(255,255,255,0.1); background:rgba(255,255,255,0.05); }
-  [data-theme="dark"] .btn-ghost:hover { border-color:rgba(255,255,255,0.16); background:rgba(255,255,255,0.1); }
-  [data-theme="dark"] .feat, [data-theme="dark"] .case, [data-theme="dark"] .step, [data-theme="dark"] .eco-node { background:var(--bg-card); border-color:var(--border); box-shadow:0 16px 36px rgba(0,0,0,0.15); }
-  [data-theme="dark"] .feat:hover, [data-theme="dark"] .case:hover, [data-theme="dark"] .step:hover, [data-theme="dark"] .eco-node:hover { background:var(--bg-card-hover); border-color:rgba(95,179,234,0.2); }
-  [data-theme="dark"] .engine-bar { background:linear-gradient(135deg,rgba(255,255,255,0.06),rgba(95,179,234,0.08)); border-color:var(--border); }
-  [data-theme="dark"] .stack-item { background:rgba(255,255,255,0.05); border-color:rgba(255,255,255,0.06); }
+  [data-theme="dark"] .hero-bg { background:radial-gradient(ellipse 80% 60% at 50% 0%, rgba(95,179,234,0.08) 0%, rgba(30,60,100,0.15) 35%, transparent 70%), linear-gradient(180deg, #0b1525 0%, #0f1d32 25%, #112240 50%, #0e1b2e 100%); }
+  [data-theme="dark"] .hero-bg::after { background:linear-gradient(180deg,rgba(11,21,37,.2) 0%, rgba(11,21,37,0) 38%, var(--bg) 100%); }
+  [data-theme="dark"] .hero-badge { background:rgba(95,179,234,0.08); border-color:rgba(95,179,234,0.16); color:rgba(232,236,240,0.8); }
+  [data-theme="dark"] .feat, [data-theme="dark"] .case, [data-theme="dark"] .step, [data-theme="dark"] .eco-node { background:linear-gradient(180deg,rgba(255,255,255,0.07),rgba(255,255,255,0.04)); border-color:rgba(255,255,255,0.08); box-shadow:0 16px 36px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,0.05); }
+  [data-theme="dark"] .feat:hover, [data-theme="dark"] .case:hover, [data-theme="dark"] .step:hover, [data-theme="dark"] .eco-node:hover { background:linear-gradient(180deg,rgba(255,255,255,0.1),rgba(255,255,255,0.06)); border-color:rgba(95,179,234,0.18); box-shadow:0 20px 44px rgba(0,0,0,0.18), inset 0 1px 0 rgba(255,255,255,0.06); }
+  [data-theme="dark"] .engine-bar { background:linear-gradient(135deg,rgba(255,255,255,0.06),rgba(95,179,234,0.08)); border-color:rgba(255,255,255,0.08); }
+  [data-theme="dark"] .stack-item { background:rgba(255,255,255,0.05); border-color:rgba(255,255,255,0.07); }
   [data-theme="dark"] .stack-label { color:var(--text-primary); }
   [data-theme="dark"] .stack-sub { color:var(--text-secondary); }
-  [data-theme="dark"] .mockup-window { background:#1a2332; box-shadow:0 24px 80px rgba(0,0,0,0.3), 0 8px 24px rgba(0,0,0,0.2), 0 0 0 1px rgba(255,255,255,0.06); }
-  [data-theme="dark"] .mockup-titlebar { background:#151d2a; border-bottom-color:rgba(255,255,255,0.06); }
+  [data-theme="dark"] .mockup-window { background:linear-gradient(180deg,#1b2738,#172232); box-shadow:0 24px 80px rgba(0,0,0,0.3), 0 8px 24px rgba(0,0,0,0.2), 0 0 0 1px rgba(255,255,255,0.06); }
+  [data-theme="dark"] .mockup-titlebar { background:#141c28; border-bottom-color:rgba(255,255,255,0.06); }
   [data-theme="dark"] .mockup-title { color:#5a6470; }
   [data-theme="dark"] .mockup-sidebar { background:rgba(255,255,255,0.03); border-right-color:rgba(255,255,255,0.06); }
   [data-theme="dark"] .mockup-nav-item { background:rgba(95,179,234,0.08); }
   [data-theme="dark"] .mockup-nav-item--active { background:rgba(95,179,234,0.18); }
   [data-theme="dark"] .mockup-card { background:rgba(255,255,255,0.04); border-color:rgba(255,255,255,0.06); }
-  [data-theme="dark"] .cta-card { background:linear-gradient(180deg,rgba(255,255,255,0.06),rgba(95,179,234,0.06)); border-color:var(--border); box-shadow:0 24px 60px rgba(0,0,0,0.2); }
-  [data-theme="dark"] .btn-solid { background:linear-gradient(180deg,#5fb3ea 0%,#4a9de0 100%); color:#fff; }
-  [data-theme="dark"] .btn-outline { background:rgba(255,255,255,0.06); color:var(--text-primary); border-color:var(--border); }
-  [data-theme="dark"] .footer { background:rgba(255,255,255,0.03); border-top-color:var(--border); }
+  [data-theme="dark"] .cta-card { background:linear-gradient(180deg,rgba(95,179,234,0.08),rgba(255,255,255,0.04)); border-color:rgba(95,179,234,0.1); box-shadow:0 24px 60px rgba(0,0,0,0.18), inset 0 1px 0 rgba(255,255,255,0.04); }
+  [data-theme="dark"] .btn-solid { background:linear-gradient(180deg,#5fb3ea 0%,#4a9de0 100%); color:#fff; box-shadow:0 8px 24px rgba(95,179,234,0.2); }
+  [data-theme="dark"] .dl-card { background:linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.03)); border-color:rgba(255,255,255,0.07); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); }
+  [data-theme="dark"] .dl-card:hover { background:linear-gradient(180deg,rgba(255,255,255,0.1),rgba(255,255,255,0.06)); box-shadow:0 8px 32px rgba(95,179,234,.06); border-color:rgba(95,179,234,0.14); }
+  [data-theme="dark"] .dl-icon-apple path { fill:#f5f5f7; }
+  [data-theme="dark"] .dl-card-links a { color:var(--blue-light); background:rgba(95,179,234,.08); border:1px solid rgba(95,179,234,.06); }
+  [data-theme="dark"] .dl-card-links a:hover { background:rgba(95,179,234,.15); border-color:rgba(95,179,234,.14); }
+  [data-theme="dark"] .dl-card-hint { color:var(--text-muted); }
+  [data-theme="dark"] .dl-all-link { color:var(--blue-light); }
+  [data-theme="dark"] .btn-outline { background:rgba(255,255,255,0.06); color:var(--text-primary); border-color:rgba(255,255,255,0.08); }
+  [data-theme="dark"] .btn-outline:hover { background:rgba(255,255,255,0.1); border-color:rgba(255,255,255,0.12); }
+  [data-theme="dark"] .footer { background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01)); border-top-color:rgba(255,255,255,0.06); }
   [data-theme="dark"] .footer a, [data-theme="dark"] .footer-col-title { color:var(--text-primary); }
   [data-theme="dark"] .footer-col a, [data-theme="dark"] .footer-col span { color:var(--text-secondary); }
-  [data-theme="dark"] .eco-app { background:var(--bg-card); border-color:var(--border); color:var(--text-primary); }
-  [data-theme="dark"] .eco-app--cur { background:rgba(95,179,234,0.08); border-color:rgba(95,179,234,0.14); }
-  [data-theme="dark"] .nav-links { background:rgba(15,23,36,.96)!important; }
+  [data-theme="dark"] .eco-app { background:linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.03)); border-color:rgba(255,255,255,0.07); color:var(--text-primary); }
+  [data-theme="dark"] .eco-app--cur { background:linear-gradient(180deg,rgba(95,179,234,0.1),rgba(95,179,234,0.05)); border-color:rgba(95,179,234,0.16); }
+  [data-theme="dark"] .nav-links { background:rgba(12,20,34,.96)!important; backdrop-filter:blur(24px); -webkit-backdrop-filter:blur(24px); }
   [data-theme="dark"] .nav-links a { border-bottom-color:rgba(255,255,255,0.04)!important; }
   [data-theme="dark"] .hero-tagline { color:rgba(232,236,240,0.7); }
+  [data-theme="dark"] .social-proof { background:rgba(95,179,234,0.03); }
+  [data-theme="dark"] .social-proof-bar { color:var(--text-secondary); }
 
   /* Text colors that use hardcoded rgba(18,50,76,...) */
   [data-theme="dark"] .hero-title { color: #e8ecf0; }
@@ -523,8 +548,8 @@
     <button class="nav-burger" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu"><span></span><span></span><span></span></button>
     <div class="nav-links">
       <a href="#features">Capabilities</a><a href="#quickstart">Quick Start</a><a href="#cases">Use Cases</a><a href="#ecosystem">Ecosystem</a>
-      <a href="docs/index.html">Docs</a>
-      <a href="../zh/index.html">中文</a>
+      <a href="/en/docs/">Docs</a>
+      <a href="/zh/">中文</a>
       <button class="nav-theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
         <svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
         <svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -566,9 +591,36 @@
       <h1 class="hero-title">Open-source AI agents,<br>running on your desktop</h1>
       <p class="hero-tagline">Hexagon engine inside · Multi-agent collaboration · Visual workflows · RAG knowledge bases<br>Everything you need, with local-first data and one-click setup</p>
       <div class="hero-version"><span class="hero-vtag">v0.0.1</span><span class="hero-vsep">·</span><span class="hero-vmeta">Apache-2.0 License</span><span class="hero-vsep">·</span><span class="hero-vmeta">macOS / Windows / Linux</span></div>
-      <div class="hero-buttons">
-        <a href="https://github.com/hexagon-codes/hexclaw-desktop/releases" target="_blank" rel="noopener noreferrer" class="btn btn-primary"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>Download Desktop</a>
-        <a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="btn btn-ghost"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>GitHub</a>
+      <div class="dl-section">
+        <div class="dl-cards">
+          <div class="dl-card">
+            <svg class="dl-card-icon dl-icon-apple" viewBox="0 0 24 24"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
+            <div class="dl-card-name">macOS</div>
+            <div class="dl-card-hint">.dmg</div>
+            <div class="dl-card-links">
+              <a href="https://github.com/hexagon-codes/hexclaw-desktop/releases/download/v0.0.1/HexClaw_0.0.1_aarch64.dmg">Apple Silicon</a>
+              <a href="https://github.com/hexagon-codes/hexclaw-desktop/releases/download/v0.0.1/HexClaw_0.0.1_x64.dmg">Intel</a>
+            </div>
+          </div>
+          <div class="dl-card">
+            <svg class="dl-card-icon" viewBox="0 0 24 24"><path fill="#F25022" d="M3 5.56l7.36-1v7.1H3z"/><path fill="#7FBA00" d="M11.64 5.93L21 3v8.66h-9.36z"/><path fill="#00A4EF" d="M3 18.44l7.36 1v-7.1H3z"/><path fill="#FFB900" d="M11.64 19.07L21 21v-8.66h-9.36z"/></svg>
+            <div class="dl-card-name">Windows</div>
+            <div class="dl-card-hint">.exe</div>
+            <div class="dl-card-links">
+              <a href="https://github.com/hexagon-codes/hexclaw-desktop/releases/download/v0.0.1/HexClaw_0.0.1_x64-setup.exe">64-bit (x64)</a>
+            </div>
+          </div>
+          <div class="dl-card">
+            <img class="dl-card-icon dl-icon-linux" src="../assets/icons/tux.png" alt="Linux" width="34" height="34">
+            <div class="dl-card-name">Linux</div>
+            <div class="dl-card-hint">.deb / .AppImage</div>
+            <div class="dl-card-links">
+              <a href="https://github.com/hexagon-codes/hexclaw-desktop/releases/download/v0.0.1/hex-claw_0.0.1_amd64.deb">.deb</a>
+              <a href="https://github.com/hexagon-codes/hexclaw-desktop/releases/download/v0.0.1/HexClaw_0.0.1_amd64.AppImage">.AppImage</a>
+            </div>
+          </div>
+        </div>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/releases" target="_blank" rel="noopener noreferrer" class="dl-all-link">All releases →</a>
       </div>
     </div>
     <!-- TODO: 产品截图/Mockup — 待设计稿定稿后替换 -->
@@ -741,24 +793,26 @@
         <div class="footer-col-title">Product</div>
         <a href="https://github.com/hexagon-codes/hexclaw-desktop/releases" target="_blank" rel="noopener noreferrer">Download</a>
         <a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer">GitHub</a>
-        <a href="https://github.com/hexagon-codes/hexclaw-desktop/releases" target="_blank" rel="noopener noreferrer">Changelog</a>
+        <a href="/en/changelog">Changelog</a>
       </div>
       <div class="footer-col">
         <div class="footer-col-title">Developers</div>
-        <a href="docs/index.html">Docs</a>
-        <a href="docs/index.html">Getting Started</a>
-        <a href="docs/index.html">API Docs</a>
+        <a href="/en/docs/">Docs</a>
+        <a href="/en/docs/getting-started">Getting Started</a>
+        <a href="/en/docs/">API Docs</a>
       </div>
       <div class="footer-col">
         <div class="footer-col-title">Community</div>
         <a href="https://github.com/hexagon-codes/hexclaw-desktop/discussions" target="_blank" rel="noopener noreferrer">GitHub Discussions</a>
         <a href="https://github.com/hexagon-codes/hexclaw-desktop/issues" target="_blank" rel="noopener noreferrer">Issues</a>
+        <a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer">Twitter / X</a>
       </div>
       <div class="footer-col">
         <div class="footer-col-title">About</div>
-        <span>Apache-2.0</span>
-        <a href="https://github.com/hexagon-codes" target="_blank" rel="noopener noreferrer">hexagon-codes</a>
-        <a href="mailto:ai@hexclaw.net">ai@hexclaw.net</a>
+        <a href="/en/about">About Us</a>
+        <a href="/en/privacy">Privacy Policy</a>
+        <a href="/en/terms">Terms of Service</a>
+        <a href="mailto:ai@hexclaw.net">Contact Us</a>
       </div>
     </div>
     <div class="footer-bottom">
@@ -924,5 +978,6 @@
     })
     .catch(function(){});
 })();
+
 </script>
 </body></html>
