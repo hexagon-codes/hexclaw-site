@@ -1,6 +1,0 @@
-<!DOCTYPE html>
-<meta charset="utf-8">
-<meta http-equiv="refresh" content="0; url=advanced.html">
-<script>location.replace("advanced.html");</script>
-<title>Redirecting...</title>
-<p><a href="advanced.html">Continue</a></p>

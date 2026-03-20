@@ -1,6 +1,0 @@
-<!DOCTYPE html>
-<meta charset="utf-8">
-<meta http-equiv="refresh" content="0; url=getting-started.html">
-<script>location.replace("getting-started.html");</script>
-<title>Redirecting...</title>
-<p><a href="getting-started.html">Continue</a></p>

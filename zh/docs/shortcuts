@@ -1,6 +1,0 @@
-<!DOCTYPE html>
-<meta charset="utf-8">
-<meta http-equiv="refresh" content="0; url=shortcuts.html">
-<script>location.replace("shortcuts.html");</script>
-<title>Redirecting...</title>
-<p><a href="shortcuts.html">Continue</a></p>
