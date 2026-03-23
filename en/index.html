@@ -222,21 +222,29 @@
   .btn-outline:hover { border-color:rgba(63,143,212,.16); background:rgba(255,255,255,.88); }
 
   /* Footer */
-  .footer { border-top:1px solid var(--border); padding:28px 32px; display:flex; justify-content:center; align-items:center; gap:14px; flex-wrap:wrap; background:rgba(255,255,255,.28); }
+  .footer { border-top:1px solid var(--border); padding:28px 32px; background:rgba(255,255,255,.28); }
   .footer a { font-size:15px; color:var(--text-primary); text-decoration:none; transition:color .2s; }
   .footer a:hover { color:var(--blue-light); }
   .footer-sep { width:3px; height:3px; border-radius:50%; background:var(--text-muted); opacity:.22; }
-  .footer-copy { font-size:14px; color:var(--text-muted); opacity:.66; }
+  .footer-copy { font-size:13px; color:var(--text-muted); opacity:.72; }
 
 
   /* Footer multi-column */
-  .footer-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:32px; max-width:1080px; margin:0 auto; padding-bottom:24px; }
+  /* Footer layout: links left + QR right */
+  .footer-main { display:flex; justify-content:space-between; align-items:flex-start; max-width:1080px; margin:0 auto; padding-bottom:28px; gap:40px; }
+  .footer-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:32px; flex:1; }
   .footer-col-title { font-size:14px; font-weight:700; color:var(--text-primary); margin-bottom:12px; }
   .footer-col a, .footer-col span { display:block; font-size:13px; color:var(--text-secondary); text-decoration:none; padding:3px 0; transition:color .2s; }
   .footer-col a:hover { color:var(--blue-deep); }
-  .footer-bottom { display:flex; justify-content:center; padding-top:16px; border-top:1px solid var(--border); max-width:1080px; margin:0 auto; }
-  @media(max-width:768px) { .footer-grid { grid-template-columns:repeat(2,1fr); gap:24px; } }
-  @media(max-width:640px) { .footer-grid { grid-template-columns:1fr; gap:16px; } }
+  .footer-wechat { display:flex; flex-direction:column; align-items:center; gap:8px; flex-shrink:0; padding-top:2px; }
+  .footer-wechat img { width:108px; height:108px; border-radius:10px; }
+  .footer-wechat-label { font-size:12px; color:var(--text-muted); }
+  .footer-bottom { padding-top:20px; border-top:1px solid var(--border); max-width:1080px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap; }
+  .footer-meta-links { display:flex; align-items:center; gap:16px; flex-wrap:wrap; }
+  .footer-meta-links a { font-size:13px; color:var(--text-secondary); text-decoration:none; transition:color .2s; }
+  .footer-meta-links a:hover { color:var(--blue-deep); }
+  @media(max-width:768px) { .footer-main { flex-direction:column; align-items:center; } .footer-grid { grid-template-columns:repeat(2,1fr); gap:24px; width:100%; } .footer-wechat { flex-direction:row; gap:12px; } .footer-wechat img { width:80px; height:80px; } .footer-bottom { align-items:flex-start; } }
+  @media(max-width:640px) { .footer-grid { grid-template-columns:1fr; gap:16px; } .footer-wechat { flex-direction:column; } }
 
   /* Responsive */
   @media(max-width:768px) { .nav { padding:10px 16px; } .nav-burger { display:block; padding:8px; } .nav-links { display:none; position:absolute; top:100%; left:0; right:0; flex-direction:column; background:rgba(244,251,255,.96); backdrop-filter:blur(24px); -webkit-backdrop-filter:blur(24px); padding:12px 20px; gap:0; border-bottom:1px solid rgba(63,143,212,.08); } .nav-links.open { display:flex; } .nav-links a { padding:14px 0; border-bottom:1px solid rgba(63,143,212,.06); font-size:15px; color:rgba(18,50,76,.72); } .nav-links a:last-child { border-bottom:none; } .nav-cta { margin-top:8px; text-align:center; } .nav-name { font-size:16px; } .features,.steps { grid-template-columns:repeat(2,1fr); } .cases { grid-template-columns:1fr; } .engine-stack { flex-direction:column; overflow:hidden; } .stack-row { flex-wrap:wrap; overflow-x:auto; } .engine-caps { white-space:normal; font-size:12px; } .stack-item { flex:1 1 auto; min-width:0; } .hero-title { font-size:clamp(28px,5vw,40px); } .hero-tagline { font-size:17px; } .btn { padding:12px 22px; font-size:16px; } .hero-logo { width:128px; height:128px; } section { padding:52px 24px; } }
@@ -374,33 +382,15 @@
   /* #10 General overflow: already handled — body has overflow-x:hidden,
      #ecosystem has overflow:hidden, .hero has overflow:hidden */
 
-  /* ===== #7 Hero Mockup ===== */
-  .hero-mockup { max-width:780px; margin:40px auto 0; position:relative; z-index:1; }
-  .hero-mockup::before { content:''; position:absolute; top:50%; left:50%; width:120%; height:120%; transform:translate(-50%,-50%); background:radial-gradient(ellipse, rgba(95,179,234,0.12) 0%, rgba(95,179,234,0.04) 40%, transparent 70%); pointer-events:none; z-index:-1; }
-  .mockup-window { border-radius:12px; overflow:hidden; box-shadow:0 24px 80px rgba(0,0,0,0.12), 0 8px 24px rgba(0,0,0,0.08), 0 0 0 1px rgba(0,0,0,0.06); background:#fff; animation:mockup-float 4s ease-in-out infinite; }
+  /* ===== #7 Hero Showcase ===== */
+  .hero-mockup { max-width:1120px; margin:42px auto 0; position:relative; z-index:1; padding:0 12px; }
+  .hero-mockup::before { content:''; position:absolute; top:50%; left:50%; width:116%; height:118%; transform:translate(-50%,-50%); background:radial-gradient(ellipse, rgba(95,179,234,0.15) 0%, rgba(95,179,234,0.06) 42%, transparent 74%); pointer-events:none; z-index:-1; }
+  .hero-shot { margin:0; border-radius:22px; overflow:hidden; border:1px solid rgba(63,143,212,.12); background:rgba(255,255,255,.9); box-shadow:0 26px 84px rgba(0,0,0,0.14), 0 10px 28px rgba(0,0,0,0.08); animation:mockup-float 4s ease-in-out infinite; }
   @keyframes mockup-float { 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-4px); } }
-  .mockup-titlebar { height:32px; background:#f0f0f0; display:flex; align-items:center; padding:0 12px; gap:6px; border-bottom:1px solid #e0e0e0; }
-  .mockup-dot { width:10px; height:10px; border-radius:50%; }
-  .mockup-dot--red { background:#ff5f57; }
-  .mockup-dot--yellow { background:#febc2e; }
-  .mockup-dot--green { background:#28c840; }
-  .mockup-title { margin-left:auto; margin-right:auto; font-size:11px; color:#999; font-weight:500; }
-  .mockup-body { display:flex; min-height:220px; }
-  .mockup-sidebar { width:160px; background:#f0f4ff; padding:16px 12px; display:flex; flex-direction:column; gap:8px; border-right:1px solid #e8ecf0; }
-  .mockup-nav-item { height:28px; border-radius:6px; background:rgba(63,143,212,0.08); }
-  .mockup-nav-item--active { background:rgba(63,143,212,0.18); }
-  .mockup-content { flex:1; padding:16px; display:flex; flex-direction:column; gap:12px; }
-  .mockup-stats { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; }
-  .mockup-stat { height:48px; border-radius:8px; }
-  .mockup-stat--blue { background:linear-gradient(135deg,#5fb3ea,#83c8f3); }
-  .mockup-stat--green { background:linear-gradient(135deg,#4ade80,#86efac); }
-  .mockup-stat--purple { background:linear-gradient(135deg,#a78bfa,#c4b5fd); }
-  .mockup-stat--orange { background:linear-gradient(135deg,#fb923c,#fdba74); }
-  .mockup-cards { display:grid; grid-template-columns:1fr 1fr 0.6fr; gap:8px; flex:1; }
-  .mockup-card { border-radius:8px; background:#f5f7f9; min-height:80px; border:1px solid #eef1f4; }
-  .mockup-card--sm { min-height:60px; }
-  @media(max-width:768px) { .hero-mockup { max-width:90%; } .mockup-stats { grid-template-columns:repeat(2,1fr); } .mockup-cards { grid-template-columns:1fr 1fr; } .mockup-card--sm { display:none; } }
-  @media(max-width:640px) { .hero-mockup { display:none; } }
+  .hero-shot img { display:block; width:100%; height:auto; }
+  .hero-shot figcaption { padding:14px 18px 16px; font-size:14px; color:rgba(18,50,76,.68); background:linear-gradient(180deg, rgba(255,255,255,.74), rgba(244,251,255,.96)); text-align:left; }
+  @media(max-width:768px) { .hero-mockup { max-width:96%; margin-top:30px; padding:0; } .hero-shot { border-radius:16px; } .hero-shot figcaption { font-size:13px; padding:12px 14px 14px; } }
+  @media(max-width:640px) { .hero-mockup { max-width:100%; margin-top:24px; } .hero-shot { border-radius:14px; } }
 
   /* ===== #8 Dark Mode ===== */
   [data-theme="dark"] {
@@ -431,13 +421,8 @@
   [data-theme="dark"] .stack-item { background:rgba(255,255,255,0.05); border-color:rgba(255,255,255,0.07); }
   [data-theme="dark"] .stack-label { color:var(--text-primary); }
   [data-theme="dark"] .stack-sub { color:var(--text-secondary); }
-  [data-theme="dark"] .mockup-window { background:linear-gradient(180deg,#1b2738,#172232); box-shadow:0 24px 80px rgba(0,0,0,0.3), 0 8px 24px rgba(0,0,0,0.2), 0 0 0 1px rgba(255,255,255,0.06); }
-  [data-theme="dark"] .mockup-titlebar { background:#141c28; border-bottom-color:rgba(255,255,255,0.06); }
-  [data-theme="dark"] .mockup-title { color:#5a6470; }
-  [data-theme="dark"] .mockup-sidebar { background:rgba(255,255,255,0.03); border-right-color:rgba(255,255,255,0.06); }
-  [data-theme="dark"] .mockup-nav-item { background:rgba(95,179,234,0.08); }
-  [data-theme="dark"] .mockup-nav-item--active { background:rgba(95,179,234,0.18); }
-  [data-theme="dark"] .mockup-card { background:rgba(255,255,255,0.04); border-color:rgba(255,255,255,0.06); }
+  [data-theme="dark"] .hero-shot { background:linear-gradient(180deg,#182334,#111b2a); border-color:rgba(95,179,234,0.18); box-shadow:0 28px 90px rgba(0,0,0,0.34), 0 10px 26px rgba(0,0,0,0.22); }
+  [data-theme="dark"] .hero-shot figcaption { color:rgba(232,236,240,0.7); background:linear-gradient(180deg, rgba(24,35,52,.7), rgba(17,27,42,.95)); }
   [data-theme="dark"] .cta-card { background:linear-gradient(180deg,rgba(95,179,234,0.08),rgba(255,255,255,0.04)); border-color:rgba(95,179,234,0.1); box-shadow:0 24px 60px rgba(0,0,0,0.18), inset 0 1px 0 rgba(255,255,255,0.04); }
   [data-theme="dark"] .btn-solid { background:linear-gradient(180deg,#5fb3ea 0%,#4a9de0 100%); color:#fff; box-shadow:0 8px 24px rgba(95,179,234,0.2); }
   [data-theme="dark"] .dl-card { background:linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.03)); border-color:rgba(255,255,255,0.07); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); }
@@ -451,7 +436,7 @@
   [data-theme="dark"] .btn-outline:hover { background:rgba(255,255,255,0.1); border-color:rgba(255,255,255,0.12); }
   [data-theme="dark"] .footer { background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01)); border-top-color:rgba(255,255,255,0.06); }
   [data-theme="dark"] .footer a, [data-theme="dark"] .footer-col-title { color:var(--text-primary); }
-  [data-theme="dark"] .footer-col a, [data-theme="dark"] .footer-col span { color:var(--text-secondary); }
+  [data-theme="dark"] .footer-col a, [data-theme="dark"] .footer-col span, [data-theme="dark"] .footer-meta-links a { color:var(--text-secondary); }
   [data-theme="dark"] .eco-app { background:linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.03)); border-color:rgba(255,255,255,0.07); color:var(--text-primary); }
   [data-theme="dark"] .eco-app--cur { background:linear-gradient(180deg,rgba(95,179,234,0.1),rgba(95,179,234,0.05)); border-color:rgba(95,179,234,0.16); }
   [data-theme="dark"] .nav-links { background:rgba(12,20,34,.96)!important; backdrop-filter:blur(24px); -webkit-backdrop-filter:blur(24px); }
@@ -590,7 +575,7 @@
       <div class="hero-badge"><span class="hero-badge-dot"></span>Full-stack open source · Apache-2.0</div>
       <h1 class="hero-title">Open-source AI agents,<br>running on your desktop</h1>
       <p class="hero-tagline">Hexagon engine inside · Multi-agent collaboration · Visual workflows · RAG knowledge bases<br>Everything you need, with local-first data and one-click setup</p>
-      <div class="hero-version"><span class="hero-vtag">v0.0.1</span><span class="hero-vsep">·</span><span class="hero-vmeta">Apache-2.0 License</span><span class="hero-vsep">·</span><span class="hero-vmeta">macOS / Windows / Linux</span></div>
+      <div class="hero-version"><span class="hero-vtag">v0.1.0-beta</span><span class="hero-vsep">·</span><span class="hero-vmeta">Apache-2.0 License</span><span class="hero-vsep">·</span><span class="hero-vmeta">macOS / Windows / Linux</span></div>
       <div class="dl-section">
         <div class="dl-cards">
           <div class="dl-card">
@@ -598,8 +583,8 @@
             <div class="dl-card-name">macOS</div>
             <div class="dl-card-hint">.dmg</div>
             <div class="dl-card-links">
-              <a href="https://github.com/hexagon-codes/hexclaw-desktop/releases/download/v0.0.1/HexClaw_0.0.1_aarch64.dmg">Apple Silicon</a>
-              <a href="https://github.com/hexagon-codes/hexclaw-desktop/releases/download/v0.0.1/HexClaw_0.0.1_x64.dmg">Intel</a>
+              <a href="https://github.com/hexagon-codes/hexclaw-desktop/releases/download/v0.1.0-beta/HexClaw_0.1.0-beta_aarch64.dmg">Apple Silicon</a>
+              <a href="https://github.com/hexagon-codes/hexclaw-desktop/releases/download/v0.1.0-beta/HexClaw_0.1.0-beta_x64.dmg">Intel</a>
             </div>
           </div>
           <div class="dl-card">
@@ -607,7 +592,7 @@
             <div class="dl-card-name">Windows</div>
             <div class="dl-card-hint">.exe</div>
             <div class="dl-card-links">
-              <a href="https://github.com/hexagon-codes/hexclaw-desktop/releases/download/v0.0.1/HexClaw_0.0.1_x64-setup.exe">64-bit (x64)</a>
+              <a href="https://github.com/hexagon-codes/hexclaw-desktop/releases/download/v0.1.0-beta/HexClaw_0.1.0-beta_x64-setup.exe">64-bit (x64)</a>
             </div>
           </div>
           <div class="dl-card">
@@ -615,48 +600,19 @@
             <div class="dl-card-name">Linux</div>
             <div class="dl-card-hint">.deb / .AppImage</div>
             <div class="dl-card-links">
-              <a href="https://github.com/hexagon-codes/hexclaw-desktop/releases/download/v0.0.1/hex-claw_0.0.1_amd64.deb">.deb</a>
-              <a href="https://github.com/hexagon-codes/hexclaw-desktop/releases/download/v0.0.1/HexClaw_0.0.1_amd64.AppImage">.AppImage</a>
+              <a href="https://github.com/hexagon-codes/hexclaw-desktop/releases/download/v0.1.0-beta/hex-claw_0.1.0-beta_amd64.deb">.deb</a>
+              <a href="https://github.com/hexagon-codes/hexclaw-desktop/releases/download/v0.1.0-beta/HexClaw_0.1.0-beta_amd64.AppImage">.AppImage</a>
             </div>
           </div>
         </div>
         <a href="https://github.com/hexagon-codes/hexclaw-desktop/releases" target="_blank" rel="noopener noreferrer" class="dl-all-link">All releases →</a>
       </div>
     </div>
-    <!-- TODO: 产品截图/Mockup — 待设计稿定稿后替换 -->
-    <!-- <div class="hero-mockup reveal">
-      <div class="mockup-window">
-        <div class="mockup-titlebar">
-          <span class="mockup-dot mockup-dot--red"></span>
-          <span class="mockup-dot mockup-dot--yellow"></span>
-          <span class="mockup-dot mockup-dot--green"></span>
-          <span class="mockup-title">HexClaw Desktop</span>
-        </div>
-        <div class="mockup-body">
-          <div class="mockup-sidebar">
-            <div class="mockup-nav-item mockup-nav-item--active"></div>
-            <div class="mockup-nav-item"></div>
-            <div class="mockup-nav-item"></div>
-            <div class="mockup-nav-item"></div>
-            <div class="mockup-nav-item"></div>
-            <div class="mockup-nav-item"></div>
-          </div>
-          <div class="mockup-content">
-            <div class="mockup-stats">
-              <div class="mockup-stat mockup-stat--blue"></div>
-              <div class="mockup-stat mockup-stat--green"></div>
-              <div class="mockup-stat mockup-stat--purple"></div>
-              <div class="mockup-stat mockup-stat--orange"></div>
-            </div>
-            <div class="mockup-cards">
-              <div class="mockup-card"></div>
-              <div class="mockup-card"></div>
-              <div class="mockup-card mockup-card--sm"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div> -->
+    <div class="hero-mockup reveal">
+      <figure class="hero-shot">
+        <img src="../assets/docs/zh-guide/homepage-product-showcase.png" alt="HexClaw product showcase">
+      </figure>
+    </div>
   </section>
 
   <section id="features">
@@ -788,35 +744,45 @@
   </main>
 
   <footer class="footer">
-    <div class="footer-grid">
-      <div class="footer-col">
-        <div class="footer-col-title">Product</div>
-        <a href="https://github.com/hexagon-codes/hexclaw-desktop/releases" target="_blank" rel="noopener noreferrer">Download</a>
-        <a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer">GitHub</a>
-        <a href="/en/changelog">Changelog</a>
+    <div class="footer-main">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="footer-col-title">Product</div>
+          <a href="https://github.com/hexagon-codes/hexclaw-desktop/releases" target="_blank" rel="noopener noreferrer">Download</a>
+          <a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="/en/changelog">Changelog</a>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Developers</div>
+          <a href="/en/docs/">Docs</a>
+          <a href="/en/docs/getting-started">Getting Started</a>
+          <a href="https://github.com/hexagon-codes/hexclaw-desktop/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">Apache-2.0</a>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Community</div>
+          <a href="https://github.com/hexagon-codes/hexclaw-desktop/discussions" target="_blank" rel="noopener noreferrer">GitHub Discussions</a>
+          <a href="https://github.com/hexagon-codes/hexclaw-desktop/issues" target="_blank" rel="noopener noreferrer">Issues</a>
+          <a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer">Twitter / X</a>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">About</div>
+          <a href="/en/about">About Us</a>
+          <a href="/en/privacy">Privacy Policy</a>
+          <a href="/en/terms">Terms of Service</a>
+          <a href="mailto:ai@hexclaw.net">Contact Us</a>
+        </div>
       </div>
-      <div class="footer-col">
-        <div class="footer-col-title">Developers</div>
-        <a href="/en/docs/">Docs</a>
-        <a href="/en/docs/getting-started">Getting Started</a>
-        <a href="/en/docs/">API Docs</a>
-      </div>
-      <div class="footer-col">
-        <div class="footer-col-title">Community</div>
-        <a href="https://github.com/hexagon-codes/hexclaw-desktop/discussions" target="_blank" rel="noopener noreferrer">GitHub Discussions</a>
-        <a href="https://github.com/hexagon-codes/hexclaw-desktop/issues" target="_blank" rel="noopener noreferrer">Issues</a>
-        <a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer">Twitter / X</a>
-      </div>
-      <div class="footer-col">
-        <div class="footer-col-title">About</div>
-        <a href="/en/about">About Us</a>
-        <a href="/en/privacy">Privacy Policy</a>
-        <a href="/en/terms">Terms of Service</a>
-        <a href="mailto:ai@hexclaw.net">Contact Us</a>
+      <div class="footer-wechat">
+        <img src="../assets/brand/wechat-qr.jpg" alt="HexClaw WeChat QR Code">
+        <span class="footer-wechat-label">WeChat Official Account</span>
       </div>
     </div>
     <div class="footer-bottom">
-      <span class="footer-copy">&copy; 2025&ndash;2026 hexagon-codes &middot; Apache-2.0 License</span>
+      <span class="footer-copy">&copy; 2025&ndash;2026 hexagon-codes</span>
+      <div class="footer-meta-links">
+        <a href="/en/privacy">Privacy Policy</a>
+        <a href="/en/terms">Terms of Service</a>
+      </div>
     </div>
   </footer>
 

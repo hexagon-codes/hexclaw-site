@@ -34,7 +34,7 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"河蟹 AI","item":"https://hexclaw.net/zh/"},{"@type":"ListItem","position":2,"name":"河蟹 AI 使用文档","item":"https://hexclaw.net/zh/docs/"},{"@type":"ListItem","position":3,"name":"快速上手 — 河蟹 AI 文档","item":"https://hexclaw.net/zh/docs/getting-started"}]}
 </script>
-<link rel="stylesheet" href="../../assets/css/docs.css?v=1773751342">
+<link rel="stylesheet" href="../../assets/css/docs.css?v=1774211100">
 </head>
 <body class="docs-page">
 <nav class="tn">
@@ -95,23 +95,37 @@ pnpm tauri dev</code></pre>
 <h2>首次启动向导</h2>
 <p>首次打开河蟹 AI 时，会自动进入 3 步设置向导：</p>
 <ol>
-<li><strong>选择 AI 服务商</strong> — 选择 Provider 并填入 API Key</li>
-<li><strong>选择默认模型</strong> — 从该 Provider 的模型列表中选择</li>
-<li><strong>测试连接</strong> — 验证后端引擎是否正常运行（可跳过）</li>
+<li><strong>配置 AI 服务商</strong> — 选择 Provider、填入 API Key，并完成模型连接测试</li>
+<li><strong>选择默认角色</strong> — 选择进入应用后默认使用的智能体角色</li>
+<li><strong>确认工作上下文</strong> — 核对服务商、模型、默认角色后开始使用</li>
 </ol>
 <p>完成向导后自动进入聊天页。后续可在 <strong>设置 → 模型服务商</strong> 中修改配置。</p>
 <div class="tip"><b>提示：</b>如果跳过了向导，下次打开应用仍会提示配置（直到至少添加一个 Provider）。</div>
+<section class="doc-gallery" aria-label="首次启动向导步骤截图">
+<figure class="doc-shot">
+        <img src="../../assets/docs/zh-guide/onboarding-step-provider.png" alt="河蟹 AI 首次启动向导第一步：配置 AI 服务商">
+<figcaption>第一步：选择服务商、填写 API Key，并在进入主界面前先完成一次连接测试。</figcaption>
+</figure>
+<figure class="doc-shot">
+        <img src="../../assets/docs/zh-guide/onboarding-step-role.png" alt="河蟹 AI 首次启动向导第二步：选择默认角色">
+<figcaption>第二步：选择默认智能体角色，确定进入系统后的首个工作模式。</figcaption>
+</figure>
+<figure class="doc-shot">
+        <img src="../../assets/docs/zh-guide/onboarding-step-confirmation.png" alt="河蟹 AI 首次启动向导第三步：确认工作上下文">
+<figcaption>第三步：确认服务商、模型和默认角色，随后直接进入第一条真实会话。</figcaption>
+</figure>
+</section>
 
 <h2>首次配置</h2>
 <h3>1. 配置 AI 服务商</h3>
 <p>打开应用后进入 <strong>设置 → 模型服务商</strong>，添加至少一个 AI 服务商：</p>
 <ul>
-<li><strong>OpenAI</strong> — 填入 API Key（<code>sk-...</code>），支持 GPT-4o / GPT-4-Turbo / o1 / o3-mini</li>
-<li><strong>DeepSeek</strong> — 填入 API Key，支持 DeepSeek-V3 / DeepSeek-R1</li>
-<li><strong>Anthropic</strong> — 支持 Claude Sonnet 4 / Claude Opus 4 / Claude Haiku 4.5</li>
-<li><strong>Google Gemini</strong> — 支持 Gemini 2.5 Flash/Pro（含视频/音频能力）</li>
-<li><strong>阿里 Qwen</strong> — 通义千问系列，含视觉模型</li>
-<li><strong>字节 Ark（豆包）</strong> — 豆包系列，含视觉模型</li>
+<li><strong>OpenAI</strong> — 填入 API Key（<code>sk-...</code>），可接入 GPT-4o、o 系列等模型</li>
+<li><strong>DeepSeek</strong> — 填入 API Key，可接入 DeepSeek 系列模型</li>
+<li><strong>Anthropic</strong> — 可接入 Claude 系列模型</li>
+<li><strong>Google Gemini</strong> — 可接入 Gemini 系列模型，部分模型支持视频/音频能力</li>
+<li><strong>阿里 Qwen</strong> — 可接入通义千问系列，含视觉模型</li>
+<li><strong>字节 Ark（豆包）</strong> — 可接入豆包及火山方舟兼容模型，含视觉模型</li>
 <li><strong>Ollama（本地）</strong> — 无需 API Key，支持 Llama / Qwen / Mistral / DeepSeek 等本地模型</li>
 <li><strong>自定义</strong> — 任何兼容 OpenAI API 格式的服务</li>
 </ul>
@@ -143,6 +157,14 @@ platforms:
 <h3>3. 发送第一条消息</h3>
 <p>进入 <strong>对话</strong> 页面，在输入框输入任意内容，按回车发送。支持流式输出，实时显示 AI 回复。</p>
 
+<h2>首次排障入口</h2>
+<p>如果安装完成后仍无法正常聊天，建议先检查下面三项：</p>
+<ol>
+<li>打开 <strong>设置 → 模型服务商</strong>，对当前 Provider 执行一次<strong>测试连接</strong></li>
+<li>打开 <strong>日志</strong> 页面，确认 Engine 已启动且默认端口 <code>16060</code> 未被占用</li>
+<li>如果仍有空白页、401/403、MCP 连接失败等问题，直接查看 <a href="/zh/docs/faq">常见问题</a></li>
+</ol>
+
 <h2>应用架构</h2>
 <p>河蟹 AI 桌面端采用 <strong>Tauri v2 + Vue 3 + Go Sidecar</strong> 架构：</p>
 <ul>
@@ -170,6 +192,10 @@ platforms:
 <tr><td>团队</td><td>共享 Agent、成员协作</td></tr>
 <tr><td>设置</td><td>服务商配置、安全策略、外观主题、通知</td></tr>
 </table>
+<figure class="doc-shot">
+        <img src="../../assets/docs/zh-guide/workspace-overview-dashboard.png" alt="河蟹 AI 概览页界面">
+<figcaption>建议第一次进入应用后先看概览页，确认系统状态、当前入口和可用能力，再进入聊天、智能体或自动化页面。</figcaption>
+</figure>
 
 <hr>
 <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-top:32px;margin-bottom:24px">
@@ -179,7 +205,42 @@ platforms:
 <p style="text-align:center;margin-top:24px"><a href="https://github.com/hexagon-codes/hexclaw-site/edit/main/zh/docs/getting-started.html" target="_blank" rel="noopener noreferrer" style="font-size:14px;color:var(--text-muted)">✏️ 在 GitHub 上编辑此页</a></p>
 
 </main>
-<div class="footer"><a href="/zh/">河蟹 AI</a> · <a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer">GitHub</a> · <a href="mailto:ai@hexclaw.net">业务咨询：ai@hexclaw.net</a> · <a href="mailto:support@hexclaw.net">问题反馈：support@hexclaw.net</a> · © 2025–2026 hexagon-codes</div>
+<footer class="footer">
+<div class="footer-main">
+<div class="footer-brand">
+<a class="footer-logo" href="/zh/">河蟹 AI</a>
+<p class="footer-tagline">本地优先的开源 AI Agent 桌面平台，面向真实业务与个人工作流。</p>
+</div>
+<div class="footer-columns">
+<div class="footer-col">
+<div class="footer-col-title">产品</div>
+<a href="/zh/">首页</a>
+<a href="https://github.com/hexagon-codes/hexclaw-desktop/releases" target="_blank" rel="noopener noreferrer">下载桌面端</a>
+<a href="/zh/changelog">更新日志</a>
+</div>
+<div class="footer-col">
+<div class="footer-col-title">开发者</div>
+<a href="/zh/docs/">文档中心</a>
+<a href="/zh/docs/getting-started">快速上手</a>
+<a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer">GitHub</a>
+</div>
+<div class="footer-col">
+<div class="footer-col-title">法务与联系</div>
+<a href="/zh/privacy">隐私政策</a>
+<a href="/zh/terms">使用条款</a>
+<a href="mailto:ai@hexclaw.net">业务咨询</a>
+</div>
+</div>
+</div>
+<div class="footer-bottom">
+<span class="footer-copy">&copy; 2025&ndash;2026 hexagon-codes</span>
+<div class="footer-meta-links">
+<a href="/zh/privacy">隐私政策</a>
+<a href="/zh/terms">使用条款</a>
+<a href="mailto:support@hexclaw.net">问题反馈</a>
+</div>
+</div>
+</footer>
 <script src="../../assets/js/docs-nav.js"></script>
 <script>
 function toggleTheme(){var c=document.documentElement.getAttribute("data-theme");var n=c==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);localStorage.setItem("hexclaw-theme",n)}

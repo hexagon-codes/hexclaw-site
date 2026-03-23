@@ -244,21 +244,46 @@
   }
 
   .footer {
+    margin-top: 8px;
+    padding-top: 18px;
+    border-top: 1px solid var(--border);
     display: flex;
     flex-wrap: wrap;
-    gap: 10px 18px;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px 20px;
     color: var(--muted);
-    font-size: 14px;
+    font-size: 13px;
     line-height: 1.7;
   }
 
-  .footer a {
-    color: var(--accent);
+  .footer-home {
+    font-weight: 700;
+    color: var(--ink);
     text-decoration: none;
   }
 
-  .footer a:hover {
-    text-decoration: underline;
+  .footer-home:hover {
+    color: var(--accent);
+  }
+
+  .footer-copy {
+    color: var(--muted);
+  }
+
+  .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  .footer-links a {
+    color: var(--muted);
+    text-decoration: none;
+  }
+
+  .footer-links a:hover {
+    color: var(--accent);
   }
 
   @media (max-width: 780px) {
@@ -310,11 +335,15 @@
   <section class="actions" id="actions"></section>
   <nav class="quick-links" id="quick-links"></nav>
 
-  <div class="footer">
-    <span><a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer">GitHub</a></span>
-    <span><a href="mailto:ai@hexclaw.net">ai@hexclaw.net</a></span>
-    <span><a href="mailto:support@hexclaw.net">support@hexclaw.net</a></span>
-  </div>
+  <footer class="footer">
+    <a class="footer-home" id="footer-home" href="/zh/index.html">HexClaw</a>
+    <span class="footer-copy">&copy; 2025&ndash;2026 hexagon-codes</span>
+    <div class="footer-links">
+      <a id="footer-privacy" href="/zh/privacy">隐私政策</a>
+      <a id="footer-terms" href="/zh/terms">使用条款</a>
+      <a id="footer-support" href="mailto:support@hexclaw.net">问题反馈</a>
+    </div>
+  </footer>
 </main>
 
 <script>
@@ -420,6 +449,14 @@
 
   const brand = document.querySelector(".brand");
   brand.href = locale === "en" ? "/en/index.html" : "/zh/index.html";
+
+  const footerHome = document.getElementById("footer-home");
+  footerHome.href = locale === "en" ? "/en/index.html" : "/zh/index.html";
+  document.getElementById("footer-privacy").href = locale === "en" ? "/en/privacy" : "/zh/privacy";
+  document.getElementById("footer-privacy").textContent = locale === "en" ? "Privacy Policy" : "隐私政策";
+  document.getElementById("footer-terms").href = locale === "en" ? "/en/terms" : "/zh/terms";
+  document.getElementById("footer-terms").textContent = locale === "en" ? "Terms of Service" : "使用条款";
+  document.getElementById("footer-support").textContent = locale === "en" ? "Support" : "问题反馈";
 
   const actions = document.getElementById("actions");
   actions.innerHTML = current.actions.map((item) => `

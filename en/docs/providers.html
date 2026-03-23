@@ -34,7 +34,7 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"HexClaw","item":"https://hexclaw.net/en/"},{"@type":"ListItem","position":2,"name":"HexClaw Documentation","item":"https://hexclaw.net/en/docs/"},{"@type":"ListItem","position":3,"name":"Model Providers — HexClaw Docs","item":"https://hexclaw.net/en/docs/providers"}]}
 </script>
-<link rel="stylesheet" href="../../assets/css/docs.css?v=1773751342">
+<link rel="stylesheet" href="../../assets/css/docs.css?v=1774211100">
 </head>
 <body class="docs-page">
 <nav class="tn">
@@ -71,15 +71,16 @@
 <h2>Supported Providers</h2>
 <table>
 <tr><th>Provider</th><th>Default Base URL</th><th>Representative Models</th><th>Key Format</th></tr>
-<tr><td><strong>OpenAI</strong></td><td>api.openai.com/v1</td><td>GPT-4o, GPT-4-Turbo, o1, o3-mini</td><td><code>sk-...</code></td></tr>
-<tr><td><strong>DeepSeek</strong></td><td>api.deepseek.com/v1</td><td>DeepSeek-V3, DeepSeek-R1</td><td><code>sk-...</code></td></tr>
-<tr><td><strong>Anthropic</strong></td><td>api.anthropic.com/v1</td><td>Claude Sonnet 4, Opus 4, Haiku 4.5</td><td><code>sk-ant-...</code></td></tr>
-<tr><td><strong>Google Gemini</strong></td><td>generativelanguage.googleapis.com</td><td>Gemini 2.5 Flash/Pro, Gemini 2.0 Flash</td><td><code>AIza...</code></td></tr>
-<tr><td><strong>Alibaba Qwen</strong></td><td>dashscope.aliyuncs.com</td><td>Qwen-Max, Qwen-Plus, Qwen-VL</td><td><code>sk-...</code></td></tr>
-<tr><td><strong>ByteDance Ark</strong></td><td>ark.cn-beijing.volces.com</td><td>Doubao Pro 32k, Doubao Vision</td><td><code>ep-...</code></td></tr>
-<tr><td><strong>Ollama</strong></td><td>localhost:11434/v1</td><td>Llama 3.1, Qwen 2.5, Mistral, DeepSeek-R1</td><td>Not required</td></tr>
+<tr><td><strong>OpenAI</strong></td><td>api.openai.com/v1</td><td>GPT-4o, o-series, and similar models</td><td><code>sk-...</code></td></tr>
+<tr><td><strong>DeepSeek</strong></td><td>api.deepseek.com/v1</td><td>DeepSeek family</td><td><code>sk-...</code></td></tr>
+<tr><td><strong>Anthropic</strong></td><td>api.anthropic.com/v1</td><td>Claude family</td><td><code>sk-ant-...</code></td></tr>
+<tr><td><strong>Google Gemini</strong></td><td>generativelanguage.googleapis.com</td><td>Gemini family</td><td><code>AIza...</code></td></tr>
+<tr><td><strong>Alibaba Qwen</strong></td><td>dashscope.aliyuncs.com</td><td>Qwen family</td><td><code>sk-...</code></td></tr>
+<tr><td><strong>ByteDance Ark</strong></td><td>ark.cn-beijing.volces.com</td><td>Doubao / Ark-compatible models</td><td><code>ep-...</code></td></tr>
+<tr><td><strong>Ollama</strong></td><td>localhost:11434/v1</td><td>Llama / Qwen / Mistral / DeepSeek</td><td>Not required</td></tr>
 <tr><td><strong>Custom</strong></td><td>User-defined</td><td>User-defined</td><td>User-defined</td></tr>
 </table>
+<div class="tip"><b>Note:</b> The model names above are examples only. The actual list available in HexClaw depends on your provider account, region, and what the provider API returns.</div>
 
 <h2>Add a Provider</h2>
 <ol>
@@ -141,7 +142,42 @@ ollama pull deepseek-r1</code></pre>
 <p style="text-align:center;margin-top:24px"><a href="https://github.com/hexagon-codes/hexclaw-site/edit/main/en/docs/providers.html" target="_blank" rel="noopener noreferrer" style="font-size:14px;color:var(--text-muted)">✏️ Edit this page on GitHub</a></p>
 
 </main>
-<div class="footer"><a href="/en/">HexClaw</a> · <a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer">GitHub</a> · <a href="mailto:ai@hexclaw.net">Sales: ai@hexclaw.net</a> · <a href="mailto:support@hexclaw.net">Support: support@hexclaw.net</a> · © 2025–2026 hexagon-codes</div>
+<footer class="footer">
+<div class="footer-main">
+<div class="footer-brand">
+<a class="footer-logo" href="/en/">HexClaw</a>
+<p class="footer-tagline">A local-first, open-source AI agent workspace for real teams and personal workflows.</p>
+</div>
+<div class="footer-columns">
+<div class="footer-col">
+<div class="footer-col-title">Product</div>
+<a href="/en/">Home</a>
+<a href="https://github.com/hexagon-codes/hexclaw-desktop/releases" target="_blank" rel="noopener noreferrer">Download</a>
+<a href="/en/changelog">Changelog</a>
+</div>
+<div class="footer-col">
+<div class="footer-col-title">Developers</div>
+<a href="/en/docs/">Docs</a>
+<a href="/en/docs/getting-started">Getting Started</a>
+<a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer">GitHub</a>
+</div>
+<div class="footer-col">
+<div class="footer-col-title">Legal & Contact</div>
+<a href="/en/privacy">Privacy Policy</a>
+<a href="/en/terms">Terms of Service</a>
+<a href="mailto:ai@hexclaw.net">Contact Sales</a>
+</div>
+</div>
+</div>
+<div class="footer-bottom">
+<span class="footer-copy">&copy; 2025&ndash;2026 hexagon-codes</span>
+<div class="footer-meta-links">
+<a href="/en/privacy">Privacy Policy</a>
+<a href="/en/terms">Terms of Service</a>
+<a href="mailto:support@hexclaw.net">Support</a>
+</div>
+</div>
+</footer>
 <script src="../../assets/js/docs-nav.js"></script>
 <script>
 function toggleTheme(){var c=document.documentElement.getAttribute("data-theme");var n=c==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);localStorage.setItem("hexclaw-theme",n)}
