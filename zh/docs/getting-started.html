@@ -77,15 +77,21 @@
 </table>
 
 <h2>安装</h2>
-<h3>方式一：下载安装包</h3>
-<p>前往 <a href="https://github.com/hexagon-codes/hexclaw-desktop/releases" target="_blank" rel="noopener noreferrer">GitHub Releases</a> 下载对应平台安装包：</p>
+<h3>方式一：一行脚本安装（macOS 推荐）</h3>
+<pre><code>curl -fsSL https://raw.githubusercontent.com/hexagon-codes/hexclaw-desktop/main/install.sh | bash</code></pre>
+
+<h3>方式二：Homebrew 安装（macOS）</h3>
+<pre><code>brew tap hexagon-codes/tap && brew install --cask hexclaw</code></pre>
+
+<h3>方式三：下载安装包</h3>
+<p>前往 <a href="https://github.com/hexagon-codes/hexclaw-desktop/releases" target="_blank" rel="noopener noreferrer">GitHub Releases</a> 下载对应平台安装包（当前版本 v0.2.2）：</p>
 <ul>
 <li>macOS：<code>.dmg</code> — 拖入 Applications 即可</li>
-<li>Windows：<code>.msi</code> 或 <code>.exe</code> — 双击安装</li>
+<li>Windows：<code>.exe</code> — 双击安装</li>
 <li>Linux：<code>.AppImage</code> 或 <code>.deb</code></li>
 </ul>
 
-<h3>方式二：源码编译</h3>
+<h3>方式四：源码编译</h3>
 <pre><code>git clone https://github.com/hexagon-codes/hexclaw-desktop.git
 cd hexclaw-desktop
 pnpm install
