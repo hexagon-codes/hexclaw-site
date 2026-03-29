@@ -47,6 +47,17 @@
 <p class="sub">河蟹 AI 桌面端版本更新记录。</p>
 </header>
 
+<h2>v0.2.3 (2026-03-29)</h2>
+<ul>
+<li>MCP 市场：加载 mcp-registry.json 注册表，支持按 type 过滤 skill/mcp，一键安装 MCP Server</li>
+<li>MCP 状态显示修复：兼容后端 servers 数组格式，正确显示"已连接"</li>
+<li>Sidecar PATH 注入：macOS GUI app 自动注入 Homebrew/nvm/cargo 路径，解决 npx 找不到</li>
+<li>MCP 默认启用：无预配 Server 时也初始化 Manager，支持动态添加</li>
+<li>六轮代码审计：42 个 bug 修复 + 8 项功能补全 + 474 个新增测试（542→1016）</li>
+<li>安全加固：CSP 收紧、MCP 命令白名单、知识库 zip bomb 防护、配置原子写入</li>
+<li>hexclaw-hub 升级到 v0.0.2</li>
+</ul>
+
 <h2>v0.2.2 (2026-03-29)</h2>
 <ul>
 <li>新增 LLM 服务商选择器（含 Logo），支持 14 家服务商，新增 6 家国产：智谱 AI、Kimi（月之暗面）、文心一言（百度）、腾讯混元、讯飞星火、MiniMax</li>
