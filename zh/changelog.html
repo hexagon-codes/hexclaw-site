@@ -47,6 +47,18 @@
 <p class="sub">河蟹 AI 桌面端版本更新记录。</p>
 </header>
 
+<h2>v0.2.5 (2026-04-01)</h2>
+<ul>
+<li>Thinking/Reasoning UI：流式显示 Qwen3/DeepSeek-R1 等推理模型的思考过程，支持自动展开/折叠、耗时计时、持久化</li>
+<li>Ollama 本地模型全链路修复：模型选择器显示本地模型、WebSocket 用户鉴权、流式超时优化</li>
+<li>Splash Screen 跟随系统 Light/Dark 外观，等待引擎就绪后消失</li>
+<li>CI 修复：release/package 工作流从 Makefile 读取 HEXCLAW_REF 锁定 sidecar 版本</li>
+<li>知识库上传体验优化：选择文件后弹窗自动关闭</li>
+<li>消息编辑按钮 i18n 修复 + 尺寸优化</li>
+<li>移除不可用的系统状态 Tab 和麦克风按钮（Tauri WebView 不支持 Web Speech API）</li>
+<li>Homebrew 安装后首次聊天报错修复（sidecar 版本不匹配 + embedder nil panic）</li>
+</ul>
+
 <h2>v0.2.4 (2026-03-29)</h2>
 <ul>
 <li>MCP 市场：加载 mcp-registry.json 注册表，支持按 type 过滤 skill/mcp，一键安装 MCP Server</li>

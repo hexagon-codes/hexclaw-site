@@ -47,6 +47,18 @@
 <p class="sub">HexClaw Desktop version history.</p>
 </header>
 
+<h2>v0.2.5 (2026-04-01)</h2>
+<ul>
+<li>Thinking/Reasoning UI: stream thinking process for Qwen3/DeepSeek-R1 reasoning models with auto-expand/collapse, timer, and persistence</li>
+<li>Ollama local model full-chain fix: model selector shows local models, WebSocket user auth, streaming timeout optimization</li>
+<li>Splash screen follows system Light/Dark appearance, waits for engine ready</li>
+<li>CI fix: release/package workflows read HEXCLAW_REF from Makefile to lock sidecar version</li>
+<li>Knowledge upload UX: dialog auto-closes after file selection</li>
+<li>Message edit button i18n fix + size optimization</li>
+<li>Remove unavailable System Status tab and microphone button (Tauri WebView lacks Web Speech API)</li>
+<li>Homebrew install first-chat error fix (sidecar version mismatch + embedder nil panic)</li>
+</ul>
+
 <h2>v0.2.4 (2026-03-29)</h2>
 <ul>
 <li>MCP Marketplace: load mcp-registry.json, type filter for skill/mcp, one-click MCP Server install</li>
