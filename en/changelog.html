@@ -47,6 +47,17 @@
 <p class="sub">HexClaw Desktop version history.</p>
 </header>
 
+<h2>v0.2.6 (2026-04-01)</h2>
+<ul>
+<li>Structured trace logging: Go slog-based request-scoped logs with trace_id across WebSocket → gateway → engine → LLM pipeline, frontend log panel displays trace_id + structured field tags</li>
+<li>Fix SessionLock deadlock: consecutive messages in same session no longer block (P0 bug — pipeStream missing unlock)</li>
+<li>Fix cloud model MCP tool calls lost: pipeStreamWithTools now extracts tool_calls from LLM stream result</li>
+<li>Thinking toggle: Brain icon in chat input bar for one-click thinking mode control, auto /no_think injection for local thinking models</li>
+<li>Stream cancel now works: WebSocket cancel message actually cancels backend context, stops wasting LLM tokens</li>
+<li>E2E test suite: TypeScript + Playwright with 41 integration tests covering 11 subsystems</li>
+<li>Fix SettingsView flaky test</li>
+</ul>
+
 <h2>v0.2.5 (2026-04-01)</h2>
 <ul>
 <li>Thinking/Reasoning UI: stream thinking process for Qwen3/DeepSeek-R1 reasoning models with auto-expand/collapse, timer, and persistence</li>

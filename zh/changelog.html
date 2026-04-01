@@ -47,6 +47,17 @@
 <p class="sub">河蟹 AI 桌面端版本更新记录。</p>
 </header>
 
+<h2>v0.2.6 (2026-04-01)</h2>
+<ul>
+<li>结构化追踪日志：基于 Go slog 的 request-scoped 日志，trace_id 贯穿 WebSocket → 网关 → 引擎 → LLM 全链路，前端日志面板实时展示 trace_id + fields 标签</li>
+<li>修复 SessionLock 死锁：同一会话连续发送消息不再阻塞（pipeStream 缺少 unlock 的 P0 bug）</li>
+<li>修复云模型 MCP 工具调用失效：pipeStreamWithTools 丢弃 LLM 返回的 tool_calls</li>
+<li>深度思考开关：聊天输入栏 Brain 图标一键切换 thinking 模式，本地 thinking 模型自动注入 /no_think</li>
+<li>流式取消真正生效：WebSocket cancel 消息现在取消后端 context，不再空耗 LLM tokens</li>
+<li>E2E 测试体系：TypeScript + Playwright 41 项集成测试，覆盖会话/知识库/记忆/Skill/MCP/网关/流式/日志 11 大子系统</li>
+<li>修复 SettingsView flaky 测试</li>
+</ul>
+
 <h2>v0.2.5 (2026-04-01)</h2>
 <ul>
 <li>Thinking/Reasoning UI：流式显示 Qwen3/DeepSeek-R1 等推理模型的思考过程，支持自动展开/折叠、耗时计时、持久化</li>
