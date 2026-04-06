@@ -47,6 +47,51 @@
 <p class="sub">河蟹 AI 桌面端版本更新记录。</p>
 </header>
 
+<h2>v0.3.5 (2026-04-06)</h2>
+<ul>
+<li>Ollama 自动预热：启动时自动加载第一个已下载模型，减少首次对话延迟</li>
+<li>历史消息 think 标签兜底解析：从后端加载历史消息时自动剥离 &lt;think&gt; 标签，防止思考过程原文暴露</li>
+<li>MCP filesystem 动态 home 目录：安装 filesystem MCP 时自动追加用户 home 目录，兼容 macOS/Windows/Linux</li>
+<li>TS2532 非空断言修复：models[0] / chips[0] 等数组索引增加类型安全断言</li>
+</ul>
+
+<h2>v0.3.4 (2026-04-06)</h2>
+<ul>
+<li>侧边栏引擎版本号显示修复：监听 sidecar 就绪状态后再拉取版本信息</li>
+<li>版本号统一管理：Cargo.toml / package.json / Sidebar / AboutModal 版本号同步</li>
+</ul>
+
+<h2>v0.3.3 (2026-04-06)</h2>
+<ul>
+<li>版本号展示全面更新：侧边栏、关于弹窗、系统状态页均使用 Tauri App 版本 API</li>
+<li>API 类型对齐：getVersion 返回类型新增 engine_version 字段</li>
+<li>MCP filesystem 动态 home 目录：resolveUserHome 跨平台获取用户目录</li>
+</ul>
+
+<h2>v0.3.2 (2026-04-06)</h2>
+<ul>
+<li>&lt;think&gt; 标签兜底提取：部分模型（如智谱 glm-z1-airx）在 content 中返回思考过程，前端自动拆分到 reasoning 字段</li>
+<li>对话框自适应宽度：Settings 弹窗根据内容自动调整</li>
+<li>Sidecar 重启重试：失败时自动重试，提升稳定性</li>
+<li>CI 测试健壮性：existsSync 守卫、localStorage getItem 验证、.at() → [0] 索引</li>
+</ul>
+
+<h2>v0.3.1 (2026-04-06)</h2>
+<ul>
+<li>芯片式模型选择器：替代下拉菜单，直观展示已配置模型，支持快速切换</li>
+<li>动态模型发现：云端 Provider 自动拉取可用模型列表</li>
+<li>210 个 TypeScript 类型错误修复 + 139 个 lint 错误修复</li>
+<li>61 个失败测试修复</li>
+</ul>
+
+<h2>v0.3.0 (2026-04-05)</h2>
+<ul>
+<li>MCP 市场与工具修复：工具调用链路打通，错误信息正确返回</li>
+<li>Skill 触发优化：关键词匹配精度提升</li>
+<li>Ollama 全局预热：启动后自动加载模型到内存</li>
+<li>Ollama 模型管理 UI：模型下载进度条、运行状态面板</li>
+</ul>
+
 <h2>v0.2.6 (2026-04-01)</h2>
 <ul>
 <li>结构化追踪日志：基于 Go slog 的 request-scoped 日志，trace_id 贯穿 WebSocket → 网关 → 引擎 → LLM 全链路，前端日志面板实时展示 trace_id + fields 标签</li>

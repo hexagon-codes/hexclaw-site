@@ -47,6 +47,51 @@
 <p class="sub">HexClaw Desktop version history.</p>
 </header>
 
+<h2>v0.3.5 (2026-04-06)</h2>
+<ul>
+<li>Ollama auto-warmup: automatically load first downloaded model on startup, reducing first-chat latency</li>
+<li>Historical message think tag fallback: strip &lt;think&gt; tags when loading messages from backend, preventing raw reasoning text exposure</li>
+<li>MCP filesystem dynamic home dir: auto-append user home directory when installing filesystem MCP server, compatible with macOS/Windows/Linux</li>
+<li>TS2532 non-null assertion fixes: type-safe array index access for models[0] / chips[0]</li>
+</ul>
+
+<h2>v0.3.4 (2026-04-06)</h2>
+<ul>
+<li>Sidebar engine version display fix: watch sidecar ready state before fetching version info</li>
+<li>Unified version management: sync Cargo.toml / package.json / Sidebar / AboutModal versions</li>
+</ul>
+
+<h2>v0.3.3 (2026-04-06)</h2>
+<ul>
+<li>Version display overhaul: Sidebar, About modal, and System Status all use Tauri App version API</li>
+<li>API type alignment: getVersion return type includes engine_version field</li>
+<li>MCP filesystem dynamic home dir: resolveUserHome cross-platform home directory detection</li>
+</ul>
+
+<h2>v0.3.2 (2026-04-06)</h2>
+<ul>
+<li>&lt;think&gt; tag fallback extraction: models like glm-z1-airx embed reasoning in content, frontend auto-splits to reasoning field</li>
+<li>Adaptive dialog width: Settings dialogs auto-resize based on content</li>
+<li>Sidecar restart retry: automatic retry on failure for improved stability</li>
+<li>CI test robustness: existsSync guard, localStorage getItem verification, .at() to [0] index</li>
+</ul>
+
+<h2>v0.3.1 (2026-04-06)</h2>
+<ul>
+<li>Chip-style model selector: replaces dropdown menu, visually displays configured models with quick switching</li>
+<li>Dynamic model discovery: cloud providers auto-fetch available model lists</li>
+<li>210 TypeScript type errors fixed + 139 lint errors fixed</li>
+<li>61 failing tests fixed</li>
+</ul>
+
+<h2>v0.3.0 (2026-04-05)</h2>
+<ul>
+<li>MCP marketplace &amp; tool fixes: tool call pipeline fully connected, error messages properly returned</li>
+<li>Skill trigger optimization: improved keyword matching accuracy</li>
+<li>Ollama global warmup: auto-load models into memory after startup</li>
+<li>Ollama model management UI: download progress bar, running status panel</li>
+</ul>
+
 <h2>v0.2.6 (2026-04-01)</h2>
 <ul>
 <li>Structured trace logging: Go slog-based request-scoped logs with trace_id across WebSocket → gateway → engine → LLM pipeline, frontend log panel displays trace_id + structured field tags</li>
