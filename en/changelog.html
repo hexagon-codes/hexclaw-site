@@ -47,6 +47,28 @@
 <p class="sub">HexClaw Desktop version history.</p>
 </header>
 
+<h2>v0.3.7 (2026-04-13)</h2>
+<ul>
+<li>Thinking duration persistence: backend precisely records reasoning start/end time, persisted in DB meta field</li>
+<li>Auto session title: backend generates title from first user message on SaveUserMessage (no LLM dependency)</li>
+<li>Metadata persistence: provider, model, agent_name saved to message meta — survives app restart</li>
+<li>ChatGPT-style thinking display: "● Thought for Xm Ys" with left border on expanded content</li>
+<li>UI: assistant messages without bubble, meta footer (time · model · agent) in one line, adaptive width</li>
+<li>Sandbox network hot-reload: full pipeline from Settings toggle → API → CodeExecSkill.UpdateNetwork</li>
+<li>File tools workspace constraint: file_edit/grep/glob restricted to workspace with symlink escape prevention</li>
+<li>Self-correction loop: tool errors include full reason for LLM to self-correct</li>
+<li>Context compression: LLM + heuristic summarization preserving user constraints</li>
+<li>Gemma 4 thinking support: isLocalThinkingModel for timeout protection, no /no_think injection</li>
+<li>70+ new backend tests, 3542 frontend tests passing</li>
+</ul>
+
+<h2>v0.3.6 (2026-04-11)</h2>
+<ul>
+<li>Streaming scroll: allow upward scrolling during streaming output without auto-scroll interruption</li>
+<li>Agent/IM UI: optimized Agent selector and IM channel configuration interface</li>
+<li>New session send fix: resolved bug where first message in new session failed to send</li>
+</ul>
+
 <h2>v0.3.5 (2026-04-06)</h2>
 <ul>
 <li>Ollama auto-warmup: automatically load first downloaded model on startup, reducing first-chat latency</li>
