@@ -47,6 +47,18 @@
 <p class="sub">HexClaw Desktop version history.</p>
 </header>
 
+<h2>v0.3.8 (2026-04-14)</h2>
+<ul>
+<li>Image generation: ZhipuAI CogView-4 support, images embedded as data URI (never expire), new ImageProvider interface in ai-core</li>
+<li>Video generation: ZhipuAI CogVideoX-2 support, async task polling, cover embedded + inline video player, new VideoProvider interface in ai-core</li>
+<li>Tool name i18n: 15 built-in tools mapped to localized names (code_exec → Sandbox, etc.), unknown MCP/custom tools fallback to raw name</li>
+<li>Default model fix: normal chat no longer overridden by default Agent model preference, Agent mode shows agent name attribution</li>
+<li>Multiline memory fix: memory entries with newlines no longer split into multiple entries, delete/update/archive support multiline blocks</li>
+<li>Ollama download optimization: large models no longer timeout (ResponseHeaderTimeout replaces global Timeout), download status localized</li>
+<li>Smart routing UI: strategy dropdown hidden when routing is disabled</li>
+<li>Feishu reactions: changed from social emojis (💪☕🔥) to semantic Typing ⌨️ / THINKING 🤔</li>
+</ul>
+
 <h2>v0.3.7 (2026-04-13)</h2>
 <ul>
 <li>Thinking duration persistence: backend precisely records reasoning start/end time, persisted in DB meta field</li>

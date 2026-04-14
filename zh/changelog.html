@@ -47,6 +47,18 @@
 <p class="sub">河蟹 AI 桌面端版本更新记录。</p>
 </header>
 
+<h2>v0.3.8 (2026-04-14)</h2>
+<ul>
+<li>图片生成：支持智谱 CogView-4，图片内嵌 data URI 永不过期，ai-core 新增 ImageProvider 接口</li>
+<li>视频生成：支持智谱 CogVideoX-2，异步任务轮询，封面内嵌 + 视频内联播放，ai-core 新增 VideoProvider 接口</li>
+<li>工具名 i18n：15 个内置工具中英文映射（code_exec → 代码沙箱 等），未映射的 MCP/自定义工具自动 fallback 原名</li>
+<li>默认模型修复：普通聊天不再被默认 Agent 模型偏好覆盖，Agent 模式显示 Agent 名字来源标注</li>
+<li>多行记忆修复：含换行的记忆不再被拆成多条，删除/更新/归档操作支持多行条目</li>
+<li>Ollama 下载优化：大模型不再超时（ResponseHeaderTimeout 替代全局 Timeout），下载状态中文化（获取模型信息/校验文件完整性/写入模型文件）</li>
+<li>智能路由 UI：关闭时隐藏策略下拉框，开启后才显示</li>
+<li>飞书 Reaction：从社交 emoji（💪☕🔥）改为语义精准的 Typing ⌨️ / THINKING 🤔</li>
+</ul>
+
 <h2>v0.3.7 (2026-04-13)</h2>
 <ul>
 <li>思考时长持久化：后端精确记录推理起止时间，写入 DB meta 字段，重启后保留</li>
