@@ -47,6 +47,19 @@
 <p class="sub">HexClaw Desktop version history.</p>
 </header>
 
+<h2>v0.3.12 (2026-04-18)</h2>
+<ul>
+<li>Image/Video/Voice generation trio: ImageGenComposer / VideoGenComposer / VoiceChatComposer, auto-switching per model capability, outputs persisted to session</li>
+<li>Native Save dialog: image download uses Tauri dialog.save() + Rust writer commands, bypassing WKWebView download restrictions; default filename HexClaw-yyyymmdd-hhmmss-XXXX.{ext} avoids collisions</li>
+<li>Session persistence 403 fix: appendSessionMessage/Batch now pass user_id via URL query (backend sessionUserIDFromRequest reads query only); root cause of generated-image messages not reappearing after session reload</li>
+<li>Generation mode toolbar: top-right text-only chip switches back to chat models from image/video/voice modes without leaving the conversation</li>
+<li>Apple HIG polish: trio Composer padding 12→20, gap 8→14, font 11→13–14, radius 10/16, 0.5px hairline, focus 0 0 0 3px accent ring; bottom-left engine label renamed to "Hexagon engine"</li>
+<li>Ollama warmup 4-tier tag matching: exact tag → stripped base → provider.selectedModelId → downloaded[0]</li>
+<li>Provider key hardcode fix: generation services now resolve Provider by BaseURL signature, solving Chinese provider names (e.g. "智谱 AI") failing lookup</li>
+<li>63 new error-path tests: cron-errors / skills-errors / mcp-errors; structural guard test prevents bare apiPost/apiGet from bypassing sessionPost wrappers</li>
+<li>Backend hexclaw v0.3.12: transactional batch message writes / atomic tmp+Rename in genstore / videogen singleflight + LRU / imagegen/videogen/voicechat persisted as file_path</li>
+</ul>
+
 <h2>v0.3.8 (2026-04-14)</h2>
 <ul>
 <li>Image generation: ZhipuAI CogView-4 support, images embedded as data URI (never expire), new ImageProvider interface in ai-core</li>

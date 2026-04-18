@@ -47,6 +47,19 @@
 <p class="sub">河蟹 AI 桌面端版本更新记录。</p>
 </header>
 
+<h2>v0.3.12 (2026-04-18)</h2>
+<ul>
+<li>图像/视频/语音生成三件套：ImageGenComposer / VideoGenComposer / VoiceChatComposer，按模型能力自动切换，生成结果持久化到会话</li>
+<li>原生保存对话框：图像下载走 Tauri dialog.save() + Rust 命令写盘，绕过 WKWebView 下载限制，默认文件名 HexClaw-yyyymmdd-hhmmss-XXXX.{ext} 避免同名冲突</li>
+<li>会话持久化 403 修复：appendSessionMessage/Batch 把 user_id 放到 URL query（后端 sessionUserIDFromRequest 只读 query）；修复图像生成消息重启会话后不显示的根因</li>
+<li>生成模式顶栏切换：右上角 text-only chip 可从图像/视频/语音模型切回 chat 模型，不打断会话</li>
+<li>Apple HIG 打磨：三件套 Composer padding 12→20、gap 8→14、字号 11→13–14、圆角 10/16、0.5px 细边框、focus 0 0 0 3px 蓝光环；左下角引擎标签改为 Hexagon engine</li>
+<li>Ollama 预热 tag 4 级匹配：tag 精确 → base 去 tag → provider.selectedModelId → downloaded[0]</li>
+<li>Provider key 硬编码 Bug 治理：生成服务按 BaseURL 特征查找 Provider，解决中文 Provider name（如"智谱 AI"）匹配不到的问题</li>
+<li>63 条错误路径测试：cron-errors / skills-errors / mcp-errors；结构性防护测试防止裸 apiPost/apiGet 绕过 sessionPost 包装器</li>
+<li>后端 hexclaw v0.3.12：批量消息事务写入 / genstore 原子 tmp+Rename / videogen singleflight+LRU / imagegen/videogen/voicechat 持久化到 file_path</li>
+</ul>
+
 <h2>v0.3.8 (2026-04-14)</h2>
 <ul>
 <li>图片生成：支持智谱 CogView-4，图片内嵌 data URI 永不过期，ai-core 新增 ImageProvider 接口</li>
