@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ug" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/favicon-32.png">
+<title>سۆھبەتبىلەنكۆرۈشۈش — ھېشى AI ھۆججەتلەر</title>
+<meta name="description" content="多مودېلسۆھبەت، كۆرۈشۈشباشقۇرۇش، Artifact، ئۇچۇرئىزدەشبىلەنچىقىرىش. ">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:site_name" content="ھېشى AI">
+<meta property="og:type" content="article">
+<meta property="og:title" content="سۆھبەتبىلەنكۆرۈشۈش — ھېشى AI ھۆججەتلەر">
+<meta property="og:description" content="多مودېلسۆھبەت، كۆرۈشۈشباشقۇرۇش، Artifact، ئۇچۇرئىزدەشبىلەنچىقىرىش. ">
+<meta property="og:url" content="https://hexclaw.net/ug/docs/chat">
+<meta property="og:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta property="og:image:alt" content="ھېشى AI بەلگىسى">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta property="og:locale" content="ug">
+<meta property="og:locale:alternate" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="سۆھبەتبىلەنكۆرۈشۈش — ھېشى AI ھۆججەتلەر">
+<meta name="twitter:description" content="多مودېلسۆھبەت، كۆرۈشۈشباشقۇرۇش، Artifact، ئۇچۇرئىزدەشبىلەنچىقىرىش. ">
+<meta name="twitter:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta name="twitter:image:alt" content="ھېشى AI بەلگىسى">
+<link rel="canonical" href="https://hexclaw.net/ug/docs/chat">
+<link rel="alternate" hreflang="en" href="https://hexclaw.net/en/docs/chat">
+<link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/docs/chat">
+<link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/">
+<link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/docs/chat">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"TechArticle","headline":"سۆھبەتبىلەنكۆرۈشۈش — ھېشى AI ھۆججەتلەر","description":"多مودېلسۆھبەت، كۆرۈشۈشباشقۇرۇش، Artifact، ئۇچۇرئىزدەشبىلەنچىقىرىش. ","url":"https://hexclaw.net/zh/docs/chat","inLanguage":"ug","image":"https://hexclaw.net/assets/brand/hexclaw-logo.png","isPartOf":{"@type":"CreativeWorkSeries","name":"ھېشى AI ھۆججەتلەر","url":"https://hexclaw.net/zh/docs/"},"publisher":{"@type":"Organization","name":"hexagon-codes","url":"https://hexclaw.net/"},"about":{"@type":"SoftwareApplication","name":"ھېشى AI","operatingSystem":"macOS, Windows, Linux","applicationCategory":"BusinessApplication"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ھېشى AI","item":"https://hexclaw.net/zh/"},{"@type":"ListItem","position":2,"name":"ھېشى AI ئىشلىتىشھۆججەتلەر","item":"https://hexclaw.net/zh/docs/"},{"@type":"ListItem","position":3,"name":"سۆھبەتبىلەنكۆرۈشۈش — ھېشى AI ھۆججەتلەر","item":"https://hexclaw.net/zh/docs/chat"}]}
+</script>
+<link rel="stylesheet" href="../../assets/css/docs.css?v=1774211100">
+</head>
+<body class="docs-page">
+<nav class="tn">
+<a href="/zh/" class="tn-b"><img src="../../assets/brand/hexclaw-icon-72.png" class="tn-l" alt="ھېشى AI"><span class="tn-n">ھېشى AI</span></a>
+<button class="tn-burger" onclick="document.querySelector('.tn-r').classList.toggle('open')" aria-label="تىزىملىك"><span></span><span></span><span></span></button><div class="tn-r"><a href="/zh/">باش بەت</a><a href="/zh/#features">مەھسۇلات ئىقتىدارى</a><a href="/zh/#quickstart">تېز قول سېلىش</a><a href="/zh/#cases">ئىشلىتىشئەھۋال</a><a href="/zh/#ecosystem">ئوچۇق كودلۇقئېكوسىستېما</a><a href="/zh/docs/" class="is-active">ھۆججەتلەر</a><span class="lang-select-wrap"><select class="lang-select" aria-label="Language switcher" onchange="if(this.value) window.location.href=this.value"><option value="/zh/docs/chat/">中文</option><option value="/en/docs/chat/">English</option><option value="/ug/docs/chat/" selected>维吾尔语</option></select></span><button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"><svg class="ti-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="ti-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="nav-cta">GitHub</a></div>
+</nav>
+<div class="mobile-doc-nav">
+<a href="/zh/docs/getting-started">تېز قول سېلىش</a>
+<a href="/zh/docs/chat" class="on">سۆھبەتبىلەنكۆرۈشۈش</a>
+<a href="/zh/docs/agents">ئاجانت</a>
+<a href="/zh/docs/canvas">ئىش ئېقىمى</a>
+<a href="/zh/docs/providers">مودېل مۇلازىمەت تەمىنلىگۈچى</a>
+<a href="/zh/docs/advanced">ئالىي ئىقتىدارلار</a>
+<a href="/zh/docs/shortcuts">تېز كۇنۇپكا</a>
+<a href="/zh/docs/faq">كۆپ كۆرۈلىدىغان سوئاللار</a>
+</div>
+<aside class="sb"><div class="sb-t">ھۆججەتلەريېتەكچى</div>
+<a href="/zh/docs/getting-started">تېز قول سېلىش</a>
+<a href="/zh/docs/chat" class="on">سۆھبەتبىلەنكۆرۈشۈش</a>
+<a href="/zh/docs/agents" >ئاجانت باشقۇرۇش</a>
+<a href="/zh/docs/canvas" >ئىش ئېقىمى تاختىسى</a>
+<a href="/zh/docs/providers" >مودېل مۇلازىمەت تەمىنلىگۈچى</a>
+<a href="/zh/docs/advanced" >ئالىي ئىقتىدارلار</a>
+<a href="/zh/docs/shortcuts" >تېز كۇنۇپكا پايدىلىنىش</a>
+<a href="/zh/docs/faq" >كۆپ كۆرۈلىدىغان سوئاللار</a>
+</aside>
+<main class="m">
+<header class="page-lead">
+<div class="page-kicker">ھېشى AI ھۆججەتلەر</div>
+<h1>سۆھبەتبىلەنكۆرۈشۈش</h1>
+<p class="sub">多مودېلسۆھبەت، كۆرۈشۈشباشقۇرۇش، Artifact، ئۇچۇرئىزدەشبىلەنچىقىرىش. </p>
+</header>
+
+<h2>基本سۆھبەت</h2>
+<p>كىرىش <strong>سۆھبەت</strong> بەت即بولىدۇباشلاشسۆھبەت. ھېشى AI قوللاش: </p>
+<ul>
+<li><strong>ئېقىپ چىقىرىش</strong> — AI 回复实时逐字显示</li>
+<li><strong>Markdown 渲染</strong> — 完整قوللاش Markdown 语法، 代码块自动语法高亮</li>
+<li><strong>多مودېلئالماشتۇرۇش</strong> — 同一كۆرۈشۈش中بولىدۇ随时ئالماشتۇرۇش不同مۇلازىمەت تەمىنلىگۈچىۋەمودېل</li>
+<li><strong>ئۇچۇر操作</strong> — كۆچۈرۈش، تەھرىرلەش، 重新生成回复</li>
+</ul>
+<figure class="doc-shot">
+        <img src="../../assets/docs/zh-guide/chat-main-conversation.png" alt="ھېشى AI سۆھبەت主كۆرۈنمە يۈز">
+<figcaption>سۆھبەت主كۆرۈنمە يۈز示意: 左侧باشقۇرۇشكۆرۈشۈش، 中间推进ئۇچۇر流، 底部输入区بولىدۇ直接发送سوئال، 附件ۋەماھارەتچاقىرىش. </figcaption>
+</figure>
+
+<h2>ھۆججەتبىلەن多模态</h2>
+<p>كىرگۈزۈش رامكىسىقوللاش发送多种类型的附件 (取决于所选مودېل能力) : </p>
+<table>
+<tr><th>类型</th><th>قوللاشمودېل</th></tr>
+<tr><td>رەسىم</td><td>GPT-4o، Claude 全系، Gemini 全系، Qwen-VL، Doubao Vision، LLaVA</td></tr>
+<tr><td>سىن</td><td>Gemini 2.5 / 2.0 يۈرۈشلۈك</td></tr>
+<tr><td>ئاۋاز</td><td>Gemini 2.5 / 2.0 يۈرۈشلۈك</td></tr>
+<tr><td>ھۆججەت</td><td>بارلىق文本مودېل (自动提取内容) </td></tr>
+</table>
+<div class="tip"><b>ئەسكەرتىش: </b>كىرگۈزۈش رامكىسىبولىدۇ根据当前مودېل的 capabilities 自动显示/隐藏对应的附件كۇنۇپكا. </div>
+
+<h2>كۆرۈشۈشباشقۇرۇش</h2>
+<ul>
+<li><strong>يېڭىكۆرۈشۈش</strong> — چېكىش左侧 "+" كۇنۇپكاقۇرۇش</li>
+<li><strong>كۆرۈشۈش历史</strong> — 左侧面板显示بارلىق历史كۆرۈشۈش، چېكىشئالماشتۇرۇش</li>
+<li><strong>ئۆچۈرۈشكۆرۈشۈش</strong> — 右键ياكى滑动操作ئۆچۈرۈش</li>
+<li><strong>كۆرۈشۈشداۋاملاشتۇرۇش</strong> — بارلىقئۇچۇرساقلانغان本地 SQLite سانلىق-مەلۇمات库中</li>
+</ul>
+
+<h2>Artifact ئالدىن كۆرۈش</h2>
+<p>当 AI 输出代码块时، ھېشى AI بولىدۇ自动提取ئۈچۈن <strong>Artifact</strong>: </p>
+<ul>
+<li>قوللاش类型: <code>code</code> (代码) ، <code>html</code> (网页ئالدىن كۆرۈش) ، <code>markdown</code>، <code>file</code></li>
+<li>代码 Artifact 带语法高亮ۋەبىر كۇنۇپكاكۆچۈرۈش</li>
+<li>HTML Artifact بولىدۇ直接在侧面板中实时ئالدىن كۆرۈش</li>
+</ul>
+
+<h2>ئۇچۇرئىزدەش</h2>
+<p>ئىشلىتىش <strong>ئىزدەشسۆھبەت</strong> ئىقتىدار (<kbd>⌘</kbd>+<kbd>F</kbd>) بولىدۇ跨بارلىقكۆرۈشۈشئىزدەشئۇچۇر内容. </p>
+
+<h2>ئۇچۇرچىقىرىش</h2>
+<p>چېكىشكۆرۈشۈشتىزىملىك中的 <strong>چىقىرىش</strong> كۇنۇپكا، قوللاش三种格式: </p>
+<ul>
+<li><strong>JSON</strong> — 完整结构化سانلىق-مەلۇمات، 适合زاپاسۋەئەكىرىش</li>
+<li><strong>Markdown</strong> — بولىدۇ读性好، 适合归档ۋە分享</li>
+<li><strong>PDF</strong> — 适合正式ھۆججەتلەر输出</li>
+</ul>
+
+<h2>@ 提及</h2>
+<p>在كىرگۈزۈش رامكىسى中输入 <code>@</code> بولىدۇ弹出提及تىزىملىك، 快速引用 ئاجانت ياكى团队成员加入سۆھبەت. </p>
+
+<h2>سۆھبەتھالەت</h2>
+<p>ھېشى AI 提供三种سۆھبەتھالەت، ئارقىلىق顶部بەلگەئالماشتۇرۇش: </p>
+<table>
+<tr><th>ھالەت</th><th>用途</th><th>چۈشەندۈرۈش</th></tr>
+<tr><td><strong>سۆھبەت</strong></td><td>日常问答</td><td>标准سۆھبەت، 直接بىلەن LLM سۆھبەت</td></tr>
+<tr><td><strong>ئاجانت</strong></td><td>任务ئىجرا قىلىش</td><td>ئاجانت 自主规划، چاقىرىشقورال، 多步ئىجرا قىلىش</td></tr>
+<tr><td><strong>深度研究</strong></td><td>调研报告</td><td>多步ئىزدەش→ئانالىز→综合→生成报告، 显示 4 阶段进度面板</td></tr>
+</table>
+<div class="tip"><b>ئەسكەرتىش: </b>从 ئاجانت باشقۇرۇش页چېكىشرول的"سۆھبەت"كۇنۇپكا، بولىدۇ自动ئالماشتۇرۇش到 ئاجانت ھالەت并以رول名作ئۈچۈنكۆرۈشۈش标题. </div>
+
+<h2>ھۆججەتلەر解析</h2>
+<p>سۆھبەت时بولىدۇ直接上传ھۆججەتلەرھۆججەت، ھېشى AI بولىدۇ自动提取文本内容作ئۈچۈنمۇھىت发送给 LLM: </p>
+<table>
+<tr><th>格式</th><th>قوللاش类型</th></tr>
+<tr><td>PDF</td><td><code>.pdf</code> — 提取全部بەت文本، 显示页数</td></tr>
+<tr><td>Word</td><td><code>.docx</code> — 提取正文内容</td></tr>
+<tr><td>Excel</td><td><code>.xlsx</code> / <code>.csv</code> — 按 Sheet 提取ئۈچۈن表格文本</td></tr>
+<tr><td>纯文本</td><td><code>.txt</code> / <code>.md</code> / <code>.json</code></td></tr>
+</table>
+<p>文本超过 50,000 字符时بولىدۇ自动截断并ئەسكەرتىش. </p>
+
+<h2>سۆھبەت参数</h2>
+<p>چېكىشسۆھبەت区顶部قورال栏的 <strong>⚙️ 参数</strong> كۇنۇپكا، بولىدۇ调整当前كۆرۈشۈش的参数: </p>
+<ul>
+<li><strong>Temperature</strong> (0 ~ 2) — 越高回复越有创意، 越低越确定</li>
+<li><strong>Max Tokens</strong> (256 ~ 128,000) — 单次回复的最大长度</li>
+</ul>
+<p>参数仅对当前كۆرۈشۈش生效، 不影响其他كۆرۈشۈش. </p>
+
+<h2>ئۇچۇر操作</h2>
+<h3>右键تىزىملىك</h3>
+<p>在ئۇچۇر气泡上右键 (ياكى长按) ، 弹出مۇھىتتىزىملىك: </p>
+<ul>
+<li><strong>كۆچۈرۈش</strong> — كۆچۈرۈشئۇچۇر内容到剪贴板</li>
+<li><strong>重试</strong> — ئۆچۈرۈش当前回复并重新生成</li>
+<li><strong>تەھرىرلەش</strong> — 修改已发送的ئىشلەتكۈچىئۇچۇر并重新获取回复</li>
+<li><strong>ئۆچۈرۈش</strong> — ئۆچۈرۈش该ئۇچۇر (同步ئۆچۈرۈشسانلىق-مەلۇمات库خاتىرە) </li>
+</ul>
+<h3>كۆرۈشۈش重命名</h3>
+<p>在左侧كۆرۈشۈشتىزىملىك中، <strong>双击</strong>كۆرۈشۈش标题بولىدۇ直接重命名. يەنەبولىدۇئارقىلىق右键تىزىملىكتاللاش"重命名". </p>
+<h3>Token 计数</h3>
+<p>顶部قورال栏显示当前كۆرۈشۈش的预估 Token 数 (如 <code>~1.2k tok</code>) ، 帮助评估مۇھىت窗口ئىشلىتىش情况. </p>
+
+<h2>ئاۋاز输入</h2>
+<p>چېكىشكىرگۈزۈش رامكىسى右侧的 🎤 麦克风كۇنۇپكا، قوزغىتىشئاۋاز识别 (STT) . 录音完成后自动转ئۈچۈن文本تولدۇرۇشكىرگۈزۈش رامكىسى. ئېھتىياج浏览器قوللاش Web Speech API ياكىتەڭشەش外部 STT 服务. </p>
+
+<h2>سۆھبەتتېز كۇنۇپكا</h2>
+<table>
+<tr><th>تېز كۇنۇپكا</th><th>ئىقتىدار</th></tr>
+<tr><td><code>Enter</code></td><td>发送ئۇچۇر</td></tr>
+<tr><td><code>Shift + Enter</code></td><td>换行</td></tr>
+<tr><td><code>⌘ + F</code></td><td>ئىزدەشئۇچۇر</td></tr>
+<tr><td><code>Esc</code></td><td>停止生成</td></tr>
+<tr><td><code>@</code></td><td>提及 ئاجانت / Skill</td></tr>
+</table>
+
+<hr>
+<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-top:32px;margin-bottom:24px">
+<div><a href="/zh/docs/getting-started" style="color:var(--blue-deep)">← تېز قول سېلىش</a></div>
+<div><a href="/zh/docs/agents" style="color:var(--blue-deep)">ئاجانت باشقۇرۇش →</a></div>
+</div>
+<p style="text-align:center;margin-top:24px"><a href="https://github.com/hexagon-codes/hexclaw-site/edit/main/zh/docs/chat.html" target="_blank" rel="noopener noreferrer" style="font-size:14px;color:var(--text-muted)">✏️ 在 GitHub 上تەھرىرلەشبۇ بەت</a></p>
+
+</main>
+<footer class="footer">
+<div class="footer-main">
+<div class="footer-brand">
+<a class="footer-logo" href="/zh/">ھېشى AI</a>
+<p class="footer-tagline">يەرلىك ئالدىنلىق的ئوچۇق كودلۇق AI ئاجانت ئۈستەلئۈستى سۇپا، ھەقىقىي سودىغا قارىتىلغانبىلەنشەخسىي ئىش ئېقىمى. </p>
+</div>
+<div class="footer-columns">
+<div class="footer-col">
+<div class="footer-col-title">مەھسۇلات</div>
+<a href="/zh/">باش بەت</a>
+<a href="https://github.com/hexagon-codes/hexclaw-desktop/releases" target="_blank" rel="noopener noreferrer">چۈشۈرۈشئۈستەلئۈستى ئۇچى</a>
+<a href="/zh/changelog">يېڭىلىنىش خاتىرىسى</a>
+</div>
+<div class="footer-col">
+<div class="footer-col-title">ئىجادكار</div>
+<a href="/zh/docs/">ھۆججەتلەرمەركەز</a>
+<a href="/zh/docs/getting-started">تېز قول سېلىش</a>
+<a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer">GitHub</a>
+</div>
+<div class="footer-col">
+<div class="footer-col-title">قانۇنبىلەنئالاقىلىشىش</div>
+<a href="/zh/privacy">شەخسىيەت سىياسىتى</a>
+<a href="/zh/terms">ئىشلىتىششەرت</a>
+<a href="mailto:ai@hexclaw.net">سودا مەسلىھەتى</a>
+</div>
+</div>
+</div>
+<div class="footer-bottom">
+<span class="footer-copy">&copy; 2025&ndash;2026 hexagon-codes</span>
+<div class="footer-meta-links">
+<a href="/zh/privacy">شەخسىيەت سىياسىتى</a>
+<a href="/zh/terms">ئىشلىتىششەرت</a>
+<a href="mailto:support@hexclaw.net">سوئالئىنكاس</a>
+</div>
+</div>
+</footer>
+<script src="../../assets/js/docs-nav.js"></script>
+<script>
+function toggleTheme(){var c=document.documentElement.getAttribute("data-theme");var n=c==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);localStorage.setItem("hexclaw-theme",n)}
+(function(){var s=localStorage.getItem("hexclaw-theme");var d=window.matchMedia("(prefers-color-scheme:dark)").matches;if(s==="dark"||(!s&&d))document.documentElement.setAttribute("data-theme","dark")})();
+window.addEventListener("scroll",function(){var n=document.querySelector(".tn,.topnav");if(n)n.classList.toggle("scrolled",window.scrollY>10);},{passive:true});
+</script>
+</body>
+</html>

@@ -67,6 +67,11 @@
   .nav-links { display:flex; align-items:center; gap:20px; }
   .nav-links a { color:rgba(18,50,76,.72); text-decoration:none; font-size:15px; font-weight:500; transition:color .2s; }
   .nav-links a:hover { color:var(--blue-deep); }
+  .lang-select-wrap { position:relative; display:inline-flex; align-items:center; flex:0 0 auto; }
+  .lang-select-wrap::after { content:''; position:absolute; right:12px; top:50%; width:6px; height:6px; border-right:1.5px solid currentColor; border-bottom:1.5px solid currentColor; color:var(--blue-deep); pointer-events:none; transform:translateY(-65%) rotate(45deg); }
+  .lang-select { width:108px; min-height:36px; padding:7px 30px 7px 14px; border:1px solid rgba(63,143,212,.14); border-radius:999px; outline:none; appearance:none; -webkit-appearance:none; background:rgba(255,255,255,.72); backdrop-filter:blur(20px) saturate(180%); -webkit-backdrop-filter:blur(20px) saturate(180%); box-shadow:0 8px 24px rgba(95,179,234,.12); color:var(--blue-deep); cursor:pointer; direction:ltr; font:inherit; font-size:14px; font-weight:600; line-height:1.2; transition:background-color 300ms cubic-bezier(0.34,1.56,0.64,1),border-color 300ms cubic-bezier(0.34,1.56,0.64,1),box-shadow 300ms cubic-bezier(0.34,1.56,0.64,1),transform 300ms cubic-bezier(0.34,1.56,0.64,1); }
+  .lang-select:hover, .lang-select:focus-visible { background:rgba(255,255,255,.9); border-color:rgba(63,143,212,.18); box-shadow:0 8px 24px rgba(95,179,234,.16); transform:translateY(-1px); }
+  .lang-select:focus-visible { outline:none; }
   .nav-cta { padding:8px 18px!important; background:rgba(255,255,255,.72)!important; border:1px solid rgba(63,143,212,.14); border-radius:999px; color:var(--blue-deep)!important; font-weight:600!important; box-shadow:0 8px 24px rgba(95,179,234,.12); }
   .nav-star-badge { display:inline-flex; align-items:center; padding:1px 6px; margin-left:6px; border-radius:999px; background:rgba(240,180,41,0.15); color:#d4930f; font-size:12px; font-weight:700; }
   .nav-burger { display:none; background:none; border:none; cursor:pointer; padding:4px; }
@@ -248,6 +253,7 @@
 
   /* Responsive */
   @media(max-width:768px) { .nav { padding:10px 16px; } .nav-burger { display:block; padding:8px; } .nav-links { display:none; position:absolute; top:100%; left:0; right:0; flex-direction:column; background:rgba(244,251,255,.96); backdrop-filter:blur(24px); -webkit-backdrop-filter:blur(24px); padding:12px 20px; gap:0; border-bottom:1px solid rgba(63,143,212,.08); } .nav-links.open { display:flex; } .nav-links a { padding:14px 0; border-bottom:1px solid rgba(63,143,212,.06); font-size:15px; color:rgba(18,50,76,.72); } .nav-links a:last-child { border-bottom:none; } .nav-cta { margin-top:8px; text-align:center; } .nav-name { font-size:16px; } .features,.steps { grid-template-columns:repeat(2,1fr); } .cases { grid-template-columns:1fr; } .engine-stack { flex-direction:column; overflow:hidden; } .stack-row { flex-wrap:wrap; overflow-x:auto; } .engine-caps { white-space:normal; font-size:12px; } .stack-item { flex:1 1 auto; min-width:0; } .hero-title { font-size:clamp(28px,5vw,40px); } .hero-tagline { font-size:17px; } .btn { padding:12px 22px; font-size:16px; } .hero-logo { width:128px; height:128px; } section { padding:52px 24px; } }
+  @media(max-width:768px) { .lang-select-wrap { width:100%; margin:8px 0; } .lang-select { width:100%; min-height:42px; box-shadow:none; } }
   @media(max-width:640px) { .hero { padding:84px 20px 36px; } section { padding:42px 16px; } .features,.steps { grid-template-columns:1fr; } .eco-apps { grid-template-columns:1fr; max-width:240px; } .cta-card { padding:28px 22px; border-radius:24px; } .hero-title { font-size:24px; line-height:1.28; } .hero-tagline { font-size:15px; } .dl-cards { grid-template-columns:1fr; max-width:240px; } .dl-card { padding:18px 14px 14px; } .dl-card-icon { width:28px; height:28px; } .dl-card-name { font-size:14px; } .hero-logo { width:104px; height:104px; } .hero-version { flex-wrap:wrap; justify-content:center; } .sec-title { font-size:26px; } .sec-desc { font-size:16px; } .engine-logo { width:36px; height:36px; } .engine-name { font-size:15px; } .engine-caps { white-space:normal; } .section-inner { max-width:100%; } .engine-bar { flex-direction:column; align-items:flex-start; } .engine-caps { font-size:11px; white-space:normal; line-height:1.5; } .stack-row { display:grid; grid-template-columns:1fr 1fr; gap:6px; } .stack-item { white-space:normal; padding:8px 10px; font-size:13px; } .stack-label { font-size:13px; } .stack-sub { font-size:11px; } }
   /* ===== ENHANCEMENT: Hero Particle / Stardust Background ===== */
   .hero-particle { position:absolute; border-radius:50%; background:var(--blue); pointer-events:none; z-index:0; }
@@ -411,6 +417,10 @@
   [data-theme="dark"] .nav.scrolled { background:rgba(12,20,34,0.88); border-bottom-color:rgba(95,179,234,0.06); box-shadow:0 10px 30px rgba(0,0,0,0.3); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); }
   [data-theme="dark"] .nav-links a { color:rgba(232,236,240,0.7); }
   [data-theme="dark"] .nav-cta { background:rgba(95,179,234,0.1)!important; border-color:rgba(95,179,234,0.14); color:var(--blue-light)!important; box-shadow:0 8px 24px rgba(0,0,0,0.2); }
+  [data-theme="dark"] .lang-select { background:rgba(95,179,234,0.1); border-color:rgba(95,179,234,0.14); color:var(--blue-light); box-shadow:0 8px 24px rgba(0,0,0,0.2); }
+  [data-theme="dark"] .lang-select:hover, [data-theme="dark"] .lang-select:focus-visible { background:rgba(95,179,234,0.14); border-color:rgba(95,179,234,0.2); }
+  [data-theme="dark"] .lang-select option { background:#1c1c1e; color:var(--text-primary); }
+  [data-theme="dark"] .lang-select-wrap::after { color:var(--blue-light); }
   [data-theme="dark"] .nav-burger span { background:var(--text-primary); }
   [data-theme="dark"] .hero-bg { background:radial-gradient(ellipse 80% 60% at 50% 0%, rgba(95,179,234,0.08) 0%, rgba(30,60,100,0.15) 35%, transparent 70%), linear-gradient(180deg, #0b1525 0%, #0f1d32 25%, #112240 50%, #0e1b2e 100%); }
   [data-theme="dark"] .hero-bg::after { background:linear-gradient(180deg,rgba(11,21,37,.2) 0%, rgba(11,21,37,0) 38%, var(--bg) 100%); }
@@ -534,7 +544,7 @@
     <div class="nav-links">
       <a href="#features">Capabilities</a><a href="#quickstart">Quick Start</a><a href="#cases">Use Cases</a><a href="#ecosystem">Ecosystem</a>
       <a href="/en/docs/">Docs</a>
-      <a href="/zh/">中文</a>
+      <span class="lang-select-wrap"><select class="lang-select" aria-label="Language switcher" onchange="if(this.value) window.location.href=this.value"><option value="/zh/">中文</option><option value="/en/" selected>English</option><option value="/ug/">维吾尔语</option></select></span>
       <button class="nav-theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
         <svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
         <svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -575,7 +585,7 @@
       <div class="hero-badge"><span class="hero-badge-dot"></span>Full-stack open source · Apache-2.0</div>
       <h1 class="hero-title">Open-source AI agents,<br>running on your desktop</h1>
       <p class="hero-tagline">Hexagon engine inside · Multi-agent collaboration · Visual workflows · RAG knowledge bases<br>Everything you need, with local-first data and one-click setup</p>
-      <div class="hero-version"><span class="hero-vtag">v0.3.12</span><span class="hero-vsep">·</span><span class="hero-vmeta">Apache-2.0 License</span><span class="hero-vsep">·</span><span class="hero-vmeta">macOS / Windows / Linux</span></div>
+      <div class="hero-version"><span class="hero-vtag">v0.4.0</span><span class="hero-vsep">·</span><span class="hero-vmeta">Apache-2.0 License</span><span class="hero-vsep">·</span><span class="hero-vmeta">macOS / Windows / Linux</span></div>
       <div class="dl-section">
         <div style="max-width:540px;margin:0 auto 18px;text-align:left">
           <p style="font-size:14px;font-weight:600;color:var(--text-primary);margin-bottom:8px">macOS one-line install (recommended)</p>
@@ -589,25 +599,27 @@
             <div class="dl-card-name">macOS</div>
             <div class="dl-card-hint">.dmg</div>
             <div class="dl-card-links">
-              <a href="https://github.com/hexagon-codes/hexclaw-desktop/releases/download/v0.3.12/HexClaw_0.3.12_aarch64.dmg">Apple Silicon</a>
-              <a href="https://github.com/hexagon-codes/hexclaw-desktop/releases/download/v0.3.12/HexClaw_0.3.12_x64.dmg">Intel</a>
+              <a href="https://github.com/hexagon-codes/hexclaw-desktop/releases/download/v0.4.0/HexClaw_0.4.0_aarch64.dmg">Apple Silicon</a>
+              <a href="https://github.com/hexagon-codes/hexclaw-desktop/releases/download/v0.4.0/HexClaw_0.4.0_x64.dmg">Intel</a>
             </div>
           </div>
           <div class="dl-card">
             <svg class="dl-card-icon" viewBox="0 0 24 24"><path fill="#F25022" d="M3 5.56l7.36-1v7.1H3z"/><path fill="#7FBA00" d="M11.64 5.93L21 3v8.66h-9.36z"/><path fill="#00A4EF" d="M3 18.44l7.36 1v-7.1H3z"/><path fill="#FFB900" d="M11.64 19.07L21 21v-8.66h-9.36z"/></svg>
             <div class="dl-card-name">Windows</div>
-            <div class="dl-card-hint">.exe</div>
+            <div class="dl-card-hint">.exe / .msi</div>
             <div class="dl-card-links">
-              <a href="https://github.com/hexagon-codes/hexclaw-desktop/releases/download/v0.3.12/HexClaw_0.3.12_x64-setup.exe">64-bit (x64)</a>
+              <a href="https://github.com/hexagon-codes/hexclaw-desktop/releases/download/v0.4.0/HexClaw_0.4.0_x64-setup.exe">.exe</a>
+              <a href="https://github.com/hexagon-codes/hexclaw-desktop/releases/download/v0.4.0/HexClaw_0.4.0_x64_en-US.msi">.msi</a>
             </div>
           </div>
           <div class="dl-card">
             <img class="dl-card-icon dl-icon-linux" src="../assets/icons/tux.png" alt="Linux" width="34" height="34">
             <div class="dl-card-name">Linux</div>
-            <div class="dl-card-hint">.deb / .AppImage</div>
+            <div class="dl-card-hint">.deb / .AppImage / .rpm</div>
             <div class="dl-card-links">
-              <a href="https://github.com/hexagon-codes/hexclaw-desktop/releases/download/v0.3.12/HexClaw_0.3.12_amd64.deb">.deb</a>
-              <a href="https://github.com/hexagon-codes/hexclaw-desktop/releases/download/v0.3.12/HexClaw_0.3.12_amd64.AppImage">.AppImage</a>
+              <a href="https://github.com/hexagon-codes/hexclaw-desktop/releases/download/v0.4.0/HexClaw_0.4.0_amd64.deb">.deb</a>
+              <a href="https://github.com/hexagon-codes/hexclaw-desktop/releases/download/v0.4.0/HexClaw_0.4.0_amd64.AppImage">.AppImage</a>
+              <a href="https://github.com/hexagon-codes/hexclaw-desktop/releases/download/v0.4.0/HexClaw-0.4.0-1.x86_64.rpm">.rpm</a>
             </div>
           </div>
         </div>

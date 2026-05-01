@@ -39,7 +39,7 @@
 <body class="docs-page">
 <nav class="tn">
 <a href="/zh/" class="tn-b"><img src="../assets/brand/hexclaw-icon-72.png" class="tn-l" alt="河蟹 AI"><span class="tn-n">河蟹 AI</span></a>
-<button class="tn-burger" onclick="document.querySelector('.tn-r').classList.toggle('open')" aria-label="菜单"><span></span><span></span><span></span></button><div class="tn-r"><a href="/zh/">首页</a><a href="/zh/#features">产品能力</a><a href="/zh/#quickstart">快速上手</a><a href="/zh/#cases">使用场景</a><a href="/zh/#ecosystem">开源生态</a><a href="/zh/docs/">文档</a><a href="/en/changelog">EN</a><button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"><svg class="ti-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="ti-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="nav-cta">GitHub</a></div>
+<button class="tn-burger" onclick="document.querySelector('.tn-r').classList.toggle('open')" aria-label="菜单"><span></span><span></span><span></span></button><div class="tn-r"><a href="/zh/">首页</a><a href="/zh/#features">产品能力</a><a href="/zh/#quickstart">快速上手</a><a href="/zh/#cases">使用场景</a><a href="/zh/#ecosystem">开源生态</a><a href="/zh/docs/">文档</a><span class="lang-select-wrap"><select class="lang-select" aria-label="Language switcher" onchange="if(this.value) window.location.href=this.value"><option value="/zh/changelog/" selected>中文</option><option value="/en/changelog/">English</option><option value="/ug/changelog/">维吾尔语</option></select></span><button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"><svg class="ti-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="ti-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="nav-cta">GitHub</a></div>
 </nav>
 <main class="m" style="margin-left:0">
 <header class="page-lead">
@@ -47,7 +47,7 @@
 <p class="sub">河蟹 AI 桌面端版本更新记录。</p>
 </header>
 
-<h2>v0.3.12 (2026-04-18)</h2>
+<h2>v0.4.0 (2026-04-18)</h2>
 <ul>
 <li>图像/视频/语音生成三件套：ImageGenComposer / VideoGenComposer / VoiceChatComposer，按模型能力自动切换，生成结果持久化到会话</li>
 <li>原生保存对话框：图像下载走 Tauri dialog.save() + Rust 命令写盘，绕过 WKWebView 下载限制，默认文件名 HexClaw-yyyymmdd-hhmmss-XXXX.{ext} 避免同名冲突</li>
@@ -57,7 +57,7 @@
 <li>Ollama 预热 tag 4 级匹配：tag 精确 → base 去 tag → provider.selectedModelId → downloaded[0]</li>
 <li>Provider key 硬编码 Bug 治理：生成服务按 BaseURL 特征查找 Provider，解决中文 Provider name（如"智谱 AI"）匹配不到的问题</li>
 <li>63 条错误路径测试：cron-errors / skills-errors / mcp-errors；结构性防护测试防止裸 apiPost/apiGet 绕过 sessionPost 包装器</li>
-<li>后端 hexclaw v0.3.12：批量消息事务写入 / genstore 原子 tmp+Rename / videogen singleflight+LRU / imagegen/videogen/voicechat 持久化到 file_path</li>
+<li>后端 hexclaw v0.4.0：批量消息事务写入 / genstore 原子 tmp+Rename / videogen singleflight+LRU / imagegen/videogen/voicechat 持久化到 file_path</li>
 </ul>
 
 <h2>v0.3.8 (2026-04-14)</h2>

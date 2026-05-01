@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ug" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/favicon-32.png">
+<title>ئالىي ئىقتىدارلار — ھېشى AI ھۆججەتلەر</title>
+<meta name="description" content="MCP كېلىشىم، بىلىم ئامبىرى RAG، مەنائەستە تۇتۇش، ۋاقىتلىق ۋەزىپە، ماھارەت بازىرى، كوماندا ھەمكارلىقىبىلەنبىخەتەرلىكئېغىز. ">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:site_name" content="ھېشى AI">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ئالىي ئىقتىدارلار — ھېشى AI ھۆججەتلەر">
+<meta property="og:description" content="MCP كېلىشىم، بىلىم ئامبىرى RAG، مەنائەستە تۇتۇش، ۋاقىتلىق ۋەزىپە، ماھارەت بازىرى، كوماندا ھەمكارلىقىبىلەنبىخەتەرلىكئېغىز. ">
+<meta property="og:url" content="https://hexclaw.net/ug/docs/advanced">
+<meta property="og:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta property="og:image:alt" content="ھېشى AI بەلگىسى">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta property="og:locale" content="ug">
+<meta property="og:locale:alternate" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ئالىي ئىقتىدارلار — ھېشى AI ھۆججەتلەر">
+<meta name="twitter:description" content="MCP كېلىشىم، بىلىم ئامبىرى RAG، مەنائەستە تۇتۇش، ۋاقىتلىق ۋەزىپە، ماھارەت بازىرى، كوماندا ھەمكارلىقىبىلەنبىخەتەرلىكئېغىز. ">
+<meta name="twitter:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta name="twitter:image:alt" content="ھېشى AI بەلگىسى">
+<link rel="canonical" href="https://hexclaw.net/ug/docs/advanced">
+<link rel="alternate" hreflang="en" href="https://hexclaw.net/en/docs/advanced">
+<link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/docs/advanced">
+<link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/">
+<link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/docs/advanced">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"TechArticle","headline":"ئالىي ئىقتىدارلار — ھېشى AI ھۆججەتلەر","description":"MCP كېلىشىم، بىلىم ئامبىرى RAG، مەنائەستە تۇتۇش، ۋاقىتلىق ۋەزىپە، ماھارەت بازىرى، كوماندا ھەمكارلىقىبىلەنبىخەتەرلىكئېغىز. ","url":"https://hexclaw.net/zh/docs/advanced","inLanguage":"ug","image":"https://hexclaw.net/assets/brand/hexclaw-logo.png","isPartOf":{"@type":"CreativeWorkSeries","name":"ھېشى AI ھۆججەتلەر","url":"https://hexclaw.net/zh/docs/"},"publisher":{"@type":"Organization","name":"hexagon-codes","url":"https://hexclaw.net/"},"about":{"@type":"SoftwareApplication","name":"ھېشى AI","operatingSystem":"macOS, Windows, Linux","applicationCategory":"BusinessApplication"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ھېشى AI","item":"https://hexclaw.net/zh/"},{"@type":"ListItem","position":2,"name":"ھېشى AI ئىشلىتىشھۆججەتلەر","item":"https://hexclaw.net/zh/docs/"},{"@type":"ListItem","position":3,"name":"ئالىي ئىقتىدارلار — ھېشى AI ھۆججەتلەر","item":"https://hexclaw.net/zh/docs/advanced"}]}
+</script>
+<link rel="stylesheet" href="../../assets/css/docs.css?v=1774211100">
+</head>
+<body class="docs-page">
+<nav class="tn">
+<a href="/zh/" class="tn-b"><img src="../../assets/brand/hexclaw-icon-72.png" class="tn-l" alt="ھېشى AI"><span class="tn-n">ھېشى AI</span></a>
+<button class="tn-burger" onclick="document.querySelector('.tn-r').classList.toggle('open')" aria-label="تىزىملىك"><span></span><span></span><span></span></button><div class="tn-r"><a href="/zh/">باش بەت</a><a href="/zh/#features">مەھسۇلات ئىقتىدارى</a><a href="/zh/#quickstart">تېز قول سېلىش</a><a href="/zh/#cases">ئىشلىتىشئەھۋال</a><a href="/zh/#ecosystem">ئوچۇق كودلۇقئېكوسىستېما</a><a href="/zh/docs/" class="is-active">ھۆججەتلەر</a><span class="lang-select-wrap"><select class="lang-select" aria-label="Language switcher" onchange="if(this.value) window.location.href=this.value"><option value="/zh/docs/advanced/">中文</option><option value="/en/docs/advanced/">English</option><option value="/ug/docs/advanced/" selected>维吾尔语</option></select></span><button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"><svg class="ti-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="ti-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="nav-cta">GitHub</a></div>
+</nav>
+<div class="mobile-doc-nav">
+<a href="/zh/docs/getting-started">تېز قول سېلىش</a>
+<a href="/zh/docs/chat">سۆھبەتبىلەنكۆرۈشۈش</a>
+<a href="/zh/docs/agents">ئاجانت</a>
+<a href="/zh/docs/canvas">ئىش ئېقىمى</a>
+<a href="/zh/docs/providers">مودېل مۇلازىمەت تەمىنلىگۈچى</a>
+<a href="/zh/docs/advanced" class="on">ئالىي ئىقتىدارلار</a>
+<a href="/zh/docs/shortcuts">تېز كۇنۇپكا</a>
+<a href="/zh/docs/faq">كۆپ كۆرۈلىدىغان سوئاللار</a>
+</div>
+<aside class="sb"><div class="sb-t">ھۆججەتلەريېتەكچى</div>
+<a href="/zh/docs/getting-started">تېز قول سېلىش</a>
+<a href="/zh/docs/chat" >سۆھبەتبىلەنكۆرۈشۈش</a>
+<a href="/zh/docs/agents" >ئاجانت باشقۇرۇش</a>
+<a href="/zh/docs/canvas" >ئىش ئېقىمى تاختىسى</a>
+<a href="/zh/docs/providers" >مودېل مۇلازىمەت تەمىنلىگۈچى</a>
+<a href="/zh/docs/advanced" class="on">ئالىي ئىقتىدارلار</a>
+<a href="/zh/docs/shortcuts" >تېز كۇنۇپكا پايدىلىنىش</a>
+<a href="/zh/docs/faq" >كۆپ كۆرۈلىدىغان سوئاللار</a>
+</aside>
+<main class="m">
+<header class="page-lead">
+<div class="page-kicker">ھېشى AI ھۆججەتلەر</div>
+<h1>ئالىي ئىقتىدارلار</h1>
+<p class="sub">MCP كېلىشىم، بىلىم ئامبىرى RAG، مەنائەستە تۇتۇش، ۋاقىتلىق ۋەزىپە، ماھارەت بازىرى، كوماندا ھەمكارلىقىبىلەنبىخەتەرلىكئېغىز. </p>
+</header>
+
+<h2>MCP كېلىشىمبىرلەشتۈرۈش</h2>
+<p><strong>Model Context Protocol</strong> (MCP) 让 AI ئاجانت 能چاقىرىش外部قورالۋە服务. </p>
+<h3>注册 MCP مۇلازىمېتىر</h3>
+<ol>
+<li>كىرىش <strong>MCP</strong> بەت</li>
+<li>چېكىش <strong>"قوشۇشمۇلازىمېتىر"</strong></li>
+<li>تولدۇرۇشمۇلازىمېتىر名称ۋەئۇلىنىش地址</li>
+<li>تاللاشكېلىشىم类型: <code>stdio</code> / <code>sse</code> / <code>streamable_http</code></li>
+<li>ئۇلىنىش后自动发现بولىدۇ用قورال</li>
+</ol>
+<p>ئۇلىنىش成功后، MCP قورالبولىدۇ分配给 ئاجانت ئىشلىتىش. 实时显示ئۇلىنىش状态 (connected / disconnected / error) . </p>
+
+<h3>MCP مۇلازىمېتىرتەڭشەشمىسال</h3>
+<p>以下بولسا MCP مۇلازىمېتىر的 JSON تەڭشەشمىسال: </p>
+<pre data-lang="json"><code>{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@anthropic-ai/mcp-filesystem"],
+      "env": { "ALLOWED_PATHS": "/Users/me/projects" }
+    }
+  }
+}</code></pre>
+<h2>بىلىم ئامبىرى (RAG) </h2>
+<p>上传ھۆججەتلەر建立شەخسىيبىلىم ئامبىرى، AI 回答时自动检索相关内容. </p>
+<h3>قوللاش格式</h3>
+<ul>
+<li>PDF، Markdown، TXT ھۆججەت</li>
+<li>自动分块 (chunking) ۋە向量嵌入</li>
+<li>مەنائىزدەش检索</li>
+</ul>
+<h3>ئىشلىتىش流程</h3>
+<ol>
+<li>كىرىش <strong>بىلىم ئامبىرى</strong> بەت</li>
+<li>上传ھۆججەتلەر — قوللاش批量上传</li>
+<li>قاتارلىق待处理 (状态: processing → ready) </li>
+<li>在سۆھبەت中، AI 自动检索بىلىم ئامبىرى中的相关内容作ئۈچۈنمۇھىت</li>
+</ol>
+<h2>مەنائەستە تۇتۇش</h2>
+<p>ھېشى AI 自动从سۆھبەت中提取并ساقلاشئەستە تۇتۇش، 跨كۆرۈشۈشداۋاملاشتۇرۇش. </p>
+<ul>
+<li><strong>自动捕获</strong> — ئاجانت سۆھبەت中的关键ئۇچۇر自动ساقلاشئۈچۈنئەستە تۇتۇش</li>
+<li><strong>مەنائىزدەش</strong> — 在ئەستە تۇتۇشبەت按关键词ياكىمەنا检索</li>
+<li><strong>类型过滤</strong> — 按ئەستە تۇتۇش类型筛选</li>
+<li><strong>手动باشقۇرۇش</strong> — كۆرۈش، ئۆچۈرۈش، 批量清理</li>
+</ul>
+
+<h2>ۋاقىتلىق ۋەزىپە (Cron) </h2>
+<p>让 ئاجانت 按计划自动ئىجرا قىلىش任务. </p>
+<h3>قۇرۇشۋاقىتلىق ۋەزىپە</h3>
+<ol>
+<li>كىرىش <strong>ۋاقىتلىق ۋەزىپە</strong> بەت</li>
+<li>چېكىش <strong>"قۇرۇش任务"</strong></li>
+<li>تاللاشئىجرا قىلىش ئاجانت، تەڭشەك Cron 表达式، 填写ئەسكەرتىش词</li>
+<li>启用任务</li>
+</ol>
+<pre><code># Cron 表达式مىسال
+0 9 * * *      每天早上 9 点
+0 */2 * * *    每 2 小时
+0 9 * * 1-5    工作日早上 9 点</code></pre>
+<p>قوللاش手动触发، ئىجرا قىلىش历史كۆرۈش، 心跳监控. </p>
+<figure class="doc-shot">
+        <img src="../../assets/docs/zh-guide/automation-scheduled-tasks.png" alt="ھېشى AI 自动化任务تىزىملىك">
+<figcaption>ۋاقىتلىق ۋەزىپەتىزىملىك示意: كۆرۈش任务计划، 下次ئىجرا قىلىش时间، ئىجرا قىلىش次数ۋە启停状态، 并قوللاش手动立即ئىجرا قىلىش. </figcaption>
+</figure>
+<figure class="doc-shot">
+        <img src="../../assets/docs/zh-guide/automation-chat-result-card.png" alt="ھېشى AI سۆھبەت中已قۇرۇشۋاقىتلىق ۋەزىپە的结果卡片">
+<figcaption>自然语言قۇرۇش任务示意: 在سۆھبەت中描述ئېھتىياج后، سىستېمابولىدۇقايتىش结构化结果卡片، 便于جەزملەش任务已成功落地到自动化模块. </figcaption>
+</figure>
+
+<h2>ماھارەت بازىرى</h2>
+<p>浏览ۋەئورنىتىشماھارەتقوشۇمچە扩展 ئاجانت 能力: </p>
+<ul>
+<li><strong>分类</strong>: 沟通، 效率، 开发، سانلىق-مەلۇمات</li>
+<li><strong>ئورنىتىش</strong>: بىر كۇنۇپكائورنىتىش، 按 ئاجانت 启用/禁用</li>
+<li><strong>评分</strong>: جامائەت评分ۋەچۈشۈرۈش量排序</li>
+<li><strong>تەڭشەش</strong>: 部分ماھارەتقوللاشئىختىيارىي参数</li>
+</ul>
+<figure class="doc-shot">
+        <img src="../../assets/docs/zh-guide/installed-skills-list.png" alt="ھېشى AI 已ئورنىتىشماھارەتتىزىملىك">
+<figcaption>已ئورنىتىشماھارەتتىزىملىك示意: 统一كۆرۈش本地ماھارەتمۇندەرىجە، ئىجرا قىلىش状态، 开关ۋەنەشرى، 适合做启停بىلەن清理. </figcaption>
+</figure>
+
+<h2>كوماندا ھەمكارلىقى</h2>
+<div class="tip"><b>ئەسكەرتىش: </b>كوماندا ھەمكارلىقىئىقتىدار目前处于规划阶段، 部分ئىقتىدار尚未完整实现. </div>
+<p>قوللاش多人共享ۋە协作: </p>
+<ul>
+<li><strong>共享 ئاجانت</strong> — 团队内共享 ئاجانت 模板</li>
+<li><strong>成员رول</strong> — باشقۇرۇش员 (admin) ، 成员 (member) ، كۆرۈش者 (viewer) </li>
+<li><strong>كۆرۈشۈش共享</strong> — 分享سۆھبەتخاتىرە给团队</li>
+<li><strong>بولىدۇ见性</strong> — 公开 (public) / 团队 (team) / شەخسىي (private) </li>
+</ul>
+
+<h2>بىخەتەرلىكئېغىز</h2>
+<p>在 <strong>تەڭشەك → بىخەتەرلىك</strong> 中تەڭشەش: </p>
+<table>
+<tr><th>ئىقتىدار</th><th>چۈشەندۈرۈش</th></tr>
+<tr><td>بىخەتەرلىكئېغىز</td><td>启用/禁用بىخەتەرلىكتەكشۈرۈش</td></tr>
+<tr><td>ئەسكەرتىش词注入检测</td><td>自动检测并拦截恶意ئەسكەرتىش词</td></tr>
+<tr><td>PII 过滤</td><td>自动过滤个人敏感ئۇچۇر</td></tr>
+<tr><td>内容过滤</td><td>过滤不当内容</td></tr>
+<tr><td>Token 上限</td><td>单次请求最大 Token 数 (256 ~ 128,000) </td></tr>
+<tr><td>速率限制</td><td>每分钟请求数 (1 ~ 600 RPM) </td></tr>
+</table>
+
+<h2>深度研究ھالەت</h2>
+<p>在سۆھبەت页ئالماشتۇرۇش到<strong>深度研究</strong>بەلگە، 输入研究主题后، ئاجانت بولىدۇ自动ئىجرا قىلىش多步调研: </p>
+<ol>
+<li><strong>ئىزدەش</strong> — 检索相关资料ۋە来源</li>
+<li><strong>ئانالىز</strong> — 深度ئانالىز各个来源的内容</li>
+<li><strong>综合</strong> — 交叉对比، 提炼关键观点</li>
+<li><strong>生成报告</strong> — 输出结构化研究报告، 附带引用来源</li>
+</ol>
+<p>研究过程中بولىدۇ显示实时进度面板، بولىدۇ折叠/展开كۆرۈش当前阶段. </p>
+<div class="tip"><b>ئەسكەرتىش: </b>研究ھالەت基于 Hexagon موتور的 Plan-and-Execute 范式، 比普通 ئاجانت ھالەت更适合ئېھتىياج多步نەتىجە چىقىرىش的复杂任务. </div>
+
+<h2>IM ئېقىم</h2>
+<p>ھېشى AI قوللاشئۇلىنىش多种即时通讯平台، 让你ئارقىلىق手机ئۇچۇر远程بىلەن AI سۆھبىتى. كىرىش <strong>侧边栏 → IM ئېقىم</strong> تەڭشەش: </p>
+<table>
+<tr><th>平台</th><th>تەڭشەش项</th><th>چۈشەندۈرۈش</th></tr>
+<tr><td>飞书</td><td>App ID + App Secret</td><td>在飞书开放平台قۇرۇش企业自建ئەپ</td></tr>
+<tr><td>钉钉</td><td>App Key + App Secret + Robot Code</td><td>在钉钉开放平台قۇرۇش内部ئەپ</td></tr>
+<tr><td>企业微信</td><td>Corp ID + ئاجانت ID + Secret</td><td>在企业微信باشقۇرۇش后台قۇرۇش自建ئەپ</td></tr>
+<tr><td>微信</td><td>App ID + App Secret + Token</td><td>ئېھتىياج微信服务号</td></tr>
+<tr><td>Slack</td><td>Bot Token + Signing Secret</td><td>在 Slack API قۇرۇش App</td></tr>
+<tr><td>Discord</td><td>Bot Token</td><td>在 Discord Developer Portal قۇرۇش Bot</td></tr>
+<tr><td>Telegram</td><td>Bot Token</td><td>ئارقىلىق @BotFather قۇرۇش</td></tr>
+</table>
+<p>تەڭشەشساقلاش后ئېھتىياج<strong>قايتا قوزغىتىش Engine</strong> 生效. ھەر بىر平台卡片上有"سىناشئۇلىنىش"كۇنۇپكابولىدۇ验证تەڭشەش. </p>
+<figure class="doc-shot">
+        <img src="../../assets/docs/zh-guide/im-channel-list.png" alt="ھېشى AI IM ئېقىمتىزىملىككۆرۈنمە يۈز">
+<figcaption>IM ئېقىمتىزىملىك示意: 统一كۆرۈش各个平台实例، ئىجرا قىلىش状态ۋەسىناش入口، 并在ئۈستەلئۈستى ئۇچى完成启停بىلەنتەڭشەش. </figcaption>
+</figure>
+
+<h2>Webhook 通知推送</h2>
+<p>在 <strong>تەڭشەك → 通知推送</strong> 中تەڭشەش Webhook، 当任务完成، ئاجانت ئىجرا قىلىش结束ياكى发生错误时自动推送通知: </p>
+<ul>
+<li><strong>企业微信</strong> — 机器人 Webhook URL</li>
+<li><strong>飞书</strong> — ئىختىيارىي机器人 Webhook</li>
+<li><strong>钉钉</strong> — 群机器人 Webhook</li>
+<li><strong>ئىختىيارىي</strong> — 任意 HTTP POST 端点</li>
+</ul>
+<p>ھەر بىر Webhook بولىدۇتەڭشەش触发事件: 任务完成، ئاجانت 完成، 错误通知. </p>
+
+<h2>ClawHub ماھارەت بازىرى</h2>
+<p>在 <strong>侧边栏 → Skill → ماھارەت بازىرى</strong> بەلگە页، بولىدۇ浏览ۋەئورنىتىش来自 OpenClaw جامائەت的ماھارەت: </p>
+<ul>
+<li>قوللاش按分类筛选: 编程، 研究، 写作، سانلىق-مەلۇمات، 自动化، 生产力</li>
+<li>ئىزدەش关键词快速定位</li>
+<li>بىر كۇنۇپكائورنىتىش، ئورنىتىش后在"已ئورنىتىش"بەلگەكۆرۈش</li>
+<li>ھەر بىرماھارەت显示作者، نەشرى، چۈشۈرۈش量ۋەبەلگە</li>
+</ul>
+<p>يەنەبولىدۇئارقىلىق本地ئورنىتىش方式ئەكىرىش <code>.md</code> 格式的 Skill ھۆججەت. </p>
+<figure class="doc-shot">
+        <img src="../../assets/docs/zh-guide/clawhub-skill-marketplace.png" alt="ھېشى AI ClawHub ماھارەت بازىرىبەت">
+<figcaption>ClawHub ماھارەت بازىرى示意: 按分类浏览ماھارەت، كۆرۈشچۈشۈرۈش量، بەلگەۋە简介، 并直接完成ئورنىتىش. </figcaption>
+</figure>
+
+<hr>
+<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-top:32px;margin-bottom:24px">
+<div><a href="/zh/docs/providers" style="color:var(--blue-deep)">← مودېل مۇلازىمەت تەمىنلىگۈچى</a></div>
+<div><a href="/zh/docs/shortcuts" style="color:var(--blue-deep)">تېز كۇنۇپكا پايدىلىنىش →</a></div>
+</div>
+<p style="text-align:center;margin-top:24px"><a href="https://github.com/hexagon-codes/hexclaw-site/edit/main/zh/docs/advanced.html" target="_blank" rel="noopener noreferrer" style="font-size:14px;color:var(--text-muted)">✏️ 在 GitHub 上تەھرىرلەشبۇ بەت</a></p>
+
+</main>
+<footer class="footer">
+<div class="footer-main">
+<div class="footer-brand">
+<a class="footer-logo" href="/zh/">ھېشى AI</a>
+<p class="footer-tagline">يەرلىك ئالدىنلىق的ئوچۇق كودلۇق AI ئاجانت ئۈستەلئۈستى سۇپا، ھەقىقىي سودىغا قارىتىلغانبىلەنشەخسىي ئىش ئېقىمى. </p>
+</div>
+<div class="footer-columns">
+<div class="footer-col">
+<div class="footer-col-title">مەھسۇلات</div>
+<a href="/zh/">باش بەت</a>
+<a href="https://github.com/hexagon-codes/hexclaw-desktop/releases" target="_blank" rel="noopener noreferrer">چۈشۈرۈشئۈستەلئۈستى ئۇچى</a>
+<a href="/zh/changelog">يېڭىلىنىش خاتىرىسى</a>
+</div>
+<div class="footer-col">
+<div class="footer-col-title">ئىجادكار</div>
+<a href="/zh/docs/">ھۆججەتلەرمەركەز</a>
+<a href="/zh/docs/getting-started">تېز قول سېلىش</a>
+<a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer">GitHub</a>
+</div>
+<div class="footer-col">
+<div class="footer-col-title">قانۇنبىلەنئالاقىلىشىش</div>
+<a href="/zh/privacy">شەخسىيەت سىياسىتى</a>
+<a href="/zh/terms">ئىشلىتىششەرت</a>
+<a href="mailto:ai@hexclaw.net">سودا مەسلىھەتى</a>
+</div>
+</div>
+</div>
+<div class="footer-bottom">
+<span class="footer-copy">&copy; 2025&ndash;2026 hexagon-codes</span>
+<div class="footer-meta-links">
+<a href="/zh/privacy">شەخسىيەت سىياسىتى</a>
+<a href="/zh/terms">ئىشلىتىششەرت</a>
+<a href="mailto:support@hexclaw.net">سوئالئىنكاس</a>
+</div>
+</div>
+</footer>
+<script src="../../assets/js/docs-nav.js"></script>
+<script>
+function toggleTheme(){var c=document.documentElement.getAttribute("data-theme");var n=c==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);localStorage.setItem("hexclaw-theme",n)}
+(function(){var s=localStorage.getItem("hexclaw-theme");var d=window.matchMedia("(prefers-color-scheme:dark)").matches;if(s==="dark"||(!s&&d))document.documentElement.setAttribute("data-theme","dark")})();
+window.addEventListener("scroll",function(){var n=document.querySelector(".tn,.topnav");if(n)n.classList.toggle("scrolled",window.scrollY>10);},{passive:true});
+</script>
+</body>
+</html>

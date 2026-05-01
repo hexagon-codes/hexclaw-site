@@ -114,6 +114,66 @@ a {
   color: var(--blue-deep);
 }
 
+.lang-select-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+}
+
+.lang-select-wrap::after {
+  content: "";
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  color: var(--blue-deep);
+  pointer-events: none;
+  transform: translateY(-65%) rotate(45deg);
+}
+
+.lang-select {
+  width: 108px;
+  min-height: 36px;
+  padding: 7px 30px 7px 14px;
+  border: 1px solid rgba(var(--accent-rgb), 0.14);
+  border-radius: 999px;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  box-shadow: 0 8px 24px rgba(var(--accent-rgb), 0.08);
+  color: var(--blue-deep);
+  cursor: pointer;
+  direction: ltr;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.2;
+  transition:
+    background-color 300ms cubic-bezier(0.34, 1.56, 0.64, 1),
+    border-color 300ms cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 300ms cubic-bezier(0.34, 1.56, 0.64, 1),
+    transform 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.lang-select:hover,
+.lang-select:focus-visible {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(var(--accent-rgb), 0.18);
+  box-shadow: 0 8px 24px rgba(var(--accent-rgb), 0.12);
+  transform: translateY(-1px);
+}
+
+.lang-select:focus-visible {
+  outline: none;
+}
+
 .tn .tn-r a.is-active,
 .topnav-links a.is-active {
   color: var(--blue-deep);
@@ -775,6 +835,17 @@ hr {
     text-align: left;
   }
 
+  .lang-select-wrap {
+    width: 100%;
+    margin: 8px 0;
+  }
+
+  .lang-select {
+    width: 100%;
+    min-height: 42px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  }
+
   .tn .tn-r a:last-child,
   .topnav-links a:last-child {
     border-bottom: none;
@@ -1149,6 +1220,28 @@ hr {
 [data-theme="dark"] .topnav-links a.nav-cta {
   background: rgba(255,255,255,0.06);
   border-color: rgba(255,255,255,0.1);
+}
+
+[data-theme="dark"] .lang-select {
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(255,255,255,0.1);
+  color: var(--blue-deep);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+}
+
+[data-theme="dark"] .lang-select:hover,
+[data-theme="dark"] .lang-select:focus-visible {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.16);
+}
+
+[data-theme="dark"] .lang-select option {
+  background: #1c1c1e;
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .lang-select-wrap::after {
+  color: var(--blue-deep);
 }
 
 [data-theme="dark"] .mobile-doc-nav a {
