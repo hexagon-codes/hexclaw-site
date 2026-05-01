@@ -33,7 +33,7 @@
 <link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/">
 <link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"SoftwareApplication","name":"HexClaw","applicationCategory":"BusinessApplication","operatingSystem":"macOS, Windows, Linux","url":"https://hexclaw.net/zh/","image":"https://hexclaw.net/assets/brand/hexclaw-logo.png","description":"Hexagon AI ئاجانت ماتورىغا ئاساسلانغان، HexClaw — قاپلىشى بىلەن ئىشلىتىشكە بولىدىغان AI ئاجانت ئۈستەلئۈستى خېرىدارى. يەرلىك ئورنىتىش، سانلىق-مەلۇمات شەخسىي، تولۇق ستاك ئوچۇق كودلۇق.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"downloadUrl":"https://hexclaw.net/download"}
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"HexClaw","applicationCategory":"BusinessApplication","operatingSystem":"macOS, Windows, Linux","url":"https://hexclaw.net/ug/","image":"https://hexclaw.net/assets/brand/hexclaw-logo.png","description":"Hexagon AI ئاجانت ماتورىغا ئاساسلانغان، HexClaw — قاپلىشى بىلەن ئىشلىتىشكە بولىدىغان AI ئاجانت ئۈستەلئۈستى خېرىدارى. يەرلىك ئورنىتىش، سانلىق-مەلۇمات شەخسىي، تولۇق ستاك ئوچۇق كودلۇق.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"downloadUrl":"https://hexclaw.net/download"}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebSite","name":"ھېشى AI","url":"https://hexclaw.net/","inLanguage":"ug","publisher":{"@type":"Organization","name":"hexagon-codes","url":"https://hexclaw.net/"}}
@@ -71,6 +71,22 @@
   .lang-select { width:108px; min-height:36px; padding:7px 30px 7px 14px; border:1px solid rgba(63,143,212,.14); border-radius:999px; outline:none; appearance:none; -webkit-appearance:none; background:rgba(255,255,255,.72); backdrop-filter:blur(20px) saturate(180%); -webkit-backdrop-filter:blur(20px) saturate(180%); box-shadow:0 8px 24px rgba(95,179,234,.12); color:var(--blue-deep); cursor:pointer; direction:ltr; font:inherit; font-size:14px; font-weight:600; line-height:1.2; transition:background-color 300ms cubic-bezier(0.34,1.56,0.64,1),border-color 300ms cubic-bezier(0.34,1.56,0.64,1),box-shadow 300ms cubic-bezier(0.34,1.56,0.64,1),transform 300ms cubic-bezier(0.34,1.56,0.64,1); }
   .lang-select:hover, .lang-select:focus-visible { background:rgba(255,255,255,.9); border-color:rgba(63,143,212,.18); box-shadow:0 8px 24px rgba(95,179,234,.16); transform:translateY(-1px); }
   .lang-select:focus-visible { outline:none; }
+  .lang-menu { position:relative; display:inline-flex; align-items:center; flex:0 0 auto; direction:ltr; }
+  .lang-trigger { min-height:40px; padding:0 11px; display:inline-flex; align-items:center; gap:7px; border:.5px solid rgba(255,255,255,.48); border-radius:10px; outline:none; background:rgba(255,255,255,.58); backdrop-filter:blur(20px) saturate(180%); -webkit-backdrop-filter:blur(20px) saturate(180%); box-shadow:0 1px 3px rgba(18,50,76,.04),0 8px 18px rgba(95,179,234,.06); color:rgba(18,50,76,.68); cursor:pointer; font:inherit; font-size:14px; font-weight:600; line-height:1; transition:background-color 150ms ease,border-color 150ms ease,color 150ms ease,box-shadow 150ms ease,transform 150ms ease; }
+  .lang-trigger:hover, .lang-menu.open .lang-trigger { background:rgba(255,255,255,.78); border-color:rgba(63,143,212,.14); color:var(--blue-deep); box-shadow:0 2px 8px rgba(0,0,0,.06),0 8px 24px rgba(95,179,234,.08); transform:translateY(-1px); }
+  .lang-trigger:focus-visible { box-shadow:0 0 0 3px rgba(0,122,255,.14),0 2px 8px rgba(0,0,0,.06); }
+  .lang-icon { width:16px; height:16px; flex-shrink:0; opacity:.84; }
+  .lang-chevron { width:14px; height:14px; flex-shrink:0; opacity:.72; transition:transform 220ms cubic-bezier(0.34,1.56,0.64,1); }
+  .lang-menu.open .lang-chevron { transform:rotate(180deg); }
+  .lang-current { white-space:nowrap; direction:auto; }
+  .lang-menu-list { position:absolute; top:calc(100% + 8px); right:0; z-index:220; min-width:136px; padding:6px; border:.5px solid rgba(255,255,255,.55); border-radius:12px; background:rgba(255,255,255,.82); backdrop-filter:blur(20px) saturate(180%); -webkit-backdrop-filter:blur(20px) saturate(180%); box-shadow:0 20px 40px rgba(18,50,76,.12),0 8px 16px rgba(18,50,76,.06); opacity:0; visibility:hidden; transform:scale(.96) translateY(-4px); transform-origin:top right; transition:opacity 160ms ease,transform 220ms cubic-bezier(0.34,1.56,0.64,1),visibility 160ms ease; }
+  .lang-menu.open .lang-menu-list { opacity:1; visibility:visible; transform:scale(1) translateY(0); }
+  .nav-links .lang-menu-list a { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:9px 10px; border:0; border-radius:8px; color:rgba(18,50,76,.72); text-decoration:none; font-size:14px; font-weight:500; line-height:1.2; direction:auto; transition:background-color 150ms ease,color 150ms ease; }
+  .nav-links .lang-menu-list a:hover { background:rgba(0,122,255,.08); color:var(--blue-deep); }
+  .nav-links .lang-menu-list a.is-active { background:rgba(0,122,255,.08); color:var(--blue-deep); font-weight:600; }
+  .nav-links .lang-menu-list a.is-active::after { content:'✓'; font-size:12px; color:var(--blue-deep); }
+  .lang-menu:not(.open) .lang-menu-list a.is-active::after { content:none; }
+  .lang-menu.open .lang-menu-list a.is-active::after { content:'✓'; }
   .nav-cta { padding:8px 18px!important; background:rgba(255,255,255,.72)!important; border:1px solid rgba(63,143,212,.14); border-radius:999px; color:var(--blue-deep)!important; font-weight:600!important; box-shadow:0 8px 24px rgba(95,179,234,.12); }
   .nav-star-badge { display:inline-flex; align-items:center; padding:1px 6px; margin-left:6px; border-radius:999px; background:rgba(240,180,41,0.15); color:#d4930f; font-size:12px; font-weight:700; }
   .nav-burger { display:none; background:none; border:none; cursor:pointer; padding:4px; }
@@ -251,6 +267,7 @@
   /* Responsive */
   @media(max-width:768px) { .nav { padding:10px 16px; } .nav-burger { display:block; padding:8px; } .nav-links { display:none; position:absolute; top:100%; left:0; right:0; flex-direction:column; background:rgba(244,251,255,.96); backdrop-filter:blur(24px); -webkit-backdrop-filter:blur(24px); padding:12px 20px; gap:0; border-bottom:1px solid rgba(63,143,212,.08); } .nav-links.open { display:flex; } .nav-links a { padding:14px 0; border-bottom:1px solid rgba(63,143,212,.06); font-size:15px; color:rgba(18,50,76,.72); } .nav-links a:last-child { border-bottom:none; } .nav-cta { margin-top:8px; text-align:center; } .nav-name { font-size:16px; } .features,.steps { grid-template-columns:repeat(2,1fr); } .cases { grid-template-columns:1fr; } .engine-stack { flex-direction:column; overflow:hidden; } .stack-row { flex-wrap:wrap; overflow-x:auto; } .engine-caps { white-space:normal; font-size:12px; } .stack-item { flex:1 1 auto; min-width:0; } .hero-title { font-size:clamp(28px,5vw,40px); } .hero-tagline { font-size:17px; } .btn { padding:12px 22px; font-size:16px; } .hero-logo { width:128px; height:128px; } section { padding:52px 24px; } }
   @media(max-width:768px) { .lang-select-wrap { width:100%; margin:8px 0; } .lang-select { width:100%; min-height:42px; box-shadow:none; } }
+  @media(max-width:768px) { .lang-menu { width:100%; margin:8px 0; display:flex; flex-direction:column; align-items:stretch; } .lang-trigger { width:100%; min-height:42px; justify-content:center; box-shadow:none; } .lang-menu-list { position:static; display:none; width:100%; margin-top:8px; box-shadow:none; opacity:1; visibility:visible; transform:none; } .lang-menu.open .lang-menu-list { display:block; transform:none; } .nav-links .lang-menu-list a, .nav-links .lang-menu-list a.is-active { justify-content:center; padding:10px 12px; border-bottom:0; } }
   @media(max-width:640px) { .hero { padding:84px 20px 36px; } section { padding:42px 16px; } .features,.steps { grid-template-columns:1fr; } .eco-apps { grid-template-columns:1fr; max-width:240px; } .cta-card { padding:28px 22px; border-radius:24px; } .hero-title { font-size:24px; line-height:1.28; } .hero-tagline { font-size:15px; } .dl-cards { grid-template-columns:1fr; max-width:240px; } .dl-card { padding:18px 14px 14px; } .dl-card-icon { width:28px; height:28px; } .dl-card-name { font-size:14px; } .hero-logo { width:104px; height:104px; } .hero-version { flex-wrap:wrap; justify-content:center; } .sec-title { font-size:26px; } .sec-desc { font-size:16px; } .engine-logo { width:36px; height:36px; } .engine-name { font-size:15px; } .engine-caps { white-space:normal; } .section-inner { max-width:100%; } .engine-bar { flex-direction:column; align-items:flex-start; } .engine-caps { font-size:11px; white-space:normal; line-height:1.5; } .stack-row { display:grid; grid-template-columns:1fr 1fr; gap:6px; } .stack-item { white-space:normal; padding:8px 10px; font-size:13px; } .stack-label { font-size:13px; } .stack-sub { font-size:11px; } }
   /* ===== ENHANCEMENT: Hero Particle / Stardust Background ===== */
   .hero-particle { position:absolute; border-radius:50%; background:var(--blue); pointer-events:none; z-index:0; }
@@ -418,6 +435,12 @@
   [data-theme="dark"] .lang-select:hover, [data-theme="dark"] .lang-select:focus-visible { background:rgba(95,179,234,0.14); border-color:rgba(95,179,234,0.2); }
   [data-theme="dark"] .lang-select option { background:#1c1c1e; color:var(--text-primary); }
   [data-theme="dark"] .lang-select-wrap::after { color:var(--blue-light); }
+  [data-theme="dark"] .lang-trigger { background:rgba(95,179,234,0.08); border-color:rgba(255,255,255,0.1); color:rgba(232,236,240,0.72); box-shadow:0 8px 24px rgba(0,0,0,0.18); }
+  [data-theme="dark"] .lang-trigger:hover, [data-theme="dark"] .lang-menu.open .lang-trigger { background:rgba(95,179,234,0.12); border-color:rgba(255,255,255,0.16); color:var(--blue-light); }
+  [data-theme="dark"] .lang-menu-list { background:rgba(28,28,30,0.9); border-color:rgba(255,255,255,0.1); box-shadow:0 20px 40px rgba(0,0,0,0.28),0 8px 16px rgba(0,0,0,0.18); }
+  [data-theme="dark"] .nav-links .lang-menu-list a { color:rgba(232,236,240,0.72); }
+  [data-theme="dark"] .nav-links .lang-menu-list a:hover, [data-theme="dark"] .nav-links .lang-menu-list a.is-active { background:rgba(95,179,234,0.1); color:var(--blue-light); }
+  [data-theme="dark"] .nav-links .lang-menu-list a.is-active::after { color:var(--blue-light); }
   [data-theme="dark"] .nav-burger span { background:var(--text-primary); }
   [data-theme="dark"] .hero-bg { background:radial-gradient(ellipse 80% 60% at 50% 0%, rgba(95,179,234,0.08) 0%, rgba(30,60,100,0.15) 35%, transparent 70%), linear-gradient(180deg, #0b1525 0%, #0f1d32 25%, #112240 50%, #0e1b2e 100%); }
   [data-theme="dark"] .hero-bg::after { background:linear-gradient(180deg,rgba(11,21,37,.2) 0%, rgba(11,21,37,0) 38%, var(--bg) 100%); }
@@ -534,15 +557,15 @@
 </style>
 </head>
 <body>
-  <a href="#main" class="skip-link">Skip to content</a>
+  <a href="#main" class="skip-link">ئاساسىي مەزمۇنغا ئۆتۈش</a>
   <nav class="nav" id="nav">
     <a href="./" class="nav-brand"><img src="../assets/brand/hexclaw-icon-72.png" class="nav-logo" alt="ھېشى AI"><span class="nav-name">ھېشى AI</span></a>
     <button class="nav-burger" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="تىزىملىك"><span></span><span></span><span></span></button>
     <div class="nav-links">
-      <a href="#features">مەھسۇلات ئىقتىدارى</a><a href="#quickstart">تېز قول سېلىش</a><a href="#cases">ئىشلىتىشئەھۋال</a><a href="#ecosystem">ئوچۇق كودلۇقئېكوسىستېما</a>
-      <a href="/zh/docs/">ھۆججەتلەر</a>
-      <span class="lang-select-wrap"><select class="lang-select" aria-label="Language switcher" onchange="if(this.value) window.location.href=this.value"><option value="/zh/">中文</option><option value="/en/">English</option><option value="/ug/" selected>维吾尔语</option></select></span>
-      <button class="nav-theme-toggle" onclick="toggleTheme()" aria-label="ئالماشتۇرۇش主题">
+      <a href="#features">مەھسۇلات ئىقتىدارى</a><a href="#quickstart">تېز باشلاش</a><a href="#cases">ئىشلىتىش ئەھۋاللىرى</a><a href="#ecosystem">ئوچۇق كودلۇق ئېكوسىستېما</a>
+      <a href="/ug/docs/">ھۆججەتلەر</a>
+      <div class="lang-menu" data-lang-menu><button type="button" class="lang-trigger" aria-haspopup="menu" aria-expanded="false" aria-label="Language switcher"><svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 0 20"></path><path d="M12 2a15.3 15.3 0 0 0 0 20"></path></svg><span class="lang-current">维吾尔语</span><svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="lang-menu-list" role="menu"><a href="/zh/" role="menuitem">中文</a><a href="/en/" role="menuitem">English</a><a href="/ug/" role="menuitem" class="is-active" aria-current="true">维吾尔语</a></div></div>
+      <button class="nav-theme-toggle" onclick="toggleTheme()" aria-label="تېمىنى ئالماشتۇرۇش">
         <svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
         <svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
       </button>
@@ -580,14 +603,14 @@
     <div class="hero-inner">
       <img src="../assets/brand/hexclaw-logo.png" class="hero-logo" alt="ھېشى AI"/>
       <div class="hero-badge"><span class="hero-badge-dot"></span>تولۇق ستاك ئوچۇق كودلۇق · Apache-2.0 كېلىشىم</div>
-      <h1 class="hero-title">🦞 再见، 龙虾的繁琐تەڭشەش<br>🦀 你好، 河蟹的横行 AI</h1>
-      <p class="hero-tagline">自研موتور · 多 ئاجانت 协作 · بولىدۇ视化ئىش ئېقىمى · RAG بىلىم ئامبىرى<br>ئىقتىدار一个不少، سانلىق-مەلۇمات全在本地، بىر كۇنۇپكائورنىتىش更省心</p>
+      <h1 class="hero-title">🦞 مۇرەككەپ سەپلىمىلەر بىلەن خوشلىشىڭ<br>🦀 يەرلىكتە ئىجرا بولىدىغان AI خىزمەت سۇپىسىغا باشلاڭ</h1>
+      <p class="hero-tagline">ئۆزىمىز تەتقىق قىلغان ماتور · كۆپ Agent ھەمكارلىقى · كۆرۈنمە ئىشلەم ئېقىمى · RAG بىلىم ئامبىرى<br>بارلىق ئىقتىدارلار تولۇق، سانلىق-مەلۇماتلار يەرلىكتە، بىر چېكىش بىلەن ئورنىتىش تېخىمۇ خاتىرجەم</p>
       <div class="hero-version"><span class="hero-vtag">v0.4.0</span><span class="hero-vsep">·</span><span class="hero-vmeta">Apache-2.0 License</span><span class="hero-vsep">·</span><span class="hero-vmeta">macOS / Windows / Linux</span></div>
       <div class="dl-section">
         <div style="max-width:540px;margin:0 auto 18px;text-align:left">
-          <p style="font-size:14px;font-weight:600;color:var(--text-primary);margin-bottom:8px">macOS بىر كۇنۇپكائورنىتىش (推荐) </p>
+          <p style="font-size:14px;font-weight:600;color:var(--text-primary);margin-bottom:8px">macOS بىر چېكىش بىلەن ئورنىتىش (تەۋسىيە)</p>
           <pre style="background:rgba(0,0,0,.06);border-radius:10px;padding:12px 16px;font-size:13px;overflow-x:auto;margin-bottom:10px"><code>curl -fsSL https://raw.githubusercontent.com/hexagon-codes/hexclaw-desktop/main/install.sh | bash</code></pre>
-          <p style="font-size:13px;color:var(--text-muted);margin-bottom:4px">ياكىئارقىلىق Homebrew: </p>
+          <p style="font-size:13px;color:var(--text-muted);margin-bottom:4px">ياكى Homebrew ئارقىلىق:</p>
           <pre style="background:rgba(0,0,0,.06);border-radius:10px;padding:12px 16px;font-size:13px;overflow-x:auto;margin-bottom:0"><code>brew tap hexagon-codes/tap && brew install --cask hexclaw</code></pre>
         </div>
         <div class="dl-cards">
@@ -620,12 +643,12 @@
             </div>
           </div>
         </div>
-        <a href="https://github.com/hexagon-codes/hexclaw-desktop/releases" target="_blank" rel="noopener noreferrer" class="dl-all-link">كۆرۈشبارلىقنەشرى →</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/releases" target="_blank" rel="noopener noreferrer" class="dl-all-link">بارلىق نەشرلىرىنى كۆرۈش →</a>
       </div>
     </div>
     <div class="hero-mockup reveal">
       <figure class="hero-shot">
-        <img src="../assets/docs/zh-guide/chat-first-conversation.png" alt="ھېشى AI 首次سۆھبەت">
+        <img src="../assets/docs/zh-guide/chat-first-conversation.png" alt="ھېشى AI تۇنجى سۆھبەت">
       </figure>
     </div>
   </section>
@@ -636,55 +659,55 @@
         <div class="engine-bar">
           <img src="data:image/png;base64,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" class="engine-logo" alt="Hexagon"/>
           <div class="engine-info"><span class="engine-sup">POWERED BY</span><span class="engine-name">Hexagon AI ئاجانت Engine</span></div>
-          <span class="engine-caps">ReAct · Tool 调度 · 声明式تەرتىپلەش</span>
+          <span class="engine-caps">ReAct · قورال ۋاقىتلاشتۇرۇش · بايانىي تەرتىپلەش</span>
         </div>
         <div class="stack-row">
           <div class="stack-shimmer"></div>
-          <div class="stack-item" data-tip="Rust 驱动的ئەسلىيئۈستەلئۈستىرامكا، 轻量高性能"><span class="stack-dot" style="background:#f74c00"></span><span class="stack-label">Tauri v2</span><span class="stack-sub">Rust</span></div>
-          <div class="stack-item" data-tip="响应式ئالدى ئۇچرامكا، Composition API + TypeScript"><span class="stack-dot" style="background:#42b883"></span><span class="stack-label">Vue 3</span><span class="stack-sub">TS</span></div>
-          <div class="stack-item" data-tip="Go 语言كەينى ئۇچ进程، ئاجانت موتورئىجرا قىلىش时"><span class="stack-dot" style="background:#00add8"></span><span class="stack-label">Go Sidecar</span></div>
-          <div class="stack-item" data-tip="API Key 加密ساقلاش، 请求签名校验"><span class="stack-dot" style="background:#f5a623"></span><span class="stack-label">بىخەتەرلىكئېغىز</span></div>
+          <div class="stack-item" data-tip="Rust قوزغاتقان يەرلىك ئۈستەلئۈستى رامكىسى، يېنىك ۋە يۇقىرى ئىقتىدارلىق"><span class="stack-dot" style="background:#f74c00"></span><span class="stack-label">Tauri v2</span><span class="stack-sub">Rust</span></div>
+          <div class="stack-item" data-tip="ئىنكاسچان ئالدى ئۇچ رامكىسى، Composition API + TypeScript"><span class="stack-dot" style="background:#42b883"></span><span class="stack-label">Vue 3</span><span class="stack-sub">TS</span></div>
+          <div class="stack-item" data-tip="Go تىلىدىكى ئارقا ئۇچ جەريانى، Agent ماتورىنىڭ ئىجرا ۋاقتى"><span class="stack-dot" style="background:#00add8"></span><span class="stack-label">Go Sidecar</span></div>
+          <div class="stack-item" data-tip="API Key شىفىرلاپ ساقلاش، تەلەپ ئىمزاسىنى تەكشۈرۈش"><span class="stack-dot" style="background:#f5a623"></span><span class="stack-label">بىخەتەرلىك قەۋىتى</span></div>
         </div>
       </div>
-      <div class="reveal"><div class="sec-sup">Core Capabilities</div><h2 class="sec-title">مەھسۇلات ئىقتىدارى</h2><div class="sec-desc">不止是سۆھبەتخېرىدار، 更是完整的 AI ئاجانت 开发بىلەنئىجرا قىلىش平台</div></div>
+      <div class="reveal"><div class="sec-sup">ئاساسىي ئىقتىدارلار</div><h2 class="sec-title">مەھسۇلات ئىقتىدارلىرى</h2><div class="sec-desc">بۇ پەقەت سۆھبەت خېرىدارىلا ئەمەس، بەلكى AI Agent نى ئېچىش ۋە ئىجرا قىلىش ئۈچۈن تولۇق سۇپا.</div></div>
       <div class="features">
-        <div class="feat reveal"><div class="feat-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--blue-deep)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3 class="feat-title">يەرلىك ئورنىتىش، سانلىق-مەلۇمات شەخسىي</h3><div class="feat-desc">Sidecar 架构ئىجرا قىلىش在本机، API Key 直连مودېل مۇلازىمەت تەمىنلىگۈچى، 中间零代理. </div></div>
-        <div class="feat reveal"><div class="feat-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--blue-deep)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3"/></svg></div><h3 class="feat-title">自研 ئاجانت موتور</h3><div class="feat-desc">ReAct / Plan-and-Execute 双نەتىجە چىقىرىش范式، 声明式定义، Tool 自动调度. </div></div>
-        <div class="feat reveal"><div class="feat-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--blue-deep)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22v-5M9 7V2M15 7V2M6 13V9a6 6 0 0 1 12 0v4"/><rect x="6" y="13" width="12" height="4" rx="1"/></svg></div><h3 class="feat-title">MCP قورالكېلىشىم</h3><div class="feat-desc">ئەسلىيقوللاش Model Context Protocol، ھۆججەت، سانلىق-مەلۇمات库، API 即插即用. </div></div>
-        <div class="feat reveal"><div class="feat-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--blue-deep)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg></div><h3 class="feat-title">多مودېل统一适配</h3><div class="feat-desc">OpenAI / Claude / DeepSeek 统一封装، ئىجرا قىلىش时热ئالماشتۇرۇش. </div></div>
-        <div class="feat reveal"><div class="feat-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--blue-deep)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10M18 20V4M6 20v-4"/></svg></div><h3 class="feat-title">全链路بولىدۇ观测</h3><div class="feat-desc">ئىجرا قىلىش链路追踪، نەتىجە چىقىرىش回放، Tool Call خاتىرە، Token 消耗ئانالىز. </div></div>
-        <div class="feat reveal"><div class="feat-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--blue-deep)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><h3 class="feat-title">三端ئەسلىيئىجرا قىلىش</h3><div class="feat-desc">Tauri v2 + Rust، macOS / Windows / Linux ئەسلىي، 轻量快速. </div></div>
+        <div class="feat reveal"><div class="feat-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--blue-deep)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3 class="feat-title">يەرلىك ئورنىتىش، سانلىق-مەلۇمات شەخسىي</h3><div class="feat-desc">Sidecar قۇرۇلمىسى يەرلىك كومپيۇتېردا ئىجرا بولىدۇ؛ API Key مودېل تەمىنلىگۈچىگە بىۋاسىتە ئۇلىنىدۇ، ئوتتۇرىدا ۋاكالەتچى يوق.</div></div>
+        <div class="feat reveal"><div class="feat-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--blue-deep)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3"/></svg></div><h3 class="feat-title">ئۆزىمىز تەتقىق قىلغان Agent ماتورى</h3><div class="feat-desc">ReAct ۋە Plan-and-Execute دىن ئىبارەت ئىككى خىل پىلانلاش ئۇسۇلى، بايانىي ئېنىقلىما ۋە قوراللارنى ئاپتوماتىك ۋاقىتلاشتۇرۇش.</div></div>
+        <div class="feat reveal"><div class="feat-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--blue-deep)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22v-5M9 7V2M15 7V2M6 13V9a6 6 0 0 1 12 0v4"/><rect x="6" y="13" width="12" height="4" rx="1"/></svg></div><h3 class="feat-title">MCP قورال كېلىشىمى</h3><div class="feat-desc">Model Context Protocol نى يەرلىك قوللايدۇ؛ ھۆججەت، ساندان ۋە API لارنى تېز ئۇلاپ ئىشلىتىشكە بولىدۇ.</div></div>
+        <div class="feat reveal"><div class="feat-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--blue-deep)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg></div><h3 class="feat-title">كۆپ مودېلنى بىرلىككە كەلتۈرۈپ ماسلاشتۇرۇش</h3><div class="feat-desc">OpenAI / Claude / DeepSeek نى بىرلىككە كەلتۈرۈپ ئوراپ، ئىجرا ۋاقتىدا قىزىق ئالماشتۇرۇشنى قوللايدۇ.</div></div>
+        <div class="feat reveal"><div class="feat-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--blue-deep)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10M18 20V4M6 20v-4"/></svg></div><h3 class="feat-title">پۈتۈن زەنجىرنى كۆزىتىش</h3><div class="feat-desc">ئىجرا زەنجىرىنى ئىزلاش، پىلانلاشنى قايتا كۆرۈش، Tool Call خاتىرىسى ۋە Token سەرپىياتىنى تەھلىل قىلىش.</div></div>
+        <div class="feat reveal"><div class="feat-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--blue-deep)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><h3 class="feat-title">ئۈچ سۇپىدا يەرلىك ئىجرا</h3><div class="feat-desc">Tauri v2 + Rust ئارقىلىق macOS / Windows / Linux دا يەرلىك، يېنىك ۋە تېز ئىجرا بولىدۇ.</div></div>
       </div>
     </div>
   </section>
 
   <section id="quickstart"><div class="section-inner">
-    <div class="reveal" style="text-align:center"><div class="sec-sup">Quick Start</div><h2 class="sec-title">三步ئىشلىتىشنى باشلاش</h2><div class="sec-desc" style="margin:0 auto 32px">从چۈشۈرۈش到باشلاش干活، 只ئېھتىياج几分钟</div></div>
+    <div class="reveal" style="text-align:center"><div class="sec-sup">تېز باشلاش</div><h2 class="sec-title">ئۈچ قەدەمدە ئىشلىتىشنى باشلاڭ</h2><div class="sec-desc" style="margin:0 auto 32px">چۈشۈرۈشتىن خىزمەتكە كىرىشكىچە پەقەت بىر نەچچە مىنۇت.</div></div>
     <div class="steps">
-      <div class="step reveal"><div class="step-num">1</div><h3 class="step-title">چۈشۈرۈشئورنىتىش</h3><div class="step-desc">三端بىر كۇنۇپكائورنىتىش، 内置 Go Sidecar، ئېھتىياج يوقتەڭشەش环境</div></div>
-      <div class="step reveal"><div class="step-num">2</div><h3 class="step-title">تولدۇرۇش API Key</h3><div class="step-desc">Key 仅存本地، 不经任何中转، 直连مودېل مۇلازىمەت تەمىنلىگۈچى</div></div>
-      <div class="step reveal"><div class="step-num">3</div><h3 class="step-title">سۆھبەت即指令</h3><div class="step-desc">自然语言下达任务، ئاجانت 自动规划، چاقىرىشقورال، 生成结果</div></div>
+      <div class="step reveal"><div class="step-num">1</div><h3 class="step-title">چۈشۈرۈپ ئورنىتىش</h3><div class="step-desc">ئۈچ سۇپىغا بىر چېكىش بىلەن ئورنىتىش؛ Go Sidecar ئىچىگە قاچىلانغان، مۇھىتنى قولدا سەپلەشنىڭ ھاجىتى يوق.</div></div>
+      <div class="step reveal"><div class="step-num">2</div><h3 class="step-title">API Key نى تولدۇرۇش</h3><div class="step-desc">Key پەقەت يەرلىكتە ساقلىنىدۇ، ھېچقانداق ئوتتۇرا مۇلازىمەتتىن ئۆتمەي مودېل تەمىنلىگۈچىگە بىۋاسىتە ئۇلىنىدۇ.</div></div>
+      <div class="step reveal"><div class="step-num">3</div><h3 class="step-title">سۆھبەتلا بۇيرۇق</h3><div class="step-desc">تەبىئىي تىلدا ۋەزىپە بېرىڭ؛ Agent ئاپتوماتىك پىلانلايدۇ، قورال چاقىرىدۇ ۋە نەتىجە ھاسىل قىلىدۇ.</div></div>
     </div>
   </div></section>
 
   <section id="cases"><div class="section-inner">
-    <div class="reveal"><div class="sec-sup">Use Cases</div><h2 class="sec-title">真实ئەھۋال</h2><div class="sec-desc">从日常办公到自动化开发، قاپلاش高频ئىشلىتىشئەھۋال</div></div>
+    <div class="reveal"><div class="sec-sup">ئىشلىتىش ئەھۋاللىرى</div><h2 class="sec-title">ھەقىقىي ئەھۋاللار</h2><div class="sec-desc">كۈندىلىك ئىشخانا خىزمىتىدىن ئاپتوماتىك ئېچىشقىچە، كۆپ ئىشلىتىلىدىغان ئەھۋاللارنى قاپلايدۇ.</div></div>
     <div class="cases">
       <div class="case reveal">
-        <div class="case-text"><div class="case-tag">智能تەرتىپلەش</div><h3 class="case-title">多步骤任务自动ئىجرا قىلىش</h3><p class="case-q">调研 RAG 领域最新进展، 整理成中文综述</p><p class="case-a">检索 12 篇论文، 生成 2800 字综述، 已ساقلاش至ئۈستەلئۈستى</p></div>
-        <div class="case-visual"><div class="case-bubble case-bubble--user">调研 RAG 领域最新进展، 整理成中文综述</div><div class="case-bubble case-bubble--ai">检索 12 篇论文، 生成 2800 字综述، 已ساقلاش至ئۈستەلئۈستى</div></div>
+        <div class="case-text"><div class="case-tag">ئەقلىي پىلانلاش</div><h3 class="case-title">كۆپ قەدەملىك ۋەزىپىنى ئاپتوماتىك ئىجرا قىلىش</h3><p class="case-q">RAG ساھەسىدىكى ئەڭ يېڭى تەرەققىياتنى تەكشۈرۈپ، ئۇنى قىسقىچە دوكلات قىلىپ تەييارلا</p><p class="case-a">12 پارچە ماقالە تېپىلدى، 2800 سۆزلۈك دوكلات ھاسىل قىلىندى ۋە ئۈستەلئۈستىگە ساقلاندى</p></div>
+        <div class="case-visual"><div class="case-bubble case-bubble--user">RAG ساھەسىدىكى ئەڭ يېڭى تەرەققىياتنى تەكشۈرۈپ، ئۇنى قىسقىچە دوكلات قىلىپ تەييارلا</div><div class="case-bubble case-bubble--ai">12 پارچە ماقالە تېپىلدى، 2800 سۆزلۈك دوكلات ھاسىل قىلىندى ۋە ئۈستەلئۈستىگە ساقلاندى</div></div>
       </div>
       <div class="case reveal">
-        <div class="case-text"><div class="case-tag">本地操控</div><h3 class="case-title">直接操作本地ھۆججەت</h3><p class="case-q">把 Downloads 的发票按月分类، 金额جەملىمە到 Excel</p><p class="case-a">47 张发票按 6 个月份归档، جەملىمە ¥128,450</p></div>
-        <div class="case-visual"><div class="case-bubble case-bubble--user">把 Downloads 的发票按月分类، 金额جەملىمە到 Excel</div><div class="case-bubble case-bubble--ai">47 张发票按 6 个月份归档، جەملىمە ¥128,450</div></div>
+        <div class="case-text"><div class="case-tag">يەرلىك كونترول</div><h3 class="case-title">يەرلىك ھۆججەتلەرنى بىۋاسىتە باشقۇرۇش</h3><p class="case-q">Downloads دىكى تالونلارنى ئاي بويىچە تۈرگە ئايرىپ، سوممىنى Excel غا جەملى</p><p class="case-a">47 تال تالون 6 ئاي بويىچە ئارخىپلاندى، جەمئى ¥128,450</p></div>
+        <div class="case-visual"><div class="case-bubble case-bubble--user">Downloads دىكى تالونلارنى ئاي بويىچە تۈرگە ئايرىپ، سوممىنى Excel غا جەملى</div><div class="case-bubble case-bubble--ai">47 تال تالون 6 ئاي بويىچە ئارخىپلاندى، جەمئى ¥128,450</div></div>
       </div>
       <div class="case reveal">
-        <div class="case-text"><div class="case-tag">代码生成</div><h3 class="case-title">自动化开发任务</h3><p class="case-q">قۇرۇش Chrome 扩展، 提取بەتئۇچۇر存ئۈچۈن Markdown</p><p class="case-a">已生成完整تۈر结构، بولىدۇ直接加载调试</p></div>
-        <div class="case-visual"><div class="case-bubble case-bubble--user">قۇرۇش Chrome 扩展، 提取بەتئۇچۇر存ئۈچۈن Markdown</div><div class="case-bubble case-bubble--ai">已生成完整تۈر结构، بولىدۇ直接加载调试</div></div>
+        <div class="case-text"><div class="case-tag">كود ھاسىل قىلىش</div><h3 class="case-title">ئاپتوماتىك ئېچىش ۋەزىپىلىرى</h3><p class="case-q">بەت ئۇچۇرىنى Markdown قىلىپ ساقلايدىغان Chrome كېڭەيتىلمىسى قۇر</p><p class="case-a">تولۇق تۈر قۇرۇلمىسى ھاسىل قىلىندى، بىۋاسىتە يۈكلەپ سىناشقا بولىدۇ</p></div>
+        <div class="case-visual"><div class="case-bubble case-bubble--user">بەت ئۇچۇرىنى Markdown قىلىپ ساقلايدىغان Chrome كېڭەيتىلمىسى قۇر</div><div class="case-bubble case-bubble--ai">تولۇق تۈر قۇرۇلمىسى ھاسىل قىلىندى، بىۋاسىتە يۈكلەپ سىناشقا بولىدۇ</div></div>
       </div>
       <div class="case reveal">
-        <div class="case-text"><div class="case-tag">知识问答</div><h3 class="case-title">个人بىلىم ئامبىرى检索</h3><p class="case-q">Sidecar 架构是怎么工作的?</p><p class="case-a">Tauri قوزغىتىش时ئارقىلىق sidecar 拉起 Go 二进制...</p></div>
-        <div class="case-visual"><div class="case-bubble case-bubble--user">Sidecar 架构是怎么工作的?</div><div class="case-bubble case-bubble--ai">Tauri قوزغىتىش时ئارقىلىق sidecar 拉起 Go 二进制...</div></div>
+        <div class="case-text"><div class="case-tag">بىلىم سوئال-جاۋاب</div><h3 class="case-title">شەخسىي بىلىم ئامبىرىدىن ئىزدەش</h3><p class="case-q">Sidecar قۇرۇلمىسى قانداق ئىشلەيدۇ؟</p><p class="case-a">Tauri قوزغالغاندا sidecar ئارقىلىق Go ئىككىلىك پروگراممىسىنى قوزغىتىدۇ...</p></div>
+        <div class="case-visual"><div class="case-bubble case-bubble--user">Sidecar قۇرۇلمىسى قانداق ئىشلەيدۇ؟</div><div class="case-bubble case-bubble--ai">Tauri قوزغالغاندا sidecar ئارقىلىق Go ئىككىلىك پروگراممىسىنى قوزغىتىدۇ...</div></div>
       </div>
     </div>
   </div></section>
@@ -698,7 +721,7 @@
     <div class="eco-hex-deco"><svg width="32" height="32" viewBox="0 0 48 48"><path d="M24 2l20 11.5v23L24 48 4 36.5v-23z"/></svg></div>
 
     <div class="section-inner">
-    <div class="reveal" style="text-align:center"><div class="sec-sup">Open Source Ecosystem</div><h2 class="sec-title">تولۇق ستاك ئوچۇق كودلۇقئېكوسىستېما</h2><div class="sec-desc" style="margin:0 auto 32px">7 个仓库分层解耦، 每一层独立بولىدۇ用</div></div>
+    <div class="reveal" style="text-align:center"><div class="sec-sup">ئوچۇق كودلۇق ئېكوسىستېما</div><h2 class="sec-title">تولۇق ستاك ئوچۇق كودلۇق ئېكوسىستېما</h2><div class="sec-desc" style="margin:0 auto 32px">7 ئامبار قەۋەتلەر بويىچە ئايرىلغان، ھەر بىر قەۋەتنى ئايرىم ئىشلىتىشكە بولىدۇ</div></div>
 
     <!-- Chain with SVG animated connections -->
     <div class="eco-chain-wrapper reveal">
@@ -711,10 +734,10 @@
         </defs>
       </svg>
       <div class="eco-chain">
-        <a href="https://github.com/hexagon-codes/toolkit" target="_blank" rel="noopener noreferrer" class="eco-node" id="eco-n-toolkit"><span class="eco-emoji">🛠</span><span class="eco-label">toolkit</span><span class="eco-sub">基础设施</span></a><span class="eco-arrow">→</span>
-        <a href="https://github.com/hexagon-codes/ai-core" target="_blank" rel="noopener noreferrer" class="eco-node" id="eco-n-aicore"><span class="eco-emoji">🧠</span><span class="eco-label">ai-core</span><span class="eco-sub">LLM 适配</span></a><span class="eco-arrow">→</span>
+        <a href="https://github.com/hexagon-codes/toolkit" target="_blank" rel="noopener noreferrer" class="eco-node" id="eco-n-toolkit"><span class="eco-emoji">🛠</span><span class="eco-label">toolkit</span><span class="eco-sub">ئاساسىي ئۇل ئەسلىھە</span></a><span class="eco-arrow">→</span>
+        <a href="https://github.com/hexagon-codes/ai-core" target="_blank" rel="noopener noreferrer" class="eco-node" id="eco-n-aicore"><span class="eco-emoji">🧠</span><span class="eco-label">ai-core</span><span class="eco-sub">LLM ماسلاشتۇرۇش</span></a><span class="eco-arrow">→</span>
         <a href="https://github.com/hexagon-codes/hexagon" target="_blank" rel="noopener noreferrer" class="eco-node eco-node--hl" id="eco-n-hexagon"><span class="eco-emoji">🔷</span><span class="eco-label">hexagon</span><span class="eco-sub">ئاجانت رامكا</span></a><span class="eco-arrow">→</span>
-        <a href="https://github.com/hexagon-codes/hexclaw" target="_blank" rel="noopener noreferrer" class="eco-node" id="eco-n-hexclaw"><span class="eco-emoji">🦀</span><span class="eco-label">hexclaw</span><span class="eco-sub">كەينى ئۇچ服务</span></a>
+        <a href="https://github.com/hexagon-codes/hexclaw" target="_blank" rel="noopener noreferrer" class="eco-node" id="eco-n-hexclaw"><span class="eco-emoji">🦀</span><span class="eco-label">hexclaw</span><span class="eco-sub">ئارقا ئۇچ مۇلازىمىتى</span></a>
       </div>
     </div>
 
@@ -731,7 +754,7 @@
       <div class="eco-apps">
         <a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="eco-app eco-app--cur" id="eco-a-desktop">hexclaw-desktop<span>ئۈستەلئۈستى خېرىدار</span></a>
         <a href="https://github.com/hexagon-codes/hexclaw-ui" target="_blank" rel="noopener noreferrer" class="eco-app" id="eco-a-ui">hexclaw-ui<span>Web خېرىدار</span></a>
-        <a href="https://github.com/hexagon-codes/hexagon-ui" target="_blank" rel="noopener noreferrer" class="eco-app" id="eco-a-hexui">hexagon-ui<span>ئاجانت 观测台</span></a>
+        <a href="https://github.com/hexagon-codes/hexagon-ui" target="_blank" rel="noopener noreferrer" class="eco-app" id="eco-a-hexui">hexagon-ui<span>Agent كۆزىتىش تاختىسى</span></a>
       </div>
     </div>
   </div></section>
@@ -740,7 +763,7 @@
     <div class="social-proof-bar reveal">
       <span class="social-proof-item">تولۇق ستاك ئوچۇق كودلۇق</span>
       <span class="social-proof-sep">&middot;</span>
-      <span class="social-proof-item"><span class="sp-num">7</span> 个仓库</span>
+      <span class="social-proof-item"><span class="sp-num">7</span> ئامبار</span>
       <span class="social-proof-sep">&middot;</span>
       <span class="social-proof-item">Apache-2.0 كېلىشىم</span>
       <span class="social-proof-sep">&middot;</span>
@@ -749,11 +772,11 @@
   </section>
 
   <section class="cta"><div class="cta-card reveal">
-    <div class="cta-title">ئىشلىتىشنى باشلاشھېشى AI</div>
-    <div class="cta-desc">تولۇق ستاك ئوچۇق كودلۇق، Apache-2.0 كېلىشىم، 零ئىشلىتىش限制. چۈشۈرۈش即用، يەنەبولىدۇ从源码构建你自己的 AI ئاجانت 平台. </div>
+    <div class="cta-title">ھېشى AI نى ئىشلىتىشنى باشلاڭ</div>
+    <div class="cta-desc">تولۇق ستاك ئوچۇق كودلۇق، Apache-2.0 كېلىشىمى، ئىشلىتىش چەكلىمىسى يوق. چۈشۈرۈپلا ئىشلىتىڭ، ياكى مەنبە كودتىن ئۆزىڭىزنىڭ AI Agent سۇپىسىنى قۇرۇڭ.</div>
     <div class="cta-buttons">
       <a href="https://github.com/hexagon-codes/hexclaw-desktop/releases" target="_blank" rel="noopener noreferrer" class="btn btn-solid"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>ھازىرلا چۈشۈرۈش</a>
-      <a href="https://github.com/hexagon-codes" target="_blank" rel="noopener noreferrer" class="btn btn-outline">浏览源码 →</a>
+      <a href="https://github.com/hexagon-codes" target="_blank" rel="noopener noreferrer" class="btn btn-outline">مەنبە كودنى كۆرۈش →</a>
     </div>
   </div></section>
   </main>
@@ -763,14 +786,14 @@
       <div class="footer-grid">
         <div class="footer-col">
           <div class="footer-col-title">مەھسۇلات</div>
-          <a href="https://github.com/hexagon-codes/hexclaw-desktop/releases" target="_blank" rel="noopener noreferrer">چۈشۈرۈشئۈستەلئۈستى ئۇچى</a>
+          <a href="https://github.com/hexagon-codes/hexclaw-desktop/releases" target="_blank" rel="noopener noreferrer">ئۈستەلئۈستى نۇسخىسىنى چۈشۈرۈش</a>
           <a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer">GitHub</a>
-          <a href="/zh/changelog">يېڭىلىنىش خاتىرىسى</a>
+          <a href="/ug/changelog">يېڭىلىنىش خاتىرىسى</a>
         </div>
         <div class="footer-col">
           <div class="footer-col-title">ئىجادكار</div>
-          <a href="/zh/docs/">ھۆججەتلەر</a>
-          <a href="/zh/docs/getting-started">تېز قول سېلىش</a>
+          <a href="/ug/docs/">ھۆججەتلەر</a>
+          <a href="/ug/docs/getting-started">تېز باشلاش</a>
           <a href="https://github.com/hexagon-codes/hexclaw-desktop/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">Apache-2.0</a>
         </div>
         <div class="footer-col">
@@ -781,22 +804,22 @@
         </div>
         <div class="footer-col">
           <div class="footer-col-title">ھەققىدە</div>
-          <a href="/zh/about">ھەققىدەبىز</a>
-          <a href="/zh/privacy">شەخسىيەت سىياسىتى</a>
-          <a href="/zh/terms">ئىشلىتىششەرت</a>
+          <a href="/ug/about">بىز ھەققىدە</a>
+          <a href="/ug/privacy">شەخسىيەت سىياسىتى</a>
+          <a href="/ug/terms">ئىشلىتىش شەرتلىرى</a>
           <a href="mailto:ai@hexclaw.net">بىز بىلەن ئالاقىلىشىش</a>
         </div>
       </div>
       <div class="footer-wechat">
-        <img src="../assets/brand/wechat-qr.jpg" alt="HexClaw 微信公众号二维码">
-        <span class="footer-wechat-label">微信公众号</span>
+        <img src="../assets/brand/wechat-qr.jpg" alt="HexClaw ۋېيشىن رەسمىي ھېسابات QR كودى">
+        <span class="footer-wechat-label">ۋېيشىن رەسمىي ھېساباتى</span>
       </div>
     </div>
     <div class="footer-bottom">
       <span class="footer-copy">&copy; 2025&ndash;2026 hexagon-codes</span>
       <div class="footer-meta-links">
-        <a href="/zh/privacy">شەخسىيەت سىياسىتى</a>
-        <a href="/zh/terms">ئىشلىتىششەرت</a>
+        <a href="/ug/privacy">شەخسىيەت سىياسىتى</a>
+        <a href="/ug/terms">ئىشلىتىش شەرتلىرى</a>
       </div>
     </div>
   </footer>
@@ -923,6 +946,33 @@
       highlightNav();
     })();
 
+    (function(){
+      var menus = Array.prototype.slice.call(document.querySelectorAll('[data-lang-menu]'));
+      function setMenuState(menu, open) {
+        menu.classList.toggle('open', open);
+        var trigger = menu.querySelector('.lang-trigger');
+        if (trigger) trigger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      }
+      function closeMenus(except) {
+        menus.forEach(function(menu){
+          if (menu !== except) setMenuState(menu, false);
+        });
+      }
+      menus.forEach(function(menu){
+        var trigger = menu.querySelector('.lang-trigger');
+        if (!trigger) return;
+        trigger.addEventListener('click', function(event){
+          event.stopPropagation();
+          var nextOpen = !menu.classList.contains('open');
+          closeMenus(menu);
+          setMenuState(menu, nextOpen);
+        });
+      });
+      document.addEventListener('click', function(){ closeMenus(); });
+      document.addEventListener('keydown', function(event){
+        if (event.key === 'Escape') closeMenus();
+      });
+    })();
 
     /* Mobile hamburger: close menu on link click */
     document.querySelectorAll('.nav-links a').forEach(a => {
