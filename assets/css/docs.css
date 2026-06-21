@@ -1,21 +1,20 @@
 :root {
-  /* 品牌色 1:1 对齐官网首页（亮蓝家族）；文档白底保持不变（内容区中性） */
-  --blue: #5fb3ea;
-  --blue-light: #83c8f3;
-  --blue-pale: #dff2fe;
-  --blue-deep: #3f8fd4;
-  --accent-rgb: 95, 179, 234;
-  --accent-light-rgb: 223, 242, 254;
-  --ink-rgb: 18, 50, 76;
+  --blue: #6a9fc1;
+  --blue-light: #96bdd6;
+  --blue-pale: #ebf3f8;
+  --blue-deep: #2e6588;
+  --accent-rgb: 106, 159, 193;
+  --accent-light-rgb: 212, 229, 240;
+  --ink-rgb: 23, 38, 53;
   --bg: #fcfdfd;
   --bg-subtle: #f4f7fa;
   --bg-card: rgba(255, 255, 255, 0.96);
   --bg-card-hover: rgba(255, 255, 255, 1);
   --reading-width: 820px;
   --reading-width-wide: 960px;
-  --text-primary: #12324c;
-  --text-secondary: #3f5f7b;
-  --text-muted: #5f7b95;
+  --text-primary: #172635;
+  --text-secondary: #506577;
+  --text-muted: #788997;
   --border: rgba(var(--accent-rgb), 0.14);
   --border-strong: rgba(var(--accent-rgb), 0.22);
   --border-soft: rgba(var(--accent-rgb), 0.09);
@@ -1282,7 +1281,7 @@ hr {
   --bg-subtle: #151e2d;
   --bg-card: rgba(255,255,255,0.05);
   --bg-card-hover: rgba(255,255,255,0.08);
-  --text-primary: #e8ecf0;
+  --text-primary: #e2e8f0;
   --text-secondary: #8b95a2;
   --text-muted: #5a6470;
   --border: rgba(255,255,255,0.08);
@@ -1294,7 +1293,7 @@ hr {
   --blue-pale: rgba(95,179,234,0.12);
   --accent-rgb: 95, 179, 234;
   --accent-light-rgb: 30, 45, 65;
-  --ink-rgb: 232, 236, 240;
+  --ink-rgb: 226, 232, 240;
   color-scheme: dark;
 }
 
