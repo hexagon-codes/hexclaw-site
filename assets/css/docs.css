@@ -35,9 +35,7 @@ html {
 body {
   font-family: var(--sans);
   color: var(--text-primary);
-  background:
-    radial-gradient(circle at top, rgba(var(--accent-light-rgb), 0.42) 0%, rgba(var(--accent-light-rgb), 0) 34%),
-    linear-gradient(180deg, #fdfefe 0%, #fafcfd 22%, #f4f7fa 100%);
+  background: #ffffff;
   -webkit-font-smoothing: antialiased;
   line-height: 1.7;
 }
