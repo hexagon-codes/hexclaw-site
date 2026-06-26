@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/favicon-32.png">
 <title>Workflow Canvas — HexClaw Docs</title>
-<meta name="description" content="Build AI workflows visually with drag-and-drop nodes backed by a DAG execution engine.">
+<meta name="description" content="Orchestrate multi-step AI tasks with linear steps under Automation - Workflows.">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="theme-color" content="#ffffff">
 <meta property="og:site_name" content="HexClaw">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Workflow Canvas — HexClaw Docs">
-<meta property="og:description" content="Build AI workflows visually with drag-and-drop nodes backed by a DAG execution engine.">
+<meta property="og:description" content="Orchestrate multi-step AI tasks with linear steps under Automation - Workflows.">
 <meta property="og:url" content="https://hexclaw.net/en/docs/canvas">
 <meta property="og:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
 <meta property="og:image:alt" content="HexClaw logo">
@@ -21,25 +21,26 @@
 <meta property="og:locale:alternate" content="zh_CN">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Workflow Canvas — HexClaw Docs">
-<meta name="twitter:description" content="Build AI workflows visually with drag-and-drop nodes backed by a DAG execution engine.">
+<meta name="twitter:description" content="Orchestrate multi-step AI tasks with linear steps under Automation - Workflows.">
 <meta name="twitter:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
 <meta name="twitter:image:alt" content="HexClaw logo">
 <link rel="canonical" href="https://hexclaw.net/en/docs/canvas">
 <link rel="alternate" hreflang="en" href="https://hexclaw.net/en/docs/canvas">
 <link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/docs/canvas">
+<link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/docs/canvas">
 <link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/docs/canvas">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"TechArticle","headline":"Workflow Canvas — HexClaw Docs","description":"Build AI workflows visually with drag-and-drop nodes backed by a DAG execution engine.","url":"https://hexclaw.net/en/docs/canvas","inLanguage":"en","image":"https://hexclaw.net/assets/brand/hexclaw-logo.png","isPartOf":{"@type":"CreativeWorkSeries","name":"HexClaw Docs","url":"https://hexclaw.net/en/docs/"},"publisher":{"@type":"Organization","name":"hexagon-codes","url":"https://hexclaw.net/"},"about":{"@type":"SoftwareApplication","name":"HexClaw","operatingSystem":"macOS, Windows, Linux","applicationCategory":"BusinessApplication"}}
+{"@context":"https://schema.org","@type":"TechArticle","headline":"Workflow Canvas — HexClaw Docs","description":"Orchestrate multi-step AI tasks with linear steps under Automation - Workflows.","url":"https://hexclaw.net/en/docs/canvas","inLanguage":"en","image":"https://hexclaw.net/assets/brand/hexclaw-logo.png","isPartOf":{"@type":"CreativeWorkSeries","name":"HexClaw Docs","url":"https://hexclaw.net/en/docs/"},"publisher":{"@type":"Organization","name":"hexagon-codes","url":"https://hexclaw.net/"},"about":{"@type":"SoftwareApplication","name":"HexClaw","operatingSystem":"macOS, Windows, Linux","applicationCategory":"BusinessApplication"}}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"HexClaw","item":"https://hexclaw.net/en/"},{"@type":"ListItem","position":2,"name":"HexClaw Documentation","item":"https://hexclaw.net/en/docs/"},{"@type":"ListItem","position":3,"name":"Workflow Canvas — HexClaw Docs","item":"https://hexclaw.net/en/docs/canvas"}]}
 </script>
-<link rel="stylesheet" href="../../assets/css/docs.css?v=1781100615">
+<link rel="stylesheet" href="../../assets/css/docs.css?v=1782400310">
 </head>
 <body class="docs-page">
 <nav class="tn">
 <a href="/en/" class="tn-b"><img src="../../assets/brand/hexclaw-icon-72.png" class="tn-l" alt="HexClaw"><span class="tn-n">HexClaw</span></a>
-<button class="tn-burger" onclick="document.querySelector('.tn-r').classList.toggle('open')" aria-label="Menu"><span></span><span></span><span></span></button><div class="tn-r"><a href="/en/">Home</a><a href="/en/#features">Capabilities</a><a href="/en/#quickstart">Quick Start</a><a href="/en/#cases">Use Cases</a><a href="/en/#ecosystem">Ecosystem</a><a href="/en/docs/" class="is-active">Docs</a><div class="lang-menu" data-lang-menu><button type="button" class="lang-trigger" aria-haspopup="menu" aria-expanded="false" aria-label="Language switcher"><svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 0 20"></path><path d="M12 2a15.3 15.3 0 0 0 0 20"></path></svg><span class="lang-current">English</span><svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="lang-menu-list" role="menu"><a href="/zh/docs/canvas/" role="menuitem">中文</a><a href="/en/docs/canvas/" role="menuitem" class="is-active" aria-current="true">English</a><a href="/ug/docs/canvas/" role="menuitem">维吾尔语</a></div></div><button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"><svg class="ti-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="ti-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="nav-cta">GitHub</a></div>
+<button class="tn-burger" onclick="document.querySelector('.tn-r').classList.toggle('open')" aria-label="Menu"><span></span><span></span><span></span></button><div class="tn-r"><a href="/en/">Home</a><a href="/en/#features">Capabilities</a><a href="/en/#quickstart">Quick Start</a><a href="/en/#cases">Use Cases</a><a href="/en/#ecosystem">Ecosystem</a><a href="/en/docs/" class="is-active">Docs</a><div class="lang-menu" data-lang-menu><button type="button" class="lang-trigger" aria-haspopup="menu" aria-expanded="false" aria-label="Language switcher"><svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 0 20"></path><path d="M12 2a15.3 15.3 0 0 0 0 20"></path></svg><span class="lang-current">English</span><svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="lang-menu-list" role="menu"><a href="/zh/docs/canvas/" role="menuitem">中文</a><a href="/en/docs/canvas/" role="menuitem" class="is-active" aria-current="true">English</a><a href="/ug/docs/canvas/" role="menuitem">ئۇيغۇرچە</a></div></div><button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"><svg class="ti-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="ti-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="nav-cta">GitHub</a></div>
 </nav>
 <div class="mobile-doc-nav">
 <a href="/en/docs/getting-started">Getting Started</a>
@@ -65,74 +66,40 @@
 <header class="page-lead">
 <div class="page-kicker">HexClaw Docs</div>
 <h1>Workflow Canvas</h1>
-<p class="sub">Build AI workflows visually with drag-and-drop nodes backed by a DAG execution engine.</p>
+<p class="sub">Orchestrate multi-step AI tasks with linear steps under Automation → Workflows.</p>
 </header>
 
 <h2>Overview</h2>
-<p>The workflow canvas is HexClaw's <strong>no-code orchestration tool</strong>. Build complex AI pipelines by arranging nodes and drawing edges between them.</p>
+<p>Workflows live under the <strong>Automation → Workflows</strong> tab and are HexClaw's <strong>multi-step AI orchestration tool</strong>. They use <strong>linear steps</strong>: break a complex task into a sequence of steps that run in order, passing each step's output to the next.</p>
 
-<h2>Node Types</h2>
+<h2>Step Anatomy</h2>
+<p>Each step is one agent call and can be configured independently:</p>
 <table>
-<tr><th>Node</th><th>Description</th><th>Typical Use</th></tr>
-<tr><td><strong>Agent</strong></td><td>Runs an AI task</td><td>Content generation, data analysis, code writing</td></tr>
-<tr><td><strong>Tool</strong></td><td>Invokes an MCP tool</td><td>API requests, file operations, database queries</td></tr>
-<tr><td><strong>Condition</strong></td><td>Branches based on a rule</td><td>Route execution based on prior results</td></tr>
-<tr><td><strong>Output</strong></td><td>Produces the final result</td><td>Save files, send notifications, or return data</td></tr>
+<tr><th>Field</th><th>Description</th></tr>
+<tr><td><strong>Role</strong></td><td>The agent / persona used for this step</td></tr>
+<tr><td><strong>Prompt</strong></td><td>This step's instruction; can reference the previous step's output</td></tr>
+<tr><td><strong>Model</strong></td><td>A model chosen specifically for this step</td></tr>
+<tr><td><strong>Tools</strong></td><td>The tools / MCP this step is allowed to call</td></tr>
 </table>
 
 <h2>Create a Workflow</h2>
 <ol>
-<li>Open the <strong>Workflow Canvas</strong> page</li>
-<li>Drag nodes from the left panel onto the canvas</li>
-<li>Create edges by dragging between node connection points</li>
-<li>Configure each node, such as the bound agent or prompt</li>
-<li>Save the workflow</li>
+<li>Open the <strong>Automation → Workflows</strong> tab and create a new workflow</li>
+<li>Add steps, then <strong>add / remove / reorder</strong> them as needed</li>
+<li>Edit each step's role, prompt, model, and tools</li>
+<li><strong>Save</strong> the workflow</li>
+<li>Click <strong>Dry Run</strong> — per-step status is filled back in real time</li>
 </ol>
 
-<h2>Template Library</h2>
-<p>HexClaw includes starter templates to help you begin quickly:</p>
-<ul>
-<li><strong>Document Translation</strong> - translate → review → polish</li>
-<li><strong>Code Review</strong> - security check → performance analysis → best-practice pass</li>
-<li><strong>Data Processing</strong> - extract → clean → analyze → visualize</li>
-<li><strong>Content Creation</strong> - outline → draft → edit → final</li>
-</ul>
-
-<h2>Run a Workflow</h2>
-<ol>
-<li>Save the workflow and click <strong>"Run"</strong></li>
-<li>The graph executes in DAG topological order</li>
-<li>Each node reports status in real time: <code>pending</code> → <code>running</code> → <code>completed</code> or <code>failed</code></li>
-<li>Review the output once execution finishes</li>
-</ol>
-<div class="tip"><b>Tip:</b> Workflow execution supports polling, so you can leave the page while a run is active and return later to inspect the result.</div>
-
-<h2>Workflow Validation</h2>
-<p>Before clicking "Run", HexClaw automatically validates the workflow:</p>
-<ul>
-<li><strong>Empty canvas check</strong> — at least one node is required</li>
-<li><strong>Orphan node check</strong> — all nodes must be connected via edges</li>
-<li><strong>Cycle detection</strong> — circular dependencies are not allowed (DAG constraint)</li>
-</ul>
-<p>If validation fails, an error message appears at the top and must be resolved before running.</p>
-
-<h2>Save & Load</h2>
-<p>The toolbar provides workflow management features:</p>
-<ul>
-<li><strong>Save</strong> — enter a name and description to save the current canvas as a workflow</li>
-<li><strong>Load</strong> — select a previously saved workflow from the list to load onto the canvas</li>
-<li><strong>Delete</strong> — remove unwanted workflows from the load list</li>
-</ul>
-
-<h2>Execution Status</h2>
-<p>While a workflow is running, each node displays its execution status in real time:</p>
+<h2>Execution & Status</h2>
+<p>At run time, each step executes in order and reports status live:</p>
 <ul>
 <li>⏳ <strong>Waiting</strong> — not yet executed</li>
-<li>🔄 <strong>Running</strong> — currently executing (blue border + spinning animation)</li>
-<li>✅ <strong>Completed</strong> — executed successfully (green border)</li>
-<li>❌ <strong>Failed</strong> — execution error (red border)</li>
+<li>🔄 <strong>Running</strong> — currently executing</li>
+<li>✅ <strong>Completed</strong> — executed successfully</li>
+<li>❌ <strong>Failed</strong> — execution error</li>
 </ul>
-<p>After the run completes, the bottom results panel shows the output or error details.</p>
+<div class="tip"><b>Tip:</b> Workflow execution supports polling, so you can leave the page while a run is active and return later to inspect the result.</div>
 
 <hr>
 <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-top:32px;margin-bottom:24px">
@@ -178,7 +145,7 @@
 </div>
 </div>
 </footer>
-<script src="../../assets/js/docs-nav.js?v=1781100615"></script>
+<script src="../../assets/js/docs-nav.js?v=1782400310"></script>
 <script>
 function toggleTheme(){var c=document.documentElement.getAttribute("data-theme");var n=c==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);localStorage.setItem("hexclaw-theme",n)}
 (function(){var s=localStorage.getItem("hexclaw-theme");var d=window.matchMedia("(prefers-color-scheme:dark)").matches;if(s==="dark"||(!s&&d))document.documentElement.setAttribute("data-theme","dark")})();

@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/favicon-32.png">
 <title>Advanced Features — HexClaw Docs</title>
-<meta name="description" content="MCP integration, RAG knowledge bases, semantic memory, scheduled tasks, skills, team collaboration, and security controls.">
+<meta name="description" content="MCP, RAG knowledge bases and memory, automation, the Connections hub and data connectors, skills, the Prompt library, and security controls.">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="theme-color" content="#ffffff">
 <meta property="og:site_name" content="HexClaw">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Advanced Features — HexClaw Docs">
-<meta property="og:description" content="MCP integration, RAG knowledge bases, semantic memory, scheduled tasks, skills, team collaboration, and security controls.">
+<meta property="og:description" content="MCP, RAG knowledge bases and memory, automation, the Connections hub and data connectors, skills, the Prompt library, and security controls.">
 <meta property="og:url" content="https://hexclaw.net/en/docs/advanced">
 <meta property="og:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
 <meta property="og:image:alt" content="HexClaw logo">
@@ -21,25 +21,26 @@
 <meta property="og:locale:alternate" content="zh_CN">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Advanced Features — HexClaw Docs">
-<meta name="twitter:description" content="MCP integration, RAG knowledge bases, semantic memory, scheduled tasks, skills, team collaboration, and security controls.">
+<meta name="twitter:description" content="MCP, RAG knowledge bases and memory, automation, the Connections hub and data connectors, skills, the Prompt library, and security controls.">
 <meta name="twitter:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
 <meta name="twitter:image:alt" content="HexClaw logo">
 <link rel="canonical" href="https://hexclaw.net/en/docs/advanced">
 <link rel="alternate" hreflang="en" href="https://hexclaw.net/en/docs/advanced">
 <link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/docs/advanced">
+<link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/docs/advanced">
 <link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/docs/advanced">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"TechArticle","headline":"Advanced Features — HexClaw Docs","description":"MCP integration, RAG knowledge bases, semantic memory, scheduled tasks, skills, team collaboration, and security controls.","url":"https://hexclaw.net/en/docs/advanced","inLanguage":"en","image":"https://hexclaw.net/assets/brand/hexclaw-logo.png","isPartOf":{"@type":"CreativeWorkSeries","name":"HexClaw Docs","url":"https://hexclaw.net/en/docs/"},"publisher":{"@type":"Organization","name":"hexagon-codes","url":"https://hexclaw.net/"},"about":{"@type":"SoftwareApplication","name":"HexClaw","operatingSystem":"macOS, Windows, Linux","applicationCategory":"BusinessApplication"}}
+{"@context":"https://schema.org","@type":"TechArticle","headline":"Advanced Features — HexClaw Docs","description":"MCP, RAG knowledge bases and memory, automation, the Connections hub and data connectors, skills, the Prompt library, and security controls.","url":"https://hexclaw.net/en/docs/advanced","inLanguage":"en","image":"https://hexclaw.net/assets/brand/hexclaw-logo.png","isPartOf":{"@type":"CreativeWorkSeries","name":"HexClaw Docs","url":"https://hexclaw.net/en/docs/"},"publisher":{"@type":"Organization","name":"hexagon-codes","url":"https://hexclaw.net/"},"about":{"@type":"SoftwareApplication","name":"HexClaw","operatingSystem":"macOS, Windows, Linux","applicationCategory":"BusinessApplication"}}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"HexClaw","item":"https://hexclaw.net/en/"},{"@type":"ListItem","position":2,"name":"HexClaw Documentation","item":"https://hexclaw.net/en/docs/"},{"@type":"ListItem","position":3,"name":"Advanced Features — HexClaw Docs","item":"https://hexclaw.net/en/docs/advanced"}]}
 </script>
-<link rel="stylesheet" href="../../assets/css/docs.css?v=1781100615">
+<link rel="stylesheet" href="../../assets/css/docs.css?v=1782400310">
 </head>
 <body class="docs-page">
 <nav class="tn">
 <a href="/en/" class="tn-b"><img src="../../assets/brand/hexclaw-icon-72.png" class="tn-l" alt="HexClaw"><span class="tn-n">HexClaw</span></a>
-<button class="tn-burger" onclick="document.querySelector('.tn-r').classList.toggle('open')" aria-label="Menu"><span></span><span></span><span></span></button><div class="tn-r"><a href="/en/">Home</a><a href="/en/#features">Capabilities</a><a href="/en/#quickstart">Quick Start</a><a href="/en/#cases">Use Cases</a><a href="/en/#ecosystem">Ecosystem</a><a href="/en/docs/" class="is-active">Docs</a><div class="lang-menu" data-lang-menu><button type="button" class="lang-trigger" aria-haspopup="menu" aria-expanded="false" aria-label="Language switcher"><svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 0 20"></path><path d="M12 2a15.3 15.3 0 0 0 0 20"></path></svg><span class="lang-current">English</span><svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="lang-menu-list" role="menu"><a href="/zh/docs/advanced/" role="menuitem">中文</a><a href="/en/docs/advanced/" role="menuitem" class="is-active" aria-current="true">English</a><a href="/ug/docs/advanced/" role="menuitem">维吾尔语</a></div></div><button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"><svg class="ti-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="ti-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="nav-cta">GitHub</a></div>
+<button class="tn-burger" onclick="document.querySelector('.tn-r').classList.toggle('open')" aria-label="Menu"><span></span><span></span><span></span></button><div class="tn-r"><a href="/en/">Home</a><a href="/en/#features">Capabilities</a><a href="/en/#quickstart">Quick Start</a><a href="/en/#cases">Use Cases</a><a href="/en/#ecosystem">Ecosystem</a><a href="/en/docs/" class="is-active">Docs</a><div class="lang-menu" data-lang-menu><button type="button" class="lang-trigger" aria-haspopup="menu" aria-expanded="false" aria-label="Language switcher"><svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 0 20"></path><path d="M12 2a15.3 15.3 0 0 0 0 20"></path></svg><span class="lang-current">English</span><svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="lang-menu-list" role="menu"><a href="/zh/docs/advanced/" role="menuitem">中文</a><a href="/en/docs/advanced/" role="menuitem" class="is-active" aria-current="true">English</a><a href="/ug/docs/advanced/" role="menuitem">ئۇيغۇرچە</a></div></div><button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"><svg class="ti-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="ti-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="nav-cta">GitHub</a></div>
 </nav>
 <div class="mobile-doc-nav">
 <a href="/en/docs/getting-started">Getting Started</a>
@@ -65,14 +66,14 @@
 <header class="page-lead">
 <div class="page-kicker">HexClaw Docs</div>
 <h1>Advanced Features</h1>
-<p class="sub">MCP integration, RAG knowledge bases, semantic memory, scheduled tasks, skills, team collaboration, and security controls.</p>
+<p class="sub">MCP, RAG knowledge bases &amp; memory, automation (scheduled jobs / webhooks / workflows), the Connections hub &amp; data connectors, skills, the Prompt library, and security controls.</p>
 </header>
 
 <h2>MCP Integration</h2>
 <p><strong>Model Context Protocol</strong> (MCP) lets HexClaw agents call external tools and services.</p>
 <h3>Register an MCP Server</h3>
 <ol>
-<li>Open the <strong>MCP</strong> page</li>
+<li>Open the <strong>Integration → MCP</strong> tab</li>
 <li>Click <strong>"Add Server"</strong></li>
 <li>Provide the server name and connection endpoint</li>
 <li>Select a transport: <code>stdio</code>, <code>sse</code>, or <code>streamable_http</code></li>
@@ -112,7 +113,7 @@
 <p>HexClaw can extract and store memory from conversations so useful context persists across sessions.</p>
 <ul>
 <li><strong>Automatic capture</strong> - key details from conversations can be saved as memories</li>
-<li><strong>Semantic search</strong> - search memory by keyword or semantic similarity</li>
+<li><strong>Semantic search</strong> - in the <strong>Knowledge → Memory</strong> tab, search by keyword or semantic similarity</li>
 <li><strong>Type filters</strong> - narrow results by memory type</li>
 <li><strong>Manual management</strong> - review, delete, or bulk clean entries</li>
 </ul>
@@ -121,7 +122,7 @@
 <p>Schedule agents to run automatically at fixed times.</p>
 <h3>Create a Scheduled Job</h3>
 <ol>
-<li>Open the <strong>Scheduled Jobs</strong> page</li>
+<li>Open the <strong>Automation → Scheduled Jobs</strong> tab</li>
 <li>Click <strong>"Create Job"</strong></li>
 <li>Select an agent, enter a cron expression, and provide the prompt</li>
 <li>Enable the job</li>
@@ -141,16 +142,6 @@
 <li><strong>Configuration</strong>: some skills expose custom parameters</li>
 </ul>
 
-<h2>Team Collaboration</h2>
-<div class="tip"><b>Note:</b> Team collaboration is currently in the planning stage. Some features are not yet fully implemented.</div>
-<p>HexClaw supports shared workspaces and collaboration:</p>
-<ul>
-<li><strong>Shared agents</strong> - publish reusable agent templates to the team</li>
-<li><strong>Member roles</strong> - <code>admin</code>, <code>member</code>, and <code>viewer</code></li>
-<li><strong>Conversation sharing</strong> - share chat history with teammates</li>
-<li><strong>Visibility modes</strong> - <code>public</code>, <code>team</code>, or <code>private</code></li>
-</ul>
-
 <h2>Security Gateway</h2>
 <p>Configure these controls under <strong>Settings → Security</strong>:</p>
 <table>
@@ -163,19 +154,18 @@
 <tr><td>Rate limiting</td><td>Requests per minute, from 1 to 600 RPM</td></tr>
 </table>
 
-<h2>Deep Research Mode</h2>
-<p>Switch to the <strong>Deep Research</strong> tab on the chat page, enter a research topic, and the agent will automatically perform multi-step research:</p>
+<h2>Deep Thinking Mode</h2>
+<p>Switch to the <strong>Deep Thinking</strong> tab on the chat page, enter a question, and the agent runs multi-source deep analysis with a <strong>visible reasoning process</strong>:</p>
 <ol>
-<li><strong>Search</strong> — retrieve relevant materials and sources</li>
+<li><strong>Retrieve</strong> — gather relevant materials and sources</li>
 <li><strong>Analyze</strong> — perform in-depth analysis of each source</li>
-<li><strong>Synthesize</strong> — cross-reference and distill key insights</li>
-<li><strong>Generate Report</strong> — produce a structured research report with cited sources</li>
+<li><strong>Synthesize</strong> — cross-reference and distill key insights, with citations</li>
 </ol>
-<p>A real-time progress panel is displayed during research, which can be collapsed or expanded to view the current stage.</p>
-<div class="tip"><b>Tip:</b> Research mode is powered by the Hexagon engine's Plan-and-Execute paradigm, making it better suited than standard Agent mode for complex tasks requiring multi-step reasoning.</div>
+<p>The reasoning process is shown in real time and can be collapsed or expanded to view the current stage.</p>
+<div class="tip"><b>Tip:</b> Deep Thinking is powered by the Hexagon engine's Plan-and-Execute paradigm, making it better suited than standard Agent mode for complex, multi-step reasoning.</div>
 
-<h2>IM Channels</h2>
-<p>HexClaw can connect to multiple instant messaging platforms, allowing you to chat with AI remotely via mobile messages. Go to <strong>Sidebar → IM Channels</strong> to configure:</p>
+<h2>Connections · IM Channels</h2>
+<p>HexClaw can connect to multiple instant messaging platforms, allowing you to chat with AI remotely via mobile messages. Go to the <strong>Connections</strong> hub (the "Connect" sidebar group) → <strong>Channels &amp; Accounts</strong> to configure:</p>
 <table>
 <tr><th>Platform</th><th>Configuration</th><th>Notes</th></tr>
 <tr><td>Feishu (Lark)</td><td>App ID + App Secret</td><td>Create an enterprise app on the Feishu Open Platform</td></tr>
@@ -188,6 +178,14 @@
 </table>
 <p>After saving the configuration, you must <strong>restart the Engine</strong> for changes to take effect. Each platform card has a "Test Connection" button to verify the configuration.</p>
 
+<h3>Data Connectors (GitHub / Notion)</h3>
+<p>Under <strong>Connections → Data Connectors</strong>, connect GitHub / Notion with a read-only token:</p>
+<ul>
+<li>Paste a PAT / integration token and click <strong>Test Connection</strong> to verify</li>
+<li>Browse resources directly (real repository / page listings)</li>
+<li>Tokens are encrypted at rest server-side (<code>enc:v1:</code>); API responses are always redacted</li>
+</ul>
+
 <h2>Webhook Notifications</h2>
 <p>Configure webhooks under <strong>Settings → Notifications</strong> to automatically push alerts when tasks complete, agents finish executing, or errors occur:</p>
 <ul>
@@ -199,7 +197,7 @@
 <p>Each webhook can be configured with trigger events: task completion, agent completion, and error notifications.</p>
 
 <h2>ClawHub Skill Marketplace</h2>
-<p>In <strong>Sidebar → Skills → Marketplace</strong> tab, browse and install skills from the OpenClaw community:</p>
+<p>In the <strong>Integration → Skills</strong> tab, browse and install skills from the OpenClaw community:</p>
 <ul>
 <li>Filter by category: programming, research, writing, data, automation, productivity</li>
 <li>Search by keyword for quick discovery</li>
@@ -252,7 +250,7 @@
 </div>
 </div>
 </footer>
-<script src="../../assets/js/docs-nav.js?v=1781100615"></script>
+<script src="../../assets/js/docs-nav.js?v=1782400310"></script>
 <script>
 function toggleTheme(){var c=document.documentElement.getAttribute("data-theme");var n=c==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);localStorage.setItem("hexclaw-theme",n)}
 (function(){var s=localStorage.getItem("hexclaw-theme");var d=window.matchMedia("(prefers-color-scheme:dark)").matches;if(s==="dark"||(!s&&d))document.documentElement.setAttribute("data-theme","dark")})();

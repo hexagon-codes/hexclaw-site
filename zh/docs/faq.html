@@ -27,6 +27,7 @@
 <link rel="canonical" href="https://hexclaw.net/zh/docs/faq">
 <link rel="alternate" hreflang="en" href="https://hexclaw.net/en/docs/faq">
 <link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/docs/faq">
+<link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/docs/faq">
 <link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/docs/faq">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"TechArticle","headline":"常见问题 — 河蟹 AI 文档","description":"汇总河蟹 AI 桌面端在安装启动、模型配置、数据隐私、工作流和 MCP 连接上的常见问题与排查方法。","url":"https://hexclaw.net/zh/docs/faq","inLanguage":"zh-CN","image":"https://hexclaw.net/assets/brand/hexclaw-logo.png","isPartOf":{"@type":"CreativeWorkSeries","name":"河蟹 AI 文档","url":"https://hexclaw.net/zh/docs/"},"publisher":{"@type":"Organization","name":"hexagon-codes","url":"https://hexclaw.net/"},"about":{"@type":"SoftwareApplication","name":"河蟹 AI","operatingSystem":"macOS, Windows, Linux","applicationCategory":"BusinessApplication"}}
@@ -37,12 +38,12 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"应用启动后白屏或无法加载？","acceptedAnswer":{"@type":"Answer","text":"先看日志页错误信息，确认 16060 端口未被占用，再重启应用等待 Go Sidecar 拉起。"}},{"@type":"Question","name":"macOS 提示无法验证开发者？","acceptedAnswer":{"@type":"Answer","text":"可右键应用选择打开，或执行 xattr -cr /Applications/HexClaw.app 清除隔离属性。"}},{"@type":"Question","name":"如何开机自启动？","acceptedAnswer":{"@type":"Answer","text":"在 设置 > 通用 中开启开机自启动。"}},{"@type":"Question","name":"API 请求返回 401 或 403 错误？","acceptedAnswer":{"@type":"Answer","text":"检查模型服务商配置中的 API Key、额度和账户状态。"}},{"@type":"Question","name":"如何使用本地模型且不联网？","acceptedAnswer":{"@type":"Answer","text":"安装 Ollama 后，在河蟹 AI 中用本地 Base URL 添加服务商并填入已下载模型名。"}},{"@type":"Question","name":"MCP 服务器连接失败怎么办？","acceptedAnswer":{"@type":"Answer","text":"确认服务器已启动、协议类型匹配，并检查配置的命令、地址或端口。"}}]}
 </script>
-<link rel="stylesheet" href="../../assets/css/docs.css?v=1781100615">
+<link rel="stylesheet" href="../../assets/css/docs.css?v=1782400310">
 </head>
 <body class="docs-page">
 <nav class="tn">
 <a href="/zh/" class="tn-b"><img src="../../assets/brand/hexclaw-icon-72.png" class="tn-l" alt="河蟹 AI"><span class="tn-n">河蟹 AI</span></a>
-<button class="tn-burger" onclick="document.querySelector('.tn-r').classList.toggle('open')" aria-label="菜单"><span></span><span></span><span></span></button><div class="tn-r"><a href="/zh/">首页</a><a href="/zh/#features">产品能力</a><a href="/zh/#quickstart">快速上手</a><a href="/zh/#cases">使用场景</a><a href="/zh/#ecosystem">开源生态</a><a href="/zh/docs/" class="is-active">文档</a><div class="lang-menu" data-lang-menu><button type="button" class="lang-trigger" aria-haspopup="menu" aria-expanded="false" aria-label="Language switcher"><svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 0 20"></path><path d="M12 2a15.3 15.3 0 0 0 0 20"></path></svg><span class="lang-current">中文</span><svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="lang-menu-list" role="menu"><a href="/zh/docs/faq/" role="menuitem" class="is-active" aria-current="true">中文</a><a href="/en/docs/faq/" role="menuitem">English</a><a href="/ug/docs/faq/" role="menuitem">维吾尔语</a></div></div><button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"><svg class="ti-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="ti-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="nav-cta">GitHub</a></div>
+<button class="tn-burger" onclick="document.querySelector('.tn-r').classList.toggle('open')" aria-label="菜单"><span></span><span></span><span></span></button><div class="tn-r"><a href="/zh/">首页</a><a href="/zh/#features">产品能力</a><a href="/zh/#quickstart">快速上手</a><a href="/zh/#cases">使用场景</a><a href="/zh/#ecosystem">开源生态</a><a href="/zh/docs/" class="is-active">文档</a><div class="lang-menu" data-lang-menu><button type="button" class="lang-trigger" aria-haspopup="menu" aria-expanded="false" aria-label="Language switcher"><svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 0 20"></path><path d="M12 2a15.3 15.3 0 0 0 0 20"></path></svg><span class="lang-current">中文</span><svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="lang-menu-list" role="menu"><a href="/zh/docs/faq/" role="menuitem" class="is-active" aria-current="true">中文</a><a href="/en/docs/faq/" role="menuitem">English</a><a href="/ug/docs/faq/" role="menuitem">ئۇيغۇرچە</a></div></div><button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"><svg class="ti-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="ti-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="nav-cta">GitHub</a></div>
 </nav>
 <div class="mobile-doc-nav">
 <a href="/zh/docs/getting-started">快速上手</a>
@@ -130,11 +131,11 @@
 <li>查看 <strong>日志</strong> 页面获取详细错误信息</li>
 </ol>
 
-<h2>深度研究</h2>
-<h3>深度研究模式一直停在"搜索"阶段怎么办？</h3>
-<p>确认 Agent 可以访问网络搜索工具（Skill 中的 <code>web_search</code> 需要已启用）。如果后端没有配置搜索 Skill，研究模式会退化为普通 Agent 回复。</p>
+<h2>深度思考</h2>
+<h3>深度思考模式一直停在"搜索"阶段怎么办？</h3>
+<p>确认 Agent 可以访问网络搜索工具（Skill 中的 <code>web_search</code> 需要已启用）。如果后端没有配置搜索 Skill，深度思考会退化为普通 Agent 回复。</p>
 
-<h3>研究报告质量不高？</h3>
+<h3>深度思考结果质量不高？</h3>
 <p>尝试：</p>
 <ul>
 <li>使用更强的模型（如 Claude Sonnet 4 或 GPT-4o）</li>
@@ -142,7 +143,7 @@
 <li>在输入中指定输出格式要求（如"生成带引用的 Markdown 报告"）</li>
 </ul>
 
-<h2>IM 通道</h2>
+<h2>连接中心 · IM 通道</h2>
 <h3>配置了飞书/钉钉/企微，但收不到消息？</h3>
 <ol>
 <li>确认配置保存后已<strong>重启 Engine</strong></li>
@@ -165,7 +166,7 @@
 </ul>
 
 <h3>Q: 如何查看引擎运行状态？</h3>
-<p>仪表盘页面显示 Sidecar 引擎健康状态，包括连接状态、API 端口等信息。引擎每 5 秒自动检测一次。</p>
+<p>左下角的引擎状态指示，以及<strong>日志</strong>页可查看 Sidecar 引擎健康状态（连接状态、API 端口等）。引擎每 5 秒自动检测一次。</p>
 
 <h2>与其他产品的区别</h2>
 
@@ -227,7 +228,7 @@
 </div>
 </div>
 </footer>
-<script src="../../assets/js/docs-nav.js?v=1781100615"></script>
+<script src="../../assets/js/docs-nav.js?v=1782400310"></script>
 <script>
 function toggleTheme(){var c=document.documentElement.getAttribute("data-theme");var n=c==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);localStorage.setItem("hexclaw-theme",n)}
 (function(){var s=localStorage.getItem("hexclaw-theme");var d=window.matchMedia("(prefers-color-scheme:dark)").matches;if(s==="dark"||(!s&&d))document.documentElement.setAttribute("data-theme","dark")})();

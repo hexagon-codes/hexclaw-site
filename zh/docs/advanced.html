@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/favicon-32.png">
 <title>高级功能 — 河蟹 AI 文档</title>
-<meta name="description" content="MCP 协议、知识库 RAG、语义记忆、定时任务、技能市场、团队协作与安全网关。">
+<meta name="description" content="MCP、知识库 RAG 与记忆、自动化、连接中心与数据连接器、技能、Prompt 库与安全网关。">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="theme-color" content="#ffffff">
 <meta property="og:site_name" content="河蟹 AI">
 <meta property="og:type" content="article">
 <meta property="og:title" content="高级功能 — 河蟹 AI 文档">
-<meta property="og:description" content="MCP 协议、知识库 RAG、语义记忆、定时任务、技能市场、团队协作与安全网关。">
+<meta property="og:description" content="MCP、知识库 RAG 与记忆、自动化、连接中心与数据连接器、技能、Prompt 库与安全网关。">
 <meta property="og:url" content="https://hexclaw.net/zh/docs/advanced">
 <meta property="og:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
 <meta property="og:image:alt" content="河蟹 AI 标志">
@@ -21,25 +21,26 @@
 <meta property="og:locale:alternate" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="高级功能 — 河蟹 AI 文档">
-<meta name="twitter:description" content="MCP 协议、知识库 RAG、语义记忆、定时任务、技能市场、团队协作与安全网关。">
+<meta name="twitter:description" content="MCP、知识库 RAG 与记忆、自动化、连接中心与数据连接器、技能、Prompt 库与安全网关。">
 <meta name="twitter:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
 <meta name="twitter:image:alt" content="河蟹 AI 标志">
 <link rel="canonical" href="https://hexclaw.net/zh/docs/advanced">
 <link rel="alternate" hreflang="en" href="https://hexclaw.net/en/docs/advanced">
 <link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/docs/advanced">
+<link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/docs/advanced">
 <link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/docs/advanced">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"TechArticle","headline":"高级功能 — 河蟹 AI 文档","description":"MCP 协议、知识库 RAG、语义记忆、定时任务、技能市场、团队协作与安全网关。","url":"https://hexclaw.net/zh/docs/advanced","inLanguage":"zh-CN","image":"https://hexclaw.net/assets/brand/hexclaw-logo.png","isPartOf":{"@type":"CreativeWorkSeries","name":"河蟹 AI 文档","url":"https://hexclaw.net/zh/docs/"},"publisher":{"@type":"Organization","name":"hexagon-codes","url":"https://hexclaw.net/"},"about":{"@type":"SoftwareApplication","name":"河蟹 AI","operatingSystem":"macOS, Windows, Linux","applicationCategory":"BusinessApplication"}}
+{"@context":"https://schema.org","@type":"TechArticle","headline":"高级功能 — 河蟹 AI 文档","description":"MCP、知识库 RAG 与记忆、自动化、连接中心与数据连接器、技能、Prompt 库与安全网关。","url":"https://hexclaw.net/zh/docs/advanced","inLanguage":"zh-CN","image":"https://hexclaw.net/assets/brand/hexclaw-logo.png","isPartOf":{"@type":"CreativeWorkSeries","name":"河蟹 AI 文档","url":"https://hexclaw.net/zh/docs/"},"publisher":{"@type":"Organization","name":"hexagon-codes","url":"https://hexclaw.net/"},"about":{"@type":"SoftwareApplication","name":"河蟹 AI","operatingSystem":"macOS, Windows, Linux","applicationCategory":"BusinessApplication"}}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"河蟹 AI","item":"https://hexclaw.net/zh/"},{"@type":"ListItem","position":2,"name":"河蟹 AI 使用文档","item":"https://hexclaw.net/zh/docs/"},{"@type":"ListItem","position":3,"name":"高级功能 — 河蟹 AI 文档","item":"https://hexclaw.net/zh/docs/advanced"}]}
 </script>
-<link rel="stylesheet" href="../../assets/css/docs.css?v=1781100615">
+<link rel="stylesheet" href="../../assets/css/docs.css?v=1782400310">
 </head>
 <body class="docs-page">
 <nav class="tn">
 <a href="/zh/" class="tn-b"><img src="../../assets/brand/hexclaw-icon-72.png" class="tn-l" alt="河蟹 AI"><span class="tn-n">河蟹 AI</span></a>
-<button class="tn-burger" onclick="document.querySelector('.tn-r').classList.toggle('open')" aria-label="菜单"><span></span><span></span><span></span></button><div class="tn-r"><a href="/zh/">首页</a><a href="/zh/#features">产品能力</a><a href="/zh/#quickstart">快速上手</a><a href="/zh/#cases">使用场景</a><a href="/zh/#ecosystem">开源生态</a><a href="/zh/docs/" class="is-active">文档</a><div class="lang-menu" data-lang-menu><button type="button" class="lang-trigger" aria-haspopup="menu" aria-expanded="false" aria-label="Language switcher"><svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 0 20"></path><path d="M12 2a15.3 15.3 0 0 0 0 20"></path></svg><span class="lang-current">中文</span><svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="lang-menu-list" role="menu"><a href="/zh/docs/advanced/" role="menuitem" class="is-active" aria-current="true">中文</a><a href="/en/docs/advanced/" role="menuitem">English</a><a href="/ug/docs/advanced/" role="menuitem">维吾尔语</a></div></div><button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"><svg class="ti-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="ti-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="nav-cta">GitHub</a></div>
+<button class="tn-burger" onclick="document.querySelector('.tn-r').classList.toggle('open')" aria-label="菜单"><span></span><span></span><span></span></button><div class="tn-r"><a href="/zh/">首页</a><a href="/zh/#features">产品能力</a><a href="/zh/#quickstart">快速上手</a><a href="/zh/#cases">使用场景</a><a href="/zh/#ecosystem">开源生态</a><a href="/zh/docs/" class="is-active">文档</a><div class="lang-menu" data-lang-menu><button type="button" class="lang-trigger" aria-haspopup="menu" aria-expanded="false" aria-label="Language switcher"><svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 0 20"></path><path d="M12 2a15.3 15.3 0 0 0 0 20"></path></svg><span class="lang-current">中文</span><svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="lang-menu-list" role="menu"><a href="/zh/docs/advanced/" role="menuitem" class="is-active" aria-current="true">中文</a><a href="/en/docs/advanced/" role="menuitem">English</a><a href="/ug/docs/advanced/" role="menuitem">ئۇيغۇرچە</a></div></div><button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"><svg class="ti-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="ti-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="nav-cta">GitHub</a></div>
 </nav>
 <div class="mobile-doc-nav">
 <a href="/zh/docs/getting-started">快速上手</a>
@@ -65,14 +66,14 @@
 <header class="page-lead">
 <div class="page-kicker">河蟹 AI 文档</div>
 <h1>高级功能</h1>
-<p class="sub">MCP 协议、知识库 RAG、语义记忆、定时任务、技能市场、团队协作与安全网关。</p>
+<p class="sub">MCP、知识库 RAG 与记忆、自动化（定时任务 / Webhook / 工作流）、连接中心与数据连接器、技能、Prompt 库与安全网关。</p>
 </header>
 
 <h2>MCP 协议集成</h2>
 <p><strong>Model Context Protocol</strong>（MCP）让 AI Agent 能调用外部工具和服务。</p>
 <h3>注册 MCP 服务器</h3>
 <ol>
-<li>进入 <strong>MCP</strong> 页面</li>
+<li>进入 <strong>集成 → MCP</strong> 标签页</li>
 <li>点击 <strong>"添加服务器"</strong></li>
 <li>填入服务器名称和连接地址</li>
 <li>选择协议类型：<code>stdio</code> / <code>sse</code> / <code>streamable_http</code></li>
@@ -110,7 +111,7 @@
 <p>河蟹 AI 自动从对话中提取并存储记忆，跨会话持久化。</p>
 <ul>
 <li><strong>自动捕获</strong> — Agent 对话中的关键信息自动保存为记忆</li>
-<li><strong>语义搜索</strong> — 在记忆页面按关键词或语义检索</li>
+<li><strong>语义搜索</strong> — 在 <strong>知识库 → 记忆</strong> 标签页按关键词或语义检索</li>
 <li><strong>类型过滤</strong> — 按记忆类型筛选</li>
 <li><strong>手动管理</strong> — 查看、删除、批量清理</li>
 </ul>
@@ -119,7 +120,7 @@
 <p>让 Agent 按计划自动执行任务。</p>
 <h3>创建定时任务</h3>
 <ol>
-<li>进入 <strong>定时任务</strong> 页面</li>
+<li>进入 <strong>自动化 → 任务</strong> 标签页</li>
 <li>点击 <strong>"创建任务"</strong></li>
 <li>选择执行 Agent、设置 Cron 表达式、填写提示词</li>
 <li>启用任务</li>
@@ -130,11 +131,11 @@
 0 9 * * 1-5    工作日早上 9 点</code></pre>
 <p>支持手动触发、执行历史查看、心跳监控。</p>
 <figure class="doc-shot">
-        <img src="../../assets/docs/zh-guide/automation-scheduled-tasks.png" alt="河蟹 AI 自动化任务列表">
+        <img src="../../assets/docs/screenshots/automation-scheduled-tasks.png" alt="河蟹 AI 自动化任务列表">
 <figcaption>定时任务列表示意：查看任务计划、下次执行时间、执行次数和启停状态，并支持手动立即执行。</figcaption>
 </figure>
 <figure class="doc-shot">
-        <img src="../../assets/docs/zh-guide/automation-chat-result-card.png" alt="河蟹 AI 聊天中已创建定时任务的结果卡片">
+        <img src="../../assets/docs/screenshots/automation-chat-result-card.png" alt="河蟹 AI 聊天中已创建定时任务的结果卡片">
 <figcaption>自然语言创建任务示意：在聊天中描述需求后，系统会返回结构化结果卡片，便于确认任务已成功落地到自动化模块。</figcaption>
 </figure>
 
@@ -147,19 +148,9 @@
 <li><strong>配置</strong>：部分技能支持自定义参数</li>
 </ul>
 <figure class="doc-shot">
-        <img src="../../assets/docs/zh-guide/installed-skills-list.png" alt="河蟹 AI 已安装技能列表">
+        <img src="../../assets/docs/screenshots/installed-skills-list.png" alt="河蟹 AI 已安装技能列表">
 <figcaption>已安装技能列表示意：统一查看本地技能目录、运行状态、开关和版本，适合做启停与清理。</figcaption>
 </figure>
-
-<h2>团队协作</h2>
-<div class="tip"><b>提示：</b>团队协作功能目前处于规划阶段，部分功能尚未完整实现。</div>
-<p>支持多人共享和协作：</p>
-<ul>
-<li><strong>共享 Agent</strong> — 团队内共享 Agent 模板</li>
-<li><strong>成员角色</strong> — 管理员（admin）、成员（member）、查看者（viewer）</li>
-<li><strong>会话共享</strong> — 分享对话记录给团队</li>
-<li><strong>可见性</strong> — 公开（public）/ 团队（team）/ 私有（private）</li>
-</ul>
 
 <h2>安全网关</h2>
 <p>在 <strong>设置 → 安全</strong> 中配置：</p>
@@ -173,19 +164,18 @@
 <tr><td>速率限制</td><td>每分钟请求数（1 ~ 600 RPM）</td></tr>
 </table>
 
-<h2>深度研究模式</h2>
-<p>在聊天页切换到<strong>深度研究</strong>标签，输入研究主题后，Agent 会自动执行多步调研：</p>
+<h2>深度思考模式</h2>
+<p>在聊天页切换到<strong>深度思考</strong>标签，输入问题后，Agent 会以<strong>可见的推理过程</strong>进行多源深度分析：</p>
 <ol>
-<li><strong>搜索</strong> — 检索相关资料和来源</li>
+<li><strong>检索</strong> — 检索相关资料和来源</li>
 <li><strong>分析</strong> — 深度分析各个来源的内容</li>
-<li><strong>综合</strong> — 交叉对比，提炼关键观点</li>
-<li><strong>生成报告</strong> — 输出结构化研究报告，附带引用来源</li>
+<li><strong>综合</strong> — 交叉对比，提炼关键观点并附引用</li>
 </ol>
-<p>研究过程中会显示实时进度面板，可折叠/展开查看当前阶段。</p>
-<div class="tip"><b>提示：</b>研究模式基于 Hexagon 引擎的 Plan-and-Execute 范式，比普通 Agent 模式更适合需要多步推理的复杂任务。</div>
+<p>推理过程实时可见，可折叠 / 展开查看当前阶段。</p>
+<div class="tip"><b>提示：</b>深度思考基于 Hexagon 引擎的 Plan-and-Execute 范式，比普通 Agent 模式更适合需要多步推理的复杂问题。</div>
 
-<h2>IM 通道</h2>
-<p>河蟹 AI 支持连接多种即时通讯平台，让你通过手机消息远程与 AI 对话。进入 <strong>侧边栏 → IM 通道</strong> 配置：</p>
+<h2>连接中心 · IM 通道</h2>
+<p>河蟹 AI 支持连接多种即时通讯平台，让你通过手机消息远程与 AI 对话。进入 <strong>连接中心</strong>（侧栏「连接」分区）的「通道与账号」配置：</p>
 <table>
 <tr><th>平台</th><th>配置项</th><th>说明</th></tr>
 <tr><td>飞书</td><td>App ID + App Secret</td><td>在飞书开放平台创建企业自建应用</td></tr>
@@ -198,9 +188,17 @@
 </table>
 <p>配置保存后需要<strong>重启 Engine</strong> 生效。每个平台卡片上有"测试连接"按钮可验证配置。</p>
 <figure class="doc-shot">
-        <img src="../../assets/docs/zh-guide/im-channel-list.png" alt="河蟹 AI IM 通道列表界面">
-<figcaption>IM 通道列表示意：统一查看各个平台实例、运行状态和测试入口，并在桌面端完成启停与配置。</figcaption>
+        <img src="../../assets/docs/screenshots/im-channel-list.png" alt="河蟹 AI 连接中心通道列表界面">
+<figcaption>连接中心「通道与账号」示意：统一查看各平台实例、运行状态和测试入口，并在桌面端完成启停与配置。</figcaption>
 </figure>
+
+<h3>数据连接器（GitHub / Notion）</h3>
+<p>在 <strong>连接中心</strong> 的「数据连接器」中，可用只读 token 接入 GitHub / Notion：</p>
+<ul>
+<li>填入 PAT / Integration Token，点击<strong>测试连接</strong>验证</li>
+<li>可直接浏览资源（真实拉取仓库 / 页面列表）</li>
+<li>token 经后端加密落盘（<code>enc:v1:</code>），API 响应一律脱敏，前端不留明文</li>
+</ul>
 
 <h2>Webhook 通知推送</h2>
 <p>在 <strong>设置 → 通知推送</strong> 中配置 Webhook，当任务完成、Agent 执行结束或发生错误时自动推送通知：</p>
@@ -213,7 +211,7 @@
 <p>每个 Webhook 可配置触发事件：任务完成、Agent 完成、错误通知。</p>
 
 <h2>ClawHub 技能市场</h2>
-<p>在 <strong>侧边栏 → Skill → 技能市场</strong> 标签页，可浏览和安装来自 OpenClaw 社区的技能：</p>
+<p>在 <strong>集成 → 技能</strong> 标签页，可浏览和安装来自 OpenClaw 社区的技能：</p>
 <ul>
 <li>支持按分类筛选：编程、研究、写作、数据、自动化、生产力</li>
 <li>搜索关键词快速定位</li>
@@ -222,7 +220,7 @@
 </ul>
 <p>也可以通过本地安装方式导入 <code>.md</code> 格式的 Skill 文件。</p>
 <figure class="doc-shot">
-        <img src="../../assets/docs/zh-guide/clawhub-skill-marketplace.png" alt="河蟹 AI ClawHub 技能市场页面">
+        <img src="../../assets/docs/screenshots/clawhub-skill-marketplace.png" alt="河蟹 AI ClawHub 技能市场页面">
 <figcaption>ClawHub 技能市场示意：按分类浏览技能，查看下载量、标签和简介，并直接完成安装。</figcaption>
 </figure>
 
@@ -270,7 +268,7 @@
 </div>
 </div>
 </footer>
-<script src="../../assets/js/docs-nav.js?v=1781100615"></script>
+<script src="../../assets/js/docs-nav.js?v=1782400310"></script>
 <script>
 function toggleTheme(){var c=document.documentElement.getAttribute("data-theme");var n=c==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);localStorage.setItem("hexclaw-theme",n)}
 (function(){var s=localStorage.getItem("hexclaw-theme");var d=window.matchMedia("(prefers-color-scheme:dark)").matches;if(s==="dark"||(!s&&d))document.documentElement.setAttribute("data-theme","dark")})();

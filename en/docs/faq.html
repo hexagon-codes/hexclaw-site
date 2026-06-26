@@ -27,6 +27,7 @@
 <link rel="canonical" href="https://hexclaw.net/en/docs/faq">
 <link rel="alternate" hreflang="en" href="https://hexclaw.net/en/docs/faq">
 <link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/docs/faq">
+<link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/docs/faq">
 <link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/docs/faq">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"TechArticle","headline":"FAQ — HexClaw Docs","description":"Answers to installation, API key, Ollama, workflow, privacy, and MCP troubleshooting questions for HexClaw Desktop.","url":"https://hexclaw.net/en/docs/faq","inLanguage":"en","image":"https://hexclaw.net/assets/brand/hexclaw-logo.png","isPartOf":{"@type":"CreativeWorkSeries","name":"HexClaw Docs","url":"https://hexclaw.net/en/docs/"},"publisher":{"@type":"Organization","name":"hexagon-codes","url":"https://hexclaw.net/"},"about":{"@type":"SoftwareApplication","name":"HexClaw","operatingSystem":"macOS, Windows, Linux","applicationCategory":"BusinessApplication"}}
@@ -37,12 +38,12 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"The app opens to a blank screen or fails to load. What should I check?","acceptedAnswer":{"@type":"Answer","text":"Check the Logs page, confirm port 16060 is free, and restart the app so the Go sidecar can start."}},{"@type":"Question","name":"macOS says the app cannot be opened because the developer cannot be verified.","acceptedAnswer":{"@type":"Answer","text":"Right-click the app and choose Open, or clear quarantine with xattr -cr /Applications/HexClaw.app."}},{"@type":"Question","name":"How do I launch HexClaw at login?","acceptedAnswer":{"@type":"Answer","text":"Enable Launch at Login in Settings > General."}},{"@type":"Question","name":"My API request returns a 401 or 403 error.","acceptedAnswer":{"@type":"Answer","text":"Verify the API key, quota, and provider settings in Settings > Model Providers."}},{"@type":"Question","name":"How do I use local models with no network dependency?","acceptedAnswer":{"@type":"Answer","text":"Install Ollama and add it as a provider with the local base URL and downloaded model names."}},{"@type":"Question","name":"My MCP server connection fails.","acceptedAnswer":{"@type":"Answer","text":"Confirm the server is running, the transport type matches, and the configured endpoint or command is correct."}}]}
 </script>
-<link rel="stylesheet" href="../../assets/css/docs.css?v=1781100615">
+<link rel="stylesheet" href="../../assets/css/docs.css?v=1782400310">
 </head>
 <body class="docs-page">
 <nav class="tn">
 <a href="/en/" class="tn-b"><img src="../../assets/brand/hexclaw-icon-72.png" class="tn-l" alt="HexClaw"><span class="tn-n">HexClaw</span></a>
-<button class="tn-burger" onclick="document.querySelector('.tn-r').classList.toggle('open')" aria-label="Menu"><span></span><span></span><span></span></button><div class="tn-r"><a href="/en/">Home</a><a href="/en/#features">Capabilities</a><a href="/en/#quickstart">Quick Start</a><a href="/en/#cases">Use Cases</a><a href="/en/#ecosystem">Ecosystem</a><a href="/en/docs/" class="is-active">Docs</a><div class="lang-menu" data-lang-menu><button type="button" class="lang-trigger" aria-haspopup="menu" aria-expanded="false" aria-label="Language switcher"><svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 0 20"></path><path d="M12 2a15.3 15.3 0 0 0 0 20"></path></svg><span class="lang-current">English</span><svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="lang-menu-list" role="menu"><a href="/zh/docs/faq/" role="menuitem">中文</a><a href="/en/docs/faq/" role="menuitem" class="is-active" aria-current="true">English</a><a href="/ug/docs/faq/" role="menuitem">维吾尔语</a></div></div><button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"><svg class="ti-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="ti-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="nav-cta">GitHub</a></div>
+<button class="tn-burger" onclick="document.querySelector('.tn-r').classList.toggle('open')" aria-label="Menu"><span></span><span></span><span></span></button><div class="tn-r"><a href="/en/">Home</a><a href="/en/#features">Capabilities</a><a href="/en/#quickstart">Quick Start</a><a href="/en/#cases">Use Cases</a><a href="/en/#ecosystem">Ecosystem</a><a href="/en/docs/" class="is-active">Docs</a><div class="lang-menu" data-lang-menu><button type="button" class="lang-trigger" aria-haspopup="menu" aria-expanded="false" aria-label="Language switcher"><svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 0 20"></path><path d="M12 2a15.3 15.3 0 0 0 0 20"></path></svg><span class="lang-current">English</span><svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="lang-menu-list" role="menu"><a href="/zh/docs/faq/" role="menuitem">中文</a><a href="/en/docs/faq/" role="menuitem" class="is-active" aria-current="true">English</a><a href="/ug/docs/faq/" role="menuitem">ئۇيغۇرچە</a></div></div><button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"><svg class="ti-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="ti-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="nav-cta">GitHub</a></div>
 </nav>
 <div class="mobile-doc-nav">
 <a href="/en/docs/getting-started">Getting Started</a>
@@ -130,11 +131,11 @@
 <li>Inspect the <strong>Logs</strong> page for the full error message</li>
 </ol>
 
-<h2>Deep Research</h2>
-<h3>Deep research mode is stuck on the "searching" stage. What should I do?</h3>
-<p>Confirm the agent has access to a web search tool (the <code>web_search</code> Skill must be enabled). If the backend has no search Skill configured, research mode will fall back to a regular agent response.</p>
+<h2>Deep Thinking</h2>
+<h3>Deep Thinking mode is stuck on the "searching" stage. What should I do?</h3>
+<p>Confirm the agent has access to a web search tool (the <code>web_search</code> Skill must be enabled). If the backend has no search Skill configured, Deep Thinking will fall back to a regular agent response.</p>
 
-<h3>The research report quality is not satisfactory.</h3>
+<h3>The Deep Thinking output quality is not satisfactory.</h3>
 <p>Try the following:</p>
 <ul>
 <li>Use a more capable model (e.g. Claude Sonnet 4 or GPT-4o)</li>
@@ -142,7 +143,7 @@
 <li>Specify the desired output format in your prompt (e.g. "generate a Markdown report with citations")</li>
 </ul>
 
-<h2>IM Channels</h2>
+<h2>Connections · IM Channels</h2>
 <h3>I configured Feishu / DingTalk / WeCom but receive no messages.</h3>
 <ol>
 <li>Make sure you <strong>restart the Engine</strong> after saving the configuration</li>
@@ -165,7 +166,7 @@
 </ul>
 
 <h3>Q: Where can I inspect engine health?</h3>
-<p>The Dashboard shows sidecar engine health, connection status, and API port information. Engine checks run automatically every 5 seconds.</p>
+<p>The bottom-left engine status indicator and the <strong>Logs</strong> page show sidecar engine health (connection status, API port, etc.). Engine checks run automatically every 5 seconds.</p>
 
 <h2>Comparison with Other Products</h2>
 
@@ -227,7 +228,7 @@
 </div>
 </div>
 </footer>
-<script src="../../assets/js/docs-nav.js?v=1781100615"></script>
+<script src="../../assets/js/docs-nav.js?v=1782400310"></script>
 <script>
 function toggleTheme(){var c=document.documentElement.getAttribute("data-theme");var n=c==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);localStorage.setItem("hexclaw-theme",n)}
 (function(){var s=localStorage.getItem("hexclaw-theme");var d=window.matchMedia("(prefers-color-scheme:dark)").matches;if(s==="dark"||(!s&&d))document.documentElement.setAttribute("data-theme","dark")})();

@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/favicon-32.png">
 <title>工作流画布 — 河蟹 AI 文档</title>
-<meta name="description" content="可视化拖拽编排 AI 工作流，支持 DAG 执行引擎。">
+<meta name="description" content="在「自动化 → 工作流」中用线性步骤编排多步 AI 任务。">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="theme-color" content="#ffffff">
 <meta property="og:site_name" content="河蟹 AI">
 <meta property="og:type" content="article">
 <meta property="og:title" content="工作流画布 — 河蟹 AI 文档">
-<meta property="og:description" content="可视化拖拽编排 AI 工作流，支持 DAG 执行引擎。">
+<meta property="og:description" content="在「自动化 → 工作流」中用线性步骤编排多步 AI 任务。">
 <meta property="og:url" content="https://hexclaw.net/zh/docs/canvas">
 <meta property="og:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
 <meta property="og:image:alt" content="河蟹 AI 标志">
@@ -21,25 +21,26 @@
 <meta property="og:locale:alternate" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="工作流画布 — 河蟹 AI 文档">
-<meta name="twitter:description" content="可视化拖拽编排 AI 工作流，支持 DAG 执行引擎。">
+<meta name="twitter:description" content="在「自动化 → 工作流」中用线性步骤编排多步 AI 任务。">
 <meta name="twitter:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
 <meta name="twitter:image:alt" content="河蟹 AI 标志">
 <link rel="canonical" href="https://hexclaw.net/zh/docs/canvas">
 <link rel="alternate" hreflang="en" href="https://hexclaw.net/en/docs/canvas">
 <link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/docs/canvas">
+<link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/docs/canvas">
 <link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/docs/canvas">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"TechArticle","headline":"工作流画布 — 河蟹 AI 文档","description":"可视化拖拽编排 AI 工作流，支持 DAG 执行引擎。","url":"https://hexclaw.net/zh/docs/canvas","inLanguage":"zh-CN","image":"https://hexclaw.net/assets/brand/hexclaw-logo.png","isPartOf":{"@type":"CreativeWorkSeries","name":"河蟹 AI 文档","url":"https://hexclaw.net/zh/docs/"},"publisher":{"@type":"Organization","name":"hexagon-codes","url":"https://hexclaw.net/"},"about":{"@type":"SoftwareApplication","name":"河蟹 AI","operatingSystem":"macOS, Windows, Linux","applicationCategory":"BusinessApplication"}}
+{"@context":"https://schema.org","@type":"TechArticle","headline":"工作流画布 — 河蟹 AI 文档","description":"在「自动化 → 工作流」中用线性步骤编排多步 AI 任务。","url":"https://hexclaw.net/zh/docs/canvas","inLanguage":"zh-CN","image":"https://hexclaw.net/assets/brand/hexclaw-logo.png","isPartOf":{"@type":"CreativeWorkSeries","name":"河蟹 AI 文档","url":"https://hexclaw.net/zh/docs/"},"publisher":{"@type":"Organization","name":"hexagon-codes","url":"https://hexclaw.net/"},"about":{"@type":"SoftwareApplication","name":"河蟹 AI","operatingSystem":"macOS, Windows, Linux","applicationCategory":"BusinessApplication"}}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"河蟹 AI","item":"https://hexclaw.net/zh/"},{"@type":"ListItem","position":2,"name":"河蟹 AI 使用文档","item":"https://hexclaw.net/zh/docs/"},{"@type":"ListItem","position":3,"name":"工作流画布 — 河蟹 AI 文档","item":"https://hexclaw.net/zh/docs/canvas"}]}
 </script>
-<link rel="stylesheet" href="../../assets/css/docs.css?v=1781100615">
+<link rel="stylesheet" href="../../assets/css/docs.css?v=1782400310">
 </head>
 <body class="docs-page">
 <nav class="tn">
 <a href="/zh/" class="tn-b"><img src="../../assets/brand/hexclaw-icon-72.png" class="tn-l" alt="河蟹 AI"><span class="tn-n">河蟹 AI</span></a>
-<button class="tn-burger" onclick="document.querySelector('.tn-r').classList.toggle('open')" aria-label="菜单"><span></span><span></span><span></span></button><div class="tn-r"><a href="/zh/">首页</a><a href="/zh/#features">产品能力</a><a href="/zh/#quickstart">快速上手</a><a href="/zh/#cases">使用场景</a><a href="/zh/#ecosystem">开源生态</a><a href="/zh/docs/" class="is-active">文档</a><div class="lang-menu" data-lang-menu><button type="button" class="lang-trigger" aria-haspopup="menu" aria-expanded="false" aria-label="Language switcher"><svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 0 20"></path><path d="M12 2a15.3 15.3 0 0 0 0 20"></path></svg><span class="lang-current">中文</span><svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="lang-menu-list" role="menu"><a href="/zh/docs/canvas/" role="menuitem" class="is-active" aria-current="true">中文</a><a href="/en/docs/canvas/" role="menuitem">English</a><a href="/ug/docs/canvas/" role="menuitem">维吾尔语</a></div></div><button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"><svg class="ti-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="ti-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="nav-cta">GitHub</a></div>
+<button class="tn-burger" onclick="document.querySelector('.tn-r').classList.toggle('open')" aria-label="菜单"><span></span><span></span><span></span></button><div class="tn-r"><a href="/zh/">首页</a><a href="/zh/#features">产品能力</a><a href="/zh/#quickstart">快速上手</a><a href="/zh/#cases">使用场景</a><a href="/zh/#ecosystem">开源生态</a><a href="/zh/docs/" class="is-active">文档</a><div class="lang-menu" data-lang-menu><button type="button" class="lang-trigger" aria-haspopup="menu" aria-expanded="false" aria-label="Language switcher"><svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 0 20"></path><path d="M12 2a15.3 15.3 0 0 0 0 20"></path></svg><span class="lang-current">中文</span><svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="lang-menu-list" role="menu"><a href="/zh/docs/canvas/" role="menuitem" class="is-active" aria-current="true">中文</a><a href="/en/docs/canvas/" role="menuitem">English</a><a href="/ug/docs/canvas/" role="menuitem">ئۇيغۇرچە</a></div></div><button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"><svg class="ti-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="ti-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="nav-cta">GitHub</a></div>
 </nav>
 <div class="mobile-doc-nav">
 <a href="/zh/docs/getting-started">快速上手</a>
@@ -65,74 +66,40 @@
 <header class="page-lead">
 <div class="page-kicker">河蟹 AI 文档</div>
 <h1>工作流画布</h1>
-<p class="sub">可视化拖拽编排 AI 工作流，支持 DAG 执行引擎。</p>
+<p class="sub">在「自动化 → 工作流」中，用线性步骤编排多步 AI 任务。</p>
 </header>
 
 <h2>概述</h2>
-<p>工作流画布是河蟹 AI 的 <strong>无代码 AI 编排工具</strong>。通过拖拽节点和连线，构建复杂的 AI 处理管线。</p>
+<p>工作流位于 <strong>自动化 → 工作流</strong> 标签页，是河蟹 AI 的<strong>多步 AI 编排工具</strong>。它采用<strong>线性步骤</strong>编排：把一个复杂任务拆成若干顺序步骤，逐步执行并把每步结果传给下一步。</p>
 
-<h2>节点类型</h2>
+<h2>步骤构成</h2>
+<p>每个步骤是一次 Agent 调用，可分别配置：</p>
 <table>
-<tr><th>节点</th><th>说明</th><th>典型用途</th></tr>
-<tr><td><strong>Agent</strong></td><td>执行 AI 对话任务</td><td>内容生成、数据分析、代码编写</td></tr>
-<tr><td><strong>Tool</strong></td><td>调用 MCP 工具</td><td>API 请求、文件操作、数据库查询</td></tr>
-<tr><td><strong>Condition</strong></td><td>条件分支判断</td><td>根据结果走不同路径</td></tr>
-<tr><td><strong>Output</strong></td><td>输出最终结果</td><td>保存文件、发送通知、返回数据</td></tr>
+<tr><th>配置项</th><th>说明</th></tr>
+<tr><td><strong>角色</strong></td><td>该步骤使用的智能体 / 人设</td></tr>
+<tr><td><strong>提示</strong></td><td>本步骤的指令，可引用上一步的输出</td></tr>
+<tr><td><strong>模型</strong></td><td>该步骤单独指定的模型</td></tr>
+<tr><td><strong>工具</strong></td><td>本步骤允许调用的工具 / MCP</td></tr>
 </table>
 
 <h2>创建工作流</h2>
 <ol>
-<li>进入 <strong>工作流画布</strong> 页面</li>
-<li>从左侧面板拖拽节点到画布</li>
-<li>点击节点间的连接点，拖拽创建连线</li>
-<li>点击节点配置参数（选择 Agent、设置提示词等）</li>
-<li>保存工作流</li>
+<li>进入 <strong>自动化 → 工作流</strong> 标签页，点击新建</li>
+<li>添加步骤，并按需<strong>增删 / 排序</strong></li>
+<li>编辑每个步骤的角色、提示、模型与工具</li>
+<li><strong>保存</strong>工作流</li>
+<li>点击<strong>试运行</strong>，逐节点状态实时回填</li>
 </ol>
 
-<h2>模板库</h2>
-<p>内置多种预制工作流模板，可以快速开始：</p>
-<ul>
-<li><strong>文档翻译流水线</strong> — 翻译 → 校对 → 润色</li>
-<li><strong>代码审查</strong> — 安全检查 → 性能分析 → 最佳实践</li>
-<li><strong>数据处理</strong> — 提取 → 清洗 → 分析 → 可视化</li>
-<li><strong>内容创作</strong> — 大纲 → 初稿 → 编辑 → 终稿</li>
-</ul>
-
-<h2>执行工作流</h2>
-<ol>
-<li>保存后点击 <strong>"执行"</strong> 按钮</li>
-<li>工作流按 DAG（有向无环图）拓扑顺序执行</li>
-<li>实时显示每个节点的执行状态：pending → running → completed / failed</li>
-<li>执行完成后查看输出结果</li>
-</ol>
-<div class="tip"><b>提示：</b>工作流执行支持状态轮询，可以在执行过程中离开页面，稍后回来查看结果。</div>
-
-<h2>工作流验证</h2>
-<p>点击"运行"前，河蟹 AI 会自动验证工作流：</p>
-<ul>
-<li><strong>空画布检查</strong> — 至少需要一个节点</li>
-<li><strong>孤立节点检查</strong> — 所有节点必须通过连线连接</li>
-<li><strong>循环检测</strong> — 不允许存在环形依赖（DAG 约束）</li>
-</ul>
-<p>验证失败时会在顶部显示错误提示，需修复后才能运行。</p>
-
-<h2>保存与加载</h2>
-<p>工具栏提供工作流管理功能：</p>
-<ul>
-<li><strong>保存</strong> — 输入名称和描述，保存当前画布为工作流</li>
-<li><strong>加载</strong> — 从已保存的工作流列表中选择加载到画布</li>
-<li><strong>删除</strong> — 在加载列表中删除不需要的工作流</li>
-</ul>
-
-<h2>执行状态</h2>
-<p>运行工作流时，每个节点会实时显示执行状态：</p>
+<h2>执行与状态</h2>
+<p>运行时，每个步骤按顺序执行，并实时回填状态：</p>
 <ul>
 <li>⏳ <strong>等待中</strong> — 尚未执行</li>
-<li>🔄 <strong>运行中</strong> — 正在执行（蓝色边框 + 旋转动画）</li>
-<li>✅ <strong>已完成</strong> — 执行成功（绿色边框）</li>
-<li>❌ <strong>失败</strong> — 执行出错（红色边框）</li>
+<li>🔄 <strong>运行中</strong> — 正在执行</li>
+<li>✅ <strong>已完成</strong> — 执行成功</li>
+<li>❌ <strong>失败</strong> — 执行出错</li>
 </ul>
-<p>运行完成后，底部结果面板显示输出内容或错误信息。</p>
+<div class="tip"><b>提示：</b>工作流执行支持状态轮询，可以在执行过程中离开页面，稍后回来查看结果。</div>
 
 <hr>
 <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-top:32px;margin-bottom:24px">
@@ -178,7 +145,7 @@
 </div>
 </div>
 </footer>
-<script src="../../assets/js/docs-nav.js?v=1781100615"></script>
+<script src="../../assets/js/docs-nav.js?v=1782400310"></script>
 <script>
 function toggleTheme(){var c=document.documentElement.getAttribute("data-theme");var n=c==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);localStorage.setItem("hexclaw-theme",n)}
 (function(){var s=localStorage.getItem("hexclaw-theme");var d=window.matchMedia("(prefers-color-scheme:dark)").matches;if(s==="dark"||(!s&&d))document.documentElement.setAttribute("data-theme","dark")})();
