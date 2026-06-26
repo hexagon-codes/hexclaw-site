@@ -14,7 +14,7 @@
   --reading-width-wide: 960px;
   --text-primary: #172635;
   --text-secondary: #506577;
-  --text-muted: #788997;
+  --text-muted: #5a7287;
   --border: rgba(var(--accent-rgb), 0.14);
   --border-strong: rgba(var(--accent-rgb), 0.22);
   --border-soft: rgba(var(--accent-rgb), 0.09);
@@ -1239,23 +1239,7 @@ hr {
   opacity: 0.6;
 }
 
-.m pre::after {
-  content: "Copy";
-  position: absolute;
-  top: 8px;
-  right: 60px;
-  font-size: 11px;
-  font-weight: 500;
-  color: var(--blue-deep);
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  padding: 2px 8px;
-  cursor: pointer;
-  opacity: 0;
-  transition: opacity .2s;
-}
-.m pre:hover::after { opacity: 1; }
+/* Real copy button is injected by docs-nav.js as .code-copy (see enhancement layer below). */
 
 .m pre code { counter-reset: line; }
 
@@ -1497,5 +1481,281 @@ hr {
   [data-theme="dark"] .topnav-links {
     background: rgba(15,23,36,0.96);
     border-bottom-color: rgba(255,255,255,0.06);
+  }
+}
+
+/* =====================================================================
+   DOCS ENHANCEMENT LAYER  (progressive — built by docs-nav.js)
+   Reading progress · right-rail TOC · heading anchors · copy buttons ·
+   breadcrumb · prev/next pager · surface depth · sidebar/card polish.
+   All additive; respects the muted reading palette (no brand-blue recolor).
+   ===================================================================== */
+
+/* ---- Reading surface depth (whisper-subtle, neutral, not a recolor) ---- */
+body.docs-page,
+body.docs-hub {
+  background:
+    radial-gradient(120% 60% at 50% -8%, rgba(var(--accent-rgb), 0.05) 0%, rgba(var(--accent-rgb), 0) 60%) no-repeat,
+    linear-gradient(180deg, var(--bg-subtle) 0%, var(--bg) 240px, #ffffff 620px) no-repeat;
+  background-color: #ffffff;
+}
+[data-theme="dark"] body.docs-page,
+[data-theme="dark"] body.docs-hub {
+  background:
+    radial-gradient(circle at top, rgba(30,45,65,0.5) 0%, rgba(15,23,36,0) 34%) no-repeat,
+    linear-gradient(180deg, #0f1724 0%, #111b2a 22%, #151e2d 100%) no-repeat;
+  background-color: #0f1724;
+}
+
+/* ---- Reading progress bar ---- */
+.doc-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 0;
+  z-index: 200;
+  border-radius: 0 2px 2px 0;
+  background: linear-gradient(90deg, var(--blue) 0%, var(--blue-deep) 100%);
+  box-shadow: 0 0 10px rgba(var(--accent-rgb), 0.5);
+  transition: width 0.08s linear;
+  pointer-events: none;
+}
+[dir="rtl"] .doc-progress { left: auto; right: 0; border-radius: 2px 0 0 2px; }
+
+/* ---- Breadcrumb ---- */
+.doc-crumb {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 18px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+.doc-crumb a { color: var(--text-secondary); text-decoration: none; transition: color 0.2s ease; }
+.doc-crumb a:hover { color: var(--blue-deep); }
+.doc-crumb .doc-crumb-sep { opacity: 0.5; user-select: none; }
+.doc-crumb .doc-crumb-current { color: var(--text-primary); font-weight: 600; }
+
+/* ---- Heading anchors ---- */
+.m h2, .m h3 { scroll-margin-top: 90px; }
+.m :where(h2, h3) > .head-anchor {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 8px;
+  font-size: 0.74em;
+  font-weight: 600;
+  color: var(--blue);
+  text-decoration: none;
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.18s ease, transform 0.18s ease, color 0.18s ease;
+  vertical-align: middle;
+}
+.m :where(h2, h3):hover > .head-anchor,
+.m :where(h2, h3) > .head-anchor:focus-visible { opacity: 0.7; transform: translateX(0); }
+.m :where(h2, h3) > .head-anchor:hover { opacity: 1; color: var(--blue-deep); }
+[dir="rtl"] .m :where(h2, h3) > .head-anchor { margin-left: 0; margin-right: 8px; }
+
+/* ---- Real copy button on code blocks ---- */
+.m pre { position: relative; }
+.code-copy {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg-card);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  color: var(--blue-deep);
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(-2px);
+  transition: opacity 0.18s ease, transform 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+  z-index: 3;
+}
+[dir="rtl"] .code-copy { right: auto; left: 10px; }
+.code-copy svg { width: 13px; height: 13px; }
+.m pre:hover .code-copy,
+.m pre:focus-within .code-copy { opacity: 1; transform: translateY(0); }
+.code-copy:hover { border-color: var(--border-strong); background: var(--bg-card-hover); }
+.code-copy:focus-visible { opacity: 1; outline: 2px solid var(--blue); outline-offset: 2px; }
+.code-copy.is-copied { color: #22a06b; border-color: rgba(34,160,107,0.32); }
+[data-theme="dark"] .code-copy.is-copied { color: #4ade80; border-color: rgba(74,222,128,0.32); }
+@media (hover: none) { .code-copy { opacity: 0.85; transform: none; } }
+
+/* ---- Right-rail "On this page" TOC (content-anchored, wide screens only) ----
+   The left sidebar + content live at fixed physical positions in every locale
+   (CSS uses physical `left`, so the ug RTL page keeps the same layout). The TOC
+   therefore always sits in the physical-right gutter. On >=1440px we cap the
+   content column to the reading width so wide blocks don't run under the rail. */
+.doc-toc { display: none; }
+@media (min-width: 1440px) {
+  .docs-page .m > :where(pre, table, .page-lead, .doc-shot, .doc-gallery) {
+    max-width: var(--reading-width);
+  }
+  .docs-page .m > .doc-gallery {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .docs-page .doc-toc {
+    display: block;
+    position: fixed;
+    top: 96px;
+    left: 1184px;
+    width: 206px;
+    max-height: calc(100vh - 140px);
+    padding: 4px 4px 4px 16px;
+    overflow-y: auto;
+    border-left: 1px solid var(--border);
+    overscroll-behavior: contain;
+  }
+  [dir="rtl"] .docs-page .doc-toc {
+    /* same physical-right gutter; separator (border-left) still faces content,
+       just give right-aligned Uyghur text some breathing room from the edge */
+    padding: 4px 16px;
+  }
+}
+.doc-toc-title {
+  margin-bottom: 12px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: var(--blue-deep);
+  opacity: 0.72;
+}
+.doc-toc a {
+  display: block;
+  padding: 5px 10px;
+  margin-bottom: 1px;
+  border-radius: 8px;
+  border-left: 2px solid transparent;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 13.5px;
+  line-height: 1.55;
+  transition: color 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+}
+.doc-toc a.lv3 { padding-left: 22px; font-size: 13px; }
+.doc-toc a:hover { color: var(--text-primary); background: rgba(var(--accent-light-rgb), 0.22); }
+.doc-toc a.is-active {
+  color: var(--blue-deep);
+  border-left-color: var(--blue);
+  background: rgba(var(--accent-light-rgb), 0.28);
+  font-weight: 600;
+}
+[dir="rtl"] .doc-toc a { border-left: none; border-right: 2px solid transparent; }
+[dir="rtl"] .doc-toc a.lv3 { padding-left: 10px; padding-right: 22px; }
+[dir="rtl"] .doc-toc a.is-active { border-right-color: var(--blue); }
+
+/* ---- Prev / Next pager (built from sidebar order) ---- */
+.doc-pager {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  max-width: var(--reading-width);
+  margin: 56px 0 8px;
+}
+.doc-pager a {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px 20px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--bg-card);
+  text-decoration: none;
+  transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+.doc-pager a:hover {
+  border-color: var(--border-strong);
+  background: var(--bg-card-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(var(--accent-rgb), 0.08);
+}
+.doc-pager a.is-next { text-align: right; align-items: flex-end; }
+[dir="rtl"] .doc-pager a.is-next { text-align: left; align-items: flex-start; }
+[dir="rtl"] .doc-pager a.is-prev { text-align: right; align-items: flex-end; }
+.doc-pager-dir { font-size: 12px; font-weight: 600; letter-spacing: 0.4px; color: var(--text-muted); }
+.doc-pager-label { font-size: 16px; font-weight: 700; color: var(--blue-deep); }
+.doc-pager a:hover .doc-pager-label { text-decoration: none; }
+.doc-pager .is-prev:only-child { grid-column: 1; }
+.doc-pager .is-next:only-child { grid-column: 2; }
+@media (max-width: 600px) { .doc-pager { grid-template-columns: 1fr; } .doc-pager .is-next:only-child { grid-column: 1; } }
+
+/* ---- Sidebar active-indicator polish ---- */
+.sb a { position: relative; }
+.sb a.on::before {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 17px;
+  border-radius: 3px;
+  background: var(--blue);
+}
+[dir="rtl"] .sb a.on::before { left: auto; right: 5px; }
+
+/* ---- Docs hub card hover affordance (cards previously had no hover motion) ---- */
+.docs-hub .card {
+  position: relative;
+  transition: border-color 0.22s ease, background 0.22s ease, transform 0.22s ease, box-shadow 0.22s ease;
+}
+.docs-hub .card:hover {
+  transform: translateY(-3px);
+  border-color: var(--border-strong);
+  box-shadow: 0 18px 40px rgba(var(--accent-rgb), 0.1);
+}
+.docs-hub .card .card-icon { transition: background 0.22s ease, border-color 0.22s ease, transform 0.22s ease; }
+.docs-hub .card:hover .card-icon { transform: scale(1.06); border-color: rgba(var(--accent-rgb), 0.24); }
+.docs-hub .card::after {
+  content: "→";
+  position: absolute;
+  top: 28px;
+  right: 28px;
+  font-size: 18px;
+  color: var(--blue-deep);
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: opacity 0.22s ease, transform 0.22s ease;
+}
+.docs-hub .card:hover::after { opacity: 0.85; transform: translateX(0); }
+[dir="rtl"] .docs-hub .card::after { content: "←"; right: auto; left: 28px; transform: translateX(6px); }
+[dir="rtl"] .docs-hub .card:hover::after { transform: translateX(0); }
+
+@media (prefers-reduced-motion: reduce) {
+  .doc-progress, .head-anchor, .code-copy, .doc-pager a,
+  .docs-hub .card, .docs-hub .card-icon, .docs-hub .card::after { transition: none !important; }
+}
+
+/* ---- Inner doc pages: keep the footer clear of the fixed left sidebar AND the
+   fixed right-rail TOC. Only article pages have aside.sb (legal/hub pages don't,
+   so they keep the centered footer). Guarded to >=769px since the sidebar is
+   hidden on mobile (where .sb still exists in the DOM but is display:none). ---- */
+@media (min-width: 769px) {
+  /* sidebar + content sit at fixed PHYSICAL positions in every locale (CSS uses
+     physical left), so the footer offset is the same physical margin for ug too. */
+  .sb ~ .footer { margin-left: 240px; }
+  .sb ~ .footer .footer-main,
+  .sb ~ .footer .footer-bottom {
+    max-width: var(--reading-width);
+    margin-left: 64px;
+    margin-right: auto;
   }
 }
