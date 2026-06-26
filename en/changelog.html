@@ -48,6 +48,16 @@
 <p class="sub">HexClaw Desktop version history.</p>
 </header>
 
+<h2>v0.4.7 (2026-06-26)</h2>
+<ul>
+<li>Error replies and like/dislike feedback now persist — they survive session switches and reloads, and feedback stays actionable</li>
+<li>Text-to-speech failures now show a clear toast instead of silently doing nothing</li>
+<li>Degeneration circuit breaker: detects and stops degenerate model output from polluting the conversation</li>
+<li>In-app document download &amp; preview: downloads use the native save dialog; PDF parsing moved to the backend, so the frontend no longer bundles pdfjs</li>
+<li>Interaction fixes: no false scroll-nav on new sessions, IME-composition Enter no longer mis-sends, and the session model no longer leaks across sessions</li>
+<li>Engine upgraded to hexclaw v0.4.7</li>
+</ul>
+
 <h2>v0.4.6 (2026-06-23)</h2>
 <ul>
 <li>MCP in the Connections hub: an MCP server's env credentials (DB passwords, API keys, etc.) are encrypted at rest with a master key; API responses are always redacted</li>
