@@ -22,7 +22,7 @@
   .nav { position:fixed; top:0; left:0; right:0; z-index:100; padding:14px 32px; display:flex; align-items:center; justify-content:space-between; background:transparent; border-bottom:1px solid transparent; transition:all .3s; }
   .nav.scrolled { background:rgba(255,255,255,.72); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); border-bottom:1px solid rgba(63,143,212,.12); box-shadow:0 10px 30px rgba(95,179,234,.08); }
   .nav-brand { display:flex; align-items:center; gap:8px; text-decoration:none; }
-  .nav-logo { height:36px; border-radius:6px; }
+  .nav-logo { width:36px; height:36px; border-radius:6px; object-fit:contain; }
   .nav-name { font-size:20px; font-weight:700; color:var(--text-primary); }
   .nav-links { display:flex; align-items:center; gap:20px; }
   .nav-links a { color:rgba(18,50,76,.72); text-decoration:none; font-size:15px; font-weight:500; transition:color .2s; }
@@ -66,6 +66,7 @@
   .hero-badge-dot { width:5px; height:5px; border-radius:50%; background:#4ade80; animation:pulse 2s ease infinite; }
   @keyframes pulse { 0%,100%{opacity:.5} 50%{opacity:1} }
   .hero-title { font-size:clamp(36px,4.8vw,54px); font-weight:800; line-height:1.16; letter-spacing:-1.4px; color:var(--text-primary); margin-bottom:12px; white-space:normal; text-wrap:balance; }
+  .hero-brandline { font-size:clamp(16px,1.8vw,20px); font-weight:600; color:var(--blue-deep); letter-spacing:-.2px; margin:0 0 18px; }
   .hero-tagline { font-size:20px; color:rgba(18,50,76,.78); line-height:1.7; margin-bottom:20px; max-width:660px; margin-left:auto; margin-right:auto; }
   .hero-version { display:flex; align-items:center; justify-content:center; gap:8px; margin-bottom:20px; }
   .hero-vtag { font-size:14px; font-weight:600; color:var(--blue-deep); background:rgba(255,255,255,.74); border:1px solid rgba(63,143,212,.14); padding:4px 10px; border-radius:999px; }
@@ -437,6 +438,7 @@
   [data-theme="dark"] .nav-links { background:rgba(12,20,34,.96)!important; backdrop-filter:blur(24px); -webkit-backdrop-filter:blur(24px); }
   [data-theme="dark"] .nav-links a { border-bottom-color:rgba(255,255,255,0.04)!important; }
   [data-theme="dark"] .hero-tagline { color:rgba(232,236,240,0.7); }
+  [data-theme="dark"] .hero-brandline { color:var(--blue-light); }
   [data-theme="dark"] .social-proof { background:rgba(95,179,234,0.03); }
   [data-theme="dark"] .social-proof-bar { color:var(--text-secondary); }
 
