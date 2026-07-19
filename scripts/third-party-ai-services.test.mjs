@@ -32,7 +32,7 @@ test('publishes one localized, indexable service notice per supported locale', (
       assert.ok(!html.includes(`href="/${linkedLocale}/third-party-ai-services/"`))
     }
     assert.ok(html.includes('2026-07-19'))
-    assert.ok(html.includes('../assets/css/docs.css'))
+    assert.match(html, /\.\.\/assets\/css\/docs-[a-f0-9]{12}\.css/)
     assert.ok(html.includes('../assets/js/docs-nav.js'))
 
     const jsonLdBlocks = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)]

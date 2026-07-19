@@ -35,6 +35,21 @@ test("every content page exposes a keyboard skip link and main target", () => {
   assert.deepEqual(failures, []);
 });
 
+test("内容页使用带版本文件名的样式，避免旧 CSS 缓存破坏导航", () => {
+  const failures = [];
+  for (const file of htmlFiles) {
+    const html = read(file);
+    if (!/<body\b[^>]*class="[^"]*(?:docs-page|content-page)/i.test(html)) continue;
+    const stylesheet = html.match(/<link\b[^>]*rel="stylesheet"[^>]*href="([^"]*docs[^"?]*\.css)"[^>]*>/i)?.[1];
+    if (!stylesheet || /\?/.test(stylesheet) || !/docs-[a-f0-9]{12}\.css$/i.test(stylesheet)) {
+      failures.push(`${relative(file)}: missing versioned docs stylesheet`);
+    } else if (!fs.existsSync(path.resolve(path.dirname(file), stylesheet))) {
+      failures.push(`${relative(file)}: stylesheet asset is missing`);
+    }
+  }
+  assert.deepEqual(failures, []);
+});
+
 test("every image reserves its intrinsic aspect ratio", () => {
   const failures = [];
   for (const file of htmlFiles) {
@@ -89,4 +104,12 @@ test("styles animate explicit properties and expose keyboard focus", () => {
     assert.doesNotMatch(source, /transition\s*:\s*all\b/);
     assert.match(source, /(?:a|:where\(a, button\)).*:focus-visible/);
   }
+});
+
+test("内容页导航 Logo 保持正方形资源比例", () => {
+  const docs = read(path.join(root, "assets/css/docs.css"));
+  assert.match(
+    docs,
+    /\.tn \.tn-l,\s*\.topnav-logo\s*\{[\s\S]*?width:\s*36px;[\s\S]*?height:\s*36px;[\s\S]*?object-fit:\s*contain;/,
+  );
 });

@@ -2,11 +2,9 @@
 #
 # Content-hash cache-busting for versioned static assets.
 #
-# Rewrites every `<asset>?v=<token>` reference across all HTML files to
-# `?v=<sha256-prefix>` of that asset's *current bytes*. Run automatically in CI
-# before each deploy, so the cache-buster changes exactly when — and only when —
-# an asset changes. No human ever bumps `?v=` by hand again, and unchanged assets
-# keep their warm 1-year immutable cache.
+# Rewrites mutable assets to a SHA256 query token. The shared docs stylesheet
+# instead receives a SHA256 filename: this guarantees a new CDN cache key even
+# when a proxy ignores query parameters. Run automatically in CI before deploy.
 #
 # Portable: Linux CI (sha256sum) + macOS local (shasum). Idempotent: same bytes
 # → same hash → no diff. Add a new versioned asset by adding one line to `assets`.
@@ -26,7 +24,6 @@ hash_of() {
 assets=(
   assets/css/home.css
   assets/js/home.js
-  assets/css/docs.css
   assets/js/docs-nav.js
 )
 
@@ -44,6 +41,11 @@ done
 
 # One perl pass over all HTML; quotemeta-safe substitution per asset.
 export STAMP_PAIRS="${pairs[*]}"
+docs_asset="assets/css/docs.css"
+docs_hash=$(hash_of "$docs_asset")
+docs_version="docs-${docs_hash}.css"
+cp "$docs_asset" "assets/css/$docs_version"
+export DOCS_VERSION_NAME="$docs_version"
 find . -name '*.html' -not -path './.git/*' -print0 \
   | xargs -0 perl -pi -e '
       BEGIN {
@@ -56,6 +58,7 @@ find . -name '*.html' -not -path './.git/*' -print0 \
         my ($b, $h) = @$r;
         s/\Q$b\E\?v=[0-9A-Za-z]+/$b?v=$h/g;
       }
+      s/docs(?:-[0-9a-f]{12})?\.css(?:\?v=[0-9A-Za-z]+)?/$ENV{DOCS_VERSION_NAME}/g;
     '
 
 echo "cache-bust stamped across HTML."
