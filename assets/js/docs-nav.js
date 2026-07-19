@@ -10,6 +10,34 @@ if (nav) {
 }
 
 (() => {
+  const button = document.querySelector(".tn-burger, .topnav-burger");
+  if (!button) return;
+  const controlledId = button.getAttribute("aria-controls");
+  const links = controlledId ? document.getElementById(controlledId) : null;
+  if (!links) return;
+
+  const desktop = window.matchMedia("(min-width: 1101px)");
+  const setOpen = (open) => {
+    links.classList.toggle("open", open);
+    button.setAttribute("aria-expanded", open ? "true" : "false");
+  };
+
+  button.addEventListener("click", () => setOpen(!links.classList.contains("open")));
+  links.addEventListener("click", (event) => {
+    if (event.target.closest("a")) setOpen(false);
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && links.classList.contains("open")) {
+      setOpen(false);
+      button.focus();
+    }
+  });
+  desktop.addEventListener("change", (event) => {
+    if (event.matches) setOpen(false);
+  });
+})();
+
+(() => {
   const menus = Array.from(document.querySelectorAll("[data-lang-menu]"));
 
   if (!menus.length) return;

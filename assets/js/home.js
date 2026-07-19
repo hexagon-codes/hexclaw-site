@@ -1,3 +1,31 @@
+    /* Mobile/tablet navigation owns its open state here so aria-expanded and
+       the visual panel can never drift apart. */
+    (function(){
+      const button = document.querySelector(".nav-burger");
+      const links = document.querySelector(".nav-links");
+      if (!button || !links) return;
+
+      const desktop = window.matchMedia("(min-width: 1101px)");
+      const setOpen = (open) => {
+        links.classList.toggle("open", open);
+        button.setAttribute("aria-expanded", open ? "true" : "false");
+      };
+
+      button.addEventListener("click", () => setOpen(!links.classList.contains("open")));
+      links.addEventListener("click", (event) => {
+        if (event.target.closest("a")) setOpen(false);
+      });
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && links.classList.contains("open")) {
+          setOpen(false);
+          button.focus();
+        }
+      });
+      desktop.addEventListener("change", (event) => {
+        if (event.matches) setOpen(false);
+      });
+    })();
+
     const o=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');o.unobserve(x.target)}}),{threshold:.08,rootMargin:'0px 0px -24px 0px'});
     document.querySelectorAll('.reveal').forEach(el=>o.observe(el));
     const n=document.getElementById('nav');
@@ -203,4 +231,3 @@
     })
     .catch(function(){});
 })();
-

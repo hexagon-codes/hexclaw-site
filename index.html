@@ -35,6 +35,21 @@
     padding: 0;
   }
 
+  .skip-link {
+    position: fixed;
+    top: 8px;
+    left: 12px;
+    z-index: 10;
+    padding: 9px 14px;
+    border-radius: 9px;
+    background: var(--accent);
+    color: #fff;
+    text-decoration: none;
+    transform: translateY(-160%);
+  }
+
+  .skip-link:focus-visible { transform: translateY(0); }
+
   body {
     min-height: 100vh;
     display: grid;
@@ -158,9 +173,10 @@
 </style>
 </head>
 <body>
-<main class="shell">
+<a href="#main" class="skip-link">Skip to content</a>
+<main id="main" class="shell">
   <a href="/zh/" class="brand">
-    <img src="assets/icons/favicon-32.png" alt="HexClaw">
+    <img width="32" height="32" src="assets/icons/favicon-32.png" alt="HexClaw">
     <span>HexClaw</span>
   </a>
   <h1>Redirecting To 中文站点</h1>
