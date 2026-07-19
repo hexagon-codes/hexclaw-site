@@ -27,14 +27,18 @@
 /en/changelog.html /en/changelog 301
 /en/privacy.html /en/privacy 301
 /en/terms.html /en/terms 301
+/en/third-party-ai-services.html /en/third-party-ai-services 301
 /en/about.html /en/about 301
 /zh/changelog.html /zh/changelog 301
 /zh/privacy.html /zh/privacy 301
 /zh/terms.html /zh/terms 301
+/zh/third-party-ai-services.html /zh/third-party-ai-services 301
 /zh/about.html /zh/about 301
 /changelog /zh/changelog 301
 /privacy /zh/privacy 301
 /terms /zh/terms 301
+/third-party-ai-services /zh/third-party-ai-services 301
+/third-party-ai-services.html /zh/third-party-ai-services 301
 /about /zh/about 301
 /ug /ug/ 301
 /ug/index.html /ug/ 301
@@ -51,6 +55,7 @@
 /ug/changelog.html /ug/changelog 301
 /ug/privacy.html /ug/privacy 301
 /ug/terms.html /ug/terms 301
+/ug/third-party-ai-services.html /ug/third-party-ai-services 301
 /ug/about.html /ug/about 301
 /download https://github.com/hexagon-codes/hexclaw-desktop/releases 302
 /github https://github.com/hexagon-codes/hexclaw-desktop 302
@@ -58,4 +63,7 @@
 /docs /en/docs/ 301
 /docs/ /en/docs/ 301
 /docs/index.html /en/docs/ 301
+/docs/third-party-providers /zh/third-party-ai-services 301
+/docs/third-party-providers/ /zh/third-party-ai-services 301
+/docs/third-party-providers.html /zh/third-party-ai-services 301
 /docs/* /en/docs/:splat 301

@@ -5,15 +5,17 @@
     <loc>https://hexclaw.net/en/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://hexclaw.net/en/"/>
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/"/>
+    <xhtml:link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/"/>
-    <lastmod>2026-03-19</lastmod>
+    <lastmod>2026-07-19</lastmod>
   </url>
   <url>
     <loc>https://hexclaw.net/zh/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://hexclaw.net/en/"/>
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/"/>
+    <xhtml:link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/"/>
-    <lastmod>2026-03-19</lastmod>
+    <lastmod>2026-07-19</lastmod>
   </url>
   <url>
     <loc>https://hexclaw.net/en/docs/</loc>
@@ -159,29 +161,33 @@
     <loc>https://hexclaw.net/en/privacy</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://hexclaw.net/en/privacy"/>
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/privacy"/>
+    <xhtml:link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/privacy"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/privacy"/>
-    <lastmod>2026-03-19</lastmod>
+    <lastmod>2026-07-19</lastmod>
   </url>
   <url>
     <loc>https://hexclaw.net/zh/privacy</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://hexclaw.net/en/privacy"/>
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/privacy"/>
+    <xhtml:link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/privacy"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/privacy"/>
-    <lastmod>2026-03-19</lastmod>
+    <lastmod>2026-07-19</lastmod>
   </url>
   <url>
     <loc>https://hexclaw.net/en/terms</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://hexclaw.net/en/terms"/>
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/terms"/>
+    <xhtml:link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/terms"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/terms"/>
-    <lastmod>2026-03-19</lastmod>
+    <lastmod>2026-07-19</lastmod>
   </url>
   <url>
     <loc>https://hexclaw.net/zh/terms</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://hexclaw.net/en/terms"/>
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/terms"/>
+    <xhtml:link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/terms"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/terms"/>
-    <lastmod>2026-03-19</lastmod>
+    <lastmod>2026-07-19</lastmod>
   </url>
   <url>
     <loc>https://hexclaw.net/en/about</loc>
@@ -203,7 +209,7 @@
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/"/>
     <xhtml:link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/"/>
-    <lastmod>2026-05-01</lastmod>
+    <lastmod>2026-07-19</lastmod>
   </url>
   <url>
     <loc>https://hexclaw.net/ug/docs/</loc>
@@ -291,7 +297,7 @@
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/privacy"/>
     <xhtml:link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/privacy"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/privacy"/>
-    <lastmod>2026-05-01</lastmod>
+    <lastmod>2026-07-19</lastmod>
   </url>
   <url>
     <loc>https://hexclaw.net/ug/terms</loc>
@@ -299,7 +305,7 @@
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/terms"/>
     <xhtml:link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/terms"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/terms"/>
-    <lastmod>2026-05-01</lastmod>
+    <lastmod>2026-07-19</lastmod>
   </url>
   <url>
     <loc>https://hexclaw.net/ug/about</loc>
@@ -308,5 +314,29 @@
     <xhtml:link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/about"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/about"/>
     <lastmod>2026-05-01</lastmod>
+  </url>
+  <url>
+    <loc>https://hexclaw.net/zh/third-party-ai-services</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hexclaw.net/en/third-party-ai-services"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/third-party-ai-services"/>
+    <xhtml:link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/third-party-ai-services"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/third-party-ai-services"/>
+    <lastmod>2026-07-19</lastmod>
+  </url>
+  <url>
+    <loc>https://hexclaw.net/en/third-party-ai-services</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hexclaw.net/en/third-party-ai-services"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/third-party-ai-services"/>
+    <xhtml:link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/third-party-ai-services"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/third-party-ai-services"/>
+    <lastmod>2026-07-19</lastmod>
+  </url>
+  <url>
+    <loc>https://hexclaw.net/ug/third-party-ai-services</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hexclaw.net/en/third-party-ai-services"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/third-party-ai-services"/>
+    <xhtml:link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/third-party-ai-services"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/third-party-ai-services"/>
+    <lastmod>2026-07-19</lastmod>
   </url>
 </urlset>

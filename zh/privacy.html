@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/favicon-32.png">
 <title>隐私政策 — 河蟹 AI</title>
-<meta name="description" content="河蟹 AI 隐私政策：所有数据存储在用户本地，API Key 通过操作系统密钥链安全存储，不收集用户数据、不追踪行为。">
+<meta name="description" content="河蟹 AI 隐私政策：数据默认保存在本地；使用您配置的云端模型时，完成请求所需内容会发送至对应第三方 Provider。">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="theme-color" content="#ffffff">
 <meta property="og:site_name" content="河蟹 AI">
 <meta property="og:type" content="article">
 <meta property="og:title" content="隐私政策 — 河蟹 AI">
-<meta property="og:description" content="河蟹 AI 隐私政策：所有数据存储在用户本地，API Key 通过操作系统密钥链安全存储，不收集用户数据、不追踪行为。">
+<meta property="og:description" content="河蟹 AI 隐私政策：数据默认保存在本地；使用您配置的云端模型时，完成请求所需内容会发送至对应第三方 Provider。">
 <meta property="og:url" content="https://hexclaw.net/zh/privacy">
 <meta property="og:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
 <meta property="og:image:alt" content="河蟹 AI 标志">
@@ -21,7 +21,7 @@
 <meta property="og:locale:alternate" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="隐私政策 — 河蟹 AI">
-<meta name="twitter:description" content="河蟹 AI 隐私政策：所有数据存储在用户本地，API Key 通过操作系统密钥链安全存储，不收集用户数据、不追踪行为。">
+<meta name="twitter:description" content="河蟹 AI 隐私政策：数据默认保存在本地；使用您配置的云端模型时，完成请求所需内容会发送至对应第三方 Provider。">
 <meta name="twitter:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
 <meta name="twitter:image:alt" content="河蟹 AI 标志">
 <link rel="canonical" href="https://hexclaw.net/zh/privacy">
@@ -45,20 +45,20 @@
 <main class="m" style="margin-left:0">
 <header class="page-lead">
 <h1>隐私政策</h1>
-<p class="sub">河蟹 AI 尊重您的隐私，所有数据均在本地处理。</p>
+<p class="sub">河蟹 AI 本地优先；使用您配置的云端模型时，必要内容会发送至对应第三方 Provider。</p>
 </header>
 
 <h2>数据存储</h2>
-<p>所有数据存储在用户本地设备。河蟹 AI 不会将您的对话、设置或任何个人数据上传到我们的服务器。</p>
+<p>对话、设置与本地索引默认存储在您的设备上。hexagon-codes 不提供用于同步或托管这些数据的官方云端账户服务；当您主动使用第三方 Provider 时，完成该请求所需的输入会按您的配置发送至对应端点。</p>
 
 <h2>API Key 安全</h2>
-<p>API Key 通过操作系统密钥链（Keychain / Credential Manager）安全存储，不会以明文形式保存在配置文件中。</p>
+<p>桌面端将 API Key 与普通配置分开保存在专用本地存储中；浏览器开发模式只在当前页面内存中临时保留，刷新后需要重新输入。请同时启用设备登录保护和磁盘加密，并避免共享本机账户。</p>
 
 <h2>网络通信</h2>
-<p>河蟹 AI 仅与您配置的 AI API 端点通信。我们不会向第三方服务器发送您的数据，除非您主动配置了相应的 AI 服务商。</p>
+<p>河蟹 AI 仅与您配置或启用的网络服务通信。第三方模型可能接收的内容、知识库文本分块、查询文本及用户控制，详见<a href="/zh/third-party-ai-services">《第三方 AI 服务与数据说明》</a>。</p>
 
 <h2>完全离线模式</h2>
-<p>使用 Ollama 等本地模型时，河蟹 AI 可完全离线运行，所有数据均不离开您的设备。</p>
+<p>仅使用 Ollama 等本地模型并关闭其他网络集成时，河蟹 AI 可完全离线运行，相关模型请求不会离开您的设备。</p>
 
 <h2>数据收集与追踪</h2>
 <p>我们不收集用户数据、不追踪用户行为、不投放广告。河蟹 AI 为开源软件，您可随时审计代码以验证上述承诺。</p>
@@ -90,6 +90,7 @@
 <div class="footer-col-title">法务与联系</div>
 <a href="/zh/privacy">隐私政策</a>
 <a href="/zh/terms">使用条款</a>
+<a href="/zh/third-party-ai-services">第三方 AI 服务说明</a>
 <a href="mailto:ai@hexclaw.net">业务咨询</a>
 </div>
 </div>
@@ -99,6 +100,7 @@
 <div class="footer-meta-links">
 <a href="/zh/privacy">隐私政策</a>
 <a href="/zh/terms">使用条款</a>
+<a href="/zh/third-party-ai-services">第三方 AI 服务说明</a>
 <a href="mailto:support@hexclaw.net">问题反馈</a>
 </div>
 </div>

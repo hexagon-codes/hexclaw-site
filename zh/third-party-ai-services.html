@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/favicon-32.png">
+<title>第三方 AI 服务与数据说明 — 河蟹 AI</title>
+<meta name="description" content="了解河蟹 AI 在本地模型与第三方 AI Provider 之间如何处理请求、知识库文本分块、未成年人信息、跨境传输与用户控制。">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:site_name" content="河蟹 AI">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第三方 AI 服务与数据说明 — 河蟹 AI">
+<meta property="og:description" content="本地优先，清楚说明何时会请求你配置的第三方 AI Provider，以及会发送哪些数据。">
+<meta property="og:url" content="https://hexclaw.net/zh/third-party-ai-services">
+<meta property="og:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta property="og:image:alt" content="河蟹 AI 标志">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:locale:alternate" content="ug">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="第三方 AI 服务与数据说明 — 河蟹 AI">
+<meta name="twitter:description" content="本地优先，清楚说明何时会请求你配置的第三方 AI Provider，以及会发送哪些数据。">
+<meta name="twitter:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta name="twitter:image:alt" content="河蟹 AI 标志">
+<link rel="canonical" href="https://hexclaw.net/zh/third-party-ai-services">
+<link rel="alternate" hreflang="en" href="https://hexclaw.net/en/third-party-ai-services">
+<link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/third-party-ai-services">
+<link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/third-party-ai-services">
+<link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/third-party-ai-services">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","headline":"第三方 AI 服务与数据说明 — 河蟹 AI","description":"河蟹 AI 第三方 AI 服务的数据流、用户控制与重要事项说明。","url":"https://hexclaw.net/zh/third-party-ai-services","inLanguage":"zh-CN","datePublished":"2026-07-19","dateModified":"2026-07-19","image":"https://hexclaw.net/assets/brand/hexclaw-logo.png","publisher":{"@type":"Organization","name":"hexagon-codes","url":"https://hexclaw.net/"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"河蟹 AI","item":"https://hexclaw.net/zh/"},{"@type":"ListItem","position":2,"name":"第三方 AI 服务与数据说明","item":"https://hexclaw.net/zh/third-party-ai-services"}]}
+</script>
+<link rel="stylesheet" href="../assets/css/docs.css?v=b9236bbf8887">
+</head>
+<body class="docs-page">
+<nav class="tn">
+<a href="/zh/" class="tn-b"><img src="../assets/brand/hexclaw-icon-72.png" class="tn-l" alt="河蟹 AI"><span class="tn-n">河蟹 AI</span></a>
+<button class="tn-burger" onclick="document.querySelector('.tn-r').classList.toggle('open')" aria-label="菜单"><span></span><span></span><span></span></button><div class="tn-r"><a href="/zh/">首页</a><a href="/zh/#features">产品能力</a><a href="/zh/#quickstart">快速上手</a><a href="/zh/#cases">使用场景</a><a href="/zh/#ecosystem">开源生态</a><a href="/zh/docs/">文档</a><div class="lang-menu" data-lang-menu><button type="button" class="lang-trigger" aria-haspopup="menu" aria-expanded="false" aria-label="语言切换"><svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 0 20"></path><path d="M12 2a15.3 15.3 0 0 0 0 20"></path></svg><span class="lang-current">中文</span><svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="lang-menu-list" role="menu"><a href="/zh/third-party-ai-services" role="menuitem" class="is-active" aria-current="true">中文</a><a href="/en/third-party-ai-services" role="menuitem">English</a><a href="/ug/third-party-ai-services" role="menuitem">ئۇيغۇرچە</a></div></div><button class="theme-toggle" onclick="toggleTheme()" aria-label="切换主题"><svg class="ti-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="ti-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="nav-cta">GitHub</a></div>
+</nav>
+<main class="m" style="margin-left:0">
+<header class="page-lead">
+<h1>第三方 AI 服务与数据说明</h1>
+<p class="sub">河蟹 AI 本地优先。只有当你选择云端模型或使用会调用云端的“自动”方案时，相关请求才会发送给你配置的第三方 Provider。</p>
+</header>
+
+<div class="tip"><b>先说结论：</b>云端模型由你配置的第三方 Provider 提供。河蟹 AI 不代售模型服务，也不会替你创建 Provider 账户；Provider 的费用、可用性和数据规则由其条款决定。你随时可以改用本地模型或纯文本检索。</div>
+
+<h2>1. 这份说明适用于什么</h2>
+<p>本页说明河蟹 AI 桌面端将请求交给第三方 AI Provider 时的产品行为，包括聊天、语义索引和语义检索。它是对<a href="/zh/privacy">《隐私政策》</a>与<a href="/zh/terms">《使用条款》</a>的补充。</p>
+<p>河蟹 AI 是本地优先的开源客户端。仅仅分发客户端，并不意味着 hexagon-codes 自动成为你所选 Provider 的运营方或代理商；同时，任何主体的法律角色与责任仍应依据<strong>实际部署方式和所提供的功能</strong>、对处理目的和方式的控制等事实判断，不能只用“工具”或“壳”来概括。</p>
+
+<h2>2. 什么时候会连接第三方 Provider</h2>
+<table>
+<thead><tr><th>你的选择</th><th>会发生什么</th></tr></thead>
+<tbody>
+<tr><td><strong>本地模型</strong></td><td>模型推理在你配置的本地运行时完成，该次模型请求不会发送给第三方云端 Provider。</td></tr>
+<tr><td><strong>云端模型</strong></td><td>在你触发对应操作后，客户端将必要内容和凭据发送到你配置的 Provider Endpoint。</td></tr>
+<tr><td><strong>自动</strong></td><td>客户端按当时可用性与策略选择模型；如果实际选择云端模型，会按云端数据路径处理，并在界面显示实际使用的模型。</td></tr>
+<tr><td><strong>纯文本检索</strong></td><td>只使用本地已提取文本与全文索引，不为该次检索调用 Embedding Provider。</td></tr>
+</tbody>
+</table>
+<p>“已配置”或“可选”不等于正在传输。通常只有在你提交请求、开始索引、重新索引或执行语义查询时才会发起对应网络请求。网络延迟、Provider 排队、限流和配额都会影响云端速度。</p>
+
+<h2>3. 知识库语义索引会发送什么</h2>
+<p>在当前知识库 Embedding 链路中，PDF 等文档先在本地提取与分块。使用云端 Embedding 时，发送的是<strong>规范化文本分块</strong>；执行语义检索时，发送的是<strong>查询文本</strong>。Embedding 请求不包含原始 PDF 文件本体、原始文件名、本地路径或本地全文索引数据库。</p>
+<p>文本分块本身仍可能包含个人信息、商业秘密或其他敏感内容。请在选择云端模型前判断内容是否适合交给该 Provider。聊天、图片理解或你主动添加附件等其他功能，可能按功能需要发送提示词、上下文、图片或附件；它们不受上一段“仅文本分块”的范围描述所覆盖。</p>
+
+<h2>4. Provider 会收到哪些信息</h2>
+<ul>
+<li>完成所选功能所必需的输入，例如提示词、上下文、规范化文本分块、查询文本或你主动提供的附件；</li>
+<li>模型名、请求参数以及服务运行所需的技术信息；</li>
+<li>你配置的 API Key 或其他认证信息，直接用于访问对应 Endpoint。</li>
+</ul>
+<p>Provider 可能依据自身规则处理请求日志、账户信息、设备或网络信息。其<strong>计费</strong>、服务可用性、数据<strong>留存</strong>、是否用于<strong>模型训练</strong>、处理地区、安全措施与删除机制，均以该 Provider 向你提供的最新条款、隐私政策和控制台设置为准。</p>
+
+<h2>5. 你拥有的选择与控制</h2>
+<ul>
+<li>在语义索引设置中选择本地、云端或自动模型，并查看模型的“本地 / 云端”标识；</li>
+<li>处理不宜出端的资料时使用本地模型，或先使用纯文本检索；</li>
+<li>在设置中移除或替换 Provider Endpoint 与 API Key；</li>
+<li>删除本地知识库、索引或会话数据；如需删除 Provider 留存的数据，应通过该 Provider 的控制台或权利请求渠道办理；</li>
+<li>在发送前对文档进行脱敏、最小化，并避免上传与目的无关的内容。</li>
+</ul>
+
+<h2>6. 未成年人和儿童个人信息</h2>
+<p>在中国境内，<strong>未满 14 周岁</strong>未成年人的个人信息属于敏感个人信息。依法处理此类信息，应取得父母或其他<strong>监护人同意</strong>，并制定专门的个人信息处理规则；还应遵循目的明确、最小必要和安全保障等要求。</p>
+<p>如果你是父母、监护人、教师或学校管理者，请由成年人配置模型与 Provider，并在发送前移除与任务无关的姓名、联系方式、健康情况、身份信息、面部图像和学习档案。不要让未成年人将 API Key 或敏感资料直接提交给不受信任的 Endpoint。</p>
+<p>本页用于说明产品数据流，<strong>不能替代依法需要履行的告知、同意</strong>、单独同意、监护人同意、安全评估或专门规则等义务。实际部署者或运营者应根据其处理目的、对象、场景和适用地区独立评估并采取措施。</p>
+
+<h2>7. 跨境传输与处理地区</h2>
+<p>如果你配置的 Provider Endpoint 或其基础设施位于境外，请求可能构成或涉及个人信息<strong>跨境</strong>传输。请在启用前核对 Provider 的处理地区、分包商、数据驻留选项与跨境机制，并根据适用法律判断是否需要告知、单独同意、标准合同、认证或安全评估。河蟹 AI 不会替你选择 Provider 的处理地区。</p>
+
+<h2>8. 安全、异常与事件处理</h2>
+<ul>
+<li>API Key 仅应保存在受你控制的设备中，避免共享、截图或提交到代码仓库；</li>
+<li>使用 HTTPS Endpoint，并定期轮换、限制权限与检查 Provider 账单；</li>
+<li>发现异常调用时，立即在 Provider 控制台撤销 Key，并检查本地日志和账户活动；</li>
+<li>若问题涉及 Provider 的服务或数据事件，请同时联系该 Provider；若涉及河蟹 AI 客户端，请联系 <a href="mailto:support@hexclaw.net">support@hexclaw.net</a>。</li>
+</ul>
+
+<h2>9. 服务边界与法定权利</h2>
+<p>第三方模型的输出可能不准确、有偏差或不适合特定用途。你应核验重要结论，不应将未经复核的输出直接用于医疗、法律、金融、安全或其他高风险决策。</p>
+<p>开源软件许可证中的“按原样”条款，以及 Provider 自身条款中的责任安排，均应在适用法律允许的范围内理解。任何依法不能排除或限制的责任，以及消费者、个人信息主体和未成年人的<strong>法定权利</strong>，不因本页说明而被排除或限制。</p>
+
+<h2>10. 官方规则参考</h2>
+<ul>
+<li><a href="https://www.gov.cn/xinwen/2021-08/20/content_5632486.htm" target="_blank" rel="noopener noreferrer">《中华人民共和国个人信息保护法》</a></li>
+<li><a href="https://www.cac.gov.cn/2019-08/23/c_1124913903.htm" target="_blank" rel="noopener noreferrer">《儿童个人信息网络保护规定》</a></li>
+<li><a href="https://www.cac.gov.cn/2023-10/24/c_1699806932316206.htm" target="_blank" rel="noopener noreferrer">《未成年人网络保护条例》</a></li>
+<li><a href="https://www.cac.gov.cn/2023-07/13/c_1690898327029107.htm" target="_blank" rel="noopener noreferrer">《生成式人工智能服务管理暂行办法》</a></li>
+</ul>
+<p>上述链接便于查阅，不构成针对具体部署的法律意见。如你的使用涉及学校、医疗、规模化个人信息处理或跨境场景，建议咨询具备相应资质的专业人士。</p>
+
+<h2>11. 版本与更新</h2>
+<p><strong>版本：</strong>1.0　<strong>生效日期：</strong>2026-07-19　<strong>最近更新：</strong>2026-07-19</p>
+<p>当模型接入方式、数据路径或适用规则发生重要变化时，我们会更新本页并调整版本或日期。重大产品变更也会在<a href="/zh/changelog">更新日志</a>中说明。</p>
+
+</main>
+<footer class="footer">
+<div class="footer-main">
+<div class="footer-brand">
+<a class="footer-logo" href="/zh/">河蟹 AI</a>
+<p class="footer-tagline">本地优先的开源 AI Agent 桌面平台，面向真实业务与个人工作流。</p>
+</div>
+<div class="footer-columns">
+<div class="footer-col"><div class="footer-col-title">产品</div><a href="/zh/">首页</a><a href="https://github.com/hexagon-codes/hexclaw-desktop/releases" target="_blank" rel="noopener noreferrer">下载桌面端</a><a href="/zh/changelog">更新日志</a></div>
+<div class="footer-col"><div class="footer-col-title">开发者</div><a href="/zh/docs/">文档中心</a><a href="/zh/docs/getting-started">快速上手</a><a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer">GitHub</a></div>
+<div class="footer-col"><div class="footer-col-title">法务与联系</div><a href="/zh/privacy">隐私政策</a><a href="/zh/terms">使用条款</a><a href="/zh/third-party-ai-services" aria-current="page">第三方 AI 服务说明</a><a href="mailto:ai@hexclaw.net">业务咨询</a></div>
+</div>
+</div>
+<div class="footer-bottom"><span class="footer-copy">&copy; 2025&ndash;2026 hexagon-codes</span><div class="footer-meta-links"><a href="/zh/privacy">隐私政策</a><a href="/zh/terms">使用条款</a><a href="/zh/third-party-ai-services">第三方 AI 服务说明</a><a href="mailto:support@hexclaw.net">问题反馈</a></div></div>
+</footer>
+<script src="../assets/js/docs-nav.js?v=2a339757f2cf"></script>
+<script>
+function toggleTheme(){var c=document.documentElement.getAttribute("data-theme");var n=c==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);localStorage.setItem("hexclaw-theme",n)}
+(function(){var s=localStorage.getItem("hexclaw-theme");var d=window.matchMedia("(prefers-color-scheme:dark)").matches;if(s==="dark"||(!s&&d))document.documentElement.setAttribute("data-theme","dark")})();
+window.addEventListener("scroll",function(){var n=document.querySelector(".tn,.topnav");if(n)n.classList.toggle("scrolled",window.scrollY>10);},{passive:true});
+</script>
+</body>
+</html>
