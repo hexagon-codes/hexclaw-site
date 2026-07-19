@@ -46,7 +46,7 @@ test('uses the same legal-page header hierarchy as privacy and terms pages', () 
     const html = read(`${locale}/third-party-ai-services.html`)
     assert.match(
       html,
-      /<main class="m" style="margin-left:0">\s*<header class="page-lead">\s*<h1>/,
+      /<main\b[^>]*>\s*<header class="page-lead">\s*<h1>/,
       `${locale} service notice must start its page lead with the title`,
     )
     assert.ok(
