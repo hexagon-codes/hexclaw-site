@@ -14,6 +14,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Verify site structure and assets
+        run: node --test scripts/*.test.mjs
+
       - name: Stamp asset cache-busters (content hash)
         run: bash scripts/stamp-cache-bust.sh
 

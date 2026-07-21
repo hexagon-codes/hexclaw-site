@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "captured_at": "2026-07-22",
+  "viewport": "1280x820@2x",
+  "files": [
+    { "file": "welcome-provider.webp", "surface": "欢迎向导 · 配置 LLM", "source": "local-implementation" },
+    { "file": "welcome-agent.webp", "surface": "欢迎向导 · 选择首个模式", "source": "local-implementation" },
+    { "file": "welcome-ready.webp", "surface": "欢迎向导 · 开始使用", "source": "local-implementation" },
+    { "file": "chat-conversation.webp", "surface": "会话 · 完整对话", "source": "prototype-implemented" },
+    { "file": "hero-workspace.webp", "surface": "首页 · 工作台与成果面板", "source": "prototype-implemented" },
+    { "file": "agents-overview.webp", "surface": "智能体 · 我的智能体", "source": "prototype-implemented" },
+    { "file": "agents-templates.webp", "surface": "智能体 · 模板库", "source": "prototype-implemented" },
+    { "file": "knowledge-documents.webp", "surface": "知识库 · 文档", "source": "prototype-implemented" },
+    { "file": "knowledge-memory.webp", "surface": "知识库 · 长期记忆", "source": "prototype-implemented" },
+    { "file": "automation-tasks.webp", "surface": "自动化 · 定时任务", "source": "prototype-implemented" },
+    { "file": "automation-webhooks.webp", "surface": "自动化 · Webhooks", "source": "prototype-implemented" },
+    { "file": "automation-workflow.webp", "surface": "自动化 · 工作流", "source": "prototype-implemented" },
+    { "file": "connections-channels.webp", "surface": "连接 · 通道与账号", "source": "prototype-implemented" },
+    { "file": "connections-data-connectors.webp", "surface": "连接 · 数据连接器", "source": "prototype-implemented" },
+    { "file": "capabilities-skills.webp", "surface": "能力 · Skills", "source": "prototype-implemented" },
+    { "file": "capabilities-mcp.webp", "surface": "能力 · MCP", "source": "prototype-implemented" },
+    { "file": "capabilities-prompts.webp", "surface": "能力 · Prompt 库", "source": "prototype-implemented" },
+    { "file": "logs-observability.webp", "surface": "日志 · 实时可观测性", "source": "prototype-implemented" },
+    { "file": "settings-model-providers.webp", "surface": "设置 · LLM 服务商", "source": "prototype-implemented" }
+  ]
+}
