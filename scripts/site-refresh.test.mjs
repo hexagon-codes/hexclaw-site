@@ -120,7 +120,7 @@ test('新一版文档截图完整替换旧 PNG，并统一为真实桌面窗口�
   }
 })
 
-test('中文核心文档补齐本地已实现功能截图，首页使用独立旗舰工作台图', () => {
+test('中文核心文档保留功能截图，中文首页展示 K12 批注原图', () => {
   for (const [file, expected] of requiredChineseDocShots) {
     const html = read(file)
     for (const filename of expected) {
@@ -128,7 +128,8 @@ test('中文核心文档补齐本地已实现功能截图，首页使用独立�
     }
   }
 
-  for (const file of ['zh/index.html', 'en/index.html', 'ug/index.html']) {
+  assert.match(read('zh/index.html'), /assets\/docs\/k12\/annotated-homework\.png/)
+  for (const file of ['en/index.html', 'ug/index.html']) {
     assert.match(read(file), /assets\/docs\/screenshots\/hero-workspace\.webp/)
   }
 })
@@ -212,17 +213,24 @@ test('主题与语言控件使用明确按钮类型和本地化辅助名称', ()
   assert.deepEqual(failures, [])
 })
 
-test('站点地图的三语页面声明完整 hreflang 与本次更新时间', () => {
+test('站点地图按页面已有语言声明 hreflang，并保留有效更新时间', () => {
   const sitemap = read('sitemap.xml')
   const failures = []
   for (const match of sitemap.matchAll(/<url>([\s\S]*?)<\/url>/g)) {
     const block = match[1]
     const location = block.match(/<loc>([^<]+)<\/loc>/)?.[1]
     if (!location || !/\/(?:zh|en|ug)\//.test(location)) continue
-    for (const language of ['en', 'zh-CN', 'ug', 'x-default']) {
+    const languages = location === 'https://hexclaw.net/zh/docs/k12'
+      ? ['zh-CN', 'x-default']
+      : ['en', 'zh-CN', 'ug', 'x-default']
+    for (const language of languages) {
       if (!new RegExp(`hreflang="${language}"`).test(block)) failures.push(`${location}: missing ${language}`)
     }
-    if (!/<lastmod>2026-07-21<\/lastmod>/.test(block)) failures.push(`${location}: stale lastmod`)
+    const lastmod = block.match(/<lastmod>(\d{4}-\d{2}-\d{2})<\/lastmod>/)?.[1]
+    const date = lastmod ? new Date(`${lastmod}T00:00:00Z`) : null
+    if (!date || Number.isNaN(date.getTime()) || date.toISOString().slice(0, 10) !== lastmod) {
+      failures.push(`${location}: invalid lastmod`)
+    }
   }
   assert.deepEqual(failures, [])
 })
