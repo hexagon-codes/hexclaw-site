@@ -51,10 +51,17 @@
 
 <h2>v0.5.0-beta.3（2026-10-04）</h2>
 <ul>
-<li>Desktop 预发布版更新为 v0.5.0-beta.3，内置后端源码固定为 hexclaw v0.5.0-beta.1；桌面端与后端独立维护版本。</li>
-<li>提供 macOS Apple Silicon / Intel、Windows x64 和 Linux x64 安装包；全部平台构建成功后统一公开发布。</li>
-<li>一键安装和 Homebrew 均支持已公开的 Beta 版本。</li>
-<li>修复 Windows 打包时渲染引擎的文件校验与二进制读写兼容问题；CI、试打包与 tag 发布共用检查和打包配方。</li>
+<li>新增 K12「作业辅导助手」，面向小学一至六年级，覆盖数学、语文、英语、科学、信息科技和美术；每个孩子可配置独立助手、年级学期、数学教材版本和学习档案。</li>
+<li>六科教学 Skill 提供名师式讲解指南：完整答案、本年级解法、讲解顺序、孩子卡住时的提示，以及检查理解的追问，帮助家长先备课再辅导。</li>
+<li>支持拍照批改已完成的作业并在原图上批注；空白题可生成完整解答和家长讲解指南。</li>
+<li>支持作文修改建议与美术作品点评，结合原文或画面细节给出反馈和理由。</li>
+<li>新增错题、积累、作品与学情记录，按 1 / 3 / 7 / 14 天安排错题复习；支持生成练习、打印试卷和拍照回传批改。</li>
+<li>学习档案支持导出 PDF、Word、Markdown 及附件 ZIP；K12 数据支持 .hexbak 备份与恢复。</li>
+<li>接入钉钉一对一私聊：绑定通道后，可从手机发送作业照片、接收讲解和批注。</li>
+<li>新增场景扩展机制，将场景界面、专属数据和业务接口与通用 Agent 能力分离，K12 作为首个场景包接入。</li>
+<li>改进聊天流式输出与数学公式显示、知识库文档分页与来源筛选、MCP 服务重启和 Ollama 本地模型管理。</li>
+<li>修复 Windows 文档渲染依赖的打包兼容问题；提供 macOS Apple Silicon / Intel、Windows x64 和 Linux x64 安装包，可从 <a href="https://github.com/hexagon-codes/hexclaw-desktop/releases/tag/v0.5.0-beta.3" target="_blank" rel="noopener noreferrer">GitHub Release</a> 下载本次 Beta 版本。</li>
+<li>桌面端版本为 v0.5.0-beta.3，内置后端源码为 hexclaw v0.5.0-beta.1；两者独立维护版本。</li>
 </ul>
 
 <h2>v0.4.9 (2026-07-04)</h2>
