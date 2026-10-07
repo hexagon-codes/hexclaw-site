@@ -30,7 +30,6 @@ const screenshots = [
 ]
 
 const requiredChineseDocShots = new Map([
-  ['zh/docs/getting-started.html', ['welcome-provider.webp', 'welcome-agent.webp', 'welcome-ready.webp']],
   ['zh/docs/chat.html', ['chat-conversation.webp']],
   ['zh/docs/agents.html', ['agents-overview.webp', 'agents-templates.webp']],
   ['zh/docs/canvas.html', ['automation-workflow.webp']],
@@ -120,7 +119,17 @@ test('新一版文档截图完整替换旧 PNG，并统一为真实桌面窗口�
   }
 })
 
-test('中文核心文档保留功能截图，中文首页展示 K12 批注原图', () => {
+test('快速上手与当前向导一致，其他核心文档和首页保留功能截图', () => {
+  const gettingStarted = read('zh/docs/getting-started.html')
+  assert.match(gettingStarted, /当前主线的首次配置向导包含 2 步/)
+  assert.match(gettingStarted, /<strong>选择服务<\/strong>/)
+  assert.match(gettingStarted, /<strong>检查并开始<\/strong>/)
+  assert.doesNotMatch(gettingStarted, /assets\/docs\/screenshots\/welcome-(?:provider|agent|ready)\.webp/)
+  const englishGettingStarted = read('en/docs/getting-started.html')
+  assert.match(englishGettingStarted, /current main branch uses a 2-step setup wizard/)
+  assert.match(englishGettingStarted, /<strong>Select a service<\/strong>/)
+  assert.match(englishGettingStarted, /<strong>Check and start<\/strong>/)
+  assert.doesNotMatch(englishGettingStarted, /assets\/docs\/screenshots\/welcome-(?:provider|agent|ready)\.webp/)
   for (const [file, expected] of requiredChineseDocShots) {
     const html = read(file)
     for (const filename of expected) {

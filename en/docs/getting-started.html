@@ -73,13 +73,14 @@
 <h2>System Requirements</h2>
 <table>
 <tr><th>Platform</th><th>Minimum Requirement</th></tr>
-<tr><td>macOS</td><td>macOS 12 Monterey or later, Apple Silicon or Intel</td></tr>
+<tr><td>macOS</td><td>Apple Silicon or Intel; Ollama, Pandoc, and other components bundled by the current source require macOS 14 or later</td></tr>
 <tr><td>Windows</td><td>Windows 10 (1809+) or later, x64</td></tr>
-<tr><td>Linux</td><td>Ubuntu 20.04+ or Fedora 36+, x64</td></tr>
+<tr><td>Linux</td><td>x64; release builds use Ubuntu 22.04, and the runtime needs WebKitGTK 4.1 and other Tauri dependencies</td></tr>
 </table>
+<p>The desktop shell's configured macOS 11 minimum does not describe compatibility for bundled components. Check the assets and notes of your selected Release; the source instructions below describe the current main branch.</p>
 
 <h2>Installation</h2>
-<h3>Option 1: One-line install (macOS, recommended)</h3>
+<h3>Option 1: One-command install (macOS, recommended)</h3>
 <pre><code>curl -fsSL https://raw.githubusercontent.com/hexagon-codes/hexclaw-desktop/bb3c12ec91eec91798b67c292bc8c85c4481dc2b/install.sh | bash</code></pre>
 
 <h3>Option 2: Homebrew (macOS)</h3>
@@ -94,39 +95,28 @@
 </ul>
 
 <h3>Option 4: Build from source</h3>
+<p>The quick path below is for macOS. Install Node.js <code>^20.19.0 || &gt;=22.12.0</code>, pnpm <code>10.30.3</code>, Rust <code>1.94.0</code>, Go <code>1.25.13+</code>, Git, Make, Python 3, and curl first. For other platforms, follow the <a href="https://v2.tauri.app/start/prerequisites/" target="_blank" rel="noopener noreferrer">Tauri 2 prerequisites</a> for system dependencies.</p>
 <pre><code>git clone https://github.com/hexagon-codes/hexclaw-desktop.git
 cd hexclaw-desktop
-pnpm install
-pnpm tauri dev</code></pre>
-<div class="tip"><b>Tip:</b> Source builds require Node.js 20.19+, pnpm, Rust stable (2021 edition), and Go 1.23+ for the sidecar engine.</div>
+pnpm install --frozen-lockfile
+make sidecar
+make render-bundle
+make ollama
+make dev</code></pre>
+<div class="tip"><b>Tip:</b> <code>make sidecar</code> uses the Makefile's <code>HEXCLAW_REF</code> rather than automatically selecting the latest backend. Use <code>make sidecar HEXCLAW_REF=origin/main</code> for the backend main branch. Other backend versions use their own <code>go.mod</code> requirements. See the <a href="https://github.com/hexagon-codes/hexclaw-desktop/blob/main/.github/workflows/release.yml" target="_blank" rel="noopener noreferrer">Release workflow</a> for Windows and Linux bundle preparation.</div>
 
 <h2>Welcome Wizard</h2>
-<p>When you open HexClaw for the first time, a 3-step setup wizard launches automatically:</p>
+<p>The current main branch uses a 2-step setup wizard. Downloaded builds follow the interface of their selected Release:</p>
 <ol>
-<li><strong>Choose an AI Provider</strong> — select a provider and enter your API key</li>
-<li><strong>Select a Default Model</strong> — pick a model from the provider's model list</li>
-<li><strong>Test Connection</strong> — verify that the backend engine is running correctly (can be skipped)</li>
+<li><strong>Select a service</strong> — use the app-managed local service, or enter your self-hosted cloud HexClaw address and access token</li>
+<li><strong>Check and start</strong> — check the service connection and default model; continue the original task when ready, or open model settings if configuration is needed</li>
 </ol>
-<p>After completing the wizard, you are taken directly to the chat page. You can change the configuration later under <strong>Settings → Model Providers</strong>.</p>
-<div class="tip"><b>Tip:</b> If you skip the wizard, the app will prompt you to configure again on next launch until at least one provider has been added.</div>
-<section class="doc-gallery" aria-label="Welcome wizard steps">
-<figure class="doc-shot">
-<img width="2560" height="1640" loading="lazy" decoding="async" src="../../assets/docs/screenshots/welcome-provider.webp" alt="Provider setup page in the welcome wizard">
-<figcaption>Welcome wizard: provider settings and connection test.</figcaption>
-</figure>
-<figure class="doc-shot">
-<img width="2560" height="1640" loading="lazy" decoding="async" src="../../assets/docs/screenshots/welcome-agent.webp" alt="Default agent selection page in the welcome wizard">
-<figcaption>Welcome wizard: default agent selection.</figcaption>
-</figure>
-<figure class="doc-shot">
-<img width="2560" height="1640" loading="lazy" decoding="async" src="../../assets/docs/screenshots/welcome-ready.webp" alt="Configuration confirmation page in the welcome wizard">
-<figcaption>Welcome wizard: configuration summary and ready state.</figcaption>
-</figure>
-</section>
+<p>After model setup, return to the original task with the content you already entered preserved. You can change the selected service's configuration later under <strong>Settings → Model Providers</strong>.</p>
+<div class="tip"><b>Service modes:</b> The app starts and stops the local service. A server manages the cloud service; cloud tasks can continue while your computer is off if the server, model, and bound IM connection remain available.</div>
 
 <h2>First-Time Setup</h2>
 <h3>1. Configure an AI provider</h3>
-<p>Open the app and go to <strong>Settings → Model Providers</strong>. Add at least one provider:</p>
+<p>Connect the selected service first, then open <strong>Settings → Model Providers</strong> and configure at least one available model for that service. If the cloud service already has a default model, you can start a task immediately:</p>
 <ul>
 <li><strong>OpenAI</strong> - enter an API key (<code>sk-...</code>) to connect GPT-4o, o-series, and related models</li>
 <li><strong>DeepSeek</strong> - add a key for DeepSeek family models</li>
@@ -139,7 +129,7 @@ pnpm tauri dev</code></pre>
 </ul>
 
 <h3>Configuration file example</h3>
-<p>HexClaw also supports initialization via a YAML configuration file:</p>
+<p>The local service also supports initialization via a YAML file. Configure a cloud service on its server rather than in the desktop machine's local configuration file:</p>
 <pre data-lang="yaml"><code># ~/.hexclaw/hexclaw.yaml
 server:
   host: 127.0.0.1
@@ -163,13 +153,13 @@ platforms:
 <p>Mark one model as the default chat model in the provider configuration.</p>
 
 <h3>3. Send your first message</h3>
-<p>Open the <strong>Chat</strong> page, type any prompt into the input box, and press Enter. HexClaw supports streaming responses so you can watch output arrive in real time.</p>
+<p>Open the <strong>Chat</strong> page, type “Introduce the tasks you can help me complete in three sentences,” and press Enter. You should see streamed content finish as a complete answer; a successful connection test alone does not show that a task has completed.</p>
 
 <h2>First Troubleshooting Steps</h2>
 <p>If the app launches but you still cannot chat successfully, check these three items first:</p>
 <ol>
 <li>Open <strong>Settings → Model Providers</strong> and run <strong>Test Connection</strong> on the active provider</li>
-<li>Open the <strong>Logs</strong> page and confirm the Engine is running and default port <code>16060</code> is free</li>
+<li>In local mode, open the <strong>Logs</strong> page and confirm the Engine is running and default port <code>16060</code> is free; in cloud mode, check the service address, access token, and server status</li>
 <li>If you still see a blank window, 401/403 errors, or MCP failures, go straight to the <a href="/en/docs/faq">FAQ</a></li>
 </ol>
 
@@ -178,10 +168,10 @@ platforms:
 <ul>
 <li><strong>Frontend</strong>: Vue 3 + TypeScript + Pinia + Tailwind CSS</li>
 <li><strong>Desktop shell</strong>: Tauri v2 (Rust) for windows, tray integration, and global shortcuts</li>
-<li><strong>AI engine</strong>: Go sidecar (<code>hexclaw</code>) for model calls, workflow execution, knowledge bases, and memory</li>
-<li><strong>Database</strong>: SQLite for local storage of sessions and messages</li>
+<li><strong>AI engine</strong>: a local Go sidecar (<code>hexclaw</code>) or self-hosted cloud HexClaw service for model calls, workflow execution, knowledge bases, and memory</li>
+<li><strong>Database</strong>: the selected HexClaw service uses SQLite for sessions and messages; local and cloud services manage separate data</li>
 </ul>
-<div class="tip"><b>Privacy:</b> All data stays local and does not pass through any third-party relay beyond the AI APIs you explicitly configure.</div>
+<div class="tip"><b>Data ownership:</b> The selected service stores conversations, learning records, model settings, and connections. Switching does not migrate or merge data. Online models receive the content sent to them for a task, and data handling depends on the chosen provider. Cloud tools access the server environment rather than automatically gaining access to local files.</div>
 
 <h2>Interface Overview</h2>
 <p>HexClaw's sidebar is organized as "Chat pinned + Build / Connections / System". The app opens straight into <strong>Chat</strong>; jump anywhere with the <kbd>⌘</kbd>+<kbd>K</kbd> command palette or <kbd>⌘</kbd>+number:</p>

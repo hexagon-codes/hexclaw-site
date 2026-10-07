@@ -75,13 +75,14 @@
 <h2>系统要求</h2>
 <table>
 <tr><th>平台</th><th>最低要求</th></tr>
-<tr><td>macOS</td><td>12 Monterey 及以上，Apple Silicon / Intel</td></tr>
+<tr><td>macOS</td><td>Apple Silicon / Intel；当前源码随包的 Ollama、Pandoc 等组件需要 macOS 14 及以上</td></tr>
 <tr><td>Windows</td><td>Windows 10 (1809+)，x64</td></tr>
-<tr><td>Linux</td><td>Ubuntu 20.04+ / Fedora 36+，x64</td></tr>
+<tr><td>Linux</td><td>x64；发布构建使用 Ubuntu 22.04，运行环境需要 WebKitGTK 4.1 等 Tauri 依赖</td></tr>
 </table>
+<p>应用外壳配置的 macOS 11 下限不代表随包组件的兼容范围。安装包以所选 Release 的实际资产与说明为准；下文源码步骤对应当前主线。</p>
 
 <h2>安装</h2>
-<h3>方式一：一行脚本安装（macOS 推荐）</h3>
+<h3>方式一：一键安装（macOS，推荐）</h3>
 <pre><code>curl -fsSL https://raw.githubusercontent.com/hexagon-codes/hexclaw-desktop/bb3c12ec91eec91798b67c292bc8c85c4481dc2b/install.sh | bash</code></pre>
 
 <h3>方式二：Homebrew 安装（macOS）</h3>
@@ -96,39 +97,28 @@
 </ul>
 
 <h3>方式四：源码编译</h3>
+<p>以下快速路径适用于 macOS。先安装 Node.js <code>^20.19.0 || &gt;=22.12.0</code>、pnpm <code>10.30.3</code>、Rust <code>1.94.0</code>、Go <code>1.25.13+</code>、Git、Make、Python 3 和 curl；其他平台按 <a href="https://v2.tauri.app/start/prerequisites/" target="_blank" rel="noopener noreferrer">Tauri 2 前置要求</a> 准备系统依赖。</p>
 <pre><code>git clone https://github.com/hexagon-codes/hexclaw-desktop.git
 cd hexclaw-desktop
-pnpm install
-pnpm tauri dev</code></pre>
-<div class="tip"><b>提示：</b>源码编译需要 Node.js 20.19+、pnpm、Rust stable (2021 edition) 和 Go 1.23+（用于 Sidecar 引擎）。</div>
+pnpm install --frozen-lockfile
+make sidecar
+make render-bundle
+make ollama
+make dev</code></pre>
+<div class="tip"><b>提示：</b><code>make sidecar</code> 使用 Makefile 的 <code>HEXCLAW_REF</code>，不会自动选择最新后端；使用当前后端主分支时运行 <code>make sidecar HEXCLAW_REF=origin/main</code>。指定其他版本时，以其 <code>go.mod</code> 为准。Windows / Linux 随包组件准备见 <a href="https://github.com/hexagon-codes/hexclaw-desktop/blob/main/.github/workflows/release.yml" target="_blank" rel="noopener noreferrer">Release 工作流</a>。</div>
 
 <h2>首次启动向导</h2>
-<p>首次打开河蟹 AI 时，会自动进入 3 步设置向导：</p>
+<p>当前主线的首次配置向导包含 2 步；已下载版本的界面以所选 Release 为准：</p>
 <ol>
-<li><strong>配置 AI 服务商</strong> — 选择 Provider、填入 API Key，并完成模型连接测试</li>
-<li><strong>选择默认角色</strong> — 选择进入应用后默认使用的智能体角色</li>
-<li><strong>确认工作上下文</strong> — 核对服务商、模型、默认角色后开始使用</li>
+<li><strong>选择服务</strong> — 使用应用管理的本机服务，或填写自行部署的云端 HexClaw 服务地址和访问令牌</li>
+<li><strong>检查并开始</strong> — 检查服务连接和默认模型；模型已就绪时继续原任务，尚未就绪时进入模型设置</li>
 </ol>
-<p>完成向导后自动进入聊天页。后续可在 <strong>设置 → 模型服务商</strong> 中修改配置。</p>
-<div class="tip"><b>提示：</b>如果跳过了向导，下次打开应用仍会提示配置（直到至少添加一个 Provider）。</div>
-<section class="doc-gallery" aria-label="首次启动向导步骤截图">
-<figure class="doc-shot">
-<img width="2560" height="1640" loading="lazy" decoding="async" src="../../assets/docs/screenshots/welcome-provider.webp" alt="首次启动向导的服务商配置页面">
-<figcaption>首次启动向导：配置模型服务商。</figcaption>
-</figure>
-<figure class="doc-shot">
-<img width="2560" height="1640" loading="lazy" decoding="async" src="../../assets/docs/screenshots/welcome-agent.webp" alt="首次启动向导的默认智能体选择页面">
-<figcaption>首次启动向导：选择默认智能体。</figcaption>
-</figure>
-<figure class="doc-shot">
-<img width="2560" height="1640" loading="lazy" decoding="async" src="../../assets/docs/screenshots/welcome-ready.webp" alt="首次启动向导的配置确认页面">
-<figcaption>首次启动向导：确认配置并准备进入应用。</figcaption>
-</figure>
-</section>
+<p>模型设置完成后返回原任务，已填写的内容会保留。后续可在 <strong>设置 → 模型服务商</strong> 中修改当前服务的配置。</p>
+<div class="tip"><b>服务模式：</b>本机服务由应用管理启动与停止；云端服务由服务器管理，服务器、模型与已绑定 IM 持续可用时，电脑关机不会停止云端任务。</div>
 
 <h2>首次配置</h2>
 <h3>1. 配置 AI 服务商</h3>
-<p>打开应用后进入 <strong>设置 → 模型服务商</strong>，添加至少一个 AI 服务商：</p>
+<p>先连接所选服务，再进入 <strong>设置 → 模型服务商</strong>，为该服务配置至少一个可用模型；云端服务已有默认模型时可直接开始任务：</p>
 <ul>
 <li><strong>OpenAI</strong> — 填入 API Key（<code>sk-...</code>），可接入 GPT-4o、o 系列等模型</li>
 <li><strong>DeepSeek</strong> — 填入 API Key，可接入 DeepSeek 系列模型</li>
@@ -141,7 +131,7 @@ pnpm tauri dev</code></pre>
 </ul>
 
 <h3>配置文件示例</h3>
-<p>河蟹 AI 也支持通过 YAML 配置文件进行初始化设置：</p>
+<p>本机服务也支持通过 YAML 配置文件初始化；云端服务应在服务器配置，不使用桌面本机的配置文件：</p>
 <pre data-lang="yaml"><code># ~/.hexclaw/hexclaw.yaml
 server:
   host: 127.0.0.1
@@ -165,13 +155,13 @@ platforms:
 <p>在服务商配置中，勾选一个模型作为默认聊天模型。</p>
 
 <h3>3. 发送第一条消息</h3>
-<p>进入 <strong>对话</strong> 页面，在输入框输入任意内容，按回车发送。支持流式输出，实时显示 AI 回复。</p>
+<p>进入 <strong>对话</strong> 页面，输入“请用三句话介绍你能帮助我完成的任务”，按回车发送。应看到流式内容逐步出现并最终成为完整回答；仅连接测试成功不能证明任务已经完成。</p>
 
 <h2>首次排障入口</h2>
 <p>如果安装完成后仍无法正常聊天，建议先检查下面三项：</p>
 <ol>
 <li>打开 <strong>设置 → 模型服务商</strong>，对当前 Provider 执行一次<strong>测试连接</strong></li>
-<li>打开 <strong>日志</strong> 页面，确认 Engine 已启动且默认端口 <code>16060</code> 未被占用</li>
+<li>本机模式打开 <strong>日志</strong> 页面，确认 Engine 已启动且默认端口 <code>16060</code> 未被占用；云端模式检查服务地址、访问令牌与服务器状态</li>
 <li>如果仍有空白页、401/403、MCP 连接失败等问题，直接查看 <a href="/zh/docs/faq">常见问题</a></li>
 </ol>
 
@@ -180,10 +170,10 @@ platforms:
 <ul>
 <li><strong>前端</strong>：Vue 3 + TypeScript + Pinia + TailwindCSS</li>
 <li><strong>桌面壳</strong>：Tauri v2（Rust），负责窗口管理、系统托盘、全局快捷键</li>
-<li><strong>AI 引擎</strong>：Go Sidecar（hexclaw），负责模型调用、工作流执行、知识库、记忆等核心逻辑</li>
-<li><strong>数据库</strong>：SQLite，本地存储会话和消息</li>
+<li><strong>AI 引擎</strong>：本机 Go Sidecar（hexclaw）或自行部署的云端 HexClaw，负责模型调用、工作流执行、知识库、记忆等核心逻辑</li>
+<li><strong>数据库</strong>：所选 HexClaw 服务使用 SQLite 保存会话和消息；本机与云端数据分别管理</li>
 </ul>
-<div class="tip"><b>数据隐私：</b>所有数据存储在本地，不经过任何第三方服务器（除你配置的 AI API 外）。</div>
+<div class="tip"><b>数据归属：</b>会话、学习记录、模型配置与连接保存在所选服务，切换不会自动迁移或合并数据。在线模型会接收任务中发送给它的内容，处理方式取决于所选 Provider。云端工具访问的是服务器环境，不会自动获得本机文件系统。</div>
 
 <h2>界面概览</h2>
 <p>河蟹 AI 桌面端采用「Chat 置顶 + 构建 / 连接 / 系统」三组侧栏导航。首次进入应用默认就是 <strong>Chat</strong>；可用 <kbd>⌘</kbd>+<kbd>K</kbd> 命令面板或 <kbd>⌘</kbd>+数字 快速跳转：</p>

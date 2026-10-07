@@ -4,13 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>HexClaw 河蟹 AI — 你的私人 AI Agent 桌面客户端</title>
-<meta name="description" content="基于自研 Hexagon AI Agent 引擎，HexClaw 是一款开箱即用的 AI Agent 桌面客户端。本地部署、数据私有、全栈开源。">
+<meta name="description" content="基于自研 Hexagon AI Agent 引擎，HexClaw 是一款开箱即用的 AI Agent 桌面客户端。支持本机或自行部署的云端服务，全栈开源。">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="theme-color" content="#e8f6ff">
 <meta property="og:site_name" content="河蟹 AI">
 <meta property="og:type" content="website">
 <meta property="og:title" content="HexClaw 河蟹 AI — 你的私人 AI Agent 桌面客户端">
-<meta property="og:description" content="基于自研 Hexagon AI Agent 引擎，HexClaw 是一款开箱即用的 AI Agent 桌面客户端。本地部署、数据私有、全栈开源。">
+<meta property="og:description" content="基于自研 Hexagon AI Agent 引擎，HexClaw 是一款开箱即用的 AI Agent 桌面客户端。支持本机或自行部署的云端服务，全栈开源。">
 <meta property="og:url" content="https://hexclaw.net/zh/">
 <meta property="og:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
 <meta property="og:image:alt" content="河蟹 AI 标志">
@@ -20,7 +20,7 @@
 <meta property="og:locale:alternate" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="HexClaw 河蟹 AI — 你的私人 AI Agent 桌面客户端">
-<meta name="twitter:description" content="基于自研 Hexagon AI Agent 引擎，HexClaw 是一款开箱即用的 AI Agent 桌面客户端。本地部署、数据私有、全栈开源。">
+<meta name="twitter:description" content="基于自研 Hexagon AI Agent 引擎，HexClaw 是一款开箱即用的 AI Agent 桌面客户端。支持本机或自行部署的云端服务，全栈开源。">
 <meta name="twitter:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
 <meta name="twitter:image:alt" content="河蟹 AI 标志">
 <meta name="application-name" content="河蟹 AI">
@@ -33,7 +33,7 @@
 <link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/">
 <link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"SoftwareApplication","name":"HexClaw 河蟹 AI","applicationCategory":"BusinessApplication","operatingSystem":"macOS, Windows, Linux","url":"https://hexclaw.net/zh/","image":"https://hexclaw.net/assets/brand/hexclaw-logo.png","description":"基于自研 Hexagon AI Agent 引擎，HexClaw 是一款开箱即用的 AI Agent 桌面客户端。本地部署、数据私有、全栈开源。","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"downloadUrl":"https://hexclaw.net/download"}
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"HexClaw 河蟹 AI","applicationCategory":"BusinessApplication","operatingSystem":"macOS, Windows, Linux","url":"https://hexclaw.net/zh/","image":"https://hexclaw.net/assets/brand/hexclaw-logo.png","description":"基于自研 Hexagon AI Agent 引擎，HexClaw 是一款开箱即用的 AI Agent 桌面客户端。支持本机或自行部署的云端服务，全栈开源。","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"downloadUrl":"https://hexclaw.net/download"}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebSite","name":"河蟹 AI","url":"https://hexclaw.net/","inLanguage":"zh-CN","publisher":{"@type":"Organization","name":"hexagon-codes","url":"https://hexclaw.net/"}}
@@ -91,7 +91,7 @@
       <div class="hero-badge"><span class="hero-badge-dot"></span>全栈开源 · Apache-2.0 协议</div>
       <h1 class="hero-title">住进你电脑的开源 AI Agent</h1>
       <p class="hero-brandline">🦀 河蟹横着走，7×24 替你干活</p>
-      <p class="hero-tagline">自研引擎 · 多 Agent 协作 · 可视化工作流 · RAG 知识库<br>功能一个不少，数据全在本地，一键装好</p>
+      <p class="hero-tagline">自研引擎 · 多 Agent 协作 · 可视化工作流 · RAG 知识库<br>连接本机或自托管云端服务，数据由所选服务管理</p>
       <div class="hero-version"><span class="hero-vtag">v0.5.0-beta.3</span><span class="hero-vsep">·</span><span class="hero-vmeta">Apache-2.0 License</span><span class="hero-vsep">·</span><span class="hero-vmeta">macOS / Windows / Linux</span></div>
       <div class="dl-section">
         <div style="max-width:540px;margin:0 auto 18px;text-align:left">
@@ -153,12 +153,12 @@
           <div class="stack-item" data-tip="Rust 驱动的原生桌面框架，轻量高性能"><span class="stack-dot" style="background:#f74c00"></span><span class="stack-label">Tauri v2</span><span class="stack-sub">Rust</span></div>
           <div class="stack-item" data-tip="响应式前端框架，Composition API + TypeScript"><span class="stack-dot" style="background:#42b883"></span><span class="stack-label">Vue 3</span><span class="stack-sub">TS</span></div>
           <div class="stack-item" data-tip="Go 语言后端进程，Agent 引擎运行时"><span class="stack-dot" style="background:#00add8"></span><span class="stack-label">Go Sidecar</span></div>
-          <div class="stack-item" data-tip="API Key 加密存储，请求签名校验"><span class="stack-dot" style="background:#f5a623"></span><span class="stack-label">安全网关</span></div>
+          <div class="stack-item" data-tip="按所选服务保存 Provider 配置，提供访问令牌校验"><span class="stack-dot" style="background:#f5a623"></span><span class="stack-label">安全网关</span></div>
         </div>
       </div>
       <div class="reveal"><div class="sec-sup">Core Capabilities</div><h2 class="sec-title">产品能力</h2><div class="sec-desc">不止是对话客户端，更是完整的 AI Agent 开发与运行平台</div></div>
       <div class="features">
-        <div class="feat reveal"><div class="feat-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--blue-deep)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3 class="feat-title">本地部署，数据私有</h3><div class="feat-desc">Sidecar 架构运行在本机，API Key 直连模型服务商，中间零代理。</div></div>
+        <div class="feat reveal"><div class="feat-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--blue-deep)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3 class="feat-title">本机或云端，自主部署</h3><div class="feat-desc">本机 Sidecar 或自行部署的云端服务保存数据与配置；在线模型会接收任务中发送给它的内容。</div></div>
         <div class="feat reveal"><div class="feat-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--blue-deep)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3"/></svg></div><h3 class="feat-title">自研 Agent 引擎</h3><div class="feat-desc">ReAct / Plan-and-Execute 双推理范式，声明式定义，Tool 自动调度。</div></div>
         <div class="feat reveal"><div class="feat-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--blue-deep)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22v-5M9 7V2M15 7V2M6 13V9a6 6 0 0 1 12 0v4"/><rect x="6" y="13" width="12" height="4" rx="1"/></svg></div><h3 class="feat-title">MCP 工具协议</h3><div class="feat-desc">原生支持 Model Context Protocol，文件、数据库、API 即插即用。</div></div>
         <div class="feat reveal"><div class="feat-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--blue-deep)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg></div><h3 class="feat-title">多模型统一适配</h3><div class="feat-desc">OpenAI / Claude / DeepSeek 统一封装，运行时热切换。</div></div>
@@ -172,7 +172,7 @@
     <div class="reveal" style="text-align:center"><div class="sec-sup">Quick Start</div><h2 class="sec-title">三步开始使用</h2><div class="sec-desc" style="margin:0 auto 32px">从下载到开始干活，只需要几分钟</div></div>
     <div class="steps">
       <div class="step reveal"><div class="step-num">1</div><h3 class="step-title">下载安装</h3><div class="step-desc">三端一键安装，内置 Go Sidecar，无需配置环境</div></div>
-      <div class="step reveal"><div class="step-num">2</div><h3 class="step-title">填入 API Key</h3><div class="step-desc">Key 仅存本地，不经任何中转，直连模型服务商</div></div>
+      <div class="step reveal"><div class="step-num">2</div><h3 class="step-title">填入 API Key</h3><div class="step-desc">模型配置保存在所选服务，由该服务调用模型；本地模型无需 API Key</div></div>
       <div class="step reveal"><div class="step-num">3</div><h3 class="step-title">对话即指令</h3><div class="step-desc">自然语言下达任务，Agent 自动规划、调用工具、生成结果</div></div>
     </div>
   </div></section>
