@@ -206,7 +206,7 @@ if (nav) {
     const h1 = lead.querySelector("h1");
     const navDocs = document.querySelector(".tn a.is-active, .topnav-links a.is-active");
     const docsLabel = (navDocs && navDocs.textContent.trim()) || STR.docs;
-    const docsHref = location.pathname.replace(/\/docs\/.*/, "/docs/");
+    const docsHref = (navDocs && navDocs.getAttribute("href")) || location.pathname.replace(/\/docs\/.*/, "/docs/");
     const crumb = document.createElement("nav");
     crumb.className = "doc-crumb";
     crumb.setAttribute("aria-label", "Breadcrumb");

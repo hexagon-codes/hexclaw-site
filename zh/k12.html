@@ -30,12 +30,12 @@
 {"@context":"https://schema.org","@type":"Article","headline":"从答案到家长讲法：K12 真实辅导案例","description":"面向小学家长，从一道真实硬盘容量题，看参考答案、原始作答与家长讲法怎样对应起来。","url":"https://hexclaw.net/zh/k12","inLanguage":"zh-CN","image":"https://hexclaw.net/assets/brand/hexclaw-logo.png","publisher":{"@type":"Organization","name":"hexagon-codes","url":"https://hexclaw.net/"}}
 </script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"河蟹 AI","item":"https://hexclaw.net/zh/"},{"@type":"ListItem","position":2,"name":"K12 真实辅导案例","item":"https://hexclaw.net/zh/k12"}]}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"河蟹 AI","item":"https://hexclaw.net/zh/"},{"@type":"ListItem","position":2,"name":"文档","item":"https://hexclaw.net/zh/docs/"},{"@type":"ListItem","position":3,"name":"K12 真实辅导案例","item":"https://hexclaw.net/zh/k12"}]}
 </script>
 <link rel="stylesheet" href="../assets/css/docs-02c849b3f4e8.css">
 <style>
 /* 专题复用官网字体、颜色和内容页外壳；新增样式仅组织案例内容。 */
-.k12-page .k12-content { width: 100%; max-width: 820px; margin: 0 auto; }
+.k12-page .k12-content { width: 100%; max-width: var(--reading-width); margin: 0; }
 .k12-page .page-lead .k12-intro { margin-top: 20px; margin-bottom: 0; }
 .k12-page .k12-actions { display: flex; flex-wrap: wrap; gap: 12px 22px; margin-top: 24px; }
 .k12-page .k12-actions a { font-weight: 600; text-underline-offset: 4px; }
@@ -76,13 +76,37 @@
 }
 </style>
 </head>
-<body class="docs-page content-page k12-page">
+<body class="docs-page k12-page">
 <a href="#main" class="skip-link">跳转到主要内容</a>
 <nav class="tn">
 <a href="/zh/" class="tn-b"><img width="72" height="72" src="../assets/brand/hexclaw-icon-72.png" class="tn-l" alt="河蟹 AI"><span class="tn-n">河蟹 AI</span></a>
-<button type="button" class="tn-burger" aria-label="菜单" aria-expanded="false" aria-controls="primary-navigation"><span></span><span></span><span></span></button><div class="tn-r" id="primary-navigation"><a href="/zh/">首页</a><a href="/zh/#features">产品能力</a><a href="/zh/#quickstart">快速上手</a><a href="/zh/#cases">使用场景</a><a href="/zh/#ecosystem">开源生态</a><a href="/zh/docs/">文档</a><div class="lang-menu" data-lang-menu><button type="button" class="lang-trigger" aria-haspopup="menu" aria-expanded="false" aria-label="切换语言"><svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 0 20"></path><path d="M12 2a15.3 15.3 0 0 0 0 20"></path></svg><span class="lang-current">中文</span><svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="lang-menu-list" role="menu"><a href="/zh/k12" role="menuitem" class="is-active" aria-current="true">中文</a><a href="/en/" role="menuitem">English</a><a href="/ug/" role="menuitem">ئۇيغۇرچە</a></div></div><button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="切换主题"><svg class="ti-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="ti-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="nav-cta">GitHub</a></div>
+<button type="button" class="tn-burger" aria-label="菜单" aria-expanded="false" aria-controls="primary-navigation"><span></span><span></span><span></span></button><div class="tn-r" id="primary-navigation"><a href="/zh/">首页</a><a href="/zh/#features">产品能力</a><a href="/zh/#quickstart">快速上手</a><a href="/zh/#cases">使用场景</a><a href="/zh/#ecosystem">开源生态</a><a href="/zh/docs/" class="is-active">文档</a><div class="lang-menu" data-lang-menu><button type="button" class="lang-trigger" aria-haspopup="menu" aria-expanded="false" aria-label="切换语言"><svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 0 20"></path><path d="M12 2a15.3 15.3 0 0 0 0 20"></path></svg><span class="lang-current">中文</span><svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="lang-menu-list" role="menu"><a href="/zh/k12" role="menuitem" class="is-active" aria-current="true">中文</a><a href="/en/" role="menuitem">English</a><a href="/ug/" role="menuitem">ئۇيغۇرچە</a></div></div><button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="切换主题"><svg class="ti-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="ti-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="nav-cta">GitHub</a></div>
 </nav>
-<main id="main" class="m content-main">
+<div class="mobile-doc-nav">
+<a href="/zh/docs/getting-started">快速上手</a>
+<a href="/zh/k12" class="on" aria-current="page">K12 真实案例</a>
+<a href="/zh/docs/k12">K12 使用教程</a>
+<a href="/zh/docs/chat">对话与会话</a>
+<a href="/zh/docs/agents">Agent</a>
+<a href="/zh/docs/canvas">工作流</a>
+<a href="/zh/docs/providers">模型服务商</a>
+<a href="/zh/docs/advanced">高级功能</a>
+<a href="/zh/docs/shortcuts">快捷键</a>
+<a href="/zh/docs/faq">FAQ</a>
+</div>
+<aside class="sb"><div class="sb-t">文档导航</div>
+<a href="/zh/docs/getting-started">快速上手</a>
+<a href="/zh/k12" class="on" aria-current="page">K12 真实案例</a>
+<a href="/zh/docs/k12">K12 使用教程</a>
+<a href="/zh/docs/chat" >对话与会话</a>
+<a href="/zh/docs/agents" >Agent 管理</a>
+<a href="/zh/docs/canvas" >工作流画布</a>
+<a href="/zh/docs/providers" >模型服务商</a>
+<a href="/zh/docs/advanced" >高级功能</a>
+<a href="/zh/docs/shortcuts" >快捷键参考</a>
+<a href="/zh/docs/faq" >常见问题</a>
+</aside>
+<main id="main" class="m">
 <header class="page-lead">
 <div class="page-kicker">小学家长辅导 · 真实案例</div>
 <h1>看懂答案，再把道理讲给孩子</h1>
@@ -232,7 +256,7 @@
 </div>
 <div class="footer-bottom"><span class="footer-copy">&copy; 2025&ndash;2026 hexagon-codes</span></div>
 </footer>
-<script src="../assets/js/docs-nav.js?v=4ba47b5a639b"></script>
+<script src="../assets/js/docs-nav.js?v=fc8f7aca3d83"></script>
 <script>
 function toggleTheme(){var c=document.documentElement.getAttribute("data-theme");var n=c==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);localStorage.setItem("hexclaw-theme",n)}
 (function(){var s=localStorage.getItem("hexclaw-theme");var d=window.matchMedia("(prefers-color-scheme:dark)").matches;if(s==="dark"||(!s&&d))document.documentElement.setAttribute("data-theme","dark")})();
