@@ -137,9 +137,8 @@ test('快速上手与当前向导一致，其他核心文档和首页保留功�
     }
   }
 
-  assert.match(read('zh/index.html'), /assets\/docs\/k12\/annotated-homework\.png/)
-  for (const file of ['en/index.html', 'ug/index.html']) {
-    assert.match(read(file), /assets\/docs\/screenshots\/hero-workspace\.webp/)
+  for (const file of ['zh/index.html', 'en/index.html', 'ug/index.html']) {
+    assert.match(read(file), /assets\/docs\/k12\/annotated-homework\.png/)
   }
 })
 
