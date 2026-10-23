@@ -1420,6 +1420,11 @@ hr {
   border-color: rgba(255,255,255,0.08);
 }
 
+[data-theme="dark"] .m :not(pre) > code,
+[data-theme="dark"] kbd {
+  background: var(--bg-subtle);
+}
+
 [data-theme="dark"] .tn .tn-r a.is-active,
 [data-theme="dark"] .topnav-links a.is-active {
   background: rgba(255,255,255,0.06);

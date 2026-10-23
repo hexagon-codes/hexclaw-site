@@ -88,9 +88,9 @@
   .dl-card-links a { display:block; padding:8px 12px; border-radius:8px; font-size:13px; font-weight:500; text-decoration:none; color:var(--blue-deep); background:rgba(63,143,212,.06); border:1px solid transparent; transition:background-color .2s,border-color .2s,color .2s; }
   .dl-card-links a:hover { background:rgba(63,143,212,.14); border-color:rgba(63,143,212,.1); }
   @media (hover:hover) {
-    .dl-card:hover .dl-card-name { margin-bottom:0; }
-    .dl-card:hover .dl-card-hint { opacity:0; max-height:0; margin-top:0; overflow:hidden; }
-    .dl-card:hover .dl-card-links { max-height:120px; opacity:1; margin-top:12px; }
+    .dl-card:hover .dl-card-name, .dl-card:focus-within .dl-card-name { margin-bottom:0; }
+    .dl-card:hover .dl-card-hint, .dl-card:focus-within .dl-card-hint { opacity:0; max-height:0; margin-top:0; overflow:hidden; }
+    .dl-card:hover .dl-card-links, .dl-card:focus-within .dl-card-links { max-height:120px; opacity:1; margin-top:12px; }
   }
   @media (hover:none) { .dl-card-links { max-height:120px; opacity:1; margin-top:12px; } .dl-card-hint { display:none; } }
   .dl-all-link { display:inline-block; margin-top:8px; font-size:13px; color:var(--blue-deep); opacity:.5; text-decoration:none; transition:opacity .2s; }
@@ -451,6 +451,7 @@
   [data-theme="dark"] .stack-sub { color:var(--text-secondary); }
   [data-theme="dark"] .hero-shot { background:linear-gradient(180deg,#182334,#111b2a); border-color:rgba(95,179,234,0.18); box-shadow:0 28px 90px rgba(0,0,0,0.34), 0 10px 26px rgba(0,0,0,0.22); }
   [data-theme="dark"] .hero-shot figcaption { color:rgba(232,236,240,0.7); background:linear-gradient(180deg, rgba(24,35,52,.7), rgba(17,27,42,.95)); }
+  [data-theme="dark"] .hero-shot figcaption a { color:var(--blue-light); }
   [data-theme="dark"] .cta-card { background:linear-gradient(180deg,rgba(95,179,234,0.08),rgba(255,255,255,0.04)); border-color:rgba(95,179,234,0.1); box-shadow:0 24px 60px rgba(0,0,0,0.18), inset 0 1px 0 rgba(255,255,255,0.04); }
   [data-theme="dark"] .btn-solid { background:linear-gradient(180deg,#287fbd 0%,#176aa7 100%); color:#fff; box-shadow:0 8px 24px rgba(23,106,167,0.28); }
   [data-theme="dark"] .dl-card { background:linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.03)); border-color:rgba(255,255,255,0.07); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); }
