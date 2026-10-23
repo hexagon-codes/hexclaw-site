@@ -67,7 +67,7 @@
 <header class="page-lead">
 <div class="page-kicker">HexClaw Docs</div>
 <h1>Chat & Sessions</h1>
-<p class="sub">Multi-model chat, session history, artifacts, search, and export workflows.</p>
+<p class="sub">Assign tasks, use connected resources, and review answers, documents, and generated media in one conversation.</p>
 </header>
 
 <h2>Basic Chat</h2>
@@ -86,20 +86,34 @@
 <h2>Files & Multimodal Inputs</h2>
 <p>The composer supports multiple attachment types depending on the selected model's capabilities:</p>
 <table>
-<tr><th>Input Type</th><th>Supported Models</th></tr>
-<tr><td>Images</td><td>GPT-4o, Claude family, Gemini family, Qwen-VL, Doubao Vision, and LLaVA</td></tr>
-<tr><td>Video</td><td>Gemini 2.5 and 2.0 family models</td></tr>
-<tr><td>Audio</td><td>Gemini 2.5 and 2.0 family models</td></tr>
-<tr><td>Files</td><td>All text-capable models with automatic content extraction</td></tr>
+<tr><th>Input Type</th><th>Requirements</th></tr>
+<tr><td>Images</td><td>The selected model and provider must support image understanding.</td></tr>
+<tr><td>Video</td><td>The selected model and provider must support video input and the file must meet their requirements.</td></tr>
+<tr><td>Audio</td><td>Transcription, speech synthesis, and audio conversations use their respective available services; see below.</td></tr>
+<tr><td>Files</td><td>Supported documents are extracted into context. Processing depends on the format, model, and selected service.</td></tr>
 </table>
-<div class="tip"><b>Tip:</b> Attachment buttons automatically appear or disappear based on the current model's advertised capabilities.</div>
+<div class="tip"><b>Tip:</b> Models from the same provider can support different input types. Use the current model capabilities and attachment controls as your guide.</div>
+
+<h2>Generate Images, Audio, and Video</h2>
+<p>Describe what you need in a conversation and the agent can use configured media tools. With a dedicated image or video generation model selected, use the same composer to submit your request. Generation, editing, and playback depend on the model, tools, and receiving channel.</p>
+<ul>
+<li><strong>Images</strong> — View and save generated results. Editing an existing image requires a model that supports image editing.</li>
+<li><strong>Audio and video</strong> — Follow task progress, then play or save the available result. Audio can be retained with its corresponding text.</li>
+<li><strong>Reopen results</strong> — Saved media stays associated with its conversation and can be viewed again from history while the service retains the files. Older results that only contain temporary external URLs depend on those URLs remaining valid.</li>
+</ul>
+
+<h2>Use Work Resources in Chat</h2>
+<p>Ask about installed Skills, connected MCP servers, existing agents, or knowledge documents, then request actions supported by your current permissions and tools. Use Knowledge, Capabilities, Automation, or Connections for configuration. See <a href="/en/docs/advanced">Advanced Features</a> for the resource workflows.</p>
+
+<h2>Progress, Interruptions, and Results</h2>
+<p>Follow responses, tool activity, and actual artifacts as a task runs. You can stop the current request; tasks that support resumption recover state using the original request. If a result is marked unknown, inspect the original task and existing artifacts before deciding what to do next, to avoid duplicate generation, charges, or delivery. Stopping your wait does not mean an external operation has been undone.</p>
 
 <h2>Session Management</h2>
 <ul>
 <li><strong>New session</strong> - click the "+" button in the sidebar</li>
 <li><strong>Session history</strong> - browse and reopen prior conversations from the left panel</li>
 <li><strong>Delete session</strong> - remove a conversation through the context menu or swipe action</li>
-<li><strong>Persistent storage</strong> - all messages are saved in the local SQLite database</li>
+<li><strong>Persistent storage</strong> - sessions and messages belong to the selected HexClaw service: on this device for local service, or on the server for cloud service. Switching services does not automatically migrate or merge data.</li>
 </ul>
 
 <h2>Artifact Preview</h2>
@@ -122,17 +136,11 @@
 </ul>
 
 <h2>@ Mentions</h2>
-<p>Type <code>@</code> in the composer to open the mention menu and quickly bring an agent or skill into the conversation context.</p>
+<p>Type <code>@</code> to reference an agent, knowledge document, connection, or existing conversation. Select Skills from the composer's skill control; available resources come from the current service.</p>
 
-<h2>Chat Modes</h2>
-<p>HexClaw offers three chat modes, switchable via the tabs at the top:</p>
-<table>
-<tr><th>Mode</th><th>Purpose</th><th>Description</th></tr>
-<tr><td><strong>Chat</strong></td><td>General Q&A</td><td>Standard chat, direct conversation with an LLM</td></tr>
-<tr><td><strong>Agent</strong></td><td>Task execution</td><td>The agent plans autonomously, invokes tools, and executes multi-step tasks</td></tr>
-<tr><td><strong>Deep Thinking</strong></td><td>Reasoning &amp; research</td><td>Visible reasoning process with multi-source deep analysis — best for complex, multi-step questions</td></tr>
-</table>
-<div class="tip"><b>Tip:</b> Clicking the "Chat" button on an agent's card in Agent Management automatically switches to Agent mode and uses the agent's name as the session title.</div>
+<h2>Agents and Thinking Settings</h2>
+<p>Questions and task requests share the conversation entry point. Opening a conversation from an agent instance uses that instance's role, knowledge, and tool configuration.</p>
+<p>When supported by the model, enable deep thinking from the composer's thinking settings and choose an available reasoning effort. Visible reasoning and the applied setting depend on the model response. Enabling thinking does not mean a web search has occurred; search requires an available tool and an actual invocation.</p>
 
 <h2>Document Parsing</h2>
 <p>You can upload document files directly in chat. HexClaw automatically extracts text content and sends it to the LLM as context:</p>
@@ -167,8 +175,12 @@
 <h3>Token Count</h3>
 <p>The toolbar displays an estimated token count for the current session (e.g., <code>~1.2k tok</code>), helping you gauge context window usage.</p>
 
-<h2>Voice Input</h2>
-<p>Click the 🎤 microphone button next to the input box to start speech recognition (STT). After recording, the transcribed text is automatically inserted into the input box. Requires browser Web Speech API support or an external STT service configuration.</p>
+<h2>Voice Input, Read-Aloud, and Audio Conversations</h2>
+<ul>
+<li><strong>Voice input</strong> — Start recording from the composer. Sending finishes transcription and sends the text as a message; you can also cancel the recording. Microphone permission and an available recognition channel are required.</li>
+<li><strong>Read-aloud</strong> — Convert text to playable speech using a configured speech synthesis service.</li>
+<li><strong>Audio conversation</strong> — Select an audio conversation model registered by the service for a single audio input and response. Results can contain audio and a transcript. This is separate from speech-to-text input.</li>
+</ul>
 
 <h2>Chat Shortcuts</h2>
 <table>
@@ -177,7 +189,7 @@
 <tr><td><code>Shift + Enter</code></td><td>New line</td></tr>
 <tr><td><code>⌘ + F</code></td><td>Search messages</td></tr>
 <tr><td><code>Esc</code></td><td>Stop generation</td></tr>
-<tr><td><code>@</code></td><td>Mention an Agent / Skill</td></tr>
+<tr><td><code>@</code></td><td>Reference an agent, knowledge, connection, or session</td></tr>
 </table>
 
 <hr>

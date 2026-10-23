@@ -75,11 +75,11 @@
 
 <h2>Installation & Startup</h2>
 <h3>Q: The app opens to a blank screen or fails to load. What should I check?</h3>
-<p>The Go sidecar engine may not have started correctly. Check the following:</p>
+<p>First distinguish a UI loading problem from a service connection problem, then check the selected service:</p>
 <ol>
-<li>Inspect the <strong>Logs</strong> page for startup errors</li>
-<li>Confirm that port <code>16060</code> is not already in use</li>
-<li>Restart the app and allow up to 30 seconds for the sidecar to come up automatically</li>
+<li>Inspect <strong>Logs</strong> for startup or connection errors</li>
+<li>For local service, check that the sidecar started and port <code>16060</code> is available</li>
+<li>For cloud service, check the service URL, access token, and server status; restarting the desktop app does not restart the server</li>
 </ol>
 
 <h3>Q: macOS says the app cannot be opened because the developer cannot be verified.</h3>
@@ -91,38 +91,40 @@
 
 <h2>Models & Chat</h2>
 <h3>Q: My API request returns a 401 or 403 error.</h3>
-<p>The API key is usually invalid, expired, or missing quota. Go to <strong>Settings → Model Providers</strong>, verify the key, and confirm the account is funded.</p>
+<p>In <strong>Settings → Model Providers</strong>, check the provider, URL, credentials, and model access used by the current service, then inspect the provider's specific error. The status code alone does not establish that the account lacks funds.</p>
 
 <h3>Q: How do I use local models with no network dependency?</h3>
-<p>Install <strong>Ollama</strong>, then add it as a provider in HexClaw:</p>
+<p>Make <strong>Ollama</strong> and a downloaded model available to the selected HexClaw service, then add an Ollama provider. macOS packages include Ollama; Windows and Linux require a separate installation for local models:</p>
 <ul>
 <li>Base URL: <code>http://localhost:11434/v1</code></li>
 <li>API Key: leave empty</li>
-<li>Model: add the downloaded model names manually, such as <code>llama3.1</code> or <code>qwen2.5</code></li>
+<li>Model: enter the name of a model actually downloaded in Ollama</li>
 </ul>
+<p>Here, <code>localhost</code> means the machine running the HexClaw service. For cloud service, that is the server, not your desktop. Using a local model does not make web search or external tools work offline.</p>
 
 <h3>Q: Streaming output seems stuck.</h3>
-<p>This is often a network timeout. Press <kbd>Esc</kbd> to stop generation, then resend the message.</p>
+<p>Inspect task progress, tool activity, and the current service's logs to distinguish ongoing model processing, a dropped connection, and a confirmed failure. You can stop the current request; supported tasks resume through the original request. If the outcome is unknown, check the original task and existing artifacts before repeating an operation that may incur charges or external effects.</p>
 
 <h2>Data & Privacy</h2>
 <h3>Q: Where is my data stored?</h3>
-<p>All data is stored locally:</p>
+<p>Business data belongs to the selected HexClaw service:</p>
 <ul>
-<li><strong>Sessions and messages</strong>: SQLite database (<code>hexclaw.db</code>)</li>
-<li><strong>Settings</strong>: Tauri Store, usually as local JSON files</li>
-<li><strong>API keys</strong>: the operating system's secure key store</li>
-<li><strong>Data directory</strong>: visible in Settings → General → Data Directory</li>
+<li><strong>Local service</strong>: sessions, learning records, knowledge documents, and generated files are stored on this device.</li>
+<li><strong>Cloud service</strong>: that business data and service configuration are stored on your server.</li>
+<li><strong>Model credentials</strong>: local provider settings and API keys are stored in <code>~/.hexclaw/hexclaw.yaml</code>; cloud service uses its server configuration. Local provider keys are not stored in the operating system keychain.</li>
+<li><strong>Desktop preferences</strong>: appearance and other desktop settings are managed separately from service data. Confirm the selected service and its data location in Settings.</li>
 </ul>
+<p>Switching between local and cloud service does not automatically migrate or merge conversations, learning records, model settings, or connections.</p>
 
 <h3>Q: Does HexClaw send my data to third-party servers?</h3>
-<p>No relay service is involved. HexClaw only talks to the AI API endpoints you configure. If you use Ollama, the entire flow can stay offline.</p>
+<p>Online models receive the questions, images, document contents, and context required for the task. Web search, MCP servers, messaging channels, and other external tools also receive the content their operations require. Ollama can run model inference locally, but whether a whole task stays offline depends on its tools and services.</p>
 
 <h2>Workflows & Agents</h2>
 <h3>Q: A workflow run failed. What should I inspect?</h3>
 <p>Open the failed node and read the error details. Common causes include an agent with no configured model, disconnected MCP tools, or token limits.</p>
 
 <h3>Q: How many agents should I include in a multi-agent meeting?</h3>
-<p>There is no hard cap, but 2 to 5 agents is the practical range. More agents usually mean longer discussions and higher token usage.</p>
+<p>Participation depends on the running service and configured agents. Choose roles with clear responsibilities for the task. More participants add context and model calls; they do not guarantee a better result.</p>
 
 <h2>MCP & Tools</h2>
 <h3>Q: My MCP server connection fails.</h3>
@@ -133,13 +135,13 @@
 </ol>
 
 <h2>Deep Thinking</h2>
-<h3>Deep Thinking mode is stuck on the "searching" stage. What should I do?</h3>
-<p>Confirm the agent has access to a web search tool (the <code>web_search</code> Skill must be enabled). If the backend has no search Skill configured, Deep Thinking will fall back to a regular agent response.</p>
+<h3>Does enabling deep thinking automatically search the web?</h3>
+<p>Thinking settings control the reasoning capability supported by the model. Web search needs an available tool and an actual invocation. Inspect tool activity and sources to distinguish model reasoning from retrieved evidence. If a tool has no final result, inspect the original task status first.</p>
 
 <h3>The Deep Thinking output quality is not satisfactory.</h3>
 <p>Try the following:</p>
 <ul>
-<li>Use a more capable model (e.g. Claude Sonnet 4 or GPT-4o)</li>
+<li>Choose a model suited to the task with the required reasoning support</li>
 <li>Provide a more specific research topic and scope</li>
 <li>Specify the desired output format in your prompt (e.g. "generate a Markdown report with citations")</li>
 </ul>
@@ -147,43 +149,43 @@
 <h2>Connections · IM Channels</h2>
 <h3>I configured Feishu / DingTalk / WeCom but receive no messages.</h3>
 <ol>
-<li>Make sure you <strong>restart the Engine</strong> after saving the configuration</li>
+<li>In <strong>Connections</strong>, check the channel configuration and connection status of the current service; follow any channel-specific reconnection instructions</li>
 <li>Verify the App Secret / Token (note: test and production credentials may differ)</li>
-<li>Confirm the bot has been added to the target group or has message-receiving permissions enabled</li>
+<li>Check receiving permissions and the target conversation binding; K12 tutoring uses a bound one-to-one parent-to-bot chat</li>
 <li>Check the <strong>Logs</strong> page for connection errors</li>
 </ol>
 
 <h2>Skill Marketplace</h2>
 <h3>A skill installed from ClawHub does not take effect.</h3>
-<p>ClawHub is currently in mock mode (local preview only). The install action does not actually download skill files. Once the full release ships, it will connect to the ClawHub community API directly. Locally installed <code>.md</code> Skill files work as expected.</p>
+<p>The marketplace searches and installs skills through the selected HexClaw service. In <strong>Capabilities → Skills</strong>, check whether the skill is installed and enabled, then inspect the agent's skill configuration, dependencies, and run records. Inspect specific installation or network errors; seeing a marketplace entry does not mean it was installed. Local-file and URL installation are also available.</p>
 
 <h2>Performance & Optimization</h2>
 <h3>Q: Memory usage feels high.</h3>
-<p>HexClaw renders the interface in a WebView. Normal memory usage is often around 200 to 400 MB. If it exceeds 1 GB, try the following:</p>
+<p>Distinguish memory used by the desktop WebView, the HexClaw service, and local model processes. Long conversations, media previews, document processing, and model size all affect requirements. You can:</p>
 <ul>
-<li>Close unneeded sessions or tabs</li>
-<li>Clear log cache from the Logs page</li>
-<li>Restart the app</li>
+<li>Close media previews you are not using</li>
+<li>Check active tasks and local model processes to identify the source of usage</li>
+<li>If usage remains abnormal after tasks finish, keep relevant logs and restart the affected app or service</li>
 </ul>
 
 <h3>Q: Where can I inspect engine health?</h3>
-<p>The bottom-left engine status indicator and the <strong>Logs</strong> page show sidecar engine health (connection status, API port, etc.). Engine checks run automatically every 5 seconds.</p>
+<p>The service card in <strong>Settings</strong> shows the selected local or cloud service and its connection status. <strong>Logs</strong> provides execution details, and About shows desktop, backend, and component versions. A connected service does not prove a particular task or delivery completed.</p>
 
 <h2>Comparison with Other Products</h2>
 
 <h3>Q: How is HexClaw different from ChatGPT Desktop / Claude Desktop?</h3>
-<p>ChatGPT Desktop and Claude Desktop are vendor-specific clients that only connect to their own models. HexClaw is <strong>model-agnostic</strong> — you can connect to OpenAI, Claude, DeepSeek, Gemini, Ollama, and more simultaneously, switching between them in one interface. Additionally, HexClaw includes a built-in Agent engine, MCP tool protocol, workflow canvas, and RAG knowledge base, making it a complete AI Agent runtime platform rather than just a chat client.</p>
+<p>HexClaw is an open-source agent workspace connected to a local or self-hosted cloud service. It brings multiple model providers, knowledge documents, MCP, Skills, and automation into one interface. Compare your tasks, deployment needs, models, and tools; consult each other product's current official documentation for its capabilities and terms.</p>
 
 <h3>Q: How is HexClaw different from Cursor?</h3>
-<p>Cursor is an AI-powered code editor focused on programming. HexClaw is a general-purpose AI Agent desktop client covering conversations, Agent orchestration, workflow automation, knowledge bases, and more — not limited to code generation.</p>
+<p>HexClaw supports general task delegation, including document work, media generation, knowledge retrieval, automation, and homework tutoring. Assess a development task against the connected tools, execution environment, and actual artifacts; generating code alone does not establish that it replaces a complete development environment.</p>
 
 <h2>Data Management</h2>
 
 <h3>Q: How do I back up or migrate my data?</h3>
-<p>All HexClaw data is stored in the local data directory (check Settings → General → Data Directory). To back up, simply copy this directory. To migrate to a new machine, copy the data directory to the corresponding location.</p>
+<p>First identify whether the data belongs to local or cloud service. A full service backup must cover that deployment's actual databases, document and artifact directories, and configuration using its backup and recovery procedure. Copying desktop preferences is not a business-data backup. Conversations can be exported, and family learning profiles support <code>.hexbak</code> archives and recovery. Switching services does not migrate data; keep model credentials and other configuration separately protected.</p>
 
 <h3>Q: How large can knowledge base documents be?</h3>
-<p>Individual documents should be under 50MB. Total knowledge base capacity depends on local disk space. Documents are automatically chunked and vector-embedded after upload, so retrieval performance is not affected by total document volume.</p>
+<p>Follow the current service's file requirements and upload feedback. Capacity and processing time depend on the service machine's disk, document contents, parsing, and index configuration. Check processing progress after upload and use retrieval once the document is ready. Document volume and index size also affect resource usage and retrieval performance.</p>
 
 <hr>
 <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-top:32px;margin-bottom:24px">

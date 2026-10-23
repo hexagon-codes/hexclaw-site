@@ -121,12 +121,12 @@ test('新一版文档截图完整替换旧 PNG，并统一为真实桌面窗口�
 
 test('快速上手与当前向导一致，其他核心文档和首页保留功能截图', () => {
   const gettingStarted = read('zh/docs/getting-started.html')
-  assert.match(gettingStarted, /当前主线的首次配置向导包含 2 步/)
+  assert.match(gettingStarted, /首次配置向导包含 2 步/)
   assert.match(gettingStarted, /<strong>选择服务<\/strong>/)
   assert.match(gettingStarted, /<strong>检查并开始<\/strong>/)
   assert.doesNotMatch(gettingStarted, /assets\/docs\/screenshots\/welcome-(?:provider|agent|ready)\.webp/)
   const englishGettingStarted = read('en/docs/getting-started.html')
-  assert.match(englishGettingStarted, /current main branch uses a 2-step setup wizard/)
+  assert.match(englishGettingStarted, /2-step setup wizard/)
   assert.match(englishGettingStarted, /<strong>Select a service<\/strong>/)
   assert.match(englishGettingStarted, /<strong>Check and start<\/strong>/)
   assert.doesNotMatch(englishGettingStarted, /assets\/docs\/screenshots\/welcome-(?:provider|agent|ready)\.webp/)
@@ -229,7 +229,7 @@ test('站点地图按页面已有语言声明 hreflang，并保留有效更新�
     const block = match[1]
     const location = block.match(/<loc>([^<]+)<\/loc>/)?.[1]
     if (!location || !/\/(?:zh|en|ug)\//.test(location)) continue
-    const languages = location === 'https://hexclaw.net/zh/docs/k12'
+    const languages = ['https://hexclaw.net/zh/docs/k12', 'https://hexclaw.net/zh/k12'].includes(location)
       ? ['zh-CN', 'x-default']
       : ['en', 'zh-CN', 'ug', 'x-default']
     for (const language of languages) {

@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/favicon-32.png">
 <title>Workflow Canvas — HexClaw Docs</title>
-<meta name="description" content="Orchestrate multi-step AI tasks with linear steps under Automation - Workflows.">
+<meta name="description" content="Combine agents and tools in workflows, configure inputs, resources, files, and delivery, and inspect run and recovery states.">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="theme-color" content="#ffffff">
 <meta property="og:site_name" content="HexClaw">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Workflow Canvas — HexClaw Docs">
-<meta property="og:description" content="Orchestrate multi-step AI tasks with linear steps under Automation - Workflows.">
+<meta property="og:description" content="Combine agents and tools in workflows, configure inputs, resources, files, and delivery, and inspect run and recovery states.">
 <meta property="og:url" content="https://hexclaw.net/en/docs/canvas">
 <meta property="og:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
 <meta property="og:image:alt" content="HexClaw logo">
@@ -21,7 +21,7 @@
 <meta property="og:locale:alternate" content="zh_CN">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Workflow Canvas — HexClaw Docs">
-<meta name="twitter:description" content="Orchestrate multi-step AI tasks with linear steps under Automation - Workflows.">
+<meta name="twitter:description" content="Combine agents and tools in workflows, configure inputs, resources, files, and delivery, and inspect run and recovery states.">
 <meta name="twitter:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
 <meta name="twitter:image:alt" content="HexClaw logo">
 <link rel="canonical" href="https://hexclaw.net/en/docs/canvas">
@@ -30,7 +30,7 @@
 <link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/docs/canvas">
 <link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/docs/canvas">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"TechArticle","headline":"Workflow Canvas — HexClaw Docs","description":"Orchestrate multi-step AI tasks with linear steps under Automation - Workflows.","url":"https://hexclaw.net/en/docs/canvas","inLanguage":"en","image":"https://hexclaw.net/assets/brand/hexclaw-logo.png","isPartOf":{"@type":"CreativeWorkSeries","name":"HexClaw Docs","url":"https://hexclaw.net/en/docs/"},"publisher":{"@type":"Organization","name":"hexagon-codes","url":"https://hexclaw.net/"},"about":{"@type":"SoftwareApplication","name":"HexClaw","operatingSystem":"macOS, Windows, Linux","applicationCategory":"BusinessApplication"}}
+{"@context":"https://schema.org","@type":"TechArticle","headline":"Workflow Canvas — HexClaw Docs","description":"Combine agents and tools in workflows, configure inputs, resources, files, and delivery, and inspect run and recovery states.","url":"https://hexclaw.net/en/docs/canvas","inLanguage":"en","image":"https://hexclaw.net/assets/brand/hexclaw-logo.png","isPartOf":{"@type":"CreativeWorkSeries","name":"HexClaw Docs","url":"https://hexclaw.net/en/docs/"},"publisher":{"@type":"Organization","name":"hexagon-codes","url":"https://hexclaw.net/"},"about":{"@type":"SoftwareApplication","name":"HexClaw","operatingSystem":"macOS, Windows, Linux","applicationCategory":"BusinessApplication"}}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"HexClaw","item":"https://hexclaw.net/en/"},{"@type":"ListItem","position":2,"name":"HexClaw Documentation","item":"https://hexclaw.net/en/docs/"},{"@type":"ListItem","position":3,"name":"Workflow Canvas — HexClaw Docs","item":"https://hexclaw.net/en/docs/canvas"}]}
@@ -67,44 +67,57 @@
 <header class="page-lead">
 <div class="page-kicker">HexClaw Docs</div>
 <h1>Workflow Canvas</h1>
-<p class="sub">Orchestrate multi-step AI tasks with linear steps under Automation → Workflows.</p>
+<p class="sub">Build multi-step tasks under Automation → Workflows, combine agents and tools, and inspect artifacts and delivery results.</p>
 </header>
 
 <h2>Overview</h2>
-<p>Workflows live under the <strong>Automation → Workflows</strong> tab and are HexClaw's <strong>multi-step AI orchestration tool</strong>. They use <strong>linear steps</strong>: break a complex task into a sequence of steps that run in order, passing each step's output to the next.</p>
+<p>Workflows live under <strong>Automation → Workflows</strong>. The editor organizes tasks as <strong>linear steps</strong>: start with a trigger and input, process it with agents, tools, or parallel agents, then produce the result. Each step can use the run input, the previous result, or a selected step's result.</p>
+<p>You can also query, create, and update workflows in chat, then run one when explicitly requested. Chat and the workspace share the same definitions and run records. Saving a definition does not start a run.</p>
 
 <h2>Step Anatomy</h2>
-<p>Each step is one agent call and can be configured independently:</p>
+<p>Configure processing and resources for each step type:</p>
 <table>
 <tr><th>Field</th><th>Description</th></tr>
-<tr><td><strong>Role</strong></td><td>The agent / persona used for this step</td></tr>
-<tr><td><strong>Prompt</strong></td><td>This step's instruction; can reference the previous step's output</td></tr>
-<tr><td><strong>Model</strong></td><td>A model chosen specifically for this step</td></tr>
-<tr><td><strong>Tools</strong></td><td>The tools / MCP this step is allowed to call</td></tr>
+<tr><td><strong>Input</strong></td><td>Select the run input, previous result, or a selected step's result, using text, a structured field, or artifacts as needed.</td></tr>
+<tr><td><strong>Agent and model</strong></td><td>Select an agent and provide instructions. Inherit the model settings or choose a model for this step.</td></tr>
+<tr><td><strong>Tools and parallel processing</strong></td><td>A tool step selects an MCP tool and its arguments; a parallel step assigns separate tasks to multiple agents.</td></tr>
+<tr><td><strong>Resources</strong></td><td>Inherit, select, or omit skills, prompts, knowledge, and tools. Memory retrieval and writeback follow the step settings.</td></tr>
+<tr><td><strong>Output</strong></td><td>Prepare final text, structured results, or artifacts, and choose file formats and delivery destinations.</td></tr>
 </table>
 
 <h2>Create a Workflow</h2>
 <ol>
 <li>Open the <strong>Automation → Workflows</strong> tab and create a new workflow</li>
 <li>Add steps, then <strong>add / remove / reorder</strong> them as needed</li>
-<li>Edit each step's role, prompt, model, and tools</li>
+<li>Select agent, tool, or parallel processing and configure input, instructions, model, and resources</li>
+<li>Set file formats and delivery destinations in the output step</li>
 <li><strong>Save</strong> the workflow</li>
-<li>Click <strong>Dry Run</strong> — per-step status is filled back in real time</li>
+<li>Click <strong>Dry Run</strong>, provide the run input, and inspect step states and the final result</li>
 </ol>
+<p>Dry Run calls the actual models and tools and performs the configured output and delivery actions. The run record preserves the definition and input used for that execution.</p>
 <figure class="doc-shot">
 <img width="2560" height="1640" loading="lazy" decoding="async" src="../../assets/docs/screenshots/automation-workflow.webp" alt="Automation workflow page">
-<figcaption>Automation workflow: step sequence and run status.</figcaption>
+<figcaption>Workflow entry and step sequence illustration; available settings depend on your version.</figcaption>
 </figure>
 
+<h2>Files and Delivery</h2>
+<p>The output step can generate PDF, Markdown, or HTML files. Return results to the source conversation or workflow conversation, send them to configured DingTalk or email destinations, or save them to a desktop or service-side directory. Accounts, destinations, and directories must be available in the connected environment.</p>
+<p>Run details show step execution, file generation, and delivery states separately. Download ready files or use the corresponding action for failed file generation or delivery. Email acceptance does not prove receipt by the recipient; channel results follow actual receipts.</p>
+
+<h2>Scheduled and Event Triggers</h2>
+<p>Run the same workflow manually, schedule it, or bind an existing Webhook. Check the enabled state after saving the trigger. Updating a schedule and starting an immediate run are separate actions.</p>
+
 <h2>Execution & Status</h2>
-<p>At run time, each step executes in order and reports status live:</p>
+<p>Run details and history show actual states for the overall run, individual steps, and parallel tasks:</p>
 <ul>
 <li>⏳ <strong>Waiting</strong> — not yet executed</li>
 <li>🔄 <strong>Running</strong> — currently executing</li>
 <li>✅ <strong>Completed</strong> — executed successfully</li>
 <li>❌ <strong>Failed</strong> — execution error</li>
+<li><strong>Cancelled / interrupted</strong> — the run did not finish; available continuation actions depend on its recorded state</li>
+<li><strong>Outcome unknown</strong> — the external operation's result has not been confirmed; inspect and reconcile the existing records first</li>
 </ul>
-<div class="tip"><b>Tip:</b> Workflow execution supports polling, so you can leave the page while a run is active and return later to inspect the result.</div>
+<div class="tip"><b>Tip:</b> Return through run history after leaving the page. Resumable failed or interrupted runs reuse completed step results. File generation and delivery failures have separate recovery actions, so resending a result does not require rerunning the entire task. Execution stays on the original service; a local service stops when the computer shuts down.</div>
 
 <hr>
 <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-top:32px;margin-bottom:24px">

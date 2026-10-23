@@ -83,21 +83,22 @@
 </ul>
 <figure class="doc-shot">
 <img width="2560" height="1640" loading="lazy" decoding="async" src="../../assets/docs/screenshots/agents-overview.webp" alt="智能体总览页面">
-<figcaption>智能体总览：默认助理与专属智能体卡片。</figcaption>
+<figcaption>智能体总览示意：默认助理与专属智能体卡片；具体入口名称以正文说明为准。</figcaption>
 </figure>
 
 <h2>创建 Agent</h2>
 <ol>
-<li>进入 <strong>Agent 管理</strong> 页面</li>
-<li>点击 <strong>"创建 Agent"</strong></li>
-<li>填写名称、描述、系统提示词</li>
-<li>（可选）选择绑定模型、设置温度、分配工具和技能</li>
-<li>保存</li>
+<li>进入左侧 <strong>「智能体」</strong> 页面，点击 <strong>「新建智能体」</strong></li>
+<li>选择 <strong>「空白新建」</strong>，或从 <strong>「模板库」</strong> 选一个模板作为起点</li>
+<li>填写内部标识、显示名称和人设（SOUL / 系统提示词），按需要调整模板内容</li>
+<li>（可选）展开模型与高级设置，指定服务商和模型、思考设置、温度、工具与技能；模型也可以跟随默认配置</li>
+<li>点击 <strong>「创建并开始对话」</strong>，或仅创建后再从卡片进入</li>
 </ol>
 <div class="tip"><b>示例：</b>创建一个 "前端专家" Agent，System Prompt 设为 "你是一位资深前端工程师，精通 Vue 3、TypeScript、TailwindCSS..."，温度设为 0.3。</div>
+<p>已有智能体可从卡片进入编辑。普通自建智能体提供删除入口；作业辅导等场景智能体从对应的档案编辑入口管理，默认助理保留。</p>
 <figure class="doc-shot">
 <img width="2560" height="1640" loading="lazy" decoding="async" src="../../assets/docs/screenshots/agents-templates.webp" alt="智能体模板库页面">
-<figcaption>模板库：可用智能体模板与创建入口。</figcaption>
+<figcaption>模板库示意：选择模板后继续配置专属智能体，具体入口名称以正文说明为准。</figcaption>
 </figure>
 
 <h2>Agent 属性</h2>
@@ -108,14 +109,16 @@
 <tr><td>description</td><td>简短描述</td></tr>
 <tr><td>system_prompt</td><td>系统提示词，定义角色行为</td></tr>
 <tr><td>model</td><td>绑定的模型（留空则使用默认模型）</td></tr>
-<tr><td>temperature</td><td>生成温度 0~2（默认 0.7）</td></tr>
+<tr><td>temperature</td><td>生成温度 0~2，可留空跟随默认配置</td></tr>
+<tr><td>reasoning_policy</td><td>思考策略，按所选模型能力设置是否启用及思考强度</td></tr>
 <tr><td>tools[]</td><td>可用的 MCP 工具列表</td></tr>
 <tr><td>skills[]</td><td>启用的技能列表</td></tr>
 <tr><td>status</td><td>active / inactive</td></tr>
 </table>
 
 <h2>使用 Agent 聊天</h2>
-<p>在对话页面，点击输入框上方的 Agent 选择器切换角色。选中的 Agent 的系统提示词会自动注入到对话中。</p>
+<p>在 <strong>「智能体 → 我的智能体」</strong> 的卡片上点击 <strong>「进入对话」</strong>，即可在该智能体的上下文中聊天；也可以在会话输入框里输入 <code>@</code> 并选择已配置的智能体。后续消息沿用当前会话绑定的智能体及其人设、工具与技能配置。</p>
+<p>会话始终使用同一个输入框，<strong>不需要切换「对话 / Agent / 深度思考」三种模式</strong>。模型选择和思考设置位于输入框内的底部工具栏；思考选项按当前模型能力显示，可能由模型自动控制，或提供开关、强度选择。</p>
 
 <h2>多 Agent 会议</h2>
 <p>河蟹 AI 支持 <strong>多 Agent 协作讨论</strong> 模式：</p>
@@ -135,21 +138,21 @@
 </ul>
 
 <h2>快速开始对话</h2>
-<p>在角色卡片上点击<strong>"聊天"</strong>按钮：</p>
+<p>在智能体卡片上点击<strong>「进入对话」</strong>：</p>
 <ol>
 <li>自动新建一个以角色名命名的会话（如"数据分析师"）</li>
-<li>聊天模式自动切换为 Agent</li>
+<li>当前会话绑定到该智能体，继续在同一个输入框发送消息</li>
 <li>后续再次点击同一角色，会定位到已有的会话而非重复新建</li>
 </ol>
 
 <h2>Agent 路由管理</h2>
-<p>在 <strong>Agent 路由</strong> 标签页管理 Agent 的模型绑定：</p>
+<p>在新建或编辑智能体时管理它的模型绑定，决定该智能体使用哪个服务商和模型：</p>
 <ul>
-<li><strong>注册</strong> — 指定 Agent 使用的 Provider 和模型</li>
-<li><strong>编辑</strong> — 点击 ✏️ 修改已注册 Agent 的显示名、Provider、模型</li>
-<li><strong>注销</strong> — 移除 Agent 路由绑定</li>
+<li><strong>跟随默认</strong> — 服务商和模型都留空，使用当前服务的默认模型</li>
+<li><strong>绑定专属模型</strong> — 同时选择服务商和该服务商下的模型</li>
+<li><strong>调整绑定</strong> — 在智能体卡片的「编辑」中修改；清空服务商和模型可恢复跟随默认</li>
 </ul>
-<div class="tip"><b>提示：</b>注册和编辑时，名称、Provider、模型三个字段都不能为空。</div>
+<div class="tip"><b>提示：</b>内部标识和显示名称用于区分智能体。服务商与模型需要成对设置，也可以同时留空；不要只填其中一项。</div>
 
 <h2>角色定义参考</h2>
 <p>Agent 角色在后端 <code>hexclaw.yaml</code> 中定义，也可通过 API 动态注册：</p>

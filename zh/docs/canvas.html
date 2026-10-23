@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/favicon-32.png">
 <title>工作流画布 — 河蟹 AI 文档</title>
-<meta name="description" content="在「自动化 → 工作流」中用线性步骤编排多步 AI 任务。">
+<meta name="description" content="在自动化工作流中组合智能体与工具，配置输入、资源、文件与交付，查看运行和恢复状态。">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="theme-color" content="#ffffff">
 <meta property="og:site_name" content="河蟹 AI">
 <meta property="og:type" content="article">
 <meta property="og:title" content="工作流画布 — 河蟹 AI 文档">
-<meta property="og:description" content="在「自动化 → 工作流」中用线性步骤编排多步 AI 任务。">
+<meta property="og:description" content="在自动化工作流中组合智能体与工具，配置输入、资源、文件与交付，查看运行和恢复状态。">
 <meta property="og:url" content="https://hexclaw.net/zh/docs/canvas">
 <meta property="og:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
 <meta property="og:image:alt" content="河蟹 AI 标志">
@@ -21,7 +21,7 @@
 <meta property="og:locale:alternate" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="工作流画布 — 河蟹 AI 文档">
-<meta name="twitter:description" content="在「自动化 → 工作流」中用线性步骤编排多步 AI 任务。">
+<meta name="twitter:description" content="在自动化工作流中组合智能体与工具，配置输入、资源、文件与交付，查看运行和恢复状态。">
 <meta name="twitter:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
 <meta name="twitter:image:alt" content="河蟹 AI 标志">
 <link rel="canonical" href="https://hexclaw.net/zh/docs/canvas">
@@ -30,7 +30,7 @@
 <link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/docs/canvas">
 <link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/docs/canvas">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"TechArticle","headline":"工作流画布 — 河蟹 AI 文档","description":"在「自动化 → 工作流」中用线性步骤编排多步 AI 任务。","url":"https://hexclaw.net/zh/docs/canvas","inLanguage":"zh-CN","image":"https://hexclaw.net/assets/brand/hexclaw-logo.png","isPartOf":{"@type":"CreativeWorkSeries","name":"河蟹 AI 文档","url":"https://hexclaw.net/zh/docs/"},"publisher":{"@type":"Organization","name":"hexagon-codes","url":"https://hexclaw.net/"},"about":{"@type":"SoftwareApplication","name":"河蟹 AI","operatingSystem":"macOS, Windows, Linux","applicationCategory":"BusinessApplication"}}
+{"@context":"https://schema.org","@type":"TechArticle","headline":"工作流画布 — 河蟹 AI 文档","description":"在自动化工作流中组合智能体与工具，配置输入、资源、文件与交付，查看运行和恢复状态。","url":"https://hexclaw.net/zh/docs/canvas","inLanguage":"zh-CN","image":"https://hexclaw.net/assets/brand/hexclaw-logo.png","isPartOf":{"@type":"CreativeWorkSeries","name":"河蟹 AI 文档","url":"https://hexclaw.net/zh/docs/"},"publisher":{"@type":"Organization","name":"hexagon-codes","url":"https://hexclaw.net/"},"about":{"@type":"SoftwareApplication","name":"河蟹 AI","operatingSystem":"macOS, Windows, Linux","applicationCategory":"BusinessApplication"}}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"河蟹 AI","item":"https://hexclaw.net/zh/"},{"@type":"ListItem","position":2,"name":"河蟹 AI 使用文档","item":"https://hexclaw.net/zh/docs/"},{"@type":"ListItem","position":3,"name":"工作流画布 — 河蟹 AI 文档","item":"https://hexclaw.net/zh/docs/canvas"}]}
@@ -69,44 +69,57 @@
 <header class="page-lead">
 <div class="page-kicker">河蟹 AI 文档</div>
 <h1>工作流画布</h1>
-<p class="sub">在「自动化 → 工作流」中，用线性步骤编排多步 AI 任务。</p>
+<p class="sub">在「自动化 → 工作流」中编排多步任务，组合智能体与工具，查看产物和交付结果。</p>
 </header>
 
 <h2>概述</h2>
-<p>工作流位于 <strong>自动化 → 工作流</strong> 标签页，是河蟹 AI 的<strong>多步 AI 编排工具</strong>。它采用<strong>线性步骤</strong>编排：把一个复杂任务拆成若干顺序步骤，逐步执行并把每步结果传给下一步。</p>
+<p>工作流位于 <strong>自动化 → 工作流</strong>。编辑器以<strong>线性步骤</strong>组织任务，从触发和输入开始，经过智能体、工具或多智能体并行处理，再输出结果。每一步可以使用本次输入、上一步或指定步骤的结果。</p>
+<p>也可以在会话中查询、创建和修改工作流，明确要求时发起运行。会话与工作台使用同一份定义和运行记录；只保存定义不会自动执行。</p>
 
 <h2>步骤构成</h2>
-<p>每个步骤是一次 Agent 调用，可分别配置：</p>
+<p>按步骤类型配置处理方式与资源：</p>
 <table>
 <tr><th>配置项</th><th>说明</th></tr>
-<tr><td><strong>角色</strong></td><td>该步骤使用的智能体 / 人设</td></tr>
-<tr><td><strong>提示</strong></td><td>本步骤的指令，可引用上一步的输出</td></tr>
-<tr><td><strong>模型</strong></td><td>该步骤单独指定的模型</td></tr>
-<tr><td><strong>工具</strong></td><td>本步骤允许调用的工具 / MCP</td></tr>
+<tr><td><strong>输入</strong></td><td>选择本次输入、前一步或指定步骤的结果，按需要使用文本、结构化字段或产物。</td></tr>
+<tr><td><strong>智能体与模型</strong></td><td>选择智能体，填写任务提示；模型可沿用已有设置，也可为该步骤单独指定。</td></tr>
+<tr><td><strong>工具与并行处理</strong></td><td>工具步骤选择 MCP 工具及参数；并行步骤为多个智能体分别配置任务。</td></tr>
+<tr><td><strong>工作资源</strong></td><td>Skill、Prompt、知识与工具可继承、指定或不使用；记忆读取与写回按步骤设置执行。</td></tr>
+<tr><td><strong>输出</strong></td><td>整理最终文本、结构化结果或产物，选择需要生成的文件格式与交付位置。</td></tr>
 </table>
 
 <h2>创建工作流</h2>
 <ol>
 <li>进入 <strong>自动化 → 工作流</strong> 标签页，点击新建</li>
 <li>添加步骤，并按需<strong>增删 / 排序</strong></li>
-<li>编辑每个步骤的角色、提示、模型与工具</li>
+<li>选择智能体、工具或并行处理，配置输入、提示、模型和所需资源</li>
+<li>在输出步骤中设置文件格式和交付位置</li>
 <li><strong>保存</strong>工作流</li>
-<li>点击<strong>试运行</strong>，逐节点状态实时回填</li>
+<li>点击<strong>试运行</strong>，填写本次输入，查看步骤状态与最终结果</li>
 </ol>
+<p>试运行会按当前设置实际调用模型和工具，并执行已配置的输出与交付。运行记录保留本次使用的定义和输入。</p>
 <figure class="doc-shot">
 <img width="2560" height="1640" loading="lazy" decoding="async" src="../../assets/docs/screenshots/automation-workflow.webp" alt="自动化工作流页面">
-<figcaption>自动化工作流：步骤编排与运行状态。</figcaption>
+<figcaption>工作流入口与步骤编排示意；具体配置项以所用版本为准。</figcaption>
 </figure>
 
+<h2>文件与交付</h2>
+<p>输出步骤可生成 PDF、Markdown 或 HTML 文件。结果可回到来源会话或工作流会话，也可按配置发送到钉钉、邮箱，或保存到桌面／服务端目录。所需账号、目标和目录应在当前连接环境中可用。</p>
+<p>运行详情分别显示步骤执行、文件生成和交付状态，可下载已就绪文件，或针对失败的文件生成、交付使用对应处理入口。邮件服务接受请求不等于收件人已收到，渠道结果以实际回执为准。</p>
+
+<h2>定时与事件触发</h2>
+<p>同一工作流可以手动运行，也可以配置定时任务或绑定已有 Webhook。保存触发配置后查看其启用状态；修改执行计划与立即运行是不同操作。</p>
+
 <h2>执行与状态</h2>
-<p>运行时，每个步骤按顺序执行，并实时回填状态：</p>
+<p>在运行详情与历史记录中查看整体、步骤和并行任务的实际状态：</p>
 <ul>
 <li>⏳ <strong>等待中</strong> — 尚未执行</li>
 <li>🔄 <strong>运行中</strong> — 正在执行</li>
 <li>✅ <strong>已完成</strong> — 执行成功</li>
 <li>❌ <strong>失败</strong> — 执行出错</li>
+<li><strong>已取消／已中断</strong> — 本次运行没有继续完成；是否可续接以运行详情为准</li>
+<li><strong>结果未知</strong> — 尚不能确认外部操作结果，先查看与核对已有记录</li>
 </ul>
-<div class="tip"><b>提示：</b>工作流执行支持状态轮询，可以在执行过程中离开页面，稍后回来查看结果。</div>
+<div class="tip"><b>提示：</b>可以离开页面后从运行历史返回。对可续接的失败或中断任务，续接复用已完成步骤的结果；已生成文件与交付失败分别处理，不为重发结果重做全部任务。任务仍在原服务运行，本机服务随电脑关闭而停止。</div>
 
 <hr>
 <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-top:32px;margin-bottom:24px">

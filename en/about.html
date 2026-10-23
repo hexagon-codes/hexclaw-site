@@ -65,7 +65,7 @@
 </ul>
 
 <h2>Technical Architecture</h2>
-<p>HexClaw is built on our in-house Hexagon Agent engine, using a Tauri + Go stack. The desktop app is built with Tauri for cross-platform native deployment. The backend Sidecar, written in Go, powers Agent orchestration, MCP integration, knowledge base, workflows, and more. All data is stored locally, and Ollama enables fully offline operation.</p>
+<p>HexClaw is built on our in-house Hexagon Agent engine, using a Tauri + Go stack. The desktop app is built with Tauri for cross-platform native deployment. The backend Sidecar, written in Go, powers Agent orchestration, MCP integration, knowledge base, workflows, and more. The desktop connects to a local or self-hosted cloud service, which stores the data. Switching services does not migrate data automatically. Offline use requires local models and no network integrations.</p>
 
 <h2>Contact</h2>
 <p>For business inquiries or technical support, please reach out:</p>

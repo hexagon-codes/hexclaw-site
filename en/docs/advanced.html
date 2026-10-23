@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/favicon-32.png">
 <title>Advanced Features — HexClaw Docs</title>
-<meta name="description" content="MCP, RAG knowledge bases and memory, automation, the Connections hub and data connectors, skills, the Prompt library, and security controls.">
+<meta name="description" content="Manage skills, MCP, prompts, knowledge, memory, agents, and automation in chat, and inspect actual resource states.">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="theme-color" content="#ffffff">
 <meta property="og:site_name" content="HexClaw">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Advanced Features — HexClaw Docs">
-<meta property="og:description" content="MCP, RAG knowledge bases and memory, automation, the Connections hub and data connectors, skills, the Prompt library, and security controls.">
+<meta property="og:description" content="Manage skills, MCP, prompts, knowledge, memory, agents, and automation in chat, and inspect actual resource states.">
 <meta property="og:url" content="https://hexclaw.net/en/docs/advanced">
 <meta property="og:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
 <meta property="og:image:alt" content="HexClaw logo">
@@ -21,7 +21,7 @@
 <meta property="og:locale:alternate" content="zh_CN">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Advanced Features — HexClaw Docs">
-<meta name="twitter:description" content="MCP, RAG knowledge bases and memory, automation, the Connections hub and data connectors, skills, the Prompt library, and security controls.">
+<meta name="twitter:description" content="Manage skills, MCP, prompts, knowledge, memory, agents, and automation in chat, and inspect actual resource states.">
 <meta name="twitter:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
 <meta name="twitter:image:alt" content="HexClaw logo">
 <link rel="canonical" href="https://hexclaw.net/en/docs/advanced">
@@ -30,7 +30,7 @@
 <link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/docs/advanced">
 <link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/docs/advanced">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"TechArticle","headline":"Advanced Features — HexClaw Docs","description":"MCP, RAG knowledge bases and memory, automation, the Connections hub and data connectors, skills, the Prompt library, and security controls.","url":"https://hexclaw.net/en/docs/advanced","inLanguage":"en","image":"https://hexclaw.net/assets/brand/hexclaw-logo.png","isPartOf":{"@type":"CreativeWorkSeries","name":"HexClaw Docs","url":"https://hexclaw.net/en/docs/"},"publisher":{"@type":"Organization","name":"hexagon-codes","url":"https://hexclaw.net/"},"about":{"@type":"SoftwareApplication","name":"HexClaw","operatingSystem":"macOS, Windows, Linux","applicationCategory":"BusinessApplication"}}
+{"@context":"https://schema.org","@type":"TechArticle","headline":"Advanced Features — HexClaw Docs","description":"Manage skills, MCP, prompts, knowledge, memory, agents, and automation in chat, and inspect actual resource states.","url":"https://hexclaw.net/en/docs/advanced","inLanguage":"en","image":"https://hexclaw.net/assets/brand/hexclaw-logo.png","isPartOf":{"@type":"CreativeWorkSeries","name":"HexClaw Docs","url":"https://hexclaw.net/en/docs/"},"publisher":{"@type":"Organization","name":"hexagon-codes","url":"https://hexclaw.net/"},"about":{"@type":"SoftwareApplication","name":"HexClaw","operatingSystem":"macOS, Windows, Linux","applicationCategory":"BusinessApplication"}}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"HexClaw","item":"https://hexclaw.net/en/"},{"@type":"ListItem","position":2,"name":"HexClaw Documentation","item":"https://hexclaw.net/en/docs/"},{"@type":"ListItem","position":3,"name":"Advanced Features — HexClaw Docs","item":"https://hexclaw.net/en/docs/advanced"}]}
@@ -70,6 +70,22 @@
 <p class="sub">MCP, RAG knowledge bases &amp; memory, automation (scheduled jobs / webhooks / workflows), the Connections hub &amp; data connectors, skills, the Prompt library, and security controls.</p>
 </header>
 
+<p>Available features depend on your installed version, connected service, and enabled capabilities. Existing screenshots illustrate where to start.</p>
+
+<h2>Use and Manage Resources in Chat</h2>
+<p>Ask which resources are configured, or have the agent create, install, update, enable, and run them. Actions follow your current permissions and settings, with resource states reported from the actual service results.</p>
+<table>
+<tr><th>Ask in chat</th><th>What HexClaw can do</th></tr>
+<tr><td>“Which MCP servers are connected? What workflows and agents do I have?”</td><td>Read configured resources, connection states, and details. You can also query skills, prompts, memories, knowledge content, and conversation history.</td></tr>
+<tr><td>“Add this text to my knowledge base.”</td><td>Save the text for processing. Retrieval availability depends on the actual processing and index state.</td></tr>
+<tr><td>“Remember this preference; update the old information.”</td><td>Add, update, remove, or pin long-term memories.</td></tr>
+<tr><td>“Turn these steps into a skill and enable it.”</td><td>Create or update a skill, then save, enable, and load it. You can also find and install existing skills or MCP servers.</td></tr>
+<tr><td>“Save this prompt; create an assistant from this template.”</td><td>Create, update, enable, or disable prompts, and create or update agents using a template or supplied settings.</td></tr>
+<tr><td>“Organize this material every day at nine; run it once now.”</td><td>Create or update a scheduled job, list, pause, resume, or remove jobs, and start an immediate run when explicitly requested.</td></tr>
+<tr><td>“Save these steps as a workflow, then run it once.”</td><td>Create or update a workflow definition, start the requested run, and inspect the result. Webhook bindings and enabled states can also be managed.</td></tr>
+</table>
+<p>The Prompt library, agents, and workflows also have dedicated pages that use the same resources as chat. A query does not start a run, and a request for a draft does not enable it. Saving, loading, connecting, execution, and delivery each retain their actual state.</p>
+
 <h2>MCP Integration</h2>
 <p><strong>Model Context Protocol</strong> (MCP) lets HexClaw agents call external tools and services.</p>
 <h3>Register an MCP Server</h3>
@@ -81,6 +97,7 @@
 <li>Connect and let HexClaw auto-discover available tools</li>
 </ol>
 <p>Once connected, MCP tools can be assigned to agents. HexClaw shows live connection state as <code>connected</code>, <code>disconnected</code>, or <code>error</code>.</p>
+<p>In chat, you can query configured MCP servers and available tools, or search for and install an existing MCP server. External services still require the relevant account, connection settings, and authorization.</p>
 <figure class="doc-shot">
 <img width="2560" height="1640" loading="lazy" decoding="async" src="../../assets/docs/screenshots/capabilities-mcp.webp" alt="MCP integration page">
 <figcaption>MCP integration: registered server cards and connection states.</figcaption>
@@ -99,7 +116,7 @@
 }</code></pre>
 
 <h2>Knowledge Base (RAG)</h2>
-<p>Upload documents to build a private knowledge base that the AI can retrieve from automatically during responses.</p>
+<p>Upload documents to your knowledge base so agents can retrieve relevant content and sources for a task. Data is stored in the local or cloud service you are currently connected to.</p>
 <h3>Supported Inputs</h3>
 <ul>
 <li>PDF, Markdown, and TXT files</li>
@@ -110,21 +127,23 @@
 <ol>
 <li>Open the <strong>Knowledge Base</strong> page</li>
 <li>Upload one or more documents</li>
-<li>Wait for processing to move from <code>processing</code> to <code>ready</code></li>
-<li>In chat, HexClaw retrieves relevant chunks automatically as context</li>
+<li>Check processing and index progress until the document is ready for retrieval</li>
+<li>In chat, the agent retrieves relevant content as the task requires</li>
 </ol>
+<p>A successful upload, a saved original, and retrieval readiness are separate states. You can also ask the agent to add text from a conversation. Check the processing result after saving and use the task's available recovery action if processing fails or is interrupted.</p>
 <figure class="doc-shot">
 <img width="2560" height="1640" loading="lazy" decoding="async" src="../../assets/docs/screenshots/knowledge-documents.webp" alt="Knowledge documents page">
 <figcaption>Knowledge documents: file list and processing status.</figcaption>
 </figure>
 
 <h2>Semantic Memory</h2>
-<p>HexClaw can extract and store memory from conversations so useful context persists across sessions.</p>
+<p>Long-term memory preserves facts and preferences across sessions. Automatic capture follows your settings; you can also explicitly ask HexClaw to remember, correct, or forget an item.</p>
 <ul>
-<li><strong>Automatic capture</strong> - key details from conversations can be saved as memories</li>
+<li><strong>Automatic capture</strong> - when enabled, extract information suitable for long-term use</li>
 <li><strong>Semantic search</strong> - in the <strong>Knowledge → Memory</strong> tab, search by keyword or semantic similarity</li>
 <li><strong>Type filters</strong> - narrow results by memory type</li>
 <li><strong>Manual management</strong> - review, delete, or bulk clean entries</li>
+<li><strong>Chat management</strong> - add, update, remove, pin, or unpin an item, with feedback based on the saved result</li>
 </ul>
 <figure class="doc-shot">
 <img width="2560" height="1640" loading="lazy" decoding="async" src="../../assets/docs/screenshots/knowledge-memory.webp" alt="Semantic memory page">
@@ -145,6 +164,7 @@
 0 */2 * * *    Every 2 hours
 0 9 * * 1-5    Weekdays at 9:00</code></pre>
 <p>HexClaw also supports manual triggering, execution history, and heartbeat monitoring.</p>
+<p>Describe the schedule and task in chat to create or update a job, then list, pause, resume, or remove it. Ask explicitly for an immediate run; creating a schedule does not add an extra run. Results go to the configured destinations, with execution and delivery states shown separately. For tasks with multiple steps, use a <a href="/en/docs/canvas">workflow</a>.</p>
 <figure class="doc-shot">
 <img width="2560" height="1640" loading="lazy" decoding="async" src="../../assets/docs/screenshots/automation-tasks.webp" alt="Scheduled automation tasks page">
 <figcaption>Scheduled tasks: job list, schedules, and run states.</figcaption>
@@ -164,12 +184,14 @@
 <li><strong>Ranking</strong>: sort by community rating and downloads</li>
 <li><strong>Configuration</strong>: some skills expose custom parameters</li>
 </ul>
+<p>In chat, you can search for, install, remove, or list existing skills, and create or update your own. When you ask to save and enable a skill, the agent saves, activates, and loads it under your current permissions. A draft-only request saves only a draft. Installed, enabled, and callable states are reported separately.</p>
 <figure class="doc-shot">
 <img width="2560" height="1640" loading="lazy" decoding="async" src="../../assets/docs/screenshots/capabilities-skills.webp" alt="Skills integration page">
 <figcaption>Skills integration: available skills and installation states.</figcaption>
 </figure>
 
 <h2>Prompt Library</h2>
+<p>Manage reusable commands and prompt fragments under <strong>Integration → Prompt Library</strong>, or query, create, update, enable, and disable them in chat. Existing model, tool-scope, and enabled settings remain unchanged unless requested.</p>
 <figure class="doc-shot">
 <img width="2560" height="1640" loading="lazy" decoding="async" src="../../assets/docs/screenshots/capabilities-prompts.webp" alt="Prompt library page">
 <figcaption>Prompt library: reusable prompt entries and categories.</figcaption>

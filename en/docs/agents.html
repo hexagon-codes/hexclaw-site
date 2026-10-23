@@ -81,21 +81,22 @@
 </ul>
 <figure class="doc-shot">
 <img width="2560" height="1640" loading="lazy" decoding="async" src="../../assets/docs/screenshots/agents-overview.webp" alt="Agent overview page">
-<figcaption>Agent overview: default assistant and custom agent cards.</figcaption>
+<figcaption>Illustrative agent overview: default assistant and custom agent cards. Follow the entry names described in the text.</figcaption>
 </figure>
 
 <h2>Create an Agent</h2>
 <ol>
-<li>Open the <strong>Agent Management</strong> page</li>
-<li>Click <strong>"Create Agent"</strong></li>
-<li>Enter a name, description, and system prompt</li>
-<li>Optionally bind a model, adjust temperature, and assign tools or skills</li>
-<li>Save the agent</li>
+<li>Open <strong>Agents</strong> in the sidebar and click <strong>New Agent</strong></li>
+<li>Start from a blank agent or choose a template from <strong>Templates</strong></li>
+<li>Enter an internal identifier, display name, and persona (SOUL / system prompt), adjusting the template as needed</li>
+<li>Optionally open the model and advanced settings to choose a provider, model, reasoning settings, temperature, tools, and skills; the model can also follow the default configuration</li>
+<li>Click <strong>Create &amp; start chat</strong>, or create the agent first and enter its chat from the card later</li>
 </ol>
 <div class="tip"><b>Example:</b> Create a "Frontend Expert" agent with a system prompt like "You are a senior frontend engineer specializing in Vue 3, TypeScript, and Tailwind CSS..." and set temperature to 0.3.</div>
+<p>Edit an existing agent from its card. Regular custom agents have a delete action; scenario agents such as homework tutors are managed through their profile-editing entry. The default assistant is retained.</p>
 <figure class="doc-shot">
 <img width="2560" height="1640" loading="lazy" decoding="async" src="../../assets/docs/screenshots/agents-templates.webp" alt="Agent template library page">
-<figcaption>Template library: available agent templates and creation entry.</figcaption>
+<figcaption>Illustrative template library: choose a template and continue configuring your agent. Follow the entry names described in the text.</figcaption>
 </figure>
 
 <h2>Agent Fields</h2>
@@ -106,14 +107,16 @@
 <tr><td>description</td><td>Short summary of the role</td></tr>
 <tr><td>system_prompt</td><td>Core prompt that defines behavior</td></tr>
 <tr><td>model</td><td>Bound model, or empty to use the default</td></tr>
-<tr><td>temperature</td><td>Generation temperature from 0 to 2, default 0.7</td></tr>
+<tr><td>temperature</td><td>Generation temperature from 0 to 2; leave empty to follow the default configuration</td></tr>
+<tr><td>reasoning_policy</td><td>Reasoning settings, including enabled state and effort when supported by the selected model</td></tr>
 <tr><td>tools[]</td><td>Available MCP tools</td></tr>
 <tr><td>skills[]</td><td>Enabled skills</td></tr>
 <tr><td>status</td><td><code>active</code> or <code>inactive</code></td></tr>
 </table>
 
 <h2>Chat with an Agent</h2>
-<p>On the chat page, use the agent selector above the composer to switch roles. The selected agent's system prompt is injected into the conversation automatically.</p>
+<p>Open <strong>Agents → My Agents</strong> and click <strong>Enter chat</strong> on a card to chat in that agent's context. You can also type <code>@</code> in the composer and select a configured agent. Subsequent messages use the agent bound to the current session, including its persona, tools, and skills.</p>
+<p>Chat uses one composer; <strong>there is no need to switch between separate Chat, Agent, and Deep-thinking modes</strong>. Model selection and reasoning settings are in the toolbar inside the bottom of the composer. Reasoning options follow the current model's capabilities: the model may manage reasoning automatically or offer a toggle and effort levels.</p>
 
 <h2>Multi-Agent Meetings</h2>
 <p>HexClaw also supports a <strong>multi-agent discussion</strong> mode:</p>
@@ -133,21 +136,21 @@
 </ul>
 
 <h2>Quick Start a Conversation</h2>
-<p>Click the <strong>"Chat"</strong> button on a role card:</p>
+<p>Click <strong>Enter chat</strong> on an agent card:</p>
 <ol>
 <li>A new session is created automatically, named after the role (e.g. "Data Analyst")</li>
-<li>Chat mode switches to Agent automatically</li>
+<li>The current session is bound to that agent, and you continue sending messages in the same composer</li>
 <li>Clicking the same role again navigates to the existing session instead of creating a duplicate</li>
 </ol>
 
 <h2>Agent Route Management</h2>
-<p>Use the <strong>Agent Route</strong> tab to manage model bindings for agents:</p>
+<p>Manage an agent's model binding when creating or editing it to choose the provider and model it uses:</p>
 <ul>
-<li><strong>Register</strong> — assign a Provider and model to an agent</li>
-<li><strong>Edit</strong> — click ✏️ to modify the display name, Provider, or model of a registered agent</li>
-<li><strong>Unregister</strong> — remove an agent route binding</li>
+<li><strong>Follow the default</strong> — leave both provider and model empty to use the selected service's default model</li>
+<li><strong>Bind a dedicated model</strong> — select a provider and one of that provider's models together</li>
+<li><strong>Change the binding</strong> — use Edit on the agent card; clear both provider and model to follow the default again</li>
 </ul>
-<div class="tip"><b>Tip:</b> When registering or editing, the name, Provider, and model fields are all required.</div>
+<div class="tip"><b>Tip:</b> The internal identifier and display name distinguish the agent. Set provider and model together, or leave both empty; do not fill only one of them.</div>
 
 <h2>Role Definition Reference</h2>
 <p>Agent roles are defined in the backend <code>hexclaw.yaml</code> and can also be registered dynamically via the API:</p>

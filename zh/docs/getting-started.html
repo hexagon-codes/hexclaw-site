@@ -108,12 +108,12 @@ make dev</code></pre>
 <div class="tip"><b>提示：</b><code>make sidecar</code> 使用 Makefile 的 <code>HEXCLAW_REF</code>，不会自动选择最新后端；使用当前后端主分支时运行 <code>make sidecar HEXCLAW_REF=origin/main</code>。指定其他版本时，以其 <code>go.mod</code> 为准。Windows / Linux 随包组件准备见 <a href="https://github.com/hexagon-codes/hexclaw-desktop/blob/main/.github/workflows/release.yml" target="_blank" rel="noopener noreferrer">Release 工作流</a>。</div>
 
 <h2>首次启动向导</h2>
-<p>当前主线的首次配置向导包含 2 步；已下载版本的界面以所选 Release 为准：</p>
+<p>首次配置向导包含 2 步，先连接服务，再检查是否已经有可用模型：</p>
 <ol>
 <li><strong>选择服务</strong> — 使用应用管理的本机服务，或填写自行部署的云端 HexClaw 服务地址和访问令牌</li>
 <li><strong>检查并开始</strong> — 检查服务连接和默认模型；模型已就绪时继续原任务，尚未就绪时进入模型设置</li>
 </ol>
-<p>模型设置完成后返回原任务，已填写的内容会保留。后续可在 <strong>设置 → 模型服务商</strong> 中修改当前服务的配置。</p>
+<p>模型设置完成后返回原任务，已填写的内容会保留。后续可在 <strong>设置 → 模型服务商</strong> 中修改当前服务的配置；需要切换本机或云端服务时，点击侧栏底部的服务状态入口。</p>
 <div class="tip"><b>服务模式：</b>本机服务由应用管理启动与停止；云端服务由服务器管理，服务器、模型与已绑定 IM 持续可用时，电脑关机不会停止云端任务。</div>
 
 <h2>首次配置</h2>
@@ -155,7 +155,7 @@ platforms:
 <p>在服务商配置中，勾选一个模型作为默认聊天模型。</p>
 
 <h3>3. 发送第一条消息</h3>
-<p>进入 <strong>对话</strong> 页面，输入“请用三句话介绍你能帮助我完成的任务”，按回车发送。应看到流式内容逐步出现并最终成为完整回答；仅连接测试成功不能证明任务已经完成。</p>
+<p>进入 <strong>「会话」</strong> 页面，在同一个输入框中输入“请用三句话介绍你能帮助我完成的任务”，按回车发送。模型选择和思考设置在输入框内底部工具栏中，按当前模型支持的能力显示。应看到流式内容逐步出现并最终成为完整回答；仅连接测试成功不能证明任务已经完成。</p>
 
 <h2>首次排障入口</h2>
 <p>如果安装完成后仍无法正常聊天，建议先检查下面三项：</p>
@@ -176,15 +176,15 @@ platforms:
 <div class="tip"><b>数据归属：</b>会话、学习记录、模型配置与连接保存在所选服务，切换不会自动迁移或合并数据。在线模型会接收任务中发送给它的内容，处理方式取决于所选 Provider。云端工具访问的是服务器环境，不会自动获得本机文件系统。</div>
 
 <h2>界面概览</h2>
-<p>河蟹 AI 桌面端采用「Chat 置顶 + 构建 / 连接 / 系统」三组侧栏导航。首次进入应用默认就是 <strong>Chat</strong>；可用 <kbd>⌘</kbd>+<kbd>K</kbd> 命令面板或 <kbd>⌘</kbd>+数字 快速跳转：</p>
+<p>河蟹 AI 桌面端采用「会话置顶 + 构建 / 连接 / 系统」三组侧栏导航。首次进入应用默认就是 <strong>「会话」</strong>；可用 <kbd>⌘</kbd>+<kbd>K</kbd> 命令面板或 <kbd>⌘</kbd>+数字 快速跳转：</p>
 <table>
 <tr><th>页面</th><th>分区</th><th>功能</th></tr>
-<tr><td>Chat</td><td>置顶</td><td>对话 / Agent / 深度思考三种模式，流式输出、Artifact 预览、文档解析、语音输入</td></tr>
-<tr><td>Agent</td><td>构建</td><td>创建 / 管理智能体角色，编辑默认助理人设（SOUL）</td></tr>
+<tr><td>会话</td><td>置顶</td><td>单一输入框、当前智能体上下文、模型与思考设置，流式输出、Artifact 预览、文档解析、语音输入</td></tr>
+<tr><td>智能体</td><td>构建</td><td>创建 / 管理智能体角色，编辑默认助理人设（SOUL）</td></tr>
 <tr><td>知识库</td><td>构建</td><td>文档（RAG 向量检索）与记忆（跨会话语义记忆）两个标签页</td></tr>
 <tr><td>自动化</td><td>构建</td><td>定时任务（Cron）、Webhook、线性工作流三个标签页</td></tr>
-<tr><td>连接中心</td><td>连接</td><td>IM 通道与账号、邮箱，以及数据连接器（GitHub / Notion）</td></tr>
-<tr><td>集成</td><td>连接</td><td>技能（ClawHub 市场）、MCP 服务器、Prompt 库三个标签页</td></tr>
+<tr><td>连接</td><td>连接</td><td>IM 通道与账号、邮箱，以及数据连接器（GitHub / Notion）</td></tr>
+<tr><td>能力</td><td>连接</td><td>技能（ClawHub 市场）、MCP 服务器、Prompt 库三个标签页</td></tr>
 <tr><td>日志</td><td>系统</td><td>实时 WebSocket 日志流，trace_id 追踪</td></tr>
 <tr><td>设置</td><td>系统</td><td>模型服务商、安全策略、外观主题、通知推送</td></tr>
 </table>
