@@ -1,0 +1,120 @@
+{
+  "schema_version": 2,
+  "source": "installed-desktop",
+  "application_version": "0.5.0 development",
+  "bundle_id": "com.hexclaw.desktop",
+  "capture": {
+    "environment": "Installed macOS desktop application; real main window",
+    "logical_window": {
+      "width": 1280,
+      "height": 821
+    },
+    "pixel_ratio": 2,
+    "native_window_controls": true
+  },
+  "task": {
+    "input": "Clearly labeled reading-meetup planning demo",
+    "model": "gpt-6.1-sol",
+    "tool_calls": 0,
+    "customer_outcome": false
+  },
+  "redaction": "Connection address mosaicked in publication copies; source pixels outside redaction preserved",
+  "languages": {
+    "zh": {
+      "png": "desktop-zh-ba9240e964af.png",
+      "sha256": "ba9240e964af3af314daebb2f311c8a603f775ec0b8eab14e58fcdb14b0ab97e",
+      "width": 2560,
+      "height": 1642,
+      "webp": [
+        {
+          "file": "desktop-zh-ba9240e964af-640.webp",
+          "width": 640,
+          "height": 410,
+          "sha256": "64fd23abde38639ad9d171d9596bdfbd05357e769fc30db6d51e89fe6e045060"
+        },
+        {
+          "file": "desktop-zh-ba9240e964af-1280.webp",
+          "width": 1280,
+          "height": 821,
+          "sha256": "2718c3e021846aa1287aec8144f542eaf850af3e3cfaf6bf3b612b736d850049"
+        },
+        {
+          "file": "desktop-zh-ba9240e964af-1920.webp",
+          "width": 1920,
+          "height": 1232,
+          "sha256": "825db7b58cc067600762628349195ca6ef79d6c6c77de69b6f6b04a8ac906a3b"
+        },
+        {
+          "file": "desktop-zh-ba9240e964af.webp",
+          "width": 2560,
+          "height": 1642,
+          "sha256": "3025bc73b233f68f8e007bdc1281f386b9cdedfad254f30bd05df95b48495cf9"
+        }
+      ]
+    },
+    "en": {
+      "png": "desktop-en-6d2406d7eb7a.png",
+      "sha256": "6d2406d7eb7a62c8f750d369f34ac364b479ad2fc5c69c343b53b277f8e22872",
+      "width": 2560,
+      "height": 1642,
+      "webp": [
+        {
+          "file": "desktop-en-6d2406d7eb7a-640.webp",
+          "width": 640,
+          "height": 410,
+          "sha256": "c4da89f1aa1c213045a57a1a3ffbc8c58bfcecec01645d269ee489b2238b1b6d"
+        },
+        {
+          "file": "desktop-en-6d2406d7eb7a-1280.webp",
+          "width": 1280,
+          "height": 821,
+          "sha256": "6bf34cef49df8903a3ec91b7634426069e49be03259eaadbd92a6d39c6e4024d"
+        },
+        {
+          "file": "desktop-en-6d2406d7eb7a-1920.webp",
+          "width": 1920,
+          "height": 1232,
+          "sha256": "325ed643d6e5ba01e4ceb43f19f96b87f84f3d069fae94852c83ffed0b9de8dd"
+        },
+        {
+          "file": "desktop-en-6d2406d7eb7a.webp",
+          "width": 2560,
+          "height": 1642,
+          "sha256": "9fee984489a4700f4aabefb5aca6c18602922cf65dd028946128b6c197f9a3d2"
+        }
+      ]
+    },
+    "ug": {
+      "png": "desktop-ug-5666e5fe2373.png",
+      "sha256": "5666e5fe23735141584d760f5b9e2d2648faff88ad346f3f04c5dd0797165881",
+      "width": 2560,
+      "height": 1642,
+      "webp": [
+        {
+          "file": "desktop-ug-5666e5fe2373-640.webp",
+          "width": 640,
+          "height": 410,
+          "sha256": "4200bc91bf48d20368177032ae17b0b0184c0d04bf986e89c9678d6d8992ec59"
+        },
+        {
+          "file": "desktop-ug-5666e5fe2373-1280.webp",
+          "width": 1280,
+          "height": 821,
+          "sha256": "1eb8a1902c191def61b3622dd41d8c02798fa999bfc9b50f44c5ef76f3153838"
+        },
+        {
+          "file": "desktop-ug-5666e5fe2373-1920.webp",
+          "width": 1920,
+          "height": 1232,
+          "sha256": "decdd6265c41ca499f3c5de101a6e0ed1cb3833c9dd82e96f85455d1722aa2d8"
+        },
+        {
+          "file": "desktop-ug-5666e5fe2373.webp",
+          "width": 2560,
+          "height": 1642,
+          "sha256": "c966362d2a8449c1c6c00937505bbba3c5901d506113f0c860eda234954a68d6"
+        }
+      ]
+    }
+  }
+}
