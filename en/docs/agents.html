@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/favicon-32.png">
 <title>Create and Manage AI Agents | HexClaw Docs</title>
-<meta name="description" content="Create custom AI roles, assign prompts and tools, and coordinate multi-agent discussions.">
+<meta name="description" content="Create custom AI roles, configure models, prompts, tools, and skills, and combine agents in workflows.">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="theme-color" content="#ffffff">
 <meta property="og:site_name" content="HexClaw">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Create and Manage AI Agents | HexClaw Docs">
-<meta property="og:description" content="Create custom AI roles, assign prompts and tools, and coordinate multi-agent discussions.">
+<meta property="og:description" content="Create custom AI roles, configure models, prompts, tools, and skills, and combine agents in workflows.">
 <meta property="og:url" content="https://hexclaw.net/en/docs/agents">
 <meta property="og:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
 <meta property="og:image:alt" content="HexClaw logo">
@@ -22,7 +22,7 @@
 <meta property="og:locale:alternate" content="ug_CN">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Create and Manage AI Agents | HexClaw Docs">
-<meta name="twitter:description" content="Create custom AI roles, assign prompts and tools, and coordinate multi-agent discussions.">
+<meta name="twitter:description" content="Create custom AI roles, configure models, prompts, tools, and skills, and combine agents in workflows.">
 <meta name="twitter:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
 <meta name="twitter:image:alt" content="HexClaw logo">
 <link rel="canonical" href="https://hexclaw.net/en/docs/agents">
@@ -31,18 +31,18 @@
 <link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/docs/agents">
 <link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/docs/agents">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"TechArticle","headline":"Create and Manage AI Agents | HexClaw Docs","description":"Create custom AI roles, assign prompts and tools, and coordinate multi-agent discussions.","url":"https://hexclaw.net/en/docs/agents","inLanguage":"en","image":"https://hexclaw.net/assets/brand/hexclaw-logo.png","isPartOf":{"@type":"CreativeWorkSeries","name":"HexClaw Docs","url":"https://hexclaw.net/en/docs/"},"publisher":{"@type":"Organization","name":"hexagon-codes","url":"https://hexclaw.net/","@id":"https://hexclaw.net/#organization"},"about":{"@type":"SoftwareApplication","name":"HexClaw","operatingSystem":"macOS, Windows, Linux","applicationCategory":"BusinessApplication","@id":"https://hexclaw.net/#software"},"@id":"https://hexclaw.net/en/docs/agents#article","mainEntityOfPage":{"@type":"WebPage","@id":"https://hexclaw.net/en/docs/agents#webpage"}}
+{"@context":"https://schema.org","@type":"TechArticle","headline":"Create and Manage AI Agents | HexClaw Docs","description":"Create custom AI roles, configure models, prompts, tools, and skills, and combine agents in workflows.","url":"https://hexclaw.net/en/docs/agents","inLanguage":"en","image":"https://hexclaw.net/assets/brand/hexclaw-logo.png","isPartOf":{"@type":"CreativeWorkSeries","name":"HexClaw Docs","url":"https://hexclaw.net/en/docs/"},"publisher":{"@type":"Organization","name":"hexagon-codes","url":"https://hexclaw.net/","@id":"https://hexclaw.net/#organization"},"about":{"@type":"SoftwareApplication","name":"HexClaw","operatingSystem":"macOS, Windows, Linux","applicationCategory":"BusinessApplication","@id":"https://hexclaw.net/#software"},"@id":"https://hexclaw.net/en/docs/agents#article","mainEntityOfPage":{"@type":"WebPage","@id":"https://hexclaw.net/en/docs/agents#webpage"},"dateModified":"2026-10-25"}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"HexClaw","item":"https://hexclaw.net/en/"},{"@type":"ListItem","position":2,"name":"HexClaw Documentation","item":"https://hexclaw.net/en/docs/"},{"@type":"ListItem","position":3,"name":"Agent Management — HexClaw Docs","item":"https://hexclaw.net/en/docs/agents"}],"@id":"https://hexclaw.net/en/docs/agents#breadcrumb"}
 </script>
-<link rel="stylesheet" href="../../assets/css/docs-a30080145af0.css">
+<link rel="stylesheet" href="../../assets/css/docs-a35628a8707a.css">
 </head>
 <body class="docs-page">
 <a href="#main" class="skip-link">Skip to content</a>
 <nav class="tn">
 <a href="/en/" class="tn-b"><img width="72" height="72" src="../../assets/brand/hexclaw-icon-72.png" class="tn-l" alt="HexClaw"><span class="tn-n">HexClaw</span></a>
-<button type="button" class="tn-burger" aria-label="Menu" aria-expanded="false" aria-controls="primary-navigation"><span></span><span></span><span></span></button><div class="tn-r" id="primary-navigation"><a href="/en/">Home</a><a href="/en/#features">Capabilities</a><a href="/en/#quickstart">Quick Start</a><a href="/en/#cases">Use Cases</a><a href="/en/#ecosystem">Ecosystem</a><a href="/en/docs/" class="is-active">Docs</a><div class="lang-menu" data-lang-menu><button type="button" class="lang-trigger" aria-haspopup="menu" aria-expanded="false" aria-label="Language switcher"><svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 0 20"></path><path d="M12 2a15.3 15.3 0 0 0 0 20"></path></svg><span class="lang-current">English</span><svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="lang-menu-list" role="menu"><a href="/zh/docs/agents" role="menuitem">中文</a><a href="/en/docs/agents" role="menuitem" class="is-active" aria-current="true">English</a><a href="/ug/docs/agents" role="menuitem">ئۇيغۇرچە</a></div></div><button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"><svg class="ti-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="ti-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="nav-cta">GitHub</a></div>
+<button type="button" class="tn-burger" aria-label="Menu" aria-expanded="false" aria-controls="primary-navigation"><span></span><span></span><span></span></button><div class="tn-r" id="primary-navigation"><a href="/en/">Home</a><a href="/en/#cases">Use Cases</a><a href="/en/#features">Capabilities</a><a href="/en/#quickstart">Get started</a><a href="/en/#ecosystem">Ecosystem</a><a href="/en/docs/" class="is-active">Docs</a><div class="lang-menu" data-lang-menu><button type="button" class="lang-trigger" aria-haspopup="menu" aria-expanded="false" aria-label="Language switcher"><svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 0 20"></path><path d="M12 2a15.3 15.3 0 0 0 0 20"></path></svg><span class="lang-current">English</span><svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="lang-menu-list" role="menu"><a href="/zh/docs/agents" role="menuitem">中文</a><a href="/en/docs/agents" role="menuitem" class="is-active" aria-current="true">English</a><a href="/ug/docs/agents" role="menuitem" lang="zh-CN" dir="ltr">维吾尔语</a></div></div><button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"><svg class="ti-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="ti-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="nav-cta">GitHub <span class="nav-star-badge" id="gh-stars">&#9733;</span></a></div>
 </nav>
 <div class="mobile-doc-nav">
 <a href="/en/docs/getting-started">Getting Started</a>
@@ -68,7 +68,7 @@
 <header class="page-lead">
 <div class="page-kicker">HexClaw Docs</div>
 <h1>Agent Management</h1>
-<p class="sub">Create custom AI roles, assign prompts and tools, and coordinate multi-agent discussions.</p>
+<p class="sub">Create custom AI roles, configure models, prompts, tools, and skills, and combine agents in workflows.</p>
 </header>
 
 <h2>What Is an Agent?</h2>
@@ -81,8 +81,8 @@
 <li><strong>Skill set</strong> - enables installed skills on a per-agent basis</li>
 </ul>
 <figure class="doc-shot">
-<img width="2560" height="1640" loading="lazy" decoding="async" src="../../assets/docs/screenshots/agents-overview.webp" alt="Agent overview page">
-<figcaption>Illustrative agent overview: default assistant and custom agent cards. Follow the entry names described in the text.</figcaption>
+<a class="doc-image-link" href="../../assets/docs/screenshots/agents-overview.webp" target="_blank" rel="noopener noreferrer" aria-label="View full-size image: Agent overview page"><img width="2560" height="1642" loading="lazy" decoding="async" src="../../assets/docs/screenshots/agents-overview.webp" alt="Agent overview page"></a>
+<figcaption>Illustrative agent overview: default assistant and custom agent cards. Follow the entry names described in the text. <span class="doc-image-hint">Click the image to view full size.</span></figcaption>
 </figure>
 
 <h2>Create an Agent</h2>
@@ -96,8 +96,8 @@
 <div class="tip"><b>Example:</b> Create a "Frontend Expert" agent with a system prompt like "You are a senior frontend engineer specializing in Vue 3, TypeScript, and Tailwind CSS..." and set temperature to 0.3.</div>
 <p>Edit an existing agent from its card. Regular custom agents have a delete action; scenario agents such as homework tutors are managed through their profile-editing entry. The default assistant is retained.</p>
 <figure class="doc-shot">
-<img width="2560" height="1640" loading="lazy" decoding="async" src="../../assets/docs/screenshots/agents-templates.webp" alt="Agent template library page">
-<figcaption>Illustrative template library: choose a template and continue configuring your agent. Follow the entry names described in the text.</figcaption>
+<a class="doc-image-link" href="../../assets/docs/screenshots/agents-templates.webp" target="_blank" rel="noopener noreferrer" aria-label="View full-size image: Agent template library page"><img width="2560" height="1642" loading="lazy" decoding="async" src="../../assets/docs/screenshots/agents-templates.webp" alt="Agent template library page"></a>
+<figcaption>Illustrative template library: choose a template and continue configuring your agent. Follow the entry names described in the text. <span class="doc-image-hint">Click the image to view full size.</span></figcaption>
 </figure>
 
 <h2>Agent Fields</h2>
@@ -107,31 +107,25 @@
 <tr><td>display_name</td><td>User-facing label</td></tr>
 <tr><td>description</td><td>Short summary of the role</td></tr>
 <tr><td>system_prompt</td><td>Core prompt that defines behavior</td></tr>
-<tr><td>model</td><td>Bound model, or empty to use the default</td></tr>
+<tr><td>provider / model</td><td>Set both together, or leave both empty to follow the default model</td></tr>
 <tr><td>temperature</td><td>Generation temperature from 0 to 2; leave empty to follow the default configuration</td></tr>
 <tr><td>reasoning_policy</td><td>Reasoning settings, including enabled state and effort when supported by the selected model</td></tr>
-<tr><td>tools[]</td><td>Available MCP tools</td></tr>
+<tr><td>metadata</td><td>Extended role settings; use the corresponding desktop controls for options such as tool scope</td></tr>
 <tr><td>skills[]</td><td>Enabled skills</td></tr>
-<tr><td>status</td><td><code>active</code> or <code>inactive</code></td></tr>
 </table>
 
 <h2>Chat with an Agent</h2>
 <p>Open <strong>Agents → My Agents</strong> and click <strong>Enter chat</strong> on a card to chat in that agent's context. You can also type <code>@</code> in the composer and select a configured agent. Subsequent messages use the agent bound to the current session, including its persona, tools, and skills.</p>
 <p>Chat uses one composer; <strong>there is no need to switch between separate Chat, Agent, and Deep-thinking modes</strong>. Model selection and reasoning settings are in the toolbar inside the bottom of the composer. Reasoning options follow the current model's capabilities: the model may manage reasoning automatically or offer a toggle and effort levels.</p>
 
-<h2>Multi-Agent Meetings</h2>
-<p>HexClaw also supports a <strong>multi-agent discussion</strong> mode:</p>
-<ol>
-<li>From the agent page, click <strong>"Agent Meeting"</strong></li>
-<li>Select the agents that should participate</li>
-<li>Provide a topic and let the agents debate, respond, and summarize in turns</li>
-</ol>
-<p>This mode works well for design reviews, multi-angle analysis, and brainstorming.</p>
+<h2>Combine Agents in a Workflow</h2>
+<p>For research, analysis, and review by different roles, configure agents on separate nodes in the <a href="/en/docs/canvas">workflow canvas</a>. Define each step's inputs, outputs, and execution order, then inspect the actual node results.</p>
+<p>This can organize design reviews, multi-angle analysis, and research tasks.</p>
 
 <h2>Role Details</h2>
-<p>Click any role card in the list to expand its full information:</p>
+<p>Use <strong>Edit</strong> on an agent card to review and adjust its configuration:</p>
 <ul>
-<li><strong>Backstory</strong> — the agent's background and area of expertise</li>
+<li><strong>Persona</strong> — the agent's system prompt, background, and area of expertise</li>
 <li><strong>Tool list</strong> — tools and skills the role can invoke</li>
 <li><strong>Constraints</strong> — restrictions the agent must follow when executing tasks</li>
 </ul>
@@ -154,19 +148,19 @@
 <div class="tip"><b>Tip:</b> The internal identifier and display name distinguish the agent. Set provider and model together, or leave both empty; do not fill only one of them.</div>
 
 <h2>Role Definition Reference</h2>
-<p>Agent roles are defined in the backend <code>hexclaw.yaml</code> and can also be registered dynamically via the API:</p>
-<pre data-lang="yaml"><code>roles:
-  - name: researcher
-    title: Research Assistant
-    goal: Conduct in-depth research on a given topic and produce a structured report
-    backstory: You are an experienced researcher skilled in information retrieval and analysis
-    tools:
-      - web_search
-      - file_write
-      - summary
-    constraints:
-      - All sources must be cited
-      - Report must be at least 1000 words</code></pre>
+<p>A self-hosted service can declare initial agents under <code>router.agents</code> in <code>hexclaw.yaml</code>. This example follows the service's default model:</p>
+<pre data-lang="yaml"><code>router:
+  enabled: true
+  default_agent: researcher
+  agents:
+    - name: researcher
+      display_name: Research Assistant
+      description: Organize material into a report with sources
+      system_prompt: |-
+        Organize material, compare views, and produce a structured report.
+        Cite sources actually retrieved and identify unverified information.
+      skills: []</code></pre>
+<p>These definitions seed a database that has no agents; they do not overwrite agents already saved. Use the desktop Edit action or the <a href="https://github.com/hexagon-codes/hexclaw/blob/main/docs/api/agents-integrations.en.md" target="_blank" rel="noopener noreferrer">agent API</a> for ongoing changes. The API reference follows the current main branch; check your installed service's version.</p>
 
 <hr>
 <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-top:32px;margin-bottom:24px">
@@ -186,7 +180,7 @@
 <div class="footer-col">
 <div class="footer-col-title">Product</div>
 <a href="/en/">Home</a>
-<a href="https://github.com/hexagon-codes/hexclaw-desktop/releases" target="_blank" rel="noopener noreferrer">Download</a>
+<a href="/en/#download">Download</a>
 <a href="/en/changelog">Changelog</a>
 </div>
 <div class="footer-col">
@@ -209,7 +203,7 @@
 <span class="footer-copy">&copy; 2025&ndash;2026 hexagon-codes</span>
 </div>
 </footer>
-<script src="../../assets/js/docs-nav.js?v=fc8f7aca3d83"></script>
+<script src="../../assets/js/docs-nav.js?v=39cc54398ffc"></script>
 <script>
 function toggleTheme(){var c=document.documentElement.getAttribute("data-theme");var n=c==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);localStorage.setItem("hexclaw-theme",n)}
 (function(){var s=localStorage.getItem("hexclaw-theme");var d=window.matchMedia("(prefers-color-scheme:dark)").matches;if(s==="dark"||(!s&&d))document.documentElement.setAttribute("data-theme","dark")})();

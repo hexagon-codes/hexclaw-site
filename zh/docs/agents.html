@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/favicon-32.png">
 <title>智能体创建与管理教程｜HexClaw 河蟹 AI</title>
-<meta name="description" content="创建自定义 AI 角色、配置系统提示词和工具，启用多 Agent 会议。">
+<meta name="description" content="创建自定义 AI 角色，配置模型、系统提示词、工具与技能，并在工作流中组合不同智能体。">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="theme-color" content="#ffffff">
 <meta property="og:site_name" content="河蟹 AI">
 <meta property="og:type" content="article">
 <meta property="og:title" content="智能体创建与管理教程｜HexClaw 河蟹 AI">
-<meta property="og:description" content="创建自定义 AI 角色、配置系统提示词和工具，启用多 Agent 会议。">
+<meta property="og:description" content="创建自定义 AI 角色，配置模型、系统提示词、工具与技能，并在工作流中组合不同智能体。">
 <meta property="og:url" content="https://hexclaw.net/zh/docs/agents">
 <meta property="og:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
 <meta property="og:image:alt" content="河蟹 AI 标志">
@@ -22,7 +22,7 @@
 <meta property="og:locale:alternate" content="ug_CN">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="智能体创建与管理教程｜HexClaw 河蟹 AI">
-<meta name="twitter:description" content="创建自定义 AI 角色、配置系统提示词和工具，启用多 Agent 会议。">
+<meta name="twitter:description" content="创建自定义 AI 角色，配置模型、系统提示词、工具与技能，并在工作流中组合不同智能体。">
 <meta name="twitter:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
 <meta name="twitter:image:alt" content="河蟹 AI 标志">
 <link rel="canonical" href="https://hexclaw.net/zh/docs/agents">
@@ -31,18 +31,18 @@
 <link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/docs/agents">
 <link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/docs/agents">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"TechArticle","headline":"智能体创建与管理教程｜HexClaw 河蟹 AI","description":"创建自定义 AI 角色、配置系统提示词和工具，启用多 Agent 会议。","url":"https://hexclaw.net/zh/docs/agents","inLanguage":"zh-CN","image":"https://hexclaw.net/assets/brand/hexclaw-logo.png","isPartOf":{"@type":"CreativeWorkSeries","name":"河蟹 AI 文档","url":"https://hexclaw.net/zh/docs/"},"publisher":{"@type":"Organization","name":"hexagon-codes","url":"https://hexclaw.net/","@id":"https://hexclaw.net/#organization"},"about":{"@type":"SoftwareApplication","name":"河蟹 AI","operatingSystem":"macOS, Windows, Linux","applicationCategory":"BusinessApplication","@id":"https://hexclaw.net/#software"},"@id":"https://hexclaw.net/zh/docs/agents#article","mainEntityOfPage":{"@type":"WebPage","@id":"https://hexclaw.net/zh/docs/agents#webpage"}}
+{"@context":"https://schema.org","@type":"TechArticle","headline":"智能体创建与管理教程｜HexClaw 河蟹 AI","description":"创建自定义 AI 角色，配置模型、系统提示词、工具与技能，并在工作流中组合不同智能体。","url":"https://hexclaw.net/zh/docs/agents","inLanguage":"zh-CN","image":"https://hexclaw.net/assets/brand/hexclaw-logo.png","isPartOf":{"@type":"CreativeWorkSeries","name":"河蟹 AI 文档","url":"https://hexclaw.net/zh/docs/"},"publisher":{"@type":"Organization","name":"hexagon-codes","url":"https://hexclaw.net/","@id":"https://hexclaw.net/#organization"},"about":{"@type":"SoftwareApplication","name":"河蟹 AI","operatingSystem":"macOS, Windows, Linux","applicationCategory":"BusinessApplication","@id":"https://hexclaw.net/#software"},"@id":"https://hexclaw.net/zh/docs/agents#article","mainEntityOfPage":{"@type":"WebPage","@id":"https://hexclaw.net/zh/docs/agents#webpage"},"dateModified":"2026-10-25"}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"河蟹 AI","item":"https://hexclaw.net/zh/"},{"@type":"ListItem","position":2,"name":"河蟹 AI 使用文档","item":"https://hexclaw.net/zh/docs/"},{"@type":"ListItem","position":3,"name":"Agent 管理 — 河蟹 AI 文档","item":"https://hexclaw.net/zh/docs/agents"}],"@id":"https://hexclaw.net/zh/docs/agents#breadcrumb"}
 </script>
-<link rel="stylesheet" href="../../assets/css/docs-a30080145af0.css">
+<link rel="stylesheet" href="../../assets/css/docs-a35628a8707a.css">
 </head>
 <body class="docs-page">
 <a href="#main" class="skip-link">跳转到主要内容</a>
 <nav class="tn">
 <a href="/zh/" class="tn-b"><img width="72" height="72" src="../../assets/brand/hexclaw-icon-72.png" class="tn-l" alt="河蟹 AI"><span class="tn-n">河蟹 AI</span></a>
-<button type="button" class="tn-burger" aria-label="菜单" aria-expanded="false" aria-controls="primary-navigation"><span></span><span></span><span></span></button><div class="tn-r" id="primary-navigation"><a href="/zh/">首页</a><a href="/zh/#features">产品能力</a><a href="/zh/#quickstart">快速上手</a><a href="/zh/#cases">使用场景</a><a href="/zh/#ecosystem">开源生态</a><a href="/zh/docs/" class="is-active">文档</a><div class="lang-menu" data-lang-menu><button type="button" class="lang-trigger" aria-haspopup="menu" aria-expanded="false" aria-label="切换语言"><svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 0 20"></path><path d="M12 2a15.3 15.3 0 0 0 0 20"></path></svg><span class="lang-current">中文</span><svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="lang-menu-list" role="menu"><a href="/zh/docs/agents" role="menuitem" class="is-active" aria-current="true">中文</a><a href="/en/docs/agents" role="menuitem">English</a><a href="/ug/docs/agents" role="menuitem">ئۇيغۇرچە</a></div></div><button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="切换主题"><svg class="ti-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="ti-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="nav-cta">GitHub</a></div>
+<button type="button" class="tn-burger" aria-label="菜单" aria-expanded="false" aria-controls="primary-navigation"><span></span><span></span><span></span></button><div class="tn-r" id="primary-navigation"><a href="/zh/">首页</a><a href="/zh/#cases">使用场景</a><a href="/zh/#features">产品能力</a><a href="/zh/#quickstart">开始使用</a><a href="/zh/#ecosystem">开源生态</a><a href="/zh/docs/" class="is-active">文档</a><div class="lang-menu" data-lang-menu><button type="button" class="lang-trigger" aria-haspopup="menu" aria-expanded="false" aria-label="切换语言"><svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 0 20"></path><path d="M12 2a15.3 15.3 0 0 0 0 20"></path></svg><span class="lang-current">中文</span><svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="lang-menu-list" role="menu"><a href="/zh/docs/agents" role="menuitem" class="is-active" aria-current="true">中文</a><a href="/en/docs/agents" role="menuitem">English</a><a href="/ug/docs/agents" role="menuitem" lang="zh-CN" dir="ltr">维吾尔语</a></div></div><button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="切换主题"><svg class="ti-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="ti-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="nav-cta">GitHub <span class="nav-star-badge" id="gh-stars">&#9733;</span></a></div>
 </nav>
 <div class="mobile-doc-nav">
 <a href="/zh/docs/getting-started">快速上手</a>
@@ -55,6 +55,9 @@
 <a href="/zh/docs/advanced">高级功能</a>
 <a href="/zh/docs/shortcuts">快捷键</a>
 <a href="/zh/docs/faq">FAQ</a>
+<a href="/zh/docs/deployment-options">本机与云端</a>
+<a href="/zh/docs/media-generation">图片、语音与视频</a>
+<a href="/zh/docs/automation-delivery">定时任务与交付</a>
 </div>
 <aside class="sb"><div class="sb-t">文档导航</div>
 <a href="/zh/docs/getting-started">快速上手</a>
@@ -67,12 +70,15 @@
 <a href="/zh/docs/advanced" >高级功能</a>
 <a href="/zh/docs/shortcuts" >快捷键参考</a>
 <a href="/zh/docs/faq" >常见问题</a>
+<a href="/zh/docs/deployment-options">本机与云端</a>
+<a href="/zh/docs/media-generation">图片、语音与视频</a>
+<a href="/zh/docs/automation-delivery">定时任务与交付</a>
 </aside>
 <main id="main" class="m">
 <header class="page-lead">
 <div class="page-kicker">河蟹 AI 文档</div>
 <h1>Agent 管理</h1>
-<p class="sub">创建自定义 AI 角色、配置系统提示词和工具，启用多 Agent 会议。</p>
+<p class="sub">创建自定义 AI 角色，配置模型、系统提示词、工具与技能，并在工作流中组合不同智能体。</p>
 </header>
 
 <h2>什么是 Agent</h2>
@@ -85,8 +91,8 @@
 <li><strong>技能集</strong> — 启用已安装的技能</li>
 </ul>
 <figure class="doc-shot">
-<img width="2560" height="1640" loading="lazy" decoding="async" src="../../assets/docs/screenshots/agents-overview.webp" alt="智能体总览页面">
-<figcaption>智能体总览示意：默认助理与专属智能体卡片；具体入口名称以正文说明为准。</figcaption>
+<a class="doc-image-link" href="../../assets/docs/screenshots/agents-overview.webp" target="_blank" rel="noopener noreferrer" aria-label="查看大图：智能体总览页面"><img width="2560" height="1642" loading="lazy" decoding="async" src="../../assets/docs/screenshots/agents-overview.webp" alt="智能体总览页面"></a>
+<figcaption>智能体总览示意：默认助理与专属智能体卡片；具体入口名称以正文说明为准。 <span class="doc-image-hint">点击图片查看大图。</span></figcaption>
 </figure>
 
 <h2>创建 Agent</h2>
@@ -100,8 +106,8 @@
 <div class="tip"><b>示例：</b>创建一个 "前端专家" Agent，System Prompt 设为 "你是一位资深前端工程师，精通 Vue 3、TypeScript、TailwindCSS..."，温度设为 0.3。</div>
 <p>已有智能体可从卡片进入编辑。普通自建智能体提供删除入口；作业辅导等场景智能体从对应的档案编辑入口管理，默认助理保留。</p>
 <figure class="doc-shot">
-<img width="2560" height="1640" loading="lazy" decoding="async" src="../../assets/docs/screenshots/agents-templates.webp" alt="智能体模板库页面">
-<figcaption>模板库示意：选择模板后继续配置专属智能体，具体入口名称以正文说明为准。</figcaption>
+<a class="doc-image-link" href="../../assets/docs/screenshots/agents-templates.webp" target="_blank" rel="noopener noreferrer" aria-label="查看大图：智能体模板库页面"><img width="2560" height="1642" loading="lazy" decoding="async" src="../../assets/docs/screenshots/agents-templates.webp" alt="智能体模板库页面"></a>
+<figcaption>模板库示意：选择模板后继续配置专属智能体，具体入口名称以正文说明为准。 <span class="doc-image-hint">点击图片查看大图。</span></figcaption>
 </figure>
 
 <h2>Agent 属性</h2>
@@ -111,31 +117,25 @@
 <tr><td>display_name</td><td>显示名称</td></tr>
 <tr><td>description</td><td>简短描述</td></tr>
 <tr><td>system_prompt</td><td>系统提示词，定义角色行为</td></tr>
-<tr><td>model</td><td>绑定的模型（留空则使用默认模型）</td></tr>
+<tr><td>provider / model</td><td>同时绑定服务商与模型，或同时留空跟随默认模型</td></tr>
 <tr><td>temperature</td><td>生成温度 0~2，可留空跟随默认配置</td></tr>
 <tr><td>reasoning_policy</td><td>思考策略，按所选模型能力设置是否启用及思考强度</td></tr>
-<tr><td>tools[]</td><td>可用的 MCP 工具列表</td></tr>
+<tr><td>metadata</td><td>角色扩展配置；通过桌面相应设置管理工具范围等选项</td></tr>
 <tr><td>skills[]</td><td>启用的技能列表</td></tr>
-<tr><td>status</td><td>active / inactive</td></tr>
 </table>
 
 <h2>使用 Agent 聊天</h2>
 <p>在 <strong>「智能体 → 我的智能体」</strong> 的卡片上点击 <strong>「进入对话」</strong>，即可在该智能体的上下文中聊天；也可以在会话输入框里输入 <code>@</code> 并选择已配置的智能体。后续消息沿用当前会话绑定的智能体及其人设、工具与技能配置。</p>
 <p>会话始终使用同一个输入框，<strong>不需要切换「对话 / Agent / 深度思考」三种模式</strong>。模型选择和思考设置位于输入框内的底部工具栏；思考选项按当前模型能力显示，可能由模型自动控制，或提供开关、强度选择。</p>
 
-<h2>多 Agent 会议</h2>
-<p>河蟹 AI 支持 <strong>多 Agent 协作讨论</strong> 模式：</p>
-<ol>
-<li>在 Agent 管理页面点击 <strong>"Agent 会议"</strong></li>
-<li>选择参与讨论的多个 Agent</li>
-<li>输入议题，多个 Agent 会轮流发言、讨论、总结</li>
-</ol>
-<p>适用场景：技术方案评审、多角度分析问题、头脑风暴。</p>
+<h2>组合多个 Agent 完成任务</h2>
+<p>需要调研、分析、复核等不同角色配合时，可以在<a href="/zh/docs/canvas">工作流画布</a>中为不同节点配置 Agent，明确每一步的输入、输出和执行顺序，再查看各节点的实际结果。</p>
+<p>技术方案评审、多角度分析和资料整理都可以按这个方式组织。</p>
 
 <h2>角色详情</h2>
-<p>在角色列表中点击任意角色卡片，可展开查看完整信息：</p>
+<p>通过智能体卡片上的「编辑」查看和调整配置：</p>
 <ul>
-<li><strong>背景设定</strong> — Agent 的角色背景和专长描述</li>
+<li><strong>角色设定</strong> — Agent 的系统提示词、背景和专长描述</li>
 <li><strong>工具列表</strong> — 该角色可调用的工具/技能</li>
 <li><strong>约束条件</strong> — Agent 执行任务时需遵守的限制</li>
 </ul>
@@ -158,19 +158,19 @@
 <div class="tip"><b>提示：</b>内部标识和显示名称用于区分智能体。服务商与模型需要成对设置，也可以同时留空；不要只填其中一项。</div>
 
 <h2>角色定义参考</h2>
-<p>Agent 角色在后端 <code>hexclaw.yaml</code> 中定义，也可通过 API 动态注册：</p>
-<pre data-lang="yaml"><code>roles:
-  - name: researcher
-    title: 研究助手
-    goal: 深度调研指定主题并生成结构化报告
-    backstory: 你是一位资深研究员，擅长信息检索和分析
-    tools:
-      - web_search
-      - file_write
-      - summary
-    constraints:
-      - 引用来源必须标注
-      - 报告字数不少于 1000 字</code></pre>
+<p>自建服务可在 <code>hexclaw.yaml</code> 的 <code>router.agents</code> 中声明初始智能体。以下示例跟随服务的默认模型：</p>
+<pre data-lang="yaml"><code>router:
+  enabled: true
+  default_agent: researcher
+  agents:
+    - name: researcher
+      display_name: 研究助手
+      description: 整理资料并生成带来源的报告
+      system_prompt: |-
+        你是一位研究助手，负责整理资料、比较观点并生成结构化报告。
+        仅引用实际取得的来源，无法确认的信息明确标注。
+      skills: []</code></pre>
+<p>配置中的智能体用于数据库尚无智能体时的首次初始化，不会覆盖已经保存的智能体。日常修改使用桌面「编辑」或<a href="https://github.com/hexagon-codes/hexclaw/blob/main/docs/api/agents-integrations.md" target="_blank" rel="noopener noreferrer">智能体 API</a>；API 文档对应当前主线，已安装服务需核对自身版本。</p>
 
 <hr>
 <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-top:32px;margin-bottom:24px">
@@ -190,7 +190,7 @@
 <div class="footer-col">
 <div class="footer-col-title">产品</div>
 <a href="/zh/">首页</a>
-<a href="https://github.com/hexagon-codes/hexclaw-desktop/releases" target="_blank" rel="noopener noreferrer">下载桌面端</a>
+<a href="/zh/#download">下载桌面端</a>
 <a href="/zh/changelog">更新日志</a>
 </div>
 <div class="footer-col">
@@ -213,7 +213,7 @@
 <span class="footer-copy">&copy; 2025&ndash;2026 hexagon-codes</span>
 </div>
 </footer>
-<script src="../../assets/js/docs-nav.js?v=fc8f7aca3d83"></script>
+<script src="../../assets/js/docs-nav.js?v=39cc54398ffc"></script>
 <script>
 function toggleTheme(){var c=document.documentElement.getAttribute("data-theme");var n=c==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);localStorage.setItem("hexclaw-theme",n)}
 (function(){var s=localStorage.getItem("hexclaw-theme");var d=window.matchMedia("(prefers-color-scheme:dark)").matches;if(s==="dark"||(!s&&d))document.documentElement.setAttribute("data-theme","dark")})();

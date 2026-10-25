@@ -1,5 +1,61 @@
 const nav = document.querySelector(".tn, .topnav");
 
+// 文档切页保留当前标签页的侧栏位置，避免点击底部导航后回到列表顶部。
+(() => {
+  const sidebar = document.querySelector(".sb");
+  if (!sidebar) return;
+  const desktop = window.matchMedia("(min-width: 769px)");
+  const storageKey = "hexclaw-doc-sidebar-scroll:" + document.documentElement.lang;
+  const restore = () => {
+    if (!desktop.matches) return;
+    try {
+      const saved = sessionStorage.getItem(storageKey);
+      if (saved !== null && Number.isFinite(Number(saved))) {
+        sidebar.scrollTop = Math.max(0, Number(saved));
+      }
+    } catch {}
+  };
+  const save = () => {
+    if (!desktop.matches) return;
+    try { sessionStorage.setItem(storageKey, String(sidebar.scrollTop)); } catch {}
+  };
+  restore();
+  sidebar.addEventListener("scroll", save, { passive: true });
+  sidebar.addEventListener("click", (event) => {
+    if (event.target.closest("a")) save();
+  });
+  window.addEventListener("pagehide", save);
+  window.addEventListener("pageshow", (event) => { if (event.persisted) restore(); });
+  desktop.addEventListener("change", (event) => { if (event.matches) restore(); });
+})();
+
+// 导航星标读取桌面端仓库的公开计数，网络失败时保留星形标记。
+(() => {
+  const badge = document.getElementById("gh-stars");
+  if (!badge) return;
+  fetch("https://api.github.com/repos/hexagon-codes/hexclaw-desktop")
+    .then((response) => {
+      if (!response.ok) throw new Error("GitHub stars unavailable");
+      return response.json();
+    })
+    .then((data) => {
+      const count = data.stargazers_count;
+      if (Number.isInteger(count) && count >= 0) {
+        badge.textContent = "★ " + (count >= 1000 ? (count / 1000).toFixed(1) + "k" : count);
+      }
+    })
+    .catch(() => {});
+})();
+
+// 横向文档导航优先露出当前页面，章节多时仍可左右滚动。
+const mobileDocNav = document.querySelector(".mobile-doc-nav");
+const currentDocLink = mobileDocNav?.querySelector("a.on");
+if (currentDocLink && window.matchMedia("(max-width: 768px)").matches) {
+  const container = mobileDocNav.getBoundingClientRect();
+  const current = currentDocLink.getBoundingClientRect();
+  mobileDocNav.scrollLeft += current.left - container.left - (container.width - current.width) / 2;
+}
+
 if (nav) {
   const updateNavState = () => {
     nav.classList.toggle("scrolled", window.scrollY > 12);
@@ -108,9 +164,9 @@ if (nav) {
   const key = lang.startsWith("zh") ? "zh" : lang.startsWith("ug") ? "ug" : "en";
 
   const STR = {
-    zh: { toc: "本页目录", copy: "复制", copied: "已复制", copyAria: "复制代码", anchor: "复制本节链接", docs: "文档", prev: "上一篇", next: "下一篇" },
-    en: { toc: "On this page", copy: "Copy", copied: "Copied", copyAria: "Copy code", anchor: "Copy link to this section", docs: "Docs", prev: "Previous", next: "Next" },
-    ug: { toc: "بەت مۇندەرىجىسى", copy: "كۆچۈرۈش", copied: "كۆچۈرۈلدى", copyAria: "كودنى كۆچۈرۈش", anchor: "بۇ بۆلەكنىڭ ئۇلانمىسىنى كۆچۈرۈش", docs: "ھۆججەتلەر", prev: "ئالدىنقى", next: "كېيىنكى" }
+    zh: { toc: "本页目录", copy: "复制", copied: "已复制", copyAria: "复制代码", copyFailed: "无法自动复制，已选中代码，请手动复制。", anchor: "本节链接", docs: "文档", prev: "上一篇", next: "下一篇" },
+    en: { toc: "On this page", copy: "Copy", copied: "Copied", copyAria: "Copy code", copyFailed: "Automatic copy is unavailable. The code is selected; copy it manually.", anchor: "Link to this section", docs: "Docs", prev: "Previous", next: "Next" },
+    ug: { toc: "بەت مۇندەرىجىسى", copy: "كۆچۈرۈش", copied: "كۆچۈرۈلدى", copyAria: "كودنى كۆچۈرۈش", copyFailed: "ئاپتوماتىك كۆچۈرگىلى بولمىدى؛ كود تاللاندى، قولدا كۆچۈرۈڭ.", anchor: "بۇ بۆلەكنىڭ ئۇلانمىسى", docs: "ھۆججەتلەر", prev: "ئالدىنقى", next: "كېيىنكى" }
   }[key];
 
   const SVG_COPY = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
@@ -136,38 +192,67 @@ if (nav) {
   })();
 
   /* ---- Real copy buttons on code blocks ---- */
-  (main || document).querySelectorAll(".m pre").forEach((pre) => {
+  (main || document).querySelectorAll(".m pre").forEach((pre, index) => {
     if (pre.querySelector(".code-copy")) return;
+    const code = pre.querySelector("code");
+    const sourceText = (code ? code.textContent : pre.textContent).replace(/\n$/, "");
     const btn = document.createElement("button");
     btn.type = "button";
     btn.className = "code-copy";
     btn.setAttribute("aria-label", STR.copyAria);
     btn.innerHTML = SVG_COPY + "<span>" + STR.copy + "</span>";
     const label = btn.querySelector("span");
+    const status = document.createElement("span");
+    status.className = "code-copy-status";
+    status.id = "code-copy-status-" + index;
+    status.setAttribute("role", "status");
+    status.setAttribute("aria-live", "polite");
+    btn.setAttribute("aria-describedby", status.id);
     let timer = null;
+    let pending = false;
     btn.addEventListener("click", async () => {
-      const code = pre.querySelector("code");
-      const text = (code ? code.innerText : pre.innerText).replace(/\n$/, "");
+      if (pending) return;
+      pending = true;
+      btn.setAttribute("aria-busy", "true");
+      status.classList.remove("is-error");
+      status.textContent = "";
       try {
         if (navigator.clipboard && navigator.clipboard.writeText) {
-          await navigator.clipboard.writeText(text);
+          await navigator.clipboard.writeText(sourceText);
         } else {
           const ta = document.createElement("textarea");
-          ta.value = text; ta.style.position = "fixed"; ta.style.opacity = "0";
-          document.body.appendChild(ta); ta.select(); document.execCommand("copy"); ta.remove();
+          ta.value = sourceText; ta.style.position = "fixed"; ta.style.opacity = "0";
+          document.body.appendChild(ta); ta.select();
+          try {
+            if (!document.execCommand("copy")) throw new Error("Clipboard unavailable");
+          } finally { ta.remove(); }
         }
         btn.classList.add("is-copied");
         btn.firstChild.outerHTML = SVG_OK;
         label.textContent = STR.copied;
+        status.textContent = STR.copied;
         clearTimeout(timer);
         timer = setTimeout(() => {
           btn.classList.remove("is-copied");
           btn.firstChild.outerHTML = SVG_COPY;
           label.textContent = STR.copy;
         }, 1600);
-      } catch (e) { /* clipboard blocked — no-op */ }
+      } catch {
+        const selection = window.getSelection();
+        if (selection) {
+          const range = document.createRange();
+          range.selectNodeContents(code || pre);
+          if (!code) range.setEndBefore(btn);
+          selection.removeAllRanges(); selection.addRange(range);
+        }
+        status.classList.add("is-error");
+        status.textContent = STR.copyFailed;
+      } finally {
+        pending = false;
+        btn.removeAttribute("aria-busy");
+      }
     });
-    pre.appendChild(btn);
+    pre.append(btn, status);
   });
 
   if (!main) return;
@@ -214,7 +299,8 @@ if (nav) {
       '<a href="' + docsHref + '">' + docsLabel + "</a>" +
       '<span class="doc-crumb-sep">' + (document.dir === "rtl" ? "‹" : "›") + "</span>" +
       '<span class="doc-crumb-current"></span>';
-    crumb.querySelector(".doc-crumb-current").textContent = h1 ? h1.textContent.trim() : "";
+    const currentLink = sidebar.querySelector("a.on");
+    crumb.querySelector(".doc-crumb-current").textContent = currentLink ? currentLink.textContent.trim() : h1 ? h1.textContent.trim() : "";
     main.insertBefore(crumb, main.firstChild);
   }
 
@@ -238,6 +324,15 @@ if (nav) {
     });
     document.body.appendChild(toc);
     tocLinks = Array.from(toc.querySelectorAll("a"));
+
+    // 窄屏将同一组章节放在正文前，目录内容不再维护两份。
+    const inlineToc = document.createElement("details");
+    inlineToc.className = "doc-toc-inline";
+    const summary = document.createElement("summary");
+    summary.textContent = STR.toc;
+    inlineToc.appendChild(summary);
+    tocLinks.forEach((link) => inlineToc.appendChild(link.cloneNode(true)));
+    if (lead) lead.after(inlineToc);
 
     let spyTicking = false;
     const spy = () => {

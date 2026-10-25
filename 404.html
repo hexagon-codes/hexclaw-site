@@ -6,6 +6,16 @@
 <title>页面不存在 - HexClaw</title>
 <meta name="robots" content="noindex">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32.png">
+<meta name="theme-color" content="#f4fbff">
+<script>
+  (() => {
+    let saved;
+    try { saved = localStorage.getItem("hexclaw-theme"); } catch {}
+    const dark = saved === "dark" || (!saved && window.matchMedia("(prefers-color-scheme: dark)").matches);
+    document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
+    document.querySelector('meta[name="theme-color"]').content = dark ? "#0b1525" : "#f4fbff";
+  })();
+</script>
 <style>
   :root {
     --blue: #5fb3ea; --blue-deep: #3f8fd4; --blue-light: #83c8f3;
@@ -274,7 +284,7 @@
 
   .footer-home {
     font-weight: 700;
-    color: var(--ink);
+    color: var(--text);
     text-decoration: none;
   }
 
@@ -324,12 +334,37 @@
       font-size: 16px;
     }
   }
+
+  [data-theme="dark"] {
+    color-scheme: dark;
+    --text: #e8ecf0;
+    --muted: rgba(232,236,240,.72);
+    --muted-soft: rgba(232,236,240,.6);
+    --accent: #7cc4f0;
+    --border: rgba(95,179,234,.16);
+    --border-strong: rgba(95,179,234,.24);
+    --panel: rgba(17,27,42,.94);
+    --panel-strong: rgba(24,35,52,.96);
+    --shadow: 0 16px 36px rgba(0,0,0,.18);
+  }
+  [data-theme="dark"] body { background:linear-gradient(180deg,#0b1525,#0e1b2e 38%,#112240 100%); }
+  [data-theme="dark"] .eyebrow,
+  [data-theme="dark"] .action:hover,
+  [data-theme="dark"] .quick-links a,
+  [data-theme="dark"] .quick-links a:hover { background:var(--panel-strong); }
+  [dir="rtl"] :is(h1, .eyebrow, .action-kicker) { letter-spacing:0; text-transform:none; }
+  #path-value { direction:ltr; unicode-bidi:isolate; text-align:left; }
+  @media (prefers-reduced-motion:reduce) {
+    .crab-404 { animation:none; }
+    .action, .quick-links a { transition:none; }
+    .action:hover { transform:none; }
+  }
 </style>
 </head>
 <body>
 <a href="#main" class="skip-link">跳转到主要内容</a>
 <main id="main">
-  <a class="brand" href="/zh/index.html">
+  <a class="brand" href="/zh/">
     <img width="72" height="72" src="/assets/brand/hexclaw-icon-72.png" alt="HexClaw">
     <span>HexClaw</span>
   </a>
@@ -352,7 +387,7 @@
   <nav class="quick-links" id="quick-links"></nav>
 
   <footer class="footer">
-    <a class="footer-home" id="footer-home" href="/zh/index.html">HexClaw</a>
+    <a class="footer-home" id="footer-home" href="/zh/">HexClaw</a>
     <span class="footer-copy">&copy; 2025&ndash;2026 hexagon-codes</span>
     <div class="footer-links">
       <a id="footer-privacy" href="/zh/privacy">隐私政策</a>
@@ -365,10 +400,11 @@
 <script>
   const path = window.location.pathname || "/";
   const explicitLocale = path === "/en" || path.startsWith("/en/") ? "en"
+    : path === "/ug" || path.startsWith("/ug/") ? "ug"
     : path === "/zh" || path.startsWith("/zh/") ? "zh"
     : null;
-  const browserPrefersEnglish = (navigator.language || "").toLowerCase().startsWith("en");
-  const locale = explicitLocale || (browserPrefersEnglish ? "en" : "zh");
+  const browserLocale = (navigator.language || "").toLowerCase();
+  const locale = explicitLocale || (browserLocale.startsWith("ug") ? "ug" : browserLocale.startsWith("en") ? "en" : "zh");
   const inDocs = /\/docs(\/|$)/.test(path);
 
   const copy = {
@@ -384,32 +420,32 @@
           kicker: "Recommended",
           title: inDocs ? "进入中文文档首页" : "返回中文首页",
           desc: inDocs ? "从文档中心重新进入，继续查找安装、配置和功能说明。" : "回到默认中文站点入口，继续浏览产品介绍与下载内容。",
-          href: inDocs ? "/zh/docs/index.html" : "/zh/index.html"
+          href: inDocs ? "/zh/docs/" : "/zh/"
         },
         {
           kicker: "Quick Start",
           title: "查看快速上手",
           desc: "直接进入安装、配置服务商和第一条消息的引导页。",
-          href: "/zh/docs/getting-started.html"
+          href: "/zh/docs/getting-started"
         },
         {
           kicker: "Alternate Language",
           title: "打开英文站点",
           desc: "如果你本来想访问英文内容，可以从英文首页重新进入。",
-          href: "/en/index.html"
+          href: "/en/"
         },
         {
           kicker: "Docs Hub",
           title: "浏览中文文档",
           desc: "查看对话、Agent、工作流画布、模型服务商等文档页面。",
-          href: "/zh/docs/index.html"
+          href: "/zh/docs/"
         }
       ],
       quickLinks: [
-        { label: "中文首页", href: "/zh/index.html" },
-        { label: "中文文档", href: "/zh/docs/index.html" },
-        { label: "快速上手", href: "/zh/docs/getting-started.html" },
-        { label: "英文站点", href: "/en/index.html" }
+        { label: "中文首页", href: "/zh/" },
+        { label: "中文文档", href: "/zh/docs/" },
+        { label: "快速上手", href: "/zh/docs/getting-started" },
+        { label: "英文站点", href: "/en/" }
       ]
     },
     en: {
@@ -424,38 +460,98 @@
           kicker: "Recommended",
           title: inDocs ? "Open English Docs" : "Go To English Home",
           desc: inDocs ? "Start again from the docs hub and continue into setup, configuration, and feature guides." : "Return to the English landing page and continue from the main product entry point.",
-          href: inDocs ? "/en/docs/index.html" : "/en/index.html"
+          href: inDocs ? "/en/docs/" : "/en/"
         },
         {
           kicker: "Quick Start",
           title: "Open Getting Started",
           desc: "Jump straight to installation, provider setup, and your first message workflow.",
-          href: "/en/docs/getting-started.html"
+          href: "/en/docs/getting-started"
         },
         {
           kicker: "Alternate Language",
           title: "查看中文站点",
           desc: "If you intended to browse the default Simplified Chinese site, continue from the main Chinese entry.",
-          href: "/zh/index.html"
+          href: "/zh/"
         },
         {
           kicker: "Docs Hub",
           title: "Browse English Docs",
           desc: "Open guides for chat, agents, workflow canvas, model providers, and more.",
-          href: "/en/docs/index.html"
+          href: "/en/docs/"
         }
       ],
       quickLinks: [
-        { label: "English Home", href: "/en/index.html" },
-        { label: "English Docs", href: "/en/docs/index.html" },
-        { label: "Getting Started", href: "/en/docs/getting-started.html" },
-        { label: "中文站点", href: "/zh/index.html" }
+        { label: "English Home", href: "/en/" },
+        { label: "English Docs", href: "/en/docs/" },
+        { label: "Getting Started", href: "/en/docs/getting-started" },
+        { label: "中文站点", href: "/zh/" }
       ]
     }
   };
 
+  copy.ug = {
+  "lang": "ug",
+  "pageTitle": "بەت تېپىلمىدى - HexClaw",
+  "title": "بەت تېپىلمىدى",
+  "lead": "ئاچقان ئادرېسىڭىزدا بەت يوق. باش بەت ياكى ھۆججەت مەركىزىدىن داۋاملاشتۇرالايسىز.",
+  "pathLabel": "تەلەپ قىلىنغان يول",
+  "signalNote": "بۇ كونا ئۇلانما بولسا، بەت باشقا تىل مۇندەرىجىسىگە ياكى ھۆججەت بۆلىكىگە يۆتكەلگەن بولۇشى مۇمكىن.",
+  "actions": [
+    {
+      "kicker": "تەۋسىيە",
+      "title": "باش بەتكە قايتىش",
+      "desc": "مەھسۇلات تونۇشتۇرۇشى ۋە چۈشۈرۈش ئۇلانمىلىرىدىن داۋاملاشتۇرۇڭ.",
+      "href": "/ug/"
+    },
+    {
+      "kicker": "تېز باشلاش",
+      "title": "ئورنىتىش قوللانمىسى",
+      "desc": "ئەپنى ئورنىتىپ، مۇلازىمەت ۋە مودېلغا ئۇلىنىڭ.",
+      "href": "/ug/docs/getting-started"
+    },
+    {
+      "kicker": "باشقا تىل",
+      "title": "中文站点",
+      "desc": "خەنزۇچە مەزمۇن كېرەك بولسا 中文 باش بېتىنى ئېچىڭ.",
+      "href": "/zh/"
+    },
+    {
+      "kicker": "ھۆججەتلەر",
+      "title": "ھۆججەت مەركىزى",
+      "desc": "سۆھبەت، Agent، ئىش ئېقىمى ۋە مودېل قوللانمىلىرىنى كۆرۈڭ.",
+      "href": "/ug/docs/"
+    }
+  ],
+  "quickLinks": [
+    {
+      "label": "باش بەت",
+      "href": "/ug/"
+    },
+    {
+      "label": "ھۆججەتلەر",
+      "href": "/ug/docs/"
+    },
+    {
+      "label": "تېز باشلاش",
+      "href": "/ug/docs/getting-started"
+    },
+    {
+      "label": "English",
+      "href": "/en/"
+    }
+  ]
+};
+  if (inDocs) {
+    copy.ug.actions[0].title = "ھۆججەت مەركىزىگە قايتىش";
+    copy.ug.actions[0].desc = "ھۆججەت مەركىزىدىن مۇناسىۋەتلىك قوللانمىنى قايتا تېپىڭ.";
+    copy.ug.actions[0].href = "/ug/docs/";
+  }
+
   const current = copy[locale];
   document.documentElement.lang = current.lang;
+  document.documentElement.dir = locale === "ug" ? "rtl" : "ltr";
+  document.querySelector(".skip-link").textContent = locale === "ug" ? "ئاساسىي مەزمۇنغا ئۆتۈش" : locale === "en" ? "Skip to content" : "跳转到主要内容";
   document.title = current.pageTitle;
   document.getElementById("title").textContent = current.title;
   document.getElementById("lead").textContent = current.lead;
@@ -464,15 +560,15 @@
   document.getElementById("signal-note").textContent = current.signalNote;
 
   const brand = document.querySelector(".brand");
-  brand.href = locale === "en" ? "/en/index.html" : "/zh/index.html";
+  brand.href = "/" + locale + "/";
 
   const footerHome = document.getElementById("footer-home");
-  footerHome.href = locale === "en" ? "/en/index.html" : "/zh/index.html";
-  document.getElementById("footer-privacy").href = locale === "en" ? "/en/privacy" : "/zh/privacy";
-  document.getElementById("footer-privacy").textContent = locale === "en" ? "Privacy Policy" : "隐私政策";
-  document.getElementById("footer-terms").href = locale === "en" ? "/en/terms" : "/zh/terms";
-  document.getElementById("footer-terms").textContent = locale === "en" ? "Terms of Service" : "使用条款";
-  document.getElementById("footer-support").textContent = locale === "en" ? "Support" : "问题反馈";
+  footerHome.href = "/" + locale + "/";
+  document.getElementById("footer-privacy").href = "/" + locale + "/privacy";
+  document.getElementById("footer-privacy").textContent = locale === "ug" ? "شەخسىيەت سىياسىتى" : locale === "en" ? "Privacy Policy" : "隐私政策";
+  document.getElementById("footer-terms").href = "/" + locale + "/terms";
+  document.getElementById("footer-terms").textContent = locale === "ug" ? "ئىشلىتىش شەرتلىرى" : locale === "en" ? "Terms of Service" : "使用条款";
+  document.getElementById("footer-support").textContent = locale === "ug" ? "مەسىلە ئىنكاسى" : locale === "en" ? "Support" : "问题反馈";
 
   const actions = document.getElementById("actions");
   actions.innerHTML = current.actions.map((item) => `

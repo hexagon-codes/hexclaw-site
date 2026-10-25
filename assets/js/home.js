@@ -26,12 +26,67 @@
       });
     })();
 
-    const o=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');o.unobserve(x.target)}}),{threshold:.08,rootMargin:'0px 0px -24px 0px'});
-    document.querySelectorAll('.reveal').forEach(el=>o.observe(el));
+    // 正文默认可见，观察器就绪后才启用入场效果；初始化失败不隐藏内容。
+    (function(){
+      if (!('IntersectionObserver' in window)) return;
+      const targets = document.querySelectorAll('.reveal');
+      if (!targets.length) return;
+      let observer;
+      try {
+        observer = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: .08, rootMargin: '0px 0px -24px 0px' });
+        targets.forEach(target => observer.observe(target));
+        document.documentElement.classList.add('reveal-ready');
+      } catch {
+        if (observer) observer.disconnect();
+        document.documentElement.classList.remove('reveal-ready');
+      }
+    })();
     const n=document.getElementById('nav');
     window.addEventListener('scroll',()=>n.classList.toggle('scrolled',scrollY>50),{passive:true});
 
+    // 推荐命令直接展示，复制失败时选中原文以便手动复制。
+    document.querySelectorAll('[data-copy-command]').forEach(function(button){
+      const command=document.getElementById(button.dataset.copyCommand);
+      const status=document.getElementById(button.getAttribute('aria-describedby'));
+      if(!command || !status)return;
+      let resetTimer;
+      button.addEventListener('click',async function(){
+        clearTimeout(resetTimer);
+        button.classList.remove('is-copied');
+        button.disabled=true;
+        status.classList.remove('is-error');
+        status.textContent='';
+        try {
+          if(!navigator.clipboard || !navigator.clipboard.writeText)throw new Error('Clipboard unavailable');
+          await navigator.clipboard.writeText(command.textContent);
+          status.textContent=button.dataset.copySuccess;
+          button.classList.add('is-copied');
+          resetTimer=setTimeout(function(){ button.classList.remove('is-copied'); },2000);
+        } catch {
+          const selection=window.getSelection();
+          if(selection){
+            const range=document.createRange();
+            range.selectNodeContents(command);
+            selection.removeAllRanges();
+            selection.addRange(range);
+          }
+          status.classList.add('is-error');
+          status.textContent=button.dataset.copyFailure;
+        } finally {
+          button.disabled=false;
+        }
+      });
+    });
+
     /* Ecosystem animated connection lines */
+    const ecoMotionPreference=window.matchMedia('(prefers-reduced-motion: reduce)');
     function drawEcoLines(){
       const svg=document.getElementById('ecoChainSvg');
       if(!svg)return;
@@ -47,8 +102,9 @@
         const b=document.getElementById(pair[1]);
         if(!a||!b)return;
         const ar=a.getBoundingClientRect(), br=b.getBoundingClientRect();
-        const x1=ar.right-wr.left, y1=ar.top+ar.height/2-wr.top;
-        const x2=br.left-wr.left, y2=br.top+br.height/2-wr.top;
+        const rtl=getComputedStyle(wrap).direction==='rtl';
+        const x1=(rtl?ar.left:ar.right)-wr.left, y1=ar.top+ar.height/2-wr.top;
+        const x2=(rtl?br.right:br.left)-wr.left, y2=br.top+br.height/2-wr.top;
 
         // Dashed line
         var line=document.createElementNS('http://www.w3.org/2000/svg','line');
@@ -60,7 +116,8 @@
 
         // Arrow tip
         var arrow=document.createElementNS('http://www.w3.org/2000/svg','polygon');
-        arrow.setAttribute('points',(x2-1)+','+y2+' '+(x2-7)+','+(y2-4)+' '+(x2-7)+','+(y2+4));
+        const direction=rtl?-1:1;
+        arrow.setAttribute('points',(x2-direction)+','+y2+' '+(x2-7*direction)+','+(y2-4)+' '+(x2-7*direction)+','+(y2+4));
         arrow.setAttribute('fill','#5fb3ea');arrow.setAttribute('opacity','0.25');
         svg.appendChild(arrow);
 
@@ -71,6 +128,8 @@
         p.setAttribute('fill','none');p.setAttribute('stroke','none');
         svg.appendChild(p);
 
+        // 减少动态效果时只保留静态连线。
+        if(ecoMotionPreference.matches)return;
         // Animated dot
         var c=document.createElementNS('http://www.w3.org/2000/svg','circle');
         c.setAttribute('r','3');c.setAttribute('fill','#5fb3ea');
@@ -109,6 +168,7 @@
         p.setAttribute('opacity','0.16');
         svg.appendChild(p);
 
+        if(ecoMotionPreference.matches)return;
         var c=document.createElementNS('http://www.w3.org/2000/svg','circle');
         c.setAttribute('r','2.5');c.setAttribute('fill','#5fb3ea');
         c.setAttribute('filter','url(#eco-glow2)');
@@ -123,10 +183,11 @@
     }
     window.addEventListener('load',initEcoAnimations);
     window.addEventListener('resize',function(){drawEcoLines();drawFanoutLines();});
+    ecoMotionPreference.addEventListener('change',function(){drawEcoLines();drawFanoutLines();});
 
     /* ===== ENHANCEMENT: Navigation Active Section Highlight ===== */
     (function(){
-      var sections=['hero','features','quickstart','cases','ecosystem'];
+      var sections=['hero','cases','features','quickstart','ecosystem'];
       var navLinks=document.querySelectorAll('.nav-links a[href^="#"]');
       var linkMap={};
       navLinks.forEach(function(a){

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/favicon-32.png">
+<title>本机还是云端？部署与数据说明｜HexClaw 河蟹 AI</title>
+<meta name="description" content="选择河蟹 AI 的本机或自建云端服务，弄清会话和文件保存在哪里、电脑关机后任务是否继续、切换服务与本地模型的使用边界。">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:site_name" content="河蟹 AI">
+<meta property="og:type" content="article">
+<meta property="og:title" content="本机还是云端？部署与数据说明｜HexClaw 河蟹 AI">
+<meta property="og:description" content="选择河蟹 AI 的本机或自建云端服务，弄清会话和文件保存在哪里、电脑关机后任务是否继续、切换服务与本地模型的使用边界。">
+<meta property="og:url" content="https://hexclaw.net/zh/docs/deployment-options">
+<meta property="og:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta property="og:image:alt" content="河蟹 AI 标志">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="本机还是云端？部署与数据说明｜HexClaw 河蟹 AI">
+<meta name="twitter:description" content="选择河蟹 AI 的本机或自建云端服务，弄清会话和文件保存在哪里、电脑关机后任务是否继续、切换服务与本地模型的使用边界。">
+<meta name="twitter:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta name="twitter:image:alt" content="河蟹 AI 标志">
+<link rel="canonical" href="https://hexclaw.net/zh/docs/deployment-options">
+<link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/docs/deployment-options">
+<link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/docs/deployment-options">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"TechArticle","headline":"本机还是云端？部署与数据说明｜HexClaw 河蟹 AI","description":"选择河蟹 AI 的本机或自建云端服务，弄清会话和文件保存在哪里、电脑关机后任务是否继续、切换服务与本地模型的使用边界。","url":"https://hexclaw.net/zh/docs/deployment-options","inLanguage":"zh-CN","image":"https://hexclaw.net/assets/brand/hexclaw-logo.png","isPartOf":{"@type":"CreativeWorkSeries","name":"河蟹 AI 文档","url":"https://hexclaw.net/zh/docs/"},"publisher":{"@type":"Organization","name":"hexagon-codes","url":"https://hexclaw.net/","@id":"https://hexclaw.net/#organization"},"about":{"@type":"SoftwareApplication","name":"河蟹 AI","operatingSystem":"macOS, Windows, Linux","applicationCategory":"BusinessApplication","@id":"https://hexclaw.net/#software"},"@id":"https://hexclaw.net/zh/docs/deployment-options#article","mainEntityOfPage":{"@type":"WebPage","@id":"https://hexclaw.net/zh/docs/deployment-options#webpage"},"dateModified":"2026-10-25"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"河蟹 AI","item":"https://hexclaw.net/zh/"},{"@type":"ListItem","position":2,"name":"河蟹 AI 使用文档","item":"https://hexclaw.net/zh/docs/"},{"@type":"ListItem","position":3,"name":"本机还是云端，先看任务在哪里运行","item":"https://hexclaw.net/zh/docs/deployment-options"}],"@id":"https://hexclaw.net/zh/docs/deployment-options#breadcrumb"}
+</script>
+<link rel="stylesheet" href="../../assets/css/docs-a35628a8707a.css">
+</head>
+<body class="docs-page">
+<a href="#main" class="skip-link">跳转到主要内容</a>
+<nav class="tn">
+<a href="/zh/" class="tn-b"><img width="72" height="72" src="../../assets/brand/hexclaw-icon-72.png" class="tn-l" alt="河蟹 AI"><span class="tn-n">河蟹 AI</span></a>
+<button type="button" class="tn-burger" aria-label="菜单" aria-expanded="false" aria-controls="primary-navigation"><span></span><span></span><span></span></button><div class="tn-r" id="primary-navigation"><a href="/zh/">首页</a><a href="/zh/#cases">使用场景</a><a href="/zh/#features">产品能力</a><a href="/zh/#quickstart">开始使用</a><a href="/zh/#ecosystem">开源生态</a><a href="/zh/docs/" class="is-active">文档</a><div class="lang-menu" data-lang-menu><button type="button" class="lang-trigger" aria-haspopup="menu" aria-expanded="false" aria-label="切换语言"><svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 0 20"></path><path d="M12 2a15.3 15.3 0 0 0 0 20"></path></svg><span class="lang-current">中文</span><svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="lang-menu-list" role="menu"><a href="/zh/docs/deployment-options" role="menuitem" class="is-active" aria-current="true">中文</a><a href="/en/docs/" role="menuitem">English</a><a href="/ug/docs/" role="menuitem" lang="zh-CN" dir="ltr">维吾尔语</a></div></div><button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="切换主题"><svg class="ti-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="ti-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="nav-cta">GitHub <span class="nav-star-badge" id="gh-stars">&#9733;</span></a></div>
+</nav>
+<div class="mobile-doc-nav">
+<a href="/zh/docs/getting-started">快速上手</a>
+<a href="/zh/k12">K12 真实案例</a>
+<a href="/zh/docs/k12">K12 使用教程</a>
+<a href="/zh/docs/chat">对话与会话</a>
+<a href="/zh/docs/agents">Agent</a>
+<a href="/zh/docs/canvas">工作流</a>
+<a href="/zh/docs/providers">模型服务商</a>
+<a href="/zh/docs/advanced">高级功能</a>
+<a href="/zh/docs/shortcuts">快捷键</a>
+<a href="/zh/docs/faq">FAQ</a>
+<a href="/zh/docs/deployment-options" class="on" aria-current="page">本机与云端</a>
+<a href="/zh/docs/media-generation">图片、语音与视频</a>
+<a href="/zh/docs/automation-delivery">定时任务与交付</a>
+</div>
+<aside class="sb"><div class="sb-t">文档导航</div>
+<a href="/zh/docs/getting-started">快速上手</a>
+<a href="/zh/k12">K12 真实案例</a>
+<a href="/zh/docs/k12">K12 使用教程</a>
+<a href="/zh/docs/chat" >对话与会话</a>
+<a href="/zh/docs/agents" >Agent 管理</a>
+<a href="/zh/docs/canvas">工作流画布</a>
+<a href="/zh/docs/providers" >模型服务商</a>
+<a href="/zh/docs/advanced" >高级功能</a>
+<a href="/zh/docs/shortcuts" >快捷键参考</a>
+<a href="/zh/docs/faq" >常见问题</a>
+<a href="/zh/docs/deployment-options" class="on" aria-current="page">本机与云端</a>
+<a href="/zh/docs/media-generation">图片、语音与视频</a>
+<a href="/zh/docs/automation-delivery">定时任务与交付</a>
+</aside>
+
+<main id="main" class="m">
+<header class="page-lead">
+<div class="page-kicker">河蟹 AI 使用指南</div>
+<h1>本机还是云端，先看任务在哪里运行</h1>
+<p class="sub">自己电脑上的资料处理，从本机开始；需要持续运行的计划任务，再考虑自建云端服务。</p>
+<p>适用版本：当前开发版（2026-10-24 代码基线）。稳定版 v0.5.0 不代表包含本文全部能力，安装前请核对<a href="/zh/changelog">更新日志</a>与<a href="https://github.com/hexagon-codes/hexclaw-desktop/releases/tag/v0.5.0" target="_blank" rel="noopener noreferrer">对应版本说明</a>。</p>
+</header>
+
+<p>河蟹 AI 桌面端可以连接应用管理的本机服务，也可以连接你自行部署的 HexClaw 云端服务。这个选择决定任务在哪里执行、数据存在哪里，以及工具能访问哪些文件。</p>
+
+<h2 id="choose-service">按使用场景选择服务</h2>
+<table>
+<tr><th>你要做的事</th><th>建议选择</th><th>需要准备</th></tr>
+<tr><td>处理当前电脑的文件，在桌面上查看和保存结果</td><td>本机服务</td><td>保持电脑与本机服务运行，配置任务需要的模型和工具。</td></tr>
+<tr><td>电脑关机后仍要执行计划，或通过绑定的消息渠道交办任务</td><td>自建云端服务</td><td>持续在线的服务器、可用模型、工具与消息连接。</td></tr>
+<tr><td>使用 Ollama 等本地模型</td><td>先确认模型运行在哪台机器</td><td>让执行任务的 HexClaw 服务能访问模型地址；桌面位置不决定模型位置。</td></tr>
+</table>
+<p>本机服务随电脑关闭而停止。云端任务可以在桌面电脑关机后继续，但服务器、模型和所需外部服务仍须可用。需要“7×24”运行时，应一起考虑这些条件。</p>
+
+<h2 id="connect-service">连接服务，再配置它使用的模型</h2>
+<ol>
+<li>安装桌面端，首次启动时选择本机服务，或填写自建云端服务地址与访问令牌。</li>
+<li>查看当前服务的连接状态。后续可以从侧栏底部的服务状态入口切换，也可以在设置的服务卡片查看。</li>
+<li>进入<strong>设置 → 模型服务</strong>，配置当前服务使用的模型；云端已经配置默认模型时，可以直接发起任务。</li>
+<li>先完成一项小任务，检查实际回答或文件，再接入需要的知识库、MCP 和消息渠道。</li>
+</ol>
+<p>安装与平台依赖见<a href="/zh/docs/getting-started">快速上手</a>。选择模型前，可查看<a href="/zh/docs/providers">模型服务商配置</a>，区分在线模型、Ollama 与专用媒体模型。</p>
+
+<h2 id="data-location">数据跟着所选服务保存</h2>
+<table>
+<tr><th>内容</th><th>本机服务</th><th>自建云端服务</th></tr>
+<tr><td>会话、学习记录、知识资料与生成产物</td><td>保存在当前设备的服务数据中。</td><td>保存在部署服务器的服务数据中。</td></tr>
+<tr><td>模型配置与连接</td><td>使用本机服务的配置。</td><td>使用服务器的配置，不自动继承桌面本机配置。</td></tr>
+<tr><td>文件工具访问范围</td><td>按工具配置和权限访问本机环境。</td><td>访问服务器环境，不会自动获得桌面电脑的文件系统。</td></tr>
+</table>
+<p>本机和云端的数据分别管理。切换服务不会自动搬运或合并会话、学习记录、知识库、模型配置和连接。如果切换后没有看到原来的会话，先确认当前连接的服务，再判断是否需要迁移。</p>
+
+<h2 id="files-and-localhost">上传附件与访问本机目录是两件事</h2>
+<p>假设你想让 Agent 整理电脑里的发票：本机服务可以通过已配置的文件工具访问对应目录；连接云端服务时，同样的目录名称指向服务器环境。需要把资料提供给云端时，应使用当前任务支持的附件或文件传递方式，并确认文件已被接收。</p>
+<p>模型地址里的 <code>localhost</code> 也指执行 HexClaw 服务的机器。云端服务填写 <code>http://localhost:11434/v1</code>，访问的是服务器上的 Ollama，不是桌面电脑上的 Ollama。</p>
+
+<h2 id="offline-and-cost">本机服务也可以使用在线模型</h2>
+<p>“本机服务”说明 HexClaw 在哪里运行，不代表每次推理都在本地。选用在线模型时，任务所需的提示词、上下文、图片或文件内容会发送给所选服务商；联网搜索、MCP 和消息渠道也会按任务与外部系统通信。</p>
+<p>要离线处理任务，需要让模型和所需工具都能在本机工作。软件开源与模型调用费用是不同事项，在线模型和外部服务按各自账户计费。相关数据路径见<a href="/zh/third-party-ai-services">第三方 AI 服务说明</a>。</p>
+
+<h2 id="switch-and-backup">切换前确认保存位置，迁移前准备备份</h2>
+<p>需要保留完整服务数据时，备份范围应覆盖该部署实际使用的数据库、资料与产物目录、配置；只复制桌面偏好不能替代业务数据备份。单个会话可以按需导出，家庭学习档案另有 <code>.hexbak</code> 归档与恢复。</p>
+<p>从一种部署方式换到另一种方式后，重新检查模型和连接是否可用，再用已有资料完成一项任务。涉及消息投递时，还要核对目标渠道的实际接收结果。</p>
+
+<h2 id="related-guides">相关指南</h2>
+<ul>
+<li><a href="/zh/docs/media-generation">图片、语音与视频</a></li>
+<li><a href="/zh/docs/automation-delivery">定时任务与交付</a></li>
+<li><a href="/zh/docs/">返回文档中心</a></li>
+</ul>
+<p style="text-align:center;margin-top:24px"><a href="https://github.com/hexagon-codes/hexclaw-site/edit/main/zh/docs/deployment-options.html" target="_blank" rel="noopener noreferrer" style="font-size:14px;color:var(--text-muted)">在 GitHub 上编辑此页</a></p>
+</main>
+<footer class="footer">
+<div class="footer-main">
+<div class="footer-brand">
+<a class="footer-logo" href="/zh/">河蟹 AI</a>
+<p class="footer-tagline">本地优先的开源 AI Agent 桌面平台，面向真实业务与个人工作流。</p>
+</div>
+<div class="footer-columns">
+<div class="footer-col">
+<div class="footer-col-title">产品</div>
+<a href="/zh/">首页</a>
+<a href="/zh/#download">下载桌面端</a>
+<a href="/zh/changelog">更新日志</a>
+</div>
+<div class="footer-col">
+<div class="footer-col-title">开发者</div>
+<a href="/zh/docs/">文档中心</a>
+<a href="/zh/docs/getting-started">快速上手</a>
+<a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer">GitHub</a>
+</div>
+<div class="footer-col">
+<div class="footer-col-title">法务与联系</div>
+<a href="/zh/privacy">隐私政策</a>
+<a href="/zh/terms">使用条款</a>
+<a href="/zh/third-party-ai-services">第三方 AI 服务说明</a>
+<a href="mailto:ai@hexclaw.net">业务咨询</a>
+<a href="mailto:support@hexclaw.net">问题反馈</a>
+</div>
+</div>
+</div>
+<div class="footer-bottom">
+<span class="footer-copy">&copy; 2025&ndash;2026 hexagon-codes</span>
+</div>
+</footer>
+<script src="../../assets/js/docs-nav.js?v=39cc54398ffc"></script>
+<script>
+function toggleTheme(){var c=document.documentElement.getAttribute("data-theme");var n=c==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);localStorage.setItem("hexclaw-theme",n)}
+(function(){var s=localStorage.getItem("hexclaw-theme");var d=window.matchMedia("(prefers-color-scheme:dark)").matches;if(s==="dark"||(!s&&d))document.documentElement.setAttribute("data-theme","dark")})();
+window.addEventListener("scroll",function(){var n=document.querySelector(".tn,.topnav");if(n)n.classList.toggle("scrolled",window.scrollY>10);},{passive:true});
+</script>
+</body>
+</html>

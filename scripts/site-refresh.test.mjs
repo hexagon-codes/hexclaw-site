@@ -7,27 +7,8 @@ import { fileURLToPath } from 'node:url'
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const screenshotDir = path.join(root, 'assets/docs/screenshots')
 
-const screenshots = [
-  'welcome-provider.webp',
-  'welcome-agent.webp',
-  'welcome-ready.webp',
-  'chat-conversation.webp',
-  'hero-workspace.webp',
-  'agents-overview.webp',
-  'agents-templates.webp',
-  'knowledge-documents.webp',
-  'knowledge-memory.webp',
-  'automation-tasks.webp',
-  'automation-webhooks.webp',
-  'automation-workflow.webp',
-  'connections-channels.webp',
-  'connections-data-connectors.webp',
-  'capabilities-skills.webp',
-  'capabilities-mcp.webp',
-  'capabilities-prompts.webp',
-  'logs-observability.webp',
-  'settings-model-providers.webp',
-]
+const screenshotManifest = JSON.parse(fs.readFileSync(path.join(screenshotDir, 'manifest.json'), 'utf8'))
+const screenshots = screenshotManifest.files.map(({ file }) => file)
 
 const requiredChineseDocShots = new Map([
   ['zh/docs/chat.html', ['chat-conversation.webp']],
@@ -106,20 +87,20 @@ test('新一版文档截图完整替换旧 PNG，并统一为真实桌面窗口�
     const file = path.join(screenshotDir, filename)
     const buffer = fs.readFileSync(file)
     assert.ok(buffer.length > 20_000, `${filename} is unexpectedly small`)
-    assert.deepEqual(webpDimensions(buffer), { width: 2560, height: 1640 }, filename)
+    const entry = screenshotManifest.files.find(({ file }) => file === filename)
+    assert.deepEqual(webpDimensions(buffer), { width: entry.width, height: entry.height }, filename)
   }
 
   const manifest = JSON.parse(fs.readFileSync(path.join(screenshotDir, 'manifest.json'), 'utf8'))
-  assert.equal(manifest.schema_version, 1)
-  assert.equal(manifest.viewport, '1280x820@2x')
+  assert.equal(manifest.schema_version, 2)
   assert.deepEqual(manifest.files.map((entry) => entry.file).sort(), [...screenshots].sort())
   for (const entry of manifest.files) {
-    assert.match(entry.source, /^(local-implementation|prototype-implemented)$/)
+    assert.equal(entry.source, 'installed-native-window')
     assert.ok(entry.surface)
   }
 })
 
-test('快速上手与当前向导一致，其他核心文档和首页保留功能截图', () => {
+test('快速上手与当前向导一致，其他核心文档保留功能截图', () => {
   const gettingStarted = read('zh/docs/getting-started.html')
   assert.match(gettingStarted, /首次配置向导包含 2 步/)
   assert.match(gettingStarted, /<strong>选择服务<\/strong>/)
@@ -137,9 +118,6 @@ test('快速上手与当前向导一致，其他核心文档和首页保留功�
     }
   }
 
-  for (const file of ['zh/index.html', 'en/index.html', 'ug/index.html']) {
-    assert.match(read(file), /assets\/docs\/k12\/annotated-homework\.png/)
-  }
 })
 
 test('所有文档截图都声明真实尺寸、延迟解码并保持等比缩放', () => {
@@ -149,7 +127,9 @@ test('所有文档截图都声明真实尺寸、延迟解码并保持等比缩�
     const html = fs.readFileSync(file, 'utf8')
     for (const match of html.matchAll(/<img\b[^>]*assets\/docs\/screenshots\/[^>]*>/gi)) {
       const tag = match[0]
-      if (!/\bwidth="2560"/.test(tag) || !/\bheight="1640"/.test(tag)) failures.push(`${relative}: wrong dimensions`)
+      const filename = tag.match(/screenshots\/([^"?]+)/)?.[1]
+      const entry = screenshotManifest.files.find(({ file }) => file === filename)
+      if (!entry || !tag.includes(`width="${entry.width}"`) || !tag.includes(`height="${entry.height}"`)) failures.push(`${relative}: wrong dimensions`)
       if (!/\bloading="lazy"/.test(tag)) failures.push(`${relative}: missing lazy loading`)
       if (!/\bdecoding="async"/.test(tag)) failures.push(`${relative}: missing async decoding`)
       const source = tag.match(/\bsrc="([^"]+)"/i)?.[1]
@@ -161,7 +141,6 @@ test('所有文档截图都声明真实尺寸、延迟解码并保持等比缩�
   for (const file of ['assets/css/docs.css', 'assets/css/home.css']) {
     const css = read(file)
     assert.match(css, /(?:\.doc-shot|\.hero-shot) img\s*\{[^}]*height:\s*auto;/s, file)
-    assert.match(css, /(?:\.doc-shot|\.hero-shot) img\s*\{[^}]*aspect-ratio:\s*64\s*\/\s*41;/s, file)
     assert.match(css, /(?:\.doc-shot|\.hero-shot) img\s*\{[^}]*object-fit:\s*contain;/s, file)
   }
 
@@ -175,7 +154,6 @@ test('所有文档截图都声明真实尺寸、延迟解码并保持等比缩�
     assert.ok(fs.existsSync(stylesheet), `missing referenced stylesheet: ${stylesheet}`)
     const css = fs.readFileSync(stylesheet, 'utf8')
     assert.match(css, /\.doc-shot img\s*\{[^}]*height:\s*auto;/s, stylesheet)
-    assert.match(css, /\.doc-shot img\s*\{[^}]*aspect-ratio:\s*64\s*\/\s*41;/s, stylesheet)
   }
 })
 
@@ -228,12 +206,15 @@ test('站点地图按页面已有语言声明 hreflang，并保留有效更新�
     const block = match[1]
     const location = block.match(/<loc>([^<]+)<\/loc>/)?.[1]
     if (!location || !/\/(?:zh|en|ug)\//.test(location)) continue
-    const languages = ['https://hexclaw.net/zh/docs/k12', 'https://hexclaw.net/zh/k12'].includes(location)
-      ? ['zh-CN', 'x-default']
-      : ['en', 'zh-CN', 'ug', 'x-default']
-    for (const language of languages) {
-      if (!new RegExp(`hreflang="${language}"`).test(block)) failures.push(`${location}: missing ${language}`)
-    }
+    const pagePath = new URL(location).pathname
+    const file = pagePath.endsWith('/') ? `${pagePath}index.html` : `${pagePath}.html`
+    const html = read(file.slice(1))
+    const alternates = [...html.matchAll(/<link\b[^>]*rel="alternate"[^>]*hreflang="([^"]+)"[^>]*href="([^"]+)"[^>]*>/g)]
+      .map((entry) => ({ language: entry[1], href: entry[2] }))
+    assert.ok(alternates.length > 0, `${location}: missing page language declarations`)
+    const sitemapAlternates = [...block.matchAll(/<xhtml:link\b[^>]*hreflang="([^"]+)"[^>]*href="([^"]+)"[^>]*>/g)]
+      .map((entry) => ({ language: entry[1], href: entry[2] }))
+    assert.deepEqual(sitemapAlternates.sort((a, b) => a.language.localeCompare(b.language)), alternates.sort((a, b) => a.language.localeCompare(b.language)), `${location}: sitemap language URLs differ from the page`)
     const lastmod = block.match(/<lastmod>(\d{4}-\d{2}-\d{2})<\/lastmod>/)?.[1]
     const date = lastmod ? new Date(`${lastmod}T00:00:00Z`) : null
     if (!date || Number.isNaN(date.getTime()) || date.toISOString().slice(0, 10) !== lastmod) {

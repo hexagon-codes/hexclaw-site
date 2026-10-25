@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/favicon-32.png">
+<title>定时任务、工作流与文件交付教程｜HexClaw 河蟹 AI</title>
+<meta name="description" content="把河蟹 AI 任务配置为计划或 Webhook 触发，组合工作流步骤，生成文件并交付到会话、目录、钉钉或邮件，分开核对执行和投递结果。">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:site_name" content="河蟹 AI">
+<meta property="og:type" content="article">
+<meta property="og:title" content="定时任务、工作流与文件交付教程｜HexClaw 河蟹 AI">
+<meta property="og:description" content="把河蟹 AI 任务配置为计划或 Webhook 触发，组合工作流步骤，生成文件并交付到会话、目录、钉钉或邮件，分开核对执行和投递结果。">
+<meta property="og:url" content="https://hexclaw.net/zh/docs/automation-delivery">
+<meta property="og:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta property="og:image:alt" content="河蟹 AI 标志">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="定时任务、工作流与文件交付教程｜HexClaw 河蟹 AI">
+<meta name="twitter:description" content="把河蟹 AI 任务配置为计划或 Webhook 触发，组合工作流步骤，生成文件并交付到会话、目录、钉钉或邮件，分开核对执行和投递结果。">
+<meta name="twitter:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta name="twitter:image:alt" content="河蟹 AI 标志">
+<link rel="canonical" href="https://hexclaw.net/zh/docs/automation-delivery">
+<link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/docs/automation-delivery">
+<link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/docs/automation-delivery">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"TechArticle","headline":"定时任务、工作流与文件交付教程｜HexClaw 河蟹 AI","description":"把河蟹 AI 任务配置为计划或 Webhook 触发，组合工作流步骤，生成文件并交付到会话、目录、钉钉或邮件，分开核对执行和投递结果。","url":"https://hexclaw.net/zh/docs/automation-delivery","inLanguage":"zh-CN","image":"https://hexclaw.net/assets/brand/hexclaw-logo.png","isPartOf":{"@type":"CreativeWorkSeries","name":"河蟹 AI 文档","url":"https://hexclaw.net/zh/docs/"},"publisher":{"@type":"Organization","name":"hexagon-codes","url":"https://hexclaw.net/","@id":"https://hexclaw.net/#organization"},"about":{"@type":"SoftwareApplication","name":"河蟹 AI","operatingSystem":"macOS, Windows, Linux","applicationCategory":"BusinessApplication","@id":"https://hexclaw.net/#software"},"@id":"https://hexclaw.net/zh/docs/automation-delivery#article","mainEntityOfPage":{"@type":"WebPage","@id":"https://hexclaw.net/zh/docs/automation-delivery#webpage"},"dateModified":"2026-10-24"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"河蟹 AI","item":"https://hexclaw.net/zh/"},{"@type":"ListItem","position":2,"name":"河蟹 AI 使用文档","item":"https://hexclaw.net/zh/docs/"},{"@type":"ListItem","position":3,"name":"让任务按时运行，把结果送到需要的地方","item":"https://hexclaw.net/zh/docs/automation-delivery"}],"@id":"https://hexclaw.net/zh/docs/automation-delivery#breadcrumb"}
+</script>
+<link rel="stylesheet" href="../../assets/css/docs-a35628a8707a.css">
+</head>
+<body class="docs-page">
+<a href="#main" class="skip-link">跳转到主要内容</a>
+<nav class="tn">
+<a href="/zh/" class="tn-b"><img width="72" height="72" src="../../assets/brand/hexclaw-icon-72.png" class="tn-l" alt="河蟹 AI"><span class="tn-n">河蟹 AI</span></a>
+<button type="button" class="tn-burger" aria-label="菜单" aria-expanded="false" aria-controls="primary-navigation"><span></span><span></span><span></span></button><div class="tn-r" id="primary-navigation"><a href="/zh/">首页</a><a href="/zh/#cases">使用场景</a><a href="/zh/#features">产品能力</a><a href="/zh/#quickstart">开始使用</a><a href="/zh/#ecosystem">开源生态</a><a href="/zh/docs/" class="is-active">文档</a><div class="lang-menu" data-lang-menu><button type="button" class="lang-trigger" aria-haspopup="menu" aria-expanded="false" aria-label="切换语言"><svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 0 20"></path><path d="M12 2a15.3 15.3 0 0 0 0 20"></path></svg><span class="lang-current">中文</span><svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="lang-menu-list" role="menu"><a href="/zh/docs/automation-delivery" role="menuitem" class="is-active" aria-current="true">中文</a><a href="/en/docs/" role="menuitem">English</a><a href="/ug/docs/" role="menuitem" lang="zh-CN" dir="ltr">维吾尔语</a></div></div><button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="切换主题"><svg class="ti-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="ti-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="nav-cta">GitHub <span class="nav-star-badge" id="gh-stars">&#9733;</span></a></div>
+</nav>
+<div class="mobile-doc-nav">
+<a href="/zh/docs/getting-started">快速上手</a>
+<a href="/zh/k12">K12 真实案例</a>
+<a href="/zh/docs/k12">K12 使用教程</a>
+<a href="/zh/docs/chat">对话与会话</a>
+<a href="/zh/docs/agents">Agent</a>
+<a href="/zh/docs/canvas">工作流</a>
+<a href="/zh/docs/providers">模型服务商</a>
+<a href="/zh/docs/advanced">高级功能</a>
+<a href="/zh/docs/shortcuts">快捷键</a>
+<a href="/zh/docs/faq">FAQ</a>
+<a href="/zh/docs/deployment-options">本机与云端</a>
+<a href="/zh/docs/media-generation">图片、语音与视频</a>
+<a href="/zh/docs/automation-delivery" class="on" aria-current="page">定时任务与交付</a>
+</div>
+<aside class="sb"><div class="sb-t">文档导航</div>
+<a href="/zh/docs/getting-started">快速上手</a>
+<a href="/zh/k12">K12 真实案例</a>
+<a href="/zh/docs/k12">K12 使用教程</a>
+<a href="/zh/docs/chat" >对话与会话</a>
+<a href="/zh/docs/agents" >Agent 管理</a>
+<a href="/zh/docs/canvas">工作流画布</a>
+<a href="/zh/docs/providers" >模型服务商</a>
+<a href="/zh/docs/advanced" >高级功能</a>
+<a href="/zh/docs/shortcuts" >快捷键参考</a>
+<a href="/zh/docs/faq" >常见问题</a>
+<a href="/zh/docs/deployment-options">本机与云端</a>
+<a href="/zh/docs/media-generation">图片、语音与视频</a>
+<a href="/zh/docs/automation-delivery" class="on" aria-current="page">定时任务与交付</a>
+</aside>
+
+<main id="main" class="m">
+<header class="page-lead">
+<div class="page-kicker">河蟹 AI 使用指南</div>
+<h1>让任务按时运行，把结果送到需要的地方</h1>
+<p class="sub">先完成一次任务，再配置计划；运行成功、文件就绪和消息送达分别检查。</p>
+<p>适用版本：当前开发版（2026-10-24 代码基线）。稳定版 v0.5.0 不代表包含本文全部能力，安装前请核对<a href="/zh/changelog">更新日志</a>与<a href="https://github.com/hexagon-codes/hexclaw-desktop/releases/tag/v0.5.0" target="_blank" rel="noopener noreferrer">对应版本说明</a>。</p>
+</header>
+
+<p>河蟹 AI 的自动化包含定时任务、Webhook 和工作流。定时任务负责何时执行，Webhook 接收外部事件，工作流把一项任务组织成多个步骤。保存配置之后，还需要确认任务已启用、执行环境持续可用。</p>
+
+<h2 id="choose-trigger">选择适合任务的触发方式</h2>
+<table>
+<tr><th>需求</th><th>使用方式</th><th>需要确认</th></tr>
+<tr><td>现在处理一次资料</td><td>手动执行或工作流试运行</td><td>本次输入、模型、工具与交付目标。</td></tr>
+<tr><td>每天或每周重复完成同一项任务</td><td>定时任务</td><td>执行时间、时区、启用状态以及资料来源。</td></tr>
+<tr><td>外部系统发生事件后执行</td><td>Webhook</td><td>触发地址、鉴权配置、事件输入与绑定的任务。</td></tr>
+<tr><td>需要按顺序整理、分析并生成文件</td><td>工作流</td><td>步骤输入、所需资源、输出格式与交付位置。</td></tr>
+</table>
+<p>入口位于<strong>自动化</strong>。也可以在会话里查询、创建或修改定时任务和工作流，明确要求时发起执行。创建计划或保存工作流，不会自动额外运行一次。</p>
+
+<h2 id="prepare-workflow">先用一次输入把工作流跑通</h2>
+<p>以下用“把一份进展记录整理成日报”作为任务示例，没有预设已经生成的报告。准备一份可以提供给当前服务的记录，再明确希望保留的事实与输出格式。</p>
+<pre><code>把这份进展记录整理成日报。
+分为已完成、当前阻塞、明日计划三部分，保留原文日期和负责人。
+没有依据的事项不要补写，输出为 Markdown 文件。</code></pre>
+<ol>
+<li>进入<strong>自动化 → 工作流</strong>，新建工作流。</li>
+<li>配置输入步骤，再添加需要的智能体或工具步骤；后续步骤可以使用本次输入、前一步或指定步骤的结果。</li>
+<li>在输出步骤选择文件格式与交付位置，保存定义。</li>
+<li>点击试运行并提供本次资料，查看各步骤状态、生成文件和交付结果。</li>
+</ol>
+<p>试运行会实际调用模型和工具，也会执行已配置的交付。如果此时只想检查文稿，可先把结果保留在会话或指定文件位置，确认内容后再配置消息渠道。更详细的步骤配置见<a href="/zh/docs/canvas">工作流教程</a>。</p>
+
+<h2 id="schedule">再配置重复计划或事件触发</h2>
+<p>一次任务的输入可用，不代表第二天会自动取得新资料。配置计划时，要说明资料从哪里来、读取哪个时间范围，以及缺少资料时如何处理。资料源所需的连接和工具必须在执行任务的服务中可用。</p>
+<p>保存定时任务后核对计划时间、时区与启用状态；需要当天立即验证时，另行明确执行一次。绑定 Webhook 时，核对传入内容能否作为该工作流的输入，并按照当前服务提供的触发与鉴权配置接入外部系统。</p>
+<p>本机服务需要电脑和服务持续运行。自建云端可以在桌面电脑关机后继续执行，但服务器、模型、工具和交付渠道仍须在线。部署选择见<a href="/zh/docs/deployment-options">本机与云端说明</a>。</p>
+
+<h2 id="delivery-target">按文件和收件位置配置交付</h2>
+<table>
+<tr><th>目标</th><th>用途</th><th>检查方式</th></tr>
+<tr><td>来源会话或工作流会话</td><td>在工作台继续查看回答与产物。</td><td>打开对应会话，检查内容和已就绪文件。</td></tr>
+<tr><td>文件</td><td>输出 PDF、Markdown 或 HTML。</td><td>下载并打开文件，确认正文、图片及所需附件齐全。</td></tr>
+<tr><td>桌面或服务端目录</td><td>把结果保留到指定位置。</td><td>核对当前交付方式与目录所在机器，检查实际文件。</td></tr>
+<tr><td>钉钉或邮件</td><td>把结果交给已配置的接收目标。</td><td>先确认当前服务中的连接与目标，再核对投递记录和接收端结果。</td></tr>
+</table>
+<p>连接云端时，服务器目录不会自动变成桌面电脑的目录。需要向桌面保存文件时，应使用当前版本提供的桌面交付或下载方式，并保持对应客户端可用。</p>
+<p>执行完成与渠道接收是不同阶段。邮件服务接受请求不等于收件人已收到，消息平台的接口成功也不能代替接收端查看。把结果交付给其他人前，应先检查收件目标与内容。</p>
+
+<h2 id="recover">失败时处理对应阶段</h2>
+<p>运行历史保存步骤状态与本次输入。可以离开页面，再从运行记录返回。对于支持续接的失败或中断任务，按运行详情提供的入口继续；已生成的文件和失败的交付分别处理，不必为了重发结果重新做完整任务。</p>
+<p>如果状态是“结果未知”，先查看原运行、已有文件和投递记录。确认外部操作结果后再处理，避免重复计费或重复发送。停止当前等待也不表示已经撤销外部操作。</p>
+
+<h2 id="check-first-run">启用计划前，检查第一次结果</h2>
+<ul>
+<li>报告是否只使用本次资料，日期、人员和结论是否准确。</li>
+<li>文件能否下载并打开，正文与必要图片、附件是否完整。</li>
+<li>产物是否在指定目录或会话中，渠道接收端是否看到了正确内容。</li>
+<li>下次运行所需资料、模型、工具和连接是否仍然可用。</li>
+</ul>
+<p>若失败发生在模型调用或附件处理，可继续查看<a href="/zh/docs/media-generation">媒体生成与恢复说明</a>；连接状态和日志排查见<a href="/zh/docs/faq">常见问题</a>。</p>
+
+<h2 id="related-guides">相关指南</h2>
+<ul>
+<li><a href="/zh/docs/deployment-options">本机与云端</a></li>
+<li><a href="/zh/docs/media-generation">图片、语音与视频</a></li>
+<li><a href="/zh/docs/">返回文档中心</a></li>
+</ul>
+<p style="text-align:center;margin-top:24px"><a href="https://github.com/hexagon-codes/hexclaw-site/edit/main/zh/docs/automation-delivery.html" target="_blank" rel="noopener noreferrer" style="font-size:14px;color:var(--text-muted)">在 GitHub 上编辑此页</a></p>
+</main>
+<footer class="footer">
+<div class="footer-main">
+<div class="footer-brand">
+<a class="footer-logo" href="/zh/">河蟹 AI</a>
+<p class="footer-tagline">本地优先的开源 AI Agent 桌面平台，面向真实业务与个人工作流。</p>
+</div>
+<div class="footer-columns">
+<div class="footer-col">
+<div class="footer-col-title">产品</div>
+<a href="/zh/">首页</a>
+<a href="/zh/#download">下载桌面端</a>
+<a href="/zh/changelog">更新日志</a>
+</div>
+<div class="footer-col">
+<div class="footer-col-title">开发者</div>
+<a href="/zh/docs/">文档中心</a>
+<a href="/zh/docs/getting-started">快速上手</a>
+<a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer">GitHub</a>
+</div>
+<div class="footer-col">
+<div class="footer-col-title">法务与联系</div>
+<a href="/zh/privacy">隐私政策</a>
+<a href="/zh/terms">使用条款</a>
+<a href="/zh/third-party-ai-services">第三方 AI 服务说明</a>
+<a href="mailto:ai@hexclaw.net">业务咨询</a>
+<a href="mailto:support@hexclaw.net">问题反馈</a>
+</div>
+</div>
+</div>
+<div class="footer-bottom">
+<span class="footer-copy">&copy; 2025&ndash;2026 hexagon-codes</span>
+</div>
+</footer>
+<script src="../../assets/js/docs-nav.js?v=39cc54398ffc"></script>
+<script>
+function toggleTheme(){var c=document.documentElement.getAttribute("data-theme");var n=c==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);localStorage.setItem("hexclaw-theme",n)}
+(function(){var s=localStorage.getItem("hexclaw-theme");var d=window.matchMedia("(prefers-color-scheme:dark)").matches;if(s==="dark"||(!s&&d))document.documentElement.setAttribute("data-theme","dark")})();
+window.addEventListener("scroll",function(){var n=document.querySelector(".tn,.topnav");if(n)n.classList.toggle("scrolled",window.scrollY>10);},{passive:true});
+</script>
+</body>
+</html>

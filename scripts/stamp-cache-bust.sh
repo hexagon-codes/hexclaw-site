@@ -25,6 +25,7 @@ assets=(
   assets/css/home.css
   assets/js/home.js
   assets/js/docs-nav.js
+  assets/downloads/hexclaw-product-intro.pdf
 )
 
 pairs=()

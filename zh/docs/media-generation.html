@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/favicon-32.png">
+<title>如何生成和编辑图片、语音与视频｜HexClaw 河蟹 AI</title>
+<meta name="description" content="在河蟹 AI 会话中生成和编辑图片、处理语音与视频，区分模型的理解和生成能力，查看保存结果，并处理任务中断和结果未知。">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:site_name" content="河蟹 AI">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何生成和编辑图片、语音与视频｜HexClaw 河蟹 AI">
+<meta property="og:description" content="在河蟹 AI 会话中生成和编辑图片、处理语音与视频，区分模型的理解和生成能力，查看保存结果，并处理任务中断和结果未知。">
+<meta property="og:url" content="https://hexclaw.net/zh/docs/media-generation">
+<meta property="og:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta property="og:image:alt" content="河蟹 AI 标志">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="如何生成和编辑图片、语音与视频｜HexClaw 河蟹 AI">
+<meta name="twitter:description" content="在河蟹 AI 会话中生成和编辑图片、处理语音与视频，区分模型的理解和生成能力，查看保存结果，并处理任务中断和结果未知。">
+<meta name="twitter:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta name="twitter:image:alt" content="河蟹 AI 标志">
+<link rel="canonical" href="https://hexclaw.net/zh/docs/media-generation">
+<link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/docs/media-generation">
+<link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/docs/media-generation">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"TechArticle","headline":"如何生成和编辑图片、语音与视频｜HexClaw 河蟹 AI","description":"在河蟹 AI 会话中生成和编辑图片、处理语音与视频，区分模型的理解和生成能力，查看保存结果，并处理任务中断和结果未知。","url":"https://hexclaw.net/zh/docs/media-generation","inLanguage":"zh-CN","image":"https://hexclaw.net/assets/brand/hexclaw-logo.png","isPartOf":{"@type":"CreativeWorkSeries","name":"河蟹 AI 文档","url":"https://hexclaw.net/zh/docs/"},"publisher":{"@type":"Organization","name":"hexagon-codes","url":"https://hexclaw.net/","@id":"https://hexclaw.net/#organization"},"about":{"@type":"SoftwareApplication","name":"河蟹 AI","operatingSystem":"macOS, Windows, Linux","applicationCategory":"BusinessApplication","@id":"https://hexclaw.net/#software"},"@id":"https://hexclaw.net/zh/docs/media-generation#article","mainEntityOfPage":{"@type":"WebPage","@id":"https://hexclaw.net/zh/docs/media-generation#webpage"},"dateModified":"2026-10-24"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"河蟹 AI","item":"https://hexclaw.net/zh/"},{"@type":"ListItem","position":2,"name":"河蟹 AI 使用文档","item":"https://hexclaw.net/zh/docs/"},{"@type":"ListItem","position":3,"name":"在会话里生成图片、语音与视频","item":"https://hexclaw.net/zh/docs/media-generation"}],"@id":"https://hexclaw.net/zh/docs/media-generation#breadcrumb"}
+</script>
+<link rel="stylesheet" href="../../assets/css/docs-a35628a8707a.css">
+</head>
+<body class="docs-page">
+<a href="#main" class="skip-link">跳转到主要内容</a>
+<nav class="tn">
+<a href="/zh/" class="tn-b"><img width="72" height="72" src="../../assets/brand/hexclaw-icon-72.png" class="tn-l" alt="河蟹 AI"><span class="tn-n">河蟹 AI</span></a>
+<button type="button" class="tn-burger" aria-label="菜单" aria-expanded="false" aria-controls="primary-navigation"><span></span><span></span><span></span></button><div class="tn-r" id="primary-navigation"><a href="/zh/">首页</a><a href="/zh/#cases">使用场景</a><a href="/zh/#features">产品能力</a><a href="/zh/#quickstart">开始使用</a><a href="/zh/#ecosystem">开源生态</a><a href="/zh/docs/" class="is-active">文档</a><div class="lang-menu" data-lang-menu><button type="button" class="lang-trigger" aria-haspopup="menu" aria-expanded="false" aria-label="切换语言"><svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 0 20"></path><path d="M12 2a15.3 15.3 0 0 0 0 20"></path></svg><span class="lang-current">中文</span><svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="lang-menu-list" role="menu"><a href="/zh/docs/media-generation" role="menuitem" class="is-active" aria-current="true">中文</a><a href="/en/docs/" role="menuitem">English</a><a href="/ug/docs/" role="menuitem" lang="zh-CN" dir="ltr">维吾尔语</a></div></div><button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="切换主题"><svg class="ti-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="ti-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="nav-cta">GitHub <span class="nav-star-badge" id="gh-stars">&#9733;</span></a></div>
+</nav>
+<div class="mobile-doc-nav">
+<a href="/zh/docs/getting-started">快速上手</a>
+<a href="/zh/k12">K12 真实案例</a>
+<a href="/zh/docs/k12">K12 使用教程</a>
+<a href="/zh/docs/chat">对话与会话</a>
+<a href="/zh/docs/agents">Agent</a>
+<a href="/zh/docs/canvas">工作流</a>
+<a href="/zh/docs/providers">模型服务商</a>
+<a href="/zh/docs/advanced">高级功能</a>
+<a href="/zh/docs/shortcuts">快捷键</a>
+<a href="/zh/docs/faq">FAQ</a>
+<a href="/zh/docs/deployment-options">本机与云端</a>
+<a href="/zh/docs/media-generation" class="on" aria-current="page">图片、语音与视频</a>
+<a href="/zh/docs/automation-delivery">定时任务与交付</a>
+</div>
+<aside class="sb"><div class="sb-t">文档导航</div>
+<a href="/zh/docs/getting-started">快速上手</a>
+<a href="/zh/k12">K12 真实案例</a>
+<a href="/zh/docs/k12">K12 使用教程</a>
+<a href="/zh/docs/chat" >对话与会话</a>
+<a href="/zh/docs/agents" >Agent 管理</a>
+<a href="/zh/docs/canvas">工作流画布</a>
+<a href="/zh/docs/providers" >模型服务商</a>
+<a href="/zh/docs/advanced" >高级功能</a>
+<a href="/zh/docs/shortcuts" >快捷键参考</a>
+<a href="/zh/docs/faq" >常见问题</a>
+<a href="/zh/docs/deployment-options">本机与云端</a>
+<a href="/zh/docs/media-generation" class="on" aria-current="page">图片、语音与视频</a>
+<a href="/zh/docs/automation-delivery">定时任务与交付</a>
+</aside>
+
+<main id="main" class="m">
+<header class="page-lead">
+<div class="page-kicker">河蟹 AI 使用指南</div>
+<h1><span class="keep-phrase">在会话里生成</span><span class="keep-phrase">图片、语音与视频</span></h1>
+<p class="sub">选择支持对应任务的模型，再描述需要的结果。生成后查看预览和保存的文件，需要继续修改时回到原会话。</p>
+<p>适用版本：当前开发版（2026-10-24 代码基线）。稳定版 v0.5.0 不代表包含本文全部能力，安装前请核对<a href="/zh/changelog">更新日志</a>与<a href="https://github.com/hexagon-codes/hexclaw-desktop/releases/tag/v0.5.0" target="_blank" rel="noopener noreferrer">对应版本说明</a>。</p>
+</header>
+
+<p>河蟹 AI 使用同一个会话输入框接收文字、附件和媒体任务。可以让 Agent 调用已配置的媒体工具，也可以选择专用图像或视频生成模型发送需求。能否完成具体任务，取决于对应模型、服务商和工具的实际能力。</p>
+
+<h2 id="choose-capability">先分清“看懂”与“生成”</h2>
+<table>
+<tr><th>任务</th><th>需要的能力</th><th>操作前确认</th></tr>
+<tr><td>描述图片、识别图片里的内容</td><td>图像理解</td><td>当前模型支持图片输入，附件满足服务商要求。</td></tr>
+<tr><td>根据文字生成图片</td><td>图像生成</td><td>已配置可用的图像生成模型或工具。</td></tr>
+<tr><td>基于已有图片修改内容</td><td>图片编辑</td><td>模型支持参考图片或编辑输入，原图已经附在任务中。</td></tr>
+<tr><td>分析视频与生成视频</td><td>分别需要视频理解、视频生成</td><td>理解能力不代表能够生成；输入、时长和输出格式按对应服务要求。</td></tr>
+<tr><td>语音输入、朗读、音频对话</td><td>分别需要语音识别、语音合成、音频对话</td><td>录音权限与对应服务可用，不能只凭模型名称判断。</td></tr>
+</table>
+<p>同一服务商的模型也可能各不相同。先在<a href="/zh/docs/providers">模型服务商设置</a>检查模型与能力配置；能进行文本对话，不代表一定支持生图或音频输出。</p>
+
+<h2 id="generate-image">从一张图片开始</h2>
+<ol>
+<li>确认当前连接的本机或云端服务，并配置可用的图像生成模型或工具。</li>
+<li>在会话中说明用途、画面主体、比例和必须保留的内容。下面是需求示例，不是已经生成的案例。</li>
+<li>发送后查看任务进度和工具活动，等待实际图片出现。</li>
+<li>检查图片内容，再使用产物提供的查看、下载或保存入口。</li>
+</ol>
+<pre><code>生成一张横向的阅读活动插图，用于班级通知。
+画面是一张书桌和打开的书，留出右侧空白放标题。
+图片里不要生成文字。</code></pre>
+<p>如果需要修改现有图片，先附上原图，再说明“保留什么、改哪里”。例如“保留主体和构图，把背景改成浅色”。只有支持图片编辑的模型才能执行这类请求；单纯把图片描述转成提示词，不等于保留了原图。</p>
+
+<h2 id="audio-and-video">语音和视频任务看各自的输入与输出</h2>
+<p>语音输入会先把录音转成文字，再发送到会话。朗读则把文字转换为可播放语音，需要语音合成服务。音频对话使用已注册的音频对话模型，输入与回应可以包含音频和转写文字。这三种用法需要分别确认配置。</p>
+<p>视频生成可能需要等待外部服务处理。查看原任务的进度，产物可用后再播放或保存。视频理解只处理已有视频内容，不应将它当成视频生成入口。时长、尺寸和格式应按所选模型的要求填写，不套用另一家服务商的参数。</p>
+
+<h2 id="save-and-reopen">生成完成后，检查文件是否真的保存</h2>
+<p>生成、保存和发送到其他渠道是不同结果。先查看图片或播放音视频，确认内容可用；需要长期保留时，再核对保存状态或下载文件。不要只根据回答里的“已完成”判断。</p>
+<p>已经保存的媒体与会话关联。重新打开历史会话时，仍需连接保存它的 HexClaw 服务，且服务端文件仍然存在；只有外部临时链接的历史结果，还受链接有效期影响。切换本机与云端不会自动迁移这些文件。</p>
+<p>文件显示就绪后，可以继续查看、下载或在支持的任务中再次使用。发送到消息渠道时，接收方能否直接预览或播放，还取决于渠道支持的类型。</p>
+
+<h2 id="interrupted-task">中断后回到原任务，先确认发生了什么</h2>
+<table>
+<tr><th>看到的情况</th><th>下一步</th></tr>
+<tr><td>仍在生成或等待外部服务</td><td>查看原任务进度，不重复提交同一生成请求。</td></tr>
+<tr><td>生成已完成，保存或投递失败</td><td>保留已有产物，按对应保存或投递入口处理，避免重新生成。</td></tr>
+<tr><td>任务已中断，界面提供恢复入口</td><td>沿原请求恢复；是否可恢复以该任务状态为准。</td></tr>
+<tr><td>结果未知</td><td>查询原任务记录与已有产物，确认是否已经生成或发出，再决定下一步。</td></tr>
+</table>
+<p>停止等待不代表外部服务已经取消生成，也不代表已发生的计费或投递被撤销。结果未知时直接重发，可能重复生成或重复发送。</p>
+
+<h2 id="inspect-output">把检查标准写进需求里</h2>
+<p>插图需要检查主体、构图和文字；朗读需要检查转写、发音和是否完整；视频需要检查内容、时长与播放。模型输出仍要由使用者核对。准备自动保存或发送时，可继续查看<a href="/zh/docs/automation-delivery">定时任务与结果交付</a>。</p>
+
+<h2 id="related-guides">相关指南</h2>
+<ul>
+<li><a href="/zh/docs/deployment-options">本机与云端</a></li>
+<li><a href="/zh/docs/automation-delivery">定时任务与交付</a></li>
+<li><a href="/zh/docs/">返回文档中心</a></li>
+</ul>
+<p style="text-align:center;margin-top:24px"><a href="https://github.com/hexagon-codes/hexclaw-site/edit/main/zh/docs/media-generation.html" target="_blank" rel="noopener noreferrer" style="font-size:14px;color:var(--text-muted)">在 GitHub 上编辑此页</a></p>
+</main>
+<footer class="footer">
+<div class="footer-main">
+<div class="footer-brand">
+<a class="footer-logo" href="/zh/">河蟹 AI</a>
+<p class="footer-tagline">本地优先的开源 AI Agent 桌面平台，面向真实业务与个人工作流。</p>
+</div>
+<div class="footer-columns">
+<div class="footer-col">
+<div class="footer-col-title">产品</div>
+<a href="/zh/">首页</a>
+<a href="/zh/#download">下载桌面端</a>
+<a href="/zh/changelog">更新日志</a>
+</div>
+<div class="footer-col">
+<div class="footer-col-title">开发者</div>
+<a href="/zh/docs/">文档中心</a>
+<a href="/zh/docs/getting-started">快速上手</a>
+<a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer">GitHub</a>
+</div>
+<div class="footer-col">
+<div class="footer-col-title">法务与联系</div>
+<a href="/zh/privacy">隐私政策</a>
+<a href="/zh/terms">使用条款</a>
+<a href="/zh/third-party-ai-services">第三方 AI 服务说明</a>
+<a href="mailto:ai@hexclaw.net">业务咨询</a>
+<a href="mailto:support@hexclaw.net">问题反馈</a>
+</div>
+</div>
+</div>
+<div class="footer-bottom">
+<span class="footer-copy">&copy; 2025&ndash;2026 hexagon-codes</span>
+</div>
+</footer>
+<script src="../../assets/js/docs-nav.js?v=39cc54398ffc"></script>
+<script>
+function toggleTheme(){var c=document.documentElement.getAttribute("data-theme");var n=c==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);localStorage.setItem("hexclaw-theme",n)}
+(function(){var s=localStorage.getItem("hexclaw-theme");var d=window.matchMedia("(prefers-color-scheme:dark)").matches;if(s==="dark"||(!s&&d))document.documentElement.setAttribute("data-theme","dark")})();
+window.addEventListener("scroll",function(){var n=document.querySelector(".tn,.topnav");if(n)n.classList.toggle("scrolled",window.scrollY>10);},{passive:true});
+</script>
+</body>
+</html>
