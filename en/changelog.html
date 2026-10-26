@@ -53,9 +53,17 @@
 <h2>v0.5.1 (2026-10-26)</h2>
 <ul>
 <li>Desktop v0.5.1 pins the bundled backend to v0.5.1 and provides installers for macOS Apple Silicon / Intel, Windows x64, and Linux x64.</li>
-<li>Frozen K12 reports support PDF attachment preview and download; conversation exports retain uploaded images.</li>
-<li>Memory refresh preserves loaded entries and search state, distinguishes included and retrieved memories, and conversations display frozen model identity.</li>
-<li>Four-platform builds and the Homebrew Cask update are complete. See the <a href="https://github.com/hexagon-codes/hexclaw-desktop/releases/tag/v0.5.1" target="_blank" rel="noopener noreferrer">published release</a>.</li>
+<li>Solving and grading: the general assistant handles text and image questions without first creating a child profile. When the question is readable but the student's answer is unclear, it preserves the ungraded result and provides a separate reference solution.</li>
+<li>Teaching reports and printing: combine solutions, grading results, and parent guidance, with teaching diagrams and a consistent PDF. Preview, download, and print from Desktop; verified answers survive teaching-content generation failures.</li>
+<li>Weekly and supplementary practice: generate sections and supplementary sheets, resume interrupted work, and retain the original question count on retry. Manual practice does not consume the automatic weekly question allowance.</li>
+<li>Learning profiles and progress: preserve edits on save conflicts, retain original images and verified question sources during backup and transfer, and update learning progress using actual answer times, subjects, and learning evidence.</li>
+<li>Conversation artifacts and exports: preview, inspect, and download complete HTML artifacts. Markdown, JSON, and PDF exports retain uploaded images.</li>
+<li>Media tasks: persist execution and delivery state for image, video, and speech generation and resume interrupted work. Fix historical media and local attachment loading; unknown outcomes remain distinct from success.</li>
+<li>Skills and resources: synchronize Skill and MCP installation, enablement, and removal with the running service, support directory skill bundles with resource files, and update the default resource hub to v0.0.13.</li>
+<li>Agents and connections: show connection usage and test status, fix Agent bindings after instance renaming, and prevent late template responses from overwriting drafts. Refine Chinese, English, Uyghur, and RTL process displays.</li>
+<li>Long-term memory: mounted Skills can still use relevant memories, with scopes for agents, personas, and business subjects. Evaluate conditional replies each turn; refresh lists without losing loaded entries, search, or filters.</li>
+<li>Context and sources: retain original messages and image references during conversation compaction, preserve search source links and read matched pages, and keep the actual model identity with historical answers.</li>
+<li>See the full changes for the <a href="https://github.com/hexagon-codes/hexclaw/compare/v0.5.0...v0.5.1" target="_blank" rel="noopener noreferrer">HexClaw backend</a> and <a href="https://github.com/hexagon-codes/hexclaw-desktop/compare/v0.5.0...v0.5.1" target="_blank" rel="noopener noreferrer">Desktop</a>, and the <a href="https://github.com/hexagon-codes/hexclaw-desktop/releases/tag/v0.5.1" target="_blank" rel="noopener noreferrer">published release</a> for installers and the Homebrew Cask update.</li>
 </ul>
 
 <h2>v0.5.0 (2026-10-19)</h2>
