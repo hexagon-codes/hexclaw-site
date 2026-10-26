@@ -48,7 +48,7 @@
 <main id="main" tabindex="-1" class="m content-main">
 <header class="page-lead">
 <h1>Changelog</h1>
-<p class="sub">Product changes and fixes.</p>
+<p class="sub">Product updates and improvements.</p>
 </header>
 
 <section class="release" aria-labelledby="release-v0-5-1">
@@ -60,11 +60,11 @@
 <li><span class="change-type">Improved</span><strong>Solve and grade in regular chats: </strong>Send text or image questions to a regular assistant without creating a child profile first. When the question is legible but the student’s answer is unclear, it stays ungraded with a separate reference solution.</li>
 <li><span class="change-type">Improved</span><strong>Teaching reports and PDFs: </strong>Solutions, grading results and guidance for parents come together in one report, with teaching diagrams where needed. Preview, download or print the matching PDF. Verified answers remain available if the explanation fails to generate.</li>
 <li><span class="change-type">Improved</span><strong>Weekly and supplementary practice: </strong>Generate practice by section, add supplementary sheets and resume interrupted work. Retries keep the original question count; manual practice has its own count and does not use the automatic weekly allowance.</li>
-<li><span class="change-type">Fixed</span><strong>Learning profiles and progress: </strong>Save conflicts preserve your input; backup restoration keeps original images and verified question sources. Progress uses the actual submission time and subject, distinguishing independent work from answers completed with hints.</li>
+<li><span class="change-type">Improved</span><strong>Learning profiles and progress: </strong>Save conflicts preserve your input; backup restoration keeps original images and verified question sources. Progress uses the actual submission time and subject, distinguishing independent work from answers completed with hints.</li>
 <li><span class="change-type">Improved</span><strong>Preview and export chat results: </strong>Preview complete HTML results, inspect their source and download them. Markdown, JSON and PDF exports retain images uploaded in the conversation.</li>
-<li><span class="change-type">Improved</span><strong>Resume media tasks: </strong>Image, video and speech generation retain execution and delivery states for recovery after interruption. Historical media and local attachments load correctly, and unknown outcomes are no longer shown as successful.</li>
+<li><span class="change-type">Improved</span><strong>Resume media tasks: </strong>Image, video and speech generation retain execution and delivery states for recovery after interruption. Historical media and local attachments load more reliably, with unknown outcomes shown in their actual state.</li>
 <li><span class="change-type">Improved</span><strong>Skills and MCP: </strong>Installing, enabling, disabling or removing a Skill or MCP service updates the runtime. Skill bundles can include resources such as templates and scripts.</li>
-<li><span class="change-type">Fixed</span><strong>Connections and agents: </strong>Connections show usage and test status. Fixes cover agent bindings after a connection is renamed, late templates overwriting drafts, and process labels and Uyghur layout across the three languages.</li>
+<li><span class="change-type">Improved</span><strong>Connections and agents: </strong>Connections show usage and test status, retain agent bindings after renaming and preserve drafts when templates load. Process labels and Uyghur layouts are more consistent across the three languages.</li>
 <li><span class="change-type">Improved</span><strong>Long-term memory: </strong>Relevant memories remain available with a Skill attached, scoped by agent, persona or business object. Response conventions are checked each turn. Background refresh keeps the list, search and filters in place.</li>
 <li><span class="change-type">Improved</span><strong>Long conversations and sources: </strong>Conversation compaction preserves original messages and image references. Search retains source links and supports reading matched pages. Past answers keep the model source used for that turn.</li>
 </ul>
@@ -80,9 +80,9 @@
 <li><span class="change-type">Improved</span><strong>Unit study materials: </strong>Completed materials are saved to the library with a PDF matching the text. Reopen them to read the saved result, check textbook sources and see which teaching Skills were used.</li>
 <li><span class="change-type">Improved</span><strong>Math checks and annotated homework: </strong>Programmatic checks supplement math solutions, with verified questions reused when source and curriculum conditions match. Correcting a source keeps the original question numbers and corresponding annotated images.</li>
 <li><span class="change-type">Improved</span><strong>Models and native reasoning: </strong>Model settings distinguish native reasoning support from the thinking switch. Probe reasoning separately and set its effort level. Saving configuration preserves existing credentials and capability declarations.</li>
-<li><span class="change-type">Fixed</span><strong>Conversations and attachments: </strong>Fix historical attachments causing startup or conversation-switching errors. Tool activity is consolidated, and internal page markers are removed from retrieved knowledge text.</li>
+<li><span class="change-type">Improved</span><strong>Conversations and attachments: </strong>Improve compatibility with historical attachments and the stability of startup and conversation switching. Tool activity is consolidated, and internal page markers are removed from retrieved knowledge text.</li>
 <li><span class="change-type">Improved</span><strong>Teaching messages in DingTalk: </strong>Improve emphasis, links and summaries. Long teaching content supports a short summary with a complete PDF for reading on a phone.</li>
-<li><span class="change-type">Fixed</span><strong>Memory switches apply immediately: </strong>The automatic memory extraction and recall switch takes effect after saving, without a restart. Turning it off retains existing memories and manual management.</li>
+<li><span class="change-type">Improved</span><strong>Memory switches apply immediately: </strong>The automatic memory extraction and recall switch takes effect after saving, without a restart. Turning it off retains existing memories and manual management.</li>
 <li><span class="change-type">New</span><strong>Historical log search: </strong>Search disk logs by time, level, source and keyword, with pagination and grouping. Records within the retention period remain available after a restart.</li>
 </ul>
 </section>
@@ -102,7 +102,7 @@
 <li><span class="change-type">New</span><strong>DingTalk tutoring: </strong>After binding a channel, send homework photos from a phone and receive explanations and annotations in one-to-one private chat.</li>
 <li><span class="change-type">New</span><strong>Scenario packages: </strong>Separated scenario-specific views, data and APIs from general Agent capabilities, starting with the K12 package.</li>
 <li><span class="change-type">Improved</span><strong>Chat and integrations: </strong>Updated streaming chat, math rendering, knowledge-base pagination and source filters, MCP restarts and Ollama model management.</li>
-<li><span class="change-type">Fixed</span><strong>Windows document tools: </strong>Fixed packaging compatibility for document-rendering dependencies.</li>
+<li><span class="change-type">Improved</span><strong>Windows document tools: </strong>Aligned Windows packaging with document-rendering dependencies.</li>
 </ul>
 </section>
 
@@ -114,7 +114,7 @@
 <ul class="release-notes">
 <li><span class="change-type">Improved</span><strong>Agent editing: </strong>Updated the structured SOUL editor, Skill picker, advanced parameters and edit-lock states.</li>
 <li><span class="change-type">Improved</span><strong>Chat sessions: </strong>Added session branching, persisted thinking durations and a fallback for tool-only messages; revised delete and export actions.</li>
-<li><span class="change-type">Improved</span><strong>Automation and connections: </strong>Updated permission controls and schedule validation, refreshed MCP status and fixed channel binding per instance.</li>
+<li><span class="change-type">Improved</span><strong>Automation and connections: </strong>Updated permission controls, schedule validation, MCP status refresh and per-instance channel binding.</li>
 <li><span class="change-type">Improved</span><strong>Engine and startup: </strong>Added graceful engine shutdown and memory behavior settings, and embedded the splash logo.</li>
 </ul>
 </section>
@@ -142,11 +142,11 @@
 <time datetime="2026-06-26">2026-06-26</time>
 </header>
 <ul class="release-notes">
-<li><span class="change-type">Fixed</span><strong>Replies and feedback: </strong>Persisted error replies and like/dislike feedback across session switches and reloads, keeping feedback actionable.</li>
-<li><span class="change-type">Fixed</span><strong>Speech errors: </strong>Added a visible error message when text-to-speech fails.</li>
+<li><span class="change-type">Improved</span><strong>Replies and feedback: </strong>Persisted error replies and like/dislike feedback across session switches and reloads, keeping feedback actionable.</li>
+<li><span class="change-type">Improved</span><strong>Speech feedback: </strong>Reported text-to-speech failures with a visible message.</li>
 <li><span class="change-type">Improved</span><strong>Output degeneration: </strong>Added detection and interruption of degenerate model output.</li>
 <li><span class="change-type">Improved</span><strong>Document previews: </strong>Added in-app download and preview, with a native save dialog and backend PDF parsing.</li>
-<li><span class="change-type">Fixed</span><strong>Chat interactions: </strong>Fixed false scroll navigation in new sessions, accidental sending during IME composition and model selection leaking between sessions.</li>
+<li><span class="change-type">Improved</span><strong>Chat interactions: </strong>Adjusted scroll navigation in new sessions, prevented Enter from sending during IME composition and kept model selection within each session.</li>
 </ul>
 </section>
 
@@ -158,7 +158,7 @@
 <ul class="release-notes">
 <li><span class="change-type">Improved</span><strong>MCP credentials: </strong>Encrypted stored MCP environment credentials with a master key and redacted them from API responses.</li>
 <li><span class="change-type">Improved</span><strong>Tool-call limits: </strong>Returned partial results with a continue hint at the turn limit. Raised the default to 25 turns, with a hard cap of 50.</li>
-<li><span class="change-type">Fixed</span><strong>New memories: </strong>Fixed memory mounting so new entries take effect without restarting the engine.</li>
+<li><span class="change-type">Improved</span><strong>New memories: </strong>Loaded new memory entries without an engine restart.</li>
 <li><span class="change-type">Improved</span><strong>Notification sources: </strong>Added cron and IM source tags for notification icons and deep links.</li>
 </ul>
 </section>
@@ -177,7 +177,7 @@
 <li><span class="change-type">New</span><strong>Composer shortcuts: </strong>Added the prompt library (<code>/</code>, <code>$ARGUMENTS</code>), image drag/paste, the ⌘K command palette and an engine-disconnected banner.</li>
 <li><span class="change-type">Improved</span><strong>Shared interface: </strong>Unified controls, styling and card hover effects, with Simplified Chinese, English and Uyghur (RTL) coverage.</li>
 <li><span class="change-type">Improved</span><strong>Windows installation: </strong>Switched to NSIS (<code>.exe</code>) installers and dropped <code>.msi</code>. Replaced bundled Ollama with a guided separate install.</li>
-<li><span class="change-type">Fixed</span><strong>Display fixes: </strong>Fixed the engine version display, overlapping trace IDs in logs and missing saving-state translations.</li>
+<li><span class="change-type">Improved</span><strong>Display details: </strong>Updated the engine version display, removed overlapping trace labels in Logs and completed saving-state translations.</li>
 </ul>
 </section>
 
@@ -190,8 +190,8 @@
 <li><span class="change-type">Improved</span><strong>Navigation: </strong>Gave Chat its own entry and grouped other pages under Build, Connect and System.</li>
 <li><span class="change-type">Improved</span><strong>Skill details: </strong>Added a read-only <code>SKILL.md</code> view and standardized the Skills terminology.</li>
 <li><span class="change-type">Improved</span><strong>Knowledge documents: </strong>Added Markdown rendering, code wrapping, lighter code-block styling and hover-to-copy.</li>
-<li><span class="change-type">Fixed</span><strong>Webhooks and sessions: </strong>Fixed webhook disabled-state handling and navigation sync, and unified the session write API contract.</li>
-<li><span class="change-type">Improved</span><strong>Document rendering: </strong>Moved pandoc and typst to Tauri sidecars with download integrity checks, and fixed Windows packaging under git-bash.</li>
+<li><span class="change-type">Improved</span><strong>Webhooks and sessions: </strong>Updated disabled-webhook handling and navigation synchronization, with a consistent session write API contract.</li>
+<li><span class="change-type">Improved</span><strong>Document rendering: </strong>Moved pandoc and typst to Tauri sidecars with download integrity checks and made Windows packaging compatible with git-bash.</li>
 </ul>
 </section>
 
@@ -231,9 +231,9 @@
 <li><span class="change-type">New</span><strong>Image generation: </strong>Added ZhipuAI CogView-4 with embedded data URI images and an ai-core ImageProvider interface.</li>
 <li><span class="change-type">New</span><strong>Video generation: </strong>Added ZhipuAI CogVideoX-2 with async polling, embedded covers and inline playback, plus an ai-core VideoProvider interface.</li>
 <li><span class="change-type">Improved</span><strong>Tool names: </strong>Localized 15 built-in tool names while keeping raw names for unknown MCP and custom tools.</li>
-<li><span class="change-type">Fixed</span><strong>Model selection: </strong>Stopped default Agent preferences from overriding normal chat models and added Agent attribution in Agent mode.</li>
-<li><span class="change-type">Fixed</span><strong>Multiline memories: </strong>Kept multiline memories as single entries and supported updating, deleting and archiving them.</li>
-<li><span class="change-type">Fixed</span><strong>Ollama downloads: </strong>Fixed large-model download timeouts and localized download status.</li>
+<li><span class="change-type">Improved</span><strong>Model selection: </strong>Kept normal chat model selection separate from default Agent preferences and showed Agent attribution in Agent mode.</li>
+<li><span class="change-type">Improved</span><strong>Multiline memories: </strong>Kept multiline memories as single entries and supported updating, deleting and archiving them.</li>
+<li><span class="change-type">Improved</span><strong>Ollama downloads: </strong>Adjusted timeout handling for large-model downloads and localized download status.</li>
 <li><span class="change-type">Improved</span><strong>Routing controls: </strong>Hid the strategy selector when smart routing is disabled.</li>
 <li><span class="change-type">Improved</span><strong>Feishu reactions: </strong>Replaced social emoji reactions with Typing and THINKING indicators.</li>
 </ul>
@@ -275,7 +275,7 @@
 </header>
 <ul class="release-notes">
 <li><span class="change-type">Improved</span><strong>Ollama warmup: </strong>Loaded the first downloaded model at startup to reduce the wait for the first chat.</li>
-<li><span class="change-type">Fixed</span><strong>Historical reasoning: </strong>Added <code>&lt;think&gt;</code> tag handling when loading historical messages to prevent raw reasoning exposure.</li>
+<li><span class="change-type">Improved</span><strong>Historical reasoning: </strong>Handled <code>&lt;think&gt;</code> tags when loading historical messages to keep reasoning separate from answer text.</li>
 <li><span class="change-type">Improved</span><strong>MCP home directory: </strong>Added the user's home directory when installing the filesystem MCP server on macOS, Windows and Linux.</li>
 </ul>
 </section>
@@ -286,7 +286,7 @@
 <time datetime="2026-04-06">2026-04-06</time>
 </header>
 <ul class="release-notes">
-<li><span class="change-type">Fixed</span><strong>Version display: </strong>Waited for the engine to start before fetching its version and synchronized app version values across the Sidebar, About and package files.</li>
+<li><span class="change-type">Improved</span><strong>Version display: </strong>Waited for the engine to start before fetching its version and synchronized app version values across the Sidebar, About and package files.</li>
 </ul>
 </section>
 
@@ -330,7 +330,7 @@
 <time datetime="2026-04-05">2026-04-05</time>
 </header>
 <ul class="release-notes">
-<li><span class="change-type">Fixed</span><strong>MCP tools: </strong>Completed the marketplace tool-call flow and returned tool error messages.</li>
+<li><span class="change-type">Improved</span><strong>MCP tools: </strong>Completed the marketplace tool-call flow and returned tool error messages.</li>
 <li><span class="change-type">Improved</span><strong>Skill triggers: </strong>Refined keyword matching for Skill triggers.</li>
 <li><span class="change-type">Improved</span><strong>Ollama models: </strong>Loaded models into memory after startup and added download progress and running-state indicators.</li>
 </ul>
@@ -344,9 +344,9 @@
 <ul class="release-notes">
 <li><span class="change-type">New</span><strong>Request tracing: </strong>Added trace IDs across WebSocket, gateway, engine and LLM calls, with IDs and structured fields visible in Logs.</li>
 <li><span class="change-type">Fixed</span><strong>Session messages: </strong>Fixed a deadlock that blocked consecutive messages in the same session.</li>
-<li><span class="change-type">Fixed</span><strong>Cloud MCP calls: </strong>Fixed tool calls disappearing from cloud model streaming responses.</li>
+<li><span class="change-type">Improved</span><strong>Cloud MCP calls: </strong>Preserved MCP tool calls in cloud model streaming responses.</li>
 <li><span class="change-type">New</span><strong>Thinking toggle: </strong>Added a thinking control in the composer, with <code>/no_think</code> injection for local thinking models.</li>
-<li><span class="change-type">Fixed</span><strong>Stream cancellation: </strong>Fixed cancellation so stopping a response cancels its backend request.</li>
+<li><span class="change-type">Improved</span><strong>Stream cancellation: </strong>Made stopping a response cancel its backend request.</li>
 </ul>
 </section>
 
@@ -357,11 +357,11 @@
 </header>
 <ul class="release-notes">
 <li><span class="change-type">New</span><strong>Reasoning display: </strong>Added streaming reasoning for Qwen3 and DeepSeek-R1, with automatic expansion and collapse, a timer and persistence.</li>
-<li><span class="change-type">Fixed</span><strong>Ollama chat: </strong>Fixed local models in the selector, WebSocket authentication and streaming timeouts.</li>
+<li><span class="change-type">Improved</span><strong>Ollama chat: </strong>Updated local-model listing, WebSocket authentication and streaming timeout handling.</li>
 <li><span class="change-type">Improved</span><strong>Startup screen: </strong>Matched the system's light or dark appearance and waited for the engine to be ready.</li>
 <li><span class="change-type">Improved</span><strong>Knowledge uploads: </strong>Closed the upload dialog after file selection.</li>
-<li><span class="change-type">Fixed</span><strong>Message editing: </strong>Fixed edit-button translations and sizing.</li>
-<li><span class="change-type">Fixed</span><strong>Unavailable controls: </strong>Removed the unavailable System Status tab and microphone button; the Tauri WebView lacked the Web Speech API.</li>
+<li><span class="change-type">Improved</span><strong>Message editing: </strong>Updated edit-button translations and sizing.</li>
+<li><span class="change-type">Improved</span><strong>Interface controls: </strong>Removed the unavailable System Status tab and microphone button; the Tauri WebView lacked the Web Speech API.</li>
 <li><span class="change-type">Fixed</span><strong>Homebrew startup: </strong>Fixed first-chat errors caused by a sidecar version mismatch and a nil embedder.</li>
 </ul>
 </section>
@@ -373,7 +373,7 @@
 </header>
 <ul class="release-notes">
 <li><span class="change-type">New</span><strong>MCP marketplace: </strong>Added Skill/MCP filters and one-click MCP server installation from <code>mcp-registry.json</code>.</li>
-<li><span class="change-type">Fixed</span><strong>MCP connections: </strong>Fixed connected-state display and enabled MCP without a preconfigured server list, allowing servers to be added later.</li>
+<li><span class="change-type">Improved</span><strong>MCP connections: </strong>Updated connected-state display and enabled MCP without a preconfigured server list, allowing servers to be added later.</li>
 <li><span class="change-type">Improved</span><strong>macOS tool paths: </strong>Added Homebrew, nvm and Cargo paths to the sidecar environment when launched from the macOS GUI.</li>
 <li><span class="change-type">Improved</span><strong>Security controls: </strong>Tightened CSP, added an MCP command allowlist and knowledge-upload zip-bomb checks, and made configuration writes atomic.</li>
 </ul>
@@ -387,7 +387,7 @@
 <ul class="release-notes">
 <li><span class="change-type">New</span><strong>Model providers: </strong>Added provider logos and support for Zhipu AI, Kimi (Moonshot), Wenxin Yiyan (Baidu), Tencent Hunyuan, iFlytek Spark and MiniMax. Added keyboard navigation, ARIA support and viewport-aware menu positioning.</li>
 <li><span class="change-type">New</span><strong>Ollama installation: </strong>Added detection, installation, status polling and model association in one flow.</li>
-<li><span class="change-type">Fixed</span><strong>MCP tabs: </strong>Fixed conflicting tab states and completed translations.</li>
+<li><span class="change-type">Improved</span><strong>MCP tabs: </strong>Kept MCP tab states mutually exclusive and completed translations.</li>
 <li><span class="change-type">New</span><strong>macOS installation: </strong>Added a one-line installer and Homebrew Cask support.</li>
 </ul>
 </section>
