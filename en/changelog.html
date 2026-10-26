@@ -37,6 +37,7 @@
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"HexClaw","item":"https://hexclaw.net/en/"},{"@type":"ListItem","position":2,"name":"Changelog","item":"https://hexclaw.net/en/changelog"}],"@id":"https://hexclaw.net/en/changelog#breadcrumb"}
 </script>
 <link rel="stylesheet" href="../assets/css/docs-a35628a8707a.css">
+<link rel="stylesheet" href="../assets/css/changelog-067d3f968c11.css">
 </head>
 <body class="docs-page content-page changelog-page">
 <a href="#main" class="skip-link">Skip to content</a>
@@ -47,37 +48,51 @@
 <main id="main" class="m content-main">
 <header class="page-lead">
 <h1>Changelog</h1>
-<p class="sub">HexClaw Desktop version history.</p>
+<p class="sub">Product changes and fixes.</p>
 </header>
 
-<h2>v0.5.1 (2026-10-26)</h2>
-<ul>
-<li>Desktop v0.5.1 pins the bundled backend to v0.5.1 and provides installers for macOS Apple Silicon / Intel, Windows x64, and Linux x64.</li>
-<li>Solving and grading: the general assistant handles text and image questions without first creating a child profile. When the question is readable but the student's answer is unclear, it preserves the ungraded result and provides a separate reference solution.</li>
-<li>Teaching reports and printing: combine solutions, grading results, and parent guidance, with teaching diagrams and a consistent PDF. Preview, download, and print from Desktop; verified answers survive teaching-content generation failures.</li>
-<li>Weekly and supplementary practice: generate sections and supplementary sheets, resume interrupted work, and retain the original question count on retry. Manual practice does not consume the automatic weekly question allowance.</li>
-<li>Learning profiles and progress: preserve edits on save conflicts, retain original images and verified question sources during backup and transfer, and update learning progress using actual answer times, subjects, and learning evidence.</li>
-<li>Conversation artifacts and exports: preview, inspect, and download complete HTML artifacts. Markdown, JSON, and PDF exports retain uploaded images.</li>
-<li>Media tasks: persist execution and delivery state for image, video, and speech generation and resume interrupted work. Fix historical media and local attachment loading; unknown outcomes remain distinct from success.</li>
-<li>Skills and resources: synchronize Skill and MCP installation, enablement, and removal with the running service, support directory skill bundles with resource files, and update the default resource hub to v0.0.13.</li>
-<li>Agents and connections: show connection usage and test status, fix Agent bindings after instance renaming, and prevent late template responses from overwriting drafts. Refine Chinese, English, Uyghur, and RTL process displays.</li>
-<li>Long-term memory: mounted Skills can still use relevant memories, with scopes for agents, personas, and business subjects. Evaluate conditional replies each turn; refresh lists without losing loaded entries, search, or filters.</li>
-<li>Context and sources: retain original messages and image references during conversation compaction, preserve search source links and read matched pages, and keep the actual model identity with historical answers.</li>
-<li>See the full changes for the <a href="https://github.com/hexagon-codes/hexclaw/compare/v0.5.0...v0.5.1" target="_blank" rel="noopener noreferrer">HexClaw backend</a> and <a href="https://github.com/hexagon-codes/hexclaw-desktop/compare/v0.5.0...v0.5.1" target="_blank" rel="noopener noreferrer">Desktop</a>, and the <a href="https://github.com/hexagon-codes/hexclaw-desktop/releases/tag/v0.5.1" target="_blank" rel="noopener noreferrer">published release</a> for installers and the Homebrew Cask update.</li>
+<section class="release" aria-labelledby="release-v0-5-1">
+<header class="release-meta">
+<h2 id="release-v0-5-1"><bdi>v0.5.1</bdi></h2>
+<time datetime="2026-10-26">2026-10-26</time>
+</header>
+<ul class="release-notes">
+<li><strong>Solve and grade in regular chats</strong><p>Send text or image questions to a regular assistant without creating a child profile first. When the question is legible but the student’s answer is unclear, it stays ungraded with a separate reference solution.</p></li>
+<li><strong>Teaching reports and PDFs</strong><p>Solutions, grading results and guidance for parents come together in one report, with teaching diagrams where needed. Preview, download or print the matching PDF. Verified answers remain available if the explanation fails to generate.</p></li>
+<li><strong>Weekly and supplementary practice</strong><p>Generate practice by section, add supplementary sheets and resume interrupted work. Retries keep the original question count; manual practice has its own count and does not use the automatic weekly allowance.</p></li>
+<li><strong>Learning profiles and progress</strong><p>Save conflicts preserve your input; backup restoration keeps original images and verified question sources. Progress uses the actual submission time and subject, distinguishing independent work from answers completed with hints.</p></li>
+<li><strong>Preview and export chat results</strong><p>Preview complete HTML results, inspect their source and download them. Markdown, JSON and PDF exports retain images uploaded in the conversation.</p></li>
+<li><strong>Resume media tasks</strong><p>Image, video and speech generation retain execution and delivery states for recovery after interruption. Historical media and local attachments load correctly, and unknown outcomes are no longer shown as successful.</p></li>
+<li><strong>Skills and MCP</strong><p>Installing, enabling, disabling or removing a Skill or MCP service updates the runtime. Skill bundles can include resources such as templates and scripts.</p></li>
+<li><strong>Connections and agents</strong><p>Connections show usage and test status. Fixes cover agent bindings after a connection is renamed, late templates overwriting drafts, and process labels and Uyghur layout across the three languages.</p></li>
+<li><strong>Long-term memory</strong><p>Relevant memories remain available with a Skill attached, scoped by agent, persona or business object. Response conventions are checked each turn. Background refresh keeps the list, search and filters in place.</p></li>
+<li><strong>Long conversations and sources</strong><p>Conversation compaction preserves original messages and image references. Search retains source links and supports reading matched pages. Past answers keep the model source used for that turn.</p></li>
 </ul>
+</section>
 
-<h2>v0.5.0 (2026-10-19)</h2>
-<ul>
-<li>Released v0.5.0 with the bundled hexclaw backend pinned to v0.5.0. Installers are available for macOS Apple Silicon / Intel, Windows x64, and Linux x64.</li>
-<li>Improved automatic saving of K12 unit study materials and PDFs from the same revision, clarified textbook sources, and grouped the Skills actually invoked in the processing details.</li>
-<li>Improved scripted math calculations and reuse of verified question-bank answers, with fixes to homework sources and annotated-image delivery.</li>
-<li>Unified DingTalk Markdown emphasis, links, and excerpts. Long teaching content is delivered as a short summary with a complete PDF.</li>
-<li>Fixed startup and conversation-switching errors caused by historical attachments, and hid internal page markers from knowledge-search text.</li>
+<section class="release" aria-labelledby="release-v0-5-0">
+<header class="release-meta">
+<h2 id="release-v0-5-0"><bdi>v0.5.0</bdi></h2>
+<time datetime="2026-10-19">2026-10-19</time>
+</header>
+<ul class="release-notes">
+<li><strong>Workflow canvas</strong><p>Configure nodes, follow run progress and browse past runs. Import or export workflows, trigger them on a schedule or through a Webhook, and save results to a chosen local directory.</p></li>
+<li><strong>Unit study materials</strong><p>Completed materials are saved to the library with a PDF matching the text. Reopen them to read the saved result, check textbook sources and see which teaching Skills were used.</p></li>
+<li><strong>Math checks and annotated homework</strong><p>Programmatic checks supplement math solutions, with verified questions reused when source and curriculum conditions match. Correcting a source keeps the original question numbers and corresponding annotated images.</p></li>
+<li><strong>Models and native reasoning</strong><p>Model settings distinguish native reasoning support from the thinking switch. Probe reasoning separately and set its effort level. Saving configuration preserves existing credentials and capability declarations.</p></li>
+<li><strong>Conversations and attachments</strong><p>Fix historical attachments causing startup or conversation-switching errors. Tool activity is consolidated, and internal page markers are removed from retrieved knowledge text.</p></li>
+<li><strong>Teaching messages in DingTalk</strong><p>Improve emphasis, links and summaries. Long teaching content supports a short summary with a complete PDF for reading on a phone.</p></li>
+<li><strong>Memory switches apply immediately</strong><p>The automatic memory extraction and recall switch takes effect after saving, without a restart. Turning it off retains existing memories and manual management.</p></li>
+<li><strong>Historical log search</strong><p>Search disk logs by time, level, source and keyword, with pagination and grouping. Records within the retention period remain available after a restart.</p></li>
 </ul>
-<p><a href="https://github.com/hexagon-codes/hexclaw-desktop/releases/tag/v0.5.0" target="_blank" rel="noopener noreferrer">View the v0.5.0 release and downloads</a></p>
+</section>
 
-<h2>v0.5.0-beta.3 (2026-10-04)</h2>
-<ul>
+<section class="release release-archive" aria-labelledby="release-v0-5-0-beta-3">
+<header class="release-meta">
+<h2 id="release-v0-5-0-beta-3"><bdi>v0.5.0-beta.3</bdi></h2>
+<time datetime="2026-10-04">2026-10-04</time>
+</header>
+<ul class="release-notes">
 <li>Added the K12 Homework Tutor for primary grades 1–6, covering math, Chinese, English, science, information technology, and art. Each child can have a separate assistant, grade and semester settings, math textbook edition, and learning profile.</li>
 <li>Teaching Skills for all six subjects provide parent teaching guides with full solutions, grade-appropriate methods, a teaching sequence, hints for when a child gets stuck, and follow-up questions to check understanding.</li>
 <li>Grade completed homework from photos with annotations on the original image; unanswered questions can receive full solutions and parent teaching guides.</li>
@@ -90,18 +105,28 @@
 <li>Fixed Windows packaging compatibility for document-rendering dependencies. Installers for macOS Apple Silicon / Intel, Windows x64, and Linux x64 are available for this beta on <a href="https://github.com/hexagon-codes/hexclaw-desktop/releases/tag/v0.5.0-beta.3" target="_blank" rel="noopener noreferrer">GitHub Release</a>.</li>
 <li>Desktop is v0.5.0-beta.3 and the bundled backend source is hexclaw v0.5.0-beta.1; the two versions are maintained independently.</li>
 </ul>
+</section>
 
-<h2>v0.4.9 (2026-07-04)</h2>
-<ul>
+<section class="release release-archive" aria-labelledby="release-v0-4-9">
+<header class="release-meta">
+<h2 id="release-v0-4-9"><bdi>v0.4.9</bdi></h2>
+<time datetime="2026-07-04">2026-07-04</time>
+</header>
+<ul class="release-notes">
 <li>Desktop and backend versions are aligned on v0.4.9; the bundled sidecar now builds from hexclaw v0.4.9 by default</li>
 <li>Agent improvements: structured SOUL editor, skill picker, advanced parameters, and safer edit-lock states</li>
 <li>Chat hardening: session branching, safer delete/export actions, persisted thinking duration, and tool-only message fallback</li>
 <li>Automation and connections: permission controls, schedule validation, MCP status refresh, and per-instance channel binding fixes</li>
 <li>Runtime fixes: graceful sidecar shutdown, memory behavior settings, inlined splash logo, and relaxed heavy-view test timeouts</li>
 </ul>
+</section>
 
-<h2>v0.4.8 (2026-06-28)</h2>
-<ul>
+<section class="release release-archive" aria-labelledby="release-v0-4-8">
+<header class="release-meta">
+<h2 id="release-v0-4-8"><bdi>v0.4.8</bdi></h2>
+<time datetime="2026-06-28">2026-06-28</time>
+</header>
+<ul class="release-notes">
 <li>Ordered content blocks: thinking, text, and tool calls now render interleaved in causal order, with new tool-call cards and a sub-agent panel</li>
 <li>Snappier sending: your message appears on screen instantly and is no longer blocked by the knowledge-base lookup (Auto-RAG) round-trip</li>
 <li>IM channels bind to an Agent: a channel binds directly to an Agent, with the model managed as an Agent property</li>
@@ -112,9 +137,14 @@
 <li>Memory unified into a single FileMemory; long-term memory now lives on the "Long-term Memory" page</li>
 <li>Engine upgraded to hexclaw v0.4.8</li>
 </ul>
+</section>
 
-<h2>v0.4.7 (2026-06-26)</h2>
-<ul>
+<section class="release release-archive" aria-labelledby="release-v0-4-7">
+<header class="release-meta">
+<h2 id="release-v0-4-7"><bdi>v0.4.7</bdi></h2>
+<time datetime="2026-06-26">2026-06-26</time>
+</header>
+<ul class="release-notes">
 <li>Error replies and like/dislike feedback now persist — they survive session switches and reloads, and feedback stays actionable</li>
 <li>Text-to-speech failures now show a clear toast instead of silently doing nothing</li>
 <li>Degeneration circuit breaker: detects and stops degenerate model output from polluting the conversation</li>
@@ -122,18 +152,28 @@
 <li>Interaction fixes: no false scroll-nav on new sessions, IME-composition Enter no longer mis-sends, and the session model no longer leaks across sessions</li>
 <li>Engine upgraded to hexclaw v0.4.7</li>
 </ul>
+</section>
 
-<h2>v0.4.6 (2026-06-23)</h2>
-<ul>
+<section class="release release-archive" aria-labelledby="release-v0-4-6">
+<header class="release-meta">
+<h2 id="release-v0-4-6"><bdi>v0.4.6</bdi></h2>
+<time datetime="2026-06-23">2026-06-23</time>
+</header>
+<ul class="release-notes">
 <li>MCP in the Connections hub: an MCP server's env credentials (DB passwords, API keys, etc.) are encrypted at rest with a master key; API responses are always redacted</li>
 <li>Graceful max-turns handling: when the tool-call turn limit is reached, partial results are returned with a "continue" hint instead of throwing an error; default turn limit raised to 25 (hard cap 50)</li>
 <li>File-memory mount fix: newly added memories are injected without a restart and take effect immediately</li>
 <li>Desktop notifications now carry a source tag (cron / IM) so the UI can map icons and deep links</li>
 <li>Engine upgraded to hexclaw v0.4.6 (Hexagon v0.5.3); Skills hub default branch bumped to v0.0.5</li>
 </ul>
+</section>
 
-<h2>v0.4.5 (2026-06-22)</h2>
-<ul>
+<section class="release release-archive" aria-labelledby="release-v0-4-5">
+<header class="release-meta">
+<h2 id="release-v0-4-5"><bdi>v0.4.5</bdi></h2>
+<time datetime="2026-06-22">2026-06-22</time>
+</header>
+<ul class="release-notes">
 <li>Connections hub (channels &amp; accounts + data connectors): channel cards reuse IM instances and email (SMTP/IMAP auto-configured by domain), encrypted locally — "store once, reference anywhere"</li>
 <li>Data connectors (GitHub / Notion): read-only token access with real connection tests and resource browsing; tokens encrypted at rest server-side, responses redacted</li>
 <li>Real linear-workflow editor: create / add / remove / reorder / edit steps, save, and dry-run with per-node status filled back live</li>
@@ -144,24 +184,39 @@
 <li>Windows builds now ship NSIS (<code>.exe</code>) only — no more <code>.msi</code>; Windows no longer bundles Ollama (guided separate install instead)</li>
 <li>Fixes: bottom-left engine version display, log trace_id label overlap, added the common.saving key across all three languages</li>
 </ul>
+</section>
 
-<h2>v0.4.2 (2026-06-16)</h2>
-<ul>
+<section class="release release-archive" aria-labelledby="release-v0-4-2">
+<header class="release-meta">
+<h2 id="release-v0-4-2"><bdi>v0.4.2</bdi></h2>
+<time datetime="2026-06-16">2026-06-16</time>
+</header>
+<ul class="release-notes">
 <li>Navigation IA overhaul: Chat pinned on its own + "Build / Connect / System" groups</li>
 <li>Skill detail shows SKILL.md read-only; terminology unified to "Skills"</li>
 <li>Knowledge-base document viewer renders Markdown; code blocks get wrapping, light bare-fence styling, and hover-to-copy</li>
 <li>Webhook handles the not-enabled state + navigation routing sync; session write API contract unified</li>
 <li>pandoc / typst moved to Tauri sidecars with download integrity checks; Windows release build fixed (render-bundle.sh works under git-bash)</li>
 </ul>
+</section>
 
-<h2>v0.4.1 (2026-06-03)</h2>
-<ul>
+<section class="release release-archive" aria-labelledby="release-v0-4-1">
+<header class="release-meta">
+<h2 id="release-v0-4-1"><bdi>v0.4.1</bdi></h2>
+<time datetime="2026-06-03">2026-06-03</time>
+</header>
+<ul class="release-notes">
 <li>Code-view rendering &amp; download + bundled pandoc / typst rendering chain</li>
 <li>Unified cron scheduled-task architecture + end-to-end SSE streaming compilation</li>
 </ul>
+</section>
 
-<h2>v0.4.0 (2026-04-30)</h2>
-<ul>
+<section class="release release-archive" aria-labelledby="release-v0-4-0">
+<header class="release-meta">
+<h2 id="release-v0-4-0"><bdi>v0.4.0</bdi></h2>
+<time datetime="2026-04-30">2026-04-30</time>
+</header>
+<ul class="release-notes">
 <li>Major refactor · unified text composer: removed the standalone image/video generation composers and the generation-parameter panel; every path now routes through a single ChatInput, matching the ChatGPT / Claude / Gemini paradigm (image/video use default parameters)</li>
 <li>Uyghur (ug) RTL support: 1330 i18n keys mapped 1:1 with Simplified Chinese, auto-setting <code>&lt;html dir=rtl lang=ug&gt;</code>; a global unicode-bidi: plaintext fallback keeps mixed CJK/Latin/number runs correctly oriented, while code / pre are forced LTR</li>
 <li>Apple HIG alignment across five dimensions: borders ≤1.5px, shadow alpha ≤0.12, explicit transition properties, pure Apple system font stack, accent-glow alpha ≤0.18</li>
@@ -170,9 +225,14 @@
 <li>New Interactive components (Buttons / Select / Approval / Card / Block) + the message.interactive protocol</li>
 <li>Backend hexclaw v0.4.0: Feature Flags / Skill Pipeline / model-capability probing / event transport v1 / model gateway v1 / tool lifecycle v2</li>
 </ul>
+</section>
 
-<h2>v0.3.8 (2026-04-14)</h2>
-<ul>
+<section class="release release-archive" aria-labelledby="release-v0-3-8">
+<header class="release-meta">
+<h2 id="release-v0-3-8"><bdi>v0.3.8</bdi></h2>
+<time datetime="2026-04-14">2026-04-14</time>
+</header>
+<ul class="release-notes">
 <li>Image generation: ZhipuAI CogView-4 support, images embedded as data URI (never expire), new ImageProvider interface in ai-core</li>
 <li>Video generation: ZhipuAI CogVideoX-2 support, async task polling, cover embedded + inline video player, new VideoProvider interface in ai-core</li>
 <li>Tool name i18n: 15 built-in tools mapped to localized names (code_exec → Sandbox, etc.), unknown MCP/custom tools fallback to raw name</li>
@@ -182,9 +242,14 @@
 <li>Smart routing UI: strategy dropdown hidden when routing is disabled</li>
 <li>Feishu reactions: changed from social emojis (💪☕🔥) to semantic Typing ⌨️ / THINKING 🤔</li>
 </ul>
+</section>
 
-<h2>v0.3.7 (2026-04-13)</h2>
-<ul>
+<section class="release release-archive" aria-labelledby="release-v0-3-7">
+<header class="release-meta">
+<h2 id="release-v0-3-7"><bdi>v0.3.7</bdi></h2>
+<time datetime="2026-04-13">2026-04-13</time>
+</header>
+<ul class="release-notes">
 <li>Thinking duration persistence: backend precisely records reasoning start/end time, persisted in DB meta field</li>
 <li>Auto session title: backend generates title from first user message on SaveUserMessage (no LLM dependency)</li>
 <li>Metadata persistence: provider, model, agent_name saved to message meta — survives app restart</li>
@@ -197,61 +262,101 @@
 <li>Gemma 4 thinking support: isLocalThinkingModel for timeout protection, no /no_think injection</li>
 <li>70+ new backend tests, 3542 frontend tests passing</li>
 </ul>
+</section>
 
-<h2>v0.3.6 (2026-04-11)</h2>
-<ul>
+<section class="release release-archive" aria-labelledby="release-v0-3-6">
+<header class="release-meta">
+<h2 id="release-v0-3-6"><bdi>v0.3.6</bdi></h2>
+<time datetime="2026-04-11">2026-04-11</time>
+</header>
+<ul class="release-notes">
 <li>Streaming scroll: allow upward scrolling during streaming output without auto-scroll interruption</li>
 <li>Agent/IM UI: optimized Agent selector and IM channel configuration interface</li>
 <li>New session send fix: resolved bug where first message in new session failed to send</li>
 </ul>
+</section>
 
-<h2>v0.3.5 (2026-04-06)</h2>
-<ul>
+<section class="release release-archive" aria-labelledby="release-v0-3-5">
+<header class="release-meta">
+<h2 id="release-v0-3-5"><bdi>v0.3.5</bdi></h2>
+<time datetime="2026-04-06">2026-04-06</time>
+</header>
+<ul class="release-notes">
 <li>Ollama auto-warmup: automatically load first downloaded model on startup, reducing first-chat latency</li>
 <li>Historical message think tag fallback: strip &lt;think&gt; tags when loading messages from backend, preventing raw reasoning text exposure</li>
 <li>MCP filesystem dynamic home dir: auto-append user home directory when installing filesystem MCP server, compatible with macOS/Windows/Linux</li>
 <li>TS2532 non-null assertion fixes: type-safe array index access for models[0] / chips[0]</li>
 </ul>
+</section>
 
-<h2>v0.3.4 (2026-04-06)</h2>
-<ul>
+<section class="release release-archive" aria-labelledby="release-v0-3-4">
+<header class="release-meta">
+<h2 id="release-v0-3-4"><bdi>v0.3.4</bdi></h2>
+<time datetime="2026-04-06">2026-04-06</time>
+</header>
+<ul class="release-notes">
 <li>Sidebar engine version display fix: watch sidecar ready state before fetching version info</li>
 <li>Unified version management: sync Cargo.toml / package.json / Sidebar / AboutModal versions</li>
 </ul>
+</section>
 
-<h2>v0.3.3 (2026-04-06)</h2>
-<ul>
+<section class="release release-archive" aria-labelledby="release-v0-3-3">
+<header class="release-meta">
+<h2 id="release-v0-3-3"><bdi>v0.3.3</bdi></h2>
+<time datetime="2026-04-06">2026-04-06</time>
+</header>
+<ul class="release-notes">
 <li>Version display overhaul: Sidebar, About modal, and System Status all use Tauri App version API</li>
 <li>API type alignment: getVersion return type includes engine_version field</li>
 <li>MCP filesystem dynamic home dir: resolveUserHome cross-platform home directory detection</li>
 </ul>
+</section>
 
-<h2>v0.3.2 (2026-04-06)</h2>
-<ul>
+<section class="release release-archive" aria-labelledby="release-v0-3-2">
+<header class="release-meta">
+<h2 id="release-v0-3-2"><bdi>v0.3.2</bdi></h2>
+<time datetime="2026-04-06">2026-04-06</time>
+</header>
+<ul class="release-notes">
 <li>&lt;think&gt; tag fallback extraction: models like glm-z1-airx embed reasoning in content, frontend auto-splits to reasoning field</li>
 <li>Adaptive dialog width: Settings dialogs auto-resize based on content</li>
 <li>Sidecar restart retry: automatic retry on failure for improved stability</li>
 <li>CI test robustness: existsSync guard, localStorage getItem verification, .at() to [0] index</li>
 </ul>
+</section>
 
-<h2>v0.3.1 (2026-04-06)</h2>
-<ul>
+<section class="release release-archive" aria-labelledby="release-v0-3-1">
+<header class="release-meta">
+<h2 id="release-v0-3-1"><bdi>v0.3.1</bdi></h2>
+<time datetime="2026-04-06">2026-04-06</time>
+</header>
+<ul class="release-notes">
 <li>Chip-style model selector: replaces dropdown menu, visually displays configured models with quick switching</li>
 <li>Dynamic model discovery: cloud providers auto-fetch available model lists</li>
 <li>210 TypeScript type errors fixed + 139 lint errors fixed</li>
 <li>61 failing tests fixed</li>
 </ul>
+</section>
 
-<h2>v0.3.0 (2026-04-05)</h2>
-<ul>
+<section class="release release-archive" aria-labelledby="release-v0-3-0">
+<header class="release-meta">
+<h2 id="release-v0-3-0"><bdi>v0.3.0</bdi></h2>
+<time datetime="2026-04-05">2026-04-05</time>
+</header>
+<ul class="release-notes">
 <li>MCP marketplace &amp; tool fixes: tool call pipeline fully connected, error messages properly returned</li>
 <li>Skill trigger optimization: improved keyword matching accuracy</li>
 <li>Ollama global warmup: auto-load models into memory after startup</li>
 <li>Ollama model management UI: download progress bar, running status panel</li>
 </ul>
+</section>
 
-<h2>v0.2.6 (2026-04-01)</h2>
-<ul>
+<section class="release release-archive" aria-labelledby="release-v0-2-6">
+<header class="release-meta">
+<h2 id="release-v0-2-6"><bdi>v0.2.6</bdi></h2>
+<time datetime="2026-04-01">2026-04-01</time>
+</header>
+<ul class="release-notes">
 <li>Structured trace logging: Go slog-based request-scoped logs with trace_id across WebSocket → gateway → engine → LLM pipeline, frontend log panel displays trace_id + structured field tags</li>
 <li>Fix SessionLock deadlock: consecutive messages in same session no longer block (P0 bug — pipeStream missing unlock)</li>
 <li>Fix cloud model MCP tool calls lost: pipeStreamWithTools now extracts tool_calls from LLM stream result</li>
@@ -260,9 +365,14 @@
 <li>E2E test suite: TypeScript + Playwright with 41 integration tests covering 11 subsystems</li>
 <li>Fix SettingsView flaky test</li>
 </ul>
+</section>
 
-<h2>v0.2.5 (2026-04-01)</h2>
-<ul>
+<section class="release release-archive" aria-labelledby="release-v0-2-5">
+<header class="release-meta">
+<h2 id="release-v0-2-5"><bdi>v0.2.5</bdi></h2>
+<time datetime="2026-04-01">2026-04-01</time>
+</header>
+<ul class="release-notes">
 <li>Thinking/Reasoning UI: stream thinking process for Qwen3/DeepSeek-R1 reasoning models with auto-expand/collapse, timer, and persistence</li>
 <li>Ollama local model full-chain fix: model selector shows local models, WebSocket user auth, streaming timeout optimization</li>
 <li>Splash screen follows system Light/Dark appearance, waits for engine ready</li>
@@ -272,9 +382,14 @@
 <li>Remove unavailable System Status tab and microphone button (Tauri WebView lacks Web Speech API)</li>
 <li>Homebrew install first-chat error fix (sidecar version mismatch + embedder nil panic)</li>
 </ul>
+</section>
 
-<h2>v0.2.4 (2026-03-29)</h2>
-<ul>
+<section class="release release-archive" aria-labelledby="release-v0-2-4">
+<header class="release-meta">
+<h2 id="release-v0-2-4"><bdi>v0.2.4</bdi></h2>
+<time datetime="2026-03-29">2026-03-29</time>
+</header>
+<ul class="release-notes">
 <li>MCP Marketplace: load mcp-registry.json, type filter for skill/mcp, one-click MCP Server install</li>
 <li>MCP status display fix: compatible with backend servers array format, shows "connected" correctly</li>
 <li>Sidecar PATH injection: auto-inject Homebrew/nvm/cargo paths on macOS GUI apps</li>
@@ -283,9 +398,14 @@
 <li>Security hardening: CSP tightened, MCP command allowlist, knowledge zip bomb protection, atomic config writes</li>
 <li>hexclaw-hub upgraded to v0.0.2</li>
 </ul>
+</section>
 
-<h2>v0.2.2 (2026-03-29)</h2>
-<ul>
+<section class="release release-archive" aria-labelledby="release-v0-2-2">
+<header class="release-meta">
+<h2 id="release-v0-2-2"><bdi>v0.2.2</bdi></h2>
+<time datetime="2026-03-29">2026-03-29</time>
+</header>
+<ul class="release-notes">
 <li>LLM Provider Select with logos — 14 providers total, 6 new Chinese providers: Zhipu AI, Kimi (Moonshot), Wenxin Yiyan (Baidu), Tencent Hunyuan, iFlytek Spark, MiniMax</li>
 <li>Ollama one-click install flow: detect → install → auto-poll → associate model</li>
 <li>MCP Tab mutual exclusion fix + i18n completion</li>
@@ -294,17 +414,27 @@
 <li>79 new tests (OllamaCard + ProviderSelect + McpView)</li>
 <li>Full CI lint/TS fix (83 ESLint + 59 TS errors → 0)</li>
 </ul>
+</section>
 
-<h2>v0.1.0-beta (2026-03-23) - Desktop Beta Release</h2>
-<ul>
+<section class="release release-archive" aria-labelledby="release-v0-1-0-beta">
+<header class="release-meta">
+<h2 id="release-v0-1-0-beta"><bdi>v0.1.0-beta</bdi></h2>
+<time datetime="2026-03-23">2026-03-23</time><p class="release-label">Desktop Beta Release</p>
+</header>
+<ul class="release-notes">
 <li>Shipped the desktop beta installers for macOS, Windows, and Linux, along with first-run onboarding and default role setup</li>
 <li>Expanded model provider support across OpenAI, DeepSeek, Anthropic, Gemini, Qwen, Doubao, Ollama, and custom OpenAI-compatible endpoints</li>
 <li>Upgraded the chat workspace with multi-model switching, artifact preview, document parsing, export, and deep research mode</li>
 <li>Rounded out advanced capabilities including MCP tool integration, RAG knowledge bases, semantic memory, scheduled jobs, the ClawHub skill marketplace, IM channels, and security controls</li>
 </ul>
+</section>
 
-<h2>v0.0.1 (2026-03-19) - Initial Release</h2>
-<ul>
+<section class="release release-archive" aria-labelledby="release-v0-0-1">
+<header class="release-meta">
+<h2 id="release-v0-0-1"><bdi>v0.0.1</bdi></h2>
+<time datetime="2026-03-19">2026-03-19</time><p class="release-label">Initial Release</p>
+</header>
+<ul class="release-notes">
 <li>Multi-model chat (OpenAI / DeepSeek / Anthropic / Gemini / Qwen / Ollama)</li>
 <li>Agent orchestration and multi-Agent meetings</li>
 <li>Visual workflow canvas</li>
@@ -317,7 +447,7 @@
 <li>Deep research mode</li>
 <li>Native support for three platforms (macOS / Windows / Linux)</li>
 </ul>
-
+</section>
 </main>
 <footer class="footer">
 <div class="footer-main">

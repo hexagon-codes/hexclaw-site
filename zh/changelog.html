@@ -37,6 +37,7 @@
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"河蟹 AI","item":"https://hexclaw.net/zh/"},{"@type":"ListItem","position":2,"name":"更新日志","item":"https://hexclaw.net/zh/changelog"}],"@id":"https://hexclaw.net/zh/changelog#breadcrumb"}
 </script>
 <link rel="stylesheet" href="../assets/css/docs-a35628a8707a.css">
+<link rel="stylesheet" href="../assets/css/changelog-067d3f968c11.css">
 </head>
 <body class="docs-page content-page changelog-page">
 <a href="#main" class="skip-link">跳转到主要内容</a>
@@ -47,37 +48,51 @@
 <main id="main" class="m content-main">
 <header class="page-lead">
 <h1>更新日志</h1>
-<p class="sub">河蟹 AI 桌面端版本更新记录。</p>
+<p class="sub">功能更新与问题修复。</p>
 </header>
 
-<h2>v0.5.1（2026-10-26）</h2>
-<ul>
-<li>发布 Desktop v0.5.1，内置后端固定为 v0.5.1，提供 macOS Apple Silicon / Intel、Windows x64 和 Linux x64 安装包。</li>
-<li>解题与批改：普通助手可直接处理文字和图片题，无需先创建孩子档案；题干可辨而学生作答不清时，保留未判结果，并提供独立参考解答。</li>
-<li>教学报告与打印：汇总解答、批改结果和家长讲法，支持教学图示与同版 PDF；桌面可预览、下载和打印，讲解生成失败时保留已核验答案。</li>
-<li>周练与补充练习：支持分区生成、补充练习单和中断后继续；重试保留原批次题数，手动练习不占自动周练的题量预算。</li>
-<li>学习档案与学情：档案保存冲突时保留输入，备份迁移保留原图和已核验题源；学情按真实作答时间、学科及作答证据更新。</li>
-<li>会话产物与导出：完整 HTML 成果支持预览、源码查看与下载；导出 Markdown、JSON 和 PDF 时保留上传图片。</li>
-<li>媒体任务：持久保存图片、视频和语音生成的执行与投递状态，支持中断后恢复；修复历史媒体与本地附件读取，未知结果不再当作成功。</li>
-<li>技能与资源：Skill、MCP 的安装、启停和卸载同步到运行时，支持带资源文件的目录型技能包；默认资源市场更新至 v0.0.13。</li>
-<li>智能体与连接：连接页补充用量和测试状态，修复实例改名后的 Agent 绑定及迟到模板覆盖草稿；补齐中、英、维处理过程与 RTL 显示细节。</li>
-<li>长期记忆：挂载 Skill 后仍可使用相关记忆，支持按智能体、人设和业务对象限定适用范围；条件问答逐轮判断，列表刷新保留已加载内容、搜索和筛选状态。</li>
-<li>上下文与引用：长会话压缩保留原始消息和图片引用，搜索保留原文链接并可读取命中页面；历史回答保留当轮实际模型来源。</li>
-<li>完整变更见 <a href="https://github.com/hexagon-codes/hexclaw/compare/v0.5.0...v0.5.1" target="_blank" rel="noopener noreferrer">HexClaw 后端</a>与 <a href="https://github.com/hexagon-codes/hexclaw-desktop/compare/v0.5.0...v0.5.1" target="_blank" rel="noopener noreferrer">Desktop</a>；安装包与 Homebrew Cask 更新见<a href="https://github.com/hexagon-codes/hexclaw-desktop/releases/tag/v0.5.1" target="_blank" rel="noopener noreferrer">正式发布记录</a>。</li>
+<section class="release" aria-labelledby="release-v0-5-1">
+<header class="release-meta">
+<h2 id="release-v0-5-1"><bdi>v0.5.1</bdi></h2>
+<time datetime="2026-10-26">2026-10-26</time>
+</header>
+<ul class="release-notes">
+<li><strong>直接解题与批改</strong><p>普通助手可直接处理文字和图片题，无需先建孩子档案。题干清楚、学生作答难以辨认时，保留未判结果，另给参考解答。</p></li>
+<li><strong>教学报告与打印</strong><p>解答、批改结果和家长讲法汇入同一份报告，可配教学图示，并预览、下载或打印对应 PDF。讲解生成失败时，仍保留已核验答案。</p></li>
+<li><strong>周练与补充练习</strong><p>练习支持分区生成、补充出题和中断后继续。重试保留原批次题数，手动练习单独计数，不占自动周练的题量。</p></li>
+<li><strong>学习档案与学情</strong><p>档案保存冲突时保留输入，备份恢复保留原图和已核验题源。学情按实际作答时间和学科更新，并区分独立作答与提示后完成。</p></li>
+<li><strong>会话成果预览与导出</strong><p>完整 HTML 成果可预览、查看源码并下载。导出 Markdown、JSON 或 PDF 时，一并保留会话中上传的图片。</p></li>
+<li><strong>媒体任务恢复</strong><p>图片、视频和语音生成会保存执行与投递状态，中断后可恢复。修复历史媒体和本地附件读取，结果未知时不再显示为成功。</p></li>
+<li><strong>技能与 MCP</strong><p>安装、启停或卸载 Skill、MCP 后，运行时同步更新。技能包支持携带模板、脚本等资源文件。</p></li>
+<li><strong>连接与智能体</strong><p>连接页显示用量和测试状态。修复连接改名后的智能体绑定、迟到模板覆盖草稿，以及三语处理过程和维语排版问题。</p></li>
+<li><strong>长期记忆</strong><p>挂载 Skill 后仍可读取相关记忆，并按智能体、人设和业务对象限定范围。问答约定逐轮判断；列表后台刷新保留内容、搜索和筛选状态。</p></li>
+<li><strong>长会话与来源引用</strong><p>压缩长会话时保留原始消息和图片引用。搜索结果保留原文链接，支持继续读取命中页面；历史回答保留当轮实际使用的模型来源。</p></li>
 </ul>
+</section>
 
-<h2>v0.5.0（2026-10-19）</h2>
-<ul>
-<li>发布 v0.5.0 正式版，桌面端与内置 hexclaw 后端均为 v0.5.0；提供 macOS Apple Silicon / Intel、Windows x64 和 Linux x64 安装包。</li>
-<li>完善 K12 单元资料自动保存与同版 PDF，明确教材来源，并在处理过程中汇总实际调用的 Skill。</li>
-<li>完善数学脚本计算与已验证题库答案复用，修正作业批改来源与批注图交付。</li>
-<li>统一钉钉 Markdown 强调、链接和摘要显示，长教学内容通过短摘要与完整 PDF 交付。</li>
-<li>修复历史附件引起的启动和会话切换错误，隐藏知识检索正文中的内部页码标记。</li>
+<section class="release" aria-labelledby="release-v0-5-0">
+<header class="release-meta">
+<h2 id="release-v0-5-0"><bdi>v0.5.0</bdi></h2>
+<time datetime="2026-10-19">2026-10-19</time>
+</header>
+<ul class="release-notes">
+<li><strong>工作流画布</strong><p>补齐节点配置、运行进度和历史记录，支持导入导出、定时或 Webhook 触发，并可将结果保存到指定本地目录。</p></li>
+<li><strong>单元学习资料</strong><p>整理完成的资料会保存到资料库，并生成与正文对应的 PDF。重新打开即可阅读，教材来源和实际调用的教学 Skill 也可查看。</p></li>
+<li><strong>数学核算与批改图</strong><p>数学题增加程序核算，可复用来源和课程条件相符的已验证题目。修正题源后，保留原题号及对应批注图。</p></li>
+<li><strong>模型与原生推理</strong><p>模型设置区分原生推理能力与思考开关，支持独立探测推理能力、设置思考力度。保存配置时保留已有密钥与能力声明。</p></li>
+<li><strong>会话与附件</strong><p>修复历史附件引起的启动和会话切换错误，汇总工具处理过程，并清理知识检索正文中的内部页码标记。</p></li>
+<li><strong>钉钉教学消息</strong><p>改善加粗、链接和摘要显示。长篇教学内容支持发送短摘要与完整 PDF，便于在手机上查看。</p></li>
+<li><strong>记忆开关即时生效</strong><p>自动记忆提取与召回总开关保存后生效，无需重启。关闭后仍保留已有记忆和手动管理能力。</p></li>
+<li><strong>历史日志检索</strong><p>可按时间、级别、来源和关键词查询磁盘日志，支持分页与分组，重启后仍可查阅保留期内的记录。</p></li>
 </ul>
-<p><a href="https://github.com/hexagon-codes/hexclaw-desktop/releases/tag/v0.5.0" target="_blank" rel="noopener noreferrer">查看 v0.5.0 正式发布与下载</a></p>
+</section>
 
-<h2>v0.5.0-beta.3（2026-10-04）</h2>
-<ul>
+<section class="release release-archive" aria-labelledby="release-v0-5-0-beta-3">
+<header class="release-meta">
+<h2 id="release-v0-5-0-beta-3"><bdi>v0.5.0-beta.3</bdi></h2>
+<time datetime="2026-10-04">2026-10-04</time>
+</header>
+<ul class="release-notes">
 <li>新增 K12「作业辅导助手」，面向小学一至六年级，覆盖数学、语文、英语、科学、信息科技和美术；每个孩子可配置独立助手、年级学期、数学教材版本和学习档案。</li>
 <li>六科教学 Skill 提供名师式讲解指南：完整答案、本年级解法、讲解顺序、孩子卡住时的提示，以及检查理解的追问，帮助家长先备课再辅导。</li>
 <li>支持拍照批改已完成的作业并在原图上批注；空白题可生成完整解答和家长讲解指南。</li>
@@ -90,18 +105,28 @@
 <li>修复 Windows 文档渲染依赖的打包兼容问题；提供 macOS Apple Silicon / Intel、Windows x64 和 Linux x64 安装包，可从 <a href="https://github.com/hexagon-codes/hexclaw-desktop/releases/tag/v0.5.0-beta.3" target="_blank" rel="noopener noreferrer">GitHub Release</a> 下载本次 Beta 版本。</li>
 <li>桌面端版本为 v0.5.0-beta.3，内置后端源码为 hexclaw v0.5.0-beta.1；两者独立维护版本。</li>
 </ul>
+</section>
 
-<h2>v0.4.9 (2026-07-04)</h2>
-<ul>
+<section class="release release-archive" aria-labelledby="release-v0-4-9">
+<header class="release-meta">
+<h2 id="release-v0-4-9"><bdi>v0.4.9</bdi></h2>
+<time datetime="2026-07-04">2026-07-04</time>
+</header>
+<ul class="release-notes">
 <li>桌面端与后端版本同步至 v0.4.9，内置 sidecar 默认构建自 hexclaw v0.4.9</li>
 <li>Agent 能力增强：结构化 SOUL 编辑器、技能选择器、高级参数与编辑锁定状态补齐</li>
 <li>Chat 体验加固：会话分支、删除/导出安全动作、思考时长持久化与纯工具消息兜底</li>
 <li>自动化与连接中心：权限控制、定时任务校验、MCP 状态刷新、通道按实例绑定修复</li>
 <li>运行时修复：sidecar 优雅退出、记忆行为设置、启动图标内联、重型视图测试超时放宽</li>
 </ul>
+</section>
 
-<h2>v0.4.8 (2026-06-28)</h2>
-<ul>
+<section class="release release-archive" aria-labelledby="release-v0-4-8">
+<header class="release-meta">
+<h2 id="release-v0-4-8"><bdi>v0.4.8</bdi></h2>
+<time datetime="2026-06-28">2026-06-28</time>
+</header>
+<ul class="release-notes">
 <li>有序内容块渲染：思考、正文与工具调用按因果顺序交错展示，新增工具调用卡片与子 Agent 面板</li>
 <li>发送更跟手：用户消息立即上屏，不再被知识库检索（Auto-RAG）往返阻塞</li>
 <li>IM 通道按 Agent 绑定：通道直接绑定 Agent，模型作为 Agent 属性统一管理</li>
@@ -112,9 +137,14 @@
 <li>记忆系统统一为单一 FileMemory，长期记忆集中在「长期记忆」页</li>
 <li>引擎升级至 hexclaw v0.4.8</li>
 </ul>
+</section>
 
-<h2>v0.4.7 (2026-06-26)</h2>
-<ul>
+<section class="release release-archive" aria-labelledby="release-v0-4-7">
+<header class="release-meta">
+<h2 id="release-v0-4-7"><bdi>v0.4.7</bdi></h2>
+<time datetime="2026-06-26">2026-06-26</time>
+</header>
+<ul class="release-notes">
 <li>报错回复与点赞/踩反馈持久化：切换会话或重载后不再丢失，反馈仍可再次操作</li>
 <li>朗读（TTS）失败时弹出明确提示，不再静默无响应</li>
 <li>退化熔断：检测并阻断模型退化输出，避免污染会话</li>
@@ -122,18 +152,28 @@
 <li>交互修复：新建会话不再误显滚动导航、输入法组合态回车不误发送、切换会话模型互不串扰</li>
 <li>引擎升级至 hexclaw v0.4.7</li>
 </ul>
+</section>
 
-<h2>v0.4.6 (2026-06-23)</h2>
-<ul>
+<section class="release release-archive" aria-labelledby="release-v0-4-6">
+<header class="release-meta">
+<h2 id="release-v0-4-6"><bdi>v0.4.6</bdi></h2>
+<time datetime="2026-06-23">2026-06-23</time>
+</header>
+<ul class="release-notes">
 <li>连接中心接入 MCP：MCP Server 的 env 凭据（数据库密码、API Key 等）经主密钥静态加密落盘，API 响应一律脱敏</li>
 <li>max-turns 优雅降级：达到工具调用轮次上限时返回部分结果并在末尾追加「继续」提示，不再向用户抛错；默认轮次上限提升至 25（兜底 50）</li>
 <li>文件记忆挂载修复：新增的记忆无需重启即可注入，问答即时生效</li>
 <li>桌面通知带来源标识（定时任务 / IM），便于前端映射图标与深链</li>
 <li>引擎升级至 hexclaw v0.4.6（Hexagon v0.5.3），技能市场默认分支升至 v0.0.5</li>
 </ul>
+</section>
 
-<h2>v0.4.5 (2026-06-22)</h2>
-<ul>
+<section class="release release-archive" aria-labelledby="release-v0-4-5">
+<header class="release-meta">
+<h2 id="release-v0-4-5"><bdi>v0.4.5</bdi></h2>
+<time datetime="2026-06-22">2026-06-22</time>
+</header>
+<ul class="release-notes">
 <li>连接中心（二分法）：通道与账号 + 数据连接器；通道卡片复用 IM 实例与邮箱（SMTP/IMAP 按域名自动配），本地加密、「一处存处处引」</li>
 <li>数据连接器（GitHub / Notion）：token 只读接入，真实测试连接与浏览资源，token 经后端加密落盘、响应脱敏</li>
 <li>线性工作流真实编辑器：新建 / 增删 / 排序 / 编辑步骤、保存、试运行，逐节点状态实时回填</li>
@@ -144,24 +184,39 @@
 <li>Windows 发版改为仅打 NSIS（<code>.exe</code>），不再提供 <code>.msi</code>；Windows 不再内嵌 Ollama，改为引导单独安装</li>
 <li>修复：左下角引擎版本号显示、日志 trace_id 标签重叠、补齐 common.saving 三语键</li>
 </ul>
+</section>
 
-<h2>v0.4.2 (2026-06-16)</h2>
-<ul>
+<section class="release release-archive" aria-labelledby="release-v0-4-2">
+<header class="release-meta">
+<h2 id="release-v0-4-2"><bdi>v0.4.2</bdi></h2>
+<time datetime="2026-06-16">2026-06-16</time>
+</header>
+<ul class="release-notes">
 <li>导航信息架构重构：Chat 独立置顶 +「构建 / 连接 / 系统」三组分区</li>
 <li>技能详情只读查看 SKILL.md，术语统一为「技能」</li>
 <li>知识库文档查看器渲染 Markdown；代码块折行、裸围栏轻装饰、hover 复制</li>
 <li>Webhook 未启用状态处理 + 导航路由同步；会话写接口契约统一</li>
 <li>pandoc / typst 改为 Tauri sidecar + 下载强校验；修复 Windows 发版构建（render-bundle.sh 兼容 git-bash）</li>
 </ul>
+</section>
 
-<h2>v0.4.1 (2026-06-03)</h2>
-<ul>
+<section class="release release-archive" aria-labelledby="release-v0-4-1">
+<header class="release-meta">
+<h2 id="release-v0-4-1"><bdi>v0.4.1</bdi></h2>
+<time datetime="2026-06-03">2026-06-03</time>
+</header>
+<ul class="release-notes">
 <li>代码视图渲染下载 + 捆绑 pandoc / typst 渲染链</li>
 <li>cron 定时任务统一架构 + 端到端 SSE 流式编译</li>
 </ul>
+</section>
 
-<h2>v0.4.0 (2026-04-30)</h2>
-<ul>
+<section class="release release-archive" aria-labelledby="release-v0-4-0">
+<header class="release-meta">
+<h2 id="release-v0-4-0"><bdi>v0.4.0</bdi></h2>
+<time datetime="2026-04-30">2026-04-30</time>
+</header>
+<ul class="release-notes">
 <li>重大重构 · 统一文本对话框：移除独立的图像 / 视频生成 composer 与生成参数面板，所有路径统一到唯一 ChatInput，对齐 ChatGPT / Claude / Gemini 范式（图像 / 视频走默认参数）</li>
 <li>维吾尔语（ug）RTL 支持：1330 条 i18n 与简体中文 1:1 对齐，自动设置 <code>&lt;html dir=rtl lang=ug&gt;</code>，unicode-bidi: plaintext 全局兜底保证中英文 / 数字混排方向正确，code / pre 强制 LTR</li>
 <li>Apple HIG 五维对齐：边框 ≤1.5px、阴影 alpha ≤0.12、显式过渡属性、纯 Apple 系字体、发光 alpha ≤0.18</li>
@@ -170,9 +225,14 @@
 <li>新增 Interactive 通用组件（Buttons / Select / Approval / Card / Block）+ message.interactive 新协议</li>
 <li>后端 hexclaw v0.4.0：Feature Flag / Skill Pipeline / 模型能力探测 / 事件传输 v1 / 模型网关 v1 / 工具生命周期 v2</li>
 </ul>
+</section>
 
-<h2>v0.3.8 (2026-04-14)</h2>
-<ul>
+<section class="release release-archive" aria-labelledby="release-v0-3-8">
+<header class="release-meta">
+<h2 id="release-v0-3-8"><bdi>v0.3.8</bdi></h2>
+<time datetime="2026-04-14">2026-04-14</time>
+</header>
+<ul class="release-notes">
 <li>图片生成：支持智谱 CogView-4，图片内嵌 data URI 永不过期，ai-core 新增 ImageProvider 接口</li>
 <li>视频生成：支持智谱 CogVideoX-2，异步任务轮询，封面内嵌 + 视频内联播放，ai-core 新增 VideoProvider 接口</li>
 <li>工具名 i18n：15 个内置工具中英文映射（code_exec → 代码沙箱 等），未映射的 MCP/自定义工具自动 fallback 原名</li>
@@ -182,9 +242,14 @@
 <li>智能路由 UI：关闭时隐藏策略下拉框，开启后才显示</li>
 <li>飞书 Reaction：从社交 emoji（💪☕🔥）改为语义精准的 Typing ⌨️ / THINKING 🤔</li>
 </ul>
+</section>
 
-<h2>v0.3.7 (2026-04-13)</h2>
-<ul>
+<section class="release release-archive" aria-labelledby="release-v0-3-7">
+<header class="release-meta">
+<h2 id="release-v0-3-7"><bdi>v0.3.7</bdi></h2>
+<time datetime="2026-04-13">2026-04-13</time>
+</header>
+<ul class="release-notes">
 <li>思考时长持久化：后端精确记录推理起止时间，写入 DB meta 字段，重启后保留</li>
 <li>会话标题自动生成：后端在保存用户消息时自动更新默认标题，无需 LLM 依赖</li>
 <li>元数据持久化：provider、model、agent_name 写入消息 meta，重启后仍显示</li>
@@ -197,60 +262,100 @@
 <li>Gemma 4 thinking 支持：超时保护生效，不注入无效 /no_think</li>
 <li>新增 70+ 后端测试，前端 3542 测试全绿</li>
 </ul>
+</section>
 
-<h2>v0.3.6 (2026-04-11)</h2>
-<ul>
+<section class="release release-archive" aria-labelledby="release-v0-3-6">
+<header class="release-meta">
+<h2 id="release-v0-3-6"><bdi>v0.3.6</bdi></h2>
+<time datetime="2026-04-11">2026-04-11</time>
+</header>
+<ul class="release-notes">
 <li>流式输出时允许向上滚动，不再被自动滚动打断</li>
 <li>Agent/IM UI 优化，新会话发送 bug 修复</li>
 </ul>
+</section>
 
-<h2>v0.3.5 (2026-04-06)</h2>
-<ul>
+<section class="release release-archive" aria-labelledby="release-v0-3-5">
+<header class="release-meta">
+<h2 id="release-v0-3-5"><bdi>v0.3.5</bdi></h2>
+<time datetime="2026-04-06">2026-04-06</time>
+</header>
+<ul class="release-notes">
 <li>Ollama 自动预热：启动时自动加载第一个已下载模型，减少首次对话延迟</li>
 <li>历史消息 think 标签兜底解析：从后端加载历史消息时自动剥离 &lt;think&gt; 标签，防止思考过程原文暴露</li>
 <li>MCP filesystem 动态 home 目录：安装 filesystem MCP 时自动追加用户 home 目录，兼容 macOS/Windows/Linux</li>
 <li>TS2532 非空断言修复：models[0] / chips[0] 等数组索引增加类型安全断言</li>
 </ul>
+</section>
 
-<h2>v0.3.4 (2026-04-06)</h2>
-<ul>
+<section class="release release-archive" aria-labelledby="release-v0-3-4">
+<header class="release-meta">
+<h2 id="release-v0-3-4"><bdi>v0.3.4</bdi></h2>
+<time datetime="2026-04-06">2026-04-06</time>
+</header>
+<ul class="release-notes">
 <li>侧边栏引擎版本号显示修复：监听 sidecar 就绪状态后再拉取版本信息</li>
 <li>版本号统一管理：Cargo.toml / package.json / Sidebar / AboutModal 版本号同步</li>
 </ul>
+</section>
 
-<h2>v0.3.3 (2026-04-06)</h2>
-<ul>
+<section class="release release-archive" aria-labelledby="release-v0-3-3">
+<header class="release-meta">
+<h2 id="release-v0-3-3"><bdi>v0.3.3</bdi></h2>
+<time datetime="2026-04-06">2026-04-06</time>
+</header>
+<ul class="release-notes">
 <li>版本号展示全面更新：侧边栏、关于弹窗、系统状态页均使用 Tauri App 版本 API</li>
 <li>API 类型对齐：getVersion 返回类型新增 engine_version 字段</li>
 <li>MCP filesystem 动态 home 目录：resolveUserHome 跨平台获取用户目录</li>
 </ul>
+</section>
 
-<h2>v0.3.2 (2026-04-06)</h2>
-<ul>
+<section class="release release-archive" aria-labelledby="release-v0-3-2">
+<header class="release-meta">
+<h2 id="release-v0-3-2"><bdi>v0.3.2</bdi></h2>
+<time datetime="2026-04-06">2026-04-06</time>
+</header>
+<ul class="release-notes">
 <li>&lt;think&gt; 标签兜底提取：部分模型（如智谱 glm-z1-airx）在 content 中返回思考过程，前端自动拆分到 reasoning 字段</li>
 <li>对话框自适应宽度：Settings 弹窗根据内容自动调整</li>
 <li>Sidecar 重启重试：失败时自动重试，提升稳定性</li>
 <li>CI 测试健壮性：existsSync 守卫、localStorage getItem 验证、.at() → [0] 索引</li>
 </ul>
+</section>
 
-<h2>v0.3.1 (2026-04-06)</h2>
-<ul>
+<section class="release release-archive" aria-labelledby="release-v0-3-1">
+<header class="release-meta">
+<h2 id="release-v0-3-1"><bdi>v0.3.1</bdi></h2>
+<time datetime="2026-04-06">2026-04-06</time>
+</header>
+<ul class="release-notes">
 <li>芯片式模型选择器：替代下拉菜单，直观展示已配置模型，支持快速切换</li>
 <li>动态模型发现：云端 Provider 自动拉取可用模型列表</li>
 <li>210 个 TypeScript 类型错误修复 + 139 个 lint 错误修复</li>
 <li>61 个失败测试修复</li>
 </ul>
+</section>
 
-<h2>v0.3.0 (2026-04-05)</h2>
-<ul>
+<section class="release release-archive" aria-labelledby="release-v0-3-0">
+<header class="release-meta">
+<h2 id="release-v0-3-0"><bdi>v0.3.0</bdi></h2>
+<time datetime="2026-04-05">2026-04-05</time>
+</header>
+<ul class="release-notes">
 <li>MCP 市场与工具修复：工具调用链路打通，错误信息正确返回</li>
 <li>Skill 触发优化：关键词匹配精度提升</li>
 <li>Ollama 全局预热：启动后自动加载模型到内存</li>
 <li>Ollama 模型管理 UI：模型下载进度条、运行状态面板</li>
 </ul>
+</section>
 
-<h2>v0.2.6 (2026-04-01)</h2>
-<ul>
+<section class="release release-archive" aria-labelledby="release-v0-2-6">
+<header class="release-meta">
+<h2 id="release-v0-2-6"><bdi>v0.2.6</bdi></h2>
+<time datetime="2026-04-01">2026-04-01</time>
+</header>
+<ul class="release-notes">
 <li>结构化追踪日志：基于 Go slog 的 request-scoped 日志，trace_id 贯穿 WebSocket → 网关 → 引擎 → LLM 全链路，前端日志面板实时展示 trace_id + fields 标签</li>
 <li>修复 SessionLock 死锁：同一会话连续发送消息不再阻塞（pipeStream 缺少 unlock 的 P0 bug）</li>
 <li>修复云模型 MCP 工具调用失效：pipeStreamWithTools 丢弃 LLM 返回的 tool_calls</li>
@@ -259,9 +364,14 @@
 <li>E2E 测试体系：TypeScript + Playwright 41 项集成测试，覆盖会话/知识库/记忆/Skill/MCP/网关/流式/日志 11 大子系统</li>
 <li>修复 SettingsView flaky 测试</li>
 </ul>
+</section>
 
-<h2>v0.2.5 (2026-04-01)</h2>
-<ul>
+<section class="release release-archive" aria-labelledby="release-v0-2-5">
+<header class="release-meta">
+<h2 id="release-v0-2-5"><bdi>v0.2.5</bdi></h2>
+<time datetime="2026-04-01">2026-04-01</time>
+</header>
+<ul class="release-notes">
 <li>Thinking/Reasoning UI：流式显示 Qwen3/DeepSeek-R1 等推理模型的思考过程，支持自动展开/折叠、耗时计时、持久化</li>
 <li>Ollama 本地模型全链路修复：模型选择器显示本地模型、WebSocket 用户鉴权、流式超时优化</li>
 <li>Splash Screen 跟随系统 Light/Dark 外观，等待引擎就绪后消失</li>
@@ -271,9 +381,14 @@
 <li>移除不可用的系统状态 Tab 和麦克风按钮（Tauri WebView 不支持 Web Speech API）</li>
 <li>Homebrew 安装后首次聊天报错修复（sidecar 版本不匹配 + embedder nil panic）</li>
 </ul>
+</section>
 
-<h2>v0.2.4 (2026-03-29)</h2>
-<ul>
+<section class="release release-archive" aria-labelledby="release-v0-2-4">
+<header class="release-meta">
+<h2 id="release-v0-2-4"><bdi>v0.2.4</bdi></h2>
+<time datetime="2026-03-29">2026-03-29</time>
+</header>
+<ul class="release-notes">
 <li>MCP 市场：加载 mcp-registry.json 注册表，支持按 type 过滤 skill/mcp，一键安装 MCP Server</li>
 <li>MCP 状态显示修复：兼容后端 servers 数组格式，正确显示"已连接"</li>
 <li>Sidecar PATH 注入：macOS GUI app 自动注入 Homebrew/nvm/cargo 路径，解决 npx 找不到</li>
@@ -282,9 +397,14 @@
 <li>安全加固：CSP 收紧、MCP 命令白名单、知识库 zip bomb 防护、配置原子写入</li>
 <li>hexclaw-hub 升级到 v0.0.2</li>
 </ul>
+</section>
 
-<h2>v0.2.2 (2026-03-29)</h2>
-<ul>
+<section class="release release-archive" aria-labelledby="release-v0-2-2">
+<header class="release-meta">
+<h2 id="release-v0-2-2"><bdi>v0.2.2</bdi></h2>
+<time datetime="2026-03-29">2026-03-29</time>
+</header>
+<ul class="release-notes">
 <li>新增 LLM 服务商选择器（含 Logo），支持 14 家服务商，新增 6 家国产：智谱 AI、Kimi（月之暗面）、文心一言（百度）、腾讯混元、讯飞星火、MiniMax</li>
 <li>Ollama 一键安装流程：检测 → 安装 → 自动轮询 → 关联模型</li>
 <li>MCP Tab 互斥修复 + i18n 国际化补全</li>
@@ -293,17 +413,27 @@
 <li>新增 79 个测试（OllamaCard + ProviderSelect + McpView）</li>
 <li>全量 CI lint/TS 修复（83 条 ESLint + 59 条 TS 错误 → 0）</li>
 </ul>
+</section>
 
-<h2>v0.1.0-beta (2026-03-23) - 桌面端 Beta 版本</h2>
-<ul>
+<section class="release release-archive" aria-labelledby="release-v0-1-0-beta">
+<header class="release-meta">
+<h2 id="release-v0-1-0-beta"><bdi>v0.1.0-beta</bdi></h2>
+<time datetime="2026-03-23">2026-03-23</time><p class="release-label">桌面端 Beta 版本</p>
+</header>
+<ul class="release-notes">
 <li>发布 macOS / Windows / Linux 三端桌面 Beta 安装包，并补齐首次启动向导与默认角色配置流程</li>
 <li>扩展模型服务商接入能力，支持 OpenAI、DeepSeek、Anthropic、Gemini、Qwen、豆包、Ollama 与自定义兼容 OpenAI API 的 Provider</li>
 <li>增强聊天工作台，支持多模型切换、Artifact 预览、文档解析、消息导出与深度研究模式</li>
 <li>补齐高级能力，包括 MCP 工具接入、知识库 RAG、语义记忆、定时任务、ClawHub 技能市场、IM 通道与安全网关</li>
 </ul>
+</section>
 
-<h2>v0.0.1 (2026-03-19) - 初始版本</h2>
-<ul>
+<section class="release release-archive" aria-labelledby="release-v0-0-1">
+<header class="release-meta">
+<h2 id="release-v0-0-1"><bdi>v0.0.1</bdi></h2>
+<time datetime="2026-03-19">2026-03-19</time><p class="release-label">初始版本</p>
+</header>
+<ul class="release-notes">
 <li>多模型聊天（OpenAI / DeepSeek / Anthropic / Gemini / Qwen / Ollama）</li>
 <li>Agent 编排与多 Agent 会议</li>
 <li>可视化工作流画布</li>
@@ -316,7 +446,7 @@
 <li>深度研究模式</li>
 <li>三端原生运行（macOS / Windows / Linux）</li>
 </ul>
-
+</section>
 </main>
 <footer class="footer">
 <div class="footer-main">

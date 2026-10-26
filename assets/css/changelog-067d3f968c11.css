@@ -1,0 +1,152 @@
+/* 更新日志沿用站点颜色与字体，版本和日期构成时间线，不使用逐版卡片。 */
+.changelog-page .content-main {
+  width: min(calc(100% - 64px), 1240px);
+  padding: 116px 0 96px;
+}
+
+.changelog-page .content-main > .page-lead {
+  max-width: none;
+  margin: 0 0 36px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  overflow: visible;
+}
+
+.changelog-page .page-lead::before {
+  display: none;
+}
+
+.changelog-page .page-lead h1 {
+  margin: 0 0 10px;
+  font-size: clamp(32px, 3.5vw, 42px);
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+}
+
+.changelog-page .page-lead .sub {
+  margin: 0;
+  font-size: 16px;
+  color: var(--text-secondary);
+}
+
+.changelog-page .release {
+  display: grid;
+  grid-template-columns: clamp(120px, 14vw, 200px) minmax(0, 1fr);
+  gap: clamp(28px, 4.5vw, 64px);
+  padding: 36px 0 40px;
+  border-top: 1px solid var(--border-strong);
+}
+
+.changelog-page .release-meta h2 {
+  margin: 0 0 8px;
+  padding: 0;
+  border: 0;
+  font-size: 25px;
+  line-height: 1.35;
+  letter-spacing: -0.025em;
+  overflow-wrap: anywhere;
+}
+
+.changelog-page .release-meta time {
+  display: block;
+  width: max-content;
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-muted);
+  direction: ltr;
+  unicode-bidi: isolate;
+}
+
+.changelog-page .release-notes {
+  min-width: 0;
+  max-width: 820px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.changelog-page .release-notes > li {
+  margin: 0 0 22px;
+  padding: 0;
+  font-size: 15.5px;
+  line-height: 1.85;
+  color: var(--text-secondary);
+  overflow-wrap: anywhere;
+}
+
+.changelog-page .release-notes > li:last-child {
+  margin-bottom: 0;
+}
+
+.changelog-page .release-notes strong {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.6;
+  color: var(--text-primary);
+}
+
+.changelog-page .release-notes p {
+  margin: 0;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.changelog-page .release-archive .release-notes {
+  padding-inline-start: 18px;
+  list-style: disc;
+}
+
+.changelog-page .release-archive .release-notes > li {
+  margin-bottom: 12px;
+}
+
+/* 窄屏将版本信息放在正文上方；逻辑方向属性同时适配维语。 */
+@media (max-width: 768px) {
+  .changelog-page .content-main {
+    width: 100%;
+    padding: 100px 24px 64px;
+  }
+
+  .changelog-page .release {
+    grid-template-columns: 120px minmax(0, 1fr);
+    gap: 28px;
+  }
+}
+
+@media (max-width: 600px) {
+  .changelog-page .content-main {
+    padding: 96px 22px 56px;
+  }
+
+  .changelog-page .content-main > .page-lead {
+    margin-bottom: 26px;
+  }
+
+  .changelog-page .release {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 22px;
+    padding: 26px 0 30px;
+  }
+
+  .changelog-page .release-meta {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+  }
+
+  .changelog-page .release-meta h2 {
+    margin: 0;
+    font-size: 23px;
+  }
+
+  .changelog-page .release-notes > li {
+    margin-bottom: 20px;
+    font-size: 15px;
+  }
+}
