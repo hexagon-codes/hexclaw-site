@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 1250" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif">
+  <rect x="0" y="0" width="1060" height="1250" fill="#ffffff"/>
+
+  <text x="530" y="50" text-anchor="middle" font-size="29" font-weight="800" fill="#12324c">Harness: The Tack for the Cyber Draft-Horse</text>
+  <text x="530" y="84" text-anchor="middle" font-size="15" fill="#5f7b9c">马具四件套 —— 四个信任问题，每格都是真实源码与常量；中间那台引擎是租来的</text>
+
+  <!-- Q1 缰绳·权限闸 -->
+  <rect x="30" y="110" width="465" height="450" rx="14" fill="#eef6fd" stroke="#3f8fd4" stroke-width="2"/>
+  <text x="55" y="148" font-size="18" font-weight="700" fill="#2b6cb0">🪢 REINS · 权限闸</text>
+  <text x="55" y="172" font-size="13" fill="#4a7fae">问题一：它能碰什么</text>
+  <rect x="55" y="190" width="415" height="130" rx="10" fill="#ffffff" stroke="#bcd9f0" stroke-width="1.5"/>
+  <text x="75" y="218" font-size="14" font-weight="700" fill="#12324c">工具三级分险 → 审批卡片</text>
+  <text x="75" y="241" font-size="13" fill="#5f7b9c" font-family="Menlo, monospace">safe / sensitive / dangerous</text>
+  <text x="75" y="262" font-size="13" fill="#5f7b9c">有后果的动作推审批到前端（工具名+参数+理由）</text>
+  <text x="75" y="283" font-size="13" fill="#5f7b9c">批过可"本会话记住"，不反复烦你</text>
+  <text x="75" y="306" font-size="12" fill="#8aa5bd">动作没有恶意判断，但"有后果"本身值得停一下</text>
+  <rect x="55" y="335" width="415" height="130" rx="10" fill="#ffffff" stroke="#bcd9f0" stroke-width="1.5"/>
+  <text x="75" y="363" font-size="14" font-weight="700" fill="#12324c">取数权收归代码（ingest_path）</text>
+  <text x="75" y="386" font-size="13" fill="#5f7b9c">工具只收路径不收内容，文件由代码自己读</text>
+  <text x="75" y="407" font-size="13" fill="#5f7b9c">≤ <tspan font-family="Menlo, monospace" fill="#2b6cb0" font-weight="700">200</tspan> 文件 · 必须合法 UTF-8 · 软链/.. 逃逸拒绝</text>
+  <text x="75" y="430" font-size="12" fill="#8aa5bd">目录枚举逐条重走安全解析，防符号链接绕路</text>
+  <text x="75" y="451" font-size="12" font-weight="700" fill="#2b6cb0">模型说读到什么不算，代码读到什么才算</text>
+  <text x="55" y="530" font-size="13" font-weight="700" fill="#2b6cb0">边界不靠藏工具实现，靠闸实现</text>
+
+  <!-- Q2 刹车·受控失败 -->
+  <rect x="565" y="110" width="465" height="450" rx="14" fill="#e9f6ef" stroke="#2f9e63" stroke-width="2"/>
+  <text x="590" y="148" font-size="18" font-weight="700" fill="#1f7a4a">🛑 BRAKES · 受控失败</text>
+  <text x="590" y="172" font-size="13" fill="#3c8a60">问题二：干砸了怎么办</text>
+  <rect x="590" y="190" width="415" height="130" rx="10" fill="#ffffff" stroke="#bfe3cf" stroke-width="1.5"/>
+  <text x="610" y="218" font-size="14" font-weight="700" fill="#12324c">按工具定超时，不拍全局值</text>
+  <text x="610" y="241" font-size="13" fill="#5f7b9c">默认 <tspan font-family="Menlo, monospace" fill="#1f7a4a" font-weight="700">30s</tspan> · browser <tspan font-family="Menlo, monospace" fill="#1f7a4a" font-weight="700">120s</tspan> · code_exec <tspan font-family="Menlo, monospace" fill="#1f7a4a" font-weight="700">60s</tspan></text>
+  <text x="610" y="264" font-size="13" fill="#5f7b9c">退避 <tspan font-family="Menlo, monospace" fill="#1f7a4a" font-weight="700">1s → ×2 → 封顶 8s</tspan>（带抖动）</text>
+  <text x="610" y="287" font-size="13" font-weight="700" fill="#1f7a4a">RetryIf(isTransientError) —— 只重瞬时错</text>
+  <text x="610" y="308" font-size="12" fill="#8aa5bd">重试是给运气准备的，不是给 bug 准备的</text>
+  <rect x="590" y="335" width="415" height="130" rx="10" fill="#ffffff" stroke="#bfe3cf" stroke-width="1.5"/>
+  <text x="610" y="363" font-size="14" font-weight="700" fill="#12324c">回合预算：体面地结束</text>
+  <text x="610" y="386" font-size="13" fill="#5f7b9c">默认上限 <tspan font-family="Menlo, monospace" fill="#1f7a4a" font-weight="700">25</tspan> 轮 ——"达到上限是正常终止"</text>
+  <text x="610" y="407" font-size="13" fill="#5f7b9c">budget 模式绝对安全上限 <tspan font-family="Menlo, monospace" fill="#1f7a4a" font-weight="700">50</tspan> 轮</text>
+  <text x="610" y="430" font-size="12" fill="#8aa5bd">预算不是限制能力，是给"干不完"一个出口</text>
+  <text x="610" y="451" font-size="12" fill="#8aa5bd">失控的长任务比失败的短任务贵得多</text>
+  <text x="590" y="530" font-size="13" font-weight="700" fill="#1f7a4a">马具的价值不是保证不摔，是保证摔得起</text>
+
+  <!-- Q3 监工·裁判家族 -->
+  <rect x="30" y="610" width="465" height="450" rx="14" fill="#fdf3e7" stroke="#d97706" stroke-width="2"/>
+  <text x="55" y="648" font-size="18" font-weight="700" fill="#b25e04">👁 JUDGES · 裁判家族</text>
+  <text x="55" y="672" font-size="13" fill="#c07a2e">问题三：谁盯着它 —— 绝不采信执行器的自我报告</text>
+  <rect x="55" y="690" width="415" height="76" rx="10" fill="#ffffff" stroke="#f0d9ba" stroke-width="1.5"/>
+  <text x="75" y="716" font-size="14" font-weight="700" fill="#12324c">risk 审查（无人值守准入）</text>
+  <text x="75" y="737" font-size="13" fill="#5f7b9c">只回一个词 · MaxTokens=<tspan font-family="Menlo, monospace" fill="#b25e04" font-weight="700">16</tspan> · 只放行 low</text>
+  <text x="75" y="757" font-size="12" font-weight="700" fill="#d64545">判级失败/没配裁判 → 一律拒（fail-closed）</text>
+  <rect x="55" y="776" width="415" height="76" rx="10" fill="#ffffff" stroke="#f0d9ba" stroke-width="1.5"/>
+  <text x="75" y="802" font-size="14" font-weight="700" fill="#12324c">skill 打分（LLM-as-judge）</text>
+  <text x="75" y="823" font-size="13" fill="#5f7b9c">采样 <tspan font-family="Menlo, monospace" fill="#b25e04" font-weight="700">10%</tspan> · 差表现沉淀改进草稿</text>
+  <text x="75" y="843" font-size="12" font-weight="700" fill="#2f9e63">judge 抖动 → 返满分（fail-open），不产噪音</text>
+  <rect x="55" y="862" width="415" height="76" rx="10" fill="#ffffff" stroke="#f0d9ba" stroke-width="1.5"/>
+  <text x="75" y="888" font-size="14" font-weight="700" fill="#12324c">solve verifier（独立重算）</text>
+  <text x="75" y="909" font-size="13" fill="#5f7b9c">全新上下文 · 只有 code_exec 一个工具</text>
+  <text x="75" y="929" font-size="12" fill="#8aa5bd">看不到解题过程，只能自己算</text>
+  <rect x="55" y="948" width="415" height="76" rx="10" fill="#ffffff" stroke="#f0d9ba" stroke-width="1.5"/>
+  <text x="75" y="974" font-size="14" font-weight="700" fill="#12324c">C1 守卫（说了不算，调了才算）</text>
+  <text x="75" y="995" font-size="13" fill="#5f7b9c">声称入库但没调 knowledge_ingest → 判失败</text>
+  <text x="75" y="1015" font-size="12" fill="#8aa5bd">输出不算，副作用才算</text>
+  <text x="55" y="1046" font-size="13" font-weight="700" fill="#b25e04">两道闸故意朝相反方向失效 —— 闸的方向比闸本身重要</text>
+
+  <!-- Q4 护具·沙箱（刚大修） -->
+  <rect x="565" y="610" width="465" height="450" rx="14" fill="#f3effa" stroke="#8b6cc7" stroke-width="2"/>
+  <text x="590" y="648" font-size="18" font-weight="700" fill="#6a4fa3">🛡 ARMOR · 沙箱</text>
+  <text x="590" y="672" font-size="13" fill="#8b6cc7">问题四：它在哪儿干活 —— 刚大修过的护具</text>
+  <rect x="590" y="690" width="415" height="112" rx="10" fill="#ffffff" stroke="#d8ccee" stroke-width="1.5"/>
+  <text x="610" y="718" font-size="14" font-weight="700" fill="#12324c">执行模式四档：从跑代码到跑项目</text>
+  <text x="610" y="741" font-size="13" fill="#5f7b9c" font-family="Menlo, monospace">snippet / file / module / project</text>
+  <text x="610" y="762" font-size="13" fill="#5f7b9c">工作区命令执行 · 产物文件带回 · 长输出上限</text>
+  <text x="610" y="785" font-size="12" fill="#8aa5bd">弱模型入口推断：只会发 mode=file 也能被引导</text>
+  <rect x="590" y="817" width="415" height="96" rx="10" fill="#ffffff" stroke="#d8ccee" stroke-width="1.5"/>
+  <text x="610" y="845" font-size="14" font-weight="700" fill="#12324c">隔离纪律</text>
+  <text x="610" y="868" font-size="13" fill="#5f7b9c">宿主工作区不泄漏进隔离运行 · 只读路径热更新</text>
+  <text x="610" y="891" font-size="12" fill="#8aa5bd">macOS Seatbelt · cron Starlark 8MiB/1e8步/300s</text>
+  <rect x="590" y="928" width="415" height="96" rx="10" fill="#ffffff" stroke="#d8ccee" stroke-width="1.5"/>
+  <text x="610" y="956" font-size="14" font-weight="700" fill="#6a4fa3">专属 CI：沙箱有自己的流水线</text>
+  <text x="610" y="979" font-size="13" fill="#5f7b9c">跨操作系统矩阵专门测沙箱——"跨平台假可用"</text>
+  <text x="610" y="1000" font-size="13" fill="#5f7b9c">钉进持续集成 🚧 在补：依赖安装 / 更深平台隔离</text>
+  <text x="590" y="1046" font-size="13" font-weight="700" fill="#6a4fa3">"活"已从"跑段代码"升级为"动我的项目"</text>
+
+  <!-- 中央引擎 -->
+  <circle cx="530" cy="585" r="66" fill="#12324c"/>
+  <text x="530" y="573" text-anchor="middle" font-size="16" font-weight="800" fill="#ffffff">MODEL</text>
+  <text x="530" y="595" text-anchor="middle" font-size="12" fill="#9db2c4">引擎（租来的）</text>
+  <text x="530" y="616" text-anchor="middle" font-size="11" fill="#9db2c4">能力对所有人一视同仁</text>
+
+  <!-- 底部结论 -->
+  <rect x="30" y="1092" width="1000" height="56" rx="12" fill="#12324c"/>
+  <text x="530" y="1119" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">⭐ Agent = Model × Harness：聪明是模型给的，<tspan fill="#5fb3ea">敢让它干活的底气是马具给的</tspan></text>
+  <text x="530" y="1140" text-anchor="middle" font-size="12" fill="#9db2c4">同一个模型，换套马具，就是另一种系统能力（LangChain 实证：仅换 Harness，终端跑分 52.8% → 66.5%）</text>
+
+  <text x="530" y="1190" text-anchor="middle" font-size="13" fill="#8aa5bd">HexClaw 河蟹 AI · Harness 马具全景 · 常量核验于 2026-07-02（main 分支，沙箱升级按"在补"披露）</text>
+</svg>

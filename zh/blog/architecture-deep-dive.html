@@ -1,0 +1,1376 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/favicon-32.png">
+<title>HexClaw 架构详解：一个人 + Claude + 5 个月，用 Go 从零构建六仓库全栈开源 AI Agent 生态｜HexClaw 技术博客</title>
+<meta name="description" content="HexClaw 架构详解：一个人 + Claude + 5 个月，用 Go 从零构建六仓库全栈开源 AI Agent 生态。分层架构、核心协议与通信契约全面拆解。">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:site_name" content="河蟹 AI">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HexClaw 架构详解：一个人 + Claude + 5 个月，用 Go 从零构建六仓库全栈开源 AI Agent 生态｜HexClaw 技术博客">
+<meta property="og:description" content="HexClaw 架构详解：一个人 + Claude + 5 个月，用 Go 从零构建六仓库全栈开源 AI Agent 生态。分层架构、核心协议与通信契约全面拆解。">
+<meta property="og:url" content="https://hexclaw.net/zh/blog/architecture-deep-dive">
+<meta property="og:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta property="og:image:alt" content="河蟹 AI 标志">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="HexClaw 架构详解：一个人 + Claude + 5 个月，用 Go 从零构建六仓库全栈开源 AI Agent 生态｜HexClaw 技术博客">
+<meta name="twitter:description" content="HexClaw 架构详解：一个人 + Claude + 5 个月，用 Go 从零构建六仓库全栈开源 AI Agent 生态。分层架构、核心协议与通信契约全面拆解。">
+<meta name="twitter:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta name="twitter:image:alt" content="河蟹 AI 标志">
+<link rel="canonical" href="https://hexclaw.net/zh/blog/architecture-deep-dive">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "HexClaw 架构详解：一个人 + Claude + 5 个月，用 Go 从零构建六仓库全栈开源 AI Agent 生态",
+  "description": "HexClaw 架构详解：一个人 + Claude + 5 个月，用 Go 从零构建六仓库全栈开源 AI Agent 生态。分层架构、核心协议与通信契约全面拆解。",
+  "url": "https://hexclaw.net/zh/blog/architecture-deep-dive",
+  "inLanguage": "zh-CN",
+  "datePublished": "2026-03-30",
+  "image": "https://hexclaw.net/assets/brand/hexclaw-logo.png",
+  "publisher": {
+    "@type": "Organization",
+    "name": "hexagon-codes",
+    "url": "https://hexclaw.net/",
+    "@id": "https://hexclaw.net/#organization"
+  },
+  "@id": "https://hexclaw.net/zh/blog/architecture-deep-dive#article"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "河蟹 AI", "item": "https://hexclaw.net/zh/"},
+    {"@type": "ListItem", "position": 2, "name": "技术博客", "item": "https://hexclaw.net/zh/blog/"},
+    {"@type": "ListItem", "position": 3, "name": "HexClaw 架构详解：一个人 + Claude + 5 个月，用 Go 从零构建六仓库全栈开源 AI Agent 生态", "item": "https://hexclaw.net/zh/blog/architecture-deep-dive"}
+  ],
+  "@id": "https://hexclaw.net/zh/blog/architecture-deep-dive#breadcrumb"
+}
+</script>
+<link rel="stylesheet" href="../../assets/css/docs-057a0f50bd0a.css">
+<link rel="stylesheet" href="../../assets/css/blog.css">
+</head>
+<body class="blog-page blog-article-page">
+<a href="#main" class="skip-link">跳转到主要内容</a>
+<nav class="tn topnav" id="nav">
+  <a href="/zh/" class="tn-b topnav-brand">
+    <img width="72" height="72" src="../../assets/brand/hexclaw-icon-72.png" class="tn-l topnav-logo" alt="河蟹 AI">
+    <span class="tn-n topnav-name">河蟹 AI</span>
+  </a>
+  <button type="button" class="tn-burger topnav-burger" aria-label="菜单" aria-expanded="false" aria-controls="primary-navigation">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="tn-r topnav-links" id="primary-navigation">
+    <a href="/zh/">首页</a>
+    <a href="/zh/#cases">使用场景</a>
+    <a href="/zh/#features">产品能力</a>
+    <a href="/zh/#quickstart">开始使用</a>
+    <a href="/zh/#ecosystem">开源生态</a>
+    <a href="/zh/blog/" class="is-active">技术博客</a>
+    <a href="/zh/docs/">文档中心</a>
+    <div class="lang-menu" data-lang-menu>
+      <button type="button" class="lang-trigger" aria-haspopup="menu" aria-expanded="false" aria-label="切换语言">
+        <svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="10"></circle>
+          <path d="M2 12h20"></path>
+          <path d="M12 2a15.3 15.3 0 0 1 0 20"></path>
+          <path d="M12 2a15.3 15.3 0 0 0 0 20"></path>
+        </svg>
+        <span class="lang-current">中文</span>
+        <svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="m6 9 6 6 6-6"></path>
+        </svg>
+      </button>
+      <div class="lang-menu-list" role="menu">
+        <a href="/zh/blog/architecture-deep-dive" role="menuitem" class="is-active" aria-current="true">中文</a>
+        <a href="/en/" role="menuitem">English</a>
+        <a href="/ug/" role="menuitem" lang="zh-CN" dir="ltr">维吾尔语</a>
+      </div>
+    </div>
+    <button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="切换主题">
+      <svg class="ti-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="5"></circle>
+        <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+      </svg>
+      <svg class="ti-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+      </svg>
+    </button>
+    <a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="nav-cta">GitHub <span class="nav-star-badge" id="gh-stars">&#9733;</span></a>
+  </div>
+</nav>
+
+<main id="main" class="blog-main">
+  <div class="blog-article-container">
+    <nav class="blog-breadcrumb" aria-label="面包屑导航">
+      <a href="/zh/">首页</a>
+      <span class="blog-breadcrumb-sep">/</span>
+      <a href="/zh/blog/">技术博客</a>
+      <span class="blog-breadcrumb-sep">/</span>
+      <span aria-current="page">架构与工程</span>
+    </nav>
+
+    <header class="blog-header">
+      <div class="blog-header-tags">
+        <span class="blog-badge-series">生态全景</span>
+      </div>
+      <h1 class="blog-article-title">HexClaw 架构详解：一个人 + Claude + 5 个月，用 Go 从零构建六仓库全栈开源 AI Agent 生态</h1>
+      <p class="blog-article-subtitle">HexClaw 架构详解：一个人 + Claude + 5 个月，用 Go 从零构建六仓库全栈开源 AI Agent 生态。分层架构、核心协议与通信契约全面拆解。</p>
+      <div class="article-provenance-banner">
+        <div class="provenance-left">
+          <span class="provenance-origin-badge">微信公众号首发</span>
+          <span class="provenance-text">本文首发于<strong>「HexClaw 河蟹开源AI」</strong>官方技术专栏 · 发表于 <strong>2026年3月30日</strong> · 预计阅读 13 分钟</span>
+        </div>
+        <a href="https://mp.weixin.qq.com/s/wIRiJsWLRPWBiTEQtlVQkg" target="_blank" rel="noopener noreferrer" class="provenance-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          微信原文 ↗
+        </a>
+      </div>
+    </header>
+
+    <article class="blog-content">
+      <p>去年我想给自己部署一个 AI Agent。</p>
+<p>市面上 AI Agent
+产品不少，大厂也纷纷入场，但翻来覆去就是这几个问题：</p>
+<ul>
+<li><strong>开源的不安全</strong>——OpenClaw（龙虾）功能最全、社区最大，但安全基本裸奔，成本控制也没有，生产环境不敢上</li>
+<li><strong>安全的不开源</strong>——商业产品合规做得好，但闭源云托管，数据出境不可控，按月付费不便宜</li>
+<li><strong>能用的不支持国内平台</strong>——飞书、钉钉、企微、微信公众号，海外产品基本不覆盖</li>
+</ul>
+<p>我需要的是：<strong>开源产品的功能广度 + 商业产品的安全等级 +
+国内平台全覆盖</strong>，同时自托管、单二进制部署。找了一圈没有，就自己造了一个。一个人
++ Claude 结对，六个仓库，全栈 AI Agent。这就是
+<strong>HexClaw（河蟹）</strong>。</p>
+<p>本文拆解完整架构——技术决策、实现细节、踩过的坑，摊开讲。</p>
+<p>开始之前，先对齐几个概念（如果你已经很熟可以跳过）：</p>
+<blockquote>
+<p><strong>LLM</strong> =
+读过所有书的天才大学生，啥都懂但知识有保质期，偶尔会编（幻觉）
+<strong>RAG</strong> = 给这个大学生递小抄，让他引经据典而不是胡编
+<strong>MCP</strong> = 万能 USB 转接头，让大脑和各种工具即插即用
+<strong>Agent</strong> = 全能打工人，能自主规划、调用工具、交付结果
+<strong>Skills</strong> = 打工人的专业技能证书，按需加载 <strong>Agent
+集群</strong> = 一群打工人组成的团队，分工协作</p>
+</blockquote>
+<p>HexClaw
+做的事情，就是把这些概念工程化落地成一个<strong>能跑的系统</strong>。</p>
+<h3 id="关键数字">关键数字</h3>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>指标</th>
+<th>数值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>仓库数</td>
+<td><strong>6 个</strong>（toolkit → ai-core → hexagon → hexclaw →
+hexclaw-desktop / hexagon-ui）</td>
+</tr>
+<tr>
+<td>全生态代码量</td>
+<td><strong>~56 万行</strong>（hexagon 21.5w + hexclaw-desktop 17.7w +
+toolkit 8.1w + hexclaw 5.8w + ai-core 2.3w + hexagon-ui 0.3w）</td>
+</tr>
+<tr>
+<td>基础库代码量</td>
+<td><strong>81,000 行</strong>（toolkit，纯 Go 标准库，零外部依赖）</td>
+</tr>
+<tr>
+<td>沙箱代码量</td>
+<td><strong>2,713 行</strong>（Go 原生三平台沙箱，替代 Docker，启动
+&lt;10ms）</td>
+</tr>
+<tr>
+<td>Agent 类型</td>
+<td><strong>10 种</strong>（从 ReAct 到
+Supervisor，覆盖简单到复杂全谱系）</td>
+</tr>
+<tr>
+<td>安全网关</td>
+<td><strong>6 层</strong> Fail-closed 管道（Auth → 限流 → 预算 →
+注入检测 → RBAC → 审计）</td>
+</tr>
+<tr>
+<td>消息平台</td>
+<td><strong>13 种</strong>（飞书 / 钉钉 / 企微 / 微信 / Telegram /
+Discord / Slack / WhatsApp / LINE / Matrix / Email / Web / API）</td>
+</tr>
+<tr>
+<td>API 端点</td>
+<td><strong>71 个</strong>（RESTful + WebSocket）</td>
+</tr>
+<tr>
+<td>向量存储</td>
+<td><strong>8 种</strong> 后端（Qdrant / FAISS / PgVector / Redis /
+Milvus / Chroma / Pinecone / Weaviate）</td>
+</tr>
+<tr>
+<td>启动时间</td>
+<td><strong>&lt;100ms</strong>（Go 单二进制，<code>hexclaw serve</code>
+一条命令）</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="全景六仓库五层架构">全景：六仓库、五层架构</h2>
+<figure>
+<p style="background:#f0f0f0; padding:30px 20px; text-align:center; color:#999; border-radius:6px; margin:15px 0;">【图片位置：HexClaw 生态依赖关系图】</p>
+<figcaption aria-hidden="true">HexClaw 生态依赖关系图</figcaption>
+</figure>
+<pre><code>                    hexclaw-desktop (Tauri 桌面端)
+                    hexagon-ui (观测台)
+                          │
+                    ┌─────▼─────┐
+                    │  hexclaw   │  应用层：适配器、网关、Skill、API
+                    └─────┬─────┘
+                          │
+                    ┌─────▼─────┐
+                    │  hexagon  │  AI Agent 框架引擎：ReAct、Workflow、
+                    │           │  Plugin、A2A、Graph、Compose
+                    └──┬─────┬──┘
+                       │     │
+                 ┌─────▼──┐  │
+                 │ai-core │  │  AI 能力底座：LLM Provider、
+                 │        │  │  Embedding、Function Calling
+                 └────┬───┘  │
+                      │      │
+                 ┌────▼──────▼┐
+                 │  toolkit   │  通用基础库（最底层，所有 Go 模块依赖）
+                 └────────────┘</code></pre>
+<p>六个仓库，依赖严格单向自下而上，<strong>不允许反向依赖和跨层调用</strong>——这是整个生态可复用、可扩展、可独立演进的基础：</p>
+<ul>
+<li>toolkit / ai-core 可以被任何 Go 项目引用，不绑定 HexClaw</li>
+<li>hexagon 作为通用 AI Agent 引擎，可脱离 hexclaw
+独立使用，构建完全不同的 Agent 应用</li>
+<li>hexclaw 作为 AI Agent
+应用后端，只做应用层编排，新增能力下沉到对应层而非就地实现</li>
+</ul>
+<table>
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 28%" />
+<col style="width: 42%" />
+</colgroup>
+<thead>
+<tr>
+<th>层级</th>
+<th>职责</th>
+<th>变化频率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>toolkit</strong></td>
+<td>通用基础库（HTTP / 缓存 / 加密 / 协程池）</td>
+<td>极低</td>
+</tr>
+<tr>
+<td><strong>ai-core</strong></td>
+<td>AI 能力底座（7 种 LLM Provider / Embedding / Smart Router）</td>
+<td>中等</td>
+</tr>
+<tr>
+<td><strong>hexagon</strong></td>
+<td>Agent 框架引擎（10 种 Agent / Graph 编排 / RAG / 安全 /
+可观测）</td>
+<td>中等</td>
+</tr>
+<tr>
+<td><strong>hexclaw</strong></td>
+<td>应用层（13 平台适配 / 6 层网关 / Skill / 71 API）</td>
+<td>高</td>
+</tr>
+<tr>
+<td><strong>hexclaw-desktop / hexagon-ui</strong></td>
+<td>桌面 / 观测台</td>
+<td>高</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="为什么选-go为什么自研框架">为什么选 Go、为什么自研框架？</h2>
+<p>两个问题一起回答。</p>
+<p><strong>语言选择</strong>：Agent 的瓶颈是 I/O——等 LLM
+响应、等工具执行、等 13 个平台 Webhook。goroutine 比 Python asyncio
+高效一个数量级且没有 GIL。部署上，<code>hexclaw serve</code>
+一条命令跑，不用折腾虚拟环境。</p>
+<p><strong>框架选择</strong>：Python 阵营评估过
+LangChain/LangGraph（生态最大但受限于
+GIL）、CrewAI（上手快但编排偏弱）；Go 阵营评估过
+Eino（字节出品，但安全模块缺失）。最终自建——因为 <strong>Go 原生 +
+企业级安全 + 完整 RAG + 生产级可观测</strong>
+这个组合，确实没有现成的。</p>
+<p>Hexagon
+取名自「六边形战士」，聚焦六大维度均衡发展：易用性、性能、扩展性、编排、可观测性、安全。</p>
+<figure>
+<p style="background:#f0f0f0; padding:30px 20px; text-align:center; color:#999; border-radius:6px; margin:15px 0;">【图片位置：Hexagon AI Agent Framework 六层架构图】</p>
+<figcaption aria-hidden="true">Hexagon AI Agent Framework
+六层架构图</figcaption>
+</figure>
+<pre><code>              Hexagon AI Agent Framework Architecture
+              ========================================
+
+  ┌─ Application Layer ────────────────────────────────────────┐
+  │  ChatBot    RAG Agent    Workflow    Multi-Agent    Custom  │
+  ├─ Orchestration Layer ──────────────────────────────────────┤
+  │  Router   Planner   Scheduler   Executor   Graph   State   │
+  ├─ Agent Core Layer ─────────────────────────────────────────┤
+  │  Agent   Role   Team   Network   Handoff   Context   Msg   │
+  ├─ Capability Layer ─────────────────────────────────────────┤
+  │  LLM Provider    RAG Engine    Tool System    Memory    KB │
+  │  (ai-core)                     (ai-core)      (ai-core)   │
+  ├─ Infrastructure Layer ─────────────────────────────────────┤
+  │  Tracer    Logger    Metrics    Config    Security   Plugin │
+  ├─ Foundation Layer ─────────────────────────────────────────┤
+  │  toolkit (lang | crypto | net | cache | util | collection) │
+  └────────────────────────────────────────────────────────────┘</code></pre>
+<p>3 行代码入门，声明式配置进阶，图编排驾驭复杂场景：</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode go"><code class="sourceCode go"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>response<span class="op">,</span> _ <span class="op">:=</span> hexagon<span class="op">.</span>Chat<span class="op">(</span>ctx<span class="op">,</span> <span class="st">&quot;What is Go?&quot;</span><span class="op">)</span>         <span class="co">// 最简入门</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>agent <span class="op">:=</span> hexagon<span class="op">.</span>QuickStart<span class="op">(</span>                              <span class="co">// 带工具</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    hexagon<span class="op">.</span>WithTools<span class="op">(</span>calculator<span class="op">),</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    hexagon<span class="op">.</span>WithSystemPrompt<span class="op">(</span><span class="st">&quot;你是一个数学助手&quot;</span><span class="op">),</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="op">)</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>team <span class="op">:=</span> hexagon<span class="op">.</span>NewTeam<span class="op">(</span><span class="st">&quot;research-team&quot;</span><span class="op">,</span>                  <span class="co">// 多 Agent 团队</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    hexagon<span class="op">.</span>WithAgents<span class="op">(</span>researcher<span class="op">,</span> writer<span class="op">,</span> reviewer<span class="op">),</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    hexagon<span class="op">.</span>WithMode<span class="op">(</span>hexagon<span class="op">.</span>TeamModeSequential<span class="op">),</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="op">)</span></span></code></pre></div>
+<h3 id="runnableio一个接口统一一切">Runnable[I,O]：一个接口统一一切</h3>
+<p>Python LangChain 中 Agent、Tool、Chain、Retriever
+是不同抽象，组合需要胶水代码。Hexagon
+的做法更激进：<strong>所有组件实现同一个泛型接口</strong>，6
+种执行范式（Invoke / Stream / Batch / Collect / Transform /
+BatchStream）。</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode go"><code class="sourceCode go"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>pipeline <span class="op">:=</span> core<span class="op">.</span>Compose<span class="op">(</span>tokenizer<span class="op">,</span> model<span class="op">)</span>    <span class="co">// 自由组合</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>adapted <span class="op">:=</span> core<span class="op">.</span>InvokeToStream<span class="op">(</span>r<span class="op">)</span>              <span class="co">// 自动获得流式能力</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>fastest <span class="op">:=</span> core<span class="op">.</span>Race<span class="op">(</span>future1<span class="op">,</span> future2<span class="op">)</span>         <span class="co">// 竞速取最快</span></span></code></pre></div>
+<p>Agent 可以作为另一个 Agent 的工具，RAG
+管线可以嵌入图编排节点——因为它们是同一个接口。</p>
+<p><strong>与主流框架对比：</strong></p>
+<table>
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 19%" />
+<col style="width: 23%" />
+<col style="width: 17%" />
+<col style="width: 26%" />
+</colgroup>
+<thead>
+<tr>
+<th>维度</th>
+<th>Hexagon</th>
+<th>LangGraph</th>
+<th>CrewAI</th>
+<th>Eino (字节)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>入门门槛</td>
+<td>3 行代码</td>
+<td>需理解 StateGraph</td>
+<td>最友好</td>
+<td>需理解 Component 组合</td>
+</tr>
+<tr>
+<td>性能上限</td>
+<td><strong>100k+ 并发</strong></td>
+<td>GIL &lt;10k</td>
+<td>GIL</td>
+<td><strong>100k+</strong></td>
+</tr>
+<tr>
+<td>编排能力</td>
+<td>Graph + Chain + Workflow + Process</td>
+<td><strong>StateGraph 最成熟</strong></td>
+<td>基础 Team</td>
+<td>Graph + Flow</td>
+</tr>
+<tr>
+<td>安全内建</td>
+<td><strong>6 模块</strong></td>
+<td>无</td>
+<td>基础</td>
+<td><strong>无</strong></td>
+</tr>
+<tr>
+<td>可观测</td>
+<td>OTel + Prometheus + Dev UI</td>
+<td>需外购 LangSmith</td>
+<td>基础</td>
+<td>Devops 插件</td>
+</tr>
+<tr>
+<td>RAG 深度</td>
+<td>7 环节 × 8 向量后端</td>
+<td>需配 LangChain</td>
+<td>基础</td>
+<td>基础</td>
+</tr>
+<tr>
+<td>生产验证</td>
+<td>早期阶段</td>
+<td>广泛</td>
+<td>广泛</td>
+<td><strong>字节大规模</strong></td>
+</tr>
+</tbody>
+</table>
+<p>核心差异化在<strong>安全维度</strong>。Eino 在注入检测、PII
+脱敏、RBAC、成本控制上完全空白——意味着如果你用 Eino 构建面向用户的
+Agent，这些安全能力要自己从零搭建。Hexagon
+把它们做成了框架内建能力，开箱即有。</p>
+<blockquote>
+<p>一句话总结：LangChain 的接口思想 + LangGraph 的编排能力 +
+企业级安全栈，用 Go 重写。感知层（Agent）→ 执行层（Skills + MCP）→
+知识层（RAG + LLM + Memory）三层全部内建。</p>
+</blockquote>
+<h3 id="十种-agent-多-agent-协作">十种 Agent + 多 Agent 协作</h3>
+<p>Agent 的演进从简单到复杂分四个阶段，Hexagon 用 10 种 Agent +
+协作协议全部覆盖：</p>
+<table>
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 44%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>阶段</th>
+<th>Hexagon 实现</th>
+<th>典型场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>问答</strong></td>
+<td>BaseAgent</td>
+<td>FAQ、知识查询</td>
+</tr>
+<tr>
+<td><strong>SOP 流程</strong></td>
+<td>SequentialAgent / Process</td>
+<td>审批流、OA</td>
+</tr>
+<tr>
+<td><strong>通用自主</strong></td>
+<td><strong>ReActAgent</strong> / ReflectionAgent / SelfDiscoveryAgent /
+PlanExecuteAgent</td>
+<td>个人助理、开放任务</td>
+</tr>
+<tr>
+<td><strong>多 Agent 协同</strong></td>
+<td>ParallelAgent / LoopAgent / DeepAgent / SupervisorAgent</td>
+<td>软件开发、研究报告</td>
+</tr>
+</tbody>
+</table>
+<p>嵌套天然支持——Supervisor 的工人可以是 ReActAgent，ReActAgent
+的工具可以触发 PlanExecuteAgent。</p>
+<p>协作层面：Team（4 种模式）/ Handoff（Swarm 风格切换）/
+Network（Mesh/Hub/Ring/Tree 拓扑）/ Consensus（投票决策）/
+Registry（服务发现 + 负载均衡）/ <strong>A2A</strong>（Google
+Agent-to-Agent 协议，Go 生态少有）。四层状态管理 +
+Snapshot/Restore。</p>
+<h3 id="图编排引擎">图编排引擎</h3>
+<div class="sourceCode" id="cb5"><pre class="sourceCode go"><code class="sourceCode go"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>g<span class="op">,</span> _ <span class="op">:=</span> graph<span class="op">.</span>NewGraph<span class="op">[</span>MyState<span class="op">](</span><span class="st">&quot;support&quot;</span><span class="op">).</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    AddNode<span class="op">(</span><span class="st">&quot;classify&quot;</span><span class="op">,</span> classifyIntent<span class="op">).</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    AddNode<span class="op">(</span><span class="st">&quot;faq&quot;</span><span class="op">,</span> handleFAQ<span class="op">).</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    AddConditionalEdge<span class="op">(</span><span class="st">&quot;classify&quot;</span><span class="op">,</span> routerFn<span class="op">,</span> routeMap<span class="op">).</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    SetEntryPoint<span class="op">(</span><span class="st">&quot;classify&quot;</span><span class="op">).</span>Build<span class="op">()</span></span></code></pre></div>
+<p>条件路由 · 并行执行 · 检查点持久化 · Human-in-the-Loop · 时间旅行 ·
+子图嵌套 · Pregel BSP · 循环 +
+屏障。另有链式编排、工作流引擎、确定性流程（Process，状态机驱动）。</p>
+<figure>
+<p style="background:#f0f0f0; padding:30px 20px; text-align:center; color:#999; border-radius:6px; margin:15px 0;">【图片位置：Hexagon 数据流：User → Agent → LLM → Tool → Result】</p>
+<figcaption aria-hidden="true">Hexagon 数据流：User → Agent → LLM → Tool
+→ Result</figcaption>
+</figure>
+<pre><code>  User ──→ Agent ──→ LLM ──→ Tool ──→ Result
+              │
+              ├──→ Memory (记忆存取)
+              └──→ RAG (知识检索)</code></pre>
+<h3 id="rag-管线7-环节可插拔">RAG 管线：7 环节可插拔</h3>
+<pre><code>文档 → Loader → Splitter → Embedder → Indexer → Retriever → Reranker → Synthesizer</code></pre>
+<table>
+<thead>
+<tr>
+<th>环节</th>
+<th>亮点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Loader</td>
+<td>8 格式（含 XLSX / PPTX / DOCX / PDF / OCR）</td>
+</tr>
+<tr>
+<td>Splitter</td>
+<td>6 种（含 Token / Code 语义分割）</td>
+</tr>
+<tr>
+<td>Retriever</td>
+<td>6 种（<strong>Hybrid / HyDE / Adaptive / ParentDoc</strong>）</td>
+</tr>
+<tr>
+<td>Reranker</td>
+<td><strong>RRF</strong> / LLM / Cross-Encoder / Cohere</td>
+</tr>
+<tr>
+<td>Synthesizer</td>
+<td>Refine / <strong>TreeSummarize</strong></td>
+</tr>
+</tbody>
+</table>
+<p>向量存储 8 后端：Qdrant / FAISS / PgVector / Redis / Milvus / Chroma
+/ Pinecone / Weaviate。</p>
+<h3 id="安全体系-可观测性">安全体系 + 可观测性</h3>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>组件</th>
+<th>实现</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Prompt 注入</td>
+<td>10 种检测模式 + 启发式评分 + Unicode 安全匹配</td>
+</tr>
+<tr>
+<td>PII 脱敏</td>
+<td>7 种（手机 / 身份证 / 银行卡 Luhn / 邮箱 / IP / 信用卡 / 护照）</td>
+</tr>
+<tr>
+<td>RBAC</td>
+<td>4 角色 · 角色继承 · 9 种条件运算符 · Allow/Deny 策略引擎</td>
+</tr>
+<tr>
+<td>成本控制</td>
+<td>多厂商定价表 · <strong>微美元精度</strong>（cost×10⁶ 存为
+int64）</td>
+</tr>
+<tr>
+<td>内容过滤</td>
+<td><strong>Aho-Corasick O(n)</strong> 多模式匹配 · 9 种分类 ·
+毒性检测器</td>
+</tr>
+<tr>
+<td>审计日志</td>
+<td>10 种事件 · 缓冲批量写入 · 查询引擎 + 报告生成</td>
+</tr>
+<tr>
+<td>可观测</td>
+<td>5 种 Span · <strong>OTel 一行集成</strong> · Prometheus
+<code>/metrics</code> · 4 种指标</td>
+</tr>
+</tbody>
+</table>
+<p>钩子系统覆盖 Run / Tool / LLM / Retriever / Stream
+五类事件，<strong>位掩码优化</strong>避免空调用。hexclaw
+的预算控制、工具审批、自动记忆提取全部通过钩子实现，未侵入框架核心。</p>
+<h3 id="性能-更多能力">性能 + 更多能力</h3>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>Hexagon (Go)</th>
+<th>Python 框架</th>
+<th>倍数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>并发 Agent</td>
+<td>100k+</td>
+<td>&lt;10k (GIL)</td>
+<td><strong>10x</strong></td>
+</tr>
+<tr>
+<td>二进制大小</td>
+<td>~20MB</td>
+<td>~500MB+</td>
+<td><strong>25x</strong></td>
+</tr>
+<tr>
+<td>启动时间</td>
+<td>&lt;100ms</td>
+<td>2-5s</td>
+<td><strong>20-50x</strong></td>
+</tr>
+<tr>
+<td>单 Agent 内存</td>
+<td>~1MB</td>
+<td>~10MB</td>
+<td><strong>10x</strong></td>
+</tr>
+</tbody>
+</table>
+<p>另有：OS 级沙箱 · 响应式流处理引擎 · 7 种记忆实现 · MCP Client+Server
+· 智能文档工作流（ADW）· 确定性流程（Process）。</p>
+<blockquote>
+<p><strong>应用层编排，框架层实现。</strong> hexclaw 不写 Agent
+推理——组装 Hexagon 的；不写安全检查——编排 Guard Chain；不写 RAG——配置
+RAG Engine。</p>
+</blockquote>
+<hr />
+<h2 id="hexclawhexagon-是引擎hexclaw-是整辆车">hexclaw：hexagon
+是引擎，hexclaw 是整辆车</h2>
+<p><strong>【图：HexClaw 应用六层架构】</strong></p>
+<pre><code>                    HexClaw Application Architecture
+                    ================================
+
+  ┌─ Platform Adapter ──────────────────────────────────────────────┐
+  │  Web  飞书  Telegram  钉钉  Discord  Slack  企微  微信          │
+  │  WhatsApp  LINE  Matrix  Email  REST API          (共 13 种)    │
+  ├─ Security Gateway (6-Layer Pipeline) ───────────────────────────┤
+  │  Auth → RateLimit → CostCheck → InputSafety → Permission → Audit│
+  ├─ Agent Engine ──────────────────────────────────────────────────┤
+  │  ReAct Loop        3D Budget Control     Tool Executor + Hooks  │
+  │  Session Manager   Context Compaction    Multi-Agent Router     │
+  │  Two-Pass Stream   Tool Approval Gate    Auto Memory Extract    │
+  ├─ Capability Layer ──────────────────────────────────────────────┤
+  │  Skill System       Knowledge (RAG)      LLM Router             │
+  │  (Builtin+Mkt+MCP)  (FTS5+Vector+MMR)   (Cost/Quality/Latency) │
+  │  Memory (4-Layer)   Semantic Cache (Singleflight+LRU+TTL)      │
+  ├─ Infrastructure ────────────────────────────────────────────────┤
+  │  OS Sandbox          MCP Client         Cron + Webhook          │
+  │  (Seatbelt/NS/Win)  (stdio/SSE/HTTP)   REST API (71 端点)      │
+  │  Canvas (8 组件)     Voice (STT/TTS)    WebSocket 实时流        │
+  ├─ Storage &amp; Config ──────────────────────────────────────────────┤
+  │  SQLite (WAL)   FTS5 全文搜索   YAML+ENV   Audit JSONL   .md   │
+  └─────────────────────────────────────────────────────────────────┘
+            Powered by: Hexagon ← ai-core ← toolkit</code></pre>
+<h3 id="核心数据流">核心数据流</h3>
+<pre><code>用户消息 (飞书/Telegram/Discord/微信/...)
+  → 平台适配 (Adapter) → 安全网关 (6层) → 会话路由 (Router)
+  → Agent 引擎 (ReAct)
+      ├─ 快速路径: Skill.Match() → 毫秒级，零 LLM 消耗
+      └─ 主路径: ReAct 循环 → 沙箱执行 → 同步/流式返回</code></pre>
+<h3 id="六层安全网关">六层安全网关</h3>
+<pre><code>请求 → [Auth] → [RateLimit] → [CostCheck] → [InputSafety] → [Permission] → [Audit] → 引擎</code></pre>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 47%" />
+<col style="width: 31%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: center;">层</th>
+<th style="text-align: center;">异常策略</th>
+<th>实现</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">Auth</td>
+<td style="text-align: center;">拒绝</td>
+<td>constant-time 比较 · HMAC-SHA256 签名 24h 窗口</td>
+</tr>
+<tr>
+<td style="text-align: center;">RateLimit</td>
+<td style="text-align: center;">拒绝</td>
+<td>滑动窗口 · 30s 清理 · 100K 窗口硬上限防 OOM</td>
+</tr>
+<tr>
+<td style="text-align: center;">CostCheck</td>
+<td style="text-align: center;"><strong>Fail-closed</strong></td>
+<td>不缓存预算，实时查询；异常即阻断</td>
+</tr>
+<tr>
+<td style="text-align: center;">InputSafety</td>
+<td style="text-align: center;"><strong>Fail-closed</strong></td>
+<td>Guard Chain 组合注入检测 + PII 脱敏 + 内容过滤</td>
+</tr>
+<tr>
+<td style="text-align: center;">Permission</td>
+<td style="text-align: center;">拒绝</td>
+<td>工具级黑名单优先于白名单</td>
+</tr>
+<tr>
+<td style="text-align: center;">Audit</td>
+<td style="text-align: center;">放行</td>
+<td>仅记录，不阻断</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>第 3、4
+层异常时直接拒绝——宁可给用户看个”服务暂时不可用”，也不能让一个失控的
+ReAct 循环把你的 API 余额刷到零。</p>
+</blockquote>
+<h3 id="十三平台适配">十三平台适配</h3>
+<p>统一消息模型 + 4 方法 Adapter 接口，每个适配器 ~150 行。</p>
+<p>值得关注的平台特定实现： - <strong>企微</strong>：AES-256-CBC 加解密
++ 双检锁 Token 缓存 - <strong>微信</strong>：5 秒被动回复 +
+超时自动切客服异步推送 - <strong>Discord</strong>：Gateway WebSocket
+心跳 + 流式消息编辑 - <strong>Web</strong>：Origin 白名单仅允许
+<code>localhost</code> 和 <code>tauri://localhost</code></p>
+<h3 id="react-引擎">ReAct 引擎</h3>
+<p>引擎在 Hexagon ReActAgent 之上增加应用层编排（单文件 47KB）：</p>
+<pre><code>LoadContext → InjectContext(RAG+记忆) → InjectTools(Skill+MCP, 上限40)
+→ ReAct 循环: LLM 推理 → ToolApproval → ToolExecutor → BudgetUpdate
+→ AutoMemory → SaveHistory → 返回</code></pre>
+<p><strong>3D 原子预算</strong>：用三个 <code>atomic.Int64</code>
+分别追踪 Token、时长、成本。为什么成本不用 float64？因为 Go 的 atomic
+包不支持浮点原子操作，而 Agent
+的工具调用是高并发的。解法是把美元乘以一百万存成整数（微美元精度），$0.00004
+变成 40——整数原子操作，零锁开销。内置 20+ 模型定价表，支持子 Agent
+预算分配与回收。</p>
+<p><strong>Two-Pass Streaming</strong>：中间轮
+<code>Complete()</code>（检测 tool_calls），最终轮
+<code>Stream()</code>（打字机效果）。避免为不可见步骤建流连接。流式
+goroutine 使用独立 <code>context.Background()</code>
+保存消息，防用户关闭页面丢数据。</p>
+<p><strong>Hook Chain</strong>：TruncateHook 保留 60% 头部 + 20% 尾部 ·
+SanitizeHook 只清洗外部来源 · AuditHook 即使失败也运行。工具缓存 SHA256
+key，破坏性工具自动跳过。</p>
+<p><strong>Skill 生态（ClawHub）</strong>：37 Skill + 38 MCP
+Server。格式 Markdown + YAML frontmatter，来源：18 原创 + 12 社区适配 +
+7 个 OpenClaw playbook 移植。MCP 覆盖 18 品类（文件系统 / GitHub / 搜索
+/ 浏览器 / 数据库 / Slack / Docker / K8s / AWS 等）。</p>
+<h3 id="go-原生三平台沙箱2713-行替代-docker">Go 原生三平台沙箱：2713
+行替代 Docker</h3>
+<p>OpenClaw 等绝大多数竞品的代码执行依赖 Docker。hexclaw 用 <strong>2713
+行纯 Go</strong> 实现内核级隔离：</p>
+<p><strong>macOS Seatbelt</strong>（与 Claude Code / Codex
+同底层）——动态 SBPL 策略，<code>(deny default)</code> 默认拒绝。Docker
+容器默认拥有大部分 syscall 权限做不到这一点。</p>
+<p><strong>Windows 五层纵深</strong>——① Restricted Token（UNTRUSTED_RID
+0x0000）→ ② ACL 文件系统隔离 → ③ Job Object（512MB / 10 进程）→ ④ Low
+Box Token 内核级断网 → ⑤ Alternate Desktop（防 Shatter Attack）。启动
+~50ms / ~5MB，对比 Docker Desktop 500ms-2s。</p>
+<p><strong>Linux 五层隔离</strong>——① Namespace → ② pivot_root → ③
+seccomp → ④ 进程加固 → ⑤ 两阶段
+re-exec。不兼容系统自动降级：CLONE_NEWUSER 失败 → Landlock → 兜底
+seccomp。</p>
+<p>三平台共享 <strong>NetPolicy</strong> 引擎：黑名单优先 → 端口 →
+模式，不可绕过。</p>
+<p><strong>沙箱实测对比（Linux）：</strong></p>
+<table>
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 20%" />
+<col style="width: 22%" />
+<col style="width: 15%" />
+<col style="width: 27%" />
+</colgroup>
+<thead>
+<tr>
+<th>维度</th>
+<th>HexClaw</th>
+<th>OpenClaw</th>
+<th>Codex</th>
+<th>Claude Code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>默认状态</td>
+<td><strong>ON（零配置）</strong></td>
+<td>OFF（需手动配置）</td>
+<td>ON</td>
+<td>ON</td>
+</tr>
+<tr>
+<td>外部依赖</td>
+<td><strong>零</strong></td>
+<td>Docker ~500MB</td>
+<td>零</td>
+<td>零</td>
+</tr>
+<tr>
+<td>启动延迟</td>
+<td><strong>&lt;10ms</strong></td>
+<td>~200ms (docker exec)</td>
+<td>&lt;10ms</td>
+<td>&lt;10ms</td>
+</tr>
+<tr>
+<td>内存开销</td>
+<td><strong>~0</strong></td>
+<td>100-200MB</td>
+<td>~0</td>
+<td>~0</td>
+</tr>
+<tr>
+<td>实现方式</td>
+<td><strong>~2700 行 Go syscall</strong></td>
+<td>Docker API 封装</td>
+<td>~7000 行 Rust (bubblewrap)</td>
+<td>系统内建 (Seatbelt)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="知识库-llm-路由-记忆">知识库 · LLM 路由 · 记忆</h3>
+<p><strong>知识库</strong>：Recursive Split → FTS5 + 向量嵌入 →
+混合评分（0.7v + 0.3t）→ 时间衰减 → MMR 去重（3×TopK 候选再筛）→
+TopK=3。Embedder 不可用时自动退化为纯 FTS5。</p>
+<p><strong>LLM 路由</strong>：多 Provider 按策略路由（cost / quality /
+latency），故障自动降级。语义缓存：Singleflight 防击穿 · TTL ± 10%
+抖动防雪崩 · 空值缓存防穿透。</p>
+<p><strong>四层记忆</strong>：会话上下文 → 每日日记 → MEMORY.md →
+语义向量。自动提取：关键词预过滤 → 异步 LLM（15s 超时）→
+注入已有记忆避免重复。超 50 条自动 LLM 压缩。Markdown 格式，人类可读，可
+Git 版本控制。</p>
+<h3 id="多-agent-路由-自主行为">多 Agent 路由 · 自主行为</h3>
+<p>四种选择机制：UI 直选 · <code>@mention</code> 语法 · 模式自动绑定 ·
+平台路由规则（UserID +100 &gt; ChatID +50 &gt; Platform +10），兜底 LLM
+语义分类。</p>
+<p><strong>会议模式</strong>：≥2 Agent
+围绕结构化话题多轮圆桌讨论——适合竞品分析、头脑风暴、专家辩论。</p>
+<p>自主行为：Heartbeat 巡查 + Cron 定时 + Webhook 事件驱动。默认 SQLite
+WAL，四种部署：桌面 / Docker / systemd / K8s。</p>
+<hr />
+<h2
+id="hexclaw-desktop让-ai-agent-像-docker-desktop-一样双击即用">hexclaw-desktop：让
+AI Agent 像 Docker Desktop 一样”双击即用”</h2>
+<figure>
+<p style="background:#f0f0f0; padding:30px 20px; text-align:center; color:#999; border-radius:6px; margin:15px 0;">【图片位置：HexClaw Desktop 聊天界面截图】</p>
+<figcaption aria-hidden="true">HexClaw Desktop 聊天界面截图</figcaption>
+</figure>
+<h3 id="tauri-壳管理-go-sidecar">Tauri 壳管理 Go Sidecar</h3>
+<p><strong>【图：HexClaw Desktop 分层架构】</strong></p>
+<pre><code>                  HexClaw Desktop Architecture
+                  ============================
+
+  ┌─ Tauri Shell (Rust) ───────────────────────────────────────┐
+  │  窗口管理   系统托盘   全局快捷键 ⌘⇧H   单实例   自动更新   │
+  │  API 代理 (CORS bypass)          Sidecar 进程生命周期管理   │
+  ├─ Vue 3 Frontend (WebView) ─────────────────────────────────┤
+  │  ┌──────┬──────┬───────┬──────┬──────┬───────┬──────┐      │
+  │  │ 概览 │ 对话 │ Agent │ 知识 │自动化│  集成  │ 日志 │      │
+  │  └──────┴──────┴───────┴──────┴──────┴───────┴──────┘      │
+  │  Pinia Store       Vue Router       Tauri invoke (IPC)      │
+  ├─ Tauri Commands (Rust → Go) ───────────────────────────────┤
+  │  proxy_api_request    stream_chat    check_engine_health    │
+  ├─────────────────────────────────────────────────────────────┤
+  │              HTTP / WebSocket ←→ localhost:16060             │
+  ├─ hexclaw serve (Go Sidecar) ───────────────────────────────┤
+  │  Agent 引擎 · 安全网关 · LLM 路由 · RAG · MCP · 沙箱       │
+  │  ┌─────────────────────────────────────────────────────┐   │
+  │  │    Hexagon  ←  ai-core  ←  toolkit                  │   │
+  │  └─────────────────────────────────────────────────────┘   │
+  └─────────────────────────────────────────────────────────────┘</code></pre>
+<p><strong>框架选型：</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th style="text-align: center;">Tauri v2</th>
+<th style="text-align: center;">Wails v2</th>
+<th style="text-align: center;">Electron</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>包体积</td>
+<td style="text-align: center;"><strong>~8MB</strong></td>
+<td style="text-align: center;">~10MB</td>
+<td style="text-align: center;">~150MB</td>
+</tr>
+<tr>
+<td>内存</td>
+<td style="text-align: center;"><strong>~25MB</strong></td>
+<td style="text-align: center;">~30MB</td>
+<td style="text-align: center;">~200MB</td>
+</tr>
+<tr>
+<td>托盘 / 快捷键 / 多窗口 / 更新</td>
+<td style="text-align: center;">全内建</td>
+<td style="text-align: center;">部分缺失</td>
+<td style="text-align: center;">全内建</td>
+</tr>
+<tr>
+<td>安全沙箱</td>
+<td style="text-align: center;">权限模型</td>
+<td style="text-align: center;">无</td>
+<td style="text-align: center;">无</td>
+</tr>
+<tr>
+<td>生产案例</td>
+<td style="text-align: center;"><strong>1Password 8</strong></td>
+<td style="text-align: center;">无</td>
+<td style="text-align: center;">Docker/Cursor</td>
+</tr>
+</tbody>
+</table>
+<p>包体积 8MB vs Electron 150MB（<strong>19x</strong>），内存 25MB vs
+200MB（<strong>8x</strong>）。</p>
+<h3 id="功能模块">功能模块</h3>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>模块</th>
+<th>亮点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>AI 对话</strong></td>
+<td>多模型流式 · 文件解析（PDF/Word/Excel）· Canvas UI（8 组件）· Budget
+面板</td>
+</tr>
+<tr>
+<td><strong>Agent</strong></td>
+<td>自定义角色 · 模板库 · Handoff/Orchestrate/Spawn · Agent 会议</td>
+</tr>
+<tr>
+<td><strong>工具生态</strong></td>
+<td>ClawHub（37 Skill + 38 MCP Server）· SkillWriter · MCP 三传输 ·
+OAuth PKCE</td>
+</tr>
+<tr>
+<td><strong>知识 + 记忆</strong></td>
+<td>Auto-RAG（score ≥ 0.35）· 向量语义回忆 · 自动提取 ·
+跨会话持久化</td>
+</tr>
+<tr>
+<td><strong>IM + 自动化</strong></td>
+<td>7 种 IM 通道 · Cron · 工作流画布 DAG · Webhook 通知</td>
+</tr>
+<tr>
+<td><strong>本地 LLM</strong></td>
+<td>Ollama 一键关联 · 推荐 <code>qwen3.5:9b</code> /
+<code>qwen2.5-coder:7b</code> / <code>deepseek-r1:8b</code></td>
+</tr>
+<tr>
+<td><strong>安全 + 审批</strong></td>
+<td>WebSocket 实时审批 · safe/sensitive/dangerous 三级 · session
+记忆</td>
+</tr>
+</tbody>
+</table>
+<h3 id="原生能力">原生能力</h3>
+<p><code>⌘⇧H</code> 全局唤起 · 系统托盘 · 原生通知 · 剪贴板交互 ·
+文件拖放上传 · 3 步引导 · Tauri Updater。同一套代码支持 Desktop 和
+Headless。安装：<code>curl | bash</code> / Homebrew / DMG / MSI / DEB /
+AppImage。</p>
+<figure>
+<p style="background:#f0f0f0; padding:30px 20px; text-align:center; color:#999; border-radius:6px; margin:15px 0;">【图片位置：HexClaw Desktop 功能使用总览图】</p>
+<figcaption aria-hidden="true">HexClaw Desktop
+功能使用总览图</figcaption>
+</figure>
+<hr />
+<h2 id="和竞品比到底强在哪">和竞品比，到底强在哪？</h2>
+<p>2025 年底以来，各家密集发布自己的 AI Agent
+产品，但大多是云端闭源、面向企业客户。HexClaw
+走的是另一条路——开源、自托管、面向开发者和技术团队。下表按品类对比：</p>
+<table>
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 24%" />
+<col style="width: 27%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+</colgroup>
+<thead>
+<tr>
+<th>维度</th>
+<th>HexClaw</th>
+<th>OpenClaw</th>
+<th>Dify</th>
+<th>Coze</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>部署</strong></td>
+<td>单二进制 ~20MB</td>
+<td>多服务 500MB+</td>
+<td>Docker Compose</td>
+<td>云托管</td>
+</tr>
+<tr>
+<td><strong>数据控制</strong></td>
+<td><strong>完全本地</strong></td>
+<td>自托管可控</td>
+<td>自托管可控</td>
+<td>数据在云端</td>
+</tr>
+<tr>
+<td><strong>沙箱</strong></td>
+<td><strong>Go 原生 &lt;10ms</strong></td>
+<td>Docker ~200ms</td>
+<td>无内建</td>
+<td>云端隔离</td>
+</tr>
+<tr>
+<td><strong>安全网关</strong></td>
+<td><strong>6 层 Fail-closed</strong></td>
+<td>基础</td>
+<td>基础鉴权</td>
+<td>平台内控</td>
+</tr>
+<tr>
+<td><strong>预算控制</strong></td>
+<td><strong>3D 原子</strong></td>
+<td>无</td>
+<td>无</td>
+<td>平台配额</td>
+</tr>
+<tr>
+<td><strong>Agent 类型</strong></td>
+<td><strong>10 种 + A2A</strong></td>
+<td>多 Agent</td>
+<td>基础 Agent</td>
+<td>无代码 Agent</td>
+</tr>
+<tr>
+<td><strong>编排引擎</strong></td>
+<td>Graph + Chain + Workflow + Process</td>
+<td>工作流</td>
+<td>可视化工作流</td>
+<td>可视化工作流</td>
+</tr>
+<tr>
+<td><strong>RAG</strong></td>
+<td>7 环节 × 8 向量后端</td>
+<td>社区插件</td>
+<td>内建 RAG</td>
+<td>内建</td>
+</tr>
+<tr>
+<td><strong>本地 LLM</strong></td>
+<td>Ollama 一键 + 300+</td>
+<td>无</td>
+<td>支持</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td><strong>中国 IM</strong></td>
+<td><strong>飞书/钉钉/企微/微信</strong></td>
+<td>无</td>
+<td>部分</td>
+<td>部分</td>
+</tr>
+<tr>
+<td><strong>桌面端</strong></td>
+<td>Tauri ~25MB</td>
+<td>Electron ~150MB</td>
+<td>无</td>
+<td>无</td>
+</tr>
+<tr>
+<td><strong>可观测</strong></td>
+<td>OTel + Prometheus</td>
+<td>基础</td>
+<td>基础日志</td>
+<td>平台内建</td>
+</tr>
+<tr>
+<td><strong>定制深度</strong></td>
+<td>框架级（Go）</td>
+<td>框架级（TypeScript）</td>
+<td>配置级</td>
+<td>配置级</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="踩过的坑和架构取舍">踩过的坑和架构取舍</h2>
+<p><strong>坑 1：Docker 沙箱——“装个聊天助手还要装 Docker？”</strong></p>
+<p>早期 Skill 执行依赖 Docker。本地测试没问题，但 macOS 上 Docker
+Desktop 额外吃 2-4GB 内存——让用户为了跑个天气查询装
+Docker，这不合理。</p>
+<p>花两个月和 Claude 用 Go syscall 重写三平台原生沙箱。2713
+行、零依赖、&lt;10ms 启动。隔离强度不如完整容器，但 Skill
+执行场景够了。</p>
+<p><strong>坑 2：Wails → Tauri——选型翻车的正确姿势</strong></p>
+<p>桌面端最初选了 Wails，理由很充分：Go 原生，零集成成本。开发到 60%
+发现三个致命问题：不支持多窗口（Quick Chat
+浮窗做不了）、系统托盘要第三方库、没有自动更新。</p>
+<p>止损切 Tauri v2。Go 后端改为 sidecar，多了一层 HTTP，但恰好复用已有
+71 个 API，实际开发成本反而更低。</p>
+<p><strong>坑 3：安全网关本来是个”可选配置”</strong></p>
+<p>第一版安全层做成中间件，配置文件里 <code>enabled: false</code>
+就能关掉。某次 code review 发现：CostCheck 关掉后，失控的 ReAct
+循环会无限调 LLM 直到账单爆炸——这不是理论风险，是确定性灾难。</p>
+<p>当天重构为 6 层不可绕过管道。开发期经常触发限流，但总比半夜收到 API
+账单好。</p>
+<p><strong>坑 4：框架做太薄——代码搬家记</strong></p>
+<p>最初 hexagon 只有 LLM 调用和基础 Agent，hexclaw 里堆了大量
+RAG、安全、编排代码。后来统一下沉到 hexagon，hexclaw 精简
+40%+。结论：应用层出现”通用能力”代码，说明该下沉到框架了。</p>
+<p><strong>取舍总结：</strong></p>
+<table>
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 22%" />
+<col style="width: 29%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>决策</th>
+<th>选了</th>
+<th>放弃了</th>
+<th>为什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>存储</td>
+<td>SQLite（纯 Go）</td>
+<td>PostgreSQL 默认</td>
+<td>用户不该为聊天助手运维数据库</td>
+</tr>
+<tr>
+<td>沙箱</td>
+<td>OS 原语 2713 行</td>
+<td>Docker</td>
+<td>用户不该为 Skill 安装 Docker</td>
+</tr>
+<tr>
+<td>桌面</td>
+<td>Tauri v2</td>
+<td>Wails</td>
+<td>多窗口 / 托盘 / 更新 / 社区</td>
+</tr>
+<tr>
+<td>安全</td>
+<td>6 层不可绕过</td>
+<td>可选中间件</td>
+<td>Fail-closed &gt; Fail-open</td>
+</tr>
+<tr>
+<td>框架</td>
+<td>hexagon 做厚</td>
+<td>hexclaw 自包含</td>
+<td>应用编排，框架实现</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="接下来做什么">接下来做什么</h2>
+<p>2026 年，AI Agent 赛道从”技术验证”进入”工程化落地”——MCP + A2A
+双协议栈成熟，安全与确定性取代了”Demo 跑通就行”的心态。HexClaw 目前
+v0.2.x，核心稳定，离”生产级”还有关键缺口：</p>
+<ul>
+<li><strong>流式升级</strong>：当前伪流式（中间轮同步），计划对接
+Hexagon Agent 原生 Stream</li>
+<li><strong>Embedding 集成</strong>：知识库 Embedder 接口已定义，需对接
+LLM Provider</li>
+<li><strong>测试覆盖率 &gt; 80%</strong>：93
+个测试文件，覆盖率待提升</li>
+<li><strong>Hub 生态扩充</strong>：37 Skill → 100+、38 MCP Server →
+80+，补齐代码审查 / 数据分析 / 项目管理</li>
+<li><strong>多平台桌面打磨</strong>：Mac 优先，Windows MSI 和 Linux
+AppImage 需更多测试</li>
+</ul>
+<p>一个开放问题：<strong>如何在不牺牲安全的前提下让 Agent
+更自主？</strong> Tool Approval
+保证了安全但限制了自主性——正在探索基于历史行为的自适应审批策略。这也是整个
+AI Agent 行业 2026 年的核心矛盾：从”Demo
+跑通”到”生产可信”，安全与自主性的平衡点在哪里？</p>
+<hr />
+<h2 id="技术栈">技术栈</h2>
+<table>
+<thead>
+<tr>
+<th>组件</th>
+<th>选型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>语言</td>
+<td>Go 1.25+</td>
+</tr>
+<tr>
+<td>Agent 框架</td>
+<td>Hexagon v0.4.0</td>
+</tr>
+<tr>
+<td>AI 底座</td>
+<td>ai-core v0.0.5（7 LLM Provider）</td>
+</tr>
+<tr>
+<td>工具库</td>
+<td>toolkit v0.0.4（81k 行，零依赖）</td>
+</tr>
+<tr>
+<td>存储</td>
+<td>SQLite / PostgreSQL</td>
+</tr>
+<tr>
+<td>前端</td>
+<td>Vue 3 · Pinia · Naive UI · Tailwind</td>
+</tr>
+<tr>
+<td>桌面</td>
+<td>Tauri v2（Rust + Go sidecar）</td>
+</tr>
+<tr>
+<td>CI/CD</td>
+<td>GitHub Actions（3 平台测试 + 6 平台编译）</td>
+</tr>
+<tr>
+<td>发布</td>
+<td>ghcr.io · Homebrew · DMG / MSI / DEB / AppImage</td>
+</tr>
+</tbody>
+</table>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>仓库</th>
+<th>定位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/hexagon-codes/hexclaw">hexclaw</a></td>
+<td>AI Agent 服务</td>
+</tr>
+<tr>
+<td><a href="https://github.com/hexagon-codes/hexagon">hexagon</a></td>
+<td>Agent 框架</td>
+</tr>
+<tr>
+<td><a href="https://github.com/hexagon-codes/ai-core">ai-core</a></td>
+<td>LLM 抽象</td>
+</tr>
+<tr>
+<td><a href="https://github.com/hexagon-codes/toolkit">toolkit</a></td>
+<td>通用工具库</td>
+</tr>
+<tr>
+<td><a
+href="https://github.com/hexagon-codes/hexclaw-desktop">hexclaw-desktop</a></td>
+<td>桌面客户端</td>
+</tr>
+<tr>
+<td><a
+href="https://github.com/hexagon-codes/hexagon-ui">hexagon-ui</a></td>
+<td>观测面板</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p>这个项目是我一个人 + Claude
+结对开发的，初衷很简单：<strong>想给自己用一个安全、好用、不贵的 AI
+Agent</strong>。如果你也有同样的需求，欢迎在 GitHub 搜索
+<strong>hexclaw</strong> 提 Issue / PR，一起玩。</p>
+<p><strong>最后一个问题：</strong> 你在用 AI Agent
+时最头疼的是什么——安全信任、成本控制、还是平台适配？评论区聊聊，这些真实痛点会直接影响
+HexClaw 的优先级。</p>
+<p><strong>找到我们：</strong> GitHub：github.com/hexagon-codes/hexclaw
+· 官网：hexclaw.net · 微博：<span class="citation"
+data-cites="HexClaw">@HexClaw</span> · X：<span class="citation"
+data-cites="hexclawapp">@hexclawapp</span></p>
+    </article>
+
+
+
+    <nav class="blog-series-nav" aria-label="上一篇与下一篇">
+      <a href="/zh/blog/from-lobster-to-crab" class="blog-nav-card prev">
+  <span class="blog-nav-label">&larr; 上一篇</span>
+  <span class="blog-nav-title">HexClaw 河蟹开源AI：从“养龙虾”到“养河蟹”</span>
+</a>
+      <a href="/zh/blog/vs-openclaw-hermes" class="blog-nav-card next">
+  <span class="blog-nav-label">下一篇 &rarr;</span>
+  <span class="blog-nav-title">HexClaw vs OpenClaw / Hermes：2026 本地 AI Agent 的三条路径</span>
+</a>
+    </nav>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-main">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-col-title">产品</div>
+        <a href="/zh/#download">下载桌面端</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="/zh/changelog">更新日志</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">开发者</div>
+        <a href="/zh/docs/">文档中心</a>
+        <a href="/zh/blog/">技术博客</a>
+        <a href="/zh/docs/getting-started">快速上手</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">Apache-2.0</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">社区</div>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/issues" target="_blank" rel="noopener noreferrer">Issues</a>
+        <a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer">Twitter / X</a>
+        <a href="mailto:ai@hexclaw.net">业务咨询</a>
+        <a href="mailto:support@hexclaw.net">问题反馈</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">关于</div>
+        <a href="/zh/about">关于我们</a>
+        <a href="/zh/privacy">隐私政策</a>
+        <a href="/zh/terms">使用条款</a>
+        <a href="/zh/third-party-ai-services">第三方 AI 服务说明</a>
+      </div>
+    </div>
+    <div class="footer-wechat">
+      <img width="430" height="430" loading="lazy" decoding="async" src="../../assets/brand/wechat-qr.jpg" alt="HexClaw 微信公众号二维码">
+      <span class="footer-wechat-label">微信公众号</span>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">&copy; 2025&ndash;2026 hexagon-codes</span>
+  </div>
+</footer>
+<script src="../../assets/js/home.js"></script>
+<button type="button" class="back-to-top" id="backToTop" aria-label="返回顶部" title="返回顶部">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg>
+  <span>顶部</span>
+</button>
+<script>
+(function() {
+  const btn = document.getElementById('backToTop');
+  if (!btn) return;
+  let ticking = false;
+  window.addEventListener('scroll', function() {
+    if (!ticking) {
+      window.requestAnimationFrame(function() {
+        if (window.scrollY > 320) {
+          btn.classList.add('is-visible');
+        } else {
+          btn.classList.remove('is-visible');
+        }
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+  btn.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,192 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 1872" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#3f8fd4"/>
+    </marker>
+    <marker id="arrowGray" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#90908A"/>
+    </marker>
+    <marker id="arrowOrange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#d97706"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1060" height="1872" fill="#ffffff"/>
+
+  <!-- ═══════════ 标题 ═══════════ -->
+  <text x="530" y="52" text-anchor="middle" font-size="30" font-weight="800" fill="#12324c">Context Engineering: The Denoising Pipeline</text>
+  <text x="530" y="86" text-anchor="middle" font-size="16" fill="#5f7b9c">一条负责说"不"的检索流水线 —— 六道工序，五道在做减法（常量全部来自真实源码）</text>
+
+  <!-- ═══════════ 泳道 1：INGEST 写入侧 ═══════════ -->
+  <rect x="30" y="110" width="1000" height="240" rx="14" fill="#e9f6ef" stroke="#2f9e63" stroke-width="2"/>
+  <text x="55" y="145" font-size="20" font-weight="700" fill="#1f7a4a">📥 INGEST</text>
+  <text x="160" y="145" font-size="14" fill="#3c8a60">写入侧 · 证据化从入库开始</text>
+
+  <rect x="55" y="165" width="460" height="76" rx="10" fill="#ffffff" stroke="#bfe3cf" stroke-width="1.5"/>
+  <text x="75" y="192" font-size="15" font-weight="700" fill="#12324c">Contextual Retrieval（chunk 缝上"出身"）</text>
+  <text x="75" y="214" font-size="13" fill="#5f7b9c">chunk 前置文档级上下文（标题路径 + LLM 情境摘要）</text>
+  <text x="75" y="232" font-size="12" fill="#8aa5bd" font-family="Menlo, monospace">contextual embeddings + contextual BM25</text>
+
+  <rect x="545" y="165" width="460" height="76" rx="10" fill="#ffffff" stroke="#bfe3cf" stroke-width="1.5"/>
+  <text x="565" y="192" font-size="15" font-weight="700" fill="#12324c">非对称嵌入（问题≠答案的面孔）</text>
+  <text x="565" y="214" font-size="13" fill="#5f7b9c">查询/文档分别加任务前缀，只进 embedding 不进存储</text>
+  <text x="565" y="232" font-size="12" fill="#8aa5bd" font-family="Menlo, monospace">search_query / search_document</text>
+
+  <rect x="55" y="258" width="460" height="72" rx="10" fill="#ffffff" stroke="#bfe3cf" stroke-width="1.5"/>
+  <text x="75" y="285" font-size="15" font-weight="700" fill="#12324c">✂️ 截断闸 + 嵌入缓存（可叠加装饰器）</text>
+  <text x="75" y="307" font-size="13" fill="#5f7b9c">入 embedding 前按 rune 截断 <tspan font-family="Menlo, monospace" fill="#1f7a4a" font-weight="700">6000</tspan>（CJK 最坏 1 token/rune 仍稳）</text>
+  <text x="75" y="324" font-size="12" fill="#8aa5bd">截断在外、缓存在内 → 缓存键作用于截断后文本</text>
+
+  <rect x="545" y="258" width="460" height="84" rx="10" fill="#ffffff" stroke="#bfe3cf" stroke-width="1.5"/>
+  <text x="565" y="285" font-size="15" font-weight="700" fill="#12324c">🗄️ SQLite + FTS5（单文件双索引）</text>
+  <text x="565" y="307" font-size="13" fill="#5f7b9c">三表一文件：<tspan font-family="Menlo, monospace" font-size="12">kb_documents / kb_chunks / kb_chunks_fts</tspan></text>
+  <text x="565" y="324" font-size="12" fill="#8aa5bd">启动清理孤儿 FTS5 记录 —— 防"来自过去的噪声"</text>
+  <text x="565" y="340" font-size="12" font-weight="700" fill="#1f7a4a">Embedding 失败 → warning 降级纯文本，文档不回滚（可空 BLOB）</text>
+
+  <line x1="530" y1="350" x2="530" y2="392" stroke="#3f8fd4" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="545" y="378" font-size="13" fill="#5f7b9c">用户每轮消息自动触发（topK=3）｜knowledge_search 工具 scoped 召回</text>
+
+  <!-- ═══════════ 泳道 2：QUERY PIPELINE 六道工序 ═══════════ -->
+  <rect x="30" y="400" width="1000" height="820" rx="14" fill="#eef6fd" stroke="#3f8fd4" stroke-width="2"/>
+  <text x="55" y="435" font-size="20" font-weight="700" fill="#2b6cb0">🔍 QUERY PIPELINE</text>
+  <text x="255" y="435" font-size="14" fill="#4a7fae">检索六道工序 · 默认全开、无 feature flag</text>
+
+  <!-- ① 查询扩展 -->
+  <rect x="55" y="455" width="700" height="98" rx="10" fill="#ffffff" stroke="#bcd9f0" stroke-width="1.5"/>
+  <circle cx="88" cy="486" r="16" fill="#2f9e63"/>
+  <text x="88" y="492" text-anchor="middle" font-size="15" font-weight="800" fill="#ffffff">1</text>
+  <text x="115" y="482" font-size="15" font-weight="700" fill="#12324c">＋ Query Expansion —— 唯一做加法的工序</text>
+  <text x="115" y="505" font-size="13" fill="#5f7b9c">原始 query ＋ multi-query <tspan font-family="Menlo, monospace" fill="#2b6cb0" font-weight="700">×3</tspan> ＋ HyDE 假设文档 <tspan font-family="Menlo, monospace" fill="#2b6cb0" font-weight="700">×1</tspan></text>
+  <text x="115" y="526" font-size="13" fill="#5f7b9c">总数硬封顶 <tspan font-family="Menlo, monospace" fill="#2b6cb0" font-weight="700">≤ 5</tspan> ——"控制召回成本"，加法也带上限</text>
+
+  <line x1="405" y1="553" x2="405" y2="580" stroke="#3f8fd4" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <!-- ② 宽召回 -->
+  <rect x="55" y="585" width="700" height="92" rx="10" fill="#ffffff" stroke="#bcd9f0" stroke-width="1.5"/>
+  <circle cx="88" cy="616" r="16" fill="#3f8fd4"/>
+  <text x="88" y="622" text-anchor="middle" font-size="14" font-weight="800" fill="#ffffff">2</text>
+  <text x="115" y="612" font-size="15" font-weight="700" fill="#12324c">Wide Recall —— 故意捞宽，给筛子备料</text>
+  <text x="115" y="635" font-size="13" fill="#5f7b9c">每条 query 各走 向量 ＋ BM25 双路，候选池 <tspan font-family="Menlo, monospace" fill="#2b6cb0" font-weight="700">CandidateK=50</tspan></text>
+  <text x="115" y="656" font-size="13" fill="#5f7b9c">且始终 <tspan font-family="Menlo, monospace" fill="#2b6cb0" font-weight="700">≥ 3×topK</tspan> ——"至少留够 rerank 收窄空间"</text>
+
+  <line x1="405" y1="677" x2="405" y2="704" stroke="#3f8fd4" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <!-- ③ RRF -->
+  <rect x="55" y="709" width="700" height="112" rx="10" fill="#ffffff" stroke="#bcd9f0" stroke-width="1.5"/>
+  <circle cx="88" cy="740" r="16" fill="#d64545"/>
+  <text x="88" y="746" text-anchor="middle" font-size="14" font-weight="800" fill="#ffffff">3</text>
+  <text x="115" y="736" font-size="15" font-weight="700" fill="#12324c">⚖️ Score-weighted RRF —— 拒绝量纲不可比的分数</text>
+  <text x="115" y="759" font-size="13" fill="#5f7b9c">十路排序融合：<tspan font-family="Menlo, monospace" fill="#2b6cb0" font-weight="700">k=60</tspan>（SIGIR 2009）· 向量/文本权重 <tspan font-family="Menlo, monospace" fill="#2b6cb0" font-weight="700">0.7/0.3</tspan></text>
+  <text x="115" y="780" font-size="13" fill="#d64545">修复：纯 rank RRF 让"孤立弱 BM25 命中"领 rank-1 满权 → 按归一化分加权</text>
+  <text x="115" y="803" font-size="13" fill="#8aa5bd" font-family="Menlo, monospace">score(d) = Σ w·normScore/(k+rank)　＋ 时间衰减（半衰期 30 天）</text>
+
+  <line x1="405" y1="821" x2="405" y2="848" stroke="#3f8fd4" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <!-- ④ 地板 -->
+  <rect x="55" y="853" width="700" height="98" rx="10" fill="#ffffff" stroke="#bcd9f0" stroke-width="1.5"/>
+  <circle cx="88" cy="884" r="16" fill="#d64545"/>
+  <text x="88" y="890" text-anchor="middle" font-size="14" font-weight="800" fill="#ffffff">4</text>
+  <text x="115" y="880" font-size="15" font-weight="700" fill="#12324c">🚧 MinScore Floor —— 拒绝"纯弱向量命中"</text>
+  <text x="115" y="903" font-size="13" fill="#5f7b9c">语义分 <tspan font-family="Menlo, monospace" fill="#2b6cb0" font-weight="700">&lt; 0.55</tspan> 且无关键词支撑 → 丢弃（最毒的"话题相邻噪声"）</text>
+  <text x="115" y="924" font-size="13" fill="#5f7b9c">清空则放宽回退 —— 挡的是坏结果，不是用户的问题</text>
+
+  <line x1="405" y1="951" x2="405" y2="978" stroke="#3f8fd4" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <!-- ⑤ 重排 -->
+  <rect x="55" y="983" width="700" height="98" rx="10" fill="#ffffff" stroke="#bcd9f0" stroke-width="1.5"/>
+  <circle cx="88" cy="1014" r="16" fill="#d64545"/>
+  <text x="88" y="1020" text-anchor="middle" font-size="14" font-weight="800" fill="#ffffff">5</text>
+  <text x="115" y="1010" font-size="15" font-weight="700" fill="#12324c">🧹 Rerank —— 拒绝近重复刷屏，50 → topK 收窄</text>
+  <text x="115" y="1033" font-size="13" fill="#5f7b9c">三级梯队：cross-encoder 优先 → LLM-as-reranker → MMR 兜底（<tspan font-family="Menlo, monospace" fill="#2b6cb0" font-weight="700">λ=0.7</tspan>）</text>
+  <text x="115" y="1054" font-size="13" fill="#5f7b9c">MMR 防"同一段话三份拷贝占满 topK"—— 多样性也是降噪</text>
+
+  <line x1="405" y1="1081" x2="405" y2="1108" stroke="#3f8fd4" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <!-- ⑥ 出口 -->
+  <rect x="55" y="1113" width="700" height="92" rx="10" fill="#ffffff" stroke="#bcd9f0" stroke-width="1.5"/>
+  <circle cx="88" cy="1144" r="16" fill="#3f8fd4"/>
+  <text x="88" y="1150" text-anchor="middle" font-size="14" font-weight="800" fill="#ffffff">6</text>
+  <text x="115" y="1140" font-size="15" font-weight="700" fill="#12324c">📤 Exit Wording —— 每条参考带身份声明</text>
+  <text x="115" y="1163" font-size="13" fill="#5f7b9c">"参考 N（相关度 xx%）＋ 标题 · 来源"，收尾焊死一句：</text>
+  <text x="115" y="1184" font-size="13" font-weight="700" fill="#2b6cb0">"如果参考信息不足以回答，请如实告知。"</text>
+
+  <!-- 降级虚线（右侧） -->
+  <rect x="785" y="455" width="225" height="750" rx="10" fill="none" stroke="#90908A" stroke-width="1.5" stroke-dasharray="6 5"/>
+  <text x="897" y="487" text-anchor="middle" font-size="15" font-weight="700" fill="#6b7a88">降级阶梯（自动）</text>
+  <path d="M 785 500 q -18 2 -30 4" stroke="#90908A" stroke-width="1.5" stroke-dasharray="5 4" fill="none" marker-end="url(#arrowGray)"/>
+  <text x="805" y="525" font-size="13" fill="#6b7a88">缺 LLM →</text>
+  <text x="805" y="545" font-size="13" fill="#6b7a88">跳过 1 扩展 5 重排，</text>
+  <text x="805" y="565" font-size="13" fill="#6b7a88">排序退 MMR</text>
+  <path d="M 785 630 q -18 2 -30 4" stroke="#90908A" stroke-width="1.5" stroke-dasharray="5 4" fill="none" marker-end="url(#arrowGray)"/>
+  <text x="805" y="620" font-size="13" fill="#6b7a88">缺 embedder →</text>
+  <text x="805" y="640" font-size="13" fill="#6b7a88">向量路关闭，权重切</text>
+  <text x="805" y="660" font-size="13" fill="#6b7a88" font-family="Menlo, monospace">(0, 1)</text>
+  <text x="805" y="680" font-size="13" fill="#6b7a88">纯 FTS5/BM25 检索，</text>
+  <text x="805" y="700" font-size="13" fill="#6b7a88">地板 4 自动失效</text>
+  <path d="M 785 755 q -18 2 -30 4" stroke="#90908A" stroke-width="1.5" stroke-dasharray="5 4" fill="none" marker-end="url(#arrowGray)"/>
+  <text x="805" y="745" font-size="13" fill="#6b7a88">FTS5 报错/零结果 →</text>
+  <text x="805" y="765" font-size="13" fill="#6b7a88">再降级 LIKE 兜底</text>
+  <text x="805" y="785" font-size="13" fill="#6b7a88">（CJK bigram 分词）</text>
+  <path d="M 785 920 q -18 2 -30 4" stroke="#90908A" stroke-width="1.5" stroke-dasharray="5 4" fill="none" marker-end="url(#arrowGray)"/>
+  <text x="805" y="905" font-size="13" fill="#6b7a88">地板清空 → 放宽回退</text>
+  <text x="805" y="960" font-size="13" fill="#6b7a88">检索报错 → 记日志，</text>
+  <text x="805" y="980" font-size="13" fill="#6b7a88">本轮不带参考，</text>
+  <text x="805" y="1000" font-size="13" fill="#6b7a88">回答照常不阻塞</text>
+  <text x="805" y="1060" font-size="13" font-weight="700" fill="#6b7a88">每级降级都有明确</text>
+  <text x="805" y="1080" font-size="13" font-weight="700" fill="#6b7a88">能力下限 —— 降级</text>
+  <text x="805" y="1100" font-size="13" font-weight="700" fill="#6b7a88">不是失败，是设计</text>
+
+  <line x1="405" y1="1220" x2="405" y2="1252" stroke="#3f8fd4" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="425" y="1243" font-size="13" fill="#5f7b9c">注入本轮 context → Agent Loop（检索错误在 Loop 里是复利，挡噪声同样是复利）</text>
+
+  <!-- ═══════════ 泳道 3：TIME 时间治理 ═══════════ -->
+  <rect x="30" y="1262" width="1000" height="128" rx="14" fill="#faf5ea" stroke="#b58a3c" stroke-width="2"/>
+  <text x="55" y="1296" font-size="20" font-weight="700" fill="#96702a">⏱️ TIME</text>
+  <text x="145" y="1296" font-size="14" fill="#a8834a">时间也是噪声的一个维度</text>
+
+  <rect x="55" y="1312" width="460" height="62" rx="10" fill="#ffffff" stroke="#e3d3b3" stroke-width="1.5"/>
+  <text x="75" y="1338" font-size="15" font-weight="700" fill="#12324c">检索时：时间衰减</text>
+  <text x="75" y="1360" font-size="13" fill="#5f7b9c">半衰期 <tspan font-family="Menlo, monospace" fill="#96702a" font-weight="700">30 天</tspan> —— 同等相关度，新资料压旧资料</text>
+
+  <rect x="545" y="1312" width="460" height="62" rx="10" fill="#ffffff" stroke="#e3d3b3" stroke-width="1.5"/>
+  <text x="565" y="1338" font-size="15" font-weight="700" fill="#12324c">写入时：snapshot 时序治理（cron 采集）</text>
+  <text x="565" y="1360" font-size="13" fill="#5f7b9c">时间戳标题=独立文档 · 每序列保留 <tspan font-family="Menlo, monospace" fill="#96702a" font-weight="700">100</tspan> 份防淤积</text>
+
+  <!-- ═══════════ 泳道 4：RELEASE GATES 发版门 ═══════════ -->
+  <rect x="30" y="1410" width="1000" height="230" rx="14" fill="#fdf3e7" stroke="#d97706" stroke-width="2"/>
+  <text x="55" y="1444" font-size="20" font-weight="700" fill="#b25e04">🚪 RELEASE GATES</text>
+  <text x="260" y="1444" font-size="14" fill="#c07a2e">三道发版门 —— 改检索逻辑先过这三关（不在在线链路）</text>
+
+  <rect x="55" y="1462" width="305" height="100" rx="10" fill="#ffffff" stroke="#f0d9ba" stroke-width="1.5"/>
+  <text x="75" y="1490" font-size="15" font-weight="700" fill="#12324c">Recall 门</text>
+  <text x="75" y="1512" font-size="13" fill="#5f7b9c">golden 语料量化</text>
+  <text x="75" y="1532" font-size="13" fill="#5f7b9c" font-family="Menlo, monospace">recall@k · MRR</text>
+  <text x="75" y="1552" font-size="12" fill="#8aa5bd">锁死"原来找得到的别弄丢"</text>
+
+  <rect x="378" y="1462" width="305" height="100" rx="10" fill="#ffffff" stroke="#f0d9ba" stroke-width="1.5"/>
+  <text x="398" y="1490" font-size="15" font-weight="700" fill="#12324c">Precision 门（抗噪体检）</text>
+  <text x="398" y="1512" font-size="13" fill="#5f7b9c">干扰语料：话题相邻但答案错误</text>
+  <text x="398" y="1532" font-size="13" fill="#5f7b9c" font-family="Menlo, monospace">precision@k = top-k 纯度</text>
+  <text x="398" y="1552" font-size="12" fill="#8aa5bd">定向体检"最毒的那种噪声"</text>
+
+  <rect x="701" y="1462" width="305" height="100" rx="10" fill="#ffffff" stroke="#f0d9ba" stroke-width="1.5"/>
+  <text x="721" y="1490" font-size="15" font-weight="700" fill="#12324c">Faithfulness 门（RAGAS 式）</text>
+  <text x="721" y="1512" font-size="13" fill="#5f7b9c">LLM 裁判：答案受上下文支撑比例</text>
+  <text x="721" y="1532" font-size="13" font-weight="700" fill="#b25e04">拒答 = 1.0 满分，编造 = 0</text>
+  <text x="721" y="1552" font-size="12" fill="#8aa5bd">Unsupported 陈述逐条取证</text>
+
+  <text x="55" y="1596" font-size="13" fill="#c07a2e">▲ 评测在发版时把关整条流水线；每次真实问答的在线防线 = 工序 6 那句 prompt 约束</text>
+  <text x="55" y="1620" font-size="13" fill="#c07a2e">▲ 干扰语料仍是构造的、量级小 —— 这道门的语料需要持续养</text>
+
+  <!-- ═══════════ 红框：还在补 ═══════════ -->
+  <rect x="30" y="1660" width="1000" height="100" rx="14" fill="#fdf0f0" stroke="#d64545" stroke-width="2.5" stroke-dasharray="10 6"/>
+  <text x="55" y="1692" font-size="16" font-weight="800" fill="#d64545">🚧 还在补</text>
+  <text x="160" y="1692" font-size="14" fill="#b53c3c">在线 Faithfulness 门（每次回答实时裁判 —— 延迟/成本账还没算完）</text>
+  <text x="160" y="1716" font-size="14" fill="#b53c3c">产品化引用回源（citation-aware builder 已有雏形，"点一下回原文"还没有）</text>
+  <text x="160" y="1740" font-size="14" fill="#b53c3c">ANN 近似索引（当前全量精确余弦扫描，100000 chunk 打 WARN 亮黄牌——个人库够用）</text>
+
+  <rect x="30" y="1774" width="1000" height="54" rx="12" fill="#12324c"/>
+  <text x="530" y="1807" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">⭐ 核心：检索系统的核心能力不是"找到"，是<tspan fill="#5fb3ea">"拒绝"</tspan> —— 六道工序，五道在说"不"</text>
+
+  <text x="530" y="1856" text-anchor="middle" font-size="13" fill="#8aa5bd">HexClaw 河蟹 AI · Context Engineering 检索流水线全景 · 常量核验于 2026-07-02（main 分支）</text>
+</svg>

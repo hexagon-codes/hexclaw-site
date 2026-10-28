@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1310" viewBox="0 0 1000 1310" role="img" aria-labelledby="title desc">
+  <title id="title">计算型验证：从候选解法到执行证据</title>
+  <desc id="desc">Solver 产生候选解法，独立的 Verifier 请求生成 Python 和逐步审计 JSON。应用调用 code_exec，核对本题 InputDigest、RunID、成功状态和 stdout 回执，再进行数值比对及过程、学段审计，形成证据结果。终值相等不能覆盖 PROCESS INVALID 或 OUT_OF_SCOPE。模型不能自行证明程序执行，同源自检不等于程序执行证据。本图仅表达当前计算型验证路径。</desc>
+  <defs>
+    <filter id="shadow" x="-10%" y="-20%" width="120%" height="140%"><feDropShadow dx="0" dy="1.5" stdDeviation="2.5" flood-color="#9fb4c9" flood-opacity="0.25"/></filter>
+    <marker id="arrow-blue" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#3f8fd4"/></marker>
+    <marker id="arrow-green" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#4caf7d"/></marker>
+    <marker id="arrow-orange" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#e8943a"/></marker>
+  </defs>
+  <style>
+    text { font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif; fill: #12324c; }
+    .title { font-size: 34px; font-weight: 700; }
+    .subtitle { font-size: 23px; fill: #5f7b9c; }
+    .lane-title { font-size: 27px; font-weight: 700; }
+    .node-title { font-size: 28px; font-weight: 650; }
+    .body { font-size: 25px; fill: #5f7b9c; }
+    .edge { fill: none; stroke-width: 2.5; stroke-linejoin: round; }
+  </style>
+  <rect width="1000" height="1310" fill="#ffffff"/>
+  <text class="title" x="500" y="53" text-anchor="middle">计算型验证：从候选解法到执行证据</text>
+  <text class="subtitle" x="500" y="92" text-anchor="middle">本图仅表达当前计算型 Verifier 的验证路径</text>
+
+  <rect x="30" y="125" width="940" height="221" rx="18" fill="#f4fbff" stroke="#bcdcf3" stroke-width="1.5"/>
+  <text class="lane-title" x="60" y="172" style="fill:#3f8fd4">01  生成候选解法与审计程序</text>
+  <g id="solver">
+    <rect x="60" y="206" width="340" height="105" rx="12" fill="#ffffff" stroke="#3f8fd4" stroke-width="1.5" filter="url(#shadow)"/>
+    <text class="node-title" x="230" y="250" text-anchor="middle">Solver</text>
+    <text class="body" x="230" y="290" text-anchor="middle">候选解法</text>
+  </g>
+  <g id="verifier">
+    <rect x="540" y="206" width="400" height="105" rx="12" fill="#ffffff" stroke="#3f8fd4" stroke-width="1.5" filter="url(#shadow)"/>
+    <text class="node-title" x="740" y="250" text-anchor="middle">独立 Verifier 请求</text>
+    <text class="body" x="740" y="290" text-anchor="middle">Python + 逐步审计 JSON</text>
+  </g>
+  <path class="edge" d="M400 259 H527" stroke="#3f8fd4" marker-end="url(#arrow-blue)"/>
+  <path class="edge" d="M740 311 V372 H500 V385" stroke="#3f8fd4" marker-end="url(#arrow-blue)"/>
+
+  <!-- 执行事实由应用和与本题绑定的回执产生，不由模型自行声明。 -->
+  <rect x="30" y="397" width="940" height="328" rx="18" fill="#f1faf4" stroke="#bfe6cf" stroke-width="1.5"/>
+  <text class="lane-title" x="60" y="447" style="fill:#4caf7d">02  应用执行，保留本题回执</text>
+  <g id="execute">
+    <rect x="60" y="483" width="340" height="150" rx="12" fill="#ffffff" stroke="#4caf7d" stroke-width="1.5" filter="url(#shadow)"/>
+    <text class="node-title" x="230" y="542" text-anchor="middle">应用调用 code_exec</text>
+    <text class="body" x="230" y="590" text-anchor="middle">执行 Python</text>
+  </g>
+  <g id="receipt">
+    <rect x="540" y="483" width="400" height="150" rx="12" fill="#ffffff" stroke="#4caf7d" stroke-width="1.5" filter="url(#shadow)"/>
+    <text class="node-title" x="740" y="526" text-anchor="middle">本题执行回执</text>
+    <text class="body" x="740" y="571" text-anchor="middle">InputDigest / RunID</text>
+    <text class="body" x="740" y="610" text-anchor="middle">成功状态 / stdout</text>
+  </g>
+  <path class="edge" d="M400 558 H527" stroke="#4caf7d" marker-end="url(#arrow-green)"/>
+  <text class="body" x="60" y="683">本题输入与本次运行须对应</text>
+  <path class="edge" d="M740 633 V751 H500 V764" stroke="#4caf7d" marker-end="url(#arrow-green)"/>
+
+  <rect x="30" y="776" width="940" height="360" rx="18" fill="#fff7ee" stroke="#f3d7b0" stroke-width="1.5"/>
+  <text class="lane-title" x="60" y="824" style="fill:#e8943a">03  比对与审计，形成证据结果</text>
+  <g id="audit">
+    <rect x="60" y="861" width="400" height="123" rx="12" fill="#ffffff" stroke="#e8943a" stroke-width="1.5" filter="url(#shadow)"/>
+    <text class="node-title" x="260" y="912" text-anchor="middle">数值比对</text>
+    <text class="body" x="260" y="957" text-anchor="middle">过程审计 + 学段审计</text>
+  </g>
+  <g id="evidence">
+    <rect x="610" y="861" width="330" height="123" rx="12" fill="#ffffff" stroke="#e8943a" stroke-width="1.5" filter="url(#shadow)"/>
+    <text class="node-title" x="775" y="934" text-anchor="middle">证据结果</text>
+  </g>
+  <path class="edge" d="M460 923 H597" stroke="#e8943a" marker-end="url(#arrow-orange)"/>
+  <text class="body" x="60" y="1032">终值相等不能覆盖 PROCESS INVALID / OUT_OF_SCOPE</text>
+  <text x="60" y="1090" font-size="26" font-weight="650">缺有效回执 / 执行失败 → 失败或待核实</text>
+
+  <rect x="30" y="1179" width="940" height="102" rx="16" fill="#f6f9fc" stroke="#d7e3ed" stroke-width="1.5"/>
+  <text x="500" y="1220" text-anchor="middle" font-size="26" font-weight="650">执行事实由应用回执证明，模型不能自证执行</text>
+  <text class="body" x="500" y="1260" text-anchor="middle">同源自检 ≠ 程序执行证据</text>
+</svg>

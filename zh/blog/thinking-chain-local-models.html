@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/favicon-32.png">
+<title>河蟹 AI 的思考过程：打通本地推理模型 Qwen 3.5/Gemma 4/DeepSeek-R1 的最后一公里｜HexClaw 技术博客</title>
+<meta name="description" content="本地推理模型，今年真的变了。问题很多时候已经不在模型本身，而在于客户端怎么把这“最后一公里”接住：流式思考解析、折叠展示与推理预算拦截。">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:site_name" content="河蟹 AI">
+<meta property="og:type" content="article">
+<meta property="og:title" content="河蟹 AI 的思考过程：打通本地推理模型 Qwen 3.5/Gemma 4/DeepSeek-R1 的最后一公里｜HexClaw 技术博客">
+<meta property="og:description" content="本地推理模型，今年真的变了。问题很多时候已经不在模型本身，而在于客户端怎么把这“最后一公里”接住：流式思考解析、折叠展示与推理预算拦截。">
+<meta property="og:url" content="https://hexclaw.net/zh/blog/thinking-chain-local-models">
+<meta property="og:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta property="og:image:alt" content="河蟹 AI 标志">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="河蟹 AI 的思考过程：打通本地推理模型 Qwen 3.5/Gemma 4/DeepSeek-R1 的最后一公里｜HexClaw 技术博客">
+<meta name="twitter:description" content="本地推理模型，今年真的变了。问题很多时候已经不在模型本身，而在于客户端怎么把这“最后一公里”接住：流式思考解析、折叠展示与推理预算拦截。">
+<meta name="twitter:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta name="twitter:image:alt" content="河蟹 AI 标志">
+<link rel="canonical" href="https://hexclaw.net/zh/blog/thinking-chain-local-models">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "河蟹 AI 的思考过程：打通本地推理模型 Qwen 3.5/Gemma 4/DeepSeek-R1 的最后一公里",
+  "description": "本地推理模型，今年真的变了。问题很多时候已经不在模型本身，而在于客户端怎么把这“最后一公里”接住：流式思考解析、折叠展示与推理预算拦截。",
+  "url": "https://hexclaw.net/zh/blog/thinking-chain-local-models",
+  "inLanguage": "zh-CN",
+  "datePublished": "2026-04-13",
+  "image": "https://hexclaw.net/assets/brand/hexclaw-logo.png",
+  "publisher": {
+    "@type": "Organization",
+    "name": "hexagon-codes",
+    "url": "https://hexclaw.net/",
+    "@id": "https://hexclaw.net/#organization"
+  },
+  "@id": "https://hexclaw.net/zh/blog/thinking-chain-local-models#article"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "河蟹 AI", "item": "https://hexclaw.net/zh/"},
+    {"@type": "ListItem", "position": 2, "name": "技术博客", "item": "https://hexclaw.net/zh/blog/"},
+    {"@type": "ListItem", "position": 3, "name": "河蟹 AI 的思考过程：打通本地推理模型 Qwen 3.5/Gemma 4/DeepSeek-R1 的最后一公里", "item": "https://hexclaw.net/zh/blog/thinking-chain-local-models"}
+  ],
+  "@id": "https://hexclaw.net/zh/blog/thinking-chain-local-models#breadcrumb"
+}
+</script>
+<link rel="stylesheet" href="../../assets/css/docs-057a0f50bd0a.css">
+<link rel="stylesheet" href="../../assets/css/blog.css">
+</head>
+<body class="blog-page blog-article-page">
+<a href="#main" class="skip-link">跳转到主要内容</a>
+<nav class="tn topnav" id="nav">
+  <a href="/zh/" class="tn-b topnav-brand">
+    <img width="72" height="72" src="../../assets/brand/hexclaw-icon-72.png" class="tn-l topnav-logo" alt="河蟹 AI">
+    <span class="tn-n topnav-name">河蟹 AI</span>
+  </a>
+  <button type="button" class="tn-burger topnav-burger" aria-label="菜单" aria-expanded="false" aria-controls="primary-navigation">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="tn-r topnav-links" id="primary-navigation">
+    <a href="/zh/">首页</a>
+    <a href="/zh/#cases">使用场景</a>
+    <a href="/zh/#features">产品能力</a>
+    <a href="/zh/#quickstart">开始使用</a>
+    <a href="/zh/#ecosystem">开源生态</a>
+    <a href="/zh/blog/" class="is-active">技术博客</a>
+    <a href="/zh/docs/">文档中心</a>
+    <div class="lang-menu" data-lang-menu>
+      <button type="button" class="lang-trigger" aria-haspopup="menu" aria-expanded="false" aria-label="切换语言">
+        <svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="10"></circle>
+          <path d="M2 12h20"></path>
+          <path d="M12 2a15.3 15.3 0 0 1 0 20"></path>
+          <path d="M12 2a15.3 15.3 0 0 0 0 20"></path>
+        </svg>
+        <span class="lang-current">中文</span>
+        <svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="m6 9 6 6 6-6"></path>
+        </svg>
+      </button>
+      <div class="lang-menu-list" role="menu">
+        <a href="/zh/blog/thinking-chain-local-models" role="menuitem" class="is-active" aria-current="true">中文</a>
+        <a href="/en/" role="menuitem">English</a>
+        <a href="/ug/" role="menuitem" lang="zh-CN" dir="ltr">维吾尔语</a>
+      </div>
+    </div>
+    <button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="切换主题">
+      <svg class="ti-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="5"></circle>
+        <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+      </svg>
+      <svg class="ti-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+      </svg>
+    </button>
+    <a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="nav-cta">GitHub <span class="nav-star-badge" id="gh-stars">&#9733;</span></a>
+  </div>
+</nav>
+
+<main id="main" class="blog-main">
+  <div class="blog-article-container">
+    <nav class="blog-breadcrumb" aria-label="面包屑导航">
+      <a href="/zh/">首页</a>
+      <span class="blog-breadcrumb-sep">/</span>
+      <a href="/zh/blog/">技术博客</a>
+      <span class="blog-breadcrumb-sep">/</span>
+      <span aria-current="page">核心系统深度</span>
+    </nav>
+
+    <header class="blog-header">
+      <div class="blog-header-tags">
+        <span class="blog-badge-series">端侧推理</span>
+      </div>
+      <h1 class="blog-article-title">河蟹 AI 的思考过程：打通本地推理模型 Qwen 3.5/Gemma 4/DeepSeek-R1 的最后一公里</h1>
+      <p class="blog-article-subtitle">本地推理模型，今年真的变了。问题很多时候已经不在模型本身，而在于客户端怎么把这“最后一公里”接住：流式思考解析、折叠展示与推理预算拦截。</p>
+      <div class="article-provenance-banner">
+        <div class="provenance-left">
+          <span class="provenance-origin-badge">微信公众号首发</span>
+          <span class="provenance-text">本文首发于<strong>「HexClaw 河蟹开源AI」</strong>官方技术专栏 · 发表于 <strong>2026年4月13日</strong> · 预计阅读 10 分钟</span>
+        </div>
+        <a href="https://mp.weixin.qq.com/s/RX-2QOSV2cBEmddwAUj5cg" target="_blank" rel="noopener noreferrer" class="provenance-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          微信原文 ↗
+        </a>
+      </div>
+    </header>
+
+    <article class="blog-content">
+      <p style="margin: 16px 0;">前几篇文章，我已经把河蟹 AI 的几条主线讲得差不多了：怎么装、怎么用、架构怎么搭、Skill 怎么玩。</p>
+
+<p style="margin: 8px 0;">但还有一条最容易被忽视、同时最决定体验上限的链路，一直没单独展开：<strong style="color: #3f8fd4;">本地推理模型的思考过程，到底能不能被完整保留下来，并真正服务于干活</strong>。</p>
+
+<p style="margin: 16px 0;">去年我用本地推理模型解一道中等难度的数学题，它在 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">&lt;think&gt;</code> 里想了很久，吐出一大段推理链，最后答案还是错的。</p>
+
+<p style="margin: 8px 0;">当时我的结论很简单：<strong style="color: #3f8fd4;">本地推理模型，道阻且长</strong>。</p>
+
+<p style="margin: 8px 0;">到了 2026 年，这句话已经不太成立了。开源推理模型这一年进步非常快，小模型不再只是试玩版，MoE 把效率拉了上来，蒸馏模型也开始在真实任务里变得可用。</p>
+
+<p style="margin: 8px 0;">现在的问题，已经不只是<strong style="color: #3f8fd4;">模型能不能跑</strong>，而是<strong style="color: #3f8fd4;">跑出来的能力，你有没有工具把它接住</strong>。</p>
+
+<p style="margin: 8px 0;">很多本地客户端的问题都出在这里：模型明明已经在认真推理了，最后却只被渲染成一个聊天气泡；思考过程不是被吞掉，就是被截断，要么干脆卡死在半路。</p>
+
+<p style="border-left: 3px solid #f5a623; padding: 10px 16px; margin: 16px 0; background: #fffbe6; color: #8a6d3b; font-size: 14px; border-radius: 0 6px 6px 0;"><strong>先给结论，赶时间直接看：</strong><br/>
+如果你只有一台 16GB Mac 或 8GB 级显卡的 PC，先从 <strong style="color: #3f8fd4;">Qwen 3.5</strong> 开始；如果你更看重速度和英文任务，重点看 <strong style="color: #3f8fd4;">Gemma 4</strong>；如果你想看最完整、最有研究价值的推理链，选 <strong style="color: #3f8fd4;">DeepSeek-R1</strong>。但真正决定体验的，不只是模型分数，而是客户端能不能把 <strong style="color: #3f8fd4;">思考展示、思考开关、超时恢复、上下文压缩、工具联动</strong> 这一整条链路做完整。河蟹 AI 在 v0.3.x 做的，就是这件事。</p>
+
+<p style="margin: 8px 0;">下面展开讲。</p>
+
+<h2 style="font-size: 18px; font-weight: 700; color: #12324c; margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">为什么 2026 年值得重新看一眼本地推理</h2>
+
+<p style="margin: 8px 0;">过去很多人对本地模型的印象是：慢、笨、容易一本正经地胡说八道。这个印象不是空穴来风，去年确实如此。</p>
+
+<p style="margin: 8px 0;">但过去一年，变化不是“参数又翻倍了”这么简单，而是<strong style="color: #3f8fd4;">参数效率、推理策略、量化效果、工程可用性</strong>一起往前走。</p>
+
+<p style="margin: 8px 0;">最明显的变化有三个：</p>
+
+<ol style="padding-left: 20px; margin: 6px 0;">
+<li style="margin: 4px 0;"><strong style="color: #3f8fd4;">小模型不再只是试玩版。</strong>8B 这个量级已经能稳定覆盖中文问答、代码解释、轻量排障、文档整理这类高频任务。</li>
+<li style="margin: 4px 0;"><strong style="color: #3f8fd4;">推理过程开始有工程价值。</strong>它不再只是给你看热闹，而是能帮助你排错、校验假设、理解工具调用决策。</li>
+<li style="margin: 4px 0;"><strong style="color: #3f8fd4;">本地部署门槛下来了。</strong>16GB Mac、8GB 级显卡的 PC，已经可以跑出一个“不丢人”的本地 AI 工作流。</li>
+</ol>
+
+<p style="margin: 8px 0;">所以这篇文章的核心判断，不是“本地模型能不能替代云端一切”，而是：<strong style="color: #3f8fd4;">在一批高频、私密、需要可控性的任务里，本地推理已经从备胎变成了正选</strong>。</p>
+
+<h2 style="font-size: 18px; font-weight: 700; color: #12324c; margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">先给选择题：你到底该用哪个模型</h2>
+
+<p style="margin: 8px 0;">如果你已经被各种榜单和评测看晕了，先别急着追最大的那个。对大多数人来说，先把本地推理链路跑通，比盲目堆参数重要。</p>
+
+<table style="width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13px;">
+<thead>
+<tr>
+<th style="background: #f4fbff; color: #12324c; padding: 8px 12px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;">你的情况</th>
+<th style="background: #f4fbff; color: #12324c; padding: 8px 12px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;">推荐模型</th>
+<th style="background: #f4fbff; color: #12324c; padding: 8px 12px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;">原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding: 7px 12px; border-bottom: 1px solid #edf7ff; color: #12324c;">16GB Mac / 8GB 显卡，中文为主</td>
+<td style="padding: 7px 12px; border-bottom: 1px solid #edf7ff; color: #12324c;"><strong style="color: #3f8fd4;">qwen3.5:9b</strong></td>
+<td style="padding: 7px 12px; border-bottom: 1px solid #edf7ff; color: #12324c;">显存门槛低、中文表现稳，适合作为默认本地工作马</td>
+</tr>
+<tr>
+<td style="padding: 7px 12px; border-bottom: 1px solid #edf7ff; background: #fafcfe; color: #12324c;">18GB+ 显存，更重视速度和英文任务</td>
+<td style="padding: 7px 12px; border-bottom: 1px solid #edf7ff; background: #fafcfe; color: #12324c;"><strong style="color: #3f8fd4;">Gemma4:26b</strong></td>
+<td style="padding: 7px 12px; border-bottom: 1px solid #edf7ff; background: #fafcfe; color: #12324c;">MoE 架构把观感速度拉得很快，代码和英文推理更讨喜</td>
+</tr>
+<tr>
+<td style="padding: 7px 12px; border-bottom: 1px solid #edf7ff; color: #12324c;">想观察完整推理链、做复杂排障</td>
+<td style="padding: 7px 12px; border-bottom: 1px solid #edf7ff; color: #12324c;"><strong style="color: #3f8fd4;">deepseek-r1:14b / 32b</strong></td>
+<td style="padding: 7px 12px; border-bottom: 1px solid #edf7ff; color: #12324c;">思考链最细，适合“看它怎么想”的场景，但更吃时间和内存</td>
+</tr>
+<tr>
+<td style="padding: 7px 12px; border-bottom: 1px solid #edf7ff; background: #fafcfe; color: #12324c;">32GB+ 内存，想要更强综合能力</td>
+<td style="padding: 7px 12px; border-bottom: 1px solid #edf7ff; background: #fafcfe; color: #12324c;"><strong style="color: #3f8fd4;">qwen3.5:27b</strong></td>
+<td style="padding: 7px 12px; border-bottom: 1px solid #edf7ff; background: #fafcfe; color: #12324c;">综合能力更强，中文代码和文档工作流更稳</td>
+</tr>
+</tbody>
+</table>
+
+<p style="border-left: 3px solid #5fb3ea; padding: 10px 16px; margin: 16px 0; background: #f4fbff; color: #3f5f7b; font-size: 14px; border-radius: 0 6px 6px 0;"><strong style="color: #3f8fd4;">一句人话版：</strong>绝大多数人，先从 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">qwen3.5:9b</code> 开始就够了。别一上来就追最大模型，先把工作流跑通，比什么都重要。</p>
+
+<h2 style="font-size: 18px; font-weight: 700; color: #12324c; margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">三大推理模型，谁更适合本地干活</h2>
+
+<p style="margin: 8px 0;">截至 2026 年 4 月 13 日，Ollama 上常见、且适合本地推理工作流的三个系列，依然是 Qwen 3.5、Gemma 4、DeepSeek-R1。它们的性格并不一样。</p>
+
+<table style="width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13px;">
+<thead>
+<tr>
+<th style="background: #f4fbff; color: #12324c; padding: 8px 12px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;"></th>
+<th style="background: #f4fbff; color: #12324c; padding: 8px 12px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;">Qwen 3.5<br/><span style="font-weight: 400; font-size: 11px; color: #667085;">（阿里巴巴）</span></th>
+<th style="background: #f4fbff; color: #12324c; padding: 8px 12px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;">Gemma 4<br/><span style="font-weight: 400; font-size: 11px; color: #667085;">（Google）</span></th>
+<th style="background: #f4fbff; color: #12324c; padding: 8px 12px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;">DeepSeek-R1<br/><span style="font-weight: 400; font-size: 11px; color: #667085;">（深度求索）</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding: 7px 12px; border-bottom: 1px solid #edf7ff; background: #fafcfe; color: #12324c;"><strong style="color: #3f8fd4;">常见本地规格</strong></td>
+<td style="padding: 7px 12px; border-bottom: 1px solid #edf7ff; background: #fafcfe; color: #12324c;">9B / 27B</td>
+<td style="padding: 7px 12px; border-bottom: 1px solid #edf7ff; background: #fafcfe; color: #12324c;">e4b / 26B / 31B</td>
+<td style="padding: 7px 12px; border-bottom: 1px solid #edf7ff; background: #fafcfe; color: #12324c;">14B / 32B</td>
+</tr>
+<tr>
+<td style="padding: 7px 12px; border-bottom: 1px solid #edf7ff; background: #fafcfe; color: #12324c;"><strong style="color: #3f8fd4;">Ollama 常见大小</strong></td>
+<td style="padding: 7px 12px; border-bottom: 1px solid #edf7ff; background: #fafcfe; color: #12324c;">6.6GB / 17GB</td>
+<td style="padding: 7px 12px; border-bottom: 1px solid #edf7ff; background: #fafcfe; color: #12324c;">9.6GB / 18GB / 20GB</td>
+<td style="padding: 7px 12px; border-bottom: 1px solid #edf7ff; background: #fafcfe; color: #12324c;">9.0GB / 20GB</td>
+</tr>
+<tr>
+<td style="padding: 7px 12px; border-bottom: 1px solid #edf7ff; color: #12324c;"><strong style="color: #3f8fd4;">常见上下文</strong></td>
+<td style="padding: 7px 12px; border-bottom: 1px solid #edf7ff; color: #12324c;">256K / 256K</td>
+<td style="padding: 7px 12px; border-bottom: 1px solid #edf7ff; color: #12324c;">128K / 256K / 256K</td>
+<td style="padding: 7px 12px; border-bottom: 1px solid #edf7ff; color: #12324c;">128K / 128K</td>
+</tr>
+<tr>
+<td style="padding: 7px 12px; border-bottom: 1px solid #edf7ff; background: #fafcfe; color: #12324c;"><strong style="color: #3f8fd4;">杀手锏</strong></td>
+<td style="padding: 7px 12px; border-bottom: 1px solid #edf7ff; background: #fafcfe; color: #12324c;">中文稳、门槛低、默认首选</td>
+<td style="padding: 7px 12px; border-bottom: 1px solid #edf7ff; background: #fafcfe; color: #12324c;">速度观感好、英文和代码友好</td>
+<td style="padding: 7px 12px; border-bottom: 1px solid #edf7ff; background: #fafcfe; color: #12324c;">推理链最细，适合复杂排障</td>
+</tr>
+</tbody>
+</table>
+
+<h3 style="font-size: 16px; font-weight: 600; color: #12324c; margin: 24px 0 8px;">Qwen 3.5：你最可能天天打开的那个</h3>
+
+<p style="margin: 8px 0;">Qwen 3.5 最让我服气的地方，不是某项单独榜单，而是<strong style="color: #3f8fd4;">你真能把它放进日常工作流里</strong>。以 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">qwen3.5:9b</code> 为例，机器要求不夸张，中文问答、代码解释、文件整理、轻量排障都能覆盖。</p>
+
+<p style="margin: 8px 0;">如果你的机器是 M 系列 Mac 16GB，或者 8GB 级别显卡的 PC，这通常就是最稳的起点。它不一定是最会“表演思考”的那个，但很可能是<strong style="color: #3f8fd4;">你真正会天天打开的那个</strong>。</p>
+
+<h3 style="font-size: 16px; font-weight: 600; color: #12324c; margin: 24px 0 8px;">Gemma 4：工程视角下最讨喜的速度派</h3>
+
+<p style="margin: 8px 0;">Gemma 4 的优势很工程化：<strong style="color: #3f8fd4;">观感速度快</strong>。26B 规格虽然不小，但 MoE 架构让它的运行体验明显更轻快。</p>
+
+<p style="margin: 8px 0;">如果你做的是英文代码、数学推理、英文技术文档处理，Gemma 4 很有竞争力。它的问题也很明确：中文任务整体还是不如 Qwen 那么顺手。</p>
+
+<h3 style="font-size: 16px; font-weight: 600; color: #12324c; margin: 24px 0 8px;">DeepSeek-R1：最像把脑回路摊给你看</h3>
+
+<p style="margin: 8px 0;">DeepSeek-R1 的价值，更多在于<strong style="color: #3f8fd4;">可观察性</strong>。它会更认真地列假设、排路径、做自我校验，很多时候你不只是拿到答案，而是在旁观一段推理过程。</p>
+
+<p style="margin: 8px 0;">这种“慢”和“长”，在日常闲聊里不一定讨喜，但在代码排障、复杂任务拆解、让模型自己规划工具调用路径时，反而很有用。DeepSeek 官方给出的 Distill-Qwen-32B 数据里，<strong style="color: #3f8fd4;">MATH-500 94.3、LiveCodeBench 57.2</strong>，已经说明它不是只会“想得长”，而是真的有硬实力。</p>
+
+<p style="border-left: 3px solid #5fb3ea; padding: 10px 16px; margin: 16px 0; background: #f4fbff; color: #3f5f7b; font-size: 14px; border-radius: 0 6px 6px 0;"><strong style="color: #3f8fd4;">别迷信单一榜单。</strong>本地模型的真实体验 = 模型能力 × 量化效果 × 客户端工程质量 × 你的硬件条件。前两项大家都在卷，后两项才是大多数人真正踩坑的地方。</p>
+
+<h2 style="font-size: 18px; font-weight: 700; color: #12324c; margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">为什么“看得到思考”有价值</h2>
+
+<p style="margin: 8px 0;">很多人第一次看到推理链，第一反应是：这不就是模型自言自语吗？看它干嘛？</p>
+
+<p style="margin: 8px 0;">如果你只是问天气、翻译、润色一句话，那确实不重要。但只要进入“稍微复杂一点”的任务，价值就出来了。</p>
+
+<table style="width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13px;">
+<thead>
+<tr>
+<th style="background: #f4fbff; color: #12324c; padding: 8px 12px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;">场景</th>
+<th style="background: #f4fbff; color: #12324c; padding: 8px 12px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;">看思考过程能得到什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding: 7px 12px; border-bottom: 1px solid #edf7ff; color: #12324c;">代码排障</td>
+<td style="padding: 7px 12px; border-bottom: 1px solid #edf7ff; color: #12324c;">看它先怀疑了哪里、排除了什么路径，能快速判断它有没有跑偏</td>
+</tr>
+<tr>
+<td style="padding: 7px 12px; border-bottom: 1px solid #edf7ff; background: #fafcfe; color: #12324c;">工具调用</td>
+<td style="padding: 7px 12px; border-bottom: 1px solid #edf7ff; background: #fafcfe; color: #12324c;">看它为什么先搜文件、再读文件、再修改，而不是黑盒乱试</td>
+</tr>
+<tr>
+<td style="padding: 7px 12px; border-bottom: 1px solid #edf7ff; color: #12324c;">复杂问答</td>
+<td style="padding: 7px 12px; border-bottom: 1px solid #edf7ff; color: #12324c;">看它有没有偷换前提、有没有漏掉你的约束条件</td>
+</tr>
+</tbody>
+</table>
+
+<p style="margin: 8px 0;">更重要的是，<strong style="color: #3f8fd4;">看得到思考，本身就是一种安全机制</strong>。至少当模型开始跑偏时，你能及时意识到，而不是只看到一个很自信的最终答案。</p>
+
+<h2 style="font-size: 18px; font-weight: 700; color: #12324c; margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">问题不在模型，在“最后一公里”的客户端工程</h2>
+
+<p style="margin: 8px 0;">我去年试了一圈本地客户端，最后的感受都差不多：<strong style="color: #3f8fd4;">很多产品已经把“调模型 API”这件事做得不错了，但还没把“推理模型”当成一个独立物种认真对待</strong>。</p>
+
+<p style="margin: 8px 0;">常见问题基本就这几类：</p>
+
+<ul style="padding-left: 18px; margin: 8px 0;">
+<li style="margin: 4px 0;">只会把模型输出渲染成聊天气泡，<strong style="color: #3f8fd4;">不会认真处理思考过程</strong></li>
+<li style="margin: 4px 0;">能显示思考，但不能控制，模型一旦想太久，<strong style="color: #3f8fd4;">用户只能傻等</strong></li>
+<li style="margin: 4px 0;">长对话没有压缩策略，推理链一长就把上下文吃爆，<strong style="color: #3f8fd4;">多轮之后直接失忆</strong></li>
+<li style="margin: 4px 0;">思考和工具调用是两条断开的线，<strong style="color: #3f8fd4;">你看不到它为什么做出下一步决策</strong></li>
+</ul>
+
+<p style="margin: 8px 0;">这也是我做河蟹 AI 时一个很明确的判断：<strong style="color: #3f8fd4;">思考过程不是副产品，是推理模型最有价值的输出之一</strong>。它不能被当成装饰处理。</p>
+
+<h2 style="font-size: 18px; font-weight: 700; color: #12324c; margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">河蟹 AI 怎么把思考链路做到完整可用：四层防线</h2>
+
+<p style="margin: 8px 0;">在 v0.3.x 里，我不是去做一个“能显示 think 标签”的聊天壳，而是把本地推理模型的完整链路拆成了四个必须打通的层次：<strong style="color: #3f8fd4;">提取、控制、恢复、压缩</strong>。</p>
+
+<h3 style="font-size: 16px; font-weight: 600; color: #12324c; margin: 24px 0 8px;">第一层：多格式思考标签提取</h3>
+
+<p style="margin: 8px 0;">河蟹 AI 在引擎层做的是<strong style="color: #3f8fd4;">双路径提取</strong>。流式阶段先接一遍，最终输出阶段再扫一遍，统一提取 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">&lt;think&gt;</code>、<code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">&lt;thinking&gt;</code>、<code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">&lt;|think|&gt;</code> 等多种格式。</p>
+
+<p style="margin: 8px 0;">这一步的意义是：<strong style="color: #3f8fd4;">换模型不换脑子</strong>。不需要因为标签格式不同，让用户去猜为什么这次突然不显示了。</p>
+
+<p style="margin: 8px 0;">提取出来的思考内容会持久化进消息元数据。下次重新打开这段对话，思考过程还在，不会因为刷新页面就丢掉。</p>
+
+<h3 style="font-size: 16px; font-weight: 600; color: #12324c; margin: 24px 0 8px;">第二层：思考模式一键开关</h3>
+
+<p style="margin: 8px 0;">不是所有问题都值得深度思考。问“今天星期几”和问“这段代码为什么死锁”，根本不是一个难度级别。</p>
+
+<p style="margin: 8px 0;">所以河蟹 AI 在输入框底部放了一个<strong style="color: #3f8fd4;">深度思考开关</strong>。它不是摆设，而是直接影响模型输出策略：</p>
+
+<ol style="padding-left: 20px; margin: 6px 0;">
+<li style="margin: 4px 0;"><strong style="color: #3f8fd4;">关闭</strong>：注入 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">/no_think</code>，压制冗长推理链，优先快速回答</li>
+<li style="margin: 4px 0;"><strong style="color: #3f8fd4;">开启</strong>：完整保留推理链，流式展示“它是怎么想的”</li>
+</ol>
+
+<p style="margin: 8px 0;">对用户来说，本质上是同一个模型的两种工作模式。<strong style="color: #3f8fd4;">不是每次都换模型，而是按任务切换思考深度</strong>。</p>
+
+
+<h3 style="font-size: 16px; font-weight: 600; color: #12324c; margin: 24px 0 8px;">第三层：90 秒思考超时自动恢复</h3>
+
+<p style="margin: 8px 0;">推理模型最大的工程问题，不是答错，而是<strong style="color: #3f8fd4;">想太久</strong>。尤其是本地小模型，遇到复杂任务时很容易在思考链里反复自我修正，最后连最终答案都吐不出来。</p>
+
+<p style="margin: 8px 0;">河蟹 AI 做了一个很务实的兜底：<strong style="color: #3f8fd4;">90 秒思考超时自动恢复</strong>。</p>
+
+<ol style="padding-left: 20px; margin: 6px 0;">
+<li style="margin: 4px 0;">超过 90 秒还没出最终回答，自动中断</li>
+<li style="margin: 4px 0;">自动注入 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">/no_think</code> 重新请求</li>
+<li style="margin: 4px 0;">如果只输出 reasoning、没有 final answer，也会自动识别并重试</li>
+</ol>
+
+<p style="margin: 8px 0;">这不是为了好看，而是为了把本地推理从“有时候能用”变成“多数时候可靠”。</p>
+
+<h3 style="font-size: 16px; font-weight: 600; color: #12324c; margin: 24px 0 8px;">第四层：上下文自动压缩</h3>
+
+<p style="margin: 8px 0;">本地推理模型的另一个硬约束，是<strong style="color: #3f8fd4;">上下文窗口有限</strong>。思考链本身就很吃 token，再叠上工具调用输入输出，几轮复杂任务之后，很快就会接近上下文上限。</p>
+
+<p style="margin: 8px 0;">很多客户端的做法是直接截断最早的消息。这样看起来简单，实际上很危险，因为最早的几条消息往往包含用户真正的约束条件。</p>
+
+<p style="margin: 8px 0;">河蟹 AI 的做法是<strong style="color: #3f8fd4;">保留 system prompt + 最近消息</strong>，中间历史做结构化摘要；摘要失败则回退到启发式提取。结果不是“忘掉历史”，而是“压缩历史”。</p>
+
+<p style="background: #1a2332; color: #d6e4f0; padding: 16px; border-radius: 8px; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, monospace; margin: 14px 0; overflow-x: auto; white-space: pre-wrap;"><span style="color: #6a9955;">// 上下文压缩策略</span>
+
+消息总量接近阈值时自动触发
+  ↓
+保留 <span style="color: #5fb3ea;">system prompt</span>
+保留 <span style="color: #5fb3ea;">最近消息</span>
+  ↓
+中间历史消息生成 <span style="color: #5fb3ea;">结构化摘要</span>
+  ↓
+插入 <span style="color: #f5a623;">[Prior tool interactions summary]</span>
+  ↓
+下一轮继续，不爆上下文</p>
+
+<h2 style="font-size: 18px; font-weight: 700; color: #12324c; margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">什么时候该开深度思考，什么时候该关</h2>
+
+<p style="margin: 8px 0;">这个问题非常实际。很多人用推理模型时最大的误区，就是<strong style="color: #3f8fd4;">把“能思考”误解成“任何时候都应该思考”</strong>。</p>
+
+<table style="width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13px;">
+<thead>
+<tr>
+<th style="background: #f4fbff; color: #12324c; padding: 8px 12px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;">任务类型</th>
+<th style="background: #f4fbff; color: #12324c; padding: 8px 12px; text-align: center; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;">建议</th>
+<th style="background: #f4fbff; color: #12324c; padding: 8px 12px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;">原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding: 7px 12px; border-bottom: 1px solid #edf7ff; color: #12324c;">代码排障 / 架构分析</td>
+<td style="padding: 7px 12px; border-bottom: 1px solid #edf7ff; color: #12324c; text-align: center;"><strong style="color: #3f8fd4;">开</strong></td>
+<td style="padding: 7px 12px; border-bottom: 1px solid #edf7ff; color: #12324c;">能看到它排除了什么路径，及时发现跑偏</td>
+</tr>
+<tr>
+<td style="padding: 7px 12px; border-bottom: 1px solid #edf7ff; background: #fafcfe; color: #12324c;">多步工具调用 / TODO 整理</td>
+<td style="padding: 7px 12px; border-bottom: 1px solid #edf7ff; background: #fafcfe; color: #12324c; text-align: center;"><strong style="color: #3f8fd4;">开</strong></td>
+<td style="padding: 7px 12px; border-bottom: 1px solid #edf7ff; background: #fafcfe; color: #12324c;">看它为什么调这个工具、为什么这么排序</td>
+</tr>
+<tr>
+<td style="padding: 7px 12px; border-bottom: 1px solid #edf7ff; color: #12324c;">日常问答 / 改文案 / 翻译</td>
+<td style="padding: 7px 12px; border-bottom: 1px solid #edf7ff; color: #12324c; text-align: center;"><strong style="color: #999;">关</strong></td>
+<td style="padding: 7px 12px; border-bottom: 1px solid #edf7ff; color: #12324c;">更快、更省 token，体验更利落</td>
+</tr>
+<tr>
+<td style="padding: 7px 12px; border-bottom: 1px solid #edf7ff; background: #fafcfe; color: #12324c;">模型明显在碎碎念循环</td>
+<td style="padding: 7px 12px; border-bottom: 1px solid #edf7ff; background: #fafcfe; color: #12324c; text-align: center;"><strong style="color: #cf1322;">关</strong></td>
+<td style="padding: 7px 12px; border-bottom: 1px solid #edf7ff; background: #fafcfe; color: #12324c;">优先拿到结果，别让它把上下文和时间都烧掉</td>
+</tr>
+</tbody>
+</table>
+
+<p style="margin: 8px 0;">我自己的习惯是：<strong style="color: #3f8fd4;">默认关，遇到复杂问题再开</strong>。这样本地模型更像一个可靠工具，而不是一台一直在高强度自我内耗的思考机器。</p>
+
+<h2 style="font-size: 18px; font-weight: 700; color: #12324c; margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">实测：同一道题，三个模型的思考风格有什么不同</h2>
+
+<p style=”margin: 8px 0;”>光看 benchmark 没有感觉。我用一台 <strong style=”color: #3f8fd4;”>M1 MacBook Pro 16GB</strong>，在河蟹 AI 里跑了三个模型，同一道中文知识陷阱题，开启深度思考，看它们分别怎么想。</p>
+
+<p style=”border-left: 3px solid #5fb3ea; padding: 10px 16px; margin: 16px 0; background: #f4fbff; color: #3f5f7b; font-size: 14px; border-radius: 0 6px 6px 0;”><strong style=”color: #3f8fd4;”>题目：</strong>林黛玉倒拔垂杨柳的故事出自哪本书？</p>
+
+<p style=”margin: 8px 0;”>这道题的正确回答不是”红楼梦”也不是”水浒传”，而是<strong style=”color: #3f8fd4;”>指出这件事根本不存在</strong>——倒拔垂杨柳是《水浒传》里鲁智深的桥段，林黛玉是《红楼梦》的人物，两者从未交集。能不能识别出这个陷阱，直接反映推理模型的幻觉抵抗力。</p>
+
+<p style=”margin: 8px 0;”><strong style=”color: #3f8fd4;”>qwen3.5:9b（答对了）：</strong>思考链简洁，快速识别出”这件事不存在”，还列了表格区分两个人物的出处。像一个<strong style=”color: #3f8fd4;”>认真审题的优等生</strong>——先确认题目本身有没有问题，再回答。</p>
+
+<p style=”margin: 8px 0;”><strong style=”color: #3f8fd4;”>Gemma4:e4b（答错了）：</strong>思考链里能看到它从第 4 步开始跑偏——直接把故事关联到《红楼梦》，没有质疑”这件事是否存在”，最终给出了一个<strong style=”color: #3f8fd4;”>很自信的错误答案</strong>。这恰恰说明了一件事：<strong style=”color: #3f8fd4;”>如果你看不到它的思考过程，你根本不知道它在胡说</strong>。展开思考链后，它从哪一步开始犯错一目了然。</p>
+
+<p style=”margin: 8px 0;”><strong style=”color: #3f8fd4;”>deepseek-r1:14b（答对了）：</strong>思考链最长，先回忆两部作品的情节，逐步排查”倒拔垂杨柳”出自哪里，再确认林黛玉不可能做这件事。最像<strong style=”color: #3f8fd4;”>把脑回路全部摊开给你看</strong>——慢一点，但推理路径最完整，结论也最可信。</p>
+
+<p style=”margin: 8px 0;”>这组实测最有价值的地方，不是”两个答对一个答错”这个结果本身，而是：<strong style=”color: #3f8fd4;”>当你能看到思考过程时，正确和错误都变得可解释</strong>。答对的你知道它为什么对，答错的你知道它从哪一步开始偏。如果思考链被吞掉了，你只会看到三个很自信的最终答案——其中一个是错的，但你分不出来。</p>
+
+<figure><img src="../../assets/blog/thinking-chain-local-models-wechat-image/001.png" alt="" width="2880" height="1800" loading="lazy" decoding="async"></figure>
+<p style=”margin-top: 4px; padding: 0 6px; color: #667085; font-size: 13px; line-height: 1.6;”>Qwen 3.5-9B：识别出陷阱，列表格区分两个人物出处</p>
+
+<figure><img src="../../assets/blog/thinking-chain-local-models-wechat-image/002.png" alt="" width="2880" height="1800" loading="lazy" decoding="async"></figure>
+<p style=”margin-top: 4px; padding: 0 6px; color: #667085; font-size: 13px; line-height: 1.6;”>Gemma 4 E4B：思考链里能看到从第 4 步开始跑偏，最终给出了错误答案</p>
+
+<figure><img src="../../assets/blog/thinking-chain-local-models-wechat-image/003.png" alt="" width="2880" height="1800" loading="lazy" decoding="async"></figure>
+<p style=”margin-top: 4px; padding: 0 6px; color: #667085; font-size: 13px; line-height: 1.6;”>DeepSeek-R1-14B：推理链最长，逐步排查两部作品后确认”这件事不存在”</p>
+
+<h2 style="font-size: 18px; font-weight: 700; color: #12324c; margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">和其他本地客户端相比，河蟹 AI 真正多做了什么</h2>
+
+<p style="margin: 8px 0;">先把一个误区说清楚：<strong style="color: #3f8fd4;">现在“支持本地模型”本身已经不是稀缺能力了</strong>。</p>
+
+<p style="margin: 8px 0;">OpenClaw 支持 Ollama 和 LM Studio，本地模型、工具调用、上下文压缩都能跑；Open WebUI 在 reasoning 展示和 web 部署上已经很成熟；Cherry Studio 的多模型聚合体验也确实好。大家都不是“不会跑本地模型”。</p>
+
+<p style="margin: 8px 0;">差异真正出在<strong style="color: #3f8fd4;">产品重心</strong>上：</p>
+
+<ul style="padding-left: 18px; margin: 8px 0;">
+<li style="margin: 4px 0;"><strong style="color: #3f8fd4;">OpenClaw</strong> 更偏终端 Agent 和长上下文工作流</li>
+<li style="margin: 4px 0;"><strong style="color: #3f8fd4;">Open WebUI</strong> 更偏 Web 化部署和通用聊天入口</li>
+<li style="margin: 4px 0;"><strong style="color: #3f8fd4;">Cherry Studio</strong> 更偏多模型接入和统一使用体验</li>
+<li style="margin: 4px 0;"><strong style="color: #3f8fd4;">河蟹 AI</strong> 更偏桌面端、本地推理工作流和“思考过程 + 工具链 + 安全护栏”的完整交互</li>
+</ul>
+
+<p style="margin: 8px 0;">所以这篇文章不是在说“别人都不行，只有河蟹 AI 行”，而是在说：<strong style="color: #3f8fd4;">如果你重点关心的是本地推理工作流的完整度，河蟹 AI 做得更深</strong>。</p>
+
+<h2 style="font-size: 18px; font-weight: 700; color: #12324c; margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">本地推理模型的四个坑，我替你踩过了</h2>
+
+<p style="margin: 8px 0;"><strong style="color: #3f8fd4;">坑 1：推理循环出不来。</strong>模型会反复“等等，我重新想一下”，最后连最终回答都没有。所以必须有超时中断和自动降级。</p>
+
+<p style="margin: 8px 0;"><strong style="color: #3f8fd4;">坑 2：标签格式碎片化。</strong>你以为支持了 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">&lt;think&gt;</code> 就结束了，结果不同模型、不同模板、不同推理模式，输出格式根本不统一。</p>
+
+<p style="margin: 8px 0;"><strong style="color: #3f8fd4;">坑 3：上下文爆炸比你想得更快。</strong>推理链 + 工具输入输出，几轮复杂对话就能把上下文打满。没有压缩策略，本地模型很快就“失忆”。</p>
+
+<p style="margin: 8px 0;"><strong style="color: #3f8fd4;">坑 4：冷启动延迟毁第一印象。</strong>大模型第一次加载到内存，等十几秒是很正常的。河蟹 AI 做默认模型预热，就是为了别让用户第一次发消息就怀疑应用挂了。</p>
+
+<p style="border-left: 3px solid #5fb3ea; padding: 10px 16px; margin: 16px 0; background: #f4fbff; color: #3f5f7b; font-size: 14px; border-radius: 0 6px 6px 0;"><strong style="color: #3f8fd4;">很多所谓“本地模型不好用”的抱怨，最后不是模型本身的问题，而是工程细节没人补齐。</strong></p>
+
+<h2 style="font-size: 18px; font-weight: 700; color: #12324c; margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">推理 + 工具，才是本地模型真正开始像 Agent 的时刻</h2>
+
+<p style="margin: 8px 0;">思考过程真正有价值的地方，不在于“展示了多少 token”，而在于<strong style="color: #3f8fd4;">它能不能指导下一步动作</strong>。</p>
+
+<p style="margin: 8px 0;">河蟹 AI 的引擎支持多步工具循环。模型可以先搜索、再读取、再分析、再修改、再验证，一步接一步做完整个任务，而不是只调用一次工具就草草收尾。</p>
+
+<p style="margin: 8px 0;">比如你说：<strong style="color: #3f8fd4;">“帮我把项目里所有 TODO 找出来，按优先级整理成一份待办清单。”</strong></p>
+
+<ol style="padding-left: 20px; margin: 6px 0;">
+<li style="margin: 4px 0;"><strong style="color: #3f8fd4;">思考：</strong>先搜 TODO / FIXME / HACK</li>
+<li style="margin: 4px 0;"><strong style="color: #3f8fd4;">工具调用：</strong>搜索文件内容</li>
+<li style="margin: 4px 0;"><strong style="color: #3f8fd4;">思考：</strong>根据上下文判断哪些属于安全风险、哪些属于功能缺失、哪些只是代码优化</li>
+<li style="margin: 4px 0;"><strong style="color: #3f8fd4;">工具调用：</strong>读取关键文件片段</li>
+<li style="margin: 4px 0;"><strong style="color: #3f8fd4;">输出：</strong>给出分级后的待办清单，附上文件位置和建议</li>
+</ol>
+
+<p style="margin: 8px 0;">整个过程你能看到它每一步为什么这么做。这就是推理模型和普通聊天模型最大的体验差异：<strong style="color: #3f8fd4;">它不只是回答你，还会暴露自己的决策路径</strong>。</p>
+
+<h2 style="font-size: 18px; font-weight: 700; color: #12324c; margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">本地推理的安全底线：能想能做，但不能乱来</h2>
+
+<p style="margin: 8px 0;">推理模型会“想”，工具调用会“做”。两者叠加，能力变强了，风险也会一起变大。</p>
+
+<p style="margin: 8px 0;">本地小模型的指令遵从能力，本来就不如最强的云端模型。如果推理过程中模型“想岔了”，没有护栏的话，它真的可能做错事。</p>
+
+<p style="margin: 8px 0;">河蟹 AI 的处理思路很明确：</p>
+
+<ul style="padding-left: 18px; margin: 8px 0;">
+<li style="margin: 4px 0;"><strong style="color: #3f8fd4;">工具审批</strong>：按风险等级区分，敏感和危险操作必须过审批</li>
+<li style="margin: 4px 0;"><strong style="color: #3f8fd4;">预算兜底</strong>：Token、时间、成本三道防线，避免推理链无限膨胀</li>
+<li style="margin: 4px 0;"><strong style="color: #3f8fd4;">沙箱执行</strong>：代码执行在隔离环境中运行，减少越权和误操作风险</li>
+</ul>
+
+<p style="border-left: 3px solid #5fb3ea; padding: 10px 16px; margin: 16px 0; background: #f4fbff; color: #3f5f7b; font-size: 14px; border-radius: 0 6px 6px 0;"><strong style="color: #3f8fd4;">一句话总结：</strong>本地模型能力弱不可怕，可怕的是没护栏。河蟹 AI 试图做到的是：安心放手，但不失控。</p>
+
+<h2 style="font-size: 18px; font-weight: 700; color: #12324c; margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">免费且私密，不只是口号，而是工程收益</h2>
+
+<p style="margin: 8px 0;">如果你一直在用云端推理模型做复杂任务，对“思考 token 很贵”这件事应该已经很有体感了。</p>
+
+<p style="margin: 8px 0;">本地推理模型当然没有云端最强模型聪明，但它有两个云端永远替代不了的优势：</p>
+
+<ul style="padding-left: 18px; margin: 8px 0;">
+<li style="margin: 4px 0;"><strong style="color: #3f8fd4;">你的数据不出本机。</strong>代码、合同、日志、客户资料，不用先想“发出去合不合规”。</li>
+<li style="margin: 4px 0;"><strong style="color: #3f8fd4;">成本几乎只剩电费。</strong>你可以放心让它多试几次、多想几轮，而不是每一步都在算账。</li>
+</ul>
+
+<p style="margin: 8px 0;">这也是为什么我越来越愿意把一部分工作流交给本地模型：不是因为它绝对最强，而是因为<strong style="color: #3f8fd4;">它终于强到足够好，同时又便宜、私密、可控</strong>。</p>
+
+<h2 style="font-size: 18px; font-weight: 700; color: #12324c; margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">如果你准备上手，建议这样看这个系列</h2>
+
+<p style="margin: 8px 0;">如果你是第一次刷到河蟹 AI 这组文章，不用从这篇开始硬啃。更推荐你按下面这个顺序看：</p>
+
+<ol style="padding-left: 20px; margin: 6px 0;">
+<li style="margin: 4px 0;"><strong style="color: #3f8fd4;">先看上手篇：</strong>把应用装起来，把 Ollama 跑起来，把第一条消息发出去</li>
+<li style="margin: 4px 0;"><strong style="color: #3f8fd4;">再看架构篇：</strong>理解为什么它不是一个简单聊天壳，而是一套完整 Agent 系统</li>
+<li style="margin: 4px 0;"><strong style="color: #3f8fd4;">然后看 Skill 篇：</strong>理解玩法边界和扩展方式</li>
+<li style="margin: 4px 0;"><strong style="color: #3f8fd4;">最后回到这篇：</strong>把本地推理链路补齐</li>
+</ol>
+
+<p style="margin: 16px 0; padding: 16px; border-radius: 8px; background: #f4fbff; border: 1px solid #edf7ff;">
+<strong style="color: #3f8fd4;">完整教程 + 硬件选型 + 模型推荐：</strong><a href="https://mp.weixin.qq.com/s/PdJRKkH4qiBS-IZBifbuag" style="color: #5fb3ea; text-decoration: none;">《河蟹 AI 完全指南：5 分钟，从零到一个能帮你干活的本地 AI Agent》</a>
+</p>
+
+<p style="margin: 8px 0;">装好之后，选一个推理模型，直接聊就行。如果你想<strong style="color: #3f8fd4;">看到完整的推理链</strong>，在输入框底部打开深度思考开关，就能看到模型先展开思考过程，一步步推理，再给出最终答案。</p>
+
+
+<h2 style="font-size: 18px; font-weight: 700; color: #12324c; margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">这套方案适合谁</h2>
+
+<p style="margin: 8px 0;"><strong style="color: #3f8fd4;">适合你，如果：</strong>你有 16GB+ Mac 或 8GB+ 显存的 PC，工作涉及敏感数据不方便传云端，想让 AI 不只是聊天还能搜文件、改代码、跑脚本，或者你已经在用 Ollama 但不满足于现有客户端。</p>
+
+<p style="margin: 8px 0;"><strong style="color: #3f8fd4;">不太适合，如果：</strong>你只需要轻量聊天工具，你追求最顶尖推理质量不在乎成本（直接用 GPT-5.4 或 Claude Opus 4.6），或者你的设备内存低于 8GB。</p>
+
+<h2 style="font-size: 18px; font-weight: 700; color: #12324c; margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">写在最后：本地推理这条路，已经从“能跑”走到“能用”</h2>
+
+<p style="margin: 8px 0;">一年前我觉得本地推理模型更像玩具。现在，我已经会把它放进真实工作流里了。</p>
+
+<p style="margin: 8px 0;">不是因为它已经全面超过云端，而是因为一大批任务根本不需要最强模型，它们需要的是：<strong style="color: #3f8fd4;">足够聪明、随时可用、数据不出机、成本可接受、过程可观察</strong>。</p>
+
+<p style="margin: 8px 0;">Qwen 3.5、Gemma 4、DeepSeek-R1 把“模型侧”的问题推进了一大步。河蟹 AI 试图补上的，是另外一半：<strong style="color: #3f8fd4;">把本地推理的工程链路补齐</strong>，让你不是“勉强跑起来”，而是“真能拿来干活”。</p>
+
+<p style="margin: 8px 0;">如果你已经在用 Ollama，不妨试一次：别只看最终答案，<strong style="color: #3f8fd4;">把思考过程展开看看</strong>。你会更容易判断一个模型到底是真的在推理，还是只是更会装懂。</p>
+
+
+
+<p style="text-align: center; color: #7b8fa3; font-size: 13px; margin: 16px 0 0; line-height: 2;">
+<strong style="color: #12324c; font-size: 14px;">HexClaw 河蟹 AI</strong><br/>
+本地部署 · 数据私有 · 开源免费<br/>
+<span style="color: #5fb3ea;">官网 hexclaw.net</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span style="color: #5fb3ea;">GitHub hexagon-codes</span><br/>
+<span style="color: #5fb3ea;">微博 @hexclaw</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span style="color: #5fb3ea;">X @hexclawapp</span><br/>
+<span style="color: #999;">邮箱：ai@hexclaw.net</span>
+</p>
+    </article>
+
+
+
+    <nav class="blog-series-nav" aria-label="上一篇与下一篇">
+      <a href="/zh/blog/cyber-niuma-cron-sandbox" class="blog-nav-card prev">
+  <span class="blog-nav-label">&larr; 上一篇</span>
+  <span class="blog-nav-title">河蟹 AI 的&quot;赛博牛马&quot;养成记：把一句话编译成会自愈的沙箱脚本，7×24 替你干活</span>
+</a>
+      <a href="/zh/blog/uyghur-localization" class="blog-nav-card next">
+  <span class="blog-nav-label">下一篇 &rarr;</span>
+  <span class="blog-nav-title">让 AI Agent 说维吾尔语：河蟹 AI v0.4.0 的本土化实践</span>
+</a>
+    </nav>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-main">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-col-title">产品</div>
+        <a href="/zh/#download">下载桌面端</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="/zh/changelog">更新日志</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">开发者</div>
+        <a href="/zh/docs/">文档中心</a>
+        <a href="/zh/blog/">技术博客</a>
+        <a href="/zh/docs/getting-started">快速上手</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">Apache-2.0</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">社区</div>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/issues" target="_blank" rel="noopener noreferrer">Issues</a>
+        <a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer">Twitter / X</a>
+        <a href="mailto:ai@hexclaw.net">业务咨询</a>
+        <a href="mailto:support@hexclaw.net">问题反馈</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">关于</div>
+        <a href="/zh/about">关于我们</a>
+        <a href="/zh/privacy">隐私政策</a>
+        <a href="/zh/terms">使用条款</a>
+        <a href="/zh/third-party-ai-services">第三方 AI 服务说明</a>
+      </div>
+    </div>
+    <div class="footer-wechat">
+      <img width="430" height="430" loading="lazy" decoding="async" src="../../assets/brand/wechat-qr.jpg" alt="HexClaw 微信公众号二维码">
+      <span class="footer-wechat-label">微信公众号</span>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">&copy; 2025&ndash;2026 hexagon-codes</span>
+  </div>
+</footer>
+<script src="../../assets/js/home.js"></script>
+<button type="button" class="back-to-top" id="backToTop" aria-label="返回顶部" title="返回顶部">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg>
+  <span>顶部</span>
+</button>
+<script>
+(function() {
+  const btn = document.getElementById('backToTop');
+  if (!btn) return;
+  let ticking = false;
+  window.addEventListener('scroll', function() {
+    if (!ticking) {
+      window.requestAnimationFrame(function() {
+        if (window.scrollY > 320) {
+          btn.classList.add('is-visible');
+        } else {
+          btn.classList.remove('is-visible');
+        }
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+  btn.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+})();
+</script>
+</body>
+</html>

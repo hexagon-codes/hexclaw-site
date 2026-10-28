@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/favicon-32.png">
+<title>技术博客与硬核实践｜HexClaw 河蟹 AI</title>
+<meta name="description" content="HexClaw 河蟹 AI 官方技术博客：扒开源码看 Agent——四代范式控制面外推、底层协议栈、记忆与自愈沙箱、端侧推理模型工程及首个灯塔场景 K12 落地实践。">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:site_name" content="河蟹 AI">
+<meta property="og:type" content="website">
+<meta property="og:title" content="技术博客与硬核实践｜HexClaw 河蟹 AI">
+<meta property="og:description" content="HexClaw 河蟹 AI 官方技术博客：扒开源码看 Agent——四代范式控制面外推、底层协议栈、记忆与自愈沙箱、端侧推理模型工程及首个灯塔场景 K12 落地实践。">
+<meta property="og:url" content="https://hexclaw.net/zh/blog/">
+<meta property="og:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta property="og:image:alt" content="河蟹 AI 标志">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="技术博客与硬核实践｜HexClaw 河蟹 AI">
+<meta name="twitter:description" content="HexClaw 河蟹 AI 官方技术博客：扒开源码看 Agent——四代范式控制面外推、底层协议栈、记忆与自愈沙箱、端侧推理模型工程及首个灯塔场景 K12 落地实践。">
+<meta name="twitter:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta name="twitter:image:alt" content="河蟹 AI 标志">
+<link rel="canonical" href="https://hexclaw.net/zh/blog/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "HexClaw 技术博客",
+  "url": "https://hexclaw.net/zh/blog/",
+  "inLanguage": "zh-CN",
+  "description": "HexClaw 河蟹 AI 官方技术博客：扒开源码看 Agent——四代范式控制面外推、底层协议栈、记忆与自愈沙箱、端侧推理模型工程及首个灯塔场景 K12 落地实践。",
+  "publisher": {
+    "@type": "Organization",
+    "name": "hexagon-codes",
+    "url": "https://hexclaw.net/",
+    "@id": "https://hexclaw.net/#organization"
+  },
+  "@id": "https://hexclaw.net/zh/blog/#webpage"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "河蟹 AI", "item": "https://hexclaw.net/zh/"},
+    {"@type": "ListItem", "position": 2, "name": "技术博客", "item": "https://hexclaw.net/zh/blog/"}
+  ],
+  "@id": "https://hexclaw.net/zh/blog/#breadcrumb"
+}
+</script>
+<link rel="stylesheet" href="../../assets/css/docs-057a0f50bd0a.css">
+<link rel="stylesheet" href="../../assets/css/blog.css">
+</head>
+<body class="blog-page blog-hub-page">
+<a href="#main" class="skip-link">跳转到主要内容</a>
+<nav class="tn topnav" id="nav">
+  <a href="/zh/" class="tn-b topnav-brand">
+    <img width="72" height="72" src="../../assets/brand/hexclaw-icon-72.png" class="tn-l topnav-logo" alt="河蟹 AI">
+    <span class="tn-n topnav-name">河蟹 AI</span>
+  </a>
+  <button type="button" class="tn-burger topnav-burger" aria-label="菜单" aria-expanded="false" aria-controls="primary-navigation">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="tn-r topnav-links" id="primary-navigation">
+    <a href="/zh/">首页</a>
+    <a href="/zh/#cases">使用场景</a>
+    <a href="/zh/#features">产品能力</a>
+    <a href="/zh/#quickstart">开始使用</a>
+    <a href="/zh/#ecosystem">开源生态</a>
+    <a href="/zh/blog/" class="is-active">技术博客</a>
+    <a href="/zh/docs/">文档中心</a>
+    <div class="lang-menu" data-lang-menu>
+      <button type="button" class="lang-trigger" aria-haspopup="menu" aria-expanded="false" aria-label="切换语言">
+        <svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="10"></circle>
+          <path d="M2 12h20"></path>
+          <path d="M12 2a15.3 15.3 0 0 1 0 20"></path>
+          <path d="M12 2a15.3 15.3 0 0 0 0 20"></path>
+        </svg>
+        <span class="lang-current">中文</span>
+        <svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="m6 9 6 6 6-6"></path>
+        </svg>
+      </button>
+      <div class="lang-menu-list" role="menu">
+        <a href="/zh/blog/" role="menuitem" class="is-active" aria-current="true">中文</a>
+        <a href="/en/" role="menuitem">English</a>
+        <a href="/ug/" role="menuitem" lang="zh-CN" dir="ltr">维吾尔语</a>
+      </div>
+    </div>
+    <button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="切换主题">
+      <svg class="ti-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="5"></circle>
+        <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+      </svg>
+      <svg class="ti-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+      </svg>
+    </button>
+    <a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="nav-cta">GitHub <span class="nav-star-badge" id="gh-stars">&#9733;</span></a>
+  </div>
+</nav>
+
+<main id="main" class="blog-main">
+  <header class="blog-hub-header">
+    <div class="blog-hub-badge">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+      HexClaw 官方技术博客
+    </div>
+    <h1 class="blog-hub-title">开源架构 · 四代范式 · 硬核实践</h1>
+    <p class="blog-hub-desc">扒开源码看 Agent：四代范式控制面外推、底层协议栈、记忆与自愈沙箱，以及来自真实工程的落地探索。与微信公众号「HexClaw 河蟹开源AI」同步发布。</p>
+
+    <div class="blog-filter-bar" role="tablist" aria-label="文章分类筛选">
+      <button type="button" class="blog-filter-btn is-active" data-filter="all" role="tab" aria-selected="true">
+        全部 <span class="blog-filter-count">16</span>
+      </button>
+      <button type="button" class="blog-filter-btn" data-filter="paradigms" role="tab" aria-selected="false">
+        Agent 四代范式 <span class="blog-filter-count">4</span>
+      </button>
+      <button type="button" class="blog-filter-btn" data-filter="deep-dive" role="tab" aria-selected="false">
+        核心系统深度 <span class="blog-filter-count">5</span>
+      </button>
+      <button type="button" class="blog-filter-btn" data-filter="architecture" role="tab" aria-selected="false">
+        架构与工程 <span class="blog-filter-count">4</span>
+      </button>
+      <button type="button" class="blog-filter-btn" data-filter="practice" role="tab" aria-selected="false">
+        灯塔与实战 <span class="blog-filter-count">3</span>
+      </button>
+    </div>
+  </header>
+
+  <div class="blog-stream" id="blog-stream">
+    <article class="blog-row" data-category="paradigms">
+  <div class="blog-row-top">
+    <div class="blog-row-tags">
+      <span class="blog-badge-series">四代范式 · 收官篇</span>
+      <span class="blog-badge-cat">Agent 四代范式</span>
+    </div>
+    <div class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+      2026-07-06 · #14
+    </div>
+  </div>
+  <h2 class="blog-row-title"><a href="/zh/blog/prompt-engineering" style="color: inherit; text-decoration: none;">河蟹 AI 的 Prompt Engineering：人人都说它死了，其实它沉下去，成了 Agent 最底层的协议</a></h2>
+  <p class="blog-row-desc">你可以改 Agent 的性格，改不了它的纪律——SOUL × 运行手册 × Skill × 工具 schema，别写咒语，写协议。四代范式系列收官：一条 system prompt 怎么被逐层组装出来；连同哪些约束不能只靠 prompt，都用真实源码和常量标了。</p>
+  <div class="blog-row-foot">
+    <span class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      预计阅读 14 分钟
+    </span>
+    <a href="/zh/blog/prompt-engineering" class="blog-row-readlink">阅读全文 &rarr;</a>
+  </div>
+</article>
+<article class="blog-row" data-category="paradigms">
+  <div class="blog-row-top">
+    <div class="blog-row-tags">
+      <span class="blog-badge-series">四代范式 · 第三篇</span>
+      <span class="blog-badge-cat">Agent 四代范式</span>
+    </div>
+    <div class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+      2026-07-04 · #13
+    </div>
+  </div>
+  <h2 class="blog-row-title"><a href="/zh/blog/harness-engineering" style="color: inherit; text-decoration: none;">河蟹 AI 的 Harness Engineering：“赛博牛马”的聪明是模型给的，敢让它干活的底气是“马具”给的</a></h2>
+  <p class="blog-row-desc">Harness 的本义就是给牛马套的马具——权限硬闸 × 不信任执行器的裁判家族 × 预算与受控失败。同一个模型，为什么套上马具才能放进真实工作环境？从源码看河蟹的五道马具与裁判机制。</p>
+  <div class="blog-row-foot">
+    <span class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      预计阅读 12 分钟
+    </span>
+    <a href="/zh/blog/harness-engineering" class="blog-row-readlink">阅读全文 &rarr;</a>
+  </div>
+</article>
+<article class="blog-row" data-category="paradigms">
+  <div class="blog-row-top">
+    <div class="blog-row-tags">
+      <span class="blog-badge-series">四代范式 · 第二篇</span>
+      <span class="blog-badge-cat">Agent 四代范式</span>
+    </div>
+    <div class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+      2026-07-02 · #12
+    </div>
+  </div>
+  <h2 class="blog-row-title"><a href="/zh/blog/context-engineering" style="color: inherit; text-decoration: none;">河蟹 AI 的 Context Engineering：RAG 真正的难点不是召回，是把“像答案的噪声”挡在 Loop 外面</a></h2>
+  <p class="blog-row-desc">检索错误在对话里是一次错，在 Loop 里是复利——所以这条检索链路六道工序，五道都在做减法：查询扩展 → 宽召回 → 分数加权 RRF → 相关度地板 → LLM 重排 → 出口措辞；用真实源码和常量拆解上下文工程。</p>
+  <div class="blog-row-foot">
+    <span class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      预计阅读 13 分钟
+    </span>
+    <a href="/zh/blog/context-engineering" class="blog-row-readlink">阅读全文 &rarr;</a>
+  </div>
+</article>
+<article class="blog-row" data-category="paradigms">
+  <div class="blog-row-top">
+    <div class="blog-row-tags">
+      <span class="blog-badge-series">四代范式 · 纲领篇</span>
+      <span class="blog-badge-cat">Agent 四代范式</span>
+    </div>
+    <div class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+      2026-06-28 · #11
+    </div>
+  </div>
+  <h2 class="blog-row-title"><a href="/zh/blog/loop-engineering" style="color: inherit; text-decoration: none;">河蟹 AI 的 Loop Engineering：扒开一个开源 Agent 的源码，从 Prompt 到 Loop 逐层对完这四代范式</a></h2>
+  <p class="blog-row-desc">Prompt → Context → Harness → Loop 是一场“控制面外推”：消息层 → 会话层 → 系统层 → 时间层；每往外推一层，你就交出一层决策权。哪层做透、哪层还在补，连同“到底什么叫‘做完了’”都用真实源码标了出来。</p>
+  <div class="blog-row-foot">
+    <span class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      预计阅读 15 分钟
+    </span>
+    <a href="/zh/blog/loop-engineering" class="blog-row-readlink">阅读全文 &rarr;</a>
+  </div>
+</article>
+<article class="blog-row" data-category="deep-dive">
+  <div class="blog-row-top">
+    <div class="blog-row-tags">
+      <span class="blog-badge-series">记忆系统</span>
+      <span class="blog-badge-cat">核心系统深度</span>
+    </div>
+    <div class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+      2026-06-27 · #10
+    </div>
+  </div>
+  <h2 class="blog-row-title"><a href="/zh/blog/memory-dreaming" style="color: inherit; text-decoration: none;">会“做梦”的 Agent 记忆：Claude、ChatGPT 的梦在云端，河蟹的梦在你本机</a></h2>
+  <p class="blog-row-desc">不上云、可 git diff 的本地实现——三层分层 × 三维召回 × 两相做梦。跟着一条“我在哪”的记忆，拆解本地 Agent 如何在睡眠周期整理、蒸馏与遗忘信息。</p>
+  <div class="blog-row-foot">
+    <span class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      预计阅读 11 分钟
+    </span>
+    <a href="/zh/blog/memory-dreaming" class="blog-row-readlink">阅读全文 &rarr;</a>
+  </div>
+</article>
+<article class="blog-row" data-category="deep-dive">
+  <div class="blog-row-top">
+    <div class="blog-row-tags">
+      <span class="blog-badge-series">自动化引擎</span>
+      <span class="blog-badge-cat">核心系统深度</span>
+    </div>
+    <div class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+      2026-06-24 · #9
+    </div>
+  </div>
+  <h2 class="blog-row-title"><a href="/zh/blog/cyber-niuma-cron-sandbox" style="color: inherit; text-decoration: none;">河蟹 AI 的&quot;赛博牛马&quot;养成记：把一句话编译成会自愈的沙箱脚本，7×24 替你干活</a></h2>
+  <p class="blog-row-desc">为什么“编译一次”好过“每次推理”——结构化沙箱 × 任务分流 × 失败自愈的一份工程笔记。把重复的活交出去，连出错都不用你管。</p>
+  <div class="blog-row-foot">
+    <span class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      预计阅读 12 分钟
+    </span>
+    <a href="/zh/blog/cyber-niuma-cron-sandbox" class="blog-row-readlink">阅读全文 &rarr;</a>
+  </div>
+</article>
+<article class="blog-row" data-category="deep-dive">
+  <div class="blog-row-top">
+    <div class="blog-row-tags">
+      <span class="blog-badge-series">端侧推理</span>
+      <span class="blog-badge-cat">核心系统深度</span>
+    </div>
+    <div class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+      2026-04-13 · #5
+    </div>
+  </div>
+  <h2 class="blog-row-title"><a href="/zh/blog/thinking-chain-local-models" style="color: inherit; text-decoration: none;">河蟹 AI 的思考过程：打通本地推理模型 Qwen 3.5/Gemma 4/DeepSeek-R1 的最后一公里</a></h2>
+  <p class="blog-row-desc">本地推理模型，今年真的变了。问题很多时候已经不在模型本身，而在于客户端怎么把这“最后一公里”接住：流式思考解析、折叠展示与推理预算拦截。</p>
+  <div class="blog-row-foot">
+    <span class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      预计阅读 10 分钟
+    </span>
+    <a href="/zh/blog/thinking-chain-local-models" class="blog-row-readlink">阅读全文 &rarr;</a>
+  </div>
+</article>
+<article class="blog-row" data-category="deep-dive">
+  <div class="blog-row-top">
+    <div class="blog-row-tags">
+      <span class="blog-badge-series">国际化与RTL</span>
+      <span class="blog-badge-cat">核心系统深度</span>
+    </div>
+    <div class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+      2026-05-01 · #8
+    </div>
+  </div>
+  <h2 class="blog-row-title"><a href="/zh/blog/uyghur-localization" style="color: inherit; text-decoration: none;">让 AI Agent 说维吾尔语：河蟹 AI v0.4.0 的本土化实践</a></h2>
+  <p class="blog-row-desc">从 i18n 到 RTL：覆盖 1400+ 文案键、RTL bidi 全局兜底与后端语言指令的工程笔记。三层都做完，才算真正“开箱说维语”。</p>
+  <div class="blog-row-foot">
+    <span class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      预计阅读 11 分钟
+    </span>
+    <a href="/zh/blog/uyghur-localization" class="blog-row-readlink">阅读全文 &rarr;</a>
+  </div>
+</article>
+<article class="blog-row" data-category="deep-dive">
+  <div class="blog-row-top">
+    <div class="blog-row-tags">
+      <span class="blog-badge-series">Skill 体系</span>
+      <span class="blog-badge-cat">核心系统深度</span>
+    </div>
+    <div class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+      2026-04-06 · #4
+    </div>
+  </div>
+  <h2 class="blog-row-title"><a href="/zh/blog/leader-skill-distillation" style="color: inherit; text-decoration: none;">我把前 leader 蒸馏成了河蟹 AI Skill （附 Skill 蒸馏教程）</a></h2>
+  <p class="blog-row-desc">被毕业的同事其实并没有消失，他们只是被蒸馏成了 Token，换成另一种形式陪伴你。散是 Token，聚是 Skill。带你从零写一个高拟真的专属专家 Skill。</p>
+  <div class="blog-row-foot">
+    <span class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      预计阅读 9 分钟
+    </span>
+    <a href="/zh/blog/leader-skill-distillation" class="blog-row-readlink">阅读全文 &rarr;</a>
+  </div>
+</article>
+<article class="blog-row" data-category="architecture">
+  <div class="blog-row-top">
+    <div class="blog-row-tags">
+      <span class="blog-badge-series">发刊之作</span>
+      <span class="blog-badge-cat">架构与工程</span>
+    </div>
+    <div class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+      2026-03-23 · #1
+    </div>
+  </div>
+  <h2 class="blog-row-title"><a href="/zh/blog/from-lobster-to-crab" style="color: inherit; text-decoration: none;">HexClaw 河蟹开源AI：从“养龙虾”到“养河蟹”</a></h2>
+  <p class="blog-row-desc">你养龙虾🦞了吗？从今天起，🦞龙虾能帮你干的活，俺🦀河蟹也能帮你干，但河蟹想做的，不只是“接住一次对话”，而是接住持续的工作任务。</p>
+  <div class="blog-row-foot">
+    <span class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      预计阅读 8 分钟
+    </span>
+    <a href="/zh/blog/from-lobster-to-crab" class="blog-row-readlink">阅读全文 &rarr;</a>
+  </div>
+</article>
+<article class="blog-row" data-category="architecture">
+  <div class="blog-row-top">
+    <div class="blog-row-tags">
+      <span class="blog-badge-series">生态全景</span>
+      <span class="blog-badge-cat">架构与工程</span>
+    </div>
+    <div class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+      2026-03-30 · #2
+    </div>
+  </div>
+  <h2 class="blog-row-title"><a href="/zh/blog/architecture-deep-dive" style="color: inherit; text-decoration: none;">HexClaw 架构详解：一个人 + Claude + 5 个月，用 Go 从零构建六仓库全栈开源 AI Agent 生态</a></h2>
+  <p class="blog-row-desc">HexClaw 架构详解：一个人 + Claude + 5 个月，用 Go 从零构建六仓库全栈开源 AI Agent 生态。分层架构、核心协议与通信契约全面拆解。</p>
+  <div class="blog-row-foot">
+    <span class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      预计阅读 13 分钟
+    </span>
+    <a href="/zh/blog/architecture-deep-dive" class="blog-row-readlink">阅读全文 &rarr;</a>
+  </div>
+</article>
+<article class="blog-row" data-category="architecture">
+  <div class="blog-row-top">
+    <div class="blog-row-tags">
+      <span class="blog-badge-series">对标洞察</span>
+      <span class="blog-badge-cat">架构与工程</span>
+    </div>
+    <div class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+      2026-04-25 · #7
+    </div>
+  </div>
+  <h2 class="blog-row-title"><a href="/zh/blog/vs-openclaw-hermes" style="color: inherit; text-decoration: none;">HexClaw vs OpenClaw / Hermes：2026 本地 AI Agent 的三条路径</a></h2>
+  <p class="blog-row-desc">养虾 · 养马 · 养蟹——三条路径解决三个问题。功能清单高度相似 × 产品路径完全不同。在端侧 AI 爆发的今天，各家架构权衡的终点在哪里？</p>
+  <div class="blog-row-foot">
+    <span class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      预计阅读 12 分钟
+    </span>
+    <a href="/zh/blog/vs-openclaw-hermes" class="blog-row-readlink">阅读全文 &rarr;</a>
+  </div>
+</article>
+<article class="blog-row" data-category="architecture">
+  <div class="blog-row-top">
+    <div class="blog-row-tags">
+      <span class="blog-badge-series">研发SOP</span>
+      <span class="blog-badge-cat">架构与工程</span>
+    </div>
+    <div class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+      2026-04-18 · #6
+    </div>
+  </div>
+  <h2 class="blog-row-title"><a href="/zh/blog/claude-code-sop" style="color: inherit; text-decoration: none;">河蟹 AI 背后的 Claude Code SOP：设计驱动 × 测试闭环 × 多 Agent 协作</a></h2>
+  <p class="blog-row-desc">一个人、业余时间、6 个核心仓库、68 万行代码。核心不是“让 AI 写代码”，而是设计、测试、多 Agent 协作怎么形成自闭环的一整套研发 SOP。</p>
+  <div class="blog-row-foot">
+    <span class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      预计阅读 11 分钟
+    </span>
+    <a href="/zh/blog/claude-code-sop" class="blog-row-readlink">阅读全文 &rarr;</a>
+  </div>
+</article>
+<article class="blog-row" data-category="practice">
+  <div class="blog-row-top">
+    <div class="blog-row-tags">
+      <span class="blog-badge-series">上手完全指南</span>
+      <span class="blog-badge-cat">灯塔与实战</span>
+    </div>
+    <div class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+      2026-04-12 · #3
+    </div>
+  </div>
+  <h2 class="blog-row-title"><a href="/zh/blog/hexclaw-user-guide" style="color: inherit; text-decoration: none;">河蟹 AI 完全指南：5 分钟，从零到一个能帮你干活的本地 AI Agent（附模型选型推荐）</a></h2>
+  <p class="blog-row-desc">从零配置本地 Ollama 或云端 API、创建智能体助手、加载知识库与 Skill。5 分钟开启属于你的私人桌面 AI 助理。</p>
+  <div class="blog-row-foot">
+    <span class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      预计阅读 10 分钟
+    </span>
+    <a href="/zh/blog/hexclaw-user-guide" class="blog-row-readlink">阅读全文 &rarr;</a>
+  </div>
+</article>
+<article class="blog-row" data-category="practice">
+  <div class="blog-row-top">
+    <div class="blog-row-tags">
+      <span class="blog-badge-series">灯塔场景工程</span>
+      <span class="blog-badge-cat">灯塔与实战</span>
+    </div>
+    <div class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+      2026-10-04 · #15
+    </div>
+  </div>
+  <h2 class="blog-row-title"><a href="/zh/blog/k12-engineering-practice" style="color: inherit; text-decoration: none;">河蟹 AI 让你&quot;父慈子笑&quot;：首个灯塔场景的 K12 工程实践</a></h2>
+  <p class="blog-row-desc">“会不会讲”有六科教学 Skill 做依据，真正先啃的是三个问题：讲错了怎么办？孩子数据放哪？再加一个场景，平台会不会变脏？架构上就一句话：内不脏，外不扰民。</p>
+  <div class="blog-row-foot">
+    <span class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      预计阅读 14 分钟
+    </span>
+    <a href="/zh/blog/k12-engineering-practice" class="blog-row-readlink">阅读全文 &rarr;</a>
+  </div>
+</article>
+<article class="blog-row" data-category="practice">
+  <div class="blog-row-top">
+    <div class="blog-row-tags">
+      <span class="blog-badge-series">K12 教程</span>
+      <span class="blog-badge-cat">灯塔与实战</span>
+    </div>
+    <div class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+      2026-10-04 · #16
+    </div>
+  </div>
+  <h2 class="blog-row-title"><a href="/zh/blog/k12-user-guide" style="color: inherit; text-decoration: none;">「父慈子笑」上手篇：手把手用河蟹 AI 辅导作业（K12 使用教程）</a></h2>
+  <p class="blog-row-desc">晚上九点，孩子的题你会做，但不知道怎么讲。跟着这篇图文教程走一遍：建助手、发作业照片、看完整答案和本年级的名师式讲法。先问什么、孩子卡住怎么提示、讲完怎么检查，都备在里面了。</p>
+  <div class="blog-row-foot">
+    <span class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      预计阅读 12 分钟
+    </span>
+    <a href="/zh/blog/k12-user-guide" class="blog-row-readlink">阅读全文 &rarr;</a>
+  </div>
+</article>
+  </div>
+
+
+</main>
+
+<footer class="footer">
+  <div class="footer-main">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-col-title">产品</div>
+        <a href="/zh/#download">下载桌面端</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="/zh/changelog">更新日志</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">开发者</div>
+        <a href="/zh/docs/">文档中心</a>
+        <a href="/zh/blog/">技术博客</a>
+        <a href="/zh/docs/getting-started">快速上手</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">Apache-2.0</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">社区</div>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/issues" target="_blank" rel="noopener noreferrer">Issues</a>
+        <a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer">Twitter / X</a>
+        <a href="mailto:ai@hexclaw.net">业务咨询</a>
+        <a href="mailto:support@hexclaw.net">问题反馈</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">关于</div>
+        <a href="/zh/about">关于我们</a>
+        <a href="/zh/privacy">隐私政策</a>
+        <a href="/zh/terms">使用条款</a>
+        <a href="/zh/third-party-ai-services">第三方 AI 服务说明</a>
+      </div>
+    </div>
+    <div class="footer-wechat">
+      <img width="430" height="430" loading="lazy" decoding="async" src="../../assets/brand/wechat-qr.jpg" alt="HexClaw 微信公众号二维码">
+      <span class="footer-wechat-label">微信公众号</span>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">&copy; 2025&ndash;2026 hexagon-codes</span>
+  </div>
+</footer>
+<script src="../../assets/js/home.js"></script>
+<button type="button" class="back-to-top" id="backToTop" aria-label="返回顶部" title="返回顶部">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg>
+  <span>顶部</span>
+</button>
+<script>
+(function() {
+  const btn = document.getElementById('backToTop');
+  if (!btn) return;
+  let ticking = false;
+  window.addEventListener('scroll', function() {
+    if (!ticking) {
+      window.requestAnimationFrame(function() {
+        if (window.scrollY > 320) {
+          btn.classList.add('is-visible');
+        } else {
+          btn.classList.remove('is-visible');
+        }
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+  btn.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+})();
+</script>
+<script>
+  // Filter tabs logic
+  (function() {
+    const buttons = document.querySelectorAll('.blog-filter-btn');
+    const cards = document.querySelectorAll('.blog-row');
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        buttons.forEach(b => {
+          b.classList.remove('is-active');
+          b.setAttribute('aria-selected', 'false');
+        });
+        btn.classList.add('is-active');
+        btn.setAttribute('aria-selected', 'true');
+        const filter = btn.getAttribute('data-filter');
+        cards.forEach(card => {
+          if (filter === 'all' || card.getAttribute('data-category') === filter) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  })();
+</script>
+</body>
+</html>

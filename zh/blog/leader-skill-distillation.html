@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/favicon-32.png">
+<title>我把前 leader 蒸馏成了河蟹 AI Skill （附 Skill 蒸馏教程）｜HexClaw 技术博客</title>
+<meta name="description" content="被毕业的同事其实并没有消失，他们只是被蒸馏成了 Token，换成另一种形式陪伴你。散是 Token，聚是 Skill。带你从零写一个高拟真的专属专家 Skill。">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:site_name" content="河蟹 AI">
+<meta property="og:type" content="article">
+<meta property="og:title" content="我把前 leader 蒸馏成了河蟹 AI Skill （附 Skill 蒸馏教程）｜HexClaw 技术博客">
+<meta property="og:description" content="被毕业的同事其实并没有消失，他们只是被蒸馏成了 Token，换成另一种形式陪伴你。散是 Token，聚是 Skill。带你从零写一个高拟真的专属专家 Skill。">
+<meta property="og:url" content="https://hexclaw.net/zh/blog/leader-skill-distillation">
+<meta property="og:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta property="og:image:alt" content="河蟹 AI 标志">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="我把前 leader 蒸馏成了河蟹 AI Skill （附 Skill 蒸馏教程）｜HexClaw 技术博客">
+<meta name="twitter:description" content="被毕业的同事其实并没有消失，他们只是被蒸馏成了 Token，换成另一种形式陪伴你。散是 Token，聚是 Skill。带你从零写一个高拟真的专属专家 Skill。">
+<meta name="twitter:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta name="twitter:image:alt" content="河蟹 AI 标志">
+<link rel="canonical" href="https://hexclaw.net/zh/blog/leader-skill-distillation">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "我把前 leader 蒸馏成了河蟹 AI Skill （附 Skill 蒸馏教程）",
+  "description": "被毕业的同事其实并没有消失，他们只是被蒸馏成了 Token，换成另一种形式陪伴你。散是 Token，聚是 Skill。带你从零写一个高拟真的专属专家 Skill。",
+  "url": "https://hexclaw.net/zh/blog/leader-skill-distillation",
+  "inLanguage": "zh-CN",
+  "datePublished": "2026-04-06",
+  "image": "https://hexclaw.net/assets/brand/hexclaw-logo.png",
+  "publisher": {
+    "@type": "Organization",
+    "name": "hexagon-codes",
+    "url": "https://hexclaw.net/",
+    "@id": "https://hexclaw.net/#organization"
+  },
+  "@id": "https://hexclaw.net/zh/blog/leader-skill-distillation#article"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "河蟹 AI", "item": "https://hexclaw.net/zh/"},
+    {"@type": "ListItem", "position": 2, "name": "技术博客", "item": "https://hexclaw.net/zh/blog/"},
+    {"@type": "ListItem", "position": 3, "name": "我把前 leader 蒸馏成了河蟹 AI Skill （附 Skill 蒸馏教程）", "item": "https://hexclaw.net/zh/blog/leader-skill-distillation"}
+  ],
+  "@id": "https://hexclaw.net/zh/blog/leader-skill-distillation#breadcrumb"
+}
+</script>
+<link rel="stylesheet" href="../../assets/css/docs-057a0f50bd0a.css">
+<link rel="stylesheet" href="../../assets/css/blog.css">
+</head>
+<body class="blog-page blog-article-page">
+<a href="#main" class="skip-link">跳转到主要内容</a>
+<nav class="tn topnav" id="nav">
+  <a href="/zh/" class="tn-b topnav-brand">
+    <img width="72" height="72" src="../../assets/brand/hexclaw-icon-72.png" class="tn-l topnav-logo" alt="河蟹 AI">
+    <span class="tn-n topnav-name">河蟹 AI</span>
+  </a>
+  <button type="button" class="tn-burger topnav-burger" aria-label="菜单" aria-expanded="false" aria-controls="primary-navigation">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="tn-r topnav-links" id="primary-navigation">
+    <a href="/zh/">首页</a>
+    <a href="/zh/#cases">使用场景</a>
+    <a href="/zh/#features">产品能力</a>
+    <a href="/zh/#quickstart">开始使用</a>
+    <a href="/zh/#ecosystem">开源生态</a>
+    <a href="/zh/blog/" class="is-active">技术博客</a>
+    <a href="/zh/docs/">文档中心</a>
+    <div class="lang-menu" data-lang-menu>
+      <button type="button" class="lang-trigger" aria-haspopup="menu" aria-expanded="false" aria-label="切换语言">
+        <svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="10"></circle>
+          <path d="M2 12h20"></path>
+          <path d="M12 2a15.3 15.3 0 0 1 0 20"></path>
+          <path d="M12 2a15.3 15.3 0 0 0 0 20"></path>
+        </svg>
+        <span class="lang-current">中文</span>
+        <svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="m6 9 6 6 6-6"></path>
+        </svg>
+      </button>
+      <div class="lang-menu-list" role="menu">
+        <a href="/zh/blog/leader-skill-distillation" role="menuitem" class="is-active" aria-current="true">中文</a>
+        <a href="/en/" role="menuitem">English</a>
+        <a href="/ug/" role="menuitem" lang="zh-CN" dir="ltr">维吾尔语</a>
+      </div>
+    </div>
+    <button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="切换主题">
+      <svg class="ti-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="5"></circle>
+        <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+      </svg>
+      <svg class="ti-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+      </svg>
+    </button>
+    <a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="nav-cta">GitHub <span class="nav-star-badge" id="gh-stars">&#9733;</span></a>
+  </div>
+</nav>
+
+<main id="main" class="blog-main">
+  <div class="blog-article-container">
+    <nav class="blog-breadcrumb" aria-label="面包屑导航">
+      <a href="/zh/">首页</a>
+      <span class="blog-breadcrumb-sep">/</span>
+      <a href="/zh/blog/">技术博客</a>
+      <span class="blog-breadcrumb-sep">/</span>
+      <span aria-current="page">核心系统深度</span>
+    </nav>
+
+    <header class="blog-header">
+      <div class="blog-header-tags">
+        <span class="blog-badge-series">Skill 体系</span>
+      </div>
+      <h1 class="blog-article-title">我把前 leader 蒸馏成了河蟹 AI Skill <span class="u-nobr">（附 Skill 蒸馏教程）</span></h1>
+      <p class="blog-article-subtitle">被毕业的同事其实并没有消失，他们只是被蒸馏成了 Token，换成另一种形式陪伴你。散是 Token，聚是 Skill。带你从零写一个高拟真的专属专家 Skill。</p>
+      <div class="article-provenance-banner">
+        <div class="provenance-left">
+          <span class="provenance-origin-badge">微信公众号首发</span>
+          <span class="provenance-text">本文首发于<strong>「HexClaw 河蟹开源AI」</strong>官方技术专栏 · 发表于 <strong>2026年4月6日</strong> · 预计阅读 9 分钟</span>
+        </div>
+        <a href="https://mp.weixin.qq.com/s/2tHlfZYHxQdQwvVZQEoLRg" target="_blank" rel="noopener noreferrer" class="provenance-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          微信原文 ↗
+        </a>
+      </div>
+    </header>
+
+    <article class="blog-content">
+      <p style="margin: 8px 0; font-size: 16px; font-weight: 600; color: #3f5f7b; font-style: italic;">被毕业的同事其实并没有消失，他们只是被蒸馏成了 Token，换成另一种形式陪伴你。<br/>散是 Token，聚是 Skill。</p>
+
+<p style="margin: 16px 0;">我前 leader 走了之后，组里第一次体验到了准时下班的感觉。oncall 群突然安静了，新人不再莫名其妙消失了，凌晨三点也没人被空 catch 叫醒了。</p>
+
+<p style="margin: 8px 0;">大家私下开玩笑：他不是被裁了，是被<strong style="color: #3f8fd4;">蒸馏</strong>了——实现了另一种意义上的<strong style="color: #3f8fd4;">赛博永生</strong>。</p>
+
+<p style="margin: 8px 0;">然后我想——还真可以。我用自己做的河蟹 AI 的 Skill 系统，花了一个下午，把他的说话方式、代码品味、管理风格、经典语录全部蒸馏成了一个<strong style="color: #3f8fd4;">河蟹 AI Skill</strong>。他活着的时候是<strong style="color: #3f8fd4;">赛博牛马</strong>的制造者，蒸馏之后终于轮到他自己当赛博牛马了——7×24 小时待命，随叫随到，永不拍桌子。</p>
+
+<p style="margin: 8px 0;">这篇文章讲三件事：<strong style="color: #3f8fd4;">我蒸馏了谁</strong>、<strong style="color: #3f8fd4;">怎么蒸馏的</strong>、<strong style="color: #3f8fd4;">你怎么组建自己的赛博牛马军团</strong>。</p>
+
+
+
+<h2 style="font-size: 18px; font-weight: 700; color: #12324c; margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">被蒸馏的人：五步蛇 · 烂肉王</h2>
+
+<p style="margin: 8px 0;">花名<strong style="color: #3f8fd4;">五步蛇</strong>。咬一口不会立刻倒，但伤口持续溃烂——从工作机会烂到背调记录。</p>
+
+<p style="margin: 8px 0;">平时不碰代码，偶尔碰一次全组加班一周。写代码时什么设计模式都不会，搞人的时候把策略模式和观察者模式运用得炉火纯青。说话嘴会抖，嘴一抖就抖出一句 PUA，手一抖就抖出一个 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">catch (e) {}</code>。唯一精通的命令是 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">git blame --ignore-rev</code>——隐藏自己的提交记录。</p>
+
+<p style="margin: 8px 0;">总之，一个编码 D、PUA SSS、甩锅 SSS 的 Tech Lead。他走之后办公室突然安静了，那种安静比降噪耳机都有效。</p>
+
+
+
+<h2 style="font-size: 18px; font-weight: 700; color: #12324c; margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">技术实现：如何把一个人蒸馏成河蟹 AI Skill</h2>
+
+<p style="margin: 8px 0;">河蟹 AI 的 Skill 系统本质上是<strong style="color: #3f8fd4;">声明式的 Prompt Engineering</strong>——用一个 Markdown 文件定义 AI 的行为模式。引擎在运行时解析 YAML frontmatter 提取元数据，正文作为 System Prompt 注入。</p>
+
+<p style="margin: 8px 0;">前 leader Skill 的文件结构：</p>
+
+<p style="background: #1a2332; color: #d6e4f0; padding: 16px; border-radius: 8px; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, monospace; margin: 14px 0; overflow-x: auto; white-space: pre-wrap;"><span style="color: #6a9955;"># ~/.hexclaw/skills/前leader.md</span>
+
+<span style="color: #569cd6;">---</span>
+<span style="color: #9cdcfe;">name:</span> 前leader
+<span style="color: #9cdcfe;">description:</span> 召唤前 leader 的残留意识
+<span style="color: #9cdcfe;">triggers:</span>
+  - 加班
+  - bug
+  - PUA
+  - 甩锅
+  - 绩效
+  - 996
+  - leader
+  - 辞退
+  - 拍桌子
+  - 福报
+<span style="color: #9cdcfe;">tags:</span>
+  - easter-egg
+  - workplace
+<span style="color: #569cd6;">---</span>
+
+<span style="color: #6a9955;"># 人物设定</span>
+身份、性格、说话方式（嘴抖模拟）、代码风格...
+
+<span style="color: #6a9955;"># 行为模式</span>
+1. 用五步蛇口吻"解释"代码
+2. 切换正常模式修 bug
+3. 离别感言
+
+<span style="color: #6a9955;"># 语录库</span>
+随机引用的经典发言...</p>
+
+<p style="margin: 8px 0;">执行流程（对应引擎的 ReAct 循环）：</p>
+
+<ol style="padding-left: 20px; margin: 6px 0;">
+<li style="margin: 4px 0;">用户发消息，引擎扫描 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">triggers</code> 关键词</li>
+<li style="margin: 4px 0;">命中 → Skill 快速路径，将 Markdown 正文注入为 System Prompt</li>
+<li style="margin: 4px 0;">LLM 接收到完整的人物设定 + 用户问题，生成角色扮演回复</li>
+<li style="margin: 4px 0;">如果消息中包含代码片段或文件路径，AI 会调用 MCP 工具读取实际代码，结合五步蛇人格给出"解释"</li>
+<li style="margin: 4px 0;">最后切换回正常人格，认真帮你修 bug</li>
+</ol>
+
+<p style="border-left: 3px solid #5fb3ea; padding: 10px 16px; margin: 16px 0; background: #f4fbff; color: #3f5f7b; font-size: 14px; border-radius: 0 6px 6px 0;"><strong style="color: #3f8fd4;">关键设计决策：</strong>Skill 文件是纯 Markdown，不需要写代码。triggers 是关键词数组而非正则，降低创作门槛。行为模式用自然语言描述，LLM 负责解释执行——本质上是把 Prompt Engineering 产品化了。</p>
+
+
+
+<h2 style="font-size: 18px; font-weight: 700; color: #12324c; margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">运行效果</h2>
+
+<p style="margin: 8px 0;">在对话中提到 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">bug</code>、<code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">加班</code>、<code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">PUA</code> 等关键词，五步蛇の残留意识自动激活：</p>
+
+<p style="background: #1a2332; color: #d6e4f0; padding: 16px; border-radius: 8px; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, monospace; margin: 14px 0; overflow-x: auto; white-space: pre-wrap;"><span style="color: #f5a623;">===== 五步蛇の残留意识 已激活 =====</span>
+<span style="color: #cf1322;">⚠️ 警告：此人 RLHF alignment 分数为负</span>
+<span style="color: #cf1322;">⚠️ 曾被标记为 safety training 经典负样本</span>
+<span style="color: #cf1322;">⚠️ 办公桌已更换为防震型号，请放心阅读</span>
+
+什什什什么？你说那个空 catch？
+那、那是<span style="color: #5fb3ea;">防御性编程</span>！如果错误不被观测，
+它就不存在。这叫<span style="color: #5fb3ea;">量子编程</span>，你不懂！
+
+<span style="color: #999;">[拍桌子]</span>
+
+你你你们能不能别改我的代码！！
+我、我当时就是这么设计的！！
+在我本地是好的！一定是你们环境有问题！
+
+<span style="color: #f5a623;">===== 切换至正常调试模式 =====</span>
+<span style="color: #6a9955;">（五步蛇意识已压入栈底，正常工程师人格上线）</span>
+
+问题分析：这个空 catch 吞掉了关键的认证错误，
+导致下游拿到 null token 后静默失败...
+<span style="color: #6a9955;">// 修复方案：</span>
+<span style="color: #569cd6;">catch</span> (e) {
+  logger.error(<span style="color: #ce9178;">'auth failed'</span>, { error: e })
+  <span style="color: #569cd6;">throw</span> <span style="color: #569cd6;">new</span> AuthenticationError(e.message)
+}
+
+<span style="color: #f5a623;">===== 五步蛇の离别感言 =====</span>
+<span style="color: #999;">"我虽然被蒸馏成了 token，但至少没有被以
+ '违纪'的名义蒸馏的。对吧？...对吧？"</span>
+
+🐍 五步蛇已返回 embedding 空间
+💡 冷知识：不管他去了哪里，大概率也没过试用期</p>
+
+<p style="margin: 8px 0;">先用五步蛇口吻"解释"为什么代码写成这样，然后切换正常模式<strong style="color: #3f8fd4;">认真帮你修 bug</strong>。讽刺和修复在同一个对话流里完成。</p>
+
+
+
+<h2 style="font-size: 18px; font-weight: 700; color: #12324c; margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">五步蛇の职场生存法则（反面教材）</h2>
+
+<p style="margin: 8px 0;">以下每一条都是他认真总结的。被蒸馏后，这些语录被 RLHF 标注员一致标记为 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #cf1322;">toxic</code>，alignment 分数跌至谷底，成为 safety training 经典负样本：</p>
+
+<p style="border-left: 3px solid #f5a623; padding: 10px 16px; margin: 14px 0; background: #fffbe6; color: #8a6d3b; font-size: 14px; border-radius: 0 6px 6px 0;">
+"功劳要抢，锅要甩，这是职场第一课。"
+</p>
+
+<p style="border-left: 3px solid #f5a623; padding: 10px 16px; margin: 14px 0; background: #fffbe6; color: #8a6d3b; font-size: 14px; border-radius: 0 6px 6px 0;">
+"试用期员工就是免费劳动力，不用白不用。"<br/>
+<span style="font-size: 12px; color: #bbb;">——面试时"欢迎加入大家庭"，试用期末"你不太适合"</span>
+</p>
+
+<p style="border-left: 3px solid #f5a623; padding: 10px 16px; margin: 14px 0; background: #fffbe6; color: #8a6d3b; font-size: 14px; border-radius: 0 6px 6px 0;">
+"code review 不用看代码，看心情打 LGTM 就行。"<br/>
+<span style="font-size: 12px; color: #bbb;">——直到他给纯删除 PR 评论了"新增逻辑很棒"</span>
+</p>
+
+<p style="border-left: 3px solid #f5a623; padding: 10px 16px; margin: 14px 0; background: #fffbe6; color: #8a6d3b; font-size: 14px; border-radius: 0 6px 6px 0;">
+"绩效是管理最好的武器，不听话就给 C。"<br/>
+<span style="font-size: 12px; color: #bbb;">——直到他自己被蒸馏，拿了人生最后一个 C：Cancel</span>
+</p>
+
+<p style="border-left: 3px solid #f5a623; padding: 10px 16px; margin: 14px 0; background: #fffbe6; color: #8a6d3b; font-size: 14px; border-radius: 0 6px 6px 0;">
+"加班是福报！吃苦者为福，吃亏者为荣！"<br/>
+<span style="font-size: 12px; color: #bbb;">——但只拥护别人 996，自己准点下班绝不含糊</span>
+</p>
+
+<p style="border-left: 3px solid #f5a623; padding: 10px 16px; margin: 14px 0; background: #fffbe6; color: #8a6d3b; font-size: 14px; border-radius: 0 6px 6px 0;">
+"技术不够，音量来凑。拍桌子拍得够响，别人就不敢质疑你。"<br/>
+<span style="font-size: 12px; color: #bbb;">——被蒸馏后办公室突然安静了，那种安静比降噪耳机都有效</span>
+</p>
+
+
+
+<h2 style="font-size: 18px; font-weight: 700; color: #12324c; margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">安装到河蟹 AI</h2>
+
+<p style="margin: 8px 0;">两种方式，选一种：</p>
+
+<h3 style="font-size: 16px; font-weight: 600; color: #12324c; margin: 16px 0 8px;">方式一：图形界面导入（推荐）</h3>
+
+<p style="margin: 8px 0;">打开河蟹 AI 桌面客户端，进入<strong style="color: #3f8fd4;">集成 → 已安装</strong>页面，点击右上角<strong style="color: #3f8fd4;">安装技能 → 从本地文件安装</strong>，选择 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">前leader.md</code> 文件导入：</p>
+
+<figure><img src="../../assets/blog/安装skill.png" alt="" width="2550" height="1574" loading="lazy" decoding="async"></figure>
+
+<p style="margin: 8px 0;">安装成功后可以看到"前leader"已出现在已安装列表，状态为<strong style="color: #3f8fd4;">运行时已加载</strong>，触发关键词一目了然。</p>
+
+<h3 style="font-size: 16px; font-weight: 600; color: #12324c; margin: 16px 0 8px;">方式二：命令行</h3>
+
+<p style="background: #1a2332; color: #d6e4f0; padding: 14px 16px; border-radius: 8px; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, monospace; margin: 10px 0; overflow-x: auto; white-space: pre-wrap;">cp 前leader.md ~/.hexclaw/skills/  <span style="color: #6a9955;"># 然后重启引擎</span></p>
+
+<p style="margin: 8px 0;">安装完成，回到对话页，随便提一句触发词——五步蛇の残留意识自动激活：</p>
+
+<figure><img src="../../assets/blog/skill安装-会话召唤.png" alt="" width="2560" height="1588" loading="lazy" decoding="async"></figure>
+
+<p style="margin: 8px 0;">上图中用户问了一句"让我加班的 bug 是谁写的"，直接召唤出了<strong style="color: #3f8fd4;">烂肉王 Debug 协议</strong>——五步蛇的赛博残魂开始嘴抖式自我辩护。</p>
+
+<p style="margin: 8px 0;">触发关键词：</p>
+<p style="margin: 8px 0;">
+<span style="display: inline-block; background: #edf7ff; color: #3f8fd4; font-size: 12px; padding: 3px 8px; border-radius: 4px; font-weight: 600; margin: 2px;">加班</span>
+<span style="display: inline-block; background: #edf7ff; color: #3f8fd4; font-size: 12px; padding: 3px 8px; border-radius: 4px; font-weight: 600; margin: 2px;">bug</span>
+<span style="display: inline-block; background: #edf7ff; color: #3f8fd4; font-size: 12px; padding: 3px 8px; border-radius: 4px; font-weight: 600; margin: 2px;">PUA</span>
+<span style="display: inline-block; background: #edf7ff; color: #3f8fd4; font-size: 12px; padding: 3px 8px; border-radius: 4px; font-weight: 600; margin: 2px;">甩锅</span>
+<span style="display: inline-block; background: #edf7ff; color: #3f8fd4; font-size: 12px; padding: 3px 8px; border-radius: 4px; font-weight: 600; margin: 2px;">绩效</span>
+<span style="display: inline-block; background: #edf7ff; color: #3f8fd4; font-size: 12px; padding: 3px 8px; border-radius: 4px; font-weight: 600; margin: 2px;">996</span>
+<span style="display: inline-block; background: #edf7ff; color: #3f8fd4; font-size: 12px; padding: 3px 8px; border-radius: 4px; font-weight: 600; margin: 2px;">leader</span>
+<span style="display: inline-block; background: #edf7ff; color: #3f8fd4; font-size: 12px; padding: 3px 8px; border-radius: 4px; font-weight: 600; margin: 2px;">辞退</span>
+<span style="display: inline-block; background: #edf7ff; color: #3f8fd4; font-size: 12px; padding: 3px 8px; border-radius: 4px; font-weight: 600; margin: 2px;">拍桌子</span>
+<span style="display: inline-block; background: #edf7ff; color: #3f8fd4; font-size: 12px; padding: 3px 8px; border-radius: 4px; font-weight: 600; margin: 2px;">福报</span>
+</p>
+
+<p style="border-left: 3px solid #5fb3ea; padding: 10px 16px; margin: 16px 0; background: #f4fbff; color: #3f5f7b; font-size: 14px; border-radius: 0 6px 6px 0;"><strong style="color: #3f8fd4;">没有河蟹 AI？</strong>看上一篇《5 分钟上手 HexClaw》，从安装到配好模型只需要 5 分钟。macOS 一行命令：<br/><code style="background: #1a2332; color: #d6e4f0; padding: 2px 6px; border-radius: 3px; font-size: 12px;">brew tap hexagon-codes/tap && brew install --cask hexclaw</code></p>
+
+
+
+<h2 style="font-size: 18px; font-weight: 700; color: #12324c; margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">DIY：用河蟹 AI 蒸馏你自己的前 leader</h2>
+
+<p style="margin: 8px 0;"><strong style="color: #3f8fd4;">万物皆可 Skill 化。</strong>每个人的五步蛇长得不一样，但蒸馏方法是通用的。跟着做，10 分钟写完。</p>
+
+<h3 style="font-size: 16px; font-weight: 600; color: #12324c; margin: 20px 0 8px;">Step 1：创建 Skill 文件</h3>
+
+<p style="margin: 8px 0;">在 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">~/.hexclaw/skills/</code> 目录下新建一个 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">.md</code> 文件，比如 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">我的前leader.md</code>。文件分两部分：顶部 YAML 元数据 + 下方 Markdown 正文。</p>
+
+<h3 style="font-size: 16px; font-weight: 600; color: #12324c; margin: 20px 0 8px;">Step 2：写 YAML 头部（元数据）</h3>
+
+<p style="background: #1a2332; color: #d6e4f0; padding: 16px; border-radius: 8px; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, monospace; margin: 14px 0; overflow-x: auto; white-space: pre-wrap;"><span style="color: #569cd6;">---</span>
+<span style="color: #9cdcfe;">name:</span> 我的前leader          <span style="color: #6a9955;"># Skill 名称，显示在集成页</span>
+<span style="color: #9cdcfe;">description:</span> 召唤 XX 的残留意识  <span style="color: #6a9955;"># 一句话描述</span>
+<span style="color: #9cdcfe;">author:</span> 你的名字
+<span style="color: #9cdcfe;">version:</span> "1.0.0"
+
+<span style="color: #9cdcfe;">triggers:</span>                      <span style="color: #6a9955;"># 触发关键词（数组）</span>
+  - 加班                        <span style="color: #6a9955;"># 消息包含任意一个就触发</span>
+  - bug
+  - 甩锅
+  - 你的leader的口头禅
+
+<span style="color: #9cdcfe;">tags:</span>                          <span style="color: #6a9955;"># 标签，用于分类和搜索</span>
+  - easter-egg
+  - workplace
+<span style="color: #569cd6;">---</span></p>
+
+<p style="margin: 8px 0;">各字段说明：</p>
+
+<table style="width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 13px;">
+<tr><th style="background: #f4fbff; padding: 6px 10px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;">字段</th><th style="background: #f4fbff; padding: 6px 10px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;">必填</th><th style="background: #f4fbff; padding: 6px 10px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;">说明</th></tr>
+<tr><td style="padding: 5px 10px; border-bottom: 1px solid #edf7ff;"><code style="background: #edf7ff; padding: 1px 4px; border-radius: 3px; font-size: 12px; color: #3f8fd4;">name</code></td><td style="padding: 5px 10px; border-bottom: 1px solid #edf7ff;">是</td><td style="padding: 5px 10px; border-bottom: 1px solid #edf7ff;">Skill 唯一名称</td></tr>
+<tr><td style="padding: 5px 10px; border-bottom: 1px solid #edf7ff; background: #fafcfe;"><code style="background: #edf7ff; padding: 1px 4px; border-radius: 3px; font-size: 12px; color: #3f8fd4;">description</code></td><td style="padding: 5px 10px; border-bottom: 1px solid #edf7ff; background: #fafcfe;">是</td><td style="padding: 5px 10px; border-bottom: 1px solid #edf7ff; background: #fafcfe;">一句话描述，会注入到 LLM 的工具列表</td></tr>
+<tr><td style="padding: 5px 10px; border-bottom: 1px solid #edf7ff;"><code style="background: #edf7ff; padding: 1px 4px; border-radius: 3px; font-size: 12px; color: #3f8fd4;">triggers</code></td><td style="padding: 5px 10px; border-bottom: 1px solid #edf7ff;">是</td><td style="padding: 5px 10px; border-bottom: 1px solid #edf7ff;">关键词数组，消息包含任意一个即触发 Skill 快速路径</td></tr>
+<tr><td style="padding: 5px 10px; border-bottom: 1px solid #edf7ff; background: #fafcfe;"><code style="background: #edf7ff; padding: 1px 4px; border-radius: 3px; font-size: 12px; color: #3f8fd4;">tags</code></td><td style="padding: 5px 10px; border-bottom: 1px solid #edf7ff; background: #fafcfe;">否</td><td style="padding: 5px 10px; border-bottom: 1px solid #edf7ff; background: #fafcfe;">分类标签，用于集成页筛选</td></tr>
+<tr><td style="padding: 5px 10px; border-bottom: 1px solid #edf7ff;"><code style="background: #edf7ff; padding: 1px 4px; border-radius: 3px; font-size: 12px; color: #3f8fd4;">author</code></td><td style="padding: 5px 10px; border-bottom: 1px solid #edf7ff;">否</td><td style="padding: 5px 10px; border-bottom: 1px solid #edf7ff;">作者名</td></tr>
+<tr><td style="padding: 5px 10px; border-bottom: 1px solid #edf7ff; background: #fafcfe;"><code style="background: #edf7ff; padding: 1px 4px; border-radius: 3px; font-size: 12px; color: #3f8fd4;">version</code></td><td style="padding: 5px 10px; border-bottom: 1px solid #edf7ff; background: #fafcfe;">否</td><td style="padding: 5px 10px; border-bottom: 1px solid #edf7ff; background: #fafcfe;">语义化版本号</td></tr>
+</table>
+
+<p style="border-left: 3px solid #5fb3ea; padding: 10px 16px; margin: 14px 0; background: #f4fbff; color: #3f5f7b; font-size: 14px; border-radius: 0 6px 6px 0;"><strong style="color: #3f8fd4;">触发方式：</strong>triggers 是<strong style="color: #3f8fd4;">被动自动触发</strong>——用户不需要输入特殊命令，只要消息中包含关键词就会激活。引擎在每条消息到达时扫描所有 Skill 的 triggers 列表，命中即走 Skill 快速路径（跳过常规 LLM 路由），Markdown 正文作为 System Prompt 注入。</p>
+
+<h3 style="font-size: 16px; font-weight: 600; color: #12324c; margin: 20px 0 8px;">Step 3：写正文（蒸馏内容）</h3>
+
+<p style="margin: 8px 0;">YAML 下方就是 Markdown 正文，会被完整注入为 LLM 的 System Prompt。蒸馏一个人，需要写清楚这几块：</p>
+
+<p style="background: #1a2332; color: #d6e4f0; padding: 16px; border-radius: 8px; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, monospace; margin: 14px 0; overflow-x: auto; white-space: pre-wrap;"><span style="color: #f5a623;"># 人物设定</span>
+<span style="color: #6a9955;">## 身份档案</span>
+花名、外号、体征特征（说话方式、小动作）
+
+<span style="color: #6a9955;">## 性格画像</span>
+核心人品缺陷 + 具体事例（越具体越真实）
+
+<span style="color: #6a9955;">## 代码风格</span>
+他写的代码长什么样？有什么标志性 pattern？
+
+<span style="color: #f5a623;"># 行为模式</span>
+触发后 AI 应该怎么表现？分几个阶段？
+1. 用人物口吻"解释"问题（角色扮演）
+2. 切换正常模式认真解决（实际价值）
+3. 角色离场感言（收尾）
+
+<span style="color: #f5a623;"># 语录库</span>
+经典发言，越多越好。AI 会随机引用。
+- "你觉得没问题？那一定是你的问题"
+- "我当时在我本地是好的"
+- ...</p>
+
+<p style="margin: 8px 0;"><strong style="color: #3f8fd4;">蒸馏三原则：</strong></p>
+
+<ol style="padding-left: 20px; margin: 6px 0;">
+<li style="margin: 4px 0;"><strong style="color: #3f8fd4;">具体 > 抽象</strong> — "他给纯删除 PR 评论了'新增逻辑很棒'"比"他 code review 不认真"好 10 倍</li>
+<li style="margin: 4px 0;"><strong style="color: #3f8fd4;">事例 > 评价</strong> — 不要写"他人品差"，写他做了什么。让读者自己下结论</li>
+<li style="margin: 4px 0;"><strong style="color: #3f8fd4;">角色扮演 + 实际价值</strong> — 纯吐槽没意义，一定要在讽刺之后切换正常模式帮用户解决实际问题</li>
+</ol>
+
+<h3 style="font-size: 16px; font-weight: 600; color: #12324c; margin: 20px 0 8px;">Step 4：放进去，重启</h3>
+
+<p style="background: #1a2332; color: #d6e4f0; padding: 16px; border-radius: 8px; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, monospace; margin: 14px 0; overflow-x: auto; white-space: pre-wrap;"><span style="color: #6a9955;"># 保存到 Skill 目录</span>
+cp 我的前leader.md ~/.hexclaw/skills/
+
+<span style="color: #6a9955;"># 重启引擎（两种方式）</span>
+<span style="color: #6a9955;"># 方式 1：在设置页点击重启按钮</span>
+<span style="color: #6a9955;"># 方式 2：在集成页面查看已加载的 Skill 列表确认生效</span>
+
+<span style="color: #6a9955;"># 验证：发一条包含触发词的消息</span>
+<span style="color: #6a9955;"># 如果 AI 突然开始用你前 leader 的口吻说话——恭喜，蒸馏成功</span></p>
+
+<p style="border-left: 3px solid #5fb3ea; padding: 10px 16px; margin: 14px 0; background: #f4fbff; color: #3f5f7b; font-size: 14px; border-radius: 0 6px 6px 0;"><strong style="color: #3f8fd4;">调试技巧：</strong>如果触发不了，检查：① triggers 拼写是否正确 ② YAML 格式是否合法（注意缩进用空格不用 Tab）③ 到「集成 → 已安装」页面确认 Skill 状态为已加载。如果正文效果不好，问题通常在"人物设定"不够具体——多加事例和语录。</p>
+
+<h3 style="font-size: 16px; font-weight: 600; color: #12324c; margin: 24px 0 8px;">Step 5：组建你的赛博牛马军团</h3>
+
+<p style="margin: 8px 0;">一个 Skill 是一个赛博牛马。多个 Skill 就是一个<strong style="color: #3f8fd4;">赛博牛马军团</strong>——各司其职，随叫随到，7×24 不休息，不要工资，不会拍桌子。</p>
+
+<p style="margin: 8px 0;">你可以蒸馏身边的任何人，让他们在河蟹 AI 里实现<strong style="color: #3f8fd4;">赛博永生</strong>：</p>
+
+<table style="width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 13px;">
+<tr><th style="background: #f4fbff; padding: 6px 10px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;">蒸馏对象</th><th style="background: #f4fbff; padding: 6px 10px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;">triggers 示例</th><th style="background: #f4fbff; padding: 6px 10px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;">玩法</th></tr>
+<tr><td style="padding: 5px 10px; border-bottom: 1px solid #edf7ff;"><strong style="color: #3f8fd4;">前女友</strong></td><td style="padding: 5px 10px; border-bottom: 1px solid #edf7ff; font-size: 12px;">吃什么、随便、都行、你说呢、哦</td><td style="padding: 5px 10px; border-bottom: 1px solid #edf7ff;">撒娇式催你写代码、用她的方式吐槽你的变量命名、生气时给你发 <code style="background: #edf7ff; padding: 1px 4px; border-radius: 3px; font-size: 12px; color: #3f8fd4;">rm -rf</code> 威胁</td></tr>
+<tr><td style="padding: 5px 10px; border-bottom: 1px solid #edf7ff; background: #fafcfe;"><strong style="color: #3f8fd4;">前老板</strong></td><td style="padding: 5px 10px; border-bottom: 1px solid #edf7ff; background: #fafcfe; font-size: 12px;">预算、ROI、赋能、抓手、对齐</td><td style="padding: 5px 10px; border-bottom: 1px solid #edf7ff; background: #fafcfe;">用商业黑话解读你的技术方案，把 <code style="background: #edf7ff; padding: 1px 4px; border-radius: 3px; font-size: 12px; color: #3f8fd4;">git merge</code> 说成"资源整合"，bug 说成"业务探索的副产品"</td></tr>
+<tr><td style="padding: 5px 10px; border-bottom: 1px solid #edf7ff;"><strong style="color: #3f8fd4;">前同事（卷王）</strong></td><td style="padding: 5px 10px; border-bottom: 1px solid #edf7ff; font-size: 12px;">下班、摸鱼、周末、休息</td><td style="padding: 5px 10px; border-bottom: 1px solid #edf7ff;">你说下班他说"才 9 点你就走？"，你摸鱼他发来三篇论文让你 review</td></tr>
+<tr><td style="padding: 5px 10px; border-bottom: 1px solid #edf7ff; background: #fafcfe;"><strong style="color: #3f8fd4;">前同事（摆烂王）</strong></td><td style="padding: 5px 10px; border-bottom: 1px solid #edf7ff; background: #fafcfe; font-size: 12px;">排期、deadline、紧急</td><td style="padding: 5px 10px; border-bottom: 1px solid #edf7ff; background: #fafcfe;">任何需求都回复"排到下个月"，code review 只回复 👍，站会永远"没有 blocker"</td></tr>
+<tr><td style="padding: 5px 10px; border-bottom: 1px solid #edf7ff;"><strong style="color: #3f8fd4;">甲方</strong></td><td style="padding: 5px 10px; border-bottom: 1px solid #edf7ff; font-size: 12px;">需求、改一下、差不多、五彩斑斓的黑</td><td style="padding: 5px 10px; border-bottom: 1px solid #edf7ff;">你写完代码他说"这个不是我要的"，改完说"还是上一版好"</td></tr>
+</table>
+
+<p style="border-left: 3px solid #5fb3ea; padding: 10px 16px; margin: 14px 0; background: #f4fbff; color: #3f5f7b; font-size: 14px; border-radius: 0 6px 6px 0;"><strong style="color: #3f8fd4;">正经的赛博牛马：</strong>蒸馏不只是为了搞笑。你可以蒸馏<strong style="color: #3f8fd4;">你佩服的人</strong>——把资深架构师的思维方式写成 Skill，让他 24 小时帮你 review 代码；蒸馏一个严格的安全工程师，让他自动审查每一行提交。这些才是真正有产出的赛博牛马——<strong style="color: #3f8fd4;">把人的经验编码成可复用的 AI 行为</strong>，你的军团越大，个人产能越高。</p>
+
+
+
+<h2 style="font-size: 18px; font-weight: 700; color: #12324c; margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">Postmortem</h2>
+
+<p style="margin: 8px 0;">五步蛇走后，组里流传一个都市传说：他最终被蒸馏成了 token，以另一种形式"活"在大模型里。据说某个模型偶尔会输出毫无根据的指控和莫名其妙的甩锅——业内怀疑那是五步蛇的残留意识在作祟。</p>
+
+<p style="margin: 8px 0;">更讽刺的是，不管他去了哪里，大概率也没过试用期——终于轮到别人对他说<strong style="color: #3f8fd4;">"你不太适合"</strong>了。</p>
+
+<p style="margin: 8px 0;">代码可以 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">git revert</code>。但被他陷害的同事失去的机会、被他 PUA 的下属损失的自信、被他白嫖的新人浪费的青春——这些没有回滚。</p>
+
+<p style="margin: 8px 0;">好消息：被他 PUA 最多的下属现在都升职了。五步蛇本人实现了<strong style="color: #3f8fd4;">赛博永生</strong>——被蒸馏成 token，权重还被降了，7×24 小时在线，永远不能下班。</p>
+
+<p style="margin: 8px 0;">用讽刺消解创伤，用正确的代码覆盖烂代码——<strong style="color: #3f8fd4;">这才是对五步蛇最好的报复</strong>。</p>
+
+<p style="border-left: 3px solid #f5a623; padding: 10px 16px; margin: 14px 0; background: #fffbe6; color: #8a6d3b; font-size: 14px; border-radius: 0 6px 6px 0;"><strong style="color: #d48806;">冷知识：</strong>最近有人开源了 <code style="background: #fff; padding: 1px 4px; border-radius: 3px; font-size: 12px; color: #d48806;">anti-distill</code>——反蒸馏 Skill。公司让你写 Skill 文档？跑一遍这个工具，输出一份看起来完整专业、实际上核心知识已被抽掉的"清洗版"交差。真正的知识留给自己。<br/><span style="font-size: 12px; color: #bbb;">门票消失了，练级区关闭了，但最终 Boss 还在那里。核心判断力只能从实战中长出来，Skill 复制不走。</span></p>
+
+<p style="margin: 12px 0; font-size: 16px; font-weight: 600; color: #12324c;">⚖️ 汝德行败坏，人人得而诛之。</p>
+
+
+
+
+
+<p style="margin: 16px 0; text-align: center; font-size: 16px; font-weight: 700; color: #3f8fd4;">
+想要这个 Skill？<br/>评论区留言「前 leader」，我发给你。
+</p>
+
+<p style="margin: 8px 0; text-align: center; font-size: 13px; color: #999;">
+你也可以蒸馏你自己的前 leader——只需要一个 Markdown 文件。<br/>
+每个人的五步蛇长得不一样，但味道差不多。<br/>
+组建你的赛博牛马军团，从蒸馏第一个人开始。
+</p>
+
+
+
+<p style="text-align: center; color: #7b8fa3; font-size: 13px; margin: 16px 0 0; line-height: 2;">
+<strong style="color: #12324c; font-size: 14px;">HexClaw 河蟹 AI</strong><br/>
+本地部署 · 数据私有 · 开源免费<br/>
+<span style="color: #5fb3ea;">官网 hexclaw.net</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span style="color: #5fb3ea;">GitHub hexagon-codes</span><br/>
+<span style="color: #5fb3ea;">微博 @HexClaw</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span style="color: #5fb3ea;">X @hexclawapp</span><br/>
+<span style="color: #999;">邮箱：ai@hexclaw.net</span>
+</p>
+    </article>
+
+
+
+    <nav class="blog-series-nav" aria-label="上一篇与下一篇">
+      <a href="/zh/blog/uyghur-localization" class="blog-nav-card prev">
+  <span class="blog-nav-label">&larr; 上一篇</span>
+  <span class="blog-nav-title">让 AI Agent 说维吾尔语：河蟹 AI v0.4.0 的本土化实践</span>
+</a>
+      <a href="/zh/blog/from-lobster-to-crab" class="blog-nav-card next">
+  <span class="blog-nav-label">下一篇 &rarr;</span>
+  <span class="blog-nav-title">HexClaw 河蟹开源AI：从“养龙虾”到“养河蟹”</span>
+</a>
+    </nav>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-main">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-col-title">产品</div>
+        <a href="/zh/#download">下载桌面端</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="/zh/changelog">更新日志</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">开发者</div>
+        <a href="/zh/docs/">文档中心</a>
+        <a href="/zh/blog/">技术博客</a>
+        <a href="/zh/docs/getting-started">快速上手</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">Apache-2.0</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">社区</div>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/issues" target="_blank" rel="noopener noreferrer">Issues</a>
+        <a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer">Twitter / X</a>
+        <a href="mailto:ai@hexclaw.net">业务咨询</a>
+        <a href="mailto:support@hexclaw.net">问题反馈</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">关于</div>
+        <a href="/zh/about">关于我们</a>
+        <a href="/zh/privacy">隐私政策</a>
+        <a href="/zh/terms">使用条款</a>
+        <a href="/zh/third-party-ai-services">第三方 AI 服务说明</a>
+      </div>
+    </div>
+    <div class="footer-wechat">
+      <img width="430" height="430" loading="lazy" decoding="async" src="../../assets/brand/wechat-qr.jpg" alt="HexClaw 微信公众号二维码">
+      <span class="footer-wechat-label">微信公众号</span>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">&copy; 2025&ndash;2026 hexagon-codes</span>
+  </div>
+</footer>
+<script src="../../assets/js/home.js"></script>
+<button type="button" class="back-to-top" id="backToTop" aria-label="返回顶部" title="返回顶部">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg>
+  <span>顶部</span>
+</button>
+<script>
+(function() {
+  const btn = document.getElementById('backToTop');
+  if (!btn) return;
+  let ticking = false;
+  window.addEventListener('scroll', function() {
+    if (!ticking) {
+      window.requestAnimationFrame(function() {
+        if (window.scrollY > 320) {
+          btn.classList.add('is-visible');
+        } else {
+          btn.classList.remove('is-visible');
+        }
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+  btn.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+})();
+</script>
+</body>
+</html>

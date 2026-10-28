@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/favicon-32.png">
+<title>河蟹 AI 的 Harness Engineering：“赛博牛马”的聪明是模型给的，敢让它干活的底气是“马具”给的｜HexClaw 技术博客</title>
+<meta name="description" content="Harness 的本义就是给牛马套的马具——权限硬闸 × 不信任执行器的裁判家族 × 预算与受控失败。同一个模型，为什么套上马具才能放进真实工作环境？从源码看河蟹的五道马具与裁判机制。">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:site_name" content="河蟹 AI">
+<meta property="og:type" content="article">
+<meta property="og:title" content="河蟹 AI 的 Harness Engineering：“赛博牛马”的聪明是模型给的，敢让它干活的底气是“马具”给的｜HexClaw 技术博客">
+<meta property="og:description" content="Harness 的本义就是给牛马套的马具——权限硬闸 × 不信任执行器的裁判家族 × 预算与受控失败。同一个模型，为什么套上马具才能放进真实工作环境？从源码看河蟹的五道马具与裁判机制。">
+<meta property="og:url" content="https://hexclaw.net/zh/blog/harness-engineering">
+<meta property="og:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta property="og:image:alt" content="河蟹 AI 标志">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="河蟹 AI 的 Harness Engineering：“赛博牛马”的聪明是模型给的，敢让它干活的底气是“马具”给的｜HexClaw 技术博客">
+<meta name="twitter:description" content="Harness 的本义就是给牛马套的马具——权限硬闸 × 不信任执行器的裁判家族 × 预算与受控失败。同一个模型，为什么套上马具才能放进真实工作环境？从源码看河蟹的五道马具与裁判机制。">
+<meta name="twitter:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta name="twitter:image:alt" content="河蟹 AI 标志">
+<link rel="canonical" href="https://hexclaw.net/zh/blog/harness-engineering">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "河蟹 AI 的 Harness Engineering：“赛博牛马”的聪明是模型给的，敢让它干活的底气是“马具”给的",
+  "description": "Harness 的本义就是给牛马套的马具——权限硬闸 × 不信任执行器的裁判家族 × 预算与受控失败。同一个模型，为什么套上马具才能放进真实工作环境？从源码看河蟹的五道马具与裁判机制。",
+  "url": "https://hexclaw.net/zh/blog/harness-engineering",
+  "inLanguage": "zh-CN",
+  "datePublished": "2026-07-04",
+  "image": "https://hexclaw.net/assets/brand/hexclaw-logo.png",
+  "publisher": {
+    "@type": "Organization",
+    "name": "hexagon-codes",
+    "url": "https://hexclaw.net/",
+    "@id": "https://hexclaw.net/#organization"
+  },
+  "@id": "https://hexclaw.net/zh/blog/harness-engineering#article"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "河蟹 AI", "item": "https://hexclaw.net/zh/"},
+    {"@type": "ListItem", "position": 2, "name": "技术博客", "item": "https://hexclaw.net/zh/blog/"},
+    {"@type": "ListItem", "position": 3, "name": "河蟹 AI 的 Harness Engineering：“赛博牛马”的聪明是模型给的，敢让它干活的底气是“马具”给的", "item": "https://hexclaw.net/zh/blog/harness-engineering"}
+  ],
+  "@id": "https://hexclaw.net/zh/blog/harness-engineering#breadcrumb"
+}
+</script>
+<link rel="stylesheet" href="../../assets/css/docs-057a0f50bd0a.css">
+<link rel="stylesheet" href="../../assets/css/blog.css">
+</head>
+<body class="blog-page blog-article-page">
+<a href="#main" class="skip-link">跳转到主要内容</a>
+<nav class="tn topnav" id="nav">
+  <a href="/zh/" class="tn-b topnav-brand">
+    <img width="72" height="72" src="../../assets/brand/hexclaw-icon-72.png" class="tn-l topnav-logo" alt="河蟹 AI">
+    <span class="tn-n topnav-name">河蟹 AI</span>
+  </a>
+  <button type="button" class="tn-burger topnav-burger" aria-label="菜单" aria-expanded="false" aria-controls="primary-navigation">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="tn-r topnav-links" id="primary-navigation">
+    <a href="/zh/">首页</a>
+    <a href="/zh/#cases">使用场景</a>
+    <a href="/zh/#features">产品能力</a>
+    <a href="/zh/#quickstart">开始使用</a>
+    <a href="/zh/#ecosystem">开源生态</a>
+    <a href="/zh/blog/" class="is-active">技术博客</a>
+    <a href="/zh/docs/">文档中心</a>
+    <div class="lang-menu" data-lang-menu>
+      <button type="button" class="lang-trigger" aria-haspopup="menu" aria-expanded="false" aria-label="切换语言">
+        <svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="10"></circle>
+          <path d="M2 12h20"></path>
+          <path d="M12 2a15.3 15.3 0 0 1 0 20"></path>
+          <path d="M12 2a15.3 15.3 0 0 0 0 20"></path>
+        </svg>
+        <span class="lang-current">中文</span>
+        <svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="m6 9 6 6 6-6"></path>
+        </svg>
+      </button>
+      <div class="lang-menu-list" role="menu">
+        <a href="/zh/blog/harness-engineering" role="menuitem" class="is-active" aria-current="true">中文</a>
+        <a href="/en/" role="menuitem">English</a>
+        <a href="/ug/" role="menuitem" lang="zh-CN" dir="ltr">维吾尔语</a>
+      </div>
+    </div>
+    <button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="切换主题">
+      <svg class="ti-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="5"></circle>
+        <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+      </svg>
+      <svg class="ti-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+      </svg>
+    </button>
+    <a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="nav-cta">GitHub <span class="nav-star-badge" id="gh-stars">&#9733;</span></a>
+  </div>
+</nav>
+
+<main id="main" class="blog-main">
+  <div class="blog-article-container">
+    <nav class="blog-breadcrumb" aria-label="面包屑导航">
+      <a href="/zh/">首页</a>
+      <span class="blog-breadcrumb-sep">/</span>
+      <a href="/zh/blog/">技术博客</a>
+      <span class="blog-breadcrumb-sep">/</span>
+      <span aria-current="page">Agent 四代范式</span>
+    </nav>
+
+    <header class="blog-header">
+      <div class="blog-header-tags">
+        <span class="blog-badge-series">四代范式 · 第三篇</span>
+      </div>
+      <h1 class="blog-article-title">河蟹 AI 的 Harness Engineering：“赛博牛马”的聪明是模型给的，敢让它干活的底气是“马具”给的</h1>
+      <p class="blog-article-subtitle">Harness 的本义就是给牛马套的马具——权限硬闸 × 不信任执行器的裁判家族 × 预算与受控失败。同一个模型，为什么套上马具才能放进真实工作环境？从源码看河蟹的五道马具与裁判机制。</p>
+      <div class="article-provenance-banner">
+        <div class="provenance-left">
+          <span class="provenance-origin-badge">微信公众号首发</span>
+          <span class="provenance-text">本文首发于<strong>「HexClaw 河蟹开源AI」</strong>官方技术专栏 · 发表于 <strong>2026年7月4日</strong> · 预计阅读 12 分钟</span>
+        </div>
+        <a href="https://mp.weixin.qq.com/s/kDi-LSWB4UHtS_6jbTfvow" target="_blank" rel="noopener noreferrer" class="provenance-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          微信原文 ↗
+        </a>
+      </div>
+    </header>
+
+    <article class="blog-content">
+      
+
+<p style="margin: 16px 0;">先查一个词。<strong style="color: #3f8fd4;">harness</strong>，名词，词典给的第一义项不是什么工程术语，是<strong style="color: #3f8fd4;">马具</strong>——套在牛马身上，让它拉得动车、还不至于跑飞的那整套东西。较真的话还能再准一点：harness 专指<strong style="color: #3f8fd4;">拉车干活</strong>的那一套（挽具），骑着玩的鞍子马镫不算——这个词打根上就是为干活的牲口准备的。缰绳管方向，嚼子管急停，车辕把力气传到车上，护具挡意外。行业这两年把包住模型的那层系统叫 Harness，这个选词其实相当诚实：<a href="https://mp.weixin.qq.com/s/EvQT0VqH9ep6LXo89ZM-fw" style="color: #3f8fd4; text-decoration: none; border-bottom: 1px dashed #3f8fd4;">之前有一篇</a>我们管 7×24 替你干活的 Agent 叫"赛博牛马"——牛马要干活，先得套马具。</p>
+
+<p style="margin: 8px 0;">为什么这层东西值得单独写一篇？因为一个很少被说破的事实：<strong style="color: #3f8fd4;">模型的聪明是租来的。</strong>你调的 API 和你对手调的是同几个，模型能力上限对所有人一视同仁。真正属于你的，是模型外面那套马具——它决定同一个模型在你手里是个聊天框，还是一个敢放出去干活的系统。行业现在把这写成一个等式：<strong style="color: #3f8fd4;">Agent = Model + Harness</strong>。纲领篇里引过 LangChain 那组实验：模型一行没动，只换 Harness，终端任务跑分从 52.8% 拉到 66.5%。差的那十几个点，全是马具的活。</p>
+
+<p style="margin: 8px 0;">所以这篇不谈模型，只拆马具。拆法也不按组件清单来——组件清单是给维护者看的，用户其实只关心一件事：<strong style="color: #3f8fd4;">我凭什么敢让它干活？</strong>把这个问题掰开，是四个更小的问题：它能碰什么？干砸了怎么办？谁盯着它？它在哪儿干活？河蟹的引擎源码，恰好可以按这四问逐一对账。</p>
+
+<section style="margin: 20px 0; padding: 12px 16px 14px; background: #f7fafd; border: 1px solid #d5e6f3; border-radius: 8px; text-align: center; font-size: 13px; line-height: 2.2; color: #7b8fa3;">
+<span style="font-size: 12px; color: #9db2c4; letter-spacing: 1px;">本系列 · AGENT 四代范式</span><br/>
+<span style="color: #7b8fa3;">Prompt<span style="font-size: 12px; color: #9db2c4;">（压轴）</span></span><span style="color: #b8cbdc;">&nbsp;→&nbsp;</span><a href="https://mp.weixin.qq.com/s/H6BoZUcQfBBqh-ScXQyTWw" style="color: #3f8fd4; text-decoration: none;">Context<span style="font-size: 12px;">（上篇）</span></a><span style="color: #b8cbdc;">&nbsp;→&nbsp;</span><span style="display: inline-block; padding: 0 12px; background: #3f8fd4; color: #ffffff; border-radius: 12px; font-weight: 700;">Harness ▸ 本篇</span><span style="color: #b8cbdc;">&nbsp;→&nbsp;</span><a href="https://mp.weixin.qq.com/s/h60ymjjj3eF9hQyhl0jVcQ" style="color: #3f8fd4; text-decoration: none;">Loop<span style="font-size: 12px;">（纲领篇）</span></a><br/>
+<span style="font-size: 12px; color: #9db2c4;">Context 的记忆侧见 <a href="https://mp.weixin.qq.com/s/YvGGPBZX0V7R6-09unnrcQ" style="color: #5fa5d8; text-decoration: none;">《会"做梦"的 Agent 记忆》</a></span>
+</section>
+
+<p style="margin: 8px 0; text-align: center; color: #7b8fa3; font-size: 13px;">（马具全景。四个信任问题各占一角，中间是那台租来的引擎；护具那格刚完成一次大修）</p>
+
+<figure><img src="../../assets/blog/河蟹AI-Harness马具全景图.png" alt="河蟹 AI Harness 马具全景图" width="2120" height="2500" loading="lazy" decoding="async"><figcaption>河蟹 AI Harness 马具全景图</figcaption></figure>
+
+<h2 style="font-size: 19px; font-weight: 700; color: #12324c; margin: 32px 0 12px; padding-left: 10px; border-left: 4px solid #5fb3ea;">问题一：它能碰什么——工具面与权限闸</h2>
+
+<p style="margin: 8px 0;">马具的第一根带子是缰绳。河蟹引擎的工具循环是一条统一路径，走的是当下 Agent 的主流走法：每一轮都把完整的工具清单交给模型，模型返回工具调用就执行、继续循环，不返回就是答案。常规主路径不玩"这轮给不给工具"的分叉——<strong style="color: #3f8fd4;">能碰什么的边界，不靠藏工具来实现，靠闸来实现</strong>。（个别协议场景确实会收窄工具面：逼模型只用某个工具、或按来源铺一层工具地板，但那是路由和防错，不是拿"让它看不见"当安全手段。）</p>
+
+<p style="margin: 8px 0;">闸有两道。第一道是权限审批，而且默认就开着：每个工具带风险分级——<code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">safe / sensitive / dangerous</code> 三档，有后果的动作（跑 shell、写文件、往外发消息、动能力）会打包成一张审批请求推到前端，附上工具名、参数和理由，等你点头。批过的可以勾"本会话记住"，同一个工具不用反复烦你。这道闸的形态很像银行柜台的复核：动作本身没有恶意判断能力，但<strong style="color: #3f8fd4;">"有后果"这件事本身就值得停一下</strong>——跑代码、改文件、动能力这些，交互场景下都得先问你一声，谁也不例外。</p>
+
+<p style="margin: 8px 0;">第二道闸在文件系统边上，做法更有意思。Agent 想把本地文件批量入知识库，调的工具叫 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">knowledge_ingest_path</code>——注意它只接收<strong style="color: #3f8fd4;">路径</strong>，不接收内容。文件由代码自己去读：单次最多 200 个文件、必须是合法 UTF-8 文本、路径要过安全解析，软链接逃逸和 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">..</code> 穿越直接拒绝，目录枚举时每个条目还要重走一遍解析防止符号链接绕路。这个设计的潜台词值得琢磨：<strong style="color: #3f8fd4;">模型说它读到了什么不算数，代码读到什么才算数。</strong>把"取数"的权力从模型手里收回来，是比审批弹窗更根本的一种闸。</p>
+
+<p style="margin: 8px 0;">工具面还有一个更现代的麻烦：它不是出厂焊死的。MCP 让第三方工具随时可以接进来，Skill 也能安装、能新建——河蟹干脆给这件事修了条正路：内置的<strong style="color: #3f8fd4;">技能 / MCP 市场</strong>，从官方 hub 仓库拉目录，搜索、浏览、一键安装。马具上永远可以加新零件，进货渠道还是敞开的。这对 Harness 提出了一个自指的要求：<strong style="color: #3f8fd4;">"改马具"这个动作本身，必须过马具的闸。</strong>河蟹把 create_skill、manage_skill、manage_mcp_server 一并归进 sensitive、须审批，代码给这类动作起的名字很准——"能力注入 / 能力变更"（回归测试里那个英文名更传神，<code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">capability mutation</code>）。真正吃劲的是无人值守：没人在旁边点"允许"，这道闸怎么守？河蟹的做法<strong style="color: #3f8fd4;">不是把这些工具从工具箱里藏起来</strong>——那是老版本的手段，一份硬编码的剥离清单，如今已经退成一个空操作、只留作兼容；取而代之的是一张所有人可见、可调的自动放行矩阵。默认档（源码管它叫 function-first）下，无人值守的定时任务和 webhook 只自动放行读取、浏览、<strong style="color: #3f8fd4;">沙箱里</strong>的执行、文件编辑、对外投递这类日常活；直接在宿主机上跑 shell 这种"越界"执行，即便这样也一律转审批。而它死死按住不放的正是两类：<strong style="color: #3f8fd4;">改能力</strong>（上面那三件套）和<strong style="color: #3f8fd4;">给自己排新的定时任务</strong>（注释直接把它叫"自我复制回路"——job 造 job）。拉磨的牛马，不许自己改挽具，也不许自己再雇牛马——只是拦它的不再是"工具箱藏了工具"，是"闸说了不"。这跟本节开头那句正好合上：<strong style="color: #3f8fd4;">边界靠闸，不靠藏</strong>。</p>
+
+<p style="margin: 8px 0;">说了半天闸，落到实处是一个问题：这些闸是死板的一刀切，还是能按需拧的？设置里那页<strong style="color: #3f8fd4;">自动化权限</strong>就是答案——它把上面那张矩阵摊成一块你能亲手拨的面板：<code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">功能优先 / 严格审批 / 全功能</code> 三档任你拨（引擎其实还认一个"平衡"态，只是桌面端没给它单开一张卡、免得档位过载），每挡旁边直接写着"哪类能力自动跑、哪类转审批"，连"安装 / 修改能力"都单列一行摆在那儿。刚接进一个 Webhook、心里没底？先切"严格审批"，让每个自动任务都先来问你，观察几天再放开。比全局档位更细的一层是<strong style="color: #3f8fd4;">任务级授权</strong>：不必为一个任务松掉全局默认，只给这一个任务放行它要的能力，任务一删、授权自动回收——没有内置类别的 MCP 连接器工具，无人值守下走的正是这条任务级授权。<strong style="color: #3f8fd4;">"敢让它干活"因此不是要么全放、要么全禁的赌气话，而是一把有刻度的闸。</strong>顺带划一下和下篇的地界：markdown 形态的 Skill 是另一种东西——那是写给模型的指令，不是工具，归收官篇管。</p>
+
+<h2 style="font-size: 19px; font-weight: 700; color: #12324c; margin: 32px 0 12px; padding-left: 10px; border-left: 4px solid #5fb3ea;">问题二：干砸了怎么办——受控失败</h2>
+
+<p style="margin: 8px 0;">牛马会失蹄，工具会超时。马具的价值不是保证不摔，是保证摔得起。河蟹给每次工具执行包了一层重试壳，参数都不大，但每个都有讲究：</p>
+
+<section style="margin: 18px 0; padding: 18px 20px; background: #272822; border-radius: 8px; overflow-x: auto; text-align: left; letter-spacing: 0; font-size: 13px; line-height: 1.8; font-family: 'SF Mono', SFMono-Regular, Menlo, Monaco, Consolas, 'Courier New', monospace; color: #F8F8F2; box-shadow: 0 1px 10px rgba(0,0,0,0.12);"><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">1</span>DefaultTimeout: <span style="color: #AE81FF;">30</span> * time.Second,</span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">2</span>TimeoutOverrides: map[<span style="color: #66D9EF;">string</span>]time.Duration{</span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">3</span>    <span style="color: #E6DB74;">"browser"</span>:   <span style="color: #AE81FF;">120</span> * time.Second,</span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">4</span>    <span style="color: #E6DB74;">"code_exec"</span>: <span style="color: #AE81FF;">60</span> * time.Second,</span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">5</span>},</span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">6</span>retry.Delay(time.Second),          <span style="color: #75715E; font-style: italic;">// 首次退避 1s</span></span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">7</span>retry.MaxDelay(<span style="color: #AE81FF;">8</span>*time.Second),    <span style="color: #75715E; font-style: italic;">// 封顶 8s</span></span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">8</span>retry.Multiplier(<span style="color: #AE81FF;">2.0</span>),             <span style="color: #75715E; font-style: italic;">// 指数翻倍</span></span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">9</span>retry.RetryIf(isTransientError),   <span style="color: #75715E; font-style: italic;">// 只重瞬时错</span></span></section>
+
+<p style="margin: 8px 0;">最后一行是灵魂。源码里那句策略注释写得很直白："只对明确的瞬时错误重试，未知错误保守处理。"网络抖一下值得再试，参数就是错的重试一百遍也是错的——<strong style="color: #3f8fd4;">重试是给运气准备的，不是给 bug 准备的</strong>。浏览器给 120 秒、跑代码给 60 秒，也是按各自的真实耗时分布定的，不是拍一个全局值了事。</p>
+
+<p style="margin: 8px 0;">比单次失败更需要管的是"一直不结束"。工具循环有回合预算：默认上限 25 轮，注释里专门解释了这个数——给足正常任务空间，同时"达到上限是正常终止"，不是报错；budget 模式下另有一个 50 轮的绝对安全上限兜底。这两个数在纲领篇里出现过一次，放在这里重读会有新的体感：<strong style="color: #3f8fd4;">预算不是限制能力，是给"这活干不完"一个体面的结束方式</strong>。失控的长任务比失败的短任务贵得多。</p>
+
+<h2 style="font-size: 19px; font-weight: 700; color: #12324c; margin: 32px 0 12px; padding-left: 10px; border-left: 4px solid #5fb3ea;">问题三：谁盯着它——不信任执行器的裁判家族</h2>
+
+<p style="margin: 8px 0;">这是全篇我最想展开的一节，因为它对应马具上最反直觉的一件东西：给牛马配一个<strong style="color: #3f8fd4;">不归牛马管的监工</strong>。金融系统里这叫 maker/checker：办业务的和复核的必须是两个人。河蟹引擎里散布着一整个裁判家族，共同点只有一条——<strong style="color: #3f8fd4;">绝不采信执行器的自我报告</strong>。</p>
+
+<p style="margin: 8px 0;">第一个裁判是无人值守准入的<em>加严位</em>。无人值守到底能碰什么，默认由问题一那张矩阵说了算；但引擎在矩阵之上还留了一个可插拔的更严裁判——一个独立的风险审查器：把任务描述交给它，prompt 只要一个词 low / medium / high，这次调用的 MaxTokens 只给 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">16</code>（注释很省："a one-word verdict — keep it cheap"，一个单词的裁决，保持便宜）。它的裁决规则极严：<strong style="color: #3f8fd4;">只放行 low；medium、high、判级失败、连裁判都没配——一律拒</strong>，回复不是明确的 low 就默认往 high 靠。源码写得很直白：它默认不覆盖矩阵、只做"更紧的那一手"，留给需要更保守策略的部署自己插进来。但它这套设计本身是教科书级的 fail-closed：守门的闸，门坏了就锁死，绝不敞开。</p>
+
+<p style="margin: 8px 0;">第二个裁判管质量打分：Agent 每次工具调用的表现，由 LLM-as-judge 抽样评估，差的表现会沉淀成技能改进草稿。它的设计取舍注释值得原文抄下来：</p>
+
+<blockquote style="border-left: 3px solid #3f8fd4; padding: 12px 18px; margin: 16px 0; background: #f4fbff; color: #12324c; font-size: 14px; border-radius: 0 8px 8px 0; line-height: 1.8;">
+"每次工具调用都打分会消耗 LLM 配额，因此用采样率（默认 0.1 = 10%）……LLM 调用失败 / 超时 / 解析失败时返回 10 分（fail-open），<strong style="color: #3f8fd4;">不要因为 judge 抖动产生误报 draft 噪音</strong>。"<br/>
+<span style="color: #7b8fa3; font-size: 13px;">—— skill_judge.go 顶部注释（这篇引用的"金句"全部来自代码注释，不来自演讲台）</span>
+</blockquote>
+
+<p style="margin: 8px 0;">把这两个裁判摆在一起看，有一个容易错过的对称：风险审查坏了返回 high（fail-closed），质量打分坏了返回满分（fail-open）——<strong style="color: #3f8fd4;">同一个系统里，两道闸故意朝相反的方向失效</strong>。这不是不一致，是一致性最高的地方：守门的闸，坏了必须锁死；锦上添花的闸，坏了必须让路。闸的方向比闸的存在更重要，装闸之前先想清楚它坏掉的那天该往哪边倒。</p>
+
+<p style="margin: 8px 0;">第三个裁判管数学题这类可验算的活：解题的 Agent 给出答案后，一个叫 verifier 的子角色在<strong style="color: #3f8fd4;">全新上下文</strong>里用代码独立重算一遍再比对——它被限定只有 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">code_exec</code> 一个工具，看不到解题过程，只能自己算。第四个裁判最简单也最锋利，管"说了不算"：定时任务声称把资料存进了知识库？查工具调用记录：</p>
+
+<section style="margin: 18px 0; padding: 18px 20px; background: #272822; border-radius: 8px; overflow-x: auto; text-align: left; letter-spacing: 0; font-size: 13px; line-height: 1.8; font-family: 'SF Mono', SFMono-Regular, Menlo, Monaco, Consolas, 'Courier New', monospace; color: #F8F8F2; box-shadow: 0 1px 10px rgba(0,0,0,0.12);"><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">1</span><span style="color: #75715E; font-style: italic;">// C1: a job whose stated purpose is to store knowledge must</span></span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">2</span><span style="color: #75715E; font-style: italic;">// actually invoke knowledge_ingest ... A "done" verdict with no</span></span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">3</span><span style="color: #75715E; font-style: italic;">// such tool call means the agent hallucinated the ingest.</span></span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">4</span><span style="color: #F92672;">if</span> jobRequiresIngest(job) &amp;&amp; !containsToolFold(res.ToolNames, knowledgeIngestTool) {</span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">5</span>    <span style="color: #F92672;">return</span> &amp;RunResult{Status: <span style="color: #E6DB74;">"failed"</span>,</span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">6</span>        Error: <span style="color: #E6DB74;">"agent reported success but never called knowledge_ingest — no document was stored"</span>}</span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">7</span>}</span></section>
+
+<p style="margin: 8px 0;">任务嘴上说"入库完成"，但工具调用列表里没有那次 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">knowledge_ingest</code>——判失败，理由写得毫不客气："报告了成功但从未调用入库工具，什么都没存。"这七行代码浓缩了整个裁判家族的世界观：<strong style="color: #3f8fd4;">说了不算，调了才算；输出不算，副作用才算。</strong>另外还有一位管秩序的：多 Agent 派生有专门的扇出护栏，跨树总量一到上限就拒派新的子任务——那是 Loop 纲领篇的地界，这里不重讲。</p>
+
+<h2 style="font-size: 19px; font-weight: 700; color: #12324c; margin: 32px 0 12px; padding-left: 10px; border-left: 4px solid #5fb3ea;">问题四：它在哪儿干活——沙箱，刚大修过的那件护具</h2>
+
+<p style="margin: 8px 0;">前三个问题河蟹都能拿出成套的答案，第四个要分开说，先说有的。跑代码的 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">code_exec</code> 走的是一个独立的沙箱抽象层，配置可以热更新（改了限制不用重启，直接重建沙箱实例）；macOS 上有 Seatbelt 侧写约束。定时任务那边的脚本沙箱在<a href="https://mp.weixin.qq.com/s/EvQT0VqH9ep6LXo89ZM-fw" style="color: #3f8fd4; text-decoration: none; border-bottom: 1px dashed #3f8fd4;">"赛博牛马"那篇</a>详细写过：Starlark 解释器、单次 HTTP 抓取封顶 8 MiB、一亿步指令上限、300 秒超时——一套编译进笼子里的自愈脚本。</p>
+
+<p style="margin: 8px 0;">这件护具最近刚完成一次大修。老版本的 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">code_exec</code> 更接近代码片段执行器：给一段代码、跑出一个结果，仅此而已。大修把执行模式扩成了四档——<code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">snippet / file / module / project</code>：从跑一段代码，到跑仓库里的某个文件、某个模块，再到在工作区里执行项目命令；产物文件（图表、CSV、日志）能带回来，长输出有上限治理，未经授权的宿主路径不会泄漏进隔离运行（project 模式只暴露你显式授权的项目根，secrets deny 规则再优先遮蔽一层），甚至给弱工具模型留了入口推断——只会发 mode=file 的模型也能被引导到正确的执行方式。最能说明分量的是最后一件事：这套沙箱有了<strong style="color: #3f8fd4;">自己专属的 CI</strong>，一条跨操作系统矩阵的流水线专门测它——"跨平台假可用"这个老毛病，被钉进了持续集成。马具四件套至此都在岗。护具当然永远有下一层可打（更完整的依赖安装、更深的平台隔离都在路线图上），但<strong style="color: #3f8fd4;">"敢让它干活"的"活"字，已经从"帮我跑段代码"升级成了"帮我动我的项目"</strong>。</p>
+
+<p style="margin: 8px 0;">这套沙箱最容易被忽略的一层，不是那几个资源上限，是<strong style="color: #3f8fd4;">它顺手把你的秘密挡在外面</strong>。哪怕你用 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">project</code> 模式把整个 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">$HOME</code> 交给它当工作区，沙箱的默认 deny 规则仍会优先遮蔽几类路径：外部凭据目录 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">~/.ssh</code>、<code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">~/.aws</code>、gcloud、gnupg，还有河蟹自己的命门——主密钥 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">master.key</code>（能解开全部静态加密凭据）、配置文件 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">hexclaw.yaml</code>（各家 provider 的 API key）、加密库 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">data.db</code>。再加一条 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">DenyLoopback</code>：跑代码可以出网抓页面、调 API，但打不到本机回环——不给无人值守的 Agent 留经 loopback 去戳本地管理端口给自己提权的机会（一个教科书级的 SSRF 自提升面）。这里得诚实标一条平台边界：这道回环封锁在 macOS 上由 Seatbelt 从沙箱层强制，Linux 目前还没隔离 net namespace、回环仍可达，是个已知能力缺口，得靠更高层或部署侧补位。<strong style="color: #3f8fd4;">但笼子的意图很清楚：拦住的不只是它能跑多久，还有它能读到什么、能连到哪儿。</strong></p>
+
+<h2 style="font-size: 19px; font-weight: 700; color: #12324c; margin: 32px 0 12px; padding-left: 10px; border-left: 4px solid #5fb3ea;">行业顶流都在做同一件事，只是叫法不同</h2>
+
+<p style="margin: 8px 0;">把视线抬起来会发现，头部模型厂商的 Agent 产品文档里，最厚的章节全是马具——这层如今通用的名字就是 harness（"马具"只是它的词典直译，被我们顺着牛马那条线借来当比方）；可一落到各家自己的产品文档，名字又五花八门：OpenAI 的 Agents SDK 把输入输出防护做成一等公民叫 guardrails，Codex 的本地沙箱按平台分层——macOS 用 Seatbelt，Linux/WSL2 主路径走 bubblewrap（CLI 的 sandbox helper 另有 Landlock/seccomp 口径），Windows 用原生 Windows sandbox；Anthropic 给 Claude 的 Agent 体系写了整套 permissions 与 sandboxing 文档，还把自家的沙箱运行时开了源——那份开源说明点破的威胁模型，和前面那套 secrets 遮蔽是同一个：没有网络隔离，被攻破的 Agent 能顺手把你的 SSH key 传出去；Google 的 ADK 用 callbacks 在工具调用前后设卡。措辞各家各的，方向完全一致——<strong style="color: #3f8fd4;">连卖模型的都在反复告诉你：光有模型不敢上路</strong>。这大概是"Agent = Model + Harness"这个等式最有力的背书：写等式右边第一项的人，在拼命完善第二项。学术圈今年也把话挑明了，有篇论文的标题就叫 <strong style="color: #3f8fd4;">Harness as an Asset</strong>——把马具当资产。这四个词，就是"模型是租来的、马具是自己的"那句话的学术拼法。</p>
+
+<p style="margin: 8px 0;">这里得顺手正个名，因为"Harness Engineering"这个词今年正被两拨人往两个方向拉，很容易看串。OpenAI 二月那篇讲 Codex 的文章、还有 Martin Fowler 的同名长文，用它指一种<strong style="color: #3f8fd4;">研发范式</strong>——工程师不再亲手写代码，改为写约束（AGENTS.md、lint 规则、Ralph 那种自循环），让 Agent 去写你的整个代码库；那是"用 Agent 造软件"的马具，朝着开发台。本文从头到尾说的是另一层——<strong style="color: #3f8fd4;">运行时</strong>包住模型、让你产品里那个 Agent 敢动手又不闯祸的马具，朝着运行时。两个都真实、都在爆发，只是别混成一件事。这个系列讲的是后者；前者更贴近我们<a href="https://mp.weixin.qq.com/s/1rza-Ye3NF89KNAJp_PttA" style="color: #3f8fd4; text-decoration: none; border-bottom: 1px dashed #3f8fd4;">那篇 Claude Code SOP</a> 的地界，哪天单开一篇细讲。</p>
+
+<p style="margin: 8px 0;">回到系列的线索上。上一篇说，检索链路负责让 Agent 每一轮<strong style="color: #3f8fd4;">看到的东西可信</strong>；这一篇说的是，看完之后它<strong style="color: #3f8fd4;">做的事情受控</strong>。证据可信、行动受控，两层合起来，"敢让它干活"这句话才算有了工程含义，而不是一句胆量。</p>
+
+<p style="margin: 8px 0;">但马具还不是故事的全部。你大概注意到了，这篇讲的全是<strong style="color: #3f8fd4;">硬闸</strong>——审批、超时、裁决、笼子，全是代码强制执行的东西。可是引擎每一轮塞给模型的那几千字 system prompt 里，还写着大量"软"的约束：它该是什么性格、什么纪律、遇到什么该问不该做。硬闸管住失败，软约束定义期望——这层最软、也最底层的东西，行业管它叫 Prompt，四代范式的第一代。下一篇收官，讲它为什么没死，而是沉成了协议。</p>
+
+<hr style="border: none; border-top: 1px solid #e0ecf5; margin: 28px 0;"/>
+
+<p style="margin: 16px 0 8px; font-size: 14px; color: #5f7b9c;"><strong>四代范式系列</strong></p>
+<p style="margin: 4px 0; font-size: 14px; line-height: 2.1;">
+▸ <span style="display: inline-block; font-size: 12px; padding: 0 8px; background: #edf7ff; color: #3f8fd4; border-radius: 10px; font-weight: 700;">Loop · 纲领</span>&nbsp;<a href="https://mp.weixin.qq.com/s/h60ymjjj3eF9hQyhl0jVcQ" style="color: #3f8fd4; text-decoration: none;">扒开一个开源 Agent 的源码，从 Prompt 到 Loop 逐层对完这四代范式</a><br/>
+▸ <span style="display: inline-block; font-size: 12px; padding: 0 8px; background: #edf7ff; color: #3f8fd4; border-radius: 10px; font-weight: 700;">Context · 资料侧</span>&nbsp;<a href="https://mp.weixin.qq.com/s/H6BoZUcQfBBqh-ScXQyTWw" style="color: #3f8fd4; text-decoration: none;">RAG 真正的难点不是召回，是把"像答案的噪声"挡在 Loop 外面</a><br/>
+▸ <span style="display: inline-block; font-size: 12px; padding: 0 8px; background: #edf7ff; color: #3f8fd4; border-radius: 10px; font-weight: 700;">Context · 记忆侧</span>&nbsp;<a href="https://mp.weixin.qq.com/s/YvGGPBZX0V7R6-09unnrcQ" style="color: #3f8fd4; text-decoration: none;">会"做梦"的 Agent 记忆：河蟹的梦在你本机</a><br/>
+▸ <span style="display: inline-block; font-size: 12px; padding: 0 8px; background: #f0f4f8; color: #7b8fa3; border-radius: 10px; font-weight: 700;">Prompt · 压轴</span>&nbsp;<span style="color: #9db2c4;">人人都说它死了，其实它沉下去，成了 Agent 最底层的协议（收官篇，即将发布）</span>
+</p>
+
+<p style="margin: 14px 0 8px; font-size: 14px; color: #5f7b9c;"><strong>更多往期</strong></p>
+<p style="margin: 4px 0; font-size: 14px; line-height: 2;">
+▸ <a href="https://mp.weixin.qq.com/s/EvQT0VqH9ep6LXo89ZM-fw" style="color: #3f8fd4; text-decoration: none;">河蟹 AI 的"赛博牛马"养成记：把一句话编译成会自愈的沙箱脚本</a><br/>
+▸ <a href="https://mp.weixin.qq.com/s/1rza-Ye3NF89KNAJp_PttA" style="color: #3f8fd4; text-decoration: none;">河蟹 AI 背后的 Claude Code SOP：设计驱动 × 测试闭环 × 多 Agent 协作</a>
+</p>
+
+<p style="margin: 16px 0 8px; font-size: 14px; color: #5f7b9c;"><strong>参考来源</strong></p>
+<p style="margin: 4px 0; font-size: 13px; color: #7b8fa3; line-height: 2;">
+· OpenAI，Agents SDK — Guardrails 官方文档；Codex 沙箱（macOS Seatbelt / Linux·WSL2 bubblewrap，CLI helper 另有 Landlock+seccomp / Windows 原生 sandbox，unelevated 回退用受限令牌）<br/>
+· Anthropic，Claude Agent 体系 permissions / sandboxing 文档；开源 sandbox-runtime<br/>
+· Google，Agent Development Kit（ADK）— callbacks 机制<br/>
+· LangChain，同模型（GPT-5.2-Codex 固定）换 Harness 的 Terminal-Bench 2.0 对照实验（52.8% → 66.5%，详见本系列纲领篇）<br/>
+· Harness as an Asset: Enforcing Determinism via the Convergent AI Agent Framework (CAAF)，arXiv:2604.17025——"马具即资产"的学术表达<br/>
+· 术语正名：OpenAI《Harness engineering: leveraging Codex in an agent-first world》(2026-02)、Martin Fowler 同名文——指"人写约束、Agent 写代码"的研发范式，与本文"运行时马具"是同名两义<br/>
+· maker/checker（四眼原则），银行业通行的双人复核控制<br/>
+· 本文全部河蟹侧机制与常量核验于 2026-07-04，对应仓库 main 分支源码（code_exec 沙箱升级、四档执行模式与跨平台 CI 均已并入 main）
+</p>
+
+<hr style="border: none; border-top: 1px solid #e0ecf5; margin: 28px 0 16px;"/>
+
+<p style="text-align: center; color: #7b8fa3; font-size: 13px; margin: 16px 0 0; line-height: 2;">
+<strong style="color: #12324c; font-size: 14px;">HexClaw 河蟹 AI</strong><br/>
+本地部署 · 数据私有 · 开源免费<br/>
+<span style="color: #5fb3ea;">官网 hexclaw.net</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span style="color: #5fb3ea;">GitHub hexagon-codes</span><br/>
+<span style="color: #5fb3ea;">微博 @HexClaw</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span style="color: #5fb3ea;">X @hexclawapp</span><br/>
+<span style="color: #999;">邮箱：ai@hexclaw.net</span>
+</p>
+    </article>
+
+
+
+    <nav class="blog-series-nav" aria-label="上一篇与下一篇">
+      <a href="/zh/blog/prompt-engineering" class="blog-nav-card prev">
+  <span class="blog-nav-label">&larr; 上一篇</span>
+  <span class="blog-nav-title">河蟹 AI 的 Prompt Engineering：人人都说它死了，其实它沉下去，成了 Agent 最底层的协议</span>
+</a>
+      <a href="/zh/blog/context-engineering" class="blog-nav-card next">
+  <span class="blog-nav-label">下一篇 &rarr;</span>
+  <span class="blog-nav-title">河蟹 AI 的 Context Engineering：RAG 真正的难点不是召回，是把“像答案的噪声”挡在 Loop 外面</span>
+</a>
+    </nav>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-main">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-col-title">产品</div>
+        <a href="/zh/#download">下载桌面端</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="/zh/changelog">更新日志</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">开发者</div>
+        <a href="/zh/docs/">文档中心</a>
+        <a href="/zh/blog/">技术博客</a>
+        <a href="/zh/docs/getting-started">快速上手</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">Apache-2.0</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">社区</div>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/issues" target="_blank" rel="noopener noreferrer">Issues</a>
+        <a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer">Twitter / X</a>
+        <a href="mailto:ai@hexclaw.net">业务咨询</a>
+        <a href="mailto:support@hexclaw.net">问题反馈</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">关于</div>
+        <a href="/zh/about">关于我们</a>
+        <a href="/zh/privacy">隐私政策</a>
+        <a href="/zh/terms">使用条款</a>
+        <a href="/zh/third-party-ai-services">第三方 AI 服务说明</a>
+      </div>
+    </div>
+    <div class="footer-wechat">
+      <img width="430" height="430" loading="lazy" decoding="async" src="../../assets/brand/wechat-qr.jpg" alt="HexClaw 微信公众号二维码">
+      <span class="footer-wechat-label">微信公众号</span>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">&copy; 2025&ndash;2026 hexagon-codes</span>
+  </div>
+</footer>
+<script src="../../assets/js/home.js"></script>
+<button type="button" class="back-to-top" id="backToTop" aria-label="返回顶部" title="返回顶部">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg>
+  <span>顶部</span>
+</button>
+<script>
+(function() {
+  const btn = document.getElementById('backToTop');
+  if (!btn) return;
+  let ticking = false;
+  window.addEventListener('scroll', function() {
+    if (!ticking) {
+      window.requestAnimationFrame(function() {
+        if (window.scrollY > 320) {
+          btn.classList.add('is-visible');
+        } else {
+          btn.classList.remove('is-visible');
+        }
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+  btn.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+})();
+</script>
+</body>
+</html>

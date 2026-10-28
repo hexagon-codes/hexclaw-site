@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="1740" viewBox="0 0 760 1740" role="img" aria-labelledby="title desc">
+  <title id="title">HexClaw v0.5.0 作业照片可信辅导主链与候选缺口</title>
+  <desc id="desc">从桌面照片识别、自动分类、年级约束、解题、复核到记录与复习排程，并标出执行回执和复习持久化尚未闭环。</desc>
+  <defs>
+    <filter id="shadow" x="-15%" y="-15%" width="130%" height="140%">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#15324a" flood-opacity="0.10"/>
+    </filter>
+    <marker id="blueArrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#3f8fd4"/>
+    </marker>
+    <marker id="greenArrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#25a47a"/>
+    </marker>
+    <style>
+      .title { font:700 29px -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif; fill:#12324c; }
+      .sub { font:400 16px -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif; fill:#607d98; }
+      .zone { font:700 21px -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif; fill:#12324c; }
+      .step { font:700 20px -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif; fill:#12324c; }
+      .body { font:400 17px -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif; fill:#526d86; }
+      .small { font:500 15px -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif; fill:#6a8197; }
+      .mono { font:600 15px ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace; fill:#3f6688; }
+      .gap { font:600 15px -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif; fill:#9b6417; }
+      .arrow { fill:none; stroke:#3f8fd4; stroke-width:2.6; marker-end:url(#blueArrow); }
+      .flow { fill:none; stroke:#25a47a; stroke-width:2.6; marker-end:url(#greenArrow); }
+    </style>
+  </defs>
+
+  <rect width="760" height="1740" fill="#ffffff"/>
+  <text x="38" y="52" class="title">一张作业照片，如何进入“可信”辅导链</text>
+  <text x="38" y="82" class="sub">蓝色：候选版本已落地主链　｜　橙色：仍需收口的系统缺口</text>
+
+  <rect x="28" y="112" width="704" height="1000" rx="22" fill="#f4f9fd" stroke="#bfdceb"/>
+  <text x="52" y="150" class="zone">A. 从输入到证据：逐层降低不确定性</text>
+
+  <g filter="url(#shadow)">
+    <rect x="64" y="177" width="632" height="108" rx="16" fill="#fff" stroke="#79b9df" stroke-width="1.5"/>
+    <rect x="84" y="198" width="54" height="28" rx="14" fill="#e8f4fc"/>
+    <text x="102" y="218" class="mono">01</text>
+    <text x="154" y="220" class="step">照片识别：Vision / OCR 输出结构化题面</text>
+    <text x="84" y="254" class="body">产出题干与知识点候选，不直接把 OCR 文本当作正确事实。</text>
+  </g>
+  <path d="M380 285 L380 310" class="arrow"/>
+
+  <g filter="url(#shadow)">
+    <rect x="64" y="320" width="632" height="148" rx="16" fill="#fff" stroke="#dca23c" stroke-width="1.5"/>
+    <rect x="84" y="341" width="54" height="28" rx="14" fill="#fff2d9"/>
+    <text x="102" y="361" class="mono">02</text>
+    <text x="154" y="363" class="step">自动分类分流：task_intent 四类识别</text>
+    <text x="84" y="398" class="body">逐题回显、允许改题干；本地 UI 在整体确认后才放行批改。</text>
+    <rect x="84" y="418" width="582" height="32" rx="10" fill="#fff6e6"/>
+    <text x="98" y="439" class="gap">候选缺口：后端尚无 confirmation token / 题面 hash 校验</text>
+  </g>
+  <path d="M380 468 L380 493" class="arrow"/>
+
+  <g filter="url(#shadow)">
+    <rect x="64" y="503" width="632" height="174" rx="16" fill="#fff" stroke="#31ae87" stroke-width="1.5"/>
+    <rect x="84" y="524" width="54" height="28" rx="14" fill="#e8f7f2"/>
+    <text x="102" y="544" class="mono">03</text>
+    <text x="154" y="546" class="step">年级边界：查表确定，来源与方法仍有软边界</text>
+    <text x="84" y="581" class="body">确定部分：profile / curriculum 查表、已知知识点预检、约束上下文。</text>
+    <text x="84" y="610" class="body">语义部分：解法是否超纲仍由 Prompt 与 Verifier 判断。</text>
+    <rect x="84" y="630" width="582" height="30" rx="10" fill="#fff6e6"/>
+    <text x="98" y="650" class="gap">显式 grade 可覆盖 profile；未知 curriculum key 当前会静默跳过</text>
+  </g>
+  <path d="M380 677 L380 702" class="arrow"/>
+
+  <g filter="url(#shadow)">
+    <rect x="64" y="712" width="632" height="112" rx="16" fill="#fff" stroke="#7595d8" stroke-width="1.5"/>
+    <rect x="84" y="733" width="54" height="28" rx="14" fill="#edf1fb"/>
+    <text x="102" y="753" class="mono">04</text>
+    <text x="154" y="755" class="step">Solver：在约束上下文里产生候选解</text>
+    <text x="84" y="790" class="body">难题可走多方法与自洽采样；候选答案仍然只是待验证命题。</text>
+  </g>
+  <path d="M380 824 L380 849" class="arrow"/>
+
+  <g filter="url(#shadow)">
+    <rect x="64" y="859" width="632" height="216" rx="16" fill="#fff" stroke="#31ae87" stroke-width="1.6"/>
+    <rect x="84" y="880" width="54" height="28" rx="14" fill="#e8f7f2"/>
+    <text x="102" y="900" class="mono">05</text>
+    <text x="154" y="902" class="step">Verifier：新上下文复核，工具只暴露 code_exec</text>
+    <text x="84" y="937" class="body">输出 verdict、计算值与 evidence type，再形成结构化批改结果。</text>
+    <text x="84" y="966" class="mono">agree | disagree | out_of_scope | unverifiable</text>
+    <rect x="84" y="988" width="582" height="64" rx="10" fill="#fff6e6"/>
+    <text x="98" y="1012" class="gap">关键缺口：numeric_exec 目前由 COMPUTED 文本与数值相等推导，</text>
+    <text x="98" y="1037" class="gap">尚未绑定真实 code_exec tool receipt，不能当不可伪造执行凭证。</text>
+  </g>
+
+  <rect x="28" y="1136" width="704" height="548" rx="22" fill="#f4fbf8" stroke="#b7ddcf"/>
+  <text x="52" y="1174" class="zone">B. 从批改到复习：状态骨架已成，体验仍在补链</text>
+
+  <g filter="url(#shadow)">
+    <rect x="64" y="1201" width="632" height="112" rx="16" fill="#fff" stroke="#31ae87" stroke-width="1.5"/>
+    <text x="84" y="1234" class="step">Records：业务事实源</text>
+    <text x="84" y="1266" class="body">dedupe 同题幂等 · version CAS · Agent 实例作用域</text>
+    <text x="84" y="1292" class="small">这是本地多实例隔离，不是服务端多租户鉴权。</text>
+  </g>
+  <path d="M380 1313 L380 1338" class="flow"/>
+
+  <g filter="url(#shadow)">
+    <rect x="64" y="1348" width="632" height="128" rx="16" fill="#fff" stroke="#31ae87" stroke-width="1.5"/>
+    <text x="84" y="1381" class="step">到期队列：五态前向偏序 + 1 / 3 / 7 / 14 天（封顶）</text>
+    <text x="84" y="1414" class="body">同一道原题后来再次 grade 正确且间隔 ≥ 3 天，才会自动掌握。</text>
+    <text x="84" y="1443" class="small">生成一道“再练”题本身不会推进状态。</text>
+  </g>
+  <path d="M380 1476 L380 1501" class="flow"/>
+
+  <g filter="url(#shadow)">
+    <rect x="64" y="1511" width="632" height="132" rx="16" fill="#fff" stroke="#dca23c" stroke-width="1.5"/>
+    <text x="84" y="1544" class="step">复习 WIP：不同 collection 走不同 retry 策略</text>
+    <text x="84" y="1576" class="body">错题类走 solve；默写 / 错词等积累类走 verbatim。</text>
+    <text x="84" y="1605" class="gap">题目与答案仍混在 solution、未持久化（打印卷已取到期队列）。</text>
+  </g>
+
+  <rect x="64" y="1662" width="632" height="48" rx="14" fill="#eef6fb"/>
+  <text x="82" y="1692" class="small">数据分层：Records 已落地｜Memory 存洞察｜Knowledge 当前仅有后端 grounding 接缝</text>
+
+  <text x="38" y="1728" class="sub">可信不是一个徽章，而是主链、证据来源和未闭合接口都能被准确说明。</text>
+</svg>

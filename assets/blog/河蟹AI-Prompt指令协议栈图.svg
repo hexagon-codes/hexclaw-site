@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 1210" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif">
+  <defs>
+    <marker id="arrowB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#3f8fd4"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="1060" height="1210" fill="#ffffff"/>
+
+  <text x="530" y="50" text-anchor="middle" font-size="29" font-weight="800" fill="#12324c">The Instruction Protocol Stack</text>
+  <text x="530" y="84" text-anchor="middle" font-size="15" fill="#5f7b9c">指令协议栈 —— 一条 system prompt 由谁写成、按什么顺序叠、冲突了谁赢（react.go 组装现场）</text>
+
+  <!-- 左侧主栈 -->
+  <text x="70" y="130" font-size="14" font-weight="700" fill="#7b8fa3">组装顺序 ↓</text>
+
+  <rect x="70" y="145" width="640" height="118" rx="10" fill="#eef6fd" stroke="#3f8fd4" stroke-width="2"/>
+  <text x="95" y="175" font-size="15" font-weight="700" fill="#12324c">人设 SOUL <tspan font-size="12" fill="#8aa5bd">—— 角色与声音，短，给用户读改</tspan></text>
+  <text x="95" y="199" font-size="13" fill="#5f7b9c">默认「小蟹」：暖而不腻 · 直给 · 嘴严 ·"钳得住活，锁得住数据，长得出本事"</text>
+  <text x="95" y="220" font-size="13" fill="#5f7b9c">用户放 <tspan font-family="Menlo, monospace" fill="#2b6cb0">~/.hexclaw/SOUL.md</tspan> 可整体取代 · 英文用户走英文原生版（非机翻）</text>
+  <text x="95" y="243" font-size="12" fill="#8aa5bd">"照着做，别照着念"—— 写给模型的元指令</text>
+  <rect x="720" y="145" width="120" height="118" rx="10" fill="#f7fafd" stroke="#d5e6f3" stroke-width="1.5"/>
+  <text x="780" y="195" text-anchor="middle" font-size="13" font-weight="700" fill="#5f7b9c">产品写</text>
+  <text x="780" y="216" text-anchor="middle" font-size="12" fill="#9db2c4">用户可换</text>
+
+  <line x1="390" y1="263" x2="390" y2="288" stroke="#3f8fd4" stroke-width="2.5" marker-end="url(#arrowB)"/>
+
+  <rect x="70" y="292" width="640" height="98" rx="10" fill="#dcedfa" stroke="#2b6cb0" stroke-width="2"/>
+  <text x="95" y="322" font-size="15" font-weight="700" fill="#12324c">＋ 运行手册 <tspan font-size="12" fill="#5f7b9c">—— 工具纪律，固定，用户不必看</tspan></text>
+  <text x="95" y="346" font-size="13" fill="#3f6a94"><tspan font-family="Menlo, monospace">soulWithManual()</tspan>：默认人设与自定义 SOUL.md 一视同仁强制附加</text>
+  <text x="95" y="370" font-size="13" font-weight="700" fill="#2b6cb0">"你可以改它的性格，改不了它的纪律"（119 行回归测试钉死）</text>
+  <rect x="720" y="292" width="120" height="98" rx="10" fill="#f7fafd" stroke="#d5e6f3" stroke-width="1.5"/>
+  <text x="780" y="335" text-anchor="middle" font-size="13" font-weight="700" fill="#5f7b9c">产品写</text>
+  <text x="780" y="356" text-anchor="middle" font-size="12" fill="#d64545">不可覆盖</text>
+
+  <line x1="390" y1="390" x2="390" y2="415" stroke="#3f8fd4" stroke-width="2.5" marker-end="url(#arrowB)"/>
+
+  <rect x="70" y="419" width="640" height="90" rx="10" fill="#fdf3e7" stroke="#d97706" stroke-width="2"/>
+  <text x="95" y="449" font-size="15" font-weight="700" fill="#12324c">＋ 战术补丁 <tspan font-size="12" fill="#8aa5bd">—— 修过 bug 的地方才有的层</tspan></text>
+  <text x="95" y="473" font-size="13" fill="#5f7b9c">anti-recitation guard（bug#7：小模型逐字背诵系统指令 → 一句话焊死）</text>
+  <text x="95" y="496" font-size="13" fill="#5f7b9c">cron 意图引导：注入"追问补全"guidance ＋ 强制 <tspan font-family="Menlo, monospace" fill="#b25e04">Tools=nil</tspan>（软硬并用）</text>
+  <rect x="720" y="419" width="120" height="90" rx="10" fill="#f7fafd" stroke="#d5e6f3" stroke-width="1.5"/>
+  <text x="780" y="458" text-anchor="middle" font-size="13" font-weight="700" fill="#5f7b9c">代码写</text>
+  <text x="780" y="479" text-anchor="middle" font-size="12" fill="#9db2c4">按场景注入</text>
+
+  <line x1="390" y1="509" x2="390" y2="534" stroke="#3f8fd4" stroke-width="2.5" marker-end="url(#arrowB)"/>
+
+  <rect x="70" y="538" width="640" height="112" rx="10" fill="#e9f6ef" stroke="#2f9e63" stroke-width="2"/>
+  <text x="95" y="568" font-size="15" font-weight="700" fill="#12324c">＋ 能力上下文 与 挂载 Skill <tspan font-size="12" fill="#8aa5bd">—— 每轮动态组装</tspan></text>
+  <text x="95" y="592" font-size="13" fill="#5f7b9c">Skill = 带 frontmatter 的 markdown（prompt 文件化，可复用可分享）</text>
+  <text x="95" y="613" font-size="13" fill="#5f7b9c">Top-K 渐进加载："避免把 100 个 Skill 全塞进 context" ＋ when/not_when 条件激活</text>
+  <text x="95" y="636" font-size="12" fill="#8aa5bd">指令也是 context，指令也要过筛子（attention budget 落到 prompt 层）</text>
+  <rect x="720" y="538" width="120" height="112" rx="10" fill="#f7fafd" stroke="#d5e6f3" stroke-width="1.5"/>
+  <text x="780" y="584" text-anchor="middle" font-size="13" font-weight="700" fill="#5f7b9c">文件写</text>
+  <text x="780" y="605" text-anchor="middle" font-size="12" fill="#9db2c4">按需召回</text>
+
+  <line x1="390" y1="650" x2="390" y2="675" stroke="#3f8fd4" stroke-width="2.5" marker-end="url(#arrowB)"/>
+
+  <rect x="70" y="679" width="640" height="90" rx="10" fill="#f3efFA" stroke="#8b6cc7" stroke-width="2"/>
+  <text x="95" y="709" font-size="15" font-weight="700" fill="#12324c">随请求同行：工具 schema ＋ 结构化输出 <tspan font-size="12" fill="#8aa5bd">—— 另一份协议</tspan></text>
+  <text x="95" y="733" font-size="13" fill="#5f7b9c">工具 description = 写给模型的 man page（例：method_diversity 的双法交叉验证说明）</text>
+  <text x="95" y="756" font-size="12" fill="#8aa5bd">模型会不会用好一个工具，一大半取决于这段话写没写清楚</text>
+  <rect x="720" y="679" width="120" height="90" rx="10" fill="#f7fafd" stroke="#d5e6f3" stroke-width="1.5"/>
+  <text x="780" y="718" text-anchor="middle" font-size="13" font-weight="700" fill="#5f7b9c">契约层</text>
+  <text x="780" y="739" text-anchor="middle" font-size="12" fill="#9db2c4">当接口评审</text>
+
+  <!-- 右侧优先级对照 -->
+  <rect x="870" y="145" width="160" height="624" rx="12" fill="none" stroke="#90908A" stroke-width="1.5" stroke-dasharray="6 5"/>
+  <text x="950" y="180" text-anchor="middle" font-size="14" font-weight="700" fill="#6b7a88">冲突谁赢</text>
+  <text x="950" y="210" text-anchor="middle" font-size="12" fill="#6b7a88">（对照 OpenAI</text>
+  <text x="950" y="228" text-anchor="middle" font-size="12" fill="#6b7a88">Model Spec 的</text>
+  <text x="950" y="246" text-anchor="middle" font-size="12" fill="#6b7a88">指令层级）</text>
+  <text x="950" y="295" text-anchor="middle" font-size="13" fill="#6b7a88">platform</text>
+  <text x="950" y="318" text-anchor="middle" font-size="13" fill="#6b7a88">&gt; developer</text>
+  <text x="950" y="341" text-anchor="middle" font-size="13" fill="#6b7a88">&gt; user</text>
+  <text x="950" y="390" text-anchor="middle" font-size="12" fill="#6b7a88">河蟹对应：</text>
+  <text x="950" y="413" text-anchor="middle" font-size="12" fill="#6b7a88">运行手册（固定）</text>
+  <text x="950" y="436" text-anchor="middle" font-size="12" fill="#6b7a88">压过人设（可换）</text>
+  <text x="950" y="459" text-anchor="middle" font-size="12" fill="#6b7a88">压过单轮指令</text>
+  <text x="950" y="510" text-anchor="middle" font-size="12" font-weight="700" fill="#6b7a88">用户层的自由，</text>
+  <text x="950" y="530" text-anchor="middle" font-size="12" font-weight="700" fill="#6b7a88">以不穿透产品层</text>
+  <text x="950" y="550" text-anchor="middle" font-size="12" font-weight="700" fill="#6b7a88">的约束为前提</text>
+
+  <!-- 软硬分工 -->
+  <rect x="70" y="800" width="960" height="118" rx="12" fill="#f7fafd" stroke="#d5e6f3" stroke-width="1.5"/>
+  <text x="95" y="832" font-size="15" font-weight="700" fill="#12324c">协议层管不了的事（软硬分工，回指全系列）</text>
+  <text x="95" y="858" font-size="13" fill="#5f7b9c">手册写"不要做 X"是软约束 → 真兜底是 Harness 篇的权限闸与裁判家族（不听口头汇报）</text>
+  <text x="95" y="880" font-size="13" fill="#5f7b9c">"资料不足请如实告知"也是软约束 → 真护栏是 Context 篇的三道评测发版门</text>
+  <text x="95" y="904" font-size="13" font-weight="700" fill="#3f8fd4">软约束定义期望，硬闸兜住失败 —— 只软是裸奔，只硬是又贵又蠢</text>
+
+  <!-- 红框欠账 -->
+  <rect x="70" y="938" width="960" height="76" rx="12" fill="#fdf0f0" stroke="#d64545" stroke-width="2.5" stroke-dasharray="10 6"/>
+  <text x="95" y="970" font-size="15" font-weight="800" fill="#d64545">🚧 还欠的账</text>
+  <text x="230" y="970" font-size="13" fill="#b53c3c">人设文案的行为 eval（改一句"脾气"，没有 golden 集告诉你哪些行为变了）</text>
+  <text x="230" y="996" font-size="13" fill="#b53c3c">SOUL.md 版本治理（没有 diff 历史可回滚——prompt 只享受了代码的一半待遇）</text>
+
+  <!-- 底部结论 -->
+  <rect x="70" y="1042" width="960" height="56" rx="12" fill="#12324c"/>
+  <text x="550" y="1069" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">⭐ 别写咒语，写协议 —— <tspan fill="#5fb3ea">Agent = Prompt × Context × Harness × Loop</tspan></text>
+  <text x="550" y="1090" text-anchor="middle" font-size="12" fill="#9db2c4">协议定义期望 · 证据喂给判断 · 马具管住行动 · 回路兑现目标 —— 四代范式，每层都有真代码可看</text>
+
+  <text x="530" y="1150" text-anchor="middle" font-size="13" fill="#8aa5bd">HexClaw 河蟹 AI · 指令协议栈（系列收官图）· 核验于 2026-07-02（main 分支）</text>
+</svg>

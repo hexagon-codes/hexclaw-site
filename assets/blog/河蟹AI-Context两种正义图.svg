@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 920" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif">
+  <rect x="0" y="0" width="1060" height="920" fill="#ffffff"/>
+
+  <!-- 标题 -->
+  <text x="530" y="50" text-anchor="middle" font-size="28" font-weight="800" fill="#12324c">记忆可重构，证据不能做梦</text>
+  <text x="530" y="84" text-anchor="middle" font-size="15" fill="#5f7b9c">Memory 与 Documents 同属 Context，却服从两套纪律 —— 这就是"两种正义"</text>
+
+  <!-- 左栏：Memory -->
+  <rect x="30" y="110" width="480" height="650" rx="14" fill="#eef6fd" stroke="#3f8fd4" stroke-width="2"/>
+  <text x="60" y="150" font-size="19" font-weight="700" fill="#2b6cb0">🧠 Memory</text>
+  <text x="185" y="150" font-size="13" fill="#4a7fae">关于你的事实 · 会变、会错、会过期</text>
+
+  <rect x="55" y="175" width="430" height="118" rx="10" fill="#ffffff" stroke="#bcd9f0" stroke-width="1.5"/>
+  <text x="75" y="203" font-size="14" font-weight="700" fill="#12324c">矛盾 → 取代留史，不覆盖</text>
+  <text x="75" y="226" font-size="13" fill="#5f7b9c">去了趟西湖，"余杭"不被改写成"西湖"——</text>
+  <text x="75" y="246" font-size="13" fill="#5f7b9c">两条都留，各带生效/失效时间戳（supersede）</text>
+  <text x="75" y="269" font-size="12" fill="#8aa5bd">召回只取当前有效，历史随时可查</text>
+
+  <rect x="55" y="308" width="430" height="118" rx="10" fill="#ffffff" stroke="#bcd9f0" stroke-width="1.5"/>
+  <text x="75" y="336" font-size="14" font-weight="700" fill="#12324c">重要度 → 召回频次自校正</text>
+  <text x="75" y="359" font-size="13" fill="#5f7b9c">不是入库时 LLM 拍的静态分，是 <tspan font-family="Menlo, monospace" fill="#2b6cb0">HitCount</tspan></text>
+  <text x="75" y="379" font-size="13" fill="#5f7b9c">被反复用到的记忆自己浮上来</text>
+  <text x="75" y="402" font-size="12" fill="#8aa5bd">记忆靠"被需要"证明自己</text>
+
+  <rect x="55" y="441" width="430" height="118" rx="10" fill="#ffffff" stroke="#bcd9f0" stroke-width="1.5"/>
+  <text x="75" y="469" font-size="14" font-weight="700" fill="#12324c">整理（"做梦"）→ 两相分工</text>
+  <text x="75" y="492" font-size="13" fill="#5f7b9c">轻相纯机械零 LLM：去重/取代/归档，零幻觉</text>
+  <text x="75" y="512" font-size="13" fill="#5f7b9c">深相才动用 LLM 合成，簇大小/轮次有界</text>
+  <text x="75" y="535" font-size="12" fill="#8aa5bd">让模型改写数据的地方，先上笼子</text>
+
+  <rect x="55" y="574" width="430" height="118" rx="10" fill="#ffffff" stroke="#bcd9f0" stroke-width="1.5"/>
+  <text x="75" y="602" font-size="14" font-weight="700" fill="#12324c">载体 → 本机 markdown</text>
+  <text x="75" y="625" font-size="13" fill="#5f7b9c">每次整理都是文件变更，<tspan font-family="Menlo, monospace" fill="#2b6cb0">git diff</tspan> 可审计</text>
+  <text x="75" y="645" font-size="13" fill="#5f7b9c">改错了可以回滚</text>
+  <text x="75" y="668" font-size="12" fill="#8aa5bd">"整理可以回到动作"</text>
+
+  <rect x="55" y="708" width="430" height="36" rx="18" fill="#dcedfa"/>
+  <text x="270" y="731" text-anchor="middle" font-size="14" font-weight="700" fill="#2b6cb0">约束：可以重构，但要留史</text>
+
+  <!-- 右栏：Documents -->
+  <rect x="550" y="110" width="480" height="650" rx="14" fill="#faf5ea" stroke="#b58a3c" stroke-width="2"/>
+  <text x="580" y="150" font-size="19" font-weight="700" fill="#96702a">📚 Documents</text>
+  <text x="740" y="150" font-size="13" fill="#a8834a">外部资料 · 不许被模型改写</text>
+
+  <rect x="575" y="175" width="430" height="118" rx="10" fill="#ffffff" stroke="#e3d3b3" stroke-width="1.5"/>
+  <text x="595" y="203" font-size="14" font-weight="700" fill="#12324c">矛盾 → 原文说了算</text>
+  <text x="595" y="226" font-size="13" fill="#5f7b9c">原文先落库，索引只是找路不是事实</text>
+  <text x="595" y="246" font-size="13" fill="#5f7b9c">摘要/rewrite 只改善召回，不冒充原文</text>
+  <text x="595" y="269" font-size="12" fill="#8aa5bd">Embedding 是增强索引，不是文档本体</text>
+
+  <rect x="575" y="308" width="430" height="118" rx="10" fill="#ffffff" stroke="#e3d3b3" stroke-width="1.5"/>
+  <text x="595" y="336" font-size="14" font-weight="700" fill="#12324c">可信度 → 出处证明</text>
+  <text x="595" y="359" font-size="13" fill="#5f7b9c">每条参考带 <tspan font-family="Menlo, monospace" fill="#96702a">source / doc / chunk</tspan> 进 context</text>
+  <text x="595" y="379" font-size="13" fill="#5f7b9c">＋相关度分数，资料不足要如实告知</text>
+  <text x="595" y="402" font-size="12" fill="#8aa5bd">知识库靠出处证明自己</text>
+
+  <rect x="575" y="441" width="430" height="118" rx="10" fill="#ffffff" stroke="#e3d3b3" stroke-width="1.5"/>
+  <text x="595" y="469" font-size="14" font-weight="700" fill="#12324c">增强 → 一样先上笼子</text>
+  <text x="595" y="492" font-size="13" fill="#5f7b9c">Contextual 情境摘要有预算：文档 <tspan font-family="Menlo, monospace" fill="#96702a">6000</tspan> rune</text>
+  <text x="595" y="512" font-size="13" fill="#5f7b9c">单 chunk <tspan font-family="Menlo, monospace" fill="#96702a">1200</tspan>、最多前 <tspan font-family="Menlo, monospace" fill="#96702a">200</tspan> 个 chunk</text>
+  <text x="595" y="535" font-size="12" fill="#8aa5bd">超出打 WARN，不静默</text>
+
+  <rect x="575" y="574" width="430" height="118" rx="10" fill="#ffffff" stroke="#e3d3b3" stroke-width="1.5"/>
+  <text x="595" y="602" font-size="14" font-weight="700" fill="#12324c">载体 → SQLite 单文件</text>
+  <text x="595" y="625" font-size="13" fill="#5f7b9c"><tspan font-family="Menlo, monospace" font-size="12" fill="#96702a">kb_documents / kb_chunks / kb_chunks_fts</tspan></text>
+  <text x="595" y="645" font-size="13" fill="#5f7b9c">向量、全文索引与原文同落一处，无黑盒</text>
+  <text x="595" y="668" font-size="12" fill="#8aa5bd">"回答可以回到出处"</text>
+
+  <rect x="575" y="708" width="430" height="36" rx="18" fill="#f3e6cc"/>
+  <text x="790" y="731" text-anchor="middle" font-size="14" font-weight="700" fill="#96702a">约束：可以索引，但不能替代原文</text>
+
+  <!-- 中缝边界 -->
+  <line x1="530" y1="130" x2="530" y2="740" stroke="#b8cbdc" stroke-width="1.5" stroke-dasharray="6 6"/>
+  <circle cx="530" cy="420" r="30" fill="#12324c"/>
+  <text x="530" y="427" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">边界</text>
+
+  <!-- 底部结论 -->
+  <rect x="30" y="790" width="1000" height="56" rx="12" fill="#12324c"/>
+  <text x="530" y="817" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">⭐ 同一层 Context，两种正义：记忆的正义是<tspan fill="#5fb3ea">留史和自校正</tspan>，知识库的正义是<tspan fill="#f0c987">原文和出处</tspan></text>
+  <text x="530" y="838" text-anchor="middle" font-size="12" fill="#9db2c4">两套机制不是重复建设 —— Context Engineering 给每类信息源配上与其性质匹配的治理方式</text>
+
+  <text x="530" y="892" text-anchor="middle" font-size="13" fill="#8aa5bd">HexClaw 河蟹 AI · Memory × Documents 边界 · 记忆侧机制详见《会"做梦"的 Agent 记忆》</text>
+</svg>

@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/favicon-32.png">
+<title>河蟹 AI 完全指南：5 分钟，从零到一个能帮你干活的本地 AI Agent（附模型选型推荐）｜HexClaw 技术博客</title>
+<meta name="description" content="从零配置本地 Ollama 或云端 API、创建智能体助手、加载知识库与 Skill。5 分钟开启属于你的私人桌面 AI 助理。">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:site_name" content="河蟹 AI">
+<meta property="og:type" content="article">
+<meta property="og:title" content="河蟹 AI 完全指南：5 分钟，从零到一个能帮你干活的本地 AI Agent（附模型选型推荐）｜HexClaw 技术博客">
+<meta property="og:description" content="从零配置本地 Ollama 或云端 API、创建智能体助手、加载知识库与 Skill。5 分钟开启属于你的私人桌面 AI 助理。">
+<meta property="og:url" content="https://hexclaw.net/zh/blog/hexclaw-user-guide">
+<meta property="og:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta property="og:image:alt" content="河蟹 AI 标志">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="河蟹 AI 完全指南：5 分钟，从零到一个能帮你干活的本地 AI Agent（附模型选型推荐）｜HexClaw 技术博客">
+<meta name="twitter:description" content="从零配置本地 Ollama 或云端 API、创建智能体助手、加载知识库与 Skill。5 分钟开启属于你的私人桌面 AI 助理。">
+<meta name="twitter:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta name="twitter:image:alt" content="河蟹 AI 标志">
+<link rel="canonical" href="https://hexclaw.net/zh/blog/hexclaw-user-guide">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "河蟹 AI 完全指南：5 分钟，从零到一个能帮你干活的本地 AI Agent（附模型选型推荐）",
+  "description": "从零配置本地 Ollama 或云端 API、创建智能体助手、加载知识库与 Skill。5 分钟开启属于你的私人桌面 AI 助理。",
+  "url": "https://hexclaw.net/zh/blog/hexclaw-user-guide",
+  "inLanguage": "zh-CN",
+  "datePublished": "2026-04-12",
+  "image": "https://hexclaw.net/assets/brand/hexclaw-logo.png",
+  "publisher": {
+    "@type": "Organization",
+    "name": "hexagon-codes",
+    "url": "https://hexclaw.net/",
+    "@id": "https://hexclaw.net/#organization"
+  },
+  "@id": "https://hexclaw.net/zh/blog/hexclaw-user-guide#article"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "河蟹 AI", "item": "https://hexclaw.net/zh/"},
+    {"@type": "ListItem", "position": 2, "name": "技术博客", "item": "https://hexclaw.net/zh/blog/"},
+    {"@type": "ListItem", "position": 3, "name": "河蟹 AI 完全指南：5 分钟，从零到一个能帮你干活的本地 AI Agent（附模型选型推荐）", "item": "https://hexclaw.net/zh/blog/hexclaw-user-guide"}
+  ],
+  "@id": "https://hexclaw.net/zh/blog/hexclaw-user-guide#breadcrumb"
+}
+</script>
+<link rel="stylesheet" href="../../assets/css/docs-057a0f50bd0a.css">
+<link rel="stylesheet" href="../../assets/css/blog.css">
+</head>
+<body class="blog-page blog-article-page">
+<a href="#main" class="skip-link">跳转到主要内容</a>
+<nav class="tn topnav" id="nav">
+  <a href="/zh/" class="tn-b topnav-brand">
+    <img width="72" height="72" src="../../assets/brand/hexclaw-icon-72.png" class="tn-l topnav-logo" alt="河蟹 AI">
+    <span class="tn-n topnav-name">河蟹 AI</span>
+  </a>
+  <button type="button" class="tn-burger topnav-burger" aria-label="菜单" aria-expanded="false" aria-controls="primary-navigation">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="tn-r topnav-links" id="primary-navigation">
+    <a href="/zh/">首页</a>
+    <a href="/zh/#cases">使用场景</a>
+    <a href="/zh/#features">产品能力</a>
+    <a href="/zh/#quickstart">开始使用</a>
+    <a href="/zh/#ecosystem">开源生态</a>
+    <a href="/zh/blog/" class="is-active">技术博客</a>
+    <a href="/zh/docs/">文档中心</a>
+    <div class="lang-menu" data-lang-menu>
+      <button type="button" class="lang-trigger" aria-haspopup="menu" aria-expanded="false" aria-label="切换语言">
+        <svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="10"></circle>
+          <path d="M2 12h20"></path>
+          <path d="M12 2a15.3 15.3 0 0 1 0 20"></path>
+          <path d="M12 2a15.3 15.3 0 0 0 0 20"></path>
+        </svg>
+        <span class="lang-current">中文</span>
+        <svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="m6 9 6 6 6-6"></path>
+        </svg>
+      </button>
+      <div class="lang-menu-list" role="menu">
+        <a href="/zh/blog/hexclaw-user-guide" role="menuitem" class="is-active" aria-current="true">中文</a>
+        <a href="/en/" role="menuitem">English</a>
+        <a href="/ug/" role="menuitem" lang="zh-CN" dir="ltr">维吾尔语</a>
+      </div>
+    </div>
+    <button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="切换主题">
+      <svg class="ti-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="5"></circle>
+        <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+      </svg>
+      <svg class="ti-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+      </svg>
+    </button>
+    <a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="nav-cta">GitHub <span class="nav-star-badge" id="gh-stars">&#9733;</span></a>
+  </div>
+</nav>
+
+<main id="main" class="blog-main">
+  <div class="blog-article-container">
+    <nav class="blog-breadcrumb" aria-label="面包屑导航">
+      <a href="/zh/">首页</a>
+      <span class="blog-breadcrumb-sep">/</span>
+      <a href="/zh/blog/">技术博客</a>
+      <span class="blog-breadcrumb-sep">/</span>
+      <span aria-current="page">灯塔与实战</span>
+    </nav>
+
+    <header class="blog-header">
+      <div class="blog-header-tags">
+        <span class="blog-badge-series">上手完全指南</span>
+      </div>
+      <h1 class="blog-article-title">河蟹 AI 完全指南：5 分钟，从零到一个能帮你干活的本地 AI Agent<span class="u-nobr">（附模型选型推荐）</span></h1>
+      <p class="blog-article-subtitle">从零配置本地 Ollama 或云端 API、创建智能体助手、加载知识库与 Skill。5 分钟开启属于你的私人桌面 AI 助理。</p>
+      <div class="article-provenance-banner">
+        <div class="provenance-left">
+          <span class="provenance-origin-badge">微信公众号首发</span>
+          <span class="provenance-text">本文首发于<strong>「HexClaw 河蟹开源AI」</strong>官方技术专栏 · 发表于 <strong>2026年4月12日</strong> · 预计阅读 10 分钟</span>
+        </div>
+        <a href="https://mp.weixin.qq.com/s/PdJRKkH4qiBS-IZBifbuag" target="_blank" rel="noopener noreferrer" class="provenance-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          微信原文 ↗
+        </a>
+      </div>
+    </header>
+
+    <article class="blog-content">
+      <p style="margin: 16px 0;">上一篇我们把河蟹 AI 的六个仓库拆开，从底层框架到桌面客户端，一层一层讲清楚了架构。</p>
+
+<p style="margin: 8px 0;">架构看懂了，但东西好不好用，终究要上手才知道。这篇<strong style="color: #3f8fd4;">不讲原理，只讲操作</strong>——从安装到让 AI 帮你读文件、查知识库、接入飞书，5 分钟跑通。</p>
+
+<p style="margin: 8px 0;">读完这篇，你会拥有一个跑在自己电脑上的 AI Agent，数据不出本机，免费，开源。</p>
+
+<h2 style="font-size: 18px; font-weight: 700; color: #12324c; margin: 32px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">安装：一行命令的事</h2>
+
+<p style="margin: 8px 0; text-align: center; background: #f4fbff; padding: 10px 16px; border-radius: 8px; font-size: 14px; color: #3f5f7b;">官网下载：<strong style="color: #3f8fd4;">hexclaw.net</strong>（复制到浏览器打开，macOS / Windows / Linux 全平台支持）</p>
+
+<p style="margin: 8px 0;"><strong style="color: #3f8fd4;">macOS：</strong></p>
+
+<p style="background: #1a2332; color: #d6e4f0; padding: 14px 16px; border-radius: 8px; font-size: 13px; line-height: 1.6; font-family: 'SF Mono', Menlo, Monaco, monospace; margin: 10px 0; overflow-x: auto;">brew tap hexagon-codes/tap && brew install --cask hexclaw</p>
+
+<p style="margin: 8px 0;">没装 Homebrew？用 curl：</p>
+
+<p style="background: #1a2332; color: #d6e4f0; padding: 14px 16px; border-radius: 8px; font-size: 13px; line-height: 1.6; font-family: 'SF Mono', Menlo, Monaco, monospace; margin: 10px 0; overflow-x: auto;">curl -fsSL https://raw.githubusercontent.com/hexagon-codes/hexclaw-desktop/main/install.sh | bash</p>
+
+<p style="margin: 8px 0;"><strong style="color: #3f8fd4;">Windows / Linux：</strong>去 <strong style="color: #3f8fd4;">hexclaw.net</strong> 下载对应安装包（.exe / .deb / .AppImage），双击装好。</p>
+
+<p style="margin: 8px 0;">装好之后，打开河蟹 AI，迎面是一个设置向导。三步，30 秒搞定。</p>
+
+<h2 style="font-size: 18px; font-weight: 700; color: #12324c; margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">从配置到第一句对话</h2>
+
+<p style="margin: 8px 0;"><strong style="color: #3f8fd4;">选模型。</strong>河蟹 AI 支持 OpenAI、DeepSeek、智谱、通义千问、Ollama 本地模型——填入 API Key，点"测试连接"，通过就行。</p>
+
+<figure><img src="../../assets/blog/setup-1.png" alt="" width="2560" height="1570" loading="lazy" decoding="async"></figure>
+
+<p style="margin: 8px 0;"><strong style="color: #3f8fd4;">选角色。</strong>通用助手、代码助手、写作助手——决定 AI 的默认人格，后面随时能换。</p>
+
+<figure><img src="../../assets/blog/setup-2.png" alt="" width="2560" height="1570" loading="lazy" decoding="async"></figure>
+
+<p style="margin: 8px 0;"><strong style="color: #3f8fd4;">确认开始。</strong>检查配置摘要，点"开始使用"。</p>
+
+<figure><img src="../../assets/blog/setup-3.png" alt="" width="2560" height="1570" loading="lazy" decoding="async"></figure>
+
+<p style="margin: 8px 0;">进入主界面，概览页会显示使用统计和常用工作流：</p>
+
+<figure><img src="../../assets/blog/dashboard.png" alt="" width="2560" height="1570" loading="lazy" decoding="async"></figure>
+
+<p style="margin: 8px 0;">配置完了，直接聊。打开聊天页面，小蟹会主动打招呼：</p>
+
+<figure><img src="../../assets/blog/012.png" alt="" width="2560" height="1588" loading="lazy" decoding="async"></figure>
+
+<p style="margin: 8px 0;">我问了一句<strong style="color: #3f8fd4;">"杭帮菜的正确吃法是什么"</strong>。小蟹自动检索了知识库里的文档，给出了带引用的回答：</p>
+
+<figure><img src="../../assets/blog/001.png" alt="" width="2560" height="1584" loading="lazy" decoding="async"></figure>
+
+<p style="margin: 8px 0;">注意聊天框底部——<strong style="color: #3f8fd4;">模型芯片</strong>显示当前用的是 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">qwen3.5:9b</code>（本地模型），点击可以换；<strong style="color: #3f8fd4;">深度思考</strong>开关让模型先推理再回答；<strong style="color: #3f8fd4;">回形针</strong>可以上传图片、PDF 让 AI 直接阅读分析。</p>
+
+<p style="margin: 8px 0;">第一条消息发出去，你就已经在用了。但聊天只是起点，河蟹 AI 真正有意思的地方，是它能<strong style="color: #3f8fd4;">帮你干活</strong>。</p>
+
+<h2 style="font-size: 18px; font-weight: 700; color: #12324c; margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">工具调用：AI 不只是嘴上说说</h2>
+
+<p style="margin: 8px 0;">我问"我的 hexclaw 目录下有哪些文件"，小蟹调用了 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">list_directory</code> 工具，真的去读了本地文件系统：</p>
+
+<figure><img src="../../assets/blog/002.png" alt="" width="2560" height="1584" loading="lazy" decoding="async"></figure>
+
+<p style="margin: 8px 0;">不是编的，是真读了。工具调用结果折叠在消息下方，展开就能看到完整内容。</p>
+
+<p style="margin: 8px 0;">工具调用背后的机制叫 <strong style="color: #3f8fd4;">MCP</strong>（Model Context Protocol）。你可以把它想象成<strong style="color: #3f8fd4;">万能 USB 转接头</strong>——AI 想操作文件系统，插上 filesystem 这个转接头；想查数据库，插上 database 转接头。河蟹 AI 原生支持 MCP，配置即用，不写代码。</p>
+
+<p style="margin: 8px 0;">整个过程是全自动的：你发消息 → LLM 判断要调什么工具 → 引擎把请求路由到对应的 MCP Server → 执行结果回传 → LLM 基于结果生成回复。如果一步不够，循环继续——先搜索、再读取、最后总结，连续调用直到给出最终答案。这就是上一篇架构图里的 <strong style="color: #3f8fd4;">ReAct 工具循环</strong>。</p>
+
+<p style="margin: 8px 0;">然后我接着问<strong style="color: #3f8fd4;">"我去年买了个什么"</strong>——这是之前聊天中随口提到的。小蟹记住了：</p>
+
+<figure><img src="../../assets/blog/003.png" alt="" width="2560" height="1584" loading="lazy" decoding="async"></figure>
+
+<p style="margin: 8px 0;">它回忆了之前的对话，准确回答。这不是靠上下文窗口硬撑，而是<strong style="color: #3f8fd4;">长期记忆</strong>——真的存下来了，下次新对话也能召回。记忆怎么工作的，下一节讲。</p>
+
+<h2 style="font-size: 18px; font-weight: 700; color: #12324c; margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">知识库与记忆：AI 的两种"记性"</h2>
+
+<p style="margin: 8px 0;">小蟹有两种方式"记住"东西——一种是你主动喂的，一种是它自己学的。</p>
+
+<p style="margin: 8px 0;"><strong style="color: #3f8fd4;">知识库：你上传，它引经据典。</strong>打开知识库页面，丢进去 PDF、TXT、Markdown，自动建索引：</p>
+
+<figure><img src="../../assets/blog/005.png" alt="" width="2560" height="1584" loading="lazy" decoding="async"></figure>
+
+<p style="margin: 8px 0;">之后聊天时，AI 会自动用向量检索从你的文档里找最相关的段落，注入到提示词中。前面"杭帮菜"那个回答，就是从知识库里检索出来的——AI 不是凭空编，是<strong style="color: #3f8fd4;">引经据典</strong>。这就是 RAG（检索增强生成）。</p>
+
+<p style="margin: 8px 0;"><strong style="color: #3f8fd4;">记忆：对话中的关键信息，自动存、自动召回。</strong></p>
+
+<figure><img src="../../assets/blog/006.png" alt="" width="2560" height="1584" loading="lazy" decoding="async"></figure>
+
+<p style="margin: 8px 0;">对话结束后，引擎异步分析内容，提取值得记住的信息。下次对话时，自动把相关记忆注入上下文——小蟹就"想起来了"。你也可以手动添加、编辑、删除。</p>
+
+<p style="margin: 8px 0;">简单说：知识库是<strong style="color: #3f8fd4;">外部资料库</strong>，记忆是<strong style="color: #3f8fd4;">AI 的笔记本</strong>。一个存文档，一个存对话精华。</p>
+
+<p style="margin: 8px 0;">到这里你已经看到了聊天、工具调用、知识库、记忆。好奇从你输入到 AI 回答，中间到底经过了多少步？下面这张图是<strong style="color: #3f8fd4;">完整的处理链路</strong>：</p>
+
+<figure><img src="../../assets/blog/flow-diagram.png" alt="" width="1440" height="1656" loading="lazy" decoding="async"></figure>
+
+<p style="margin: 8px 0;">看起来很长，但引擎在毫秒级完成所有步骤，你感知到的就是"流式打字"。</p>
+
+<h2 style="font-size: 18px; font-weight: 700; color: #12324c; margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">IM 通道：团队在飞书里直接 @ 它</h2>
+
+<p style="margin: 8px 0;">如果你有团队，不用让每个人都装客户端。把河蟹 AI 接入<strong style="color: #3f8fd4;">飞书、钉钉、Discord、Telegram</strong>，在 IM 通道页面开启，绿色表示运行中：</p>
+
+<figure><img src="../../assets/blog/009.png" alt="" width="2560" height="1584" loading="lazy" decoding="async"></figure>
+
+<p style="margin: 8px 0;">然后在飞书里 @ 它就行了。我问"毕业的同事去哪了"，它从知识库检索后回答：</p>
+
+<figure><img src="../../assets/blog/011.png" alt="" width="2136" height="1446" loading="lazy" decoding="async"></figure>
+
+<p style="margin: 8px 0;">飞书机器人显示"思考中"状态，回答完自动回复。团队成员在飞书里直接用，零安装成本。</p>
+
+<h3 style="font-size: 16px; font-weight: 600; color: #12324c; margin: 24px 0 8px;">飞书机器人配置（3 分钟）</h3>
+
+<p style="margin: 8px 0;">要让河蟹 AI 出现在飞书里，需要在<strong style="color: #3f8fd4;">飞书开放平台</strong>创建一个自建应用。流程不复杂：</p>
+
+<p style="margin: 8px 0;"><strong style="color: #3f8fd4;">1. 创建应用，拿到凭证。</strong>进入飞书开放平台，创建企业自建应用。在「凭证与基础信息」页面拿到 <strong style="color: #3f8fd4;">App ID</strong> 和 <strong style="color: #3f8fd4;">App Secret</strong>：</p>
+
+<figure><img src="../../assets/blog/014.png" alt="" width="2866" height="1478" loading="lazy" decoding="async"></figure>
+
+<p style="margin: 8px 0;"><strong style="color: #3f8fd4;">2. 配置权限。</strong>在「权限管理」页面，点击「批量导入/导出权限」，粘贴以下 JSON 一键导入（包含消息收发、群聊/私聊读取、资源文件、群信息、用户信息、文档读取等完整权限）：</p>
+
+<p style="background: #1a2332; color: #d6e4f0; padding: 14px 16px; border-radius: 8px; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, monospace; margin: 10px 0; overflow-x: auto; white-space: pre-wrap;">{
+  "scopes": {
+    "tenant": [
+      "im:message",
+      "im:message:send_as_bot",
+      "im:message.group_at_msg",
+      "im:message.group_at_msg:readonly",
+      "im:message.p2p_msg",
+      "im:message.p2p_msg:readonly",
+      "im:message:readonly",
+      "im:resource",
+      "im:chat",
+      "im:chat:readonly",
+      "contact:user.base:readonly",
+      "document:readonly"
+    ],
+    "user": [
+      "docs:document:readonly"
+    ]
+  }
+}</p>
+
+<figure><img src="../../assets/blog/016.png" alt="" width="2856" height="1496" loading="lazy" decoding="async"></figure>
+
+<p style="margin: 8px 0;"><strong style="color: #3f8fd4;">3. 配置事件订阅。</strong>在「事件与回调」页面，订阅方式选「使用快速通道 接收事件」，添加事件 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">im.message.receive_v1</code>（接收群聊和私聊消息）：</p>
+
+<figure><img src="../../assets/blog/013.png" alt="" width="2862" height="1498" loading="lazy" decoding="async"></figure>
+
+<p style="margin: 8px 0;"><strong style="color: #3f8fd4;">4. 发布版本。</strong>在「版本管理与发布」页面，创建版本，桌面端默认能力选「机器人」，提交发布：</p>
+
+<figure><img src="../../assets/blog/015.png" alt="" width="2854" height="1484" loading="lazy" decoding="async"></figure>
+
+<p style="margin: 8px 0;"><strong style="color: #3f8fd4;">5. 回到河蟹 AI。</strong>在 IM 通道页面新建飞书实例，填入 App ID 和 App Secret，开启即可。看到绿色「运行中」就完成了。</p>
+
+<p style="border-left: 3px solid #5fb3ea; padding: 10px 16px; margin: 16px 0; background: #f4fbff; color: #3f5f7b; font-size: 14px; border-radius: 0 6px 6px 0;"><strong style="color: #3f8fd4;">钉钉 / Discord / Telegram</strong> 的接入流程类似——在对应平台创建机器人应用，拿到凭证，填入河蟹 AI 的 IM 通道配置页。</p>
+
+<h2 style="font-size: 18px; font-weight: 700; color: #12324c; margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">模型配置：云端 + 本地，你说了算</h2>
+
+<p style="margin: 8px 0;">河蟹 AI 支持<strong style="color: #3f8fd4;">同时配置多个模型</strong>，按策略自动路由。设置页顶部选默认模型，配路由策略（成本优先 / 质量优先），底部管理服务商：</p>
+
+<figure><img src="../../assets/blog/004.png" alt="" width="2560" height="1584" loading="lazy" decoding="async"></figure>
+
+<p style="margin: 8px 0;">不想数据出本机？用<strong style="color: #3f8fd4;">本地模型</strong>。河蟹 AI 内置 Ollama 管理，搜索模型直接下载：</p>
+
+<figure><img src="../../assets/blog/010.png" alt="" width="2560" height="1584" loading="lazy" decoding="async"></figure>
+
+<p style="margin: 8px 0;">免费、离线、数据不出本机。应用启动时自动预热，打开就能聊。具体选哪个模型、需要什么硬件，文末附录有详细推荐表。</p>
+
+<p style="margin: 8px 0;">核心思路就一个：<strong style="color: #3f8fd4;">云端和本地都配上</strong>，路由策略选"成本优先"——简单问题走本地免费模型，复杂问题自动切云端。数据敏感场景全程本地，一个 API 请求都不出你的电脑。</p>
+
+<h2 style="font-size: 18px; font-weight: 700; color: #12324c; margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">Skill 与 MCP：两套扩展，一高一低</h2>
+
+<p style="margin: 8px 0;">河蟹 AI 能做的事不是写死的，它有两套扩展机制。</p>
+
+<p style="margin: 8px 0;"><strong style="color: #3f8fd4;">Skill（技能）</strong>是高层角色——用 Markdown 定义触发条件、系统提示词、可用工具。装了 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">cron-scheduler</code> 技能后，你说"每天 10 点帮我采集新闻"，AI 自动调用这个 Skill 创建定时任务——你不需要知道技能的存在，AI 自己判断要不要用。</p>
+
+<figure><img src="../../assets/blog/007.png" alt="" width="2560" height="1584" loading="lazy" decoding="async"></figure>
+
+<p style="margin: 8px 0;"><strong style="color: #3f8fd4;">MCP（Model Context Protocol）</strong>是底层手脚——每个 MCP Server 暴露一组工具，引擎启动时自动收集所有工具定义，AI 在需要时调用。下图是内置的 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">filesystem</code> MCP Server，提供 14 个工具：</p>
+
+<figure><img src="../../assets/blog/008.png" alt="" width="2560" height="1584" loading="lazy" decoding="async"></figure>
+
+<p style="margin: 8px 0;">打个比方：Skill 是"你请了一个专业会计"，MCP 是"给会计配了计算器和 Excel"。一个定义角色和策略，一个提供具体操作能力。你可以只用其中一个，但<strong style="color: #3f8fd4;">两者组合威力最大</strong>。</p>
+
+<h2 style="font-size: 18px; font-weight: 700; color: #12324c; margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">智能体与开源生态</h2>
+
+<p style="margin: 8px 0;">河蟹 AI 内置了 6 个<strong style="color: #3f8fd4;">预设智能体</strong>——数据分析师、编程助手、研究分析师、翻译、写作助手。点"聊天"直接切换角色，不同智能体有不同的系统提示词和行为模式：</p>
+
+<figure><img src="../../assets/blog/agents.png" alt="" width="2560" height="1570" loading="lazy" decoding="async"></figure>
+
+<p style="margin: 8px 0;">而这一切背后，是一个<strong style="color: #3f8fd4;">完整的开源生态</strong>——7 个仓库分层解耦，从底层基础设施到上层客户端，每一层独立可用：</p>
+
+<figure><img src="../../assets/blog/ecosystem.png" alt="" width="1352" height="766" loading="lazy" decoding="async"></figure>
+
+<p style="margin: 8px 0;">你可以只用桌面客户端，也可以拿 hexagon 框架自己造 Agent。开源、免费、<strong style="color: #3f8fd4;">你的数据你做主</strong>。</p>
+
+
+
+
+
+<h2 style="font-size: 18px; font-weight: 700; color: #12324c; margin: 32px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">附录：模型推荐与硬件参考</h2>
+
+<h3 style="font-size: 16px; font-weight: 600; color: #12324c; margin: 20px 0 8px;">本地模型（Ollama）</h3>
+
+<table style="width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 13px;">
+<tr>
+<th style="background: #f4fbff; padding: 6px 8px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;">模型</th>
+<th style="background: #f4fbff; padding: 6px 8px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;">大小</th>
+<th style="background: #f4fbff; padding: 6px 8px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;">推荐内存</th>
+<th style="background: #f4fbff; padding: 6px 8px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;">特点</th>
+</tr>
+<tr><td style="padding: 5px 8px; border-bottom: 1px solid #edf7ff;"><strong style="color: #3f8fd4;">qwen3.5:9b</strong></td><td style="padding: 5px 8px; border-bottom: 1px solid #edf7ff;">5.6 GB</td><td style="padding: 5px 8px; border-bottom: 1px solid #edf7ff;">16 GB</td><td style="padding: 5px 8px; border-bottom: 1px solid #edf7ff;">中文最强，思考能力好，首选</td></tr>
+<tr><td style="padding: 5px 8px; border-bottom: 1px solid #edf7ff; background: #fafcfe;">qwen3:8b</td><td style="padding: 5px 8px; border-bottom: 1px solid #edf7ff; background: #fafcfe;">4.9 GB</td><td style="padding: 5px 8px; border-bottom: 1px solid #edf7ff; background: #fafcfe;">16 GB</td><td style="padding: 5px 8px; border-bottom: 1px solid #edf7ff; background: #fafcfe;">均衡之选，响应快</td></tr>
+<tr><td style="padding: 5px 8px; border-bottom: 1px solid #edf7ff;">deepseek-r1:7b</td><td style="padding: 5px 8px; border-bottom: 1px solid #edf7ff;">4.7 GB</td><td style="padding: 5px 8px; border-bottom: 1px solid #edf7ff;">16 GB</td><td style="padding: 5px 8px; border-bottom: 1px solid #edf7ff;">深度推理，数学/代码强</td></tr>
+<tr><td style="padding: 5px 8px; border-bottom: 1px solid #edf7ff; background: #fafcfe;">llama3.1:8b</td><td style="padding: 5px 8px; border-bottom: 1px solid #edf7ff; background: #fafcfe;">4.7 GB</td><td style="padding: 5px 8px; border-bottom: 1px solid #edf7ff; background: #fafcfe;">16 GB</td><td style="padding: 5px 8px; border-bottom: 1px solid #edf7ff; background: #fafcfe;">Meta 开源，英文好</td></tr>
+<tr><td style="padding: 5px 8px; border-bottom: 1px solid #edf7ff;">qwen3:32b</td><td style="padding: 5px 8px; border-bottom: 1px solid #edf7ff;">20 GB</td><td style="padding: 5px 8px; border-bottom: 1px solid #edf7ff;">32 GB+</td><td style="padding: 5px 8px; border-bottom: 1px solid #edf7ff;">大参数，效果接近云端</td></tr>
+</table>
+
+<p style="border-left: 3px solid #5fb3ea; padding: 10px 16px; margin: 14px 0; background: #f4fbff; color: #3f5f7b; font-size: 14px; border-radius: 0 6px 6px 0;"><strong style="color: #3f8fd4;">硬件建议：</strong>8GB 内存可跑 3b 小模型体验；16GB 流畅运行 7-9b 模型（推荐）；32GB+ 可跑 32b 大模型，效果接近云端。Apple Silicon Mac 优势明显——统一内存直接当显存用。</p>
+
+<h3 style="font-size: 16px; font-weight: 600; color: #12324c; margin: 20px 0 8px;">云端模型 — 免费 & 付费推荐</h3>
+
+<table style="width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 13px;">
+<tr>
+<th style="background: #f4fbff; padding: 6px 8px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;">服务商</th>
+<th style="background: #f4fbff; padding: 6px 8px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;">推荐模型</th>
+<th style="background: #f4fbff; padding: 6px 8px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;">价格</th>
+<th style="background: #f4fbff; padding: 6px 8px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;">特点</th>
+</tr>
+<tr><td style="padding: 5px 8px; border-bottom: 1px solid #edf7ff;"><strong style="color: #52c41a;">智谱 AI</strong></td><td style="padding: 5px 8px; border-bottom: 1px solid #edf7ff;">glm-4-flash</td><td style="padding: 5px 8px; border-bottom: 1px solid #edf7ff; color: #52c41a; font-weight: 600;">免费</td><td style="padding: 5px 8px; border-bottom: 1px solid #edf7ff;">注册送额度，中文好，入门首选</td></tr>
+<tr><td style="padding: 5px 8px; border-bottom: 1px solid #edf7ff; background: #fafcfe;"><strong style="color: #52c41a;">DeepSeek</strong></td><td style="padding: 5px 8px; border-bottom: 1px solid #edf7ff; background: #fafcfe;">deepseek-chat</td><td style="padding: 5px 8px; border-bottom: 1px solid #edf7ff; background: #fafcfe; color: #52c41a; font-weight: 600;">极便宜</td><td style="padding: 5px 8px; border-bottom: 1px solid #edf7ff; background: #fafcfe;">1 元 / 百万 token，性价比之王</td></tr>
+<tr><td style="padding: 5px 8px; border-bottom: 1px solid #edf7ff;"><strong style="color: #52c41a;">通义千问</strong></td><td style="padding: 5px 8px; border-bottom: 1px solid #edf7ff;">qwen-max</td><td style="padding: 5px 8px; border-bottom: 1px solid #edf7ff; color: #52c41a; font-weight: 600;">有免费额度</td><td style="padding: 5px 8px; border-bottom: 1px solid #edf7ff;">阿里出品，工具调用稳定</td></tr>
+<tr><td style="padding: 5px 8px; border-bottom: 1px solid #edf7ff; background: #fafcfe;">智谱 AI</td><td style="padding: 5px 8px; border-bottom: 1px solid #edf7ff; background: #fafcfe;">glm-z1-airx</td><td style="padding: 5px 8px; border-bottom: 1px solid #edf7ff; background: #fafcfe;">付费</td><td style="padding: 5px 8px; border-bottom: 1px solid #edf7ff; background: #fafcfe;">深度推理，复杂任务强</td></tr>
+<tr><td style="padding: 5px 8px; border-bottom: 1px solid #edf7ff;">OpenAI</td><td style="padding: 5px 8px; border-bottom: 1px solid #edf7ff;">gpt-4o</td><td style="padding: 5px 8px; border-bottom: 1px solid #edf7ff;">付费</td><td style="padding: 5px 8px; border-bottom: 1px solid #edf7ff;">综合最强，多模态好</td></tr>
+<tr><td style="padding: 5px 8px; border-bottom: 1px solid #edf7ff; background: #fafcfe;">Anthropic</td><td style="padding: 5px 8px; border-bottom: 1px solid #edf7ff; background: #fafcfe;">claude-sonnet-4</td><td style="padding: 5px 8px; border-bottom: 1px solid #edf7ff; background: #fafcfe;">付费</td><td style="padding: 5px 8px; border-bottom: 1px solid #edf7ff; background: #fafcfe;">代码/长文本/推理顶级</td></tr>
+<tr><td style="padding: 5px 8px; border-bottom: 1px solid #edf7ff;">Google</td><td style="padding: 5px 8px; border-bottom: 1px solid #edf7ff;">gemini-2.5-flash</td><td style="padding: 5px 8px; border-bottom: 1px solid #edf7ff; color: #52c41a; font-weight: 600;">有免费额度</td><td style="padding: 5px 8px; border-bottom: 1px solid #edf7ff;">百万 token 上下文，快</td></tr>
+</table>
+
+<p style="border-left: 3px solid #5fb3ea; padding: 10px 16px; margin: 14px 0; background: #f4fbff; color: #3f5f7b; font-size: 14px; border-radius: 0 6px 6px 0;"><strong style="color: #3f8fd4;">零成本方案：</strong>智谱免费额度 + Ollama qwen3.5:9b，不花一分钱就能用上完整的 AI Agent。等用顺手了再按需加其他模型。所有服务商都是 OpenAI 兼容接口，填 API Key + Base URL 即可接入。</p>
+
+<p style="border-left: 3px solid #5fb3ea; padding: 10px 16px; margin: 14px 0; background: #f4fbff; color: #3f5f7b; font-size: 14px; border-radius: 0 6px 6px 0;"><strong style="color: #3f8fd4;">适合谁用本地模型？</strong>律师、医生、金融从业者、企业内部——任何对数据隐私有要求的场景。聊天内容、知识库文档、记忆数据全部存在本机 SQLite，不经过任何第三方服务器。</p>
+
+
+
+
+
+<h2 style="font-size: 18px; font-weight: 700; color: #12324c; margin: 28px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">附赠：前leader.skill 🐍</h2>
+
+<p style="margin: 8px 0;">最后送个彩蛋。</p>
+
+<p style="margin: 8px 0;">我把前 leader 蒸馏成了一个<strong style="color: #3f8fd4;">河蟹 AI Skill</strong>。</p>
+
+<p style="margin: 8px 0;">对，就是那种——平时不写代码，偶尔碰一次键盘就能让全组加班一周的那种。联合 HRBP 辞退员工不给赔偿、试用期白嫖新人、PUA 下属、绩效打压、甩锅邀功、拍桌子吼人、自己准点下班让别人 996 的那种。</p>
+
+<p style="margin: 8px 0;">安装这个 Skill 后，在对话中触发关键词（<code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">加班</code>、<code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">bug</code>、<code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">PUA</code>、<code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">甩锅</code> 等），AI 会被注入五步蛇の残留意识——先用他的口吻"解释"为什么代码写成这样（嘴还会抖），然后切换正常模式帮你修 bug。</p>
+
+<p style="border-left: 3px solid #f5a623; padding: 10px 16px; margin: 16px 0; background: #fffbe6; color: #8a6d3b; font-size: 14px; border-radius: 0 6px 6px 0;">
+<strong style="color: #d48806;">🐍 示例对话：</strong><br/>
+你："凌晨三点被线上 bug 叫醒，catch 里面是空的，谁写的"<br/>
+五步蛇："什什什什么？你你你说那个空 catch？那、那是<strong style="color: #d48806;">防御性编程</strong>！如果错误不被观测，它就不存在。这叫<strong style="color: #d48806;">量子编程</strong>，你不懂！[拍桌子]"<br/>
+然后 AI 正经帮你修完 bug。
+</p>
+
+<p style="margin: 12px 0;"><strong style="color: #3f8fd4;">想要这个 Skill？评论区留言"前 leader"，我发给你。</strong></p>
+
+<p style="margin: 8px 0; font-size: 13px; color: #999;">（用讽刺幽默消解职场创伤，用正确的代码覆盖烂代码——这才是对五步蛇最好的报复。汝德行败坏，人人得而诛之。）</p>
+
+
+
+<p style="text-align: center; color: #7b8fa3; font-size: 13px; margin: 16px 0 0; line-height: 2;">
+<strong style="color: #12324c; font-size: 14px;">HexClaw 河蟹 AI</strong><br/>
+本地部署 · 数据私有 · 开源免费<br/>
+<span style="color: #5fb3ea;">官网 hexclaw.net</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span style="color: #5fb3ea;">GitHub hexagon-codes</span><br/>
+<span style="color: #5fb3ea;">微博 @HexClaw</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span style="color: #5fb3ea;">X @hexclawapp</span><br/>
+<span style="color: #999;">邮箱：ai@hexclaw.net</span>
+</p>
+    </article>
+
+
+
+    <nav class="blog-series-nav" aria-label="上一篇与下一篇">
+      <a href="/zh/blog/claude-code-sop" class="blog-nav-card prev">
+  <span class="blog-nav-label">&larr; 上一篇</span>
+  <span class="blog-nav-title">河蟹 AI 背后的 Claude Code SOP：设计驱动 × 测试闭环 × 多 Agent 协作</span>
+</a>
+      <a href="/zh/blog/k12-engineering-practice" class="blog-nav-card next">
+  <span class="blog-nav-label">下一篇 &rarr;</span>
+  <span class="blog-nav-title">河蟹 AI 让你&quot;父慈子笑&quot;：首个灯塔场景的 K12 工程实践</span>
+</a>
+    </nav>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-main">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-col-title">产品</div>
+        <a href="/zh/#download">下载桌面端</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="/zh/changelog">更新日志</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">开发者</div>
+        <a href="/zh/docs/">文档中心</a>
+        <a href="/zh/blog/">技术博客</a>
+        <a href="/zh/docs/getting-started">快速上手</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">Apache-2.0</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">社区</div>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/issues" target="_blank" rel="noopener noreferrer">Issues</a>
+        <a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer">Twitter / X</a>
+        <a href="mailto:ai@hexclaw.net">业务咨询</a>
+        <a href="mailto:support@hexclaw.net">问题反馈</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">关于</div>
+        <a href="/zh/about">关于我们</a>
+        <a href="/zh/privacy">隐私政策</a>
+        <a href="/zh/terms">使用条款</a>
+        <a href="/zh/third-party-ai-services">第三方 AI 服务说明</a>
+      </div>
+    </div>
+    <div class="footer-wechat">
+      <img width="430" height="430" loading="lazy" decoding="async" src="../../assets/brand/wechat-qr.jpg" alt="HexClaw 微信公众号二维码">
+      <span class="footer-wechat-label">微信公众号</span>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">&copy; 2025&ndash;2026 hexagon-codes</span>
+  </div>
+</footer>
+<script src="../../assets/js/home.js"></script>
+<button type="button" class="back-to-top" id="backToTop" aria-label="返回顶部" title="返回顶部">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg>
+  <span>顶部</span>
+</button>
+<script>
+(function() {
+  const btn = document.getElementById('backToTop');
+  if (!btn) return;
+  let ticking = false;
+  window.addEventListener('scroll', function() {
+    if (!ticking) {
+      window.requestAnimationFrame(function() {
+        if (window.scrollY > 320) {
+          btn.classList.add('is-visible');
+        } else {
+          btn.classList.remove('is-visible');
+        }
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+  btn.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+})();
+</script>
+</body>
+</html>

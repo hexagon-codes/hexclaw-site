@@ -1,0 +1,211 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 1720" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif">
+  <defs>
+    <filter id="sh" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="1.5" stdDeviation="2.5" flood-color="#9fb4c9" flood-opacity="0.35"/>
+    </filter>
+    <marker id="arrB" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#3f8fd4"/></marker>
+    <marker id="arrG" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#4caf7d"/></marker>
+    <marker id="arrO" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#e8943a"/></marker>
+    <marker id="arrP" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#8b6fcf"/></marker>
+    <marker id="arrR" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#d96565"/></marker>
+    <marker id="arrGray" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#9aa7b5"/></marker>
+  </defs>
+
+  <rect x="0" y="0" width="1060" height="1720" fill="#ffffff"/>
+
+  <!-- Title -->
+  <text x="530" y="48" text-anchor="middle" font-size="30" font-weight="700" fill="#12324c">四代范式 · 控制面外推（河蟹源码版）</text>
+  <text x="530" y="78" text-anchor="middle" font-size="15" fill="#7b8fa3">消息层 → 会话层 → 系统层 → 时间层；每往外推一层，你就交出一层决策权</text>
+
+  <!-- ====================== ZONE 1 · Prompt ====================== -->
+  <rect x="30" y="98" width="1000" height="172" rx="14" fill="#f4fbff" stroke="#bcdcf3" stroke-width="1.5"/>
+  <text x="56" y="140" font-size="18" font-weight="700" fill="#3f8fd4">Prompt Engineering</text>
+  <text x="56" y="164" font-size="13.5" font-weight="600" fill="#3f8fd4">提示词工程 · 消息层</text>
+  <line x1="56" y1="178" x2="250" y2="178" stroke="#bcdcf3" stroke-width="1" stroke-dasharray="4 4"/>
+  <text x="56" y="202" font-size="13.5" fill="#5f7b9c">交出「措辞」——</text>
+  <text x="56" y="222" font-size="13.5" fill="#5f7b9c">这句话该怎么说</text>
+  <text x="56" y="250" font-size="12.5" fill="#a5688a">≈ 写好一行 print</text>
+
+  <!-- flow -->
+  <g filter="url(#sh)">
+    <rect x="300" y="150" width="120" height="56" rx="10" fill="#ffffff" stroke="#3f8fd4" stroke-width="1.5"/>
+    <rect x="500" y="150" width="190" height="56" rx="10" fill="#ffffff" stroke="#3f8fd4" stroke-width="1.5"/>
+    <rect x="770" y="150" width="180" height="56" rx="10" fill="#ffffff" stroke="#3f8fd4" stroke-width="1.5"/>
+  </g>
+  <text x="360" y="174" text-anchor="middle" font-size="15" font-weight="600" fill="#12324c">👤 用户</text>
+  <text x="360" y="194" text-anchor="middle" font-size="12" fill="#7b8fa3">一句指令</text>
+  <text x="595" y="174" text-anchor="middle" font-size="15" font-weight="600" fill="#12324c">📝 Prompt</text>
+  <text x="595" y="194" text-anchor="middle" font-size="12" fill="#7b8fa3">SOUL 人设 · Prompt 库</text>
+  <text x="860" y="174" text-anchor="middle" font-size="15" font-weight="600" fill="#12324c">🤖 AI 模型 → 输出</text>
+  <text x="860" y="194" text-anchor="middle" font-size="12" fill="#7b8fa3">答得好，但没把事干成</text>
+  <line x1="424" y1="178" x2="494" y2="178" stroke="#3f8fd4" stroke-width="2" marker-end="url(#arrB)"/>
+  <line x1="694" y1="178" x2="764" y2="178" stroke="#3f8fd4" stroke-width="2" marker-end="url(#arrB)"/>
+
+  <!-- die-here arrow down -->
+  <path d="M530 270 L530 300" stroke="#5fb3ea" stroke-width="10" marker-end="url(#arrB)"/>
+  <text x="560" y="292" font-size="12.5" fill="#9aa7b5">它死在：单轮指令撑不起多步 / 跨会话 / 反复纠偏的活 →</text>
+
+  <!-- ====================== ZONE 2 · Context ====================== -->
+  <rect x="30" y="312" width="1000" height="210" rx="14" fill="#f1faf4" stroke="#bfe6cf" stroke-width="1.5"/>
+  <text x="56" y="354" font-size="18" font-weight="700" fill="#4caf7d">Context Engineering</text>
+  <text x="56" y="378" font-size="13.5" font-weight="600" fill="#4caf7d">上下文工程 · 会话层</text>
+  <line x1="56" y1="392" x2="250" y2="392" stroke="#bfe6cf" stroke-width="1" stroke-dasharray="4 4"/>
+  <text x="56" y="416" font-size="13.5" fill="#5f7b9c">交出「信息选择权」</text>
+  <text x="56" y="436" font-size="13.5" fill="#5f7b9c">——它该看什么</text>
+  <text x="56" y="464" font-size="12.5" fill="#5e9b78">≈ 内存管理 / 手动 GC</text>
+  <text x="56" y="492" font-size="12" fill="#7b8fa3">构造模型所处的环境，</text>
+  <text x="56" y="510" font-size="12" fill="#7b8fa3">不是说服模型</text>
+
+  <g filter="url(#sh)">
+    <rect x="300" y="340" width="305" height="76" rx="10" fill="#ffffff" stroke="#4caf7d" stroke-width="1.5"/>
+    <rect x="300" y="430" width="305" height="76" rx="10" fill="#ffffff" stroke="#4caf7d" stroke-width="1.5"/>
+    <rect x="650" y="340" width="300" height="76" rx="10" fill="#ffffff" stroke="#4caf7d" stroke-width="1.5"/>
+    <rect x="650" y="430" width="300" height="76" rx="10" fill="#ffffff" stroke="#4caf7d" stroke-width="1.5"/>
+  </g>
+  <text x="318" y="368" font-size="14.5" font-weight="600" fill="#12324c">🎯 三维召回</text>
+  <text x="318" y="389" font-size="12" fill="#5f7b9c">recency × importance(命中次数自校正)</text>
+  <text x="318" y="407" font-size="12" fill="#5f7b9c">× relevance（hybrid 0.7 向量 + 0.3 BM25）</text>
+  <text x="318" y="458" font-size="14.5" font-weight="600" fill="#12324c">🕓 改主意不覆盖，标失效</text>
+  <text x="318" y="479" font-size="12" fill="#5f7b9c">相似度阈 0.65 · supersede 留史</text>
+  <text x="318" y="497" font-size="12" fill="#5f7b9c">ValidFrom/ValidTo · 召回只取有效条</text>
+  <text x="668" y="368" font-size="14.5" font-weight="600" fill="#12324c">🗜️ 结构化压缩</text>
+  <text x="668" y="389" font-size="12" fill="#5f7b9c">总结「做了什么 / 定了什么 / 还剩什么」</text>
+  <text x="668" y="407" font-size="12" fill="#5f7b9c">不是自然语言流水账</text>
+  <text x="668" y="458" font-size="14.5" font-weight="600" fill="#12324c">🧱 子 Agent 隔离 · 工具即边界</text>
+  <text x="668" y="479" font-size="12" fill="#5f7b9c">脏数据不污染主窗口；给了 grep/browser</text>
+  <text x="668" y="497" font-size="12" fill="#5f7b9c">它自己去取对的上下文</text>
+
+  <path d="M530 522 L530 552" stroke="#67c08e" stroke-width="10" marker-end="url(#arrG)"/>
+  <text x="560" y="544" font-size="12.5" fill="#9aa7b5">它死在：真实任务不是一次推理，是一连串带反馈的动作 →</text>
+
+  <!-- ====================== ZONE 3 · Harness ====================== -->
+  <rect x="30" y="564" width="1000" height="236" rx="14" fill="#fff7ee" stroke="#f3d7b0" stroke-width="1.5"/>
+  <text x="56" y="606" font-size="18" font-weight="700" fill="#e8943a">Harness Engineering</text>
+  <text x="56" y="630" font-size="13.5" font-weight="600" fill="#e8943a">编排工程 · 系统层</text>
+  <line x1="56" y1="644" x2="250" y2="644" stroke="#f3d7b0" stroke-width="1" stroke-dasharray="4 4"/>
+  <text x="56" y="668" font-size="13.5" fill="#5f7b9c">交出「过程控制权」</text>
+  <text x="56" y="688" font-size="13.5" fill="#5f7b9c">——它怎么走</text>
+  <text x="56" y="716" font-size="12.5" fill="#bf8333">≈ 解释器 / 虚拟机</text>
+  <text x="56" y="744" font-size="12" fill="#7b8fa3">Agent = Model + Harness</text>
+  <text x="56" y="768" font-size="12" fill="#7b8fa3">前馈 Guides + 反馈 Sensors</text>
+
+  <g filter="url(#sh)">
+    <rect x="300" y="592" width="305" height="92" rx="10" fill="#ffffff" stroke="#e8943a" stroke-width="1.5"/>
+    <rect x="650" y="592" width="300" height="92" rx="10" fill="#ffffff" stroke="#e8943a" stroke-width="1.5"/>
+    <rect x="300" y="698" width="305" height="88" rx="10" fill="#ffffff" stroke="#e8943a" stroke-width="1.5"/>
+    <rect x="650" y="698" width="300" height="88" rx="10" fill="#ffffff" stroke="#e8943a" stroke-width="1.5"/>
+  </g>
+  <text x="318" y="620" font-size="14.5" font-weight="600" fill="#12324c">🔁 工具循环 + 轮次硬顶</text>
+  <text x="318" y="642" font-size="12" fill="#5f7b9c">普通 25 轮 / 预算模式 50 轮兜底</text>
+  <text x="318" y="660" font-size="12" fill="#5f7b9c">撞顶不报错，返部分结果 + 「回句继续」</text>
+  <text x="318" y="678" font-size="12" fill="#5f7b9c">— 防「复读机」空转的最后一道闸</text>
+  <text x="668" y="620" font-size="14.5" font-weight="600" fill="#12324c">🔧 重试只对「瞬时错」退避</text>
+  <text x="668" y="642" font-size="12" fill="#5f7b9c">超时 30s（browser 120s / code_exec 60s）</text>
+  <text x="668" y="660" font-size="12" fill="#5f7b9c">指数退避 1s→×2→封顶 8s（仅限流/上游抖）</text>
+  <text x="668" y="678" font-size="12" fill="#5f7b9c">无效 key 等「重试也没用」的错，不重试</text>
+  <text x="318" y="726" font-size="14.5" font-weight="600" fill="#12324c">🛡️ 权限硬闸（前馈 + 硬约束）</text>
+  <text x="318" y="748" font-size="12" fill="#5f7b9c">统一权限闸默认 ON · consequential 动作需审批</text>
+  <text x="318" y="766" font-size="12" fill="#5f7b9c">自动化里剔掉自升级/自排程工具</text>
+  <text x="668" y="726" font-size="14.5" font-weight="600" fill="#12324c">📦 结构化沙箱（cron 线）</text>
+  <text x="668" y="748" font-size="12" fill="#5f7b9c">Starlark 默认零权限 · 能力靠显式注入</text>
+  <text x="668" y="766" font-size="12" fill="#5f7b9c">8MiB · 1e8 步 · 300s 超时</text>
+
+  <path d="M530 800 L530 832" stroke="#eda657" stroke-width="10" marker-end="url(#arrO)"/>
+  <text x="560" y="824" font-size="12.5" fill="#9aa7b5">它死在：只服务「一次有限任务」，出菜即收工；有些活没有终点 →</text>
+
+  <!-- ====================== ZONE 4 · Loop ====================== -->
+  <rect x="30" y="844" width="1000" height="700" rx="14" fill="#f6f3fc" stroke="#d6c9ee" stroke-width="1.5"/>
+  <text x="56" y="886" font-size="18" font-weight="700" fill="#8b6fcf">Loop Engineering</text>
+  <text x="56" y="910" font-size="13.5" font-weight="600" fill="#8b6fcf">循环工程 · 时间层</text>
+  <line x1="56" y1="924" x2="250" y2="924" stroke="#d6c9ee" stroke-width="1" stroke-dasharray="4 4"/>
+  <text x="56" y="948" font-size="13.5" fill="#5f7b9c">交出「发起权 +</text>
+  <text x="56" y="968" font-size="13.5" fill="#5f7b9c">验收权」</text>
+  <text x="56" y="996" font-size="12.5" fill="#7058a6">≈ 控制流 for/递归</text>
+  <text x="56" y="1024" font-size="12" fill="#7b8fa3">从「出一道菜」</text>
+  <text x="56" y="1042" font-size="12" fill="#7b8fa3">到「开一家餐厅」</text>
+  <text x="56" y="1070" font-size="12.5" font-weight="700" fill="#8b6fcf">这层大头补上了、</text>
+  <text x="56" y="1088" font-size="12.5" font-weight="700" fill="#8b6fcf">剩一道行业坎 ↓</text>
+
+  <!-- heartbeat note -->
+  <g filter="url(#sh)"><rect x="300" y="872" width="650" height="44" rx="9" fill="#ffffff" stroke="#b9a6e0" stroke-width="1.3"/></g>
+  <text x="318" y="892" font-size="13" font-weight="600" fill="#12324c">⏰ 心跳：cron / webhook（self-heal 连失 3 次重编译，24h ≤ 2）</text>
+  <text x="318" y="909" font-size="11.5" fill="#c0793f">⚠ 注意：cron 是开环、不是 Loop —— 心跳是必要零件，但有心跳 ≠ 是 Loop</text>
+
+  <!-- reconcile loop -->
+  <text x="318" y="945" font-size="14.5" font-weight="700" fill="#7058a6">① 真正的收敛回路：orchestrate + 独立监工</text>
+  <g filter="url(#sh)">
+    <rect x="312" y="958" width="150" height="58" rx="10" fill="#ffffff" stroke="#8b6fcf" stroke-width="1.6"/>
+    <rect x="500" y="958" width="170" height="58" rx="10" fill="#ffffff" stroke="#8b6fcf" stroke-width="1.6"/>
+    <rect x="710" y="958" width="170" height="58" rx="10" fill="#fff4f4" stroke="#d96565" stroke-width="1.6"/>
+  </g>
+  <text x="387" y="982" text-anchor="middle" font-size="13.5" font-weight="700" fill="#12324c">🎯 总目标 goal</text>
+  <text x="387" y="1002" text-anchor="middle" font-size="11.5" fill="#7b8fa3">fan-out 并行子 Agent</text>
+  <text x="585" y="982" text-anchor="middle" font-size="13.5" font-weight="700" fill="#12324c">🧑‍⚖️ 独立监工</text>
+  <text x="585" y="1002" text-anchor="middle" font-size="11.5" fill="#7b8fa3">无工具 · 纯评判（≠ maker）</text>
+  <text x="795" y="982" text-anchor="middle" font-size="13.5" font-weight="700" fill="#12324c">done?</text>
+  <text x="795" y="1002" text-anchor="middle" font-size="11.5" fill="#7b8fa3">JSON 决策 · 解析失败→done</text>
+  <line x1="462" y1="987" x2="494" y2="987" stroke="#8b6fcf" stroke-width="2" marker-end="url(#arrP)"/>
+  <line x1="670" y1="987" x2="704" y2="987" stroke="#8b6fcf" stroke-width="2" marker-end="url(#arrP)"/>
+  <!-- feedback dashed: no→补派 back to goal -->
+  <path d="M795 1016 L795 1036 L387 1036 L387 1018" fill="none" stroke="#8b6fcf" stroke-width="1.8" stroke-dasharray="6 5" marker-end="url(#arrP)"/>
+  <text x="591" y="1052" text-anchor="middle" font-size="11.5" fill="#8b6fcf">未达成 → 去重后补派针对性子任务，进下一轮（maker / checker 分离）</text>
+  <text x="905" y="987" font-size="11.5" fill="#5e9b78">达成 → 收工 ✅</text>
+
+  <!-- termination gates -->
+  <text x="318" y="1086" font-size="13.5" font-weight="700" fill="#7058a6">终止条件（硬门，缺它循环就废）：</text>
+  <g font-size="11.5" fill="#12324c">
+    <g filter="url(#sh)"><rect x="318" y="1096" width="118" height="30" rx="15" fill="#ffffff" stroke="#b9a6e0"/></g><text x="377" y="1116" text-anchor="middle">轮数 ≤ 3</text>
+    <g filter="url(#sh)"><rect x="446" y="1096" width="128" height="30" rx="15" fill="#ffffff" stroke="#b9a6e0"/></g><text x="510" y="1116" text-anchor="middle">墙钟 5min</text>
+    <g filter="url(#sh)"><rect x="584" y="1096" width="120" height="30" rx="15" fill="#ffffff" stroke="#b9a6e0"/></g><text x="644" y="1116" text-anchor="middle">单次拆分 8</text>
+    <g filter="url(#sh)"><rect x="714" y="1096" width="138" height="30" rx="15" fill="#ffffff" stroke="#b9a6e0"/></g><text x="783" y="1116" text-anchor="middle">并发 8 / 本地 2</text>
+    <g filter="url(#sh)"><rect x="862" y="1096" width="88" height="30" rx="15" fill="#ffffff" stroke="#b9a6e0"/></g><text x="906" y="1116" text-anchor="middle">总量 128</text>
+  </g>
+
+  <!-- judge family -->
+  <text x="318" y="1160" font-size="14.5" font-weight="700" fill="#7058a6">② 独立裁判家族 ——「不要相信执行器」（≈ Admission Controller）</text>
+  <g filter="url(#sh)">
+    <rect x="312" y="1172" width="208" height="64" rx="10" fill="#ffffff" stroke="#8b6fcf" stroke-width="1.4"/>
+    <rect x="528" y="1172" width="208" height="64" rx="10" fill="#ffffff" stroke="#8b6fcf" stroke-width="1.4"/>
+    <rect x="744" y="1172" width="206" height="64" rx="10" fill="#ffffff" stroke="#8b6fcf" stroke-width="1.4"/>
+    <rect x="312" y="1244" width="312" height="60" rx="10" fill="#ffffff" stroke="#8b6fcf" stroke-width="1.4"/>
+    <rect x="632" y="1244" width="318" height="60" rx="10" fill="#ffffff" stroke="#8b6fcf" stroke-width="1.4"/>
+  </g>
+  <text x="324" y="1194" font-size="13" font-weight="600" fill="#12324c">🧑‍⚖️ 准入裁判 risk</text>
+  <text x="324" y="1213" font-size="11.5" fill="#5f7b9c">独立判级 low/med/high</text>
+  <text x="324" y="1229" font-size="11.5" fill="#5f7b9c">16 token · 非 low 即 fail-closed</text>
+  <text x="540" y="1194" font-size="13" font-weight="600" fill="#12324c">📊 自改进裁判 judge</text>
+  <text x="540" y="1213" font-size="11.5" fill="#5f7b9c">10% 采样打分 · &lt;7 写草稿</text>
+  <text x="540" y="1229" font-size="11.5" fill="#5f7b9c">出错/没采样→10 分（fail-open）</text>
+  <text x="756" y="1194" font-size="13" font-weight="600" fill="#12324c">🧮 执行 grounding</text>
+  <text x="756" y="1213" font-size="11.5" fill="#5f7b9c">solve 验证子 Agent 只许 code_exec</text>
+  <text x="756" y="1229" font-size="11.5" fill="#5f7b9c">全新上下文重算，兜算术幻觉</text>
+  <text x="324" y="1266" font-size="13" font-weight="600" fill="#12324c">🚫 反幻觉事实核对（cron）</text>
+  <text x="324" y="1286" font-size="11.5" fill="#5f7b9c">声称「入库」却没真调 knowledge_ingest → 判失败</text>
+  <text x="644" y="1266" font-size="13" font-weight="600" fill="#12324c">✅ 离线 Evaluation（已做到）</text>
+  <text x="644" y="1286" font-size="11.5" fill="#5f7b9c">golden：replay 0 token + live；评分门 = 发版门</text>
+
+  <!-- ceiling: still patching -->
+  <g filter="url(#sh)"><rect x="312" y="1320" width="638" height="98" rx="12" fill="#fff4f4" stroke="#d96565" stroke-width="1.8" stroke-dasharray="8 5"/></g>
+  <text x="328" y="1346" font-size="14.5" font-weight="700" fill="#d96565">③ 能形式化的补上了；剩下的是整个行业的坎</text>
+  <text x="328" y="1370" font-size="12.5" fill="#12324c">· Goal 拆成 意图 + <tspan font-weight="700" fill="#4caf7d">可机器判定验收</tspan>（命令/正则/JSON/rubric）→ done = 断言全过 ✓</text>
+  <text x="328" y="1392" font-size="12.5" fill="#12324c">· <tspan font-weight="700" fill="#8b6fcf">另起常驻环</tspan>(goalloop+checker)：<tspan font-weight="700" fill="#4caf7d">独立 checker · 自一致多数票 · fail-closed</tspan> · level-triggered 续跑 ✓</text>
+  <text x="328" y="1414" font-size="12.5" fill="#12324c">· 真正的坎：纯主观目标形式化 + LLM 概率云 <tspan font-weight="700" fill="#d96565">收敛无法证明</tspan> → 卡死交给人(HITL)</text>
+
+  <!-- intentionally-not-closed note -->
+  <g filter="url(#sh)"><rect x="312" y="1432" width="638" height="58" rx="10" fill="#ffffff" stroke="#b9a6e0" stroke-width="1.3"/></g>
+  <text x="328" y="1456" font-size="12.5" font-weight="600" fill="#12324c">🪵 还有一环「故意没闭」：自改进只写草稿到 .drafts/，等你审过亲手 mv 才生效</text>
+  <text x="328" y="1477" font-size="11.5" fill="#5f7b9c">不让循环悄悄改写自己的能力 —— 防「理解债 / 认知投降」，验证那一环不交</text>
+
+  <!-- decision-power axis on far right -->
+  <path d="M1006 160 L1006 1480" stroke="#9aa7b5" stroke-width="2" stroke-dasharray="3 4" marker-end="url(#arrGray)"/>
+  <text x="1018" y="820" font-size="12.5" fill="#9aa7b5" transform="rotate(90 1018 820)" text-anchor="middle">决策权层层外移：措辞 → 信息选择权 → 过程控制权 → 发起权 + 验收权</text>
+
+  <!-- ====================== Footer · summary ====================== -->
+  <rect x="30" y="1566" width="1000" height="120" rx="14" fill="#f7f9fb" stroke="#dde7ef" stroke-width="1.5"/>
+  <text x="56" y="1602" font-size="18" font-weight="700" fill="#12324c">🚀 一句话收口</text>
+  <text x="56" y="1636" font-size="15" fill="#3f8fd4" font-family="monospace">Control = Goal − Observed State</text>
+  <text x="56" y="1662" font-size="13" fill="#5f7b9c">测不出 Observed State，控制就不存在；定不清 Goal，收敛就无从谈起。</text>
+  <text x="540" y="1620" font-size="14" fill="#12324c">真问题从来不是「哪个模型更强」，</text>
+  <text x="540" y="1644" font-size="14" font-weight="700" fill="#8b6fcf">而是那个最朴素也最难的：「做完了」到底是什么意思。</text>
+  <text x="540" y="1668" font-size="12.5" fill="#9aa7b5">K8s 用形式化 spec 答了二十年；AI 这边，河蟹只答了一半。</text>
+</svg>
