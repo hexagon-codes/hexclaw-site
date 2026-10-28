@@ -138,6 +138,27 @@ a {
   color: var(--blue-deep);
 }
 
+/* 维语菜单按完整词组保留单行，品牌名不参与空间压缩。 */
+html:lang(ug) .tn .tn-b {
+  flex-shrink: 0;
+}
+
+html:lang(ug) .tn .tn-n,
+html:lang(ug) .tn .tn-r > a {
+  white-space: nowrap;
+}
+
+@media (min-width: 1280px) {
+  html:lang(ug) .tn {
+    column-gap: 16px;
+  }
+
+  html:lang(ug) .tn .tn-r {
+    gap: 12px;
+    flex-shrink: 0;
+  }
+}
+
 .lang-select-wrap {
   position: relative;
   display: inline-flex;
@@ -1409,6 +1430,104 @@ hr {
   .footer-main,
   .footer-bottom {
     max-width: 700px;
+  }
+}
+
+/* 维语内页多一个首页入口及当前页标记，中等宽度提前使用同一折叠菜单。 */
+@media (min-width: 1101px) and (max-width: 1279px) {
+  html:lang(ug) .tn {
+    padding-inline: 16px;
+  }
+
+  html:lang(ug) .tn .tn-n {
+    font-size: 16px;
+  }
+
+  html:lang(ug) .tn-burger {
+    display: block;
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  html:lang(ug) .tn-burger span {
+    margin-inline: auto;
+  }
+
+  html:lang(ug) .tn .tn-r {
+    display: none;
+    position: absolute;
+    top: 100%;
+    inset-inline: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 12px 20px;
+    border-bottom: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(24px);
+    max-height: calc(100vh - 80px);
+    max-height: calc(100dvh - 80px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+
+  html:lang(ug) .tn .tn-r.open {
+    display: flex;
+  }
+
+  html:lang(ug) .tn .tn-r > a {
+    padding: 12px 0;
+    border: 0;
+    border-bottom: 1px solid var(--border-soft);
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  html:lang(ug) .tn .tn-r a.nav-cta {
+    margin-top: 8px;
+    border-bottom: 0;
+  }
+
+  html:lang(ug) .tn .lang-menu {
+    width: 100%;
+    margin: 8px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  html:lang(ug) .tn .lang-trigger {
+    width: 100%;
+    min-height: 42px;
+    justify-content: center;
+    box-shadow: none;
+  }
+
+  html:lang(ug) .tn .lang-menu-list {
+    position: static;
+    display: none;
+    width: 100%;
+    margin-top: 8px;
+    box-shadow: none;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+
+  html:lang(ug) .tn .lang-menu.open .lang-menu-list {
+    display: block;
+  }
+
+  html:lang(ug) .tn .tn-r .lang-menu-list a {
+    justify-content: center;
+    padding: 10px 12px;
+    border-bottom: 0;
+  }
+
+  [data-theme="dark"]:lang(ug) .tn .tn-r {
+    background: rgba(15, 23, 36, 0.96);
+    border-bottom-color: rgba(255, 255, 255, 0.06);
   }
 }
 

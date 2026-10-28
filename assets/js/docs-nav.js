@@ -72,7 +72,10 @@ if (nav) {
   const links = controlledId ? document.getElementById(controlledId) : null;
   if (!links) return;
 
-  const desktop = window.matchMedia("(min-width: 1101px)");
+  // 维语内页菜单更宽，展开状态与其专属折叠断点保持一致。
+  const desktop = window.matchMedia(document.documentElement.lang.startsWith("ug")
+    ? "(min-width: 1280px)"
+    : "(min-width: 1101px)");
   const setOpen = (open) => {
     links.classList.toggle("open", open);
     button.setAttribute("aria-expanded", open ? "true" : "false");
