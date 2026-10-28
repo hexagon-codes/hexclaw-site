@@ -1308,6 +1308,7 @@
   .artifact-file {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 8px;
     font-size: 13px;
     font-weight: 600;

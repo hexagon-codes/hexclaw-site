@@ -265,20 +265,6 @@
     });
     /* Eco chain staggered reveal is handled by the existing IntersectionObserver via the .reveal class on .eco-chain-wrapper */
 
-    /* Dark mode toggle */
-    function toggleTheme() {
-      const current = document.documentElement.getAttribute('data-theme');
-      const next = current === 'dark' ? 'light' : 'dark';
-      document.documentElement.setAttribute('data-theme', next);
-      localStorage.setItem('hexclaw-theme', next);
-    }
-    (function() {
-      const saved = localStorage.getItem('hexclaw-theme');
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      if (saved === 'dark' || (!saved && prefersDark)) {
-        document.documentElement.setAttribute('data-theme', 'dark');
-      }
-    })();
   
 // GitHub stars realtime
 (function(){

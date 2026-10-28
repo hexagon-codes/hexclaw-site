@@ -922,6 +922,8 @@
   .toolbar-actions {
     width: 100%;
     justify-content: space-between;
+    flex-wrap: wrap;
+    min-width: 0;
   }
 
   .changelog-bottom-cta {
@@ -946,6 +948,9 @@
 
   .milestone-title {
     font-size: 16px;
+    min-width: 0;
+    white-space: normal;
+    overflow-wrap: anywhere;
   }
 
   .changelog-bottom-cta-actions {
