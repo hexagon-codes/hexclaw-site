@@ -41,7 +41,7 @@
 </script>
 <link rel="preconnect" href="https://api.github.com">
 <link rel="dns-prefetch" href="https://api.github.com">
-<link rel="stylesheet" href="../assets/css/home.css?v=9ca91eef1f56">
+<link rel="stylesheet" href="../assets/css/home.css?v=d7f188317a93">
 
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Organization","@id":"https://hexclaw.net/#organization","name":"hexagon-codes","url":"https://hexclaw.net/","logo":{"@type":"ImageObject","url":"https://hexclaw.net/assets/brand/hexclaw-logo.png","width":512,"height":512},"sameAs":["https://github.com/hexagon-codes"]}
@@ -51,13 +51,14 @@
 </script>
 </head>
 <body>
-  <a href="#main" class="skip-link">Skip to content</a>
+  <a href="#main" class="skip-link">跳至主要内容</a>
   <nav class="nav" id="nav">
     <a href="./" class="nav-brand"><img width="72" height="72" src="../assets/brand/hexclaw-icon-72.png" class="nav-logo" alt="河蟹 AI"><span class="nav-name">河蟹 AI</span></a>
     <button type="button" class="nav-burger" aria-label="菜单" aria-expanded="false" aria-controls="primary-navigation"><span></span><span></span><span></span></button>
     <div class="nav-links" id="primary-navigation">
       <a href="#cases">使用场景</a><a href="#features">产品能力</a><a href="#quickstart">开始使用</a><a href="#ecosystem">开源生态</a>
-      <a href="/zh/docs/">文档</a>
+      <a href="/zh/blog/">技术博客</a>
+      <a href="/zh/docs/">文档中心</a>
       <div class="lang-menu" data-lang-menu><button type="button" class="lang-trigger" aria-haspopup="menu" aria-expanded="false" aria-label="切换语言"><svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 0 20"></path><path d="M12 2a15.3 15.3 0 0 0 0 20"></path></svg><span class="lang-current">中文</span><svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="lang-menu-list" role="menu"><a href="/zh/" role="menuitem" class="is-active" aria-current="true">中文</a><a href="/en/" role="menuitem">English</a><a href="/ug/" role="menuitem" lang="zh-CN" dir="ltr">维吾尔语</a></div></div>
       <button type="button" class="nav-theme-toggle" onclick="toggleTheme()" aria-label="切换主题">
         <svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
@@ -77,17 +78,41 @@
     <svg class="hex-deco" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polygon points="150,10 278,84 278,216 150,290 22,216 22,84" fill="none" stroke="rgba(255,255,255,.06)" stroke-width="1"/><polygon points="150,45 245,95 245,205 150,255 55,205 55,95" fill="none" stroke="rgba(255,255,255,.035)" stroke-width=".8"/><polygon points="150,78 215,112 215,188 150,222 85,188 85,112" fill="none" stroke="rgba(255,255,255,.02)" stroke-width=".6"/></svg>
     <div class="hero-content">
     <div class="hero-inner">
+      <a href="/zh/changelog" class="hero-release-pill">
+        <span class="hero-pill-badge"><span class="hero-pill-dot" aria-hidden="true"></span>v0.5.1 已发布</span>
+        <span class="hero-pill-text">全新成果预览面板与 MCP 工具扩展</span>
+        <span class="hero-pill-arrow" aria-hidden="true">→</span>
+      </a>
       <h1 class="hero-title"><span class="hero-title-line">开源的个人</span> <span class="hero-title-line">AI 工作台</span></h1>
-      <p class="hero-tagline"><span class="hero-lead-line">通过对话检索资料、调用工具，</span><span class="hero-lead-line">生成文档与媒体，并安排定时任务。</span></p>
+      <p class="hero-tagline"><span class="hero-lead-line">把大模型变成听你指挥的私人助理。</span><span class="hero-lead-line">本地检索私有资料、调度外部工具，在你的电脑上自动完成任务。</span></p>
 
-      <div class="hero-actions"><a class="btn btn-solid" href="#download">下载与安装</a><a class="hero-guide" href="/zh/docs/getting-started">上手教程</a><p class="hero-language-note">界面语言：中文 · English · <bdi lang="zh-CN" dir="ltr">维吾尔语</bdi></p></div>
-      <div class="hero-meta"><div class="hero-version"><span class="hero-vtag">macOS 优先推荐</span><span class="hero-vsep">·</span><span class="hero-vmeta">Windows / Linux 安装包</span></div><p class="hero-note">连接本机或自建服务，任务执行需服务在线。</p></div>
+      <div class="hero-actions"><a class="btn btn-solid" href="#download">下载与安装</a><a class="hero-guide" href="/zh/docs/getting-started">上手教程</a></div>
+      <div class="hero-trust-dock">
+        <div class="trust-hero-pill">
+          <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <span>本地云端均可部署 · 数据自主掌控</span>
+        </div>
+        <div class="trust-meta-grid">
+          <span class="trust-tag">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24M14.83 14.83l4.24 4.24M14.83 9.17l4.24-4.24M4.93 19.07l4.24-4.24"/></svg>
+            <span>离线 Ollama / 云端大模型</span>
+          </span>
+          <a href="https://github.com/hexagon-codes" target="_blank" rel="noopener noreferrer" class="trust-tag trust-tag-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>7 仓全栈开源 · Apache-2.0</span>
+            <span class="trust-arrow" aria-hidden="true">↗</span>
+          </a>
+          <span class="trust-tag trust-tag-platform" title="Apple Silicon &amp; Intel · Windows · Linux">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            <span>macOS 优先 · Windows · Linux</span>
+          </span>
+        </div>
+      </div>
 
     </div>
     <div class="hero-mockup">
       <figure class="hero-shot">
         <picture><source type="image/webp" srcset="../assets/hero/native-home-zh-20261025-640.webp 640w, ../assets/hero/native-home-zh-20261025-1280.webp 1280w, ../assets/hero/native-home-zh-20261025-1920.webp 1920w, ../assets/hero/native-home-zh-20261025.webp 2048w" sizes="(max-width: 640px) calc(100vw - 50px), (max-width: 900px) calc(100vw - 74px), (max-width: 1304px) 58vw, 715px"><img width="2048" height="1480" loading="eager" decoding="async" fetchpriority="high" src="../assets/hero/native-home-zh-20261025.webp" alt="河蟹 AI 桌面客户端中文实图：普通会话整理活动简报，并在成果面板预览 HTML 文档"></picture>
-        <figcaption><div class="hero-shot-heading"><span>从筹备记录到活动简报</span><a href="/zh/docs/chat">查看会话功能 →</a></div><p class="hero-shot-note">客户端实图 · v0.5.0 开发版 · 演示资料</p></figcaption>
       </figure>
     </div>
     </div>
@@ -96,10 +121,10 @@
   <section id="cases"><div class="section-inner">
     <div><h2 class="sec-title">使用场景</h2><div class="sec-desc">从资料整理、内容创作到自动化，看看任务怎么交办、结果如何查看。</div></div>
     <div class="cases">
-      <article class="case"><div class="case-text"><div class="case-tag">资料整理</div><h3 class="case-title">把资料整理成带来源的报告</h3><div class="case-turn"><p class="case-q"><span class="case-label">任务</span> 根据已导入的资料，整理一份带来源的项目综述。</p><p class="case-a"><span class="case-label">可查看</span> 检索到的原文与引用，以及生成的文档；可对照来源继续修改。</p></div><a class="case-link" href="/zh/docs/advanced">了解知识库与记忆 →</a></div></article>
-      <article class="case"><div class="case-text"><div class="case-tag">智能体场景 · 小学辅导</div><h3 class="case-title">看懂一道题，再讲给孩子</h3><div class="case-turn"><p class="case-q"><span class="case-label">任务</span> 已用空间是 4.8 TB，占总容量的 40%，总容量是多少？</p><p class="case-a"><span class="case-label">可查看</span> 原题、数量关系、三种讲法和完整讲解资料。适用于小学一至六年级，内容需家长复核。</p></div><a class="case-link" href="/zh/k12">查看例题与讲解 →</a></div></article>
-      <article class="case"><div class="case-text"><div class="case-tag">媒体创作</div><h3 class="case-title">生成一张海报，再接着修改</h3><div class="case-turn"><p class="case-q"><span class="case-label">任务</span> 生成一张活动海报，并基于这张图继续修改。</p><p class="case-a"><span class="case-label">可查看</span> 图片预览与保存的文件；需连接支持图片生成和编辑的模型。</p></div><a class="case-link" href="/zh/docs/media-generation">查看媒体生成指南 →</a></div></article>
-      <article class="case"><div class="case-text"><div class="case-tag">自动化</div><h3 class="case-title">让固定任务按计划执行</h3><div class="case-turn"><p class="case-q"><span class="case-label">任务</span> 每周五整理本周资料，生成周报并发送到已连接的渠道。</p><p class="case-a"><span class="case-label">可查看</span> 运行记录、生成文件与目标渠道的接收结果。需先连接渠道，并保持服务在线。</p></div><a class="case-link" href="/zh/docs/automation-delivery">查看自动化与交付指南 →</a></div></article>
+      <article class="case"><div class="case-text"><div class="case-tag">资料整理</div><h3 class="case-title">把资料整理成带来源的报告</h3><div class="case-turn"><p class="case-q"><span class="case-label">任务</span> 根据已导入的项目资料，梳理关键进展并生成带来源引用的综述。</p><div class="case-artifact"><div class="artifact-badge"><span class="artifact-dot"></span>成果预览 · Markdown 文档</div><div class="artifact-body"><div class="artifact-title">Q3 季度架构演进复盘.md</div><div class="artifact-text">核心组件解耦完毕，推理端到端时延降低 38%<span class="artifact-ref" title="引用自: 架构评估纪要.pdf">[1]</span>；桌面端内存占用稳定在 85MB 以内<span class="artifact-ref" title="引用自: 基准测试.csv">[2]</span>。</div></div></div><p class="case-a"><span class="case-label">可查看</span> 检索到的原文与引用，以及生成的文档；可对照来源继续修改。</p></div><a class="case-link" href="/zh/docs/advanced">了解知识库与记忆 →</a></div></article>
+      <article class="case"><div class="case-text"><div class="case-tag">专属 Agent · 启发辅导</div><h3 class="case-title">看懂一道题，启发式讲给孩子</h3><div class="case-turn"><p class="case-q"><span class="case-label">任务</span> 已用空间是 4.8 TB，占总容量的 40%，总容量是多少？</p><div class="case-artifact"><div class="artifact-badge"><span class="artifact-dot artifact-dot--amber"></span>启发式步骤讲解 · 小学数学</div><div class="artifact-body"><div class="artifact-hint">引导提问：“40% 就是 10 份里的 4 份，那 1 份是多少？”</div><div class="artifact-calc"><span>数量关系式：</span>4.8 TB ÷ 40% = <strong>12 TB</strong></div></div></div><p class="case-a"><span class="case-label">可查看</span> 原题、数量关系、三种讲法和完整讲解资料。适用于小学一至六年级，内容需家长复核。</p></div><a class="case-link" href="/zh/k12">查看例题与讲解 →</a></div></article>
+      <article class="case"><div class="case-text"><div class="case-tag">媒体与设计</div><h3 class="case-title">生成一张海报，再接着修改</h3><div class="case-turn"><p class="case-q"><span class="case-label">任务</span> 生成一张活动海报，并基于这张图继续修改。</p><div class="case-artifact"><div class="artifact-badge"><span class="artifact-dot artifact-dot--cyan"></span>成果面板 · 图片与多模态</div><div class="artifact-body"><div class="artifact-file"><span class="file-icon">🎨</span>秋日读书会海报_v2.png <span class="file-tag">2048×1480</span></div><div class="artifact-chips"><span class="chip">提示词微调</span><span class="chip">重绘局部</span><span class="chip">直接导出</span></div></div></div><p class="case-a"><span class="case-label">可查看</span> 图片预览与保存的文件；需连接支持图片生成和编辑的模型。</p></div><a class="case-link" href="/zh/docs/media-generation">查看媒体生成指南 →</a></div></article>
+      <article class="case"><div class="case-text"><div class="case-tag">自动化工作流</div><h3 class="case-title">让固定任务按计划执行</h3><div class="case-turn"><p class="case-q"><span class="case-label">任务</span> 每周五整理本周资料，生成周报并发送到已连接的渠道。</p><div class="case-artifact"><div class="artifact-badge"><span class="artifact-dot artifact-dot--green"></span>定时流水线 · 每周五 17:30</div><div class="artifact-body"><div class="artifact-pipeline"><span class="pipe-node">1. 汇总知识库</span><span class="pipe-arr">→</span><span class="pipe-node">2. 提炼周报</span><span class="pipe-arr">→</span><span class="pipe-node">3. 渠道分发</span></div></div></div><p class="case-a"><span class="case-label">可查看</span> 运行记录、生成文件与目标渠道的接收结果。需先连接渠道，并保持服务在线。</p></div><a class="case-link" href="/zh/docs/automation-delivery">查看自动化与交付指南 →</a></div></article>
     </div>
   </div></section>
 
@@ -109,12 +134,57 @@
       <div><h2 class="sec-title">产品能力</h2><div class="sec-desc">按任务组合智能体、知识、工具和自动化，查看过程，并保留可继续使用的结果。</div>
       <a class="sec-action" href="/assets/downloads/hexclaw-product-intro.pdf?v=5cbb1beb4754">下载产品介绍（PDF）</a></div>
       <div class="features">
-        <div class="feat"><div class="feat-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--blue-deep)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3 class="feat-title">本机或自建服务，按需选择</h3><div class="feat-desc">数据与配置由连接的本机或自建服务保存。使用在线模型时，任务中发给模型的内容会传给对应服务商。 <a href="/zh/docs/deployment-options">本机与云端怎么选</a></div></div>
-        <div class="feat"><div class="feat-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--blue-deep)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3"/></svg></div><h3 class="feat-title">为任务选择智能体</h3><div class="feat-desc">创建或调整智能体的角色与配置，按任务连接知识、技能和工具；K12 辅导是其中一个专属场景。</div></div>
-        <div class="feat"><div class="feat-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--blue-deep)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22v-5M9 7V2M15 7V2M6 13V9a6 6 0 0 1 12 0v4"/><rect x="6" y="13" width="12" height="4" rx="1"/></svg></div><h3 class="feat-title">检索资料，保留记忆</h3><div class="feat-desc">导入资料后检索正文与来源；查询、纠正、更新或遗忘长期记忆。</div></div>
-        <div class="feat"><div class="feat-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--blue-deep)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg></div><h3 class="feat-title">连接常用工具</h3><div class="feat-desc">把常用做法存成技能和提示模板，按需要通过 MCP 连接外部工具与服务。</div></div>
-        <div class="feat"><div class="feat-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--blue-deep)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10M18 20V4M6 20v-4"/></svg></div><h3 class="feat-title">生成文档与媒体</h3><div class="feat-desc">按模型能力生成文档、图片、语音和视频，也能基于已有图片继续修改。文件可查看、下载和再次发送。</div></div>
-        <div class="feat"><div class="feat-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--blue-deep)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><h3 class="feat-title">安排任务与流程</h3><div class="feat-desc">按计划或 Webhook 发起任务，编排多步工作流，查看运行记录，按任务状态取消或恢复。</div></div>
+        <div class="feat feat-flagship">
+          <div class="feat-flagship-head">
+            <div class="feat-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--blue-deep)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+            <span class="feat-flagship-pill">核心安全基石</span>
+          </div>
+          <h3 class="feat-title">100% 本地优先，数据与隐私完全归你</h3>
+          <div class="feat-desc">数据与配置由连接的本机或自建服务保存。使用在线模型时，仅任务发给模型的内容会按需传输，绝无第三方中转或数据滥用。 <a href="/zh/docs/deployment-options">本机与云端怎么选</a></div>
+          <div class="feat-flagship-tags">
+            <span class="feat-flagship-tag">🔒 本地沙盒</span>
+            <span class="feat-flagship-tag">🛡️ 零数据收集</span>
+            <span class="feat-flagship-tag">🔑 密钥本地加密</span>
+          </div>
+        </div>
+
+        <div class="feat feat-flagship">
+          <div class="feat-flagship-head">
+            <div class="feat-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--blue-deep)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3"/></svg></div>
+            <span class="feat-flagship-pill">开放扩展生态</span>
+          </div>
+          <h3 class="feat-title">多模型任意接入，标准 MCP 即插即用</h3>
+          <div class="feat-desc">自由接入本地 Ollama、DeepSeek、Claude、OpenAI 与主流兼容接口；按需通过 Model Context Protocol 连接外部系统与原生工具。</div>
+          <div class="feat-flagship-tags">
+            <span class="feat-flagship-tag">⚡ Ollama / 本地推理</span>
+            <span class="feat-flagship-tag">🌐 DeepSeek / OpenAI</span>
+            <span class="feat-flagship-tag">🔌 MCP 协议兼容</span>
+          </div>
+        </div>
+
+        <div class="feat feat-compact">
+          <div class="feat-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--blue-deep)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22v-5M9 7V2M15 7V2M6 13V9a6 6 0 0 1 12 0v4"/><rect x="6" y="13" width="12" height="4" rx="1"/></svg></div>
+          <h3 class="feat-title">检索资料，保留记忆</h3>
+          <div class="feat-desc">导入私有资料后快速检索正文与来源；长期记忆随时可查、可纠正、可更新或清除。</div>
+        </div>
+
+        <div class="feat feat-compact">
+          <div class="feat-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--blue-deep)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg></div>
+          <h3 class="feat-title">为任务配置专属 Agent</h3>
+          <div class="feat-desc">创建或调整智能体角色，按需绑定提示模板与工具包；K12 辅导是专属场景之一。</div>
+        </div>
+
+        <div class="feat feat-compact">
+          <div class="feat-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--blue-deep)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10M18 20V4M6 20v-4"/></svg></div>
+          <h3 class="feat-title">生成文档与媒体成果</h3>
+          <div class="feat-desc">按模型能力生成文档、图片与音视频；成果面板支持即时预览、微调修图与快捷导出。</div>
+        </div>
+
+        <div class="feat feat-compact">
+          <div class="feat-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--blue-deep)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+          <h3 class="feat-title">自动化流程与任务调度</h3>
+          <div class="feat-desc">按定时计划或 Webhook 自动发起任务，多步编排并查看完整执行历史，支持重试与撤销。</div>
+        </div>
       </div>
     </div>
   </section>
@@ -239,14 +309,27 @@
           <div class="stack-item" data-tip="按所选服务保存 Provider 配置，提供访问令牌校验"><span class="stack-dot" style="background:#f5a623"></span><span class="stack-label">安全网关</span></div>
         </div>
       </div>
+      <div class="eco-actions-bar">
+        <a href="https://github.com/hexagon-codes" target="_blank" rel="noopener noreferrer" class="eco-btn eco-btn-primary">
+          <svg class="gh-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          <span>访问 GitHub 组织 hexagon-codes ↗</span>
+        </a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="eco-btn eco-btn-secondary">
+          <span class="eco-star-icon" aria-hidden="true">⭐</span>
+          <span>Star on GitHub</span>
+        </a>
+        <a href="/zh/about#ecosystem" class="eco-btn eco-btn-ghost">
+          <span>查看 7 仓分层架构设计 →</span>
+        </a>
+      </div>
   </div></section>
 
   <section class="closing">
     <div class="section-inner closing-inner">
       <div class="closing-copy">
-        <h2 class="closing-title">开始使用河蟹 AI</h2>
-        <p class="closing-desc">下载安装，或先看上手教程，再交办一个熟悉的任务。</p>
-        <p class="closing-mark">🦀 河蟹横着走，替你干活</p>
+        <div class="closing-mark-badge"><span class="crab-emoji" aria-hidden="true">🦀</span> 河蟹横着走，替你干活</div>
+        <h2 class="closing-title">开启属于你的本地 AI 工作台</h2>
+        <p class="closing-desc">免费开源，无需注册。下载安装即可连接你的专属大模型与私有知识库。</p>
       </div>
       <div class="closing-actions">
         <a class="btn btn-solid" href="#download">下载与安装</a>
@@ -258,44 +341,45 @@
   </main>
 
   <footer class="footer">
-    <div class="footer-main">
-      <div class="footer-grid">
-        <div class="footer-col">
-          <div class="footer-col-title">产品</div>
-          <a href="#download">下载桌面端</a>
-          <a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer">GitHub</a>
-          <a href="/zh/changelog">更新日志</a>
-        </div>
-        <div class="footer-col">
-          <div class="footer-col-title">开发者</div>
-          <a href="/zh/docs/">文档</a>
-          <a href="/zh/docs/getting-started">快速上手</a>
-          <a href="https://github.com/hexagon-codes/hexclaw-desktop/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">Apache-2.0</a>
-        </div>
-        <div class="footer-col">
-          <div class="footer-col-title">社区</div>
-          <a href="https://github.com/hexagon-codes/hexclaw-desktop/issues" target="_blank" rel="noopener noreferrer">Issues</a>
-          <a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer">Twitter / X</a>
-        </div>
-        <div class="footer-col">
-          <div class="footer-col-title">关于</div>
-          <a href="/zh/about">关于我们</a>
-          <a href="/zh/privacy">隐私政策</a>
-          <a href="/zh/terms">使用条款</a>
-          <a href="/zh/third-party-ai-services">第三方 AI 服务说明</a>
-          <a href="mailto:ai@hexclaw.net">联系我们</a>
-          <a href="mailto:support@hexclaw.net">问题反馈</a>
-        </div>
+  <div class="footer-main">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-col-title">产品</div>
+        <a href="#download">下载桌面端</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="/zh/changelog">更新日志</a>
       </div>
-      <div class="footer-wechat">
-        <img width="430" height="430" loading="lazy" decoding="async" src="../assets/brand/wechat-qr.jpg" alt="HexClaw 微信公众号二维码">
-        <span class="footer-wechat-label">微信公众号</span>
+      <div class="footer-col">
+        <div class="footer-col-title">开发者</div>
+        <a href="/zh/docs/">文档中心</a>
+        <a href="/zh/blog/">技术博客</a>
+        <a href="/zh/docs/getting-started">快速上手</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">Apache-2.0</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">社区</div>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/issues" target="_blank" rel="noopener noreferrer">Issues</a>
+        <a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer">Twitter / X</a>
+        <a href="mailto:ai@hexclaw.net">业务咨询</a>
+        <a href="mailto:support@hexclaw.net">问题反馈</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">关于</div>
+        <a href="/zh/about">关于我们</a>
+        <a href="/zh/privacy">隐私政策</a>
+        <a href="/zh/terms">使用条款</a>
+        <a href="/zh/third-party-ai-services">第三方 AI 服务说明</a>
       </div>
     </div>
-    <div class="footer-bottom">
-      <span class="footer-copy">&copy; 2025&ndash;2026 hexagon-codes</span>
+    <div class="footer-wechat">
+      <img width="430" height="430" loading="lazy" decoding="async" src="../assets/brand/wechat-qr.jpg" alt="HexClaw 微信公众号二维码">
+      <span class="footer-wechat-label">微信公众号</span>
     </div>
-  </footer>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">&copy; 2025&ndash;2026 hexagon-codes</span>
+  </div>
+</footer>
 
   <script src="../assets/js/home.js?v=e8ab8c68fa2b"></script>
 </body></html>

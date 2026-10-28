@@ -41,7 +41,7 @@
 </script>
 <link rel="preconnect" href="https://api.github.com">
 <link rel="dns-prefetch" href="https://api.github.com">
-<link rel="stylesheet" href="../assets/css/home.css?v=9ca91eef1f56">
+<link rel="stylesheet" href="../assets/css/home.css?v=d7f188317a93">
 
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Organization","@id":"https://hexclaw.net/#organization","name":"hexagon-codes","url":"https://hexclaw.net/","logo":{"@type":"ImageObject","url":"https://hexclaw.net/assets/brand/hexclaw-logo.png","width":512,"height":512},"sameAs":["https://github.com/hexagon-codes"]}
@@ -57,7 +57,8 @@
     <button type="button" class="nav-burger" aria-label="Menu" aria-expanded="false" aria-controls="primary-navigation"><span></span><span></span><span></span></button>
     <div class="nav-links" id="primary-navigation">
       <a href="#cases">Use Cases</a><a href="#features">Capabilities</a><a href="#quickstart">Get started</a><a href="#ecosystem">Ecosystem</a>
-      <a href="/en/docs/">Docs</a>
+      <a href="/zh/blog/">Tech Blog</a>
+      <a href="/en/docs/">Docs Center</a>
       <div class="lang-menu" data-lang-menu><button type="button" class="lang-trigger" aria-haspopup="menu" aria-expanded="false" aria-label="Language switcher"><svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 0 20"></path><path d="M12 2a15.3 15.3 0 0 0 0 20"></path></svg><span class="lang-current">English</span><svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="lang-menu-list" role="menu"><a href="/zh/" role="menuitem">中文</a><a href="/en/" role="menuitem" class="is-active" aria-current="true">English</a><a href="/ug/" role="menuitem" lang="zh-CN" dir="ltr">维吾尔语</a></div></div>
       <button type="button" class="nav-theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
         <svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
@@ -75,37 +76,43 @@
   <section class="hero" id="hero">
     <div class="hero-bg"></div>
     <svg class="hex-deco" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polygon points="150,10 278,84 278,216 150,290 22,216 22,84" fill="none" stroke="rgba(255,255,255,.06)" stroke-width="1"/><polygon points="150,45 245,95 245,205 150,255 55,205 55,95" fill="none" stroke="rgba(255,255,255,.035)" stroke-width=".8"/><polygon points="150,78 215,112 215,188 150,222 85,188 85,112" fill="none" stroke="rgba(255,255,255,.02)" stroke-width=".6"/></svg>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <div class="hero-content">
     <div class="hero-inner">
+      <a href="/en/changelog" class="hero-release-pill">
+        <span class="hero-pill-badge"><span class="hero-pill-dot" aria-hidden="true"></span>v0.5.1 Released</span>
+        <span class="hero-pill-text">All-New Artifact Canvas &amp; MCP Extensibility</span>
+        <span class="hero-pill-arrow" aria-hidden="true">→</span>
+      </a>
       <h1 class="hero-title"><span class="hero-title-line">An open-source</span> <span class="hero-title-line">personal AI workspace</span></h1>
-      <p class="hero-tagline"><span class="hero-lead-line">Search sources and use tools through conversation.</span><span class="hero-lead-line">Create documents and media, and schedule tasks.</span></p>
+      <p class="hero-tagline"><span class="hero-lead-line">Turn AI models into your obedient personal assistant.</span><span class="hero-lead-line">Search private sources, orchestrate tools, and automate tasks locally.</span></p>
 
-      <div class="hero-actions"><a class="btn btn-solid" href="#download">Download &amp; install</a><a class="hero-guide" href="/en/docs/getting-started">Getting started</a><p class="hero-language-note">Interface languages: <bdi lang="zh-CN">中文</bdi> · English · <bdi lang="zh-CN" dir="ltr">维吾尔语</bdi></p></div>
-      <div class="hero-meta"><div class="hero-version"><span class="hero-vtag">macOS recommended</span><span class="hero-vsep">·</span><span class="hero-vmeta">Windows / Linux installers</span></div><p class="hero-note">Connect a local or self-hosted service. Keep it online while tasks run.</p></div>
+      <div class="hero-actions"><a class="btn btn-solid" href="#download">Download &amp; install</a><a class="hero-guide" href="/en/docs/getting-started">Getting started</a></div>
+      <div class="hero-trust-dock">
+        <div class="trust-hero-pill">
+          <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <span>Deploy Anywhere · You Own Your Data</span>
+        </div>
+        <div class="trust-meta-grid">
+          <span class="trust-tag">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24M14.83 14.83l4.24 4.24M14.83 9.17l4.24-4.24M4.93 19.07l4.24-4.24"/></svg>
+            <span>Offline Ollama / Cloud LLMs</span>
+          </span>
+          <a href="https://github.com/hexagon-codes" target="_blank" rel="noopener noreferrer" class="trust-tag trust-tag-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>7 Open Source Repos · Apache-2.0</span>
+            <span class="trust-arrow" aria-hidden="true">↗</span>
+          </a>
+          <span class="trust-tag trust-tag-platform" title="Apple Silicon &amp; Intel · Windows · Linux">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            <span>macOS Preferred · Windows · Linux</span>
+          </span>
+        </div>
+      </div>
 
     </div>
     <div class="hero-mockup">
       <figure class="hero-shot">
         <picture><source type="image/webp" srcset="../assets/hero/native-home-en-20261025-640.webp 640w, ../assets/hero/native-home-en-20261025-1280.webp 1280w, ../assets/hero/native-home-en-20261025-1920.webp 1920w, ../assets/hero/native-home-en-20261025.webp 2048w" sizes="(max-width: 640px) calc(100vw - 50px), (max-width: 900px) calc(100vw - 74px), (max-width: 1304px) 58vw, 715px"><img width="2048" height="1480" loading="eager" decoding="async" fetchpriority="high" src="../assets/hero/native-home-en-20261025.webp" alt="HexClaw installed desktop app in English: a conversation creates an event brief with an HTML preview"></picture>
-        <figcaption><div class="hero-shot-heading"><span>From planning notes to an event brief</span><a href="/en/docs/chat">Explore chat →</a></div><p class="hero-shot-note">Desktop screenshot · v0.5.0 development · Demo material</p></figcaption>
       </figure>
     </div>
     </div>
@@ -114,10 +121,10 @@
   <section id="cases"><div class="section-inner">
     <div><h2 class="sec-title">Use cases</h2><div class="sec-desc">Explore tasks for research, content creation and automation, and see what output to expect.</div></div>
     <div class="cases">
-      <article class="case"><div class="case-text"><div class="case-tag">Research</div><h3 class="case-title">Turn your sources into a cited report</h3><div class="case-turn"><p class="case-q"><span class="case-label">Task</span> Summarize the imported project materials and cite the sources.</p><p class="case-a"><span class="case-label">Output</span> Retrieved passages, citations and a generated document you can check against the sources and revise.</p></div><a class="case-link" href="/en/docs/advanced">Explore knowledge and memory →</a></div></article>
-      <article class="case"><div class="case-text"><div class="case-tag">Agent scenario · primary-school tutoring</div><h3 class="case-title">Understand a problem before explaining it</h3><div class="case-turn"><p class="case-q"><span class="case-label">Task</span> Used storage is 4.8 TB, or 40% of capacity. What is the total capacity?</p><p class="case-a"><span class="case-label">Output</span> The original problem, three explanations and teaching notes in Chinese. For primary-school grades 1–6; a parent should review the content.</p></div><a class="case-link" href="/zh/k12">View the problem and notes (Chinese) →</a></div></article>
-      <article class="case"><div class="case-text"><div class="case-tag">Media</div><h3 class="case-title">Create a poster, then revise it</h3><div class="case-turn"><p class="case-q"><span class="case-label">Task</span> Create an event poster, then revise that image in the same conversation.</p><p class="case-a"><span class="case-label">Output</span> An image preview and saved file. Connect a model that supports image generation and editing.</p></div><a class="case-link" href="/en/docs/chat">Read the media guide →</a></div></article>
-      <article class="case"><div class="case-text"><div class="case-tag">Automation</div><h3 class="case-title">Run recurring tasks on a schedule</h3><div class="case-turn"><p class="case-q"><span class="case-label">Task</span> Prepare a weekly report and send it through a configured channel.</p><p class="case-a"><span class="case-label">Output</span> Run history, output files and delivery at the destination. Configure a channel first and keep the service online.</p></div><a class="case-link" href="/en/docs/canvas">Explore workflows and delivery →</a></div></article>
+      <article class="case"><div class="case-text"><div class="case-tag">Research &amp; Docs</div><h3 class="case-title">Turn your sources into a cited report</h3><div class="case-turn"><p class="case-q"><span class="case-label">Task</span> Summarize imported project materials and cite primary sources.</p><div class="case-artifact"><div class="artifact-badge"><span class="artifact-dot"></span>Output Preview · Markdown</div><div class="artifact-body"><div class="artifact-title">Q3 Architecture Review.md</div><div class="artifact-text">Core services decoupled; inference latency dropped 38%<span class="artifact-ref" title="Cited: Architecture Notes.pdf">[1]</span>; desktop memory capped below 85MB<span class="artifact-ref" title="Cited: Benchmarks.csv">[2]</span>.</div></div></div><p class="case-a"><span class="case-label">Output</span> Retrieved passages, citations and a generated document you can check against sources.</p></div><a class="case-link" href="/en/docs/advanced">Explore knowledge and memory →</a></div></article>
+      <article class="case"><div class="case-text"><div class="case-tag">Agent Scenario · Socratic Tutor</div><h3 class="case-title">Understand a problem before explaining it</h3><div class="case-turn"><p class="case-q"><span class="case-label">Task</span> Used storage is 4.8 TB, or 40% of capacity. What is the total capacity?</p><div class="case-artifact"><div class="artifact-badge"><span class="artifact-dot artifact-dot--amber"></span>Step-by-step Guidance · Primary Math</div><div class="artifact-body"><div class="artifact-hint">Prompt: “If capacity is divided into 10 parts, what does 40% represent?”</div><div class="artifact-calc"><span>Formula:</span> 4.8 TB ÷ 40% = <strong>12 TB</strong></div></div></div><p class="case-a"><span class="case-label">Output</span> The original problem, step-by-step explanations and teaching notes. A parent should review content.</p></div><a class="case-link" href="/zh/k12">View the problem and notes (Chinese) →</a></div></article>
+      <article class="case"><div class="case-text"><div class="case-tag">Media &amp; Design</div><h3 class="case-title">Create a poster, then revise it</h3><div class="case-turn"><p class="case-q"><span class="case-label">Task</span> Create an event poster, then revise that image in the same conversation.</p><div class="case-artifact"><div class="artifact-badge"><span class="artifact-dot artifact-dot--cyan"></span>Artifact Canvas · Multi-modal</div><div class="artifact-body"><div class="artifact-file"><span class="file-icon">🎨</span>Reading_Event_Poster_v2.png <span class="file-tag">2048×1480</span></div><div class="artifact-chips"><span class="chip">Prompt tweak</span><span class="chip">Inpaint region</span><span class="chip">Export</span></div></div></div><p class="case-a"><span class="case-label">Output</span> An image preview and saved file. Connect a model that supports image generation and editing.</p></div><a class="case-link" href="/en/docs/chat">Read the media guide →</a></div></article>
+      <article class="case"><div class="case-text"><div class="case-tag">Automation</div><h3 class="case-title">Run recurring tasks on a schedule</h3><div class="case-turn"><p class="case-q"><span class="case-label">Task</span> Prepare a weekly report and send it through a configured channel.</p><div class="case-artifact"><div class="artifact-badge"><span class="artifact-dot artifact-dot--green"></span>Scheduled Pipeline · Fridays 17:30</div><div class="artifact-body"><div class="artifact-pipeline"><span class="pipe-node">1. Aggregate Notes</span><span class="pipe-arr">→</span><span class="pipe-node">2. Draft Digest</span><span class="pipe-arr">→</span><span class="pipe-node">3. Dispatch Channel</span></div></div></div><p class="case-a"><span class="case-label">Output</span> Run history, output files and delivery at destination. Configure a channel first and keep service online.</p></div><a class="case-link" href="/en/docs/canvas">Explore workflows and delivery →</a></div></article>
     </div>
   </div></section>
 
@@ -127,12 +134,57 @@
       <div><h2 class="sec-title">Product capabilities</h2><div class="sec-desc">Combine agents, knowledge, tools and automation for a task. Follow progress and keep results you can reuse.</div>
       <a class="sec-action" href="/assets/downloads/hexclaw-product-intro.pdf?v=5cbb1beb4754">Product overview (Chinese PDF)</a></div>
       <div class="features">
-        <div class="feat"><div class="feat-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--blue-deep)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3 class="feat-title">Choose a local or self-hosted service</h3><div class="feat-desc">Your connected local or self-hosted service stores data and configuration. Online models receive the content sent to them for a task.</div></div>
-        <div class="feat"><div class="feat-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--blue-deep)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3"/></svg></div><h3 class="feat-title">Choose an agent for the task</h3><div class="feat-desc">Create agents with their own roles and configurations. Connect knowledge, skills and tools; K12 tutoring is one specialized scenario.</div></div>
-        <div class="feat"><div class="feat-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--blue-deep)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22v-5M9 7V2M15 7V2M6 13V9a6 6 0 0 1 12 0v4"/><rect x="6" y="13" width="12" height="4" rx="1"/></svg></div><h3 class="feat-title">Find sources and manage memory</h3><div class="feat-desc">Search imported documents with their sources. Inspect, correct, update or delete long-term memories.</div></div>
-        <div class="feat"><div class="feat-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--blue-deep)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg></div><h3 class="feat-title">Connect your tools</h3><div class="feat-desc">Save repeatable methods as skills and prompt templates. Connect external tools and services through MCP as needed.</div></div>
-        <div class="feat"><div class="feat-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--blue-deep)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10M18 20V4M6 20v-4"/></svg></div><h3 class="feat-title">Create documents and media</h3><div class="feat-desc">Use supported models to create documents, images, audio and video, or edit an existing image. View, download and resend files.</div></div>
-        <div class="feat"><div class="feat-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--blue-deep)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><h3 class="feat-title">Schedule tasks and workflows</h3><div class="feat-desc">Start tasks on a schedule or through webhooks, arrange multiple steps and inspect run history. Cancel or resume supported tasks.</div></div>
+        <div class="feat feat-flagship">
+          <div class="feat-flagship-head">
+            <div class="feat-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--blue-deep)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+            <span class="feat-flagship-pill">Core Privacy Foundation</span>
+          </div>
+          <h3 class="feat-title">100% Local-First, Your Data Stays Yours</h3>
+          <div class="feat-desc">Your connected local or self-hosted service stores data and configuration. Online models only receive payload required for tasks—no intermediary telemetry or data retention. <a href="/en/docs/deployment-options">Local vs Cloud Deployment</a></div>
+          <div class="feat-flagship-tags">
+            <span class="feat-flagship-tag">🔒 Local Sandbox</span>
+            <span class="feat-flagship-tag">🛡️ Zero Data Scraping</span>
+            <span class="feat-flagship-tag">🔑 Encrypted API Keys</span>
+          </div>
+        </div>
+
+        <div class="feat feat-flagship">
+          <div class="feat-flagship-head">
+            <div class="feat-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--blue-deep)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3"/></svg></div>
+            <span class="feat-flagship-pill">Extensible Ecosystem</span>
+          </div>
+          <h3 class="feat-title">Any Model Provider, Standard MCP Plugins</h3>
+          <div class="feat-desc">Freely connect local Ollama, DeepSeek, Claude, OpenAI or compatible endpoints. Seamlessly bridge native tools and services via Model Context Protocol.</div>
+          <div class="feat-flagship-tags">
+            <span class="feat-flagship-tag">⚡ Ollama Local Inference</span>
+            <span class="feat-flagship-tag">🌐 DeepSeek &amp; OpenAI</span>
+            <span class="feat-flagship-tag">🔌 MCP Compatible</span>
+          </div>
+        </div>
+
+        <div class="feat feat-compact">
+          <div class="feat-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--blue-deep)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22v-5M9 7V2M15 7V2M6 13V9a6 6 0 0 1 12 0v4"/><rect x="6" y="13" width="12" height="4" rx="1"/></svg></div>
+          <h3 class="feat-title">Find Sources &amp; Manage Memory</h3>
+          <div class="feat-desc">Search imported documents with precise citation. Inspect, correct, update or clear persistent long-term memories anytime.</div>
+        </div>
+
+        <div class="feat feat-compact">
+          <div class="feat-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--blue-deep)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg></div>
+          <h3 class="feat-title">Configure Specialized Agents</h3>
+          <div class="feat-desc">Create custom personas with specialized system prompts, tailored knowledge bases and toolkits for any workflow.</div>
+        </div>
+
+        <div class="feat feat-compact">
+          <div class="feat-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--blue-deep)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10M18 20V4M6 20v-4"/></svg></div>
+          <h3 class="feat-title">Generate Documents &amp; Media</h3>
+          <div class="feat-desc">Create documents, posters, audio and video. Real-time preview, iterative inpainting and one-click export in Artifact panels.</div>
+        </div>
+
+        <div class="feat feat-compact">
+          <div class="feat-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--blue-deep)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+          <h3 class="feat-title">Automate Tasks &amp; Workflows</h3>
+          <div class="feat-desc">Trigger multi-step pipelines via cron schedules or webhooks. Full observability, retry resilience and execution history.</div>
+        </div>
       </div>
     </div>
   </section>
@@ -257,14 +309,27 @@
           <div class="stack-item" data-tip="Provider settings and token checks on your service"><span class="stack-dot" style="background:#f5a623"></span><span class="stack-label">Security Gateway</span></div>
         </div>
       </div>
+      <div class="eco-actions-bar">
+        <a href="https://github.com/hexagon-codes" target="_blank" rel="noopener noreferrer" class="eco-btn eco-btn-primary">
+          <svg class="gh-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          <span>Explore hexagon-codes on GitHub ↗</span>
+        </a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="eco-btn eco-btn-secondary">
+          <span class="eco-star-icon" aria-hidden="true">⭐</span>
+          <span>Star on GitHub</span>
+        </a>
+        <a href="/en/about#ecosystem" class="eco-btn eco-btn-ghost">
+          <span>7-Repo Layered Architecture →</span>
+        </a>
+      </div>
   </div></section>
 
   <section class="closing">
     <div class="section-inner closing-inner">
       <div class="closing-copy">
-        <h2 class="closing-title">Start with HexClaw</h2>
-        <p class="closing-desc">Download the app or read the setup guide, then try a familiar task.</p>
-        <p class="closing-mark">🦀 A little crab, ready to get to work</p>
+        <div class="closing-mark-badge"><span class="crab-emoji" aria-hidden="true">🦀</span> HexClaw walks sideways to work for you</div>
+        <h2 class="closing-title">Start using your private AI workstation</h2>
+        <p class="closing-desc">Free and open source with zero sign-up required. Download now to connect your own models and private knowledge bases.</p>
       </div>
       <div class="closing-actions">
         <a class="btn btn-solid" href="#download">Download &amp; install</a>
@@ -276,44 +341,45 @@
   </main>
 
   <footer class="footer">
-    <div class="footer-main">
-      <div class="footer-grid">
-        <div class="footer-col">
-          <div class="footer-col-title">Product</div>
-          <a href="#download">Download</a>
-          <a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer">GitHub</a>
-          <a href="/en/changelog">Changelog</a>
-        </div>
-        <div class="footer-col">
-          <div class="footer-col-title">Developers</div>
-          <a href="/en/docs/">Docs</a>
-          <a href="/en/docs/getting-started">Getting Started</a>
-          <a href="https://github.com/hexagon-codes/hexclaw-desktop/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">Apache-2.0</a>
-        </div>
-        <div class="footer-col">
-          <div class="footer-col-title">Community</div>
-          <a href="https://github.com/hexagon-codes/hexclaw-desktop/issues" target="_blank" rel="noopener noreferrer">Issues</a>
-          <a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer">Twitter / X</a>
-        </div>
-        <div class="footer-col">
-          <div class="footer-col-title">About</div>
-          <a href="/en/about">About Us</a>
-          <a href="/en/privacy">Privacy Policy</a>
-          <a href="/en/terms">Terms of Service</a>
-          <a href="/en/third-party-ai-services">Third-Party AI Services</a>
-          <a href="mailto:ai@hexclaw.net">Contact Us</a>
-          <a href="mailto:support@hexclaw.net">Feedback</a>
-        </div>
+  <div class="footer-main">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-col-title">Product</div>
+        <a href="#download">Download</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="/en/changelog">Changelog</a>
       </div>
-      <div class="footer-wechat">
-        <img width="430" height="430" loading="lazy" decoding="async" src="../assets/brand/wechat-qr.jpg" alt="HexClaw WeChat QR Code">
-        <span class="footer-wechat-label">WeChat Official Account</span>
+      <div class="footer-col">
+        <div class="footer-col-title">Developers</div>
+        <a href="/en/docs/">Documentation</a>
+        <a href="/zh/blog/">Technical Blog</a>
+        <a href="/en/docs/getting-started">Getting Started</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">Apache-2.0</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Community</div>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/issues" target="_blank" rel="noopener noreferrer">Issues</a>
+        <a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer">Twitter / X</a>
+        <a href="mailto:ai@hexclaw.net">Contact Us</a>
+        <a href="mailto:support@hexclaw.net">Feedback</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">About</div>
+        <a href="/en/about">About Us</a>
+        <a href="/en/privacy">Privacy Policy</a>
+        <a href="/en/terms">Terms of Service</a>
+        <a href="/en/third-party-ai-services">Third-Party AI Services</a>
       </div>
     </div>
-    <div class="footer-bottom">
-      <span class="footer-copy">&copy; 2025&ndash;2026 hexagon-codes</span>
+    <div class="footer-wechat">
+      <img width="430" height="430" loading="lazy" decoding="async" src="../assets/brand/wechat-qr.jpg" alt="HexClaw WeChat QR Code">
+      <span class="footer-wechat-label">WeChat Official Account</span>
     </div>
-  </footer>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">&copy; 2025&ndash;2026 hexagon-codes</span>
+  </div>
+</footer>
 
   <script src="../assets/js/home.js?v=e8ab8c68fa2b"></script>
 </body></html>

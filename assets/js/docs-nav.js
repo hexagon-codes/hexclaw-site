@@ -164,9 +164,9 @@ if (nav) {
   const key = lang.startsWith("zh") ? "zh" : lang.startsWith("ug") ? "ug" : "en";
 
   const STR = {
-    zh: { toc: "本页目录", copy: "复制", copied: "已复制", copyAria: "复制代码", copyFailed: "无法自动复制，已选中代码，请手动复制。", anchor: "本节链接", docs: "文档", prev: "上一篇", next: "下一篇" },
-    en: { toc: "On this page", copy: "Copy", copied: "Copied", copyAria: "Copy code", copyFailed: "Automatic copy is unavailable. The code is selected; copy it manually.", anchor: "Link to this section", docs: "Docs", prev: "Previous", next: "Next" },
-    ug: { toc: "بەت مۇندەرىجىسى", copy: "كۆچۈرۈش", copied: "كۆچۈرۈلدى", copyAria: "كودنى كۆچۈرۈش", copyFailed: "ئاپتوماتىك كۆچۈرگىلى بولمىدى؛ كود تاللاندى، قولدا كۆچۈرۈڭ.", anchor: "بۇ بۆلەكنىڭ ئۇلانمىسى", docs: "ھۆججەتلەر", prev: "ئالدىنقى", next: "كېيىنكى" }
+    zh: { toc: "本页目录", copy: "复制", copied: "已复制", copyAria: "复制代码", copyFailed: "无法自动复制，已选中代码，请手动复制。", anchor: "本节链接", docs: "文档", prev: "上一篇", next: "下一篇", collapseSidebar: "收起侧栏", expandSidebar: "展开侧栏" },
+    en: { toc: "On this page", copy: "Copy", copied: "Copied", copyAria: "Copy code", copyFailed: "Automatic copy is unavailable. The code is selected; copy it manually.", anchor: "Link to this section", docs: "Docs", prev: "Previous", next: "Next", collapseSidebar: "Collapse sidebar", expandSidebar: "Expand sidebar" },
+    ug: { toc: "بەت مۇندەرىجىسى", copy: "كۆچۈرۈش", copied: "كۆچۈرۈلدى", copyAria: "كودنى كۆچۈرۈش", copyFailed: "ئاپتوماتىك كۆچۈرگىلى بولمىدى؛ كود تاللاندى، قولدا كۆچۈرۈڭ.", anchor: "بۇ بۆلەكنىڭ ئۇلانمىسى", docs: "ھۆججەتلەر", prev: "ئالدىنقى", next: "كېيىنكى", collapseSidebar: "يان بالداقنى قاتلاش", expandSidebar: "يان بالداقنى كېڭەيتىش" }
   }[key];
 
   const SVG_COPY = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
@@ -392,5 +392,74 @@ if (nav) {
         }
       }
     }
+  }
+
+  /* ---- Collapsible Left Sidebar (Zen / Focus Mode) ---- */
+  if (sidebar) {
+    const desktop = window.matchMedia("(min-width: 769px)");
+    const collapseKey = "hexclaw-doc-sidebar-collapsed";
+
+    const sbTitle = sidebar.querySelector(".sb-t");
+    const collapseBtn = document.createElement("button");
+    collapseBtn.type = "button";
+    collapseBtn.className = "sb-collapse-btn";
+    collapseBtn.setAttribute("aria-label", STR.collapseSidebar);
+    collapseBtn.setAttribute("title", STR.collapseSidebar + " ([)");
+    collapseBtn.innerHTML =
+      '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 3v18"/><path d="m16 15-3-3 3-3"/></svg>';
+
+    if (sbTitle) {
+      const sbHeader = document.createElement("div");
+      sbHeader.className = "sb-header";
+      sbTitle.parentNode.insertBefore(sbHeader, sbTitle);
+      sbHeader.appendChild(sbTitle);
+      sbHeader.appendChild(collapseBtn);
+    } else {
+      sidebar.insertBefore(collapseBtn, sidebar.firstChild);
+    }
+
+    const expandBtn = document.createElement("button");
+    expandBtn.type = "button";
+    expandBtn.className = "sb-expand-btn";
+    expandBtn.setAttribute("aria-label", STR.expandSidebar);
+    expandBtn.setAttribute("title", STR.expandSidebar + " ([)");
+    expandBtn.innerHTML =
+      '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>';
+    document.body.appendChild(expandBtn);
+
+    const setCollapsed = (collapsed, save = true) => {
+      document.body.classList.toggle("sb-collapsed", collapsed);
+      collapseBtn.setAttribute("aria-expanded", (!collapsed).toString());
+      expandBtn.setAttribute("aria-expanded", (!collapsed).toString());
+      if (save) {
+        try { localStorage.setItem(collapseKey, collapsed ? "1" : "0"); } catch {}
+      }
+    };
+
+    try {
+      if (desktop.matches && localStorage.getItem(collapseKey) === "1") {
+        setCollapsed(true, false);
+      }
+    } catch {}
+
+    collapseBtn.addEventListener("click", () => setCollapsed(true));
+    expandBtn.addEventListener("click", () => setCollapsed(false));
+
+    document.addEventListener("keydown", (event) => {
+      if (!desktop.matches) return;
+      if (event.key === "[" && !event.ctrlKey && !event.metaKey && !event.altKey) {
+        const tag = (document.activeElement?.tagName || "").toLowerCase();
+        if (tag === "input" || tag === "textarea" || document.activeElement?.isContentEditable) return;
+        event.preventDefault();
+        setCollapsed(!document.body.classList.contains("sb-collapsed"));
+      } else if ((event.key === "b" || event.key === "B") && (event.metaKey || event.ctrlKey) && !event.altKey) {
+        event.preventDefault();
+        setCollapsed(!document.body.classList.contains("sb-collapsed"));
+      }
+    });
+
+    desktop.addEventListener("change", (e) => {
+      if (!e.matches) setCollapsed(false, false);
+    });
   }
 })();

@@ -36,7 +36,7 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"HexClaw","item":"https://hexclaw.net/en/"},{"@type":"ListItem","position":2,"name":"About","item":"https://hexclaw.net/en/about"}],"@id":"https://hexclaw.net/en/about#breadcrumb"}
 </script>
-<link rel="stylesheet" href="../assets/css/docs-a35628a8707a.css">
+<link rel="stylesheet" href="../assets/css/docs-057a0f50bd0a.css">
 </head>
 <body class="docs-page content-page about-page">
 <a href="#main" class="skip-link">Skip to content</a>
@@ -46,71 +46,190 @@
 </nav>
 <main id="main" class="m content-main">
 <header class="page-lead">
-<h1>About HexClaw</h1>
-<p class="sub">A full-stack open source AI Agent ecosystem built by the hexagon-codes team.</p>
+  <div class="page-lead-top">
+    <div class="page-lead-titles">
+      <h1>About HexClaw</h1>
+      <p class="sub">A local-first, privacy-preserving, full-stack open source AI Agent toolchain ecosystem. Engineered for determinism, making large language models your dependable assistants.</p>
+      <div class="about-hero-meta">
+        <span class="about-status-pill"><span class="pulse-dot" aria-hidden="true"></span>7-Repo Layered Architecture</span>
+        <span class="about-trust-tag">~1,600,000 Lines of Code</span>
+        <span class="about-trust-tag">100% Local-First &amp; Private</span>
+        <span class="about-trust-tag">Apache-2.0 License</span>
+      </div>
+    </div>
+    <div class="about-hero-links">
+      <a href="https://github.com/hexagon-codes" target="_blank" rel="noopener noreferrer" class="about-btn-primary">GitHub Organization ↗</a>
+      <a href="/en/changelog" class="about-btn-subtle">View Changelog</a>
+    </div>
+  </div>
 </header>
 
 <h2>Team</h2>
-<p>HexClaw is developed and maintained by the <strong>hexagon-codes</strong> team. We are committed to building a local-first, privacy-preserving, full-stack open source AI Agent toolchain so everyone can use large language models safely and efficiently.</p>
+<div class="about-story-card">
+  <div class="about-story-badge">Why We Built HexClaw</div>
+  <p>HexClaw is developed and maintained by the <strong>hexagon-codes</strong> team. We are committed to building a local-first, privacy-preserving, full-stack open source AI Agent toolchain so everyone can use large language models safely and efficiently.</p>
+  <p>Most existing open source AI agents lack adequate safeguards, rate limiting, and token budget controls, making them risky for production and serious personal workflows. Commercial alternatives provide compliance but rely on closed-source cloud hosting where data privacy is out of your hands.</p>
+  <p>We combine the <strong>functional breadth of open source, enterprise-grade safety, multi-channel connectivity, and 100% local-first deployment</strong> into a single cohesive platform.</p>
+</div>
 
 <h2>Open Source Ecosystem</h2>
-<p>The project uses a layered architecture across 7 repositories, each independently usable:</p>
-<ul>
-<li><strong>toolkit</strong> — Infrastructure</li>
-<li><strong>ai-core</strong> — LLM adapters</li>
-<li><strong>hexagon</strong> — Agent framework</li>
-<li><strong>hexclaw</strong> — Backend service</li>
-<li><strong>hexclaw-desktop</strong> — Desktop client</li>
-<li><strong>hexclaw-ui</strong> — Web client</li>
-<li><strong>hexagon-ui</strong> — Agent console</li>
+<p>The project uses a layered architecture across 7 repositories with strict one-way dependencies; each layer can be used independently:</p>
+<ul class="about-repos">
+  <li>
+    <div class="repo-card-head">
+      <a href="https://github.com/hexagon-codes/toolkit" target="_blank" rel="noopener noreferrer" class="repo-name"><strong>toolkit</strong> <span class="repo-arrow">↗</span></a>
+      <span class="repo-badge">Foundation Layer</span>
+    </div>
+    <div class="repo-desc">140,000 lines of pure Go standard library with zero external dependencies; providing caching, crypto, net, and worker pools.</div>
+    <div class="repo-meta"><span>Go Standard Library</span><span>·</span><span>Zero Dependencies</span></div>
+  </li>
+  <li>
+    <div class="repo-card-head">
+      <a href="https://github.com/hexagon-codes/ai-core" target="_blank" rel="noopener noreferrer" class="repo-name"><strong>ai-core</strong> <span class="repo-arrow">↗</span></a>
+      <span class="repo-badge">Capability Layer</span>
+    </div>
+    <div class="repo-desc">63,000 lines unified multi-provider adapter layer (OpenAI, Claude, DeepSeek, Ollama), embeddings abstraction, and Smart Router.</div>
+    <div class="repo-meta"><span>Multi-Provider</span><span>·</span><span>Smart Router</span></div>
+  </li>
+  <li>
+    <div class="repo-card-head">
+      <a href="https://github.com/hexagon-codes/hexagon" target="_blank" rel="noopener noreferrer" class="repo-name"><strong>hexagon</strong> <span class="repo-arrow">↗</span></a>
+      <span class="repo-badge">Agent Engine</span>
+    </div>
+    <div class="repo-desc">234,000-line core framework with 10 Agent topologies, graph orchestration (Graph/BSP), 7-stage RAG, and &lt;10ms native sandbox.</div>
+    <div class="repo-meta"><span>10 Agent Types</span><span>·</span><span>Graph BSP</span><span>·</span><span>Native Sandbox</span></div>
+  </li>
+  <li>
+    <div class="repo-card-head">
+      <a href="https://github.com/hexagon-codes/hexclaw" target="_blank" rel="noopener noreferrer" class="repo-name"><strong>hexclaw</strong> <span class="repo-arrow">↗</span></a>
+      <span class="repo-badge">Service Layer</span>
+    </div>
+    <div class="repo-desc">752,000 lines single-binary backend; integrates 13 message channels, 6-layer security gateway, and 71 endpoints.</div>
+    <div class="repo-meta"><span>Single Binary</span><span>·</span><span>13 Channels</span><span>·</span><span>6-Layer Gateway</span></div>
+  </li>
+  <li>
+    <div class="repo-card-head">
+      <a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="repo-name"><strong>hexclaw-desktop</strong> <span class="repo-arrow">↗</span></a>
+      <span class="repo-badge">Desktop Client</span>
+    </div>
+    <div class="repo-desc">412,000-line cross-platform desktop app built with Tauri; provides chat, workflow canvas, K12 Socratic tutoring, and local knowledge assets.</div>
+    <div class="repo-meta"><span>Tauri Native</span><span>·</span><span>Low Footprint</span><span>·</span><span>Local-First</span></div>
+  </li>
+  <li>
+    <div class="repo-card-head">
+      <a href="https://github.com/hexagon-codes/hexclaw-ui" target="_blank" rel="noopener noreferrer" class="repo-name"><strong>hexclaw-ui</strong> <span class="repo-arrow">↗</span></a>
+      <span class="repo-badge">Web UI</span>
+    </div>
+    <div class="repo-desc">Lightweight responsive web client providing multi-device chat, tool visualization, and workflow editing.</div>
+    <div class="repo-meta"><span>Responsive Web</span><span>·</span><span>Streaming Chat</span></div>
+  </li>
+  <li>
+    <div class="repo-card-head">
+      <a href="https://github.com/hexagon-codes/hexagon-ui" target="_blank" rel="noopener noreferrer" class="repo-name"><strong>hexagon-ui</strong> <span class="repo-arrow">↗</span></a>
+      <span class="repo-badge">Observability</span>
+    </div>
+    <div class="repo-desc">Agent observability console supporting end-to-end tracing, prompt debugging, token cost tracking, and metrics.</div>
+    <div class="repo-meta"><span>Distributed Tracing</span><span>·</span><span>Cost Tracking</span><span>·</span><span>DevUI</span></div>
+  </li>
 </ul>
 
 <h2>Technical Architecture</h2>
-<p>HexClaw is built on our in-house Hexagon Agent engine, using a Tauri + Go stack. The desktop app is built with Tauri for cross-platform native deployment. The backend Sidecar, written in Go, powers Agent orchestration, MCP integration, knowledge base, workflows, and more. The desktop connects to a local or self-hosted cloud service, which stores the data. Switching services does not migrate data automatically. Offline use requires local models and no network integrations.</p>
+<p>HexClaw is built on our in-house Hexagon Agent engine with a Tauri + Go stack, engineered around high concurrency, zero bloat, built-in security, and native sandboxing:</p>
+<div class="about-arch-grid">
+  <div class="about-arch-card">
+    <div class="arch-card-icon">🏗️</div>
+    <h3>5-Layer Strict One-Way Dependencies</h3>
+    <p>From the bottom <code>toolkit</code>, up to <code>ai-core</code>, <code>hexagon</code>, <code>hexclaw</code>, and clients. No cyclic dependencies, allowing every layer to be reused as an independent Go module.</p>
+  </div>
+  <div class="about-arch-card">
+    <div class="arch-card-icon">⚡</div>
+    <h3>Go Concurrency &amp; Single Binary</h3>
+    <p>Agent workloads are I/O bound. Goroutines handle massive concurrency effortlessly; servers compile to a single self-contained binary running in &lt;100ms with zero Python virtual env headaches.</p>
+  </div>
+  <div class="about-arch-card">
+    <div class="arch-card-icon">🛡️</div>
+    <h3>Native Lightweight Sandbox</h3>
+    <p>2,713 lines of Go leveraging OS primitives (macOS Seatbelt, Linux Landlock/seccomp, Windows AppContainer) for &lt;10ms cold start execution isolation without Docker.</p>
+  </div>
+  <div class="about-arch-card">
+    <div class="arch-card-icon">🔒</div>
+    <h3>6-Layer Fail-Closed Security Gateway</h3>
+    <p>Auth verification → Rate limiting → Token budget → 10-pattern prompt injection detection → 7-class PII redaction → RBAC and full audit trails.</p>
+  </div>
+  <div class="about-arch-card">
+    <div class="arch-card-icon">🧩</div>
+    <h3>10 Agent Types &amp; Runnable[I,O]</h3>
+    <p>From BaseAgent to Supervisor teams. Every component implements the unified <code>Runnable[I,O]</code> generic interface, supporting Graph BSP and 7-stage pluggable RAG.</p>
+  </div>
+  <div class="about-arch-card">
+    <div class="arch-card-icon">🌐</div>
+    <h3>13 Channels &amp; 100% Local-First</h3>
+    <p>Connects natively to Feishu, DingTalk, WeCom, Telegram, Web, and more. Data and vector embeddings stay strictly on your local disk with optional complete offline Ollama operation.</p>
+  </div>
+</div>
 
 <h2>Contact</h2>
-<p>For business inquiries or technical support, please reach out:</p>
-<ul>
-<li>Business: <a href="mailto:ai@hexclaw.net">ai@hexclaw.net</a></li>
-<li>Support: <a href="mailto:support@hexclaw.net">support@hexclaw.net</a></li>
-<li>GitHub: <a href="https://github.com/hexagon-codes" target="_blank" rel="noopener noreferrer">github.com/hexagon-codes</a></li>
+<p>For business collaboration, open source contributions, or technical inquiries, reach out through our official channels:</p>
+<ul class="about-contact">
+  <li>
+    <span class="contact-label">Business Inquiries</span>
+    <a href="mailto:ai@hexclaw.net">ai@hexclaw.net</a>
+    <span class="contact-note">Commercial partnerships and custom integrations</span>
+  </li>
+  <li>
+    <span class="contact-label">Support &amp; Feedback</span>
+    <a href="mailto:support@hexclaw.net">support@hexclaw.net</a>
+    <span class="contact-note">Bug reports, feature requests, and help</span>
+  </li>
+  <li>
+    <span class="contact-label">GitHub Community</span>
+    <a href="https://github.com/hexagon-codes" target="_blank" rel="noopener noreferrer">github.com/hexagon-codes</a>
+    <span class="contact-note">Source code, issues, and pull requests</span>
+  </li>
 </ul>
 
 </main>
 <footer class="footer">
-<div class="footer-main">
-<div class="footer-brand">
-<a class="footer-logo" href="/en/">HexClaw</a>
-<p class="footer-tagline">A local-first, open-source AI agent workspace for real teams and personal workflows.</p>
-</div>
-<div class="footer-columns">
-<div class="footer-col">
-<div class="footer-col-title">Product</div>
-<a href="/en/">Home</a>
-<a href="/en/#download">Download</a>
-<a href="/en/changelog">Changelog</a>
-</div>
-<div class="footer-col">
-<div class="footer-col-title">Developers</div>
-<a href="/en/docs/">Docs</a>
-<a href="/en/docs/getting-started">Getting Started</a>
-<a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer">GitHub</a>
-</div>
-<div class="footer-col">
-<div class="footer-col-title">Legal & Contact</div>
-<a href="/en/privacy">Privacy Policy</a>
-<a href="/en/terms">Terms of Service</a>
-<a href="/en/third-party-ai-services">Third-Party AI Services</a>
-<a href="mailto:ai@hexclaw.net">Contact Sales</a>
-<a href="mailto:support@hexclaw.net">Feedback</a>
-</div>
-</div>
-</div>
-<div class="footer-bottom">
-<span class="footer-copy">&copy; 2025&ndash;2026 hexagon-codes</span>
-</div>
+  <div class="footer-main">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-col-title">Product</div>
+        <a href="/en/#download">Download</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="/en/changelog">Changelog</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Developers</div>
+        <a href="/en/docs/">Documentation</a>
+        <a href="/zh/blog/">Technical Blog</a>
+        <a href="/en/docs/getting-started">Getting Started</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">Apache-2.0</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Community</div>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/issues" target="_blank" rel="noopener noreferrer">Issues</a>
+        <a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer">Twitter / X</a>
+        <a href="mailto:ai@hexclaw.net">Contact Us</a>
+        <a href="mailto:support@hexclaw.net">Feedback</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">About</div>
+        <a href="/en/about">About Us</a>
+        <a href="/en/privacy">Privacy Policy</a>
+        <a href="/en/terms">Terms of Service</a>
+        <a href="/en/third-party-ai-services">Third-Party AI Services</a>
+      </div>
+    </div>
+    <div class="footer-wechat">
+      <img width="430" height="430" loading="lazy" decoding="async" src="../assets/brand/wechat-qr.jpg" alt="HexClaw WeChat QR Code">
+      <span class="footer-wechat-label">WeChat Official Account</span>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">&copy; 2025&ndash;2026 hexagon-codes</span>
+  </div>
 </footer>
-<script src="../assets/js/docs-nav.js?v=39cc54398ffc"></script>
+<script src="../assets/js/docs-nav.js?v=6f8edd278f93"></script>
 <script>
 function toggleTheme(){var c=document.documentElement.getAttribute("data-theme");var n=c==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);localStorage.setItem("hexclaw-theme",n)}
 (function(){var s=localStorage.getItem("hexclaw-theme");var d=window.matchMedia("(prefers-color-scheme:dark)").matches;if(s==="dark"||(!s&&d))document.documentElement.setAttribute("data-theme","dark")})();
