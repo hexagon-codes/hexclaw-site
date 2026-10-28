@@ -117,11 +117,11 @@
 
 <h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">第一现场：手机拍张照，几分钟收到一份讲题报告</h2>
 <p style="margin: 8px 0;">晚上辅导作业，很少有家长会正襟危坐打开电脑敲命令。最真实的动作就是掏出手机拍张照，甩进私聊里。</p>
-<p style="margin: 8px 0;">在实际体验中，河蟹 AI 并不是那种泛化聊天机器人草率秒回文字——拍下作业图发过去后，助手会先回复一条<strong>“批改中……”</strong>。后台跑完多阶段推演后，钉钉对话框里会弹出一张结构化的批改摘要卡片，并直接附带一份 3.7 MB 的高清讲题 PDF：</p>
+<p style="margin: 8px 0;">在实际体验中，河蟹 AI 并不是那种泛化聊天机器人草率秒回文字——拍下作业图发过去后，助手会先回复一条<strong>“批改中……”</strong>。后台跑完多阶段推演后，钉钉对话框里会弹出一张结构化的批改摘要卡片，并直接附带一份 733.9 KB 的高清讲题 PDF：</p>
 
 
 
-<figure style="text-align: center; margin: 18px 0 6px;"><img width="1334" height="1466" loading="lazy" decoding="async" src="../../assets/blog/k12-fraction-case/dingtalk-grading.png" alt="钉钉私聊中的批改反馈：批改摘要与作业批改结果 PDF 附件" style="display: block; max-width: 100%; height: auto; margin: 0 auto; border: 1px solid var(--article-border, #d8e6f0); border-radius: 6px; box-sizing: border-box;"><figcaption style="text-align: center; font-size: 13px; color:var(--article-secondary, #5f7b9c); margin: 0 0 18px; line-height: 1.6;">钉钉端接收的第一现场：3 题中识别出 2 题需关注、1 题已解答，并生成 3.7 MB 的完整讲题报告。</figcaption></figure>
+<figure style="text-align: center; margin: 18px 0 6px;"><img width="1662" height="1802" loading="lazy" decoding="async" src="../../assets/blog/k12-fraction-case/dingtalk-grading.png?v=f82de6f0872a" alt="钉钉私聊中的批改反馈：批改摘要与作业批改结果 PDF 附件" style="display: block; max-width: 100%; height: auto; margin: 0 auto; border: 1px solid var(--article-border, #d8e6f0); border-radius: 6px; box-sizing: border-box;"><figcaption style="text-align: center; font-size: 13px; color:var(--article-secondary, #5f7b9c); margin: 0 0 18px; line-height: 1.6;">钉钉端接收的第一现场：3 题中识别出 2 题需关注、1 题已解答，并生成 733.9 KB 的完整讲题报告。</figcaption></figure>
 
 <p style="margin: 8px 0;">仔细看卡片底部的处理轨迹：<strong>“处理摘要：图片识题 → 题目求解 → 作业批改 → 家长指南 → 原图批注”</strong>，底层调用专用解题 Skill。为什么这不是一次单步 Completion 文本吐字，而是需要两三分钟推演？因为后台执行的是一套严密的闭环流水线：</p>
 
@@ -134,7 +134,7 @@
 <li style="margin: 6px 0;"><strong>课标约束求解与验算：</strong>限定在小学六年级知识域内（禁止跳步或用初中高阶代数），由求解器独立交叉验算；</li>
 <li style="margin: 6px 0;"><strong>作业批改判卷：</strong>细分“待核对”与“已解答”，保护孩子的半程推导火花，不机械打红叉；</li>
 <li style="margin: 6px 0;"><strong>循证教学指南生成：</strong>调用 K12 教学 Skill，自动编排数形结合线段图示与苏格拉底式追问台词；</li>
-<li style="margin: 6px 0;"><strong>原图批注、矢量排版与推送：</strong>在作业原图上标注批改痕迹，再由 Typst 排版引擎将图文编译为一份 3.7 MB 的高清 PDF，连同摘要卡片推回钉钉。</li>
+<li style="margin: 6px 0;"><strong>原图批注、矢量排版与推送：</strong>在作业原图上标注批改痕迹，再由 Typst 排版引擎将图文编译为一份 733.9 KB 的高清 PDF，连同摘要卡片推回钉钉。</li>
 </ul>
 
 <p style="margin: 8px 0;">再看卡片里的判卷细节：<strong>“共 3 题 · 0 题正确 · 2 题需关注 · 1 题已解答”</strong>。为什么不直接打大红叉？因为孩子在草稿纸上并不是胡写，他的解题逻辑其实已经走完了一半。</p>
