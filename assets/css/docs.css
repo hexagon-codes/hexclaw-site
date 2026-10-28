@@ -213,7 +213,11 @@ a {
 
 .tn .tn-r a.nav-cta,
 .topnav-links a.nav-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   white-space: nowrap;
+  gap: 6px;
   padding: 8px 18px;
   background: rgba(255, 255, 255, 0.72);
   border: 1px solid rgba(var(--accent-rgb), 0.14);
@@ -3324,3 +3328,68 @@ body.docs-hub {
   .usage-mobile dl { display:grid; grid-template-columns:minmax(140px,.6fr) minmax(0,1.4fr); column-gap:24px; align-items:baseline; margin-top:8px; }
   .usage-mobile dt, .usage-mobile dd { margin:0; padding-block:8px; }
 }
+
+/* --------------------------------------------------------------------------
+   Floating Back-to-Top Button (Unified Documentation & Portal Style)
+   -------------------------------------------------------------------------- */
+.back-to-top {
+  position: fixed;
+  bottom: 32px;
+  inset-inline-end: 32px;
+  z-index: 900;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(var(--accent-rgb, 95, 179, 234), 0.22);
+  box-shadow: 0 4px 16px rgba(18, 50, 76, 0.08);
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease, background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+}
+
+.back-to-top.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.back-to-top:hover {
+  background: #ffffff;
+  border-color: var(--blue-deep);
+  color: var(--blue-deep);
+  box-shadow: 0 6px 20px rgba(var(--accent-rgb, 95, 179, 234), 0.2);
+  transform: translateY(-2px);
+}
+
+[data-theme="dark"] .back-to-top {
+  background: rgba(21, 30, 45, 0.85);
+  border-color: rgba(95, 179, 234, 0.25);
+  color: #e2e8f0;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .back-to-top:hover {
+  background: rgba(30, 45, 65, 0.95);
+  border-color: var(--blue);
+  color: var(--blue-light);
+}
+
+@media (max-width: 640px) {
+  .back-to-top {
+    bottom: 24px;
+    inset-inline-end: 20px;
+    padding: 7px 12px;
+    font-size: 12px;
+  }
+}
+

@@ -164,9 +164,9 @@ if (nav) {
   const key = lang.startsWith("zh") ? "zh" : lang.startsWith("ug") ? "ug" : "en";
 
   const STR = {
-    zh: { toc: "本页目录", copy: "复制", copied: "已复制", copyAria: "复制代码", copyFailed: "无法自动复制，已选中代码，请手动复制。", anchor: "本节链接", docs: "文档", prev: "上一篇", next: "下一篇", collapseSidebar: "收起侧栏", expandSidebar: "展开侧栏" },
-    en: { toc: "On this page", copy: "Copy", copied: "Copied", copyAria: "Copy code", copyFailed: "Automatic copy is unavailable. The code is selected; copy it manually.", anchor: "Link to this section", docs: "Docs", prev: "Previous", next: "Next", collapseSidebar: "Collapse sidebar", expandSidebar: "Expand sidebar" },
-    ug: { toc: "بەت مۇندەرىجىسى", copy: "كۆچۈرۈش", copied: "كۆچۈرۈلدى", copyAria: "كودنى كۆچۈرۈش", copyFailed: "ئاپتوماتىك كۆچۈرگىلى بولمىدى؛ كود تاللاندى، قولدا كۆچۈرۈڭ.", anchor: "بۇ بۆلەكنىڭ ئۇلانمىسى", docs: "ھۆججەتلەر", prev: "ئالدىنقى", next: "كېيىنكى", collapseSidebar: "يان بالداقنى قاتلاش", expandSidebar: "يان بالداقنى كېڭەيتىش" }
+    zh: { toc: "本页目录", copy: "复制", copied: "已复制", copyAria: "复制代码", copyFailed: "无法自动复制，已选中代码，请手动复制。", anchor: "本节链接", docs: "文档", prev: "上一篇", next: "下一篇", collapseSidebar: "收起侧栏", expandSidebar: "展开侧栏", backToTop: "返回顶部", top: "顶部" },
+    en: { toc: "On this page", copy: "Copy", copied: "Copied", copyAria: "Copy code", copyFailed: "Automatic copy is unavailable. The code is selected; copy it manually.", anchor: "Link to this section", docs: "Docs", prev: "Previous", next: "Next", collapseSidebar: "Collapse sidebar", expandSidebar: "Expand sidebar", backToTop: "Back to top", top: "Top" },
+    ug: { toc: "بەت مۇندەرىجىسى", copy: "كۆچۈرۈش", copied: "كۆچۈرۈلدى", copyAria: "كودنى كۆچۈرۈش", copyFailed: "ئاپتوماتىك كۆچۈرگىلى بولمىدى؛ كود تاللاندى، قولدا كۆچۈرۈڭ.", anchor: "بۇ بۆلەكنىڭ ئۇلانمىسى", docs: "ھۆججەتلەر", prev: "ئالدىنقى", next: "كېيىنكى", collapseSidebar: "يان بالداقنى قاتلاش", expandSidebar: "يان بالداقنى كېڭەيتىش", backToTop: "چوققىغا قايتىش", top: "چوققا" }
   }[key];
 
   const SVG_COPY = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
@@ -462,4 +462,42 @@ if (nav) {
       if (!e.matches) setCollapsed(false, false);
     });
   }
+
+  // 统一浮动返回顶部按钮（与技术博客页视觉一致，支持深浅色与平滑滚动）
+  (() => {
+    let btn = document.getElementById("backToTop");
+    if (!btn) {
+      btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "back-to-top";
+      btn.id = "backToTop";
+      btn.setAttribute("aria-label", STR.backToTop || "返回顶部");
+      btn.setAttribute("title", STR.backToTop || "返回顶部");
+      btn.innerHTML =
+        '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg>' +
+        `<span>${STR.top || "顶部"}</span>`;
+      document.body.appendChild(btn);
+    }
+    let ticking = false;
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            if (window.scrollY > 320) {
+              btn.classList.add("is-visible");
+            } else {
+              btn.classList.remove("is-visible");
+            }
+            ticking = false;
+          });
+          ticking = true;
+        }
+      },
+      { passive: true }
+    );
+    btn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  })();
 })();

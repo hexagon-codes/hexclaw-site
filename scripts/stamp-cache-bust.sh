@@ -45,8 +45,19 @@ export STAMP_PAIRS="${pairs[*]}"
 docs_asset="assets/css/docs.css"
 docs_hash=$(hash_of "$docs_asset")
 docs_version="docs-${docs_hash}.css"
-cp "$docs_asset" "assets/css/$docs_version"
+if [ "$docs_asset" != "assets/css/$docs_version" ]; then
+  cp "$docs_asset" "assets/css/$docs_version"
+fi
 export DOCS_VERSION_NAME="$docs_version"
+
+changelog_asset="assets/css/changelog.css"
+changelog_hash=$(hash_of "$changelog_asset")
+changelog_version="changelog-${changelog_hash}.css"
+if [ "$changelog_asset" != "assets/css/$changelog_version" ]; then
+  cp "$changelog_asset" "assets/css/$changelog_version"
+fi
+export CHANGELOG_VERSION_NAME="$changelog_version"
+
 find . -name '*.html' -not -path './.git/*' -print0 \
   | xargs -0 perl -pi -e '
       BEGIN {
@@ -60,6 +71,7 @@ find . -name '*.html' -not -path './.git/*' -print0 \
         s/\Q$b\E\?v=[0-9A-Za-z]+/$b?v=$h/g;
       }
       s/docs(?:-[0-9a-f]{12})?\.css(?:\?v=[0-9A-Za-z]+)?/$ENV{DOCS_VERSION_NAME}/g;
+      s/changelog(?:-[0-9a-f]{12})?\.css(?:\?v=[0-9A-Za-z]+)?/$ENV{CHANGELOG_VERSION_NAME}/g;
     '
 
 echo "cache-bust stamped across HTML."
