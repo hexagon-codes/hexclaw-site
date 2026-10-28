@@ -85,7 +85,10 @@ test("navigation scripts own hamburger state, Escape, and desktop reset", () => 
     const source = read(path.join(root, file));
     assert.match(source, /aria-expanded/);
     assert.match(source, /event\.key === "Escape"/);
-    assert.match(source, /matchMedia\("\(min-width: 1101px\)"\)/);
+    const desktopQuery = file.endsWith("docs-nav.js")
+      ? /matchMedia\(document\.documentElement\.lang\.startsWith\("ug"\)\s*\?\s*"\(min-width: 1280px\)"\s*:\s*"\(min-width: 1101px\)"\)/
+      : /matchMedia\("\(min-width: 1101px\)"\)/;
+    assert.match(source, desktopQuery);
   }
 });
 
