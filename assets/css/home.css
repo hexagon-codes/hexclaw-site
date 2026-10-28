@@ -897,13 +897,18 @@
     .hero-content .hero-tagline { font-size:16px; }
     .hero-actions .btn { min-height:48px; padding:12px 24px; font-size:16px; }
     .hero-actions { gap:14px; }
+    /* 版本作为完整标识保留，品牌承诺按词组换行，避免拆开中文词语。 */
+    .hero-pill-badge { white-space:nowrap; flex-shrink:0; }
+    .hero-pill-dot { flex-shrink:0; }
+    .hero-pill-text { min-width:0; }
+    .trust-hero-pill > span { word-break:keep-all; }
     #download .dl-cards { grid-template-columns:minmax(0,1fr); gap:0; }
     #download .dl-card { display:grid; grid-template-columns:100px minmax(0,1fr); gap:10px; align-items:center; }
     #download .dl-card:first-child { padding-top:0; }
     #download .dl-platform { gap:9px; }
     #download .dl-card-links a { display:inline-flex; align-items:center; min-height:44px; padding:9px 10px; }
     #features .features { grid-template-columns:minmax(0,1fr); }
-    #features .feat { padding:24px 0; column-gap:14px; }
+    #features .feat { column-gap:14px; }
     .cases { grid-template-columns:minmax(0,1fr); }
   }
 

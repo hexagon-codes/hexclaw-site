@@ -364,7 +364,8 @@
 }
 
 @media (max-width: 640px) {
-  .blog-article-title .u-nobr {
+  .blog-article-title .u-nobr,
+  .blog-row-title .u-nobr {
     white-space: normal;
   }
 }
@@ -705,8 +706,8 @@
 .back-to-top {
   position: fixed;
   bottom: 32px;
-  right: 32px;
-  z-index: 900;
+  inset-inline-end: 32px;
+  z-index: 90;
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -757,7 +758,7 @@
 @media (max-width: 640px) {
   .back-to-top {
     bottom: 24px;
-    right: 20px;
+    inset-inline-end: 20px;
     padding: 7px 12px;
     font-size: 12px;
   }
