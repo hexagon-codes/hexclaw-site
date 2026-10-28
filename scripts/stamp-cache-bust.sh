@@ -25,6 +25,8 @@ assets=(
   assets/css/home.css
   assets/js/home.js
   assets/js/docs-nav.js
+  assets/js/theme.js
+  assets/js/blog.js
   assets/downloads/hexclaw-product-intro.pdf
 )
 
@@ -58,6 +60,13 @@ if [ "$changelog_asset" != "assets/css/$changelog_version" ]; then
 fi
 export CHANGELOG_VERSION_NAME="$changelog_version"
 
+# 博客与文档同样使用文件名哈希，匹配站点已有的长期资源缓存策略。
+blog_asset="assets/css/blog.css"
+blog_hash=$(hash_of "$blog_asset")
+blog_version="blog-${blog_hash}.css"
+cp "$blog_asset" "assets/css/$blog_version"
+export BLOG_VERSION_NAME="$blog_version"
+
 find . -name '*.html' -not -path './.git/*' -print0 \
   | xargs -0 perl -pi -e '
       BEGIN {
@@ -72,6 +81,7 @@ find . -name '*.html' -not -path './.git/*' -print0 \
       }
       s/docs(?:-[0-9a-f]{12})?\.css(?:\?v=[0-9A-Za-z]+)?/$ENV{DOCS_VERSION_NAME}/g;
       s/changelog(?:-[0-9a-f]{12})?\.css(?:\?v=[0-9A-Za-z]+)?/$ENV{CHANGELOG_VERSION_NAME}/g;
+      s/blog(?:-[0-9a-f]{12})?\.css(?:\?v=[0-9A-Za-z]+)?/$ENV{BLOG_VERSION_NAME}/g;
     '
 
 echo "cache-bust stamped across HTML."

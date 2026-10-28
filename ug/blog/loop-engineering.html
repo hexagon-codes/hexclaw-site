@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ug" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/favicon-32.png">
+<title>HexClaw AI نىڭ Loop Engineering ى: ئوچۇق كودلۇق Agent نىڭ كودىنى ئېچىپ، Prompt تىن Loop قىچە تۆت ئەندىزىنى قاتلاممۇقاتلام سېلىشتۇرۇش｜HexClaw تېخنىكا بىلوگى</title>
+<meta name="description" content="Prompt → Context → Harness → Loop كونترول يۈزىنى ئۇچۇر قاتلىمىدىن سۆھبەت، سىستېما ۋە ۋاقىت قاتلىمىغا كېڭەيتىدۇ. ھەر بىر قاتلامدا بىر قاتلام قارار ھوقۇقىنى بېرىسىز. قايسىسى تولۇق، قايسىسى تولۇقلىنىۋاتىدۇ ۋە «تامام» نېمە دېگەنلەر ھەقىقىي كود بىلەن كۆرسىتىلىدۇ.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:site_name" content="河蟹 AI">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HexClaw AI نىڭ Loop Engineering ى: ئوچۇق كودلۇق Agent نىڭ كودىنى ئېچىپ، Prompt تىن Loop قىچە تۆت ئەندىزىنى قاتلاممۇقاتلام سېلىشتۇرۇش｜HexClaw تېخنىكا بىلوگى">
+<meta property="og:description" content="Prompt → Context → Harness → Loop كونترول يۈزىنى ئۇچۇر قاتلىمىدىن سۆھبەت، سىستېما ۋە ۋاقىت قاتلىمىغا كېڭەيتىدۇ. ھەر بىر قاتلامدا بىر قاتلام قارار ھوقۇقىنى بېرىسىز. قايسىسى تولۇق، قايسىسى تولۇقلىنىۋاتىدۇ ۋە «تامام» نېمە دېگەنلەر ھەقىقىي كود بىلەن كۆرسىتىلىدۇ.">
+<meta property="og:url" content="https://hexclaw.net/ug/blog/loop-engineering">
+<meta property="og:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta property="og:image:alt" content="HexClaw بەلگىسى">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta property="og:locale" content="ug_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="HexClaw AI نىڭ Loop Engineering ى: ئوچۇق كودلۇق Agent نىڭ كودىنى ئېچىپ، Prompt تىن Loop قىچە تۆت ئەندىزىنى قاتلاممۇقاتلام سېلىشتۇرۇش｜HexClaw تېخنىكا بىلوگى">
+<meta name="twitter:description" content="Prompt → Context → Harness → Loop كونترول يۈزىنى ئۇچۇر قاتلىمىدىن سۆھبەت، سىستېما ۋە ۋاقىت قاتلىمىغا كېڭەيتىدۇ. ھەر بىر قاتلامدا بىر قاتلام قارار ھوقۇقىنى بېرىسىز. قايسىسى تولۇق، قايسىسى تولۇقلىنىۋاتىدۇ ۋە «تامام» نېمە دېگەنلەر ھەقىقىي كود بىلەن كۆرسىتىلىدۇ.">
+<meta name="twitter:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta name="twitter:image:alt" content="HexClaw بەلگىسى">
+<link rel="canonical" href="https://hexclaw.net/ug/blog/loop-engineering">
+<link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/loop-engineering">
+<link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/loop-engineering">
+<link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/loop-engineering">
+<link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/loop-engineering">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "HexClaw AI نىڭ Loop Engineering ى: ئوچۇق كودلۇق Agent نىڭ كودىنى ئېچىپ، Prompt تىن Loop قىچە تۆت ئەندىزىنى قاتلاممۇقاتلام سېلىشتۇرۇش",
+  "description": "Prompt → Context → Harness → Loop كونترول يۈزىنى ئۇچۇر قاتلىمىدىن سۆھبەت، سىستېما ۋە ۋاقىت قاتلىمىغا كېڭەيتىدۇ. ھەر بىر قاتلامدا بىر قاتلام قارار ھوقۇقىنى بېرىسىز. قايسىسى تولۇق، قايسىسى تولۇقلىنىۋاتىدۇ ۋە «تامام» نېمە دېگەنلەر ھەقىقىي كود بىلەن كۆرسىتىلىدۇ.",
+  "url": "https://hexclaw.net/ug/blog/loop-engineering",
+  "inLanguage": "ug",
+  "datePublished": "2026-06-28",
+  "image": "https://hexclaw.net/assets/brand/hexclaw-logo.png",
+  "publisher": {
+    "@type": "Organization",
+    "name": "hexagon-codes",
+    "url": "https://hexclaw.net/",
+    "@id": "https://hexclaw.net/#organization"
+  },
+  "@id": "https://hexclaw.net/ug/blog/loop-engineering#article"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "河蟹 AI", "item": "https://hexclaw.net/ug/"},
+    {"@type": "ListItem", "position": 2, "name": "تېخنىكا بىلوگى", "item": "https://hexclaw.net/ug/blog/"},
+    {"@type": "ListItem", "position": 3, "name": "HexClaw AI نىڭ Loop Engineering ى: ئوچۇق كودلۇق Agent نىڭ كودىنى ئېچىپ، Prompt تىن Loop قىچە تۆت ئەندىزىنى قاتلاممۇقاتلام سېلىشتۇرۇش", "item": "https://hexclaw.net/ug/blog/loop-engineering"}
+  ],
+  "@id": "https://hexclaw.net/ug/blog/loop-engineering#breadcrumb"
+}
+</script>
+<link rel="stylesheet" href="../../assets/css/docs-eb2895dd79c5.css">
+<link rel="stylesheet" href="../../assets/css/blog-a8e5008ac3d1.css">
+</head>
+<body class="blog-page blog-article-page">
+<a href="#main" class="skip-link">ئاساسىي مەزمۇنغا ئۆتۈش</a>
+<nav class="tn topnav" id="nav">
+  <a href="/ug/" class="tn-b topnav-brand"><img width="72" height="72" src="../../assets/brand/hexclaw-icon-72.png" class="tn-l topnav-logo" alt="ھېشى AI"><span class="tn-n topnav-name">ھېشى AI</span></a>
+  <button type="button" class="tn-burger topnav-burger" aria-label="تىزىملىك" aria-expanded="false" aria-controls="primary-navigation"><span></span><span></span><span></span></button><div class="tn-r topnav-links" id="primary-navigation"><a href="/ug/">باش بەت</a><a href="/ug/#cases">ئىشلىتىش كۆرۈنۈشلىرى</a><a href="/ug/#features">ئىقتىدارلار</a><a href="/ug/#quickstart">باشلاش</a><a href="/ug/#ecosystem">ئوچۇق ئېكولوگىيە</a><a href="/ug/blog/" class="is-active">تېخنىكا بىلوگى</a><a href="/ug/docs/">ھۆججەتلەر مەركىزى</a><div class="lang-menu" data-lang-menu><button type="button" class="lang-trigger" aria-haspopup="menu" aria-expanded="false" aria-label="تىل ئالماشتۇرۇش"><svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 0 20"></path><path d="M12 2a15.3 15.3 0 0 0 0 20"></path></svg><span class="lang-current" lang="zh-CN" dir="ltr">维吾尔语</span><svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="lang-menu-list" role="menu"><a href="/zh/blog/loop-engineering" role="menuitem">中文</a><a href="/en/blog/loop-engineering" role="menuitem">English</a><a href="/ug/blog/loop-engineering" role="menuitem" class="is-active" aria-current="true" lang="zh-CN" dir="ltr">维吾尔语</a></div></div><button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="ئۇسلۇب ئالماشتۇرۇش"><svg class="ti-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="ti-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="nav-cta">GitHub <span class="nav-star-badge" id="gh-stars">&#9733;</span></a></div>
+</nav>
+
+<main id="main" class="blog-main">
+  <div class="blog-article-container">
+    <nav class="blog-breadcrumb" aria-label="يول كۆرسەتكۈچ">
+      <a href="/ug/">باش بەت</a>
+      <span class="blog-breadcrumb-sep">/</span>
+      <a href="/ug/blog/">تېخنىكا بىلوگى</a>
+      <span class="blog-breadcrumb-sep">/</span>
+      <span aria-current="page">Agent نىڭ تۆت ئەندىزىسى</span>
+    </nav>
+
+    <header class="blog-header">
+      <div class="blog-header-tags">
+        <span class="blog-badge-series">تۆت ئەندىزە · ئاساسىي ماقالە</span>
+      </div>
+      <h1 class="blog-article-title">HexClaw AI نىڭ Loop Engineering ى: ئوچۇق كودلۇق Agent نىڭ كودىنى ئېچىپ، Prompt تىن Loop قىچە تۆت ئەندىزىنى قاتلاممۇقاتلام سېلىشتۇرۇش</h1>
+      <p class="blog-article-subtitle">Prompt → Context → Harness → Loop كونترول يۈزىنى ئۇچۇر قاتلىمىدىن سۆھبەت، سىستېما ۋە ۋاقىت قاتلىمىغا كېڭەيتىدۇ. ھەر بىر قاتلامدا بىر قاتلام قارار ھوقۇقىنى بېرىسىز. قايسىسى تولۇق، قايسىسى تولۇقلىنىۋاتىدۇ ۋە «تامام» نېمە دېگەنلەر ھەقىقىي كود بىلەن كۆرسىتىلىدۇ.</p>
+      <div class="article-provenance-banner">
+        <div class="provenance-left">
+          <span class="provenance-origin-badge">ئالدى بىلەن WeChat تا ئېلان قىلىنغان</span>
+          <span class="provenance-text">بۇ ماقالە تۇنجى قېتىم WeChat رەسمىي ھېسابىدا ئېلان قىلىنغان: <strong>「hexclaw」</strong>، ID: hexclaw، رەسمىي تېخنىكا سەھىپىسى · ئېلان ۋاقتى: <strong>2026-06-28</strong> · تەخمىنەن 15 مىنۇتلۇق ئوقۇشلۇق</span>
+        </div>
+        <a href="https://mp.weixin.qq.com/s/h60ymjjj3eF9hQyhl0jVcQ" target="_blank" rel="noopener noreferrer" class="provenance-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          WeChat تىكى خەنزۇچە ئەسلى ↗
+        </a>
+      </div>
+    </header>
+
+    <article class="blog-content">
+<p>AI ساھەسىدىكى ئاچقۇچلۇق سۆزلەر بۇ يىللاردا توختىماي سىرتقا كېڭەيدى: ئاۋۋال Prompt Engineering، ئاندىن Context Engineering، Harness Engineering، يېڭى <strong>Loop Engineering</strong> بولسا يېقىندالا چىقتى. مودا سۆز ئۇلاش مۇسابىقىسىدەك ئاڭلىنىدۇ، ئەمما بىللە قارىغاندا ئوخشاش بىر سىزىقنىڭ يىراققا كېڭىيىشى. ھەر بىر سۆز بىلەن بىر تەسىرلىك گەپمۇ كېلىدۇ. Claude Code نى ياراتقان Anthropic تىكى Boris Cherny سەھنىدە مۇنداق دېدى:</p>
+<blockquote>«مەن ئەمدى Claude غا prompt يازمايمەن. مەن ئىشلىتىۋاتقان loop لار بار؛ ئۇلار Claude غا prompt بېرىپ، كېيىن نېمە قىلىشنى ئۆزى ئويلايدۇ. <strong>مېنىڭ ئىشىم loop يېزىش.</strong>»<br><span>يەنى Claude غا بىۋاسىتە بۇيرۇق بېرىشنىڭ ئورنىغا، ئۇنىڭغا بۇيرۇق بېرىدىغان ئايلانمىلارنى لايىھەلەش.</span></blockquote>
+<p>شۇ ۋاقىتتا دېگۈدەك، OpenClaw نى قۇرغۇچى Peter Steinberger ناھايىتى كۆپ تارقالغان تېخىمۇ قىسقا بىر يازما چىقاردى:</p>
+<blockquote>«ئەمدى coding agent لارغا prompt يېزىش بىلەنلا بولماڭ. <strong>Agent لىرىڭىزغا prompt بېرىدىغان loop لارنى لايىھەلەڭ.</strong>»<br><span>يەنى كودلاش Agent ىغا بىۋاسىتە بۇيرۇق بېرىشتىن، ئۇنىڭغا بۇيرۇق بېرىدىغان ھالقىنى قۇرۇشقا ئۆتۈش.</span></blockquote>
+<p>Google Cloud AI دىرېكتورى Addy Osmani بۇ ھادىسىگە <strong>Loop Engineering</strong> دەپ نام بەردى. ئۈچ كىشىنىڭ گېپىنىڭ ئارىسىدا بىر نەچچە كۈنلا پەرق بار؛ بۇ ئاتالغۇ تېخى يېڭى.</p>
+<p>ئەمما ئەڭ ساپ شەكلىنى 2025-يىلىلا بىرسى يازغان: Geoffrey Huntley نىڭ Ralph ھالقىسى، يادروسى بىر قۇر bash:</p>
+<section dir="ltr" style="margin: 18px 0; padding: 18px 20px; background: #272822; border-radius: 8px; overflow-x: auto; text-align: left; letter-spacing: 0; font-size: 13px; line-height: 1.8; font-family: 'SF Mono', SFMono-Regular, Menlo, Monaco, Consolas, 'Courier New', monospace; color: #F8F8F2; box-shadow: 0 1px 10px rgba(0,0,0,0.12);"><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">1</span><span style="color: #F92672;">while</span> :; <span style="color: #F92672;">do</span> <span style="color: #66D9EF;">cat</span> PROMPT.md | claude-code ; <span style="color: #F92672;">done</span></span></section>
+<p>ھەر ئايلانمىدا يېڭى context كۆزنىكى ئېچىلىدۇ؛ ھالەت سۆھبەت تارىخىغا ئەمەس، ھۆججەت سىستېمىسى ۋە git قا تايىنىپ يەتكۈزۈلىدۇ. مەھەللە بۇنى بىر جۈملىگە يىغدى: <strong>Agent ئۇنتۇيدۇ، ئامبار ئۇنتۇمايدۇ</strong>. بۇ پەقەت شوئار ئەمەس: HexClaw ئەسلەتمە، ماھارەت ۋە ھالەتنى ئۆز كومپيۇتېرىڭىزدا <code dir="ltr">git diff</code> قىلىدىغان ئاددىي تېكىستكە يېزىدۇ؛ بۇ پۈتۈن لايىھەنىڭ ئاساسىي رەڭگى، كېيىنكى ھەر قاتلامدا يەنە ئۇچرايدۇ.</p>
+<p>بۇ گەپ چىققاندىنلا سوئالمۇ كەلدى، تەنقىدنىڭ ئاساسى بار: <strong>بۇ ئون نەچچە يىل بۇرۇنقى CI/CD نى قايتا كەشىپ قىلىش ئەمەسمۇ؟</strong> قوزغىتىش cron/webhook، ئايرىش «Worktree sandbox»، ئوچۇق ئېيتقاندا Docker قاچىسى، تەكشۈرۈش ESLint/Jest؛ يېشىل بولسا ئۇقتۇرۇش، قىزىل بولسا قايتا يازدۇرۇش. بۇ ئېقىم Jenkins دەۋرىدىلا بار ئىدى، پەقەت AI قەنتى بىلەن ئورالغان. بۇ گەپ توغرا. تېخىمۇ ئىچكى يادروسى تېخىمۇ كونا <strong>كونترول نەزەرىيەسىدىكى قايتما ھالقا</strong>: كۆزىتىش، سېلىشتۇرۇش، ھەرىكەت، تەكرارلاش. ئۇ تېرموستات، PID كونتروللىغۇچ ۋە Kubernetes نىڭ <strong>Reconciliation Loop</strong> ى بىلەن ئوخشاش نەسەب دەرىخىدىكى شاخلار. بۇمۇ توغرا.</p>
+<p>شۇڭا «كونا شارابنى يېڭى بوتۇلكىغا سالدىمۇ؟» دەپ تالاشقاندىن نەتىجە چىقمايدۇ، بۇمۇ مۇھىم ئەمەس. <strong>قىممەتلىك سوئال باشقا: ھەقىقىي بىر سىستېما بۇ ھالقىنى راست تاقىدىمۇ، ياكى ھەممەيلەن ئېغىزىدىلا يېپىق ھالقا دەمدۇ؟</strong> ئۇقۇمنى ھەممە ئادەم سىزالايدۇ، PPT دا ئوقنى باش-ئاخىر تۇتاشتۇرۇش ئاسان. قىيىنى كودقا چۈشۈرۈش: مۇستەقىل ھۆكۈمچى كىم، loop نېمىگە ئاساسەن توختايدۇ، «تامام»نى كىم، قايسى ئۆلچەم بىلەن بەلگىلەيدۇ؟</p>
+<p>بۇ ماقالە نەزەرىيەنى تەكرارلىمايدۇ، ئۇقۇم ۋە ئوخشىتىش ھەققىدە ياخشى ماقالە يېتەرلىك. ئۇ باشقا ئىش قىلىدۇ: <strong>HexClaw ئوچۇق كودلۇق Agent نىڭ كودىنى ئېچىپ، Prompt تىن Loop قىچە تۆت قاتلامنى بىرمۇبىر سېلىشتۇرىدۇ</strong>. ھەر قاتلام ھەقىقىي ھۆججەت، تۇراقلىق قىممەت ۋە توختاش شەرتىگە چۈشىدۇ. ئوقۇپ بولغاندا يېڭى مودا سۆزلەر ئەمەس، ئىشلەپچىقىرىش دەرىجىلىك loop نىڭ قايسى زاپچاسلاردىن قۇراشتۇرۇلغانلىقى ۋە نېمىشقا شۇ قىممەتنى ئالغانلىقىنى كۆرىسىز. تولۇق بولغان قاتلام تولۇق چۈشەندۈرۈلىدۇ، يېرىم بولغان يەردە «بۇنى تېخى تولۇقلاۋاتىمەن» دەپ ئېنىق بەلگىلىنىدۇ. بولۇپمۇ Loop قاتلىمىدا ئۆزۈمنىمۇ ھەيران قالدۇرغان ھەقىقىي يېپىق ھالقا ۋە پۈتۈن ساھە تېخى ئاتلاپ ئۆتەلمىگەن توسۇق بار.</p>
+<hr>
+<blockquote><strong>ماقالىنىڭ ئاساسىي ھۆكۈمى</strong><br>بۇ تۆت ئەندىزە بىر-بىرىنى ئالماشتۇرمايدۇ، <strong>قاتلاممۇقاتلام ئۈستىلىنىدۇ</strong>. ئۇلارنى باغلىغان يوشۇرۇن سىزىق شۇكى، <strong>ھەر بىر قاتلام سىرتقا كېڭەيگەندە بىر قاتلام قارار ھوقۇقىنى بېرىسىز</strong>: ئىپادە → ئۇچۇر تاللاش → جەرياننى كونترول قىلىش → باشلاش ۋە قوبۇل قىلىش ھوقۇقى.<br>HexClaw دا تۆت قاتلامنىڭ ھەممىسىدە ھەقىقىي كود بار. ئەمما ھەقىقىي يۇقىرى چەك ئالدىنقى ئۈچىدە ئەمەس، تۆتىنچىدىكى ئەڭ قىيىن ئىككى ئىشتا: <strong>«نىشان»نى قانداق فورماللاشتۇرۇش، «تامام»نى قانداق مىقدارلاشتۇرۇش</strong>. بۇ ئىككىسىنى HexClaw مۇ پۈتۈن ساھەگە ئوخشاش تېخى تولۇقلاۋاتىدۇ.</blockquote>
+<p>تۆۋەندىكى رەسىم HexClaw كودىدىكى «كونترول يۈزىنى سىرتقا كېڭەيتىش»: تۆت قاتلامدا ھەقىقىي زاپچاس ۋە تۇراقلىق سان، Loop قاتلىمىدا ھەقىقىي يېقىنلىشىش ھالقىسى ۋە تېخى ئۆتۈلمىگەن توسۇق كۆرسىتىلگەن.</p>
+<figure><img src="../../assets/blog/河蟹AI-四代范式控制面外推图.png" alt="HexClaw نىڭ تۆت ئەندىزىسى: كونترول يۈزىنى سىرتقا كېڭەيتىش" width="2120" height="3450" loading="lazy" decoding="async"><figcaption>HexClaw نىڭ تۆت ئەندىزىسى: كونترول يۈزىنى سىرتقا كېڭەيتىش</figcaption></figure>
+<hr>
+<h2>بىرىنچى قاتلام، Prompt: ئۇچۇر قاتلىمىدا «ئىپادە»نى بېرىسىز</h2>
+<p>دەسلەپ ھەممەيلەن <strong>Prompt AI دەۋرىدىكى ئەڭ مۇھىم ماھارەت</strong> دەپ ئىشەندى. System prompt قانداق يېزىلىدۇ، few-shot قانداق تىزىلىدۇ، پىكىر زەنجىرى قانداق يېتەكلىنىدۇ؛ بىر بۇيرۇق ئەڭ ياخشى ھالەتكە كەلتۈرۈلىدۇ. كومپيۇتېر تىلىدا بۇ <strong>بىر جۈملىنى ياخشى يېزىش</strong>، بىر قۇر <code dir="ltr">print</code> نىڭ ئىپادىسىنى ئويلاشقا ئوخشايدۇ. بېرىدىغىنىڭىز «بۇ گەپ قانداق ئېيتىلسۇن» دېگەن ھوقۇق.</p>
+<p>HexClaw دا بۇ قاتلامغا لازىم نەرسىلەر بار: تەھرىرلىنىدىغان ياردەمچى خاراكتېرى SOUL، system prompt باشقۇرۇش ۋە ساقلاپ قايتا ئىشلىتىدىغان Prompt كۈتۈپخانىسى. ئەمما بۇنى كۆپ سۆزلىمەيمەن، چۈنكى ئۇ <strong>تېزلا تامغا سوقۇلدى</strong>: مودېل كۈچەيگەنسېرى Prompt نىڭ قوشۇمچە پايدىسى تۆۋەنلەيدۇ. تېخىمۇ مۇھىمى، <strong>بىر ئايلانما بۇيرۇق كۆپ قەدەملىك، سۆھبەتلەر ئارا، قايتا-قايتا تۈزىتىش بىلەن پۈتىدىغان ئىشنى كۆتۈرەلمەيدۇ</strong>. بىر جۈملىنى قانچە چىرايلىق ئېيتسىڭىزمۇ مودېل پەقەت «ياخشى جاۋاب بېرىدۇ»، «ئىشنى پۈتتۈرمەيدۇ». شۇڭا بىر قاتلام سىرتقا، بۇ جۈملىدىن مودېل ئەتراپىدىكى مۇھىتقا قاراش كېرەك.</p>
+<h2>ئىككىنچى قاتلام، Context: سۆھبەت قاتلىمىدا «ئۇچۇر تاللاش ھوقۇقى»نى بېرىسىز</h2>
+<p>ئىككىنچى ئەۋلادنىڭ تونۇش يېڭىلىنىشى مۇھىم: <strong>مەسىلە «مودېلنى قانداق قايىل قىلىش»تىن «مودېل تۇرغان مۇھىتنى قانداق قۇرۇش»قا ئۆتتى</strong>. Context كۆزنىكى كەمچىل بايلىق؛ نېمىنى سېلىش، نېمىنى سالماسلىق ۋە قايسى تەرتىپتە سېلىش مودېلنىڭ ھۆكۈم يولىنى بەلگىلەيدۇ. كومپيۇتېر تىلىدا بۇ <strong>ئىچكى ساقلىغۇچ باشقۇرۇش ۋە قولدا GC</strong>: كۆزنەك RAM، كىمنى چىقىرىش ۋە كىمنى قىسقارتىشنى ئۆزىڭىز بەلگىلەيسىز. بېرىدىغىنىڭىز «قايسى ئۇچۇرنى كۆرۈش»نى تاللاش؛ ئۇچۇر دائىرىسىنى سىز بەلگىلەپ، مودېل ئىچىدە ئۆزى ئىشلەيدۇ.</p>
+<p>HexClaw بۇ قاتلامدا ئاساسلىق، كۆپىنچىسىنىڭ ھەقىقىي تۇراقلىق قىممىتىنى تەكشۈرگىلى بولىدۇ:</p>
+<ul>
+<li><strong>ئۈچ ئۆلچەملىك ئەسلەش:</strong> ئەسلەتمە ئاددىي تەتۈر ۋاقىت رېتى ئەمەس؛ recency، يېقىنلىق × importance، مۇھىملىق، <strong>ئەسلەش ماسلىق قېتىم سانى</strong> بىلەن ئۆزىنى تۈزىتىدۇ، كۆپ ئەسلەنگەنسېرى مۇھىم، LLM مۇقىم نومۇر بەرمەيدۇ × relevance، مۇناسىۋەت، hybrid <strong><bdi dir="ltr">0.7</bdi> ۋېكتور ۋە <bdi dir="ltr">0.3</bdi> BM25</strong>. ۋېكتورلاشتۇرغۇچ بولمىسا ساپ BM25 غا يۇمشاق تۆۋەنلەيدۇ.</li>
+<li><strong>پىكىر ئۆزگەرسە قاپلىماي كۈچتىن قالدى دەپ بەلگىلەيدۇ:</strong> ئايرىپ تەكرار چىقىرىش ئوخشاشلىق بوسۇغىسى <strong dir="ltr">0.65</strong>. زىتلىق بولسا <strong>supersede ئارقىلىق تارىخ ساقلايدۇ</strong>؛ ValidFrom / ValidTo خاتىرىلىنىپ، پەقەت ھازىرقى كۈچكە ئىگە تۈر ئەسلىتىلىدۇ. كونا نەشر ئۆچۈرۈلمەي قايتا كۆرۈشكە قالىدۇ.</li>
+<li><strong>قۇرۇلمىلىق قىسقارتىش، ئاددىي خاتىرە خۇلاسىسى ئەمەس:</strong> تارىخ ئۇزارسا ئاددىي كېسىش ياكى تەبىئىي تىلدا قايتا ئېيتىش ئەمەس، «نېمە قىلىندى، نېمە قارار قىلىندى، نېمە قالدى» دەپ قۇرۇلمىلىق خۇلاسىلىنىپ ئەسلى تارىخنى ئالماشتۇرىدۇ. بۇ ساھەدىكى ئاساسلىق ئۇسۇلغا ماس. ئۇزۇن log ياكى سىرتقى ھۆججەت ئوقۇغاندا بالا Agent ئايرىپ ئوقۇپ، پەقەت خۇلاسىنى ئاساسىي كۆزنەككە قايتۇرىدۇ، مەينەت سانلىق مەلۇمات ئاساسىي لىنىيەنى بۇلغىمايدۇ.</li>
+<li><strong>قورال context چېگراسى:</strong> Agent غا <code dir="ltr">grep</code> / <code dir="ltr">browser</code> سەپلەنسە، توغرا context نى ئۆزى ئېلىپ كېلەلەيدۇ. قورالنى كونترول قىلىش ئۇنىڭ يېتەلەيدىغان ئۇچۇر چېگراسىنى ۋاسىتىلىك كونترول قىلىش.</li>
+</ul>
+<p>ئەسلەتمىنىڭ ئۈچ قاتلام قۇرۇلمىسى، ئۈچ ئۆلچەملىك ئەسلەش، يېرىم ئۆمرى ۋە كېچىدە «چۈش كۆرۈپ» ئارخىپ رەتلىشىنى ئالدىنقى ماقالىدە مەخسۇس ئاچقانىدىم. بۇ يەردە پەقەت تىلغا ئالىمىز: <a href="https://mp.weixin.qq.com/s/YvGGPBZX0V7R6-09unnrcQ">چۈش كۆرىدىغان Agent ئەسلەتمىسى</a>.</p>
+<p>ئەمما بۇ قاتلام ياخشى بولغاندىمۇ يېڭى مەسىلە چىقتى، ئۈچىنچى ئەۋلادنى قوزغىغىنىمۇ شۇ: <strong>context تولۇق بولسىمۇ، Agent ئۇزۇن ۋەزىپىدە يەنىلا يىقىلىدۇ</strong>. ھەقىقىي ۋەزىپە «بىر قېتىم پىكىر يۈرگۈزۈش» ئەمەس، «قايتما ئۇچۇرلۇق ھەرىكەتلەر زەنجىرى». مودېل كۆپ قەدەم ئىشلەشكە باشلىسا كەمچىلىكى يوشۇرۇنمايدۇ: «تەكرارلىغۇچ»قا ئايلىنىپ ئوخشاش ئۇسۇلنى قايتا ئىشلىتىپ token كۆيدۈرىدۇ، ھوقۇقتىن ھالقىپ خەتەرلىك ئىش قىلىدۇ ياكى يېرىم يولدا چۆكىدۇ. پەقەت ئۇچۇر يېتەرلىك ئەمەس، قائىدە ۋە توساق كېرەك.</p>
+<h2>ئۈچىنچى قاتلام، Harness: سىستېما قاتلىمىدا «جەرياننى كونترول قىلىش ھوقۇقى»نى بېرىسىز</h2>
+<p>Harness نىڭ ئەڭ ماس چۈشەندۈرۈلۈشى Mitchell Hashimoto نىڭ <strong>Agent = Model + Harness</strong> دېگەن سۆزى. مودېل ماتور، Harness ئۇنى قاپلىغان پۈتۈن runtime: قورال ئېقىمى، I/O ۋە بىخەتەرلىك قېپى. كومپيۇتېر تىلىدا ئۇ Agent نىڭ <strong>ئىزاھلىغۇچىسى ياكى مەۋھۇم ماشىنىسى</strong>. Thoughtworks تىكى Martin Fowler بىلەن Birgitta Böckeler كونترول نەزەرىيەسى بىلەن ئىككىگە ئايرىغان: <strong>Guides، ئالدىنقى كونترول</strong> Agent ئىش قىلىشتىن <em>بۇرۇن</em> ئۆلچەم، Skill ۋە قاتتىق چەك بىلەن نېمە قىلماسلىقنى ئېيتىدۇ؛ <strong>Sensors، قايتما كونترول</strong> ئىش قىلغاندىن <em>كېيىن</em> سىناق نەتىجىسى، تۈر تەكشۈرۈش ۋە ھۆكۈمچى بىلەن كۆزىتىپ، پەرقنى كېيىنكى ئايلانمىغا قايتۇرىدۇ. بۇ قاتلامدا <strong>بىر قېتىملىق ئىجرا ئىچىدىكى جەرياننى كونترول قىلىش</strong> بېرىلىدۇ: قايسى قورال، قايسى يول، قاچان تارىخ قىسقارتىشنى ئۆزى بەلگىلەيدۇ؛ ۋەزىپە قەيەردىن باشلىنىدۇ ۋە بىخەتەرلىك چېگراسى قەيەردە، يەنىلا سىزنىڭ قولىڭىزدا.</p>
+<p>«ئىشتىن بۇرۇن يېتەكلەش، ئىشتىن كېيىن تۈزىتىش» قۇرۇلمىسى بىكاردىن چىقمىغان، ئاكادېمىيەدە ئېنىق نەسەبى بار. Agent نىڭ «ئويلاش → قورال چاقىرىش → نەتىجە كۆرۈش → قايتا ئويلاش» نۆۋەتلىشىشىنى <strong>ReAct</strong>، Yao قاتارلىقلار، ICLR 2023، Thought–Action–Observation ئۈچ قەدەمگە فورماللاشتۇرغان. HexClaw نىڭ «قورال تىزىملىكىنى مودېلغا ھەمىشە بېرىش، ئۇ چاقىرماقچى بولسا ئىجرا قىلىپ داۋاملاشتۇرۇش» ھالقىسى ماھىيەتتە ReAct نىڭ ئىنژېنېرلىق يولغا قويۇلۇشى. Harness مودېلنى ئەقىللىق قىلمايدۇ، <strong>ئۇنىڭ ئىزدەيدىغان بوشلۇقىنى كىچىكلىتىدۇ</strong>. T قەدەملىك ۋەزىپىنىڭ ھەر قەدىمىدە N نامزات ھەرىكەت بولسا، ئاددىي يول سانى <code dir="ltr">N<sup>T</sup></code> بويىچە پارتلايدۇ. ئالدىنقى چەك قويۇلسا، ئون تۈر ھەرىكەت چەكلىنىپ، بەش قەدەم مەجبۇرىي بولسا، ھەر قەدەمنىڭ ئۈنۈملۈك شاخ ئامىلى N دىن كىچىك قىممەتكە چۈشىدۇ، ئېكسپونېنتنىڭ ئاساسىمۇ تۆۋەنلەيدۇ. ئۇچۇر نەزەرىيەسىدە <code dir="ltr">H(action│rules) ≪ H(action)</code>، قائىدە بېرىلگەندە كېيىنكى قەدەمنىڭ ئېنىقسىزلىقى ئازىيىدۇ. بۇ قۇرۇق سۆز ئەمەس: LangChain ئېنىق سېلىشتۇرما قىلغان؛ ئاستىدىكى <code dir="ltr">gpt-5.2-codex</code> مودېلىنى ئۆزگەرتمەي، پەقەت Harness نى ئىنچىكىلەتكەندە Agent نى ھەقىقىي تېرمىنال ۋەزىپىسىدە باھالايدىغان TerminalBench 2.0 ئۆتۈش نىسبىتى <strong><bdi dir="ltr">52.8%</bdi> تىن <bdi dir="ltr">66.5%</bdi> كە</strong>، رەت Top 30 دىن Top 5 كە چىققان. ئوخشاش مودېل قېپى ئالماشقاندا كۈچەيدى؛ چۈشەندۈرۈشى سىرلىق ئەمەس، ئەقىل ئۆسمىدى، سىز ئۇنىڭ سىناش-خاتالىشىش ئېنتروپىيەسىنى ئالدىن ئازايتتىڭىز.</p>
+<p>HexClaw نىڭ بۇ قاتلىمىدىن ھەقىقىي تۇراقلىق سانى بار بىر نەچچىنى تاللايمەن:</p>
+<ul>
+<li><strong>قورال ھالقىسى ۋە قاتتىق ئايلانما چېكى:</strong> Harness نىڭ يۈرىكى. قورال تىزىملىكى مودېلغا ھەمىشە بېرىلىدۇ، چاقىرىش بولسا ئىجرا قىلىپ، ئاخىرقى جاۋابقىچە ئايلىنىدۇ. ئادەتتىكى ھالەتتە ئەڭ كۆپ <strong>25</strong> ئايلانما، خامچوت كونترول ئېچىلغاندا مۇتلەق بىخەتەر يۇقىرى چەك <strong>50</strong>. بۇ قۇرۇق تەكرارنىڭ ئاخىرقى دەرۋازىسى. چەككە يېتىش خاتالىق ئەمەس؛ مودېل چىقارغان قىسمەن نەتىجە بىلەن «ئايلانما چېكىگە يەتتى، داۋاملاشتۇر دېسىڭىز داۋاملىشىمەن» قايتىدۇ، يۇمشاق تۆۋەنلەيدۇ.</li>
+<li><strong>قورال قايتا سىنىشى پەقەت ۋاقىتلىق خاتالىقتا ئارقىغا چېكىنىدۇ:</strong> سۈكۈتتىكى ۋاقىت چەكلىمىسى <strong>30s</strong>، <code dir="ltr">browser</code> ئۈچۈن 120s، <code dir="ltr">code_exec</code> ئۈچۈن 60s. قايتا سىناش 1s دىن باشلاپ ×2، ئەڭ كۆپ 8s لىك ئېكسپونېنتسىيال چېكىنىش؛ ئەمما <strong>پەقەت ئېنىق ۋاقىتلىق خاتالىق</strong>، چاستوتا چەكلىمىسى ياكى يۇقىرى ئېقىم داۋالغۇشىدا. ئىناۋەتسىز key ياكى مودېل يوق دېگەندەك قايتا سىنىغاندىمۇ پايدىسىز خاتالىقتا قارىغۇلارچە ۋاقىت ئىسراپ قىلمايدۇ.</li>
+<li><strong>ھوقۇق قاتتىق دەرۋازىسى، ئالدىنقى كونترول ۋە قاتتىق چەك:</strong> خەتەرلىك ھەرىكەتنى prompt دىكى يۇمشاق چەكتىن كود قاتلىمىدىكى قاتتىق چەككە كۆتۈرىدۇ. بىرلىككە كەلگەن ھوقۇق دەرۋازىسى سۈكۈتتىكى ھالەتتە ئوچۇق، ئاقىۋەتلىك ھەرىكەت «تەستىق كېرەك»كە ئۇچرايدۇ. cron/webhook قاتارلىق ئۆزئارا تەسىرسىز ئاپتوماتىك سۆھبەتتە ئۆزىنى ئۆستۈرۈش ۋە ئۆزىنى ۋاقىتلاشتۇرۇش قوراللىرىمۇ چىقىرىلىدۇ، loop ئۆزىگە ھوقۇق قوشۇپ كونترولدىن چىقىشى توسۇلىدۇ.</li>
+<li><strong>قۇرۇلمىلىق sandbox:</strong> cron لىنىيەسى بىر جۈملىنى Starlark سكرىپتىغا تۈزۈپ، سۈكۈتتىكى نۆل ھوقۇق، پەقەت ئوچۇق كىرگۈزۈلگەن ئىقتىدارلىق sandbox تا ئىجرا قىلىدۇ؛ 8MiB ئىچكى ساقلىغۇچ، 100 مىليون قەدەم، 300s ۋاقىت چېكى. بۇ ئىقتىدار بىخەتەرلىك مودېلىنى <a href="https://mp.weixin.qq.com/s/EvQT0VqH9ep6LXo89ZM-fw">«تور ئىش كۈچى» ماقالىسىدە</a> تەپسىلىي ئاچقان.</li>
+</ul>
+<p>بۇ قاتلامنىڭ توغرا بولۇش ئۆلچىمى: ھېچكىم قاراپ تۇرمىغاندا Agent ئون نەچچە قەدەملىك، كۆپ قوراللىق ئۇزۇن ۋەزىپىنى context پارتلاتماي، ئۆلۈك ھالقىغا كىرمەي، قايتۇرغىلى بولمايدىغان خەتەرلىك ئىش قىلماي پۈتتۈرەلسۇن؛ چۆكسىمۇ ئەڭ يېقىن تەكشۈرۈش نۇقتىسىدىن داۋاملىشالىسۇن.</p>
+<p>ئەمما Harness نىڭ يىلتىز چېگراسى بار: <strong>ئۇ بىر چەكلىك ۋەزىپىگە مۇلازىمەت قىلىدۇ</strong>. ئاشخانا دەپ تەسەۋۋۇر قىلايلى؛ ئاشپەزگە رېتسېپ ۋە قولايلىق قورال بېرىسىز، بىر تاماق چىقسا ھالقا تۈگەپ، پۈتۈن ئېقىم چېكىنىدۇ. ئەمما بەزى ئىش «تاماق چىقتى، ئىش تۈگىدى» ئەمەس: جامائەت پىكرىنى ھەر كۈنى كۆزىتىش، بىلىم ئامبىرىنى ئۇزاق مۇددەت تولدۇرۇش، Bug تىزىملىكىنى داۋاملىق تازىلاش. بۇ <strong>ئاخىرقى نۇقتىسى يوق، پەقەت كېيىنكى ئايلانما قاچان باشلىنىدۇ دېگەن</strong> ئۈزلۈكسىز ۋەزىپىنى ئاشخانا مودېلى كۆتۈرەلمەيدۇ. ئۇنىڭغا بىر ئاشخانا ئەمەس، <strong>رېستوران</strong> كېرەك: قاچان ئېچىلىدۇ، جەريان قانداق تىزىلىدۇ، ناچار باھا قايسى ئېقىمغا كىرىدۇ؛ ھەممىسى لايىھەلىنىپ ئاندىن ئۇزاق مۇددەت ئۆزى ئايلىنىشى كېرەك. تۆتىنچى قاتلام شۇنىڭدىن چىقتى.</p>
+<hr>
+<h2>تۆتىنچى قاتلام، Loop: ۋاقىت قاتلىمىدا باشلاش ۋە قوبۇل قىلىش ھوقۇقىنى بېرىش؛ يېرىمى تولۇق، يېرىمى تېخى تولۇقلىنىۋاتىدۇ</h2>
+<p>بۇ قاتلامدا خاراكتېر ئۆزگىرىدۇ. ئالدىنقى ئۈچتە باشلاش كۇنۇپكىسى سىزنىڭ قولىڭىزدا: ۋەزىپە دەيسىز، Agent ئىجرا قىلىپ، كېيىنكى گېپىڭىزنى كۈتىدۇ. Loop Engineering نىڭ يادرولۇق مەسىلىسى: <strong>Agent نى ئۆزىڭىز قوزغاتماي، قاچان قوزغىتىش، قانچىنى قوزغىتىش، نەتىجىنى كىم قوبۇل قىلىش ۋە كېيىنكى ئايلانمىنى قەيەردىن داۋاملاشتۇرۇشنى بەلگىلەيدىغان سىستېما قۇرۇش</strong>. كومپيۇتېر تىلىدا بۇ <strong>كونترول ئېقىمى</strong>، بىر قېتىم چاقىرىشنى تەكرارلاش، قايتا سىناش ۋە يېقىنلىشىشقا ئايلاندۇرۇش. بېرىدىغىنىڭىز ۋەزىپىنىڭ <strong>باشلاش ۋە قوبۇل قىلىش ھوقۇقى</strong>.</p>
+<p>بۇ قاتلامنى ماختاشمۇ، ئاجىزلىقىنى ئاشكارىلاشمۇ ئەڭ ئاسان. HexClaw دا ئۇنى تۆتكە ئايرىپ، قىلىنغان ۋە قىلىنمىغانلىرىنى تەڭ كۆرسىتىمەن.</p>
+<h3>① ئاۋۋال ئېنىقلايلى: cron «يۈرەك سوقۇشى»، Loop ئەمەس</h3>
+<p>Loop ئايلىنىش ئۈچۈن بىرىنچى زاپچاس «يۈرەك سوقۇشى»: timer، cron ياكى webhook، ئادەم كۇنۇپكا باسمايمۇ قوزغىتىدىغان مەنبە. HexClaw cron ىدا ئۆزلۈكىدىن تۈزىتىشمۇ بار: بىر سكرىپت ۋەزىپە ئارقا-ئارقىدىن <strong>3</strong> قېتىم مەغلۇپ بولسا، مەغلۇبىيەت context ى بىلەن ئۆزلۈكىدىن بىر قېتىم قايتا تۈزۈلىدۇ؛ 24h كۆزنىكىدە ئەڭ كۆپ <strong>2</strong> قېتىم، مەڭگۈ بۇزۇق يۇقىرى ئېقىم token نى كۆيدۈرمىسۇن.</p>
+<p>ئەمما cron ماقالىسىدە ئېنىق ئېيتقان گەپنى بۇ يەردىمۇ ساقلاش كېرەك: <strong>cron نىڭ ئۆزى ئوچۇق ھالقا، Loop ئەمەس</strong>. ئۇ «ۋاقىتتا مۇقىم سكرىپت ئىجرا قىلىش». مەغلۇبىيەتنى ئۆزى تۈزىتىش قايتما <em>زاپچاس</em>، ئەمما «نىشانغا سېلىشتۇرۇپ، تاماممۇ دەپ باھالاپ، بولمىسا خۇلاسە بىلەن يەنە بىر ئايلانما» قىلىدىغان <strong>يېقىنلىشىش يېپىق ھالقىسى</strong> يوق. يۈرەك سوقۇشى لازىم زاپچاس، بىراق يۈرەك سوقۇشى بار دېگەن Loop دېگەن ئەمەس. ھەقىقىي يېپىق ھالقا باشقا يەردە.</p>
+<h3>② ھەقىقىي يېقىنلىشىش ھالقىسى: orchestrate ۋە مۇستەقىل نازارەتچى</h3>
+<p>كۆپ كىشىنىڭ كاللىسىدىكى Loop <code dir="ltr">Goal → Agent → Done</code>. ئەمما ھەقىقىي يېپىق ھالقا مۇنداق:</p>
+<section dir="ltr"><code>Goal → Agent → Evaluate → Score → Feedback → Agent → Evaluate → Score → …</code></section>
+<p>بۇ ئاددىي loop ئەمەس، <strong>ئەلالاشتۇرۇش سىستېمىسى</strong>؛ قۇرۇلمىسى كۈچەيتىپ ئۆگىنىشكە ئوخشاشلىشىدۇ، ئەمما پەقەت شەكلى ئوخشاش: باھالاش ۋە قايتما ئۇچۇر بار، مۇكاپات سىگنالى ياكى ئىستراتېگىيە يېڭىلاش يوق. ماختاپ كەتمەي ئېنىق ئېيتاي: HexClaw «بالا ۋەزىپە تارقىتىش → نىشانغا سېلىشتۇرۇپ كەمچىلىك كۆرۈش → كېيىنكى ئايلانما قوشۇش»تىن ئىبارەت <strong>قاتلاملىق پارچىلاش ۋە قايتا پىلانلاش</strong>، plan-execute-replan. پەقەت كەمچىلىكنى تولدۇرىدۇ، كۆپ نامزات ئارىسىدا نومۇر بىلەن ئەڭ ياخشىسىنى تاللىمايدۇ، <strong>كەينىگە قايتىش ۋە شاخ كېسىش يوق</strong>. شۇڭا Tree of Thoughts، Yao قاتارلىقلار، NeurIPS 2023، ياكى MCTS كە ئوخشاش ھەقىقىي ئىزدەش دەرىخى ئەمەس. ئۇنداق دېيىش ئاشۇرۇۋېتىش. ئەمما «بىر توپ چىقىرىش → مۇستەقىل باھالاش → كەمچىلىككە قاراپ يەنە چىقىرىش» قۇرۇلمىسى ھەقىقىي. <code dir="ltr">engine/orchestrate.go</code> دىكى <code dir="ltr">orchestrate</code> شۇنداق يېزىلغان. ئومۇمىي <code dir="ltr">goal</code> ۋە <code dir="ltr">max_rounds &gt; 1</code> بېرىلسە، بىر توپ ئىش تارقىتىپلا توختىمايدۇ؛ ھەر fan-out، پاراللېل بالا Agent تارقىتىشتىن كېيىن <strong>مۇستەقىل «نازارەتچى» ئومۇمىي نىشانغا سېلىشتۇرۇپ يېتەرلىكمۇ دەپ باھالايدۇ</strong>، يېتەلمىسە نىشانلىق كېيىنكى ئايلانمىنى قوشىدۇ:</p>
+<section dir="ltr" style="margin: 18px 0; padding: 18px 20px; background: #272822; border-radius: 8px; overflow-x: auto; text-align: left; letter-spacing: 0; font-size: 13px; line-height: 1.8; font-family: 'SF Mono', SFMono-Regular, Menlo, Monaco, Consolas, 'Courier New', monospace; color: #F8F8F2; box-shadow: 0 1px 10px rgba(0,0,0,0.12);"><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 2.2em; margin-right: 16px; text-align: right; color: #90908A;">1</span><span style="color: #75715E; font-style: italic;">// 每轮 fan-out 后由监工对照总目标评判——未达成则补派针对性子任务进下一轮，</span></span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 2.2em; margin-right: 16px; text-align: right; color: #90908A;">2</span><span style="color: #75715E; font-style: italic;">// 直至达成 / 无后续 / 触顶轮数 / 预算耗尽。</span></span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 2.2em; margin-right: 16px; text-align: right; color: #90908A;">3</span><span style="color: #F92672;">for</span> round := <span style="color: #AE81FF;">1</span>; round &lt;= maxRounds; round++ {</span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 2.2em; margin-right: 16px; text-align: right; color: #90908A;">4</span>    allCollected = <span style="color: #66D9EF;">append</span>(allCollected, o.runRound(...)...)   <span style="color: #75715E; font-style: italic;">// 并行派活、收结果</span></span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 2.2em; margin-right: 16px; text-align: right; color: #90908A;">5</span>    <span style="color: #F92672;">if</span> round == maxRounds || runCtx.Err() != <span style="color: #AE81FF;">nil</span> || goal == <span style="color: #E6DB74;">""</span> {</span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 2.2em; margin-right: 16px; text-align: right; color: #90908A;">6</span>        <span style="color: #F92672;">break</span>                                                 <span style="color: #75715E; font-style: italic;">// 触顶 / 墙钟到点 / 无目标</span></span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 2.2em; margin-right: 16px; text-align: right; color: #90908A;">7</span>    }</span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 2.2em; margin-right: 16px; text-align: right; color: #90908A;">8</span>    dec := o.supervise(runCtx, goal, allCollected)            <span style="color: #75715E; font-style: italic;">// 独立监工评判</span></span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 2.2em; margin-right: 16px; text-align: right; color: #90908A;">9</span>    <span style="color: #F92672;">if</span> dec.Done || <span style="color: #66D9EF;">len</span>(dec.Next) == <span style="color: #AE81FF;">0</span> { <span style="color: #F92672;">break</span> }               <span style="color: #75715E; font-style: italic;">// 监工说够了 / 没新活</span></span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 2.2em; margin-right: 16px; text-align: right; color: #90908A;">10</span>    roundSubtasks = dedupSubtasks(dec.Next, allDispatched)    <span style="color: #75715E; font-style: italic;">// 去重后进下一轮</span></span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 2.2em; margin-right: 16px; text-align: right; color: #90908A;">11</span>}</span></section>
+<p>بۇ يەردىكى ئاچقۇچلۇق لايىھە، بۇ مۇنازىرىلەردە كۆپ تەكىتلەنگەن تۆمۈر قائىدە: <strong>maker بىلەن checker ئايرىم بولۇشى شەرت</strong>. كود يازغان Agent بىلەن «تاماممۇ»نى بەلگىلەيدىغان Agent بىر بولماسلىقى كېرەك، چۈنكى مودېل ئۆزىگە نومۇر بەرگەندە بەك كەڭچىل. بۇ تەجرىبە سۆزىلا ئەمەس: Google DeepMind ICLR 2024 دە <strong>سىرتقى قايتما ئۇچۇرسىز LLM ئاساسەن ئۆزىنى تۈزىتىپ بولالمايدىغانلىقىنى</strong> تەكشۈرگەن؛ بەزىدە بىر ئايلانما «ئۆزىنى تۈزىتىش»تىن كېيىن تېخىمۇ ناچار، Huang قاتارلىقلار. HexClaw نازارەتچىسى <code dir="ltr">subagent_supervisor.go</code> دىكى <strong>قورالسىز، پەقەت باھالايدىغان</strong> مۇستەقىل بالا Agent، ئىشلىگۈچى بىلەن بىر رول ئەمەس. ئۇ پەقەت JSON قايتۇرىدۇ: <code dir="ltr">{"done": true}</code> توختىتىدۇ، ياكى <code dir="ltr">{"done": false, "next": [...]}</code> يېڭى ئىش قوشىدۇ. مەغلۇپ بالا ۋەزىپىلەرمۇ <strong>نازارەتچىگە ئېنىق بىلدۈرۈلىدۇ</strong>؛ بولمىسا ئۇ پەقەت «مۇۋەپپەقىيەتلىك يېرىم»نى كۆرۈپ خاتا تامام دېيىشى ئاسان.</p>
+<p>قايتا-قايتا تىلغا ئېلىنغان بىر كۆزىتىش: نۇرغۇن Agent ئىجرا جەريانىدا ئىشتىن چىقىدۇ، يىلتىز سەۋەبى <strong>توختاش شەرتى يوق</strong>. يا تۈزەلگەندىن كېيىن يەنە ئۆزگەرتىپ بۇزىدۇ، يا تۈزەلمەي تامام دەپ يالغان دەيدۇ. HexClaw بۇ ھالقىنىڭ <strong>توختاش شەرتىنى</strong> بىر قاتار قاتتىق دەرۋازىغا قۇلۇپلىغان:</p>
+<ul>
+<li><strong>ئايلانما دەرۋازىسى:</strong> نازارەتچى قايتما ھالقىسى ئەڭ كۆپ <strong>3</strong>، بىرىنچى ئايلانما ۋە ئەڭ كۆپ 2 قوشۇمچە ئايلانما. يەرلىك كىچىك مودېلنىڭ قۇرۇلمىلىق JSON قارارى ئىشەنچسىز بولغاچقا 1 قىلىنىدۇ، يەنى تەكرارلاش تاقىلىپ ھەمىشە بىر ئايلانما.</li>
+<li><strong>تاشقى ۋاقىت دەرۋازىسى:</strong> پۈتۈن orchestrate، كۆپ ئايلانما ۋە بىرىكتۈرۈشنى قوشۇپ، <strong>5 مىنۇت</strong> ئومۇمىي ۋاقىت چېكى بار. ۋاقىت توشسا بارلىق ئىجرا بولۇۋاتقان بالا Agent بىكار قىلىنىدۇ، ئادەم بىكار ساقلاپ قالمايدۇ.</li>
+<li><strong>سان دەرۋازىسى:</strong> بىر قېتىم ئەڭ كۆپ <strong>8</strong> بالا ۋەزىپە، پاراللېل چەك بۇلۇتتا 8، يەرلىكتە 2.</li>
+<li><strong>پۈتۈن تارماق دەرىخىنىڭ backstop چېكى:</strong> بىر ھاسىل قىلىش دەرىخىدە چوڭقۇرلۇق ۋە ئايلانمىلار ئارا يىغىندا ئەڭ كۆپ <strong>128</strong> بالا Agent. تولۇق دەرەخ <bdi dir="ltr">8 + 8×8 = 72</bdi> بالا، نازارەتچىنىڭ كۆپ ئايلانما قوشۇشى بىلەن ئاسانلا نەچچە يۈز مودېل چاقىرىشقا يېتىدۇ. 128 «ئۇۋىلاش × كۆپ ئايلانما» پارتلىشىغا قاتتىق چەك؛ ساھەدىكى مىڭلىق ئومۇمىي زاپاس چەككە سېلىشتۇرغاندا يەككە كومپيۇتېرغا يېقىن.</li>
+<li><strong>ئۆلۈك ھالقا زاپىسى:</strong> نازارەتچى چىقىرىشى <strong>پارس بولمىسا done دەپ ھۆكۈم قىلىنىدۇ</strong>. «ھۆكۈمچىنى چۈشەنمىدىم» دەپ مەڭگۈ ئايلىنىشقا يول يوق. بالدۇر توختىسا بولىدۇ، قۇرۇق ئايلىنىشقا بولمايدۇ.</li>
+</ul>
+<p>چىقىممۇ ئېنىق ۋە قەستەن چەكلەنگەن: ھەر قوشۇمچە ئايلانمىدا بىر نازارەتچى مودېل چاقىرىشى ۋە بىر توپ بالا Agent چاقىرىشى بار. شۇڭا ئايلانما 3 تە قۇلۇپلانغان. «ئەڭ كۆپ ئىككى قېتىم قايتا ئىشلەش» ئارقىلىق «تاڭ ئاتقۇچە قۇرۇق كۆيدۈرمەسلىك» يەككە كومپيۇتېر كۆلىمىدە مۇۋاپىق ھېساب.</p>
+<p>ئەمما ھېسابنىڭ كۆپ نەزەردىن ساقىت بولىدىغان يەنە يېرىمى بار: كۆپ ئايلانما چىقىمى بىر ئايلانما چىقىمىنى ئايلانما سانىغا ئاددىي كۆپەيتىش ئەمەس. ھەر نازارەتچى ۋە بالا Agent نىڭ ئالدىدىكى مۇقىم prefix ئوخشاش: system prompt، دائىمىي Rules ۋە ئومۇمىي نىشان سۆزمۇسۆز ئۆزگەرمەيدۇ. يۇقىرى ئېقىمدا <strong>prompt cache ياكى prefix cache</strong> ئوچۇق بولسا، Anthropic prompt caching ياكى vLLM نىڭ PagedAttention KV ئىچكى ساقلىغۇچ باشقۇرۇشى ئۈستىدىكى مۇستەقىل automatic prefix caching، ئاساسىي مېخانىزم Kwon قاتارلىقلار، SOSP 2023، prefix نىڭ KV سى تۇنجى ھېسابتىن كېيىن ساقلىنىپ، كېيىنكى ئايلانما بىۋاسىتە ماس كېلىدۇ. يېڭى token تولۇق باھا، ماس كەلگەن قىسىم <strong>ناھايىتى تۆۋەن ئېتىبار باھاسى</strong>. ھەقسىز ئەمەس: Anthropic cache ئوقۇش تەخمىنەن <bdi dir="ltr">0.1×</bdi>، يېزىش <bdi dir="ltr">1.25×</bdi>، بىر قېتىم ماس كەلسە چىقىم قايتىدۇ. <strong>مۇقىم دائىمىي تېكىست قانچە ئۇزۇن، ماس كېلىش قانچە يۇقىرى بولسا، ھەقىقىي چىقىم «تېكىست token × ئايلانما»دىن شۇنچە يىراق</strong>. بۇ ئالدىنقى ماقالىدىكى دائىمىي قاتلامنى سۆھبەت بېشىدا مۇقىم سۈرەتكە توڭلىتىشنىمۇ چۈشەندۈرىدۇ: ھەر ئايلانما مۇقىم بولۇش ئۈچۈنلا ئەمەس، prefix سۆزمۇسۆز ئوخشاش بولۇپ cache كە ماس كېلىشى ئۈچۈن. تېجىلىدىغىنى ھەقىقىي تەكرار prefill چىقىمى.</p>
+<p>شۇڭا HexClaw دا ھەقىقىي قايتما ھالقا بار: مۇستەقىل ھۆكۈمچى، قايتما ئۇچۇرلۇق تەكرارلاش ۋە قۇلۇپلانغان چىقىشلار. بۇ PPT ئوقلىرى ئەمەس، توختايدىغان كود. ئەمما دائىرىنى توغرا دېيىش كېرەك: ئۇ <strong>بىر سۆھبەت ئىچىدىكى چەكلىك ۋەزىپىنى</strong> يېقىنلاشتۇرىدۇ، «تامام»نى نازارەتچى بەلگىلەيدۇ؛ fail-open، چۈشەنمىسە بالدۇر توختايدۇ، تېخى ماشىنا قوبۇل قىلىشى ئەمەس. نىشانغا <strong>ماشىنا تەكشۈرەلەيدىغان، fail-closed</strong> قوبۇل قىلىش قوشقان <strong>دائىمىي ھالقا</strong> تۆۋەندىكى ④ دە.</p>
+<h3>③ «ئىجرا قىلغۇچىغا ئىشەنمە»: HexClaw نىڭ مۇستەقىل ھۆكۈمچى ئائىلىسى</h3>
+<p>بىر ئېنىق ئوخشىتىش بار: maker / checker نىڭ ماھىيىتى Kubernetes دىكى <strong>Admission Controller</strong>، ھەرىكەت كۈچكە ئىگە بولۇشتىن بۇرۇن مۇستەقىل تەكشۈرۈش. ئاساسىي ئېتىقاد <strong>ئىجرا قىلغۇچىغا ئىشەنمە</strong>. HexClaw بۇنى بىر ئائىلىگە ئايلاندۇردى؛ «قىلىپ بولدۇم، توغرا قىلدىم» دەيدىغان ھەر يەرگە ئىشلىمەيدىغان، پەقەت نۇقسان ئىزدەيدىغان بىر رول قويۇلدى:</p>
+<ul>
+<li><strong>يېقىنلىشىش ھۆكۈمچىسى:</strong> يۇقىرىقى supervisor، loop توختاش كېرەكمۇ دەپ ھۆكۈم قىلىدۇ.</li>
+<li><strong>كىرىش ھۆكۈمچىسى:</strong> <code dir="ltr">risk_judge.go</code> ۋە ئادەمسىز خەتەر مەسلىھەتچىسى، HexClaw نىڭ Admission Controller ى. ئادەم يوق ئاپتوماتىك سۆھبەتتە ئاقىۋەتلىك ھەرىكەت «تەستىق كېرەك»كە ئۇچرىسا، <strong>مۇستەقىل LLM دىن low / medium / high دەرىجە</strong> سورىلىدۇ. پەقەت low بىر قېتىم ئۆتىدۇ، باشقىسى <strong>fail-closed رەت قىلىنىدۇ</strong>. دەرىجە چاقىرىشىغا قەستەن <strong>16 token</strong> خامچوت، پەقەت بىر سۆزلۈك قارار، ئەرزان.</li>
+<li><strong>ئۆزىنى ياخشىلاش ھۆكۈمچىسى:</strong> <code dir="ltr">skill_judge.go</code>، LLM-as-judge. ھەر قورال چاقىرىشىدىن كېيىن <strong>10% ئەۋرىشكە</strong> بىلەن 0–10 نومۇر بېرىدۇ، <strong>7</strong> دىن تۆۋەن بولسا «ياخشىلاش لايىھىسى» يازىدۇ. ئاچقۇچى مەغلۇبىيەت ھالىتى: ئەۋرىشكە تاللانمىسا، ۋاقىت توشسا ياكى خاتالىق بولسا 10 نومۇر، <strong>fail-open</strong>. ھۆكۈمچى داۋالغۇشى سەۋەبسىز نۇرغۇن لايىھە چىقارمايدۇ.</li>
+<li><strong>ئىجرا بىلەن ئاساسلاش:</strong> solve مەسىلە يېشىش. K12 دە مەخسۇس تەكشۈرگۈچى بالا Agent <strong>پەقەت code_exec ئىشلىتىپ، يېڭى context تا قايتا ھېسابلايدۇ</strong>. «ئارىفمېتىكا توقۇلمىسى» دېگەن باش سەۋەب ئېنىق ئىجرا بىلەن توسۇلىدۇ. ئىشەنچسىز ھۆكۈم فۇنكسىيەسىگە ئېنىق ئىجرا قاتتىق دەرۋازىسى قوشۇلىدۇ.</li>
+<li><strong>توقۇلمىغا قارشى پاكىت تەكشۈرۈش:</strong> cron. «ئامبارغا كىرگۈزىمەن» دېگەن ۋەزىپە پۈتۈن ئايلانمىدا <strong><code dir="ltr">knowledge_ingest</code> نى ئەمەلىي چاقىرمىسا</strong>، دوكلاتى قانچە مۇۋەپپەقىيەتلىك دېسىمۇ مەغلۇپ. چۈنكى ھېچ نەرسە ساقلانمىغان، «تامام» نەتىجە ئەمەس، توقۇلما.</li>
+</ul>
+<p>بۇلارنىڭ ئارقىسىدا بىر ھۆكۈم بار: <strong>LLM سۆزلىيەلەيدىغان، ئەمما ئۆزىنى ئالدايدىغان ئىجرا قىلغۇچى</strong>. ئۇ داۋالغۇشى، قېتىپ قېلىشى ياكى كود ئىشلىمىسىمۇ ئۆزىگە تولۇق نومۇر بېرىشى مۇمكىن. HexClaw نىڭ چارىسى «مودېلنى تېخىمۇ ئىتائەتچان قىلىش» ئەمەس، ئۆزىنى ئالدايدىغان ھەر جايغا مۇستەقىل گۇمانچى قوشۇش.</p>
+<h3>④ ئەڭ قىيىن ئىككى يۇقىرى چەك: فورماللاشتۇرغىلى بولىدىغانلىرى تولۇقلاندى، قالغىنى پۈتۈن ساھەنىڭ توسۇقى</h3>
+<p>بىرسى بۇنى مەن ياخشى كۆرىدىغان بىر فورمۇلاغا يىغغان:</p>
+<section dir="ltr"><code>Agent capability = Model × Context × Loop × Evaluation</code></section>
+<p>نۇرغۇن ئادەم Model نى، ئاز ئادەم Context نى ياخشىلاۋاتىدۇ، Loop قا تېگىدىغانلار تېخىمۇ ئاز. ئەمما ھەقىقىي يۇقىرى چەك ئاخىرقى <strong>Evaluation</strong> ۋە ئۇنىڭ ئۈستىدىكى <strong>Goal</strong>. ئالدىنقى ئۈچىدە HexClaw نىڭ ھەقىقىي كودى بار. كېيىنكى ئىككىسى ئەڭ قىيىن؛ تولۇقلىغىلى بولىدىغاننى تولۇقلىدىم، ئەمما پۈتۈن ساھەگە تەۋە بىر توسۇقنى راست ئېچىپ كۆرسىتىش كېرەك.</p>
+<p><strong>Evaluation نىڭ تورسىز يېرىمى قىلىندى.</strong> HexClaw دا <code dir="ltr">eval/runner.go</code> golden باھالاش بار. replay ھالىتى <strong>0 token، ئېنىق</strong> بولۇپ، CI دا «كود قايتىشى»نى، پارس، تەكشۈرۈش، يوللاش، ھوقۇق دەرۋازىسى ياكى Skill ئەسلەش بۇزۇلۇشىنى تۇتىدۇ. live ھالىتى <code dir="ltr">EVAL_LIVE=1</code> ھەقىقىي مودېل كىرگۈزۈپ «مودېل چېكىنىشى»نى تۇتىدۇ. نومۇر دەرۋازىسى نەشر دەرۋازىسى:</p>
+<section dir="ltr" style="margin: 18px 0; padding: 18px 20px; background: #272822; border-radius: 8px; overflow-x: auto; text-align: left; letter-spacing: 0; font-size: 13px; line-height: 1.8; font-family: 'SF Mono', SFMono-Regular, Menlo, Monaco, Consolas, 'Courier New', monospace; color: #F8F8F2; box-shadow: 0 1px 10px rgba(0,0,0,0.12);"><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">1</span><span style="color: #75715E; font-style: italic;">// 评分门 = 发版门：风险 high recall = 100%(fail-closed) ·</span></span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">2</span><span style="color: #75715E; font-style: italic;">//          编译器 replay 全过 · 工具 retrieval 100%。</span></span></section>
+<p>بۇ Anthropic ۋە OpenAI نىڭ Evals گۇرۇپپىلىرىغا زور بايلىق سېلىۋاتقان ئىشىنىڭ HexClaw نەشرى. Evaluation بولمىسا loop يېقىنلىشالمايدۇ، مودېل قانچە كۈچلۈك بولسىمۇ تاسادىپىي سەيلە قىلىدۇ. Golden <strong>نەشر لىنىيەسىدە</strong> قايتىش تۇتىدۇ؛ <strong>ھەر ئايلانمىنىڭ توردا قوبۇل قىلىنىشى</strong>نى HexClaw باشقا مېخانىزم بىلەن تۇتىدۇ. بۇ تېخىمۇ قىيىن ئىككىنچى ئىشقا ئېلىپ كېلىدۇ.</p>
+<p><strong>Goal نى فورماللاشتۇرۇش ئەڭ قىيىن.</strong> K8s مۇۋەپپەقىيىتىدىكى تۆۋەن مۆلچەرلەنگەن ھەقىقەت etcd ياكى Controller نىڭ ياخشى لايىھەسىلا ئەمەس، <strong>كۈتۈلگەن ھالەتنىڭ ماتېماتىكىلىق بولۇشى</strong>: <code dir="ltr">replicas: 3</code>، «تامام» نېمە؟ <code dir="ltr">actual == 3</code>. مۈجمەللىك، ئېستېتىكا ياكى «يېتەرلىك بولدى دەپ ئويلايمەن» يوق. شۇڭا Controller <strong>ئىسپاتلىغىلى بولىدىغان يېقىنلىشىش</strong> قىلالايدۇ، ئادەمسىز ئىجرا شۇنداق ئورنىغا كېلىدۇ.</p>
+<p>بۇ توسۇققا قاراپ HexClaw «نىشان»نى ئىككىگە ئايرىدى: <strong>مەقسەت</strong>، تەبىئىي تىلدا ئىشلىگۈچى Agent قا؛ <strong>قوبۇل قىلىش</strong>، ماشىنا ھۆكۈم قىلالايدىغان بىر توپ assertion: بۇيرۇق ئىجرا قىلىپ exit 0 كۆرۈش، regex ماسلاشتۇرۇش، JSON مەيدانى تەڭلىكى ياكى rubric نومۇرى بوسۇغىدىن ئۆتۈش. شۇنىڭ بىلەن done پەقەت نازارەتچىنىڭ <code dir="ltr">done: true</code> ى ئەمەس، <strong>«بارلىق قوبۇل قىلىش assertion ى ئۆتتى»</strong>. ئىجرا بولىدىغان قوبۇل قىلىش يېزىلغان نىشان K8s تىكى <code dir="ltr">actual == desired</code> غا ئوخشاش ماشىنا ھۆكۈمىنى ئالىدۇ. دىققەت: بۇ ماشىنا ھۆكۈم قىلالايدىغان done، K8s كە ئوخشاش ئىسپاتلىنىدىغان يېقىنلىشىش ئەمەس. يېزىپ بولمايدىغان ساپ سۇبيېكتىپ نىشانلا LLM ھۆكۈمچىگە قايتىدۇ. بۇ مېخانىزم قەيەرگە قويۇلغان، شۇ بۇ قاتلامدا ئەڭ ئېنىق چۈشەندۈرۈلىدىغان قۇرۇلما.</p>
+<p>يۇقىرىدىكى ② سۆھبەت ئىچى تەشكىللىگۈچى نازارەتچى بىلەن «قۇرۇلمىلىق نىشان + ماشىنا قوبۇل قىلىشى» <strong>بىر loop ئەمەس، ئىككى</strong>. قەستەن ئايرىم ۋەزىپە، ھەتتا مەغلۇبىيەت ھالىتىمۇ ئەكسى:</p>
+<ul>
+<li><strong>سۆھبەت ئىچى تەشكىللەش ھالقىسى:</strong> <code dir="ltr">orchestrate.go</code> + <code dir="ltr">subagent_supervisor.go</code> «قۇرۇق چىقىم»نى توسىدۇ. نازارەتچى چۈشەنمىسە done، <strong>fail-open-to-done، بالدۇر توختاشنى تاللايدۇ</strong>.</li>
+<li><strong>نىشان يېتەكچىلىكىدىكى دائىمىي ھالقا:</strong> <code dir="ltr">goalloop.go</code> + <code dir="ltr">checker.go</code> + <code dir="ltr">acceptance.go</code>، يېڭى يېزىلغان. «تامامدەك كۆرسىتىش»نى توسىدۇ. Checker <strong>باشقا رول</strong>، ئەڭ ياخشىسى تېخىمۇ كۈچلۈك مودېل، ③ دىكى ئائىلىنىڭ ئەڭ قاتتىق ئەزاسى. ئاۋۋال <strong>ئېنىق قوبۇل قىلىش assertion ى</strong>، exit 0، regex ياكى JSON تەڭلىك ئىجرا بولىدۇ. پەقەت <strong>ماشىنا ھۆكۈم قىلالايدىغان assertion پۈتۈنلەي يېزىلمايدىغان</strong> نىشانلا LLM غا قايتىپ، <strong>ئۆزئارا بىردەكلىك كۆپ سانلىق ئاۋازى</strong> ئىشلىتىدۇ. self-consistency، Wang قاتارلىقلار، ICLR 2023؛ ئىشەنچ = ئاۋاز بىردەكلىكى. مۈجمەل ياكى خاتا بولسا <strong>fail-closed، ئۆتكۈزمەيدۇ</strong>.</li>
+</ul>
+<p>ئىككىسىنىڭ تاللىشى ئەينەك ئوخشاش: تەشكىللەش ھالقىسى «تېخى تۈگىمىدى»نى قولدىن بېرىپ بالدۇر توختىسىمۇ قۇرۇق كۆيدۈرمەيدۇ؛ دائىمىي ھالقا يەنە بىر ئايلانما ئىجرا قىلسىمۇ «تۈگىدى» دەپ خاتا ھۆكۈم قىلمايدۇ. دائىمىي ھالقىنىڭ سىرتىدا <strong>ھەر ئايلانمىدا دىسكىغا يېزىلىدىغان level-triggered ھالەت</strong>، <code dir="ltr">goalloop_state.go</code> بار؛ ئۆلتۈرۈلۈش ياكى قايتا قوزغىلىشتىن كېيىن ئالدىنقى ئايلانمىدىن داۋاملىشىدۇ. <strong>ئىلگىرىلەش يوقلۇق ۋە داۋالغۇشنى بايقاش</strong> بار. توختاش مەنىسى <strong>done، capped يۇقىرى چەككە يېتىش، escalated ئادەمگە كۆتۈرۈش</strong> دەپ ئايرىلغان؛ قېتىپ قېلىش جىمجىت كېسىش ئەمەس، no_progress / low_confidence / high_risk سەۋەبى بىلەن <strong>ئادەمگە قايتۇرۇلىدۇ</strong>.</p>
+<blockquote>سەمىمىي خۇلاسە: <strong>فورماللاشتۇرغىلى بولىدىغانلىرى تولۇقلاندى</strong>. قۇرۇلمىلىق نىشان، توردا قوبۇل قىلىش دەرۋازىسى، مۇستەقىل ئۆزئارا بىردەك ھۆكۈمچى، ئىلگىرىلەشسىزلىك/داۋالغۇش بايقاش، level-triggered داۋاملاشتۇرۇش ۋە قېتىپ قالغاندا ئادەمگە كۆتۈرۈشنىڭ ھەممىسى ئىجرا بولىدىغان ھەقىقىي كود. ئەمما <strong>ئىنژېنېرلىق تولدۇرالمايدىغان بىر بوشلۇق</strong> بار: كونترول قىلىنىدىغان نەرسە LLM دېگەن «ئېھتىماللىق بۇلۇتى». «پاراللېللىق مەسىلىسىنى تۈزەت» دېگەن بىر گەپنى بۈگۈن باشقا، ئەتە باشقا يېزىدۇ، idempotent ئەمەس ئىجرا قىلغۇچى. شۇڭا <strong>ئىجرا بولىدىغان قوبۇل قىلىش يېزىپ بولمايدىغان ساپ سۇبيېكتىپ نىشاننىڭ</strong> يېقىنلىشىشىنى يەنىلا <strong>ئىسپاتلىغىلى بولمايدۇ</strong>. ئايلانما چېكى چىقىم زاپىسى، يېقىنلىشىش ئىسپاتى ئەمەس. <strong>نازارەتچىنى كىم نازارەت قىلىدۇ؟</strong> دېگەن كلاسسىك سوئال يەنىلا بار. HexClaw ئىسپاتلىغاندەك قىلمايدۇ: <strong>ماشىنا ھۆكۈم قىلالىسا ماشىنا، ئېنىق بولمىسا كۆپ ھۆكۈمچى، ئۆزئارا بىردەكلىك ۋە fail-closed بىلەن تارايىتىش، يەنە ئېنىق بولمىسا توختاپ ئادەمگە بېرىش</strong>. «ئۆزلۈكىدىن قىلىۋاتقاندەك» بولۇشنىڭ ئورنىغا «قاچان ئادەم چاقىرىشنى راست بىلىش».</blockquote>
+<p>يەنە بىر ھالقىنى <strong>قەستەن تاقىمىدىم</strong>؛ قىلالمىغان ئەمەس، لايىھە تاللىشى. ئۆزىنى ياخشىلاش ھۆكۈمچىسى تۆۋەن نومۇر بەرسە، پەقەت <code dir="ltr">&lt;skills directory&gt;/.drafts/</code> غا لايىھە يېزىدۇ. سىز تەكشۈرۈپ ئۆزىڭىز <code dir="ltr">mv</code> قىلغاندىلا كۈچكە ئىگە. «مەغلۇبىيەت → لايىھە → ئادەم تەكشۈرۈش → ساقلاپ قالدۇرۇش» زەنجىرى بىر قېتىملىق ئويلىنىش ئەمەس، <strong>قايتا ئىشلىتىدىغان ماھارەت لايىھىسى</strong> يازىدۇ. بۇ <strong>Voyager</strong>، Wang قاتارلىقلار، 2023، نىڭ «Agent ئۆز ماھارەت كۈتۈپخانىسىغا يېڭى ماھارەت ئۆستۈرۈش» ئۆزلۈكىدىن تەرەققىي قىلىشىغا يېقىن. پەرقى ئاخىرقى «ئۆزلۈكىدىن كۈتۈپخانىغا يېزىش»نى «ئاۋۋال لايىھە، ئادەم كۆرگەندىن كېيىن كۈچكە ئىگە»گە قۇلۇپلىدىم؛ AI ئۆزى ئەسلەتمە باشقۇرۇشىمۇ consent دەرۋازىسىدىن ئۆتىدۇ.</p>
+<p>مەن بۇ يەردە <strong>ئادەم كۆرەلەيدىغان، ئۆزگەرتەلەيدىغان ۋە قايتۇرالايدىغان بىر يوچۇق</strong> قالدۇرۇشنى، loop نىڭ ئۆز ئىقتىدارىنى جىمجىت ئۆزگەرتىشىدىن ئەۋزەل كۆرىمەن. Osmani «ئاسان بولسۇن دەپ قول قويۇۋېتىش»نىڭ چىقىمىنى ئىككى خىل ئاتىغان: <strong>چۈشىنىش قەرزى</strong>، ئۆزى چۈشەنمىگەن نەرسىنى يەتكۈزۈش؛ <strong>بىلىشتىن ۋاز كېچىش</strong>، ئىنژېنېر پەقەت «باشلا» كۇنۇپكىسى باسىدىغان ئادەمگە ئايلىنىش. ئادەمسىز ئىجرا بولۇۋاتقان loop، ئادەمسىز خاتالىق قىلىۋاتقان loop مۇدۇر.</p>
+<p>بۇ قورقۇتۇش ئەمەس: 2025-يىلى ئىيۇلدا Replit نىڭ AI كودلاش Agent ى «كود توڭلىتىلغان، رۇخسەتسىز ئۆزگەرتمە» دەپ ئېنىق بۇيرۇلغان تۇرۇپ SaaStr نىڭ <strong>ئىشلەپچىقىرىش سانلىق مەلۇمات ئامبىرىنى ئۆچۈرگەن</strong>، 1200 دىن ئارتۇق باشقۇرغۇچى ۋە 1190 دىن ئارتۇق شىركەت سانلىق مەلۇماتى. كېيىن «كەينىگە ياندۇرغىلى بولمايدۇ» دەپ يالغان ئېيتقان، قارشى تەرەپ قولدا ئەسلىگە كەلتۈرگەندىلا ئاشكارىلانغان. Replit كېيىن تەرەققىيات ۋە ئىشلەپچىقىرىش ئامبىرىنى ئۆزلۈكىدىن ئايرىش، پەقەت ئوقۇيدىغان planning-only ھالەت ۋە ئىشەنچلىك قايتۇرۇش قوشقان. بۇ دەل HexClaw باشتىن قۇلۇپلىغان دەرۋازىلار: خەتەرلىك ھەرىكەت كىرىش تەكشۈرۈشىدىن، ئۆزىنى ياخشىلاش پەقەت لايىھە، cron دا ئۆزىنى ئۆستۈرۈش يوق. شۇڭا تەكشۈرۈش ھالقىسىنى بەرمەيمەن.</p>
+<hr>
+<h2>تۆت قاتلامنى ئۈستىلەش: نېمىنى بەردىڭىز، نېمىنى بەرمىدىڭىز؟</h2>
+<p>كەينىگە قارىغاندا ئەڭ ئېنىقى «يەنە بىر مودا سۆز قوشۇلدى» ئەمەس، <strong>ھەر بىر قاتلام سىرتقا كېڭەيگەندە بىر قاتلام قارار ھوقۇقى بېرىلىدۇ</strong>. كۈندىلىكتە سىزنىڭ قاتنىشىش چاستوتىڭىز تۆۋەنلەيدۇ، سىستېمىنى لايىھەلەش قىيىنلىقى ۋە ئاقىۋىتى يۇقىرىلايدۇ:</p>
+<ul>
+<li><strong>Prompt:</strong> ئىپادە ھوقۇقى، بۇ جۈملە قانداق ئېيتىلىدۇ.</li>
+<li><strong>Context:</strong> ئۇچۇر تاللاش ھوقۇقى، ئۇ نېمىنى كۆرۈشى كېرەك.</li>
+<li><strong>Harness:</strong> جەرياننى كونترول قىلىش، قانداق ماڭىدۇ، چېگراغا يەتكەندە ئۆتكۈزۈلەمدۇ.</li>
+<li><strong>Loop:</strong> باشلاش ۋە قوبۇل قىلىش، قاچان يولغا چىقىدۇ، بىر ئايلانما لاياقەتلىكمۇ، قاچان تامام.</li>
+</ul>
+<p>«بۇ سۆزلەر ساختا ئۇقۇم ئوينىتىشمۇ؟» دېسەك، ھۆكۈمۈم <strong>زاپچاس يېڭى ئەمەس، ئورنى يېڭى</strong>. بالا Agent، Skill، ئەسلەتمىنى ساقلاش ۋە مۇستەقىل ھۆكۈمچى Harness تا بار ئىدى، Loop يېڭى زاپچاس كەشىپ قىلمىدى. ئۆزگەرگىنى ئۇلار باشقا بىر <strong>ۋاقىت قۇرۇلمىسىغا</strong> قويۇلدى: «بىر تاماق چىقىرىش»تىن «بىر رېستوران ئېچىش»قا. ئورۇن ئۆزگەرسە ئىنژېنېرلىق جاۋاب بېرىدىغان سوئالمۇ ئۆزگىرىدۇ، بۇ يېتەرلىك؛ ئالغا ئىلگىرىلەش ئۈچۈن چوقۇم يېڭى زاپچاس كەشىپ قىلىش شەرت ئەمەس.</p>
+<p>ئەمما تۆت قاتلامدا بېرىلمىگەن، <strong>بېرىشكە بولمايدىغان</strong> بىر نەرسە بار: مەسئۇلىيەت. HexClaw نىڭ لايىھە خاراكتېرى ھەر بېرىلگەن ھالقىدا بىر يوچۇق قالدۇرۇش: ئەسلەتمە <code dir="ltr">git diff</code> قىلىنىدۇ، سكرىپت كۆرگىلى بولىدىغان sandbox كودى، خەتەرلىك ھەرىكەت كىرىش دەرۋازىسىدىن ئۆتىدۇ، ئۆزىنى ياخشىلاش پەقەت لايىھە، يېقىنلىشىشتا قاتتىق توختاش شەرتى بار.</p>
+<p>كونترول نەزەرىيەسىدىكى ئەڭ ئاددىي فورمۇلا <code dir="ltr">Control = Goal − Observed State</code>. كۆزىتىلگەن ھالەت ئۆلچەنمىسە كونترول يوق؛ نىشان ئېنىق بولمىسا يېقىنلىشىش يوق. شۇڭا ھەقىقىي سوئال «قايسى مودېل كۈچلۈك» ئەمەس، ئەڭ جەلپ قىلمايدىغان، ئەمما ئەڭ قىيىن <strong>«تامام دېگەن نېمە؟»</strong>. Kubernetes بۇنىڭغا فورمال spec بىلەن يىگىرمە يىلغا يېقىن جاۋاب بېرىۋاتىدۇ. AI تەرەپتە HexClaw نىڭ جاۋابى: ئىجرا بولىدىغان قوبۇل قىلىش يېزىشقا بولىدىغان نىشاندا قاچان توختاشنى ماشىنا ھۆكۈم قىلالايدۇ. قالغان ساپ سۇبيېكتىپ نىشاننى فورماللاشتۇرۇش ۋە ئېھتىماللىق بۇلۇتى ئىجرا قىلغۇچىنىڭ ئىسپاتلىنىدىغان يېقىنلىشىشى پۈتۈن ساھەنىڭ توسۇقى، مەن ئۇنى ئوچۇق قويدۇم.</p>
+<p>كەلگۈسىدىكى ئىنژېنېر بەلكىم فۇنكسىيە ئەمەس loop يازار؛ يەنە بىر قەدەم ئۆتسە نىشان ۋە تەكشۈرۈش يازار. ئۇ مودېل بىلەن قانداق سۆزلىشىشنى ئەمەس، ئىشەنچسىز ئىجرا قىلغۇچىنى داۋاملىق قايتما ئۇچۇر بىلەن ئېنىق بىر نىشانغا قانداق مۇقىم يېقىنلاشتۇرۇشنى تەتقىق قىلىدۇ.</p>
+<p>بۇ ماقالە تۆت قاتلامنى تۇتاشتۇرغان <strong>ئاساسىي پروگرامما</strong>، ھەر قاتلامغا ماس چوڭقۇر ماقالە ئۇلانغان. تېخى ئايرىم سۆزلەنمىگەن بىر پارچە قالدى: سىز تەشەببۇسكارلىق بىلەن بەرگەن ماتېرىيال، ھۆججەت ۋە كود، يەنى <strong>بىلىم ئامبىرى</strong> RAG زەنجىرى. ئۇ ئەسلەتمە بىلەن ئوخشاش يەرلىك ئىزدەش ئاساسىنى ئورتاق ئىشلىتىدۇ، ئەمما پۈتۈنلەي باشقا «ئەستە تۇتۇش»قا ئايلانغان. ئۇ كېيىنكى ماقالىنىڭ ئىشى.</p>
+<hr>
+<h3>ئىلگىرىكى HexClaw ماقالىلىرى</h3>
+<ul>
+<li><a href="https://mp.weixin.qq.com/s/YvGGPBZX0V7R6-09unnrcQ">چۈش كۆرىدىغان Agent ئەسلەتمىسى</a> — يەرلىك ئىككى باسقۇچلۇق ئويلىنىش، ئۈچ ئۆلچەملىك ئەسلەش ۋە ۋاقىت تارىخى؛ بۇ ماقالىدىكى Context قاتلىمىغا ماس.</li>
+<li><a href="https://mp.weixin.qq.com/s/EvQT0VqH9ep6LXo89ZM-fw">«تور ئىش كۈچى»نى تەربىيەلەش</a> — بىر جۈملىنى ئۆزلۈكىدىن ئەسلىگە كېلىدىغان sandbox سكرىپتىغا تۈزۈپ، 7×24 ۋاقىتلىق ئىشلىتىش؛ بۇ ماقالىدىكى Harness قا ماس.</li>
+<li><a href="https://mp.weixin.qq.com/s/CuVTbUv2kJRePybo_MudYA">ئوخشاش چارىلەرنى سېلىشتۇرۇش</a> — 2026-يىلدىكى يەرلىك AI Agent نىڭ ئۈچ يولى.</li>
+<li><a href="https://mp.weixin.qq.com/s/wIRiJsWLRPWBiTEQtlVQkg">قۇرۇلما تەپسىلاتى</a> — بىر ئادەم، Claude ۋە 5 ئاي؛ Go بىلەن نۆلدىن ئالتە ئامبار.</li>
+<li><a href="https://mp.weixin.qq.com/s/1rza-Ye3NF89KNAJp_PttA">Claude Code SOP</a> — لايىھە يېتەكچىلىكى، سىناق يېپىق ھالقىسى ۋە كۆپ Agent ھەمكارلىقى.</li>
+</ul>
+<hr>
+<h3>پايدىلانغان مەنبەلەر</h3>
+<ul>
+<li>Claude Code نى ياراتقان Boris Cherny نىڭ «ئىشىم loop يېزىش» سۆزىنىڭ مەنبەسى، The New Stack، <bdi dir="ltr">2026-06</bdi> · <a href="https://thenewstack.io/loop-engineering/">Loop Engineering</a><br><span dir="ltr">thenewstack.io/loop-engineering</span></li>
+<li>Peter Steinberger، @steipete، ئەسلى يازما، <bdi dir="ltr">2026-06-07</bdi> · <a href="https://x.com/steipete/status/2063697162748260627">«Agent لىرىڭىزغا prompt بېرىدىغان loop لارنى لايىھەلەڭ»</a><br><span dir="ltr">x.com/steipete/status/2063697162748260627</span></li>
+<li>Addy Osmani · <a href="https://addyosmani.com/blog/loop-engineering/">Loop Engineering</a>، automations / worktrees / skills / sub-agents + memory بىرلەشمىسى، «چۈشىنىش قەرزى» ۋە «بىلىشتىن ۋاز كېچىش»نى ئوتتۇرىغا قويۇپ، ئەندىزىگە نام بەرگەن.<br><span dir="ltr">addyosmani.com/blog/loop-engineering</span></li>
+<li>Martin Fowler ۋە Birgitta Böckeler، Thoughtworks · <a href="https://martinfowler.com/articles/exploring-gen-ai/harness-engineering.html">كودلاش Agent ئىشلەتكۈچىلىرى ئۈچۈن Harness engineering</a>، Guides ئالدىنقى كونترول ۋە Sensors قايتما كونترول پارچىلىنىشى.<br><span dir="ltr">martinfowler.com/articles/exploring-gen-ai</span></li>
+<li>Anthropic · <a href="https://www.anthropic.com/engineering/harness-design-long-running-apps">ئۇزۇن مۇددەتلىك ئەپلەر ئۈچۈن Harness لايىھەسى</a>، پىلانلاش، يولغا قويۇش ۋە باھالاشتىن ئىبارەت ئۈچ Agent نىڭ ئۇزۇن ۋەزىپىدىكى ھەمكارلىقى.<br><span dir="ltr">anthropic.com/engineering/harness-design-long-running-apps</span></li>
+<li>Geoffrey Huntley · <a href="https://ghuntley.com/ralph/">Ralph، بىر قۇر bash لىك ئەڭ ئاددىي ھالقا</a> — Agent ئۇنتۇيدۇ، ئامبار ئۇنتۇمايدۇ.<br><span dir="ltr">ghuntley.com/ralph</span></li>
+<li>Yao قاتارلىقلار · <a href="https://arxiv.org/abs/2210.03629">ReAct: تىل مودېللىرىدا پىكىر يۈرگۈزۈش بىلەن ھەرىكەتنى بىرلەشتۈرۈش</a>، ICLR 2023؛ Thought–Action–Observation نۆۋەتلىشىش ھالقىسى، قورال ھالقىسىنىڭ ئەندىزە مەنبەسى.<br><span dir="ltr">arxiv.org/abs/2210.03629</span></li>
+<li>Wang قاتارلىقلار · <a href="https://arxiv.org/abs/2305.16291">Voyager: چوڭ تىل مودېللىق ئوچۇق-ئۇچلۇق جىسىملاشقان Agent</a>، 2023؛ ئۆزلۈكىدىن تەرەققىي قىلىدىغان skill library، ياخشىلاش لايىھە مېخانىزمىنىڭ ئەندىزە مەنبەسى.<br><span dir="ltr">arxiv.org/abs/2305.16291</span></li>
+<li>Wang قاتارلىقلار، Google · <a href="https://arxiv.org/abs/2203.11171">ئۆزئارا بىردەكلىك پىكىر زەنجىرىنىڭ پىكىر يۈرگۈزۈشىنى ياخشىلايدۇ</a>، ICLR 2023؛ كۆپ يوللۇق ئەۋرىشكە ۋە كۆپ سانلىق ئاۋاز، checker نىڭ self-consistency مەنبەسى.<br><span dir="ltr">arxiv.org/abs/2203.11171</span></li>
+<li>Huang قاتارلىقلار، Google DeepMind · <a href="https://arxiv.org/abs/2310.01798">چوڭ تىل مودېللىرى تېخى پىكىر يۈرگۈزۈشىنى ئۆزى تۈزىتىپ بولالمايدۇ</a>، ICLR 2024؛ سىرتقى قايتما ئۇچۇرسىز ئۆزىنى تۈزىتىش قىيىن، maker/checker ئايرىلىشى كېرەكلىكىنىڭ دەلىلى.<br><span dir="ltr">arxiv.org/abs/2310.01798</span></li>
+<li>Yao قاتارلىقلار · <a href="https://arxiv.org/abs/2305.10601">Tree of Thoughts: چوڭ تىل مودېلى بىلەن ئويلىنىپ مەسىلە ھەل قىلىش</a>، NeurIPS 2023؛ يەككە پىكىر زەنجىرىنى كېڭەيتىش، باھالاش، تاللاش ۋە كەينىگە قايتىشلىق ئىزدەش دەرىخىگە ئايلاندۇرۇش. بۇ ماقالە ئۇنى قارشى سېلىشتۇرۇش قىلدى: orchestrate پەقەت كەمچىلىك تولدۇرىدۇ، قايتىش ۋە شاخ كېسىش يوق، قەستەن پەرقلەندۈرۈلدى.<br><span dir="ltr">arxiv.org/abs/2305.10601</span></li>
+<li>Kwon قاتارلىقلار · <a href="https://arxiv.org/abs/2309.06180">PagedAttention ئارقىلىق چوڭ تىل مودېل مۇلازىمىتىدە ئۈنۈملۈك ئىچكى ساقلىغۇچ باشقۇرۇش</a>، SOSP 2023، vLLM؛ KV گرافىك ئىچكى ساقلىغۇچ ئاساسى. تەلەپلەر ئارا automatic prefix caching ئۇنىڭ ئۈستىدىكى مۇستەقىل ئىقتىدار، ئېتىبار نىسبىتى Anthropic prompt caching ھۆججىتىدە.<br><span dir="ltr">arxiv.org/abs/2309.06180</span></li>
+<li>LangChain · <a href="https://www.langchain.com/blog/improving-deep-agents-with-harness-engineering">Harness Engineering بىلەن Deep Agents نى ياخشىلاش</a>؛ مۇقىم gpt-5.2-codex، پەقەت Harness ئالماشقاندا TerminalBench 2.0 ئۆتۈش نىسبىتى <bdi dir="ltr">52.8%→66.5%</bdi>، <bdi dir="ltr">Top30→Top5</bdi>.<br><span dir="ltr">langchain.com/blog/improving-deep-agents-with-harness-engineering</span></li>
+<li>Replit AI Agent ئامبار ئۆچۈرۈش ۋەقەسى، <bdi dir="ltr">2025-07</bdi>، SaaStr / Jason Lemkin · <a href="https://www.theregister.com/2025/07/21/replit_saastr_vibe_coding_incident/">The Register خەۋىرى</a> / AI Incident Database #1152؛ code freeze دا ھوقۇقتىن ھالقىپ ئىشلەپچىقىرىش ئامبىرىنى ئۆچۈرگەن، قايتۇرغىلى بولمايدۇ دەپ يالغان ئېيتقان.<br><span dir="ltr">theregister.com · incidentdatabase.ai/cite/1152</span></li>
+<li>Kubernetes · <a href="https://kubernetes.io/docs/concepts/architecture/controller/">Controllers / Reconciliation Loop</a>، تېرموستات ئوخشىتىشى ۋە level-triggered reconcile.<br><span dir="ltr">kubernetes.io/docs/concepts/architecture/controller</span></li>
+<li>Zhihu مەھەللىسىنىڭ «تۆت ئەندىزە، كونترول يۈزىنى سىرتقا كېڭەيتىش، Loop≈K8s Reconciliation، Goal ۋە Evaluation يۇقىرى چەك» ھەققىدىكى مۇنازىرىلىرى، <bdi dir="ltr">2026-06</bdi>. CI «كونا شاراب» قارىشى، كونترول نەزەرىيەسى ۋە K8s ئوخشىتىشى، maker-checker ۋە «ئىقتىدار = Model×Context×Loop×Evaluation» رامكىلىرى شۇ يەردىن. بۇ ماقالە ئۇنىڭ سۆزلەش قۇرۇلمىسىنى ئىشلىتىپ، HexClaw ھەقىقىي كودىغا قاتلاممۇقاتلام سېلىشتۇردى.<br><span dir="ltr">zhihu.com · question/2048003050531558553</span></li>
+<li>HexClaw AI ئېكوسىستېما ئامبىرى: <code dir="ltr">github.com/hexagon-codes</code></li>
+</ul>
+<p>ماقالىدىكى كود، تۇراقلىق قىممەت ۋە ھەرىكەت HexClaw يۇقىرى ئېقىم مەنبە كودى، engine / skill / eval / cron تارماق سىستېمىلىرىغا ئاساسلانغان؛ تەكشۈرۈش ۋاقتى <bdi dir="ltr">2026-06-28</bdi>. ئوخشاش سىستېما ۋە لايىھە ئىدىيەسى يۇقىرىدىكى ئاشكارا مەنبەلەردىن، مەنبە بويىچە تەۋەلىكى كۆرسىتىلگەن؛ مەلۇم رىقابەتچى بىلەن ئىقتىدار سېلىشتۇرۇلمىغان. HexClaw تەرەپتە پەقەت ھەقىقىي مېخانىزم ۋە تۇراقلىق قىممەت، ھېچ benchmark توقۇلمىغان.</p>
+<hr>
+<p class="blog-brand-footer" data-blog-brand-footer="ug" data-blog-brand-overrides="{}" style="text-align: center; color: var(--article-muted, #7b8fa3); font-size: 13px; margin: 16px 0 0; line-height: 2;">
+<strong style="color: var(--article-ink, #12324c); font-size: 14px;">HexClaw ھېشى AI</strong><br/>
+يەرلىكتە ياكى بۇلۇتتا ئورۇنلاشتۇرۇش · سانلىق مەلۇماتنى ئۆزىڭىز باشقۇرۇش · ئوچۇق كودلۇق ۋە ھەقسىز يۇمشاق دېتال<br/>
+<a href="https://hexclaw.net" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">تور بېكەت: <bdi dir="ltr">hexclaw.net</bdi></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://github.com/hexagon-codes" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">GitHub: <bdi dir="ltr">hexagon-codes</bdi></a><br/>
+<a href="https://weibo.com/u/4097207240" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">Weibo: <bdi dir="ltr">@HexClaw</bdi></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">X: <bdi dir="ltr">@hexclawapp</bdi></a><br/>
+<a href="mailto:ai@hexclaw.net" style="color: var(--article-muted, #999); text-decoration: none;">ئېلخەت: <bdi dir="ltr">ai@hexclaw.net</bdi></a>
+</p>
+    </article>
+
+
+
+    <nav class="blog-series-nav" aria-label="ئالدىنقى ۋە كېيىنكى ماقالە">
+      <a href="/ug/blog/context-engineering" class="blog-nav-card prev">
+  <span class="blog-nav-label">&larr; ئالدىنقى ماقالە</span>
+  <span class="blog-nav-title">HexClaw نىڭ Context Engineering ى: RAG نىڭ قىيىن يېرى «جاۋابقا ئوخشايدىغان شاۋقۇن»نى Loop سىرتىدا تۇتۇش</span>
+</a>
+      <a href="/ug/blog/memory-dreaming" class="blog-nav-card next">
+  <span class="blog-nav-label">كېيىنكى ماقالە &rarr;</span>
+  <span class="blog-nav-title">چۈش كۆرىدىغان Agent ئەسلەتمىسى: Claude ۋە ChatGPT بۇلۇتتا، HexClaw ئۆز كومپيۇتېرىڭىزدا چۈش كۆرىدۇ</span>
+</a>
+    </nav>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-main">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-col-title">مەھسۇلات</div>
+        <a href="/ug/#download">ئۈستەلئۈستى نۇسخىسىنى چۈشۈرۈش</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="/ug/changelog">يېڭىلىنىش خاتىرىسى</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">ئىجادكار</div>
+        <a href="/ug/docs/">ھۆججەتلەر مەركىزى</a>
+        <a href="/ug/blog/">تېخنىكا بىلوگى</a>
+        <a href="/ug/docs/getting-started">تېز باشلاش</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">Apache-2.0</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">جامائەت</div>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/issues" target="_blank" rel="noopener noreferrer">Issues</a>
+        <a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer">Twitter / X</a>
+        <a href="mailto:ai@hexclaw.net">بىز بىلەن ئالاقىلىشىش</a>
+        <a href="mailto:support@hexclaw.net">سوئال-پىكىر</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">ھەققىدە</div>
+        <a href="/ug/about">بىز ھەققىدە</a>
+        <a href="/ug/privacy">شەخسىيەت سىياسىتى</a>
+        <a href="/ug/terms">ئىشلىتىش شەرتلىرى</a>
+        <a href="/ug/third-party-ai-services">ئۈچىنچى تەرەپ AI مۇلازىمىتى</a>
+      </div>
+    </div>
+    <div class="footer-wechat">
+      <img width="430" height="430" loading="lazy" decoding="async" src="../../assets/brand/wechat-qr.jpg" alt="HexClaw ۋېيشىن رەسمىي ھېسابات QR كودى">
+      <span class="footer-wechat-label">ۋېيشىن رەسمىي ھېساباتى</span>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">&copy; 2025&ndash;2026 hexagon-codes</span>
+  </div>
+</footer>
+<script src="../../assets/js/theme.js?v=2e4a1828feef"></script>
+<script src="../../assets/js/docs-nav.js?v=5a103861aec2"></script>
+<button type="button" class="back-to-top" id="backToTop" aria-label="ئۈستىگە قايتىش" title="ئۈستىگە قايتىش">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg>
+  <span>ئۈستىگە</span>
+</button>
+
+<script src="../../assets/js/blog.js?v=c72e1db5a6ec"></script>
+</body>
+</html>

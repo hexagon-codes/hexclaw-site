@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html lang="ug" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/favicon-32.png">
+<title>HexClaw ئارخىتېكتۇرا تەپسىلاتى: بىر كىشى + Claude + 5 ئاي، Go بىلەن نۆلدىن قۇرۇلغان ئالتە ئامبارلىق پۈتۈن قاتلاملىق ئوچۇق كودلۇق AI Agent ئېكولوگىيەسى｜HexClaw تېخنىكا بىلوگى</title>
+<meta name="description" content="HexClaw ئارخىتېكتۇرا تەپسىلاتى: بىر كىشى + Claude + 5 ئاي، Go بىلەن نۆلدىن ئالتە ئامبارلىق پۈتۈن قاتلاملىق ئوچۇق كودلۇق AI Agent ئېكولوگىيەسى قۇرۇش. قاتلاملىق ئارخىتېكتۇرا، يادرولۇق كېلىشىملەر ۋە ئالاقە كېلىشىملىرى تەپسىلىي چۈشەندۈرۈلىدۇ.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:site_name" content="HexClaw">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HexClaw ئارخىتېكتۇرا تەپسىلاتى: بىر كىشى + Claude + 5 ئاي، Go بىلەن نۆلدىن قۇرۇلغان ئالتە ئامبارلىق پۈتۈن قاتلاملىق ئوچۇق كودلۇق AI Agent ئېكولوگىيەسى｜HexClaw تېخنىكا بىلوگى">
+<meta property="og:description" content="HexClaw ئارخىتېكتۇرا تەپسىلاتى: بىر كىشى + Claude + 5 ئاي، Go بىلەن نۆلدىن ئالتە ئامبارلىق پۈتۈن قاتلاملىق ئوچۇق كودلۇق AI Agent ئېكولوگىيەسى قۇرۇش. قاتلاملىق ئارخىتېكتۇرا، يادرولۇق كېلىشىملەر ۋە ئالاقە كېلىشىملىرى تەپسىلىي چۈشەندۈرۈلىدۇ.">
+<meta property="og:url" content="https://hexclaw.net/ug/blog/architecture-deep-dive">
+<meta property="og:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta property="og:image:alt" content="HexClaw بەلگىسى">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta property="og:locale" content="ug_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="HexClaw ئارخىتېكتۇرا تەپسىلاتى: بىر كىشى + Claude + 5 ئاي، Go بىلەن نۆلدىن قۇرۇلغان ئالتە ئامبارلىق پۈتۈن قاتلاملىق ئوچۇق كودلۇق AI Agent ئېكولوگىيەسى｜HexClaw تېخنىكا بىلوگى">
+<meta name="twitter:description" content="HexClaw ئارخىتېكتۇرا تەپسىلاتى: بىر كىشى + Claude + 5 ئاي، Go بىلەن نۆلدىن ئالتە ئامبارلىق پۈتۈن قاتلاملىق ئوچۇق كودلۇق AI Agent ئېكولوگىيەسى قۇرۇش. قاتلاملىق ئارخىتېكتۇرا، يادرولۇق كېلىشىملەر ۋە ئالاقە كېلىشىملىرى تەپسىلىي چۈشەندۈرۈلىدۇ.">
+<meta name="twitter:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta name="twitter:image:alt" content="HexClaw بەلگىسى">
+<link rel="canonical" href="https://hexclaw.net/ug/blog/architecture-deep-dive">
+<link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/architecture-deep-dive">
+<link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/architecture-deep-dive">
+<link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/architecture-deep-dive">
+<link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/architecture-deep-dive">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "HexClaw ئارخىتېكتۇرا تەپسىلاتى: بىر كىشى + Claude + 5 ئاي، Go بىلەن نۆلدىن قۇرۇلغان ئالتە ئامبارلىق پۈتۈن قاتلاملىق ئوچۇق كودلۇق AI Agent ئېكولوگىيەسى",
+  "description": "HexClaw ئارخىتېكتۇرا تەپسىلاتى: بىر كىشى + Claude + 5 ئاي، Go بىلەن نۆلدىن ئالتە ئامبارلىق پۈتۈن قاتلاملىق ئوچۇق كودلۇق AI Agent ئېكولوگىيەسى قۇرۇش. قاتلاملىق ئارخىتېكتۇرا، يادرولۇق كېلىشىملەر ۋە ئالاقە كېلىشىملىرى تەپسىلىي چۈشەندۈرۈلىدۇ.",
+  "url": "https://hexclaw.net/ug/blog/architecture-deep-dive",
+  "inLanguage": "ug",
+  "datePublished": "2026-03-30",
+  "image": "https://hexclaw.net/assets/brand/hexclaw-logo.png",
+  "publisher": {
+    "@type": "Organization",
+    "name": "hexagon-codes",
+    "url": "https://hexclaw.net/",
+    "@id": "https://hexclaw.net/#organization"
+  },
+  "@id": "https://hexclaw.net/ug/blog/architecture-deep-dive#article"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "HexClaw", "item": "https://hexclaw.net/ug/"},
+    {"@type": "ListItem", "position": 2, "name": "تېخنىكا بىلوگى", "item": "https://hexclaw.net/ug/blog/"},
+    {"@type": "ListItem", "position": 3, "name": "HexClaw ئارخىتېكتۇرا تەپسىلاتى: بىر كىشى + Claude + 5 ئاي، Go بىلەن نۆلدىن قۇرۇلغان ئالتە ئامبارلىق پۈتۈن قاتلاملىق ئوچۇق كودلۇق AI Agent ئېكولوگىيەسى", "item": "https://hexclaw.net/ug/blog/architecture-deep-dive"}
+  ],
+  "@id": "https://hexclaw.net/ug/blog/architecture-deep-dive#breadcrumb"
+}
+</script>
+<link rel="stylesheet" href="../../assets/css/docs-eb2895dd79c5.css">
+<link rel="stylesheet" href="../../assets/css/blog-a8e5008ac3d1.css">
+</head>
+<body class="blog-page blog-article-page">
+<a href="#main" class="skip-link">ئاساسىي مەزمۇنغا ئۆتۈش</a>
+<nav class="tn topnav" id="nav">
+  <a href="/ug/" class="tn-b topnav-brand"><img width="72" height="72" src="../../assets/brand/hexclaw-icon-72.png" class="tn-l topnav-logo" alt="ھېشى AI"><span class="tn-n topnav-name">ھېشى AI</span></a>
+  <button type="button" class="tn-burger topnav-burger" aria-label="تىزىملىك" aria-expanded="false" aria-controls="primary-navigation"><span></span><span></span><span></span></button><div class="tn-r topnav-links" id="primary-navigation"><a href="/ug/">باش بەت</a><a href="/ug/#cases">ئىشلىتىش كۆرۈنۈشلىرى</a><a href="/ug/#features">ئىقتىدارلار</a><a href="/ug/#quickstart">باشلاش</a><a href="/ug/#ecosystem">ئوچۇق ئېكولوگىيە</a><a href="/ug/blog/" class="is-active">تېخنىكا بىلوگى</a><a href="/ug/docs/">ھۆججەتلەر مەركىزى</a><div class="lang-menu" data-lang-menu><button type="button" class="lang-trigger" aria-haspopup="menu" aria-expanded="false" aria-label="تىل ئالماشتۇرۇش"><svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 0 20"></path><path d="M12 2a15.3 15.3 0 0 0 0 20"></path></svg><span class="lang-current" lang="zh-CN" dir="ltr">维吾尔语</span><svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="lang-menu-list" role="menu"><a href="/zh/blog/architecture-deep-dive" role="menuitem">中文</a><a href="/en/blog/architecture-deep-dive" role="menuitem">English</a><a href="/ug/blog/architecture-deep-dive" role="menuitem" class="is-active" aria-current="true" lang="zh-CN" dir="ltr">维吾尔语</a></div></div><button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="ئۇسلۇب ئالماشتۇرۇش"><svg class="ti-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="ti-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="nav-cta">GitHub <span class="nav-star-badge" id="gh-stars">&#9733;</span></a></div>
+</nav>
+
+<main id="main" class="blog-main">
+  <div class="blog-article-container">
+    <nav class="blog-breadcrumb" aria-label="يول باشلاش">
+      <a href="/ug/">باش بەت</a>
+      <span class="blog-breadcrumb-sep">/</span>
+      <a href="/ug/blog/">تېخنىكا بىلوگى</a>
+      <span class="blog-breadcrumb-sep">/</span>
+      <span aria-current="page">ئارخىتېكتۇرا ۋە قۇرۇلۇش</span>
+    </nav>
+
+    <header class="blog-header">
+      <div class="blog-header-tags">
+        <span class="blog-badge-series">ئېكولوگىيەنىڭ تولۇق كۆرۈنۈشى</span>
+      </div>
+      <h1 class="blog-article-title">HexClaw ئارخىتېكتۇرا تەپسىلاتى: بىر كىشى + Claude + 5 ئاي، Go بىلەن نۆلدىن قۇرۇلغان ئالتە ئامبارلىق پۈتۈن قاتلاملىق ئوچۇق كودلۇق AI Agent ئېكولوگىيەسى</h1>
+      <p class="blog-article-subtitle">HexClaw ئارخىتېكتۇرا تەپسىلاتى: بىر كىشى + Claude + 5 ئاي، Go بىلەن نۆلدىن ئالتە ئامبارلىق پۈتۈن قاتلاملىق ئوچۇق كودلۇق AI Agent ئېكولوگىيەسى قۇرۇش. قاتلاملىق ئارخىتېكتۇرا، يادرولۇق كېلىشىملەر ۋە ئالاقە كېلىشىملىرى تەپسىلىي چۈشەندۈرۈلىدۇ.</p>
+      <div class="article-provenance-banner">
+        <div class="provenance-left">
+          <span class="provenance-origin-badge">تۇنجى نەشرى WeChat تا</span>
+          <span class="provenance-text">بۇ ماقالە تۇنجى قېتىم WeChat ئاممىۋى ھېساباتى <strong>「hexclaw」</strong> (ID: hexclaw) نىڭ رەسمىي تېخنىكا سەھىپىسىدە ئېلان قىلىنغان · ۋاقتى: <strong>2026-يىلى 3-ئاينىڭ 30-كۈنى</strong> · ئوقۇش ۋاقتى تەخمىنەن 13 مىنۇت</span>
+        </div>
+        <a href="https://mp.weixin.qq.com/s/wIRiJsWLRPWBiTEQtlVQkg" target="_blank" rel="noopener noreferrer" class="provenance-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>WeChat تىكى ئەسلى ماقالە ↗</a>
+      </div>
+    </header>
+
+    <article class="blog-content">
+      <p>ئۆتكەن يىلى ئۆزۈمگە بىر AI Agent ئورۇنلاشتۇرماقچى بولدۇم.</p>
+<p>بازاردا AI Agent مەھسۇلاتلىرى ئاز ئەمەس، چوڭ شىركەتلەرمۇ ئارقا-ئارقىدىن كىرىشتى. لېكىن ئايلاندۇرۇپ باقسام، يەنىلا مۇشۇ مەسىلىلەر:</p>
+<ul>
+<li><strong>ئوچۇق كودلۇقلىرى بىخەتەر ئەمەس</strong> — OpenClaw (قىسقۇچپاقا) نىڭ ئىقتىدارى ئەڭ تولۇق، جامائەتچىلىكى ئەڭ چوڭ؛ لېكىن بىخەتەرلىك جەھەتتە ئاساسەن قوغدىنىشسىز، تەننەرخ كونترولىمۇ يوق، ئىشلەپچىقىرىش مۇھىتىغا قويۇشقا جۈرئەت قىلالمايمەن</li>
+<li><strong>بىخەتەرلىرى ئوچۇق كودلۇق ئەمەس</strong> — سودا مەھسۇلاتلىرى قائىدىگە ئۇيغۇنلۇقنى ياخشى قىلغان، لېكىن يېپىق كودلۇق، بۇلۇتتا ساقلىنىدۇ، سانلىق مەلۇماتنىڭ چېگرادىن چىقىشىنى كونترول قىلغىلى بولمايدۇ، ئايلىق ھەقمۇ ئەرزان ئەمەس</li>
+<li><strong>ئىشلىتىشكە بولىدىغانلىرى جۇڭگو سۇپىلىرىنى قوللىمايدۇ</strong> — Feishu، DingTalk، WeCom، WeChat ئاممىۋى ھېساباتى؛ چەت ئەل مەھسۇلاتلىرى ئاساسەن قاپلىمايدۇ</li>
+</ul>
+<p>ماڭا لازىم بولغىنى: <strong>ئوچۇق كودلۇق مەھسۇلاتنىڭ ئىقتىدار كەڭلىكى + سودا مەھسۇلاتىنىڭ بىخەتەرلىك دەرىجىسى + جۇڭگو سۇپىلىرىنى تولۇق قاپلاش</strong>، شۇنىڭ بىلەن بىرگە ئۆزى باشقۇرۇپ ئورۇنلاشتۇرۇش ۋە يەككە binary بىلەن ئىجرا قىلىش. ئىزدەپ تاپالمىغاچقا، ئۆزۈم ياسىدىم. بىر كىشى + Claude بىلەن جۈپ ئىجادىيەت، ئالتە ئامبار، پۈتۈن قاتلاملىق AI Agent. بۇ دەل <strong>HexClaw (دەريا قىسقۇچپاقىسى)</strong>。</p>
+<p>بۇ ماقالىدە تولۇق ئارخىتېكتۇرىنى ئاچىمەن: تېخنىكىلىق قارارلار، ئىجرا تەپسىلاتى ۋە يولۇققان ئورەكلەرنى ئاشكارا سۆزلەيمەن.</p>
+<p>باشلاشتىن ئىلگىرى بىر نەچچە ئۇقۇمنى توغرىلايلى (ئاللىبۇرۇن پىششىق بولسىڭىز ئاتلاپ ئۆتسىڭىز بولىدۇ):</p>
+<blockquote>
+<p><strong>LLM</strong> = ھەممە كىتابنى ئوقۇغان تالانتلىق ئۇنىۋېرسىتېت ئوقۇغۇچىسى؛ ھەممىنى بىلىدۇ، لېكىن بىلىمىنىڭ ۋاقتى بار، ئاندا-ساندا توقۇيدۇ (خام خىياللىق جاۋاب)<strong>RAG</strong> = بۇ ئوقۇغۇچىغا پايدىلىنىش خاتىرىسى بېرىپ، قۇرۇق توقۇش ئورنىغا مەنبەگە تاياندۇرۇش<strong>MCP</strong> = ھەممىباب USB ماسلاشتۇرغۇچ؛ مېڭە بىلەن ھەر خىل قورالنى چېتىپلا ئىشلىتىشكە بولىدۇ<strong>Agent</strong> = كۆپ ئىقتىدارلىق ئىشچى؛ ئۆزى پىلانلايدۇ، قورال چاقىرىدۇ، نەتىجە تاپشۇرىدۇ<strong>Skills</strong> = ئىشچىنىڭ كەسپىي ماھارەت گۇۋاھنامىسى، ئېھتىياج بويىچە يۈكلىنىدۇ <strong>Agent گۇرۇپپىسى</strong> = بىر گۇرۇپپا ئىشچىدىن تۈزۈلگەن، ئىش تەقسىملىشىپ ھەمكارلىشىدىغان كوللېكتىپ</p>
+</blockquote>
+<p>HexClaw قىلىدىغان ئىش، بۇ ئۇقۇملارنى قۇرۇلۇش ئارقىلىق ئەمەلىيلەشتۈرۈپ، <strong>ئىجرا بولىدىغان سىستېمىغا ئايلاندۇرۇش</strong>。</p>
+<h3 id="关键数字">مۇھىم سانلار</h3>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>كۆرسەتكۈچ</th>
+<th>قىممەت</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ئامبار سانى</td>
+<td><strong>6</strong>（toolkit → ai-core → hexagon → hexclaw →
+hexclaw-desktop / hexagon-ui）</td>
+</tr>
+<tr>
+<td>پۈتكۈل ئېكولوگىيەدىكى كود مىقدارى</td>
+<td><strong>تەخمىنەن 560 مىڭ قۇر</strong>（hexagon 21.5w + hexclaw-desktop 17.7w +
+toolkit 8.1w + hexclaw 5.8w + ai-core 2.3w + hexagon-ui 0.3w）</td>
+</tr>
+<tr>
+<td>ئاساسىي كۈتۈپخانا كودى</td>
+<td><strong>81,000 قۇر</strong>(toolkit، ساپ Go ئۆلچەملىك كۈتۈپخانىسى، سىرتقى تايىنىشچانلىقى نۆل)</td>
+</tr>
+<tr>
+<td>Sandbox كودى</td>
+<td><strong>2,713 قۇر</strong>(Go نىڭ ئۈچ سۇپىلىق ئەسلىي sandbox ى، Docker نىڭ ئورنىنى ئالىدۇ، قوزغىلىشى &lt;10ms)</td>
+</tr>
+<tr>
+<td>Agent تۈرى</td>
+<td><strong>10 خىل</strong>(ReAct تىن Supervisor غىچە، ئاددىيدىن مۇرەككەپكىچە تولۇق تۈرلەرنى قاپلايدۇ)</td>
+</tr>
+<tr>
+<td>بىخەتەرلىك دەرۋازىسى</td>
+<td><strong>6 قاتلام</strong> Fail-closed تۇرۇبا يولى (كىملىك تەكشۈرۈش → چاستوتا چەكلىمىسى → خامچوت → كۆرسەتمە قىستۇرۇشنى بايقاش → RBAC → ئىقتىسادىي تەكشۈرۈش)</td>
+</tr>
+<tr>
+<td>ئۇچۇر سۇپىسى</td>
+<td><strong>13 خىل</strong>(Feishu / DingTalk / WeCom / WeChat / Telegram / Discord / Slack / WhatsApp / LINE / Matrix / Email / Web / API)</td>
+</tr>
+<tr>
+<td>API ئۇچ نۇقتىسى</td>
+<td><strong>71</strong>（RESTful + WebSocket）</td>
+</tr>
+<tr>
+<td>ۋېكتور ساقلاش</td>
+<td><strong>8 خىل</strong> ئارقا تەرەپ (Qdrant / FAISS / PgVector / Redis / Milvus / Chroma / Pinecone / Weaviate)</td>
+</tr>
+<tr>
+<td>قوزغىلىش ۋاقتى</td>
+<td><strong>&lt;100ms</strong>(Go يەككە binary، <code dir="ltr">hexclaw serve</code> بىر بۇيرۇق)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="全景六仓库五层架构">تولۇق كۆرۈنۈش: ئالتە ئامبار، بەش قاتلاملىق ئارخىتېكتۇرا</h2>
+<figure>
+<p class="architecture-diagram-caption">HexClaw ئېكولوگىيەسىنىڭ تايىنىش مۇناسىۋىتى</p>
+<figcaption aria-hidden="true">HexClaw ئېكولوگىيەسىنىڭ تايىنىش مۇناسىۋىتى سۈرىتى</figcaption>
+</figure>
+<pre dir="ltr"><code dir="ltr">                    hexclaw-desktop (Tauri desktop)
+                    hexagon-ui (observability)
+                          │
+                    ┌─────▼─────┐
+                    │  hexclaw   │  Application: adapters, gateway, Skill, API
+                    └─────┬─────┘
+                          │
+                    ┌─────▼─────┐
+                    │  hexagon  │  AI Agent engine: ReAct, Workflow,
+                    │           │  Plugin, A2A, Graph, Compose
+                    └──┬─────┬──┘
+                       │     │
+                 ┌─────▼──┐  │
+                 │ai-core │  │  AI foundation: LLM Provider,
+                 │        │  │  Embedding, Function Calling
+                 └────┬───┘  │
+                      │      │
+                 ┌────▼──────▼┐
+                 │  toolkit   │  Shared foundation (all Go modules depend on it)
+                 └────────────┘</code></pre>
+<p>ئالتە ئامبارنىڭ تايىنىش يۆنىلىشى تۆۋەندىن يۇقىرىغا قاتتىق بىر يۆنىلىشلىك؛ <strong>تەتۈر تايىنىش ۋە قاتلام ئاتلاپ چاقىرىشقا بولمايدۇ</strong>. پۈتۈن ئېكولوگىيەنىڭ قايتا ئىشلىتىلىشى، كېڭىيىشى ۋە مۇستەقىل تەرەققىي قىلىشىنىڭ ئاساسى مۇشۇ:</p>
+<ul>
+<li>toolkit / ai-core نى ھەر قانداق Go تۈرى قوللانسا بولىدۇ، HexClaw غا باغلانمىغان</li>
+<li>hexagon ئومۇمىي AI Agent ماتورى سۈپىتىدە hexclaw دىن ئايرىم ئىشلىتىلىپ، پۈتۈنلەي باشقا Agent ئەپلىرىنى قۇرالايدۇ</li>
+<li>hexclaw بولسا AI Agent ئەپىنىڭ ئارقا تەرىپى؛ پەقەت ئەپ قاتلىمىدىكى تەشكىللەشنى قىلىدۇ، يېڭى ئىقتىدارنى شۇ جايدا يېزىش ئەمەس، ماس قاتلامغا چۈشۈرىدۇ</li>
+</ul>
+<table>
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 28%" />
+<col style="width: 42%" />
+</colgroup>
+<thead>
+<tr>
+<th>قاتلام</th>
+<th>مەسئۇلىيەت</th>
+<th>ئۆزگىرىش چاستوتىسى</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>toolkit</strong></td>
+<td>ئورتاق ئاساسىي كۈتۈپخانا (HTTP / cache / شىفىرلاش / goroutine كۆلچىكى)</td>
+<td>ئىنتايىن تۆۋەن</td>
+</tr>
+<tr>
+<td><strong>ai-core</strong></td>
+<td>AI ئىقتىدار ئاساسى (7 خىل LLM Provider / Embedding / Smart Router)</td>
+<td>ئوتتۇرا</td>
+</tr>
+<tr>
+<td><strong>hexagon</strong></td>
+<td>Agent رامكا ماتورى (10 خىل Agent / Graph تەشكىللەش / RAG / بىخەتەرلىك / كۆزىتىش)</td>
+<td>ئوتتۇرا</td>
+</tr>
+<tr>
+<td><strong>hexclaw</strong></td>
+<td>ئەپ قاتلىمى (13 سۇپا ماسلاشتۇرۇش / 6 قاتلاملىق دەرۋازا / Skill / 71 API)</td>
+<td>يۇقىرى</td>
+</tr>
+<tr>
+<td><strong>hexclaw-desktop / hexagon-ui</strong></td>
+<td>ئۈستەل يۈزى / كۆزىتىش سۇپىسى</td>
+<td>يۇقىرى</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="为什么选-go为什么自研框架">نېمىشقا Go، نېمىشقا ئۆزىمىزنىڭ رامكىسى؟</h2>
+<p>ئىككى سوئالغا بىللە جاۋاب بېرىمەن.</p>
+<p><strong>تىل تاللاش</strong>: Agent نىڭ توسالغۇسى I/O — LLM جاۋابىنى، قورال ئىجراسىنى، 13 سۇپىنىڭ Webhook ىنى كۈتۈش. goroutine، Python asyncio دىن بىر دەرىجە ئۈنۈملۈك، GIL مۇ يوق. ئورۇنلاشتۇرۇشتا، <code dir="ltr">hexclaw serve</code> بىر بۇيرۇق بىلەن ئىجرا قىلىنىدۇ، مەۋھۇم مۇھىت بىلەن ئاۋارە بولۇش كېرەك ئەمەس.</p>
+<p><strong>رامكا تاللاش</strong>: Python تەرەپتە LangChain/LangGraph (ئېكولوگىيەسى ئەڭ چوڭ، لېكىن GIL چەكلىمىسى بار)، CrewAI (باشلاش تېز، لېكىن تەشكىللەش ئاجىزراق) نى باھالىدىم؛ Go تەرەپتە Eino (ByteDance مەھسۇلاتى، لېكىن بىخەتەرلىك مودۇلى كەم) نى كۆردۈم. ئاخىرى ئۆزۈم قۇردۇم، چۈنكى <strong>Go ئەسلىي + كارخانا دەرىجىلىك بىخەتەرلىك + تولۇق RAG + ئىشلەپچىقىرىش دەرىجىلىك كۆزىتىش</strong> دېگەن بىرلەشمە تەييار نەرسە يوق ئىدى.</p>
+<p>Hexagon «ئالتە تەرەپلىك جەڭچى»دىن نام ئالغان؛ ئالتە ئۆلچەمنىڭ تەڭپۇڭ تەرەققىياتىغا ئەھمىيەت بېرىدۇ: ئىشلىتىش قولايلىقى، ئۈنۈم، كېڭەيتىش، تەشكىللەش، كۆزىتىش، بىخەتەرلىك.</p>
+<figure>
+<p class="architecture-diagram-caption">Hexagon AI Agent Framework نىڭ ئالتە قاتلاملىق ئارخىتېكتۇرىسى</p>
+<figcaption aria-hidden="true">Hexagon AI Agent Framework نىڭ ئالتە قاتلاملىق ئارخىتېكتۇرا سۈرىتى</figcaption>
+</figure>
+<pre dir="ltr"><code dir="ltr">              Hexagon AI Agent Framework Architecture
+              ========================================
+
+  ┌─ Application Layer ────────────────────────────────────────┐
+  │  ChatBot    RAG Agent    Workflow    Multi-Agent    Custom  │
+  ├─ Orchestration Layer ──────────────────────────────────────┤
+  │  Router   Planner   Scheduler   Executor   Graph   State   │
+  ├─ Agent Core Layer ─────────────────────────────────────────┤
+  │  Agent   Role   Team   Network   Handoff   Context   Msg   │
+  ├─ Capability Layer ─────────────────────────────────────────┤
+  │  LLM Provider    RAG Engine    Tool System    Memory    KB │
+  │  (ai-core)                     (ai-core)      (ai-core)   │
+  ├─ Infrastructure Layer ─────────────────────────────────────┤
+  │  Tracer    Logger    Metrics    Config    Security   Plugin │
+  ├─ Foundation Layer ─────────────────────────────────────────┤
+  │  toolkit (lang | crypto | net | cache | util | collection) │
+  └────────────────────────────────────────────────────────────┘</code></pre>
+<p>3 قۇر كود بىلەن باشلاش، ئېلان قىلىش شەكلىدىكى سەپلىمە بىلەن ئىلگىرىلەش، گراف تەشكىللەش بىلەن مۇرەككەپ سىنارىيەنى باشقۇرۇش:</p>
+<div class="sourceCode" id="cb3"><pre dir="ltr" class="sourceCode go"><code dir="ltr" class="sourceCode go"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>response<span class="op">,</span> _ <span class="op">:=</span> hexagon<span class="op">.</span>Chat<span class="op">(</span>ctx<span class="op">,</span> <span class="st">&quot;What is Go?&quot;</span><span class="op">)</span>         <span class="co">// 最简入门</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>agent <span class="op">:=</span> hexagon<span class="op">.</span>QuickStart<span class="op">(</span>                              <span class="co">// 带工具</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    hexagon<span class="op">.</span>WithTools<span class="op">(</span>calculator<span class="op">),</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    hexagon<span class="op">.</span>WithSystemPrompt<span class="op">(</span><span class="st">&quot;你是一个数学助手&quot;</span><span class="op">),</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="op">)</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>team <span class="op">:=</span> hexagon<span class="op">.</span>NewTeam<span class="op">(</span><span class="st">&quot;research-team&quot;</span><span class="op">,</span>                  <span class="co">// 多 Agent 团队</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    hexagon<span class="op">.</span>WithAgents<span class="op">(</span>researcher<span class="op">,</span> writer<span class="op">,</span> reviewer<span class="op">),</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    hexagon<span class="op">.</span>WithMode<span class="op">(</span>hexagon<span class="op">.</span>TeamModeSequential<span class="op">),</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="op">)</span></span></code></pre></div>
+<h3 id="runnableio一个接口统一一切">Runnable[I,O]: بىر كۆرۈنمە يۈز ھەممىنى بىرلەشتۈرىدۇ</h3>
+<p>Python LangChain دا Agent، Tool، Chain، Retriever ئوخشىمىغان ئابستراكسىيەلەر؛ بىرلەشتۈرۈش ئۈچۈن ئۇلىغۇچى كود لازىم. Hexagon تېخىمۇ بىۋاسىتە يول تاللايدۇ: <strong>بارلىق بۆلەكلەر ئوخشاش گېنېرېك كۆرۈنمە يۈزنى ئەمەلىيلەشتۈرىدۇ</strong>، 6 خىل ئىجرا پارادىگمىسى بار (Invoke / Stream / Batch / Collect / Transform / BatchStream).</p>
+<div class="sourceCode" id="cb4"><pre dir="ltr" class="sourceCode go"><code dir="ltr" class="sourceCode go"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>pipeline <span class="op">:=</span> core<span class="op">.</span>Compose<span class="op">(</span>tokenizer<span class="op">,</span> model<span class="op">)</span>    <span class="co">// 自由组合</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>adapted <span class="op">:=</span> core<span class="op">.</span>InvokeToStream<span class="op">(</span>r<span class="op">)</span>              <span class="co">// 自动获得流式能力</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>fastest <span class="op">:=</span> core<span class="op">.</span>Race<span class="op">(</span>future1<span class="op">,</span> future2<span class="op">)</span>         <span class="co">// 竞速取最快</span></span></code></pre></div>
+<p>Agent باشقا بىر Agent نىڭ قورالى بولالايدۇ، RAG تۇرۇبا يولى گراف تەشكىللەش تۈگۈنىگە كىرەلەيدۇ؛ چۈنكى ئۇلار ئوخشاش كۆرۈنمە يۈزنى ئىشلىتىدۇ.</p>
+<p><strong>ئاساسلىق رامكىلار بىلەن سېلىشتۇرۇش:</strong></p>
+<table>
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 19%" />
+<col style="width: 23%" />
+<col style="width: 17%" />
+<col style="width: 26%" />
+</colgroup>
+<thead>
+<tr>
+<th>ئۆلچەم</th>
+<th>Hexagon</th>
+<th>LangGraph</th>
+<th>CrewAI</th>
+<th>Eino (ByteDance)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>باشلاش توسالغۇسى</td>
+<td>3 قۇر كود</td>
+<td>StateGraph نى چۈشىنىش لازىم</td>
+<td>ئەڭ قولايلىق</td>
+<td>Component بىرلەشتۈرۈشنى چۈشىنىش لازىم</td>
+</tr>
+<tr>
+<td>ئۈنۈم يۇقىرى چېكى</td>
+<td><strong>100k+ پاراللېللىق</strong></td>
+<td>GIL &lt;10k</td>
+<td>GIL</td>
+<td><strong>100k+</strong></td>
+</tr>
+<tr>
+<td>تەشكىللەش ئىقتىدارى</td>
+<td>Graph + Chain + Workflow + Process</td>
+<td><strong>StateGraph ئەڭ پىشقان</strong></td>
+<td>ئاساسىي Team</td>
+<td>Graph + Flow</td>
+</tr>
+<tr>
+<td>بىخەتەرلىك ئەسلىدىن بار</td>
+<td><strong>6 مودۇل</strong></td>
+<td>يوق</td>
+<td>ئاساسىي</td>
+<td><strong>يوق</strong></td>
+</tr>
+<tr>
+<td>كۆزىتىش</td>
+<td>OTel + Prometheus + Dev UI</td>
+<td>LangSmith نى ئايرىم سېتىۋېلىش لازىم</td>
+<td>ئاساسىي</td>
+<td>Devops قىستۇرمىسى</td>
+</tr>
+<tr>
+<td>RAG چوڭقۇرلۇقى</td>
+<td>7 باسقۇچ × 8 ۋېكتور ئارقا تەرىپى</td>
+<td>LangChain بىلەن قوشۇش لازىم</td>
+<td>ئاساسىي</td>
+<td>ئاساسىي</td>
+</tr>
+<tr>
+<td>ئىشلەپچىقىرىشتا دەلىللەش</td>
+<td>دەسلەپكى باسقۇچ</td>
+<td>كەڭ</td>
+<td>كەڭ</td>
+<td><strong>ByteDance نىڭ چوڭ كۆلىمى</strong></td>
+</tr>
+</tbody>
+</table>
+<p>يادرولۇق پەرق <strong>بىخەتەرلىك ئۆلچىمىدە</strong>. Eino دا كۆرسەتمە قىستۇرۇشنى بايقاش، PII نى يوشۇرۇش، RBAC ۋە تەننەرخ كونترول پۈتۈنلەي بوش. دېمەك، Eino بىلەن ئىشلەتكۈچىگە يۈزلەنگەن Agent قۇرسىڭىز، بۇ ئىقتىدارلارنى نۆلدىن ئۆزىڭىز قۇرۇشىڭىز كېرەك. Hexagon ئۇلارنى رامكىنىڭ ئىچكى ئىقتىدارى قىلغان، قاچىلاپلا بار.</p>
+<blockquote>
+<p>بىر جۈملە بىلەن: LangChain نىڭ كۆرۈنمە يۈز پىكرى + LangGraph نىڭ تەشكىللەش ئىقتىدارى + كارخانا دەرىجىلىك بىخەتەرلىك قاتلىمى، Go بىلەن قايتا يېزىلغان. سېزىش قاتلىمى (Agent) → ئىجرا قاتلىمى (Skills + MCP) → بىلىم قاتلىمى (RAG + LLM + Memory) نىڭ ئۈچىمۇ ئىچىگە قوشۇلغان.</p>
+</blockquote>
+<h3 id="十种-agent-多-agent-协作">ئون خىل Agent + كۆپ Agent ھەمكارلىقى</h3>
+<p>Agent ئاددىيدىن مۇرەككەپكە تۆت باسقۇچتا تەرەققىي قىلىدۇ؛ Hexagon، 10 خىل Agent ۋە ھەمكارلىق كېلىشىمى بىلەن ھەممىسىنى قاپلايدۇ:</p>
+<table>
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 44%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>باسقۇچ</th>
+<th>Hexagon نىڭ ئەمەلىيلەشتۈرۈشى</th>
+<th>تىپىك سىنارىيە</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>سوئال-جاۋاب</strong></td>
+<td>BaseAgent</td>
+<td>FAQ، بىلىم سۈرۈشتۈرۈش</td>
+</tr>
+<tr>
+<td><strong>SOP جەريانى</strong></td>
+<td>SequentialAgent / Process</td>
+<td>تەستىق ئېقىمى، OA</td>
+</tr>
+<tr>
+<td><strong>ئومۇمىي مۇستەقىللىق</strong></td>
+<td><strong>ReActAgent</strong> / ReflectionAgent / SelfDiscoveryAgent /
+PlanExecuteAgent</td>
+<td>شەخسىي ياردەمچى، ئوچۇق ۋەزىپە</td>
+</tr>
+<tr>
+<td><strong>كۆپ Agent ھەمكارلىقى</strong></td>
+<td>ParallelAgent / LoopAgent / DeepAgent / SupervisorAgent</td>
+<td>يۇمشاق دېتال ئىجادىيىتى، تەتقىقات دوكلاتى</td>
+</tr>
+</tbody>
+</table>
+<p>ئىچكى-سىرتقى قەۋەت قىلىش تەبىئىي قوللىنىدۇ: Supervisor نىڭ ئىشچىسى ReActAgent بولالايدۇ، ReActAgent قورالى PlanExecuteAgent نى قوزغىتالايدۇ.</p>
+<p>ھەمكارلىق قاتلىمىدا: Team (4 ھالەت) / Handoff (Swarm ئۇسلۇبىدىكى ئالماشتۇرۇش) / Network (Mesh/Hub/Ring/Tree توپولوگىيەسى) / Consensus (بېلەت تاشلاپ قارار قىلىش) / Registry (مۇلازىمەت بايقاش + يۈك تەڭپۇڭلاشتۇرۇش) / <strong>A2A</strong> (Google نىڭ Agent-to-Agent كېلىشىمى، Go ئېكولوگىيەسىدە ئاز ئۇچرايدۇ). تۆت قاتلاملىق ھالەت باشقۇرۇش + Snapshot/Restore.</p>
+<h3 id="图编排引擎">گراف تەشكىللەش ماتورى</h3>
+<div class="sourceCode" id="cb5"><pre dir="ltr" class="sourceCode go"><code dir="ltr" class="sourceCode go"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>g<span class="op">,</span> _ <span class="op">:=</span> graph<span class="op">.</span>NewGraph<span class="op">[</span>MyState<span class="op">](</span><span class="st">&quot;support&quot;</span><span class="op">).</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    AddNode<span class="op">(</span><span class="st">&quot;classify&quot;</span><span class="op">,</span> classifyIntent<span class="op">).</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    AddNode<span class="op">(</span><span class="st">&quot;faq&quot;</span><span class="op">,</span> handleFAQ<span class="op">).</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    AddConditionalEdge<span class="op">(</span><span class="st">&quot;classify&quot;</span><span class="op">,</span> routerFn<span class="op">,</span> routeMap<span class="op">).</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    SetEntryPoint<span class="op">(</span><span class="st">&quot;classify&quot;</span><span class="op">).</span>Build<span class="op">()</span></span></code></pre></div>
+<p>شەرتلىك يوللاش · پاراللېل ئىجرا · تەكشۈرۈش نۇقتىسىنى داۋاملىق ساقلاش · Human-in-the-Loop · ۋاقىت ساياھىتى · تارماق گراف ئىچكى قەۋىتى · Pregel BSP · دەۋرىيلىنىش + توسۇق. يەنە زەنجىرسىمان تەشكىللەش، خىزمەت ئېقىمى ماتورى، بەلگىلىك جەريان (Process، ھالەت ماشىنىسى يېتەكلەيدۇ) بار.</p>
+<figure>
+<p class="architecture-diagram-caption">Hexagon سانلىق مەلۇمات ئېقىمى: User → Agent → LLM → Tool → Result</p>
+<figcaption aria-hidden="true">Hexagon سانلىق مەلۇمات ئېقىمى: User → Agent → LLM → Tool → Result</figcaption>
+</figure>
+<pre dir="ltr"><code dir="ltr">  User ──→ Agent ──→ LLM ──→ Tool ──→ Result
+              │
+              ├──→ Memory (memory access)
+              └──→ RAG (knowledge retrieval)</code></pre>
+<h3 id="rag-管线7-环节可插拔">RAG تۇرۇبا يولى: 7 ئالماشتۇرغىلى بولىدىغان باسقۇچ</h3>
+<pre dir="ltr"><code dir="ltr">ھۆججەت → Loader → Splitter → Embedder → Indexer → Retriever → Reranker → Synthesizer</code></pre>
+<table>
+<thead>
+<tr>
+<th>باسقۇچ</th>
+<th>يارقىن نۇقتا</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Loader</td>
+<td>8 فورمات (XLSX / PPTX / DOCX / PDF / OCR نىمۇ ئۆز ئىچىگە ئالىدۇ)</td>
+</tr>
+<tr>
+<td>Splitter</td>
+<td>6 خىل (Token / Code مەنىلىك بۆلۈشنى ئۆز ئىچىگە ئالىدۇ)</td>
+</tr>
+<tr>
+<td>Retriever</td>
+<td>6 خىل (<strong>Hybrid / HyDE / Adaptive / ParentDoc</strong>）</td>
+</tr>
+<tr>
+<td>Reranker</td>
+<td><strong>RRF</strong> / LLM / Cross-Encoder / Cohere</td>
+</tr>
+<tr>
+<td>Synthesizer</td>
+<td>Refine / <strong>TreeSummarize</strong></td>
+</tr>
+</tbody>
+</table>
+<p>ۋېكتور ساقلاشنىڭ 8 ئارقا تەرىپى: Qdrant / FAISS / PgVector / Redis / Milvus / Chroma / Pinecone / Weaviate.</p>
+<h3 id="安全体系-可观测性">بىخەتەرلىك سىستېمىسى + كۆزىتىش</h3>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>بۆلەك</th>
+<th>ئەمەلىيلەشتۈرۈش</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Prompt قىستۇرۇش</td>
+<td>10 بايقاش ئەندىزىسى + heuristic نومۇرلاش + Unicode بىخەتەر ماسلاشتۇرۇش</td>
+</tr>
+<tr>
+<td>PII يوشۇرۇش</td>
+<td>7 خىل (تېلېفون / كىملىك نومۇرى / بانكا كارتىسى Luhn / ئېلخەت / IP / ئىناۋەتلىك كارتا / پاسپورت)</td>
+</tr>
+<tr>
+<td>RBAC</td>
+<td>4 رول · رول ۋارىسلىقى · 9 شەرت مەشغۇلاتچىسى · Allow/Deny سىياسەت ماتورى</td>
+</tr>
+<tr>
+<td>تەننەرخ كونترول</td>
+<td>كۆپ تەمىنلىگۈچى باھا جەدۋىلى · <strong>مىكرو دوللار ئېنىقلىقى</strong> (cost×10⁶، int64 سۈپىتىدە ساقلىنىدۇ)</td>
+</tr>
+<tr>
+<td>مەزمۇن سۈزۈش</td>
+<td><strong>Aho-Corasick O(n)</strong> كۆپ ئەندىزىلىك ماسلاشتۇرۇش · 9 تۈر · زەھەرلىك مەزمۇن بايقىغۇچ</td>
+</tr>
+<tr>
+<td>ئىقتىسادىي تەكشۈرۈش خاتىرىسى</td>
+<td>10 خىل ھادىسە · buffer دا توپلاپ يېزىش · سۈرۈشتۈرۈش ماتورى + دوكلات ھاسىل قىلىش</td>
+</tr>
+<tr>
+<td>كۆزىتىش</td>
+<td>5 خىل Span · <strong>OTel نى بىر قۇر بىلەن بىرلەشتۈرۈش</strong> · Prometheus
+<code dir="ltr">/metrics</code> · 4 خىل كۆرسەتكۈچ</td>
+</tr>
+</tbody>
+</table>
+<p>Hook سىستېمىسى Run / Tool / LLM / Retriever / Stream دىن ئىبارەت بەش خىل ھادىسىنى قاپلايدۇ؛ <strong>bitmask ئارقىلىق ياخشىلاش</strong> قۇرۇق چاقىرىشتىن ساقلايدۇ. hexclaw نىڭ خامچوت كونترول، قورال تەستىقى ۋە ئاپتوماتىك ئەستە ساقلاش ئايرىشى ھەممىسى Hook ئارقىلىق ئەمەلىيلەشكەن، رامكا يادروسىغا كىرىپ ئۆزگەرتىلمىگەن.</p>
+<h3 id="性能-更多能力">ئۈنۈم + تېخىمۇ كۆپ ئىقتىدار</h3>
+<table>
+<thead>
+<tr>
+<th>كۆرسەتكۈچ</th>
+<th>Hexagon (Go)</th>
+<th>Python رامكىسى</th>
+<th>ھەسسىسى</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>پاراللېل Agent</td>
+<td>100k+</td>
+<td>&lt;10k (GIL)</td>
+<td><strong>10x</strong></td>
+</tr>
+<tr>
+<td>Binary چوڭلۇقى</td>
+<td>~20MB</td>
+<td>~500MB+</td>
+<td><strong>25x</strong></td>
+</tr>
+<tr>
+<td>قوزغىلىش ۋاقتى</td>
+<td>&lt;100ms</td>
+<td>2-5s</td>
+<td><strong>20-50x</strong></td>
+</tr>
+<tr>
+<td>يەككە Agent ئىچكى ساقلىغۇچى</td>
+<td>~1MB</td>
+<td>~10MB</td>
+<td><strong>10x</strong></td>
+</tr>
+</tbody>
+</table>
+<p>يەنە: OS دەرىجىلىك sandbox · رېئاكسىيەلىك ئېقىم بىر تەرەپ قىلىش ماتورى · 7 خىل ئەستە ساقلاش ئەمەلىيلەشتۈرۈشى · MCP Client+Server · ئەقلىي ھۆججەت خىزمەت ئېقىمى (ADW) · بەلگىلىك جەريان (Process).</p>
+<blockquote>
+<p><strong>ئەپ قاتلىمى تەشكىللەيدۇ، رامكا قاتلىمى ئەمەلىيلەشتۈرىدۇ.</strong> hexclaw، Agent پىكىر يۈرگۈزۈشنى يازمايدۇ، Hexagon نىڭكىنى قۇراشتۇرىدۇ؛ بىخەتەرلىك تەكشۈرۈشىنى يازمايدۇ، Guard Chain نى تەشكىللەيدۇ؛ RAG نى يازمايدۇ، RAG Engine نى سەپلەيدۇ.</p>
+</blockquote>
+<hr />
+<h2 id="hexclawhexagon-是引擎hexclaw-是整辆车">hexclaw: hexagon ماتور بولسا، hexclaw پۈتۈن ماشىنا</h2>
+<p><strong>[سۈرەت: HexClaw ئەپىنىڭ ئالتە قاتلاملىق ئارخىتېكتۇرىسى]</strong></p>
+<pre dir="ltr"><code dir="ltr">                    HexClaw Application Architecture
+                    ================================
+
+  ┌─ Platform Adapter ──────────────────────────────────────────────┐
+  │  Web  Feishu  Telegram  DingTalk  Discord  Slack  WeCom  WeChat  │
+  │  WhatsApp  LINE  Matrix  Email  REST API          (13 total)    │
+  ├─ Security Gateway (6-Layer Pipeline) ───────────────────────────┤
+  │  Auth → RateLimit → CostCheck → InputSafety → Permission → Audit│
+  ├─ Agent Engine ──────────────────────────────────────────────────┤
+  │  ReAct Loop        3D Budget Control     Tool Executor + Hooks  │
+  │  Session Manager   Context Compaction    Multi-Agent Router     │
+  │  Two-Pass Stream   Tool Approval Gate    Auto Memory Extract    │
+  ├─ Capability Layer ──────────────────────────────────────────────┤
+  │  Skill System       Knowledge (RAG)      LLM Router             │
+  │  (Builtin+Mkt+MCP)  (FTS5+Vector+MMR)   (Cost/Quality/Latency) │
+  │  Memory (4-Layer)   Semantic Cache (Singleflight+LRU+TTL)      │
+  ├─ Infrastructure ────────────────────────────────────────────────┤
+  │  OS Sandbox          MCP Client         Cron + Webhook          │
+  │  (Seatbelt/NS/Win)  (stdio/SSE/HTTP)   REST API (71 endpoints) │
+  │  Canvas (8 components) Voice (STT/TTS) WebSocket live stream    │
+  ├─ Storage &amp; Config ──────────────────────────────────────────────┤
+  │  SQLite (WAL)   FTS5 full-text search YAML+ENV Audit JSONL .md │
+  └─────────────────────────────────────────────────────────────────┘
+            Powered by: Hexagon ← ai-core ← toolkit</code></pre>
+<h3 id="核心数据流">يادرولۇق سانلىق مەلۇمات ئېقىمى</h3>
+<pre dir="ltr"><code dir="ltr">User message (Feishu/Telegram/Discord/WeChat/...)
+  → Platform adapter → Security gateway (6 layers) → Session router
+  → Agent engine (ReAct)
+      ├─ Fast path: Skill.Match() → milliseconds, zero LLM usage
+      └─ Main path: ReAct loop → Sandbox execution → Sync/stream response</code></pre>
+<h3 id="六层安全网关">ئالتە قاتلاملىق بىخەتەرلىك دەرۋازىسى</h3>
+<pre dir="ltr"><code dir="ltr">Request → [Auth] → [RateLimit] → [CostCheck] → [InputSafety] → [Permission] → [Audit] → Engine</code></pre>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 47%" />
+<col style="width: 31%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: center;">قاتلام</th>
+<th style="text-align: center;">خاتالىق سىياسىتى</th>
+<th>ئەمەلىيلەشتۈرۈش</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">Auth</td>
+<td style="text-align: center;">رەت قىلىش</td>
+<td>constant-time سېلىشتۇرۇش · HMAC-SHA256 ئىمزا، 24h كۆزنەك</td>
+</tr>
+<tr>
+<td style="text-align: center;">RateLimit</td>
+<td style="text-align: center;">رەت قىلىش</td>
+<td>سىيرىلما كۆزنەك · 30s تازىلاش · OOM دىن ساقلىنىش ئۈچۈن 100K كۆزنەك قاتتىق يۇقىرى چېكى</td>
+</tr>
+<tr>
+<td style="text-align: center;">CostCheck</td>
+<td style="text-align: center;"><strong>Fail-closed</strong></td>
+<td>خامچوت cache قىلىنمايدۇ، دەل ۋاقتىدا سۈرۈشتۈرۈلىدۇ؛ خاتالىقتا توسۇلىدۇ</td>
+</tr>
+<tr>
+<td style="text-align: center;">InputSafety</td>
+<td style="text-align: center;"><strong>Fail-closed</strong></td>
+<td>Guard Chain، قىستۇرۇش بايقاش + PII يوشۇرۇش + مەزمۇن سۈزۈشنى بىرلەشتۈرىدۇ</td>
+</tr>
+<tr>
+<td style="text-align: center;">Permission</td>
+<td style="text-align: center;">رەت قىلىش</td>
+<td>قورال دەرىجىلىك قارا تىزىملىك ئاق تىزىملىكتىن ئۈستۈن</td>
+</tr>
+<tr>
+<td style="text-align: center;">Audit</td>
+<td style="text-align: center;">ئۆتكۈزۈش</td>
+<td>پەقەت خاتىرىلەيدۇ، توسمايدۇ</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>3- ۋە 4-قاتلامدا خاتالىق بولسا بىۋاسىتە رەت قىلىنىدۇ. ئىشلەتكۈچىگە «مۇلازىمەت ۋاقتىنچە ئىشلىمەيدۇ» دېيىش، كونترولدىن چىققان ReAct ھالقىسىنىڭ API قالدۇقىنى نۆلگە چۈشۈرۈۋېتىشىدىن ياخشى.</p>
+</blockquote>
+<h3 id="十三平台适配">ئون ئۈچ سۇپا ماسلاشتۇرۇشى</h3>
+<p>بىرلىككە كەلگەن ئۇچۇر مودېلى + 4 ئۇسۇللۇق Adapter كۆرۈنمە يۈزى؛ ھەر بىر ماسلاشتۇرغۇچ تەخمىنەن 150 قۇر.</p>
+<p>دىققەت قىلىشقا ئەرزىيدىغان سۇپا خاس ئەمەلىيلەشتۈرۈشلىرى: - <strong>WeCom</strong>: AES-256-CBC شىفىرلاش/يېشىش + قوش تەكشۈرۈش قۇلۇپى بار Token cache - <strong>WeChat</strong>: 5 سېكۇنتلۇق پاسسىپ جاۋاب + ۋاقتى ئېشىپ كەتسە خېرىدار مۇلازىمىتىنىڭ ئاسىنخرون ئىتتىرىشىگە ئاپتوماتىك ئۆتۈش - <strong>Discord</strong>: Gateway WebSocket يۈرەك سوقۇشى + ئېقىم شەكلىدە ئۇچۇر تەھرىرلەش - <strong>Web</strong>: Origin ئاق تىزىملىكى پەقەت <code dir="ltr">localhost</code> ۋە <code dir="ltr">tauri://localhost</code></p>
+<h3 id="react-引擎">ReAct ماتورى</h3>
+<p>ماتور، Hexagon ReActAgent نىڭ ئۈستىگە ئەپ قاتلىمى تەشكىللەشنى قوشىدۇ (يەككە ھۆججەت 47KB):</p>
+<pre dir="ltr"><code dir="ltr">LoadContext → InjectContext(RAG+Memory) → InjectTools(Skill+MCP, limit 40)
+→ ReAct loop: LLM reasoning → ToolApproval → ToolExecutor → BudgetUpdate
+→ AutoMemory → SaveHistory → Response</code></pre>
+<p><strong>3D ئاتوملۇق خامچوت</strong>: ئۈچ <code dir="ltr">atomic.Int64</code> ئارقىلىق Token، ۋاقىت ۋە تەننەرخ ئايرىم ئىزلىنىدۇ. نېمىشقا تەننەرخكە float64 ئىشلەتمەيمىز؟ Go نىڭ atomic بوغچىسى لەيلىمە سان ئاتوم مەشغۇلاتىنى قوللىمايدۇ، Agent نىڭ قورال چاقىرىشىدا بولسا پاراللېللىق يۇقىرى. ھەل قىلىش چارىسى دوللارنى بىر مىليونغا كۆپەيتىپ پۈتۈن سان ساقلاش (مىكرو دوللار ئېنىقلىقى): $0.00004 بولسا 40 كە ئايلىنىدۇ. پۈتۈن سان ئاتوم مەشغۇلاتى، قۇلۇپ خىراجىتى نۆل. 20+ مودېل باھا جەدۋىلى بار، تارماق Agent خامچوتىنى تەقسىملەش ۋە قايتۇرۇۋېلىشنى قوللايدۇ.</p>
+<p><strong>Two-Pass Streaming</strong>: ئارىلىق نۆۋەتتە <code dir="ltr">Complete()</code> (tool_calls نى بايقاش)، ئاخىرقى نۆۋەتتە <code dir="ltr">Stream()</code> (خەت يېزىش ئۈنۈمى). كۆرۈنمەيدىغان قەدەملەرگە ئېقىم ئۇلىنىشى قۇرۇشتىن ساقلىنىدۇ. ئېقىم goroutine ى ئايرىم <code dir="ltr">context.Background()</code> بىلەن ئۇچۇر ساقلايدۇ، ئىشلەتكۈچى بەتنى تاقىغاندا سانلىق مەلۇمات يوقاپ كېتىشنىڭ ئالدىنى ئالىدۇ.</p>
+<p><strong>Hook Chain</strong>: TruncateHook بېشىنىڭ 60% ى + ئاخىرىنىڭ 20% ىنى قالدۇرىدۇ · SanitizeHook پەقەت سىرتقى مەنبەنى تازىلايدۇ · AuditHook مەغلۇپ بولغاندىمۇ ئىجرا بولىدۇ. قورال cache ى SHA256 key ئىشلىتىدۇ، بۇزغۇنچىلىق خاراكتېرلىك قوراللار ئاپتوماتىك ئاتلىنىدۇ.</p>
+<p><strong>Skill ئېكولوگىيەسى (ClawHub)</strong>: 37 Skill + 38 MCP Server. فورماتى Markdown + YAML frontmatter؛ مەنبەسى 18 ئۆز ئىجادىيىتى + 12 جامائەتچىلىكتىن ماسلاشتۇرۇلغان + 7 OpenClaw playbook كۆچۈرۈلمىسى. MCP، 18 تۈرنى قاپلايدۇ (ھۆججەت سىستېمىسى / GitHub / ئىزدەش / توركۆرگۈچ / ساندان / Slack / Docker / K8s / AWS قاتارلىقلار).</p>
+<h3 id="go-原生三平台沙箱2713-行替代-docker">Go نىڭ ئۈچ سۇپىلىق ئەسلىي sandbox ى: 2713 قۇر بىلەن Docker نىڭ ئورنىنى ئېلىش</h3>
+<p>OpenClaw قاتارلىق رىقابەتچىلەرنىڭ كۆپىنچىسى كود ئىجرا قىلىشتا Docker غا تايىنىدۇ. hexclaw، <strong>2713 قۇر ساپ Go</strong> بىلەن يادرو دەرىجىلىك ئايرىشنى ئەمەلىيلەشتۈرىدۇ:</p>
+<p><strong>macOS Seatbelt</strong> (Claude Code / Codex بىلەن ئوخشاش تۆۋەنكى تېخنىكا) — ھەرىكەتچان SBPL سىياسىتى، <code dir="ltr">(deny default)</code> سۈكۈتتە رەت قىلىنىدۇ. Docker قاچىسى سۈكۈتتە كۆپىنچە syscall ئىجازەتلىرىگە ئىگە، بۇنى قىلالمايدۇ.</p>
+<p><strong>Windows نىڭ بەش قاتلاملىق چوڭقۇر مۇداپىئەسى</strong> — ① Restricted Token (UNTRUSTED_RID 0x0000) → ② ACL ھۆججەت سىستېمىسى ئايرىشى → ③ Job Object (512MB / 10 جەريان) → ④ Low Box Token يادرو دەرىجىلىك تور ئۈزۈش → ⑤ Alternate Desktop (Shatter Attack تىن ساقلىنىش). قوزغىلىش تەخمىنەن 50ms / 5MB؛ Docker Desktop بولسا 500ms-2s.</p>
+<p><strong>Linux نىڭ بەش قاتلاملىق ئايرىشى</strong> — ① Namespace → ② pivot_root → ③ seccomp → ④ جەرياننى مۇستەھكەملەش → ⑤ ئىككى باسقۇچلۇق re-exec. ماس كەلمەيدىغان سىستېمىدا ئاپتوماتىك تۆۋەنلەيدۇ: CLONE_NEWUSER مەغلۇپ → Landlock → زاپاس seccomp.</p>
+<p>ئۈچ سۇپا ئورتاق <strong>NetPolicy</strong> ماتورى ئىشلىتىدۇ: قارا تىزىملىك ئالدىن → پورت → ھالەت؛ ئايلىنىپ ئۆتكىلى بولمايدۇ.</p>
+<p><strong>Sandbox ئەمەلىي ئۆلچەش سېلىشتۇرمىسى (Linux):</strong></p>
+<table>
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 20%" />
+<col style="width: 22%" />
+<col style="width: 15%" />
+<col style="width: 27%" />
+</colgroup>
+<thead>
+<tr>
+<th>ئۆلچەم</th>
+<th>HexClaw</th>
+<th>OpenClaw</th>
+<th>Codex</th>
+<th>Claude Code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>سۈكۈتتىكى ھالەت</td>
+<td><strong>ON (نۆل سەپلىمە)</strong></td>
+<td>OFF (قولدا سەپلەش لازىم)</td>
+<td>ON</td>
+<td>ON</td>
+</tr>
+<tr>
+<td>سىرتقى تايىنىشچانلىق</td>
+<td><strong>نۆل</strong></td>
+<td>Docker ~500MB</td>
+<td>نۆل</td>
+<td>نۆل</td>
+</tr>
+<tr>
+<td>قوزغىلىش كېچىكىشى</td>
+<td><strong>&lt;10ms</strong></td>
+<td>~200ms (docker exec)</td>
+<td>&lt;10ms</td>
+<td>&lt;10ms</td>
+</tr>
+<tr>
+<td>ئىچكى ساقلىغۇچ خىراجىتى</td>
+<td><strong>~0</strong></td>
+<td>100-200MB</td>
+<td>~0</td>
+<td>~0</td>
+</tr>
+<tr>
+<td>ئەمەلىيلەشتۈرۈش ئۇسۇلى</td>
+<td><strong>تەخمىنەن 2700 قۇر Go syscall</strong></td>
+<td>Docker API ئورالمىسى</td>
+<td>تەخمىنەن 7000 قۇر Rust (bubblewrap)</td>
+<td>سىستېما ئىچىدە بار (Seatbelt)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="知识库-llm-路由-记忆">بىلىم ئامبىرى · LLM يوللاش · ئەستە ساقلاش</h3>
+<p><strong>بىلىم ئامبىرى</strong>: Recursive Split → FTS5 + ۋېكتور Embedding → ئارىلاش نومۇرلاش (0.7v + 0.3t) → ۋاقىت تۆۋەنلىشى → MMR تەكرارسىزلاشتۇرۇش (3×TopK نامزاتنى قايتا سۈزۈش) → TopK=3. Embedder ئىشلىمىسە ئاپتوماتىك ساپ FTS5 غا تۆۋەنلەيدۇ.</p>
+<p><strong>LLM يوللاش</strong>: كۆپ Provider نى سىياسەت (cost / quality / latency) بويىچە يوللاش، كاشىلىدا ئاپتوماتىك تۆۋەنلەش. مەنىلىك cache: Singleflight cache بۆسۈلۈشىدىن ساقلايدۇ · TTL ± 10% تەۋرىنىشى بىرلا ۋاقىتتا ئىناۋەتسىزلىنىشتىن ساقلايدۇ · قۇرۇق قىممەت cache ى تېشىپ ئۆتۈشتىن ساقلايدۇ.</p>
+<p><strong>تۆت قاتلاملىق ئەستە ساقلاش</strong>: سۆھبەت كونتېكىستى → كۈندىلىك خاتىرە → MEMORY.md → مەنىلىك ۋېكتور. ئاپتوماتىك ئايرىش: ئاچقۇچلۇق سۆز بىلەن ئالدىن سۈزۈش → ئاسىنخرون LLM (15s ۋاقىت چېكى) → مەۋجۇت ئەسلىمىنى قوشۇپ تەكراردىن ساقلىنىش. 50 تىن ئاشسا LLM ئاپتوماتىك قىسىدۇ. Markdown فورماتى، ئادەم ئوقۇيالايدۇ، Git بىلەن نەشر باشقۇرغىلى بولىدۇ.</p>
+<h3 id="多-agent-路由-自主行为">كۆپ Agent يوللاش · مۇستەقىل ھەرىكەت</h3>
+<p>تۆت تاللاش مېخانىزمى: UI دا بىۋاسىتە تاللاش · <code dir="ltr">@mention</code> گرامماتىكىسى · ھالەتكە ئاپتوماتىك باغلاش · سۇپا يوللاش قائىدىسى (UserID +100 &gt; ChatID +50 &gt; Platform +10)؛ زاپاس ئۇسۇل LLM مەنىلىك تۈرلىشى.</p>
+<p><strong>يىغىن ھالىتى</strong>: ≥2 Agent قۇرۇلمىلىق تېما ئەتراپىدا كۆپ نۆۋەتلىك يۇمىلاق ئۈستەل مۇنازىرىسى قىلىدۇ؛ رىقابەتچى تەھلىلى، مېڭە بورىنى، مۇتەخەسسىسلەر مۇنازىرىسىگە ماس.</p>
+<p>مۇستەقىل ھەرىكەت: Heartbeat تەكشۈرۈشى + Cron ۋاقىتلىق جەدۋىلى + Webhook ھادىسە يېتەكچىلىكى. سۈكۈتتە SQLite WAL؛ تۆت ئورۇنلاشتۇرۇش شەكلى: ئۈستەل يۈزى / Docker / systemd / K8s.</p>
+<hr />
+<h2
+id="hexclaw-desktop让-ai-agent-像-docker-desktop-一样双击即用">hexclaw-desktop: AI Agent نى Docker Desktop دەك «قوش چېكىپلا ئىشلىتىش»</h2>
+<figure>
+<img src="../../assets/blog/012.png" alt="HexClaw Desktop سۆھبەت يۈزى (تارىخىي كۆرۈنمە يۈز مىسالى)" width="2560" height="1588" loading="lazy" decoding="async">
+<figcaption aria-hidden="true">HexClaw Desktop پاراڭ كۆرۈنمە يۈزى سۈرىتى</figcaption>
+</figure>
+<h3 id="tauri-壳管理-go-sidecar">Tauri قېپى Go Sidecar نى باشقۇرىدۇ</h3>
+<p><strong>[سۈرەت: HexClaw Desktop نىڭ قاتلاملىق ئارخىتېكتۇرىسى]</strong></p>
+<pre dir="ltr"><code dir="ltr">                  HexClaw Desktop Architecture
+                  ============================
+
+  ┌─ Tauri Shell (Rust) ───────────────────────────────────────┐
+  │ Window management  System tray  Hotkey ⌘⇧H  Single instance │
+  │ Auto-update  API proxy (CORS bypass) Sidecar lifecycle      │
+  ├─ Vue 3 Frontend (WebView) ─────────────────────────────────┤
+  │ Overview │ Chat │ Agent │ Knowledge │ Automation │ Logs   │
+  │                  Integrations                             │
+  │ Pinia Store        Vue Router        Tauri invoke (IPC)    │
+  ├─ Tauri Commands (Rust → Go) ───────────────────────────────┤
+  │ proxy_api_request    stream_chat    check_engine_health    │
+  ├─────────────────────────────────────────────────────────────┤
+  │              HTTP / WebSocket ←→ localhost:16060             │
+  ├─ hexclaw serve (Go Sidecar) ───────────────────────────────┤
+  │ Agent engine · Security gateway · LLM router · RAG · MCP    │
+  │ Sandbox                                                   │
+  │  ┌─────────────────────────────────────────────────────┐   │
+  │  │    Hexagon  ←  ai-core  ←  toolkit                  │   │
+  │  └─────────────────────────────────────────────────────┘   │
+  └─────────────────────────────────────────────────────────────┘</code></pre>
+<p><strong>رامكا تاللاش: </strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th style="text-align: center;">Tauri v2</th>
+<th style="text-align: center;">Wails v2</th>
+<th style="text-align: center;">Electron</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>بوغچا چوڭلۇقى</td>
+<td style="text-align: center;"><strong>~8MB</strong></td>
+<td style="text-align: center;">~10MB</td>
+<td style="text-align: center;">~150MB</td>
+</tr>
+<tr>
+<td>ئىچكى ساقلىغۇچ</td>
+<td style="text-align: center;"><strong>~25MB</strong></td>
+<td style="text-align: center;">~30MB</td>
+<td style="text-align: center;">~200MB</td>
+</tr>
+<tr>
+<td>سىستېما تەخسىسى / تېز كونۇپكا / كۆپ كۆزنەك / يېڭىلاش</td>
+<td style="text-align: center;">ھەممىسى ئىچىدە بار</td>
+<td style="text-align: center;">بەزىسى كەم</td>
+<td style="text-align: center;">ھەممىسى ئىچىدە بار</td>
+</tr>
+<tr>
+<td>بىخەتەرلىك sandbox ى</td>
+<td style="text-align: center;">ئىجازەت مودېلى</td>
+<td style="text-align: center;">يوق</td>
+<td style="text-align: center;">يوق</td>
+</tr>
+<tr>
+<td>ئىشلەپچىقىرىش مىسالى</td>
+<td style="text-align: center;"><strong>1Password 8</strong></td>
+<td style="text-align: center;">يوق</td>
+<td style="text-align: center;">Docker/Cursor</td>
+</tr>
+</tbody>
+</table>
+<p>بوغچا چوڭلۇقى 8MB، Electron بولسا 150MB (<strong>19x</strong>)، ئىچكى ساقلىغۇچ 25MB، Electron بولسا 200MB (<strong>8x</strong>）。</p>
+<h3 id="功能模块">ئىقتىدار مودۇللىرى</h3>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>مودۇل</th>
+<th>يارقىن نۇقتا</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>AI پاراڭ</strong></td>
+<td>كۆپ مودېللىق ئېقىم · ھۆججەت يېشىش (PDF/Word/Excel) · Canvas UI (8 بۆلەك) · Budget تاختىسى</td>
+</tr>
+<tr>
+<td><strong>Agent</strong></td>
+<td>خاس رول · قېلىپ كۈتۈپخانىسى · Handoff/Orchestrate/Spawn · Agent يىغىنى</td>
+</tr>
+<tr>
+<td><strong>قورال ئېكولوگىيەسى</strong></td>
+<td>ClawHub (37 Skill + 38 MCP Server) · SkillWriter · MCP نىڭ ئۈچ توشۇش شەكلى · OAuth PKCE</td>
+</tr>
+<tr>
+<td><strong>بىلىم + ئەستە ساقلاش</strong></td>
+<td>Auto-RAG (score ≥ 0.35) · ۋېكتور مەنىلىك ئەسلەش · ئاپتوماتىك ئايرىش · سۆھبەت ئاتلاپ داۋاملىق ساقلاش</td>
+</tr>
+<tr>
+<td><strong>IM + ئاپتوماتلاشتۇرۇش</strong></td>
+<td>7 خىل IM قانىلى · Cron · خىزمەت ئېقىمى DAG تاختىسى · Webhook ئۇقتۇرۇشى</td>
+</tr>
+<tr>
+<td><strong>يەرلىك LLM</strong></td>
+<td>Ollama نى بىر چېكىپ باغلاش · تەۋسىيە <code dir="ltr">qwen3.5:9b</code> /
+<code dir="ltr">qwen2.5-coder:7b</code> / <code dir="ltr">deepseek-r1:8b</code></td>
+</tr>
+<tr>
+<td><strong>بىخەتەرلىك + تەستىق</strong></td>
+<td>WebSocket دەل ۋاقتىدىكى تەستىق · safe/sensitive/dangerous دىن ئىبارەت ئۈچ دەرىجە · session ئىچىدە ئەستە تۇتۇش</td>
+</tr>
+</tbody>
+</table>
+<h3 id="原生能力">ئەسلىي ئىقتىدار</h3>
+<p><code dir="ltr">⌘⇧H</code> پۈتۈن سىستېمىدا چاقىرىش · سىستېما تەخسىسى · ئەسلىي ئۇقتۇرۇش · چاپلاش تاختىسى بىلەن ئالاقە · ھۆججەت سۆرەپ يۈكلەش · 3 باسقۇچلۇق يېتەكچى · Tauri Updater. ئوخشاش كود Desktop ۋە Headless نى قوللايدۇ. قاچىلاش:<code dir="ltr">curl | bash</code> / Homebrew / DMG / MSI / DEB /
+AppImage。</p>
+<figure>
+<img src="../../assets/blog/从养龙虾到养河蟹-wechat/hexclaw-desktop-user-overview.png" alt="HexClaw Desktop ئىقتىدارلىرىنىڭ ئومۇمىي كۆرۈنۈشى" width="4600" height="3200" loading="lazy" decoding="async">
+<figcaption aria-hidden="true">HexClaw Desktop ئىقتىدار ئىشلىتىش ئومۇمىي كۆرۈنۈشى</figcaption>
+</figure>
+<hr />
+<h2 id="和竞品比到底强在哪">رىقابەتچىلەردىن زادى قەيەردە كۈچلۈك؟</h2>
+<p>2025-يىلىنىڭ ئاخىرىدىن بېرى، ھەرقايسى تەرەپلەر AI Agent مەھسۇلاتلىرىنى كۆپ ئېلان قىلدى. لېكىن كۆپىنچىسى بۇلۇتتا، يېپىق كودلۇق، كارخانا خېرىدارلىرىغا يۈزلەنگەن. HexClaw باشقا يولدا: ئوچۇق كود، ئۆزى باشقۇرۇش، ئىجادكار ۋە تېخنىكا گۇرۇپپىلىرىغا يۈزلىنىش. تۆۋەندىكى جەدۋەل تۈر بويىچە سېلىشتۇرىدۇ:</p>
+<table>
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 24%" />
+<col style="width: 27%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+</colgroup>
+<thead>
+<tr>
+<th>ئۆلچەم</th>
+<th>HexClaw</th>
+<th>OpenClaw</th>
+<th>Dify</th>
+<th>Coze</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ئورۇنلاشتۇرۇش</strong></td>
+<td>يەككە binary تەخمىنەن 20MB</td>
+<td>كۆپ مۇلازىمەت 500MB+</td>
+<td>Docker Compose</td>
+<td>بۇلۇتتا باشقۇرۇش</td>
+</tr>
+<tr>
+<td><strong>سانلىق مەلۇمات كونترول</strong></td>
+<td><strong>پۈتۈنلەي يەرلىك</strong></td>
+<td>ئۆزى ئورۇنلاشتۇرۇپ كونترول قىلغىلى بولىدۇ</td>
+<td>ئۆزى ئورۇنلاشتۇرۇپ كونترول قىلغىلى بولىدۇ</td>
+<td>سانلىق مەلۇمات بۇلۇتتا</td>
+</tr>
+<tr>
+<td><strong>Sandbox</strong></td>
+<td><strong>Go ئەسلىي، &lt;10ms</strong></td>
+<td>Docker ~200ms</td>
+<td>ئىچكى ئىقتىدار يوق</td>
+<td>بۇلۇتتا ئايرىش</td>
+</tr>
+<tr>
+<td><strong>بىخەتەرلىك دەرۋازىسى</strong></td>
+<td><strong>6 قاتلام Fail-closed</strong></td>
+<td>ئاساسىي</td>
+<td>ئاساسىي كىملىك تەكشۈرۈش</td>
+<td>سۇپا ئىچىدىكى كونترول</td>
+</tr>
+<tr>
+<td><strong>خامچوت كونترول</strong></td>
+<td><strong>3D ئاتوملۇق</strong></td>
+<td>يوق</td>
+<td>يوق</td>
+<td>سۇپا نورمىسى</td>
+</tr>
+<tr>
+<td><strong>Agent تۈرى</strong></td>
+<td><strong>10 خىل + A2A</strong></td>
+<td>كۆپ Agent</td>
+<td>ئاساسىي Agent</td>
+<td>كودسىز Agent</td>
+</tr>
+<tr>
+<td><strong>تەشكىللەش ماتورى</strong></td>
+<td>Graph + Chain + Workflow + Process</td>
+<td>خىزمەت ئېقىمى</td>
+<td>كۆرۈنۈشلۈك خىزمەت ئېقىمى</td>
+<td>كۆرۈنۈشلۈك خىزمەت ئېقىمى</td>
+</tr>
+<tr>
+<td><strong>RAG</strong></td>
+<td>7 باسقۇچ × 8 ۋېكتور ئارقا تەرىپى</td>
+<td>جامائەتچىلىك قىستۇرمىلىرى</td>
+<td>RAG ئىچىدە بار</td>
+<td>ئىچىدە بار</td>
+</tr>
+<tr>
+<td><strong>يەرلىك LLM</strong></td>
+<td>Ollama نى بىر چېكىش + 300+</td>
+<td>يوق</td>
+<td>قوللايدۇ</td>
+<td>قوللىمايدۇ</td>
+</tr>
+<tr>
+<td><strong>جۇڭگو IM سۇپىلىرى</strong></td>
+<td><strong>Feishu/DingTalk/WeCom/WeChat</strong></td>
+<td>يوق</td>
+<td>بىر قىسمى</td>
+<td>بىر قىسمى</td>
+</tr>
+<tr>
+<td><strong>ئۈستەل يۈزى</strong></td>
+<td>Tauri ~25MB</td>
+<td>Electron ~150MB</td>
+<td>يوق</td>
+<td>يوق</td>
+</tr>
+<tr>
+<td><strong>كۆزىتىش</strong></td>
+<td>OTel + Prometheus</td>
+<td>ئاساسىي</td>
+<td>ئاساسىي خاتىرە</td>
+<td>سۇپا ئىچىدە بار</td>
+</tr>
+<tr>
+<td><strong>خاسلاشتۇرۇش چوڭقۇرلۇقى</strong></td>
+<td>رامكا دەرىجىسى (Go)</td>
+<td>رامكا دەرىجىسى (TypeScript)</td>
+<td>سەپلىمە دەرىجىسى</td>
+<td>سەپلىمە دەرىجىسى</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="踩过的坑和架构取舍">يولۇققان ئورەكلەر ۋە ئارخىتېكتۇرا تاللاشلىرى</h2>
+<p><strong>1-ئورەك: Docker sandbox — «پاراڭ ياردەمچىسى ئۈچۈن يەنە Docker قاچىلامدىم؟»</strong></p>
+<p>دەسلەپ Skill ئىجراسى Docker غا تايىناتتى. ئادەتتىكى MacBook سەپلىمىسىدە مەسىلە يوق، لېكىن macOS تا Docker Desktop قوشۇمچە 2-4GB ئىچكى ساقلىغۇچ يەيتتى؛ ئىشلەتكۈچى ھاۋارايى سۈرۈشتۈرۈش ئۈچۈن Docker قاچىلىشى مۇۋاپىق ئەمەس.</p>
+<p>بىر ھەپتە ۋاقىت سەرپ قىلىپ، Go syscall ئارقىلىق ئۈچ سۇپىلىق ئەسلىي sandbox نى قايتا يازدىم: 2713 قۇر، نۆل تايىنىشچانلىق، &lt;10ms قوزغىلىش. ئايرىش كۈچى تولۇق قاچىدەك ئەمەس، لېكىن Skill ئىجرا سىنارىيەسىگە يېتەرلىك.</p>
+<p><strong>2-ئورەك: Wails → Tauri — خاتا تاللاشتىن توغرا بۇرۇلۇش</strong></p>
+<p>ئۈستەل يۈزى ئۈچۈن دەسلەپ Wails تاللانغان. سەۋەبى يېتەرلىك: Go ئەسلىي، بىرلەشتۈرۈش تەننەرخى نۆل. 60% ئىجاد قىلىنغاندا ئۈچ ئېغىر مەسىلە بايقالدى: كۆپ كۆزنەك يوق (Quick Chat لەيلىمە كۆزنىكىنى قىلغىلى بولمايدۇ)، سىستېما تەخسىسىگە ئۈچىنچى تەرەپ كۈتۈپخانىسى لازىم، ئاپتوماتىك يېڭىلاش يوق.</p>
+<p>زىياننى توختىتىپ Tauri v2 گە ئۆتتۈم. Go ئارقا تەرىپى Sidecar غا ئايلاندى، بىر HTTP قاتلىمى كۆپەيدى؛ لېكىن مەۋجۇت 71 API نى دەل قايتا ئىشلەتكىلى بولغاچقا، ئەمەلىي ئىجاد تەننەرخى تېخىمۇ تۆۋەن بولدى.</p>
+<p><strong>3-ئورەك: بىخەتەرلىك دەرۋازىسى ئەسلىدە «ئىختىيارىي سەپلىمە» ئىدى</strong></p>
+<p>بىرىنچى نەشرىدە بىخەتەرلىك قاتلىمى middleware قىلىنغان؛ سەپلىمە ھۆججىتىدە <code dir="ltr">enabled: false</code> دېيىلسە ئۆچۈرگىلى بولاتتى. بىر code review دا، CostCheck ئۆچسە كونترولدىن چىققان ReAct ھالقىسى پۇل ھېساباتى پارتلىغۇچە LLM نى چەكسىز چاقىرىدىغانلىقى بايقالدى. بۇ نەزەرىيەۋى خەۋپ ئەمەس، ئېنىق ئاپەت ئىدى.</p>
+<p>شۇ كۈنى ئۇنى ئايلىنىپ ئۆتكىلى بولمايدىغان 6 قاتلاملىق تۇرۇبا يولىغا قايتا قۇردۇم. ئىجاد مەزگىلىدە چاستوتا چەكلىمىسى كۆپ قوزغىلىدۇ، لېكىن يېرىم كېچىدە API پۇل ھېساباتى كەلگەندىن ياخشى.</p>
+
+<p><strong>تاللاشلار خۇلاسىسى:</strong></p>
+<table>
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 22%" />
+<col style="width: 29%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>قارار</th>
+<th>تاللانغىنى</th>
+<th>ۋاز كېچىلگىنى</th>
+<th>سەۋەبى</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ساقلاش</td>
+<td>SQLite (ساپ Go)</td>
+<td>PostgreSQL نى سۈكۈت قىلىش</td>
+<td>ئىشلەتكۈچى پاراڭ ياردەمچىسى ئۈچۈن ساندان ئاسرىماسلىقى كېرەك</td>
+</tr>
+<tr>
+<td>Sandbox</td>
+<td>OS ئەسلىي ئىقتىدارى، 2713 قۇر</td>
+<td>Docker</td>
+<td>ئىشلەتكۈچى Skill ئۈچۈن Docker قاچىلىماسلىقى كېرەك</td>
+</tr>
+<tr>
+<td>ئۈستەل يۈزى</td>
+<td>Tauri v2</td>
+<td>Wails</td>
+<td>كۆپ كۆزنەك / تەخسە / يېڭىلاش / جامائەتچىلىك</td>
+</tr>
+<tr>
+<td>بىخەتەرلىك</td>
+<td>ئايلىنىپ ئۆتكىلى بولمايدىغان 6 قاتلام</td>
+<td>ئىختىيارىي middleware</td>
+<td>Fail-closed &gt; Fail-open</td>
+</tr>
+<tr>
+<td>رامكا</td>
+<td>hexagon نى تولۇقلاش</td>
+<td>hexclaw نىڭ ھەممىنى ئۆز ئىچىگە ئېلىشى</td>
+<td>ئەپ تەشكىللەيدۇ، رامكا ئەمەلىيلەشتۈرىدۇ</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="接下来做什么">كېيىن نېمە قىلىمىز؟</h2>
+<p>2026-يىلى AI Agent ساھەسى «تېخنىكا دەلىللەش»تىن «قۇرۇلۇش ئارقىلىق ئەمەلىيلەشتۈرۈش»كە كىردى: MCP + A2A قوش كېلىشىم قاتلىمى پىشىپ، بىخەتەرلىك ۋە بەلگىلىك ھەرىكەت «Demo ئىجرا بولسىلا بولدى» دېگەن قاراشنىڭ ئورنىنى ئالدى. HexClaw ھازىر v0.2.x، يادرولۇق ئىقتىدارى مۇقىم، لېكىن «ئىشلەپچىقىرىش دەرىجىسى»گىچە مۇھىم كەمچىلىكلەر بار:</p>
+<ul>
+<li><strong>ئېقىم يېڭىلىشى</strong>: ھازىر ساختا ئېقىم (ئارىلىق نۆۋەتلەر ماس قەدەملىك)، Hexagon Agent نىڭ ئەسلىي Stream ئىقتىدارىغا ئۇلاش پىلاندا</li>
+<li><strong>Embedding بىرلەشتۈرۈش</strong>: بىلىم ئامبىرىنىڭ Embedder كۆرۈنمە يۈزى بەلگىلەنگەن، LLM Provider غا ئۇلاش لازىم</li>
+<li><strong>سىناق قاپلىشى &gt; 80%</strong>: 93 سىناق ھۆججىتى بار، قاپلاش نىسبىتىنى ئۆستۈرۈش كېرەك</li>
+<li><strong>Hub ئېكولوگىيەسىنى كېڭەيتىش</strong>: 37 Skill → 100+، 38 MCP Server → 80+؛ كود تەكشۈرۈش / سانلىق مەلۇمات تەھلىلى / تۈر باشقۇرۇشنى تولۇقلاش</li>
+<li><strong>كۆپ سۇپىلىق ئۈستەل يۈزىنى ياخشىلاش</strong>: Mac ئالدىنقى، Windows MSI ۋە Linux AppImage غا تېخىمۇ كۆپ سىناق لازىم</li>
+</ul>
+<p>ئوچۇق بىر سوئال: <strong>بىخەتەرلىكتىن ۋاز كەچمەي Agent نى قانداق تېخىمۇ مۇستەقىل قىلىمىز؟</strong> Tool Approval بىخەتەرلىكنى كاپالەتلەندۈرىدۇ، لېكىن مۇستەقىللىقنى چەكلەيدۇ؛ تارىخىي ھەرىكەتكە ئاساسلانغان ئۆزلىشىشچان تەستىق سىياسىتى ئۈستىدە ئىزدىنىۋاتىمىز. بۇمۇ AI Agent ساھەسىنىڭ 2026-يىلدىكى يادرولۇق زىددىيىتى: «Demo ئىجرا بولۇش»تىن «ئىشلەپچىقىرىشتا ئىشەنچلىك بولۇش»قا ئۆتۈشتە، بىخەتەرلىك بىلەن مۇستەقىللىقنىڭ تەڭپۇڭ نۇقتىسى قەيەردە؟</p>
+<hr />
+<h2 id="技术栈">تېخنىكا توپلىمى</h2>
+<table>
+<thead>
+<tr>
+<th>بۆلەك</th>
+<th>تاللاش</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>تىل</td>
+<td>Go 1.25+</td>
+</tr>
+<tr>
+<td>Agent رامكىسى</td>
+<td>Hexagon v0.4.0</td>
+</tr>
+<tr>
+<td>AI ئاساسى</td>
+<td>ai-core v0.0.5（7 LLM Provider）</td>
+</tr>
+<tr>
+<td>قورال كۈتۈپخانىسى</td>
+<td>toolkit v0.0.4 (81k قۇر، نۆل تايىنىشچانلىق)</td>
+</tr>
+<tr>
+<td>ساقلاش</td>
+<td>SQLite / PostgreSQL</td>
+</tr>
+<tr>
+<td>ئالدى تەرەپ</td>
+<td>Vue 3 · Pinia · Naive UI · Tailwind</td>
+</tr>
+<tr>
+<td>ئۈستەل يۈزى</td>
+<td>Tauri v2（Rust + Go sidecar）</td>
+</tr>
+<tr>
+<td>CI/CD</td>
+<td>GitHub Actions (3 سۇپىدا سىناق + 6 سۇپىدا قۇراشتۇرۇش)</td>
+</tr>
+<tr>
+<td>تارقىتىش</td>
+<td>ghcr.io · Homebrew · DMG / MSI / DEB / AppImage</td>
+</tr>
+</tbody>
+</table>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>ئامبار</th>
+<th>ئورنى</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/hexagon-codes/hexclaw">hexclaw</a></td>
+<td>AI Agent مۇلازىمىتى</td>
+</tr>
+<tr>
+<td><a href="https://github.com/hexagon-codes/hexagon">hexagon</a></td>
+<td>Agent رامكىسى</td>
+</tr>
+<tr>
+<td><a href="https://github.com/hexagon-codes/ai-core">ai-core</a></td>
+<td>LLM ئابستراكسىيەسى</td>
+</tr>
+<tr>
+<td><a href="https://github.com/hexagon-codes/toolkit">toolkit</a></td>
+<td>ئومۇمىي قورال كۈتۈپخانىسى</td>
+</tr>
+<tr>
+<td><a
+href="https://github.com/hexagon-codes/hexclaw-desktop">hexclaw-desktop</a></td>
+<td>ئۈستەل يۈزى خېرىدارى</td>
+</tr>
+<tr>
+<td><a
+href="https://github.com/hexagon-codes/hexagon-ui">hexagon-ui</a></td>
+<td>كۆزىتىش تاختىسى</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p>بۇ تۈرنى مەن بىر كىشى + Claude جۈپ ئىجادىيىتى بىلەن قۇردۇم؛ دەسلەپكى مەقسەت ناھايىتى ئاددىي: <strong>ئۆزۈمگە بىخەتەر، قولايلىق، قىممەت ئەمەس بىر AI Agent ئىشلەتمەكچى ئىدىم</strong>. سىزدە ئوخشاش ئېھتىياج بولسا، GitHub تا <strong>hexclaw</strong> نى ئىزدەپ Issue / PR يوللاڭ، بىللە سىناپ باقايلى.</p>
+<p><strong>ئاخىرقى بىر سوئال: </strong> AI Agent ئىشلەتكەندە سىزنى ئەڭ قىينايدىغىنى نېمە: بىخەتەرلىك ئىشەنچى، تەننەرخ كونترول، ياكى سۇپا ماسلاشتۇرۇش؟ باھا رايونىدا سۆزلەيلى؛ بۇ ھەقىقىي ئاغرىق نۇقتىلار HexClaw نىڭ ئالدىنلىقىغا بىۋاسىتە تەسىر قىلىدۇ.</p>
+<p class="blog-brand-footer" data-blog-brand-footer="ug" data-blog-brand-overrides="{}" style="text-align: center; color: var(--article-muted, #7b8fa3); font-size: 13px; margin: 16px 0 0; line-height: 2;">
+<strong style="color: var(--article-ink, #12324c); font-size: 14px;">HexClaw ھېشى AI</strong><br/>
+يەرلىكتە ياكى بۇلۇتتا ئورۇنلاشتۇرۇش · سانلىق مەلۇماتنى ئۆزىڭىز باشقۇرۇش · ئوچۇق كودلۇق ۋە ھەقسىز يۇمشاق دېتال<br/>
+<a href="https://hexclaw.net" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">تور بېكەت: <bdi dir="ltr">hexclaw.net</bdi></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://github.com/hexagon-codes" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">GitHub: <bdi dir="ltr">hexagon-codes</bdi></a><br/>
+<a href="https://weibo.com/u/4097207240" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">Weibo: <bdi dir="ltr">@HexClaw</bdi></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">X: <bdi dir="ltr">@hexclawapp</bdi></a><br/>
+<a href="mailto:ai@hexclaw.net" style="color: var(--article-muted, #999); text-decoration: none;">ئېلخەت: <bdi dir="ltr">ai@hexclaw.net</bdi></a>
+</p>
+    </article>
+
+
+
+    <nav class="blog-series-nav" aria-label="ئالدىنقى ۋە كېيىنكى ماقالە">
+      <a href="/ug/blog/from-lobster-to-crab" class="blog-nav-card prev">
+  <span class="blog-nav-label">&larr; ئالدىنقى ماقالە</span>
+  <span class="blog-nav-title">HexClaw ئوچۇق كودلۇق AI: «قىسقۇچپاقا بېقىش»تىن «دەريا قىسقۇچپاقىسى بېقىش»قىچە</span>
+</a>
+      <a href="/ug/blog/vs-openclaw-hermes" class="blog-nav-card next">
+  <span class="blog-nav-label">كېيىنكى ماقالە &rarr;</span>
+  <span class="blog-nav-title">HexClaw vs OpenClaw / Hermes: 2026-يىلدىكى يەرلىك AI Agent نىڭ ئۈچ يولى</span>
+</a>
+    </nav>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-main">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-col-title">مەھسۇلات</div>
+        <a href="/ug/#download">ئۈستەلئۈستى نۇسخىسىنى چۈشۈرۈش</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="/ug/changelog">يېڭىلىنىش خاتىرىسى</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">ئىجادكار</div>
+        <a href="/ug/docs/">ھۆججەتلەر مەركىزى</a>
+        <a href="/ug/blog/">تېخنىكا بىلوگى</a>
+        <a href="/ug/docs/getting-started">تېز باشلاش</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">Apache-2.0</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">جامائەت</div>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/issues" target="_blank" rel="noopener noreferrer">Issues</a>
+        <a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer">Twitter / X</a>
+        <a href="mailto:ai@hexclaw.net">بىز بىلەن ئالاقىلىشىش</a>
+        <a href="mailto:support@hexclaw.net">سوئال-پىكىر</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">ھەققىدە</div>
+        <a href="/ug/about">بىز ھەققىدە</a>
+        <a href="/ug/privacy">شەخسىيەت سىياسىتى</a>
+        <a href="/ug/terms">ئىشلىتىش شەرتلىرى</a>
+        <a href="/ug/third-party-ai-services">ئۈچىنچى تەرەپ AI مۇلازىمىتى</a>
+      </div>
+    </div>
+    <div class="footer-wechat">
+      <img width="430" height="430" loading="lazy" decoding="async" src="../../assets/brand/wechat-qr.jpg" alt="HexClaw ۋېيشىن رەسمىي ھېسابات QR كودى">
+      <span class="footer-wechat-label">ۋېيشىن رەسمىي ھېساباتى</span>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">&copy; 2025&ndash;2026 hexagon-codes</span>
+  </div>
+</footer>
+<script src="../../assets/js/theme.js?v=2e4a1828feef"></script>
+<script src="../../assets/js/docs-nav.js?v=5a103861aec2"></script>
+<button type="button" class="back-to-top" id="backToTop" aria-label="بەت بېشىغا قايتىش" title="بەت بېشىغا قايتىش">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg>
+  <span>ئۈستىگە</span>
+</button>
+
+<script src="../../assets/js/blog.js?v=c72e1db5a6ec"></script>
+</body>
+</html>

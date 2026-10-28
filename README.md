@@ -57,6 +57,26 @@
 
 详细部署步骤见 `DEPLOYMENT.md`。
 
+## 公共片段与静态同步
+
+- [品牌页脚](./components/blog-brand-footer.mjs)：首页宣传语、全部博客品牌区与新公众号模板共用最新三语文案和联系资料。
+- [公众号正文适配](./components/blog-article-styles.mjs)：保留原稿排版和浅色色值，深色主题复用现有官网变量；代码着色独立保留。
+- [主题脚本](./assets/js/theme.js)：首页、文档和博客共用主题切换与保存逻辑。
+- [博客阅读操作](./assets/js/blog.js)：共用返回顶部和文章分类，导航滚动由现有文档脚本维护。
+- 全站页头、页脚继续由 [sync-shell.mjs](./scripts/sync-shell.mjs) 统一维护。
+
+修改公共片段后，生成可直接部署的完整静态页面：
+
+```bash
+node scripts/sync-shell.mjs
+node scripts/sync-page-theme.mjs
+node scripts/sync-blog-styles.mjs
+node scripts/sync-blog-brand-footer.mjs
+bash scripts/stamp-cache-bust.sh
+```
+
+新公众号稿的品牌区用 `node scripts/sync-blog-brand-footer.mjs --wechat-template` 导出完整内联 HTML，无需运行时加载脚本。已有公众号发布归档保留原文。
+
 ## License
 
 本仓库代码采用 `Apache-2.0` 协议，详见 [LICENSE](./LICENSE)。

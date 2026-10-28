@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/favicon-32.png">
+<title>HexClaw vs OpenClaw / Hermes: Three Paths for Local AI Agents in 2026 | HexClaw Technical Blog</title>
+<meta name="description" content="Lobster, horse, and crab: three paths addressing three problems. Similar feature lists, very different product directions. As on-device AI expands, where do their architectural tradeoffs lead?">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:site_name" content="HexClaw">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HexClaw vs OpenClaw / Hermes: Three Paths for Local AI Agents in 2026 | HexClaw Technical Blog">
+<meta property="og:description" content="Lobster, horse, and crab: three paths addressing three problems. Similar feature lists, very different product directions. As on-device AI expands, where do their architectural tradeoffs lead?">
+<meta property="og:url" content="https://hexclaw.net/en/blog/vs-openclaw-hermes">
+<meta property="og:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta property="og:image:alt" content="HexClaw logo">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="HexClaw vs OpenClaw / Hermes: Three Paths for Local AI Agents in 2026 | HexClaw Technical Blog">
+<meta name="twitter:description" content="Lobster, horse, and crab: three paths addressing three problems. Similar feature lists, very different product directions. As on-device AI expands, where do their architectural tradeoffs lead?">
+<meta name="twitter:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta name="twitter:image:alt" content="HexClaw logo">
+<link rel="canonical" href="https://hexclaw.net/en/blog/vs-openclaw-hermes">
+<link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/vs-openclaw-hermes">
+<link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/vs-openclaw-hermes">
+<link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/vs-openclaw-hermes">
+<link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/vs-openclaw-hermes">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "HexClaw vs OpenClaw / Hermes: Three Paths for Local AI Agents in 2026",
+  "description": "Lobster, horse, and crab: three paths addressing three problems. Similar feature lists, very different product directions. As on-device AI expands, where do their architectural tradeoffs lead?",
+  "url": "https://hexclaw.net/en/blog/vs-openclaw-hermes",
+  "inLanguage": "en",
+  "datePublished": "2026-04-25",
+  "image": "https://hexclaw.net/assets/brand/hexclaw-logo.png",
+  "publisher": {
+    "@type": "Organization",
+    "name": "hexagon-codes",
+    "url": "https://hexclaw.net/",
+    "@id": "https://hexclaw.net/#organization"
+  },
+  "@id": "https://hexclaw.net/en/blog/vs-openclaw-hermes#article"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "HexClaw", "item": "https://hexclaw.net/en/"},
+    {"@type": "ListItem", "position": 2, "name": "Technical Blog", "item": "https://hexclaw.net/en/blog/"},
+    {"@type": "ListItem", "position": 3, "name": "HexClaw vs OpenClaw / Hermes: Three Paths for Local AI Agents in 2026", "item": "https://hexclaw.net/en/blog/vs-openclaw-hermes"}
+  ],
+  "@id": "https://hexclaw.net/en/blog/vs-openclaw-hermes#breadcrumb"
+}
+</script>
+<link rel="stylesheet" href="../../assets/css/docs-eb2895dd79c5.css">
+<link rel="stylesheet" href="../../assets/css/blog-a8e5008ac3d1.css">
+</head>
+<body class="blog-page blog-article-page">
+<a href="#main" class="skip-link">Skip to main content</a>
+<nav class="tn topnav" id="nav">
+  <a href="/en/" class="tn-b topnav-brand"><img width="72" height="72" src="../../assets/brand/hexclaw-icon-72.png" class="tn-l topnav-logo" alt="HexClaw"><span class="tn-n topnav-name">HexClaw</span></a>
+  <button type="button" class="tn-burger topnav-burger" aria-label="Menu" aria-expanded="false" aria-controls="primary-navigation"><span></span><span></span><span></span></button><div class="tn-r topnav-links" id="primary-navigation"><a href="/en/">Home</a><a href="/en/#cases">Scenarios</a><a href="/en/#features">Features</a><a href="/en/#quickstart">Quickstart</a><a href="/en/#ecosystem">Ecosystem</a><a href="/en/blog/" class="is-active">Tech Blog</a><a href="/en/docs/">Docs Center</a><div class="lang-menu" data-lang-menu><button type="button" class="lang-trigger" aria-haspopup="menu" aria-expanded="false" aria-label="Switch language"><svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 0 20"></path><path d="M12 2a15.3 15.3 0 0 0 0 20"></path></svg><span class="lang-current">English</span><svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="lang-menu-list" role="menu"><a href="/zh/blog/vs-openclaw-hermes" role="menuitem">中文</a><a href="/en/blog/vs-openclaw-hermes" role="menuitem" class="is-active" aria-current="true">English</a><a href="/ug/blog/vs-openclaw-hermes" role="menuitem" lang="zh-CN" dir="ltr">维吾尔语</a></div></div><button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"><svg class="ti-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="ti-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="nav-cta">GitHub <span class="nav-star-badge" id="gh-stars">&#9733;</span></a></div>
+</nav>
+
+<main id="main" class="blog-main">
+  <div class="blog-article-container">
+    <nav class="blog-breadcrumb" aria-label="Breadcrumb">
+      <a href="/en/">Home</a>
+      <span class="blog-breadcrumb-sep">/</span>
+      <a href="/en/blog/">Technical Blog</a>
+      <span class="blog-breadcrumb-sep">/</span>
+      <span aria-current="page">Architecture and Engineering</span>
+    </nav>
+
+    <header class="blog-header">
+      <div class="blog-header-tags">
+        <span class="blog-badge-series">Comparative Analysis</span>
+      </div>
+      <h1 class="blog-article-title">HexClaw vs OpenClaw / Hermes: Three Paths for Local AI Agents in 2026</h1>
+      <p class="blog-article-subtitle">Lobster, horse, and crab: three paths addressing three problems. Similar feature lists, very different product directions. As on-device AI expands, where do their architectural tradeoffs lead?</p>
+      <div class="article-provenance-banner">
+        <div class="provenance-left">
+          <span class="provenance-origin-badge">First published on WeChat</span>
+          <span class="provenance-text">Originally published in the official technical column of the WeChat account <strong>「hexclaw」</strong> (ID: hexclaw) · Published  <strong>April 25, 2026</strong>  · About 12 minutes</span>
+        </div>
+        <a href="https://mp.weixin.qq.com/s/CuVTbUv2kJRePybo_MudYA" target="_blank" rel="noopener noreferrer" class="provenance-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          WeChat original ↗
+        </a>
+      </div>
+    </header>
+
+    <article class="blog-content">
+
+
+<p style="margin: 16px 0;">From last year into this year, the animal everyone in AI remembered was a lobster.</p>
+
+<p style="margin: 8px 0;"><code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">OpenClaw</code>  turned an AI that could only answer in a chat box into a digital colleague living inside everyday workflows. Have you raised a lobster yet? briefly became a greeting in social feeds and developer groups.</p>
+
+<p style="margin: 8px 0;">But if you have followed this space recently, you may have noticed another animal entering the conversation.</p>
+
+<p style="margin: 8px 0;">A popular line in the community puts it neatly: <strong style="color:var(--article-accent, #3f8fd4);">Silicon Valley has stopped raising lobsters and started raising horses</strong>. The joke comes from the Chinese transliteration of Hermes, which contains the character for horse. It spread for more than wordplay: both GitHub stars and OpenRouter usage, two public indicators, were rising.</p>
+
+<p style="margin: 8px 0;">That makes this a good time to take an engineering-selection perspective and expand <strong style="color:var(--article-accent, #3f8fd4);">lobster versus Hermes into a third path</strong>, examining what problem each design addresses.</p>
+
+<p style="margin: 8px 0;">The first article, <a href="https://mp.weixin.qq.com/s/S49q9gsXABAzcJyNOC7FjQ" style="color:var(--article-accent, #5fb3ea);">From Raising Lobsters to Raising Crabs</a>, answered why I built HexClaw. This one asks the next question: as OpenClaw and Hermes move forward, which layer does HexClaw occupy?</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<blockquote style="border-left: 3px solid #3f8fd4; padding: 14px 18px; margin: 20px 0; background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); font-size: 14px; border-radius: 0 8px 8px 0; line-height: 1.85;">
+<strong style="color:var(--article-accent, #3f8fd4);">The Core Judgment</strong><br/>
+OpenClaw, Hermes, and HexClaw <strong style="color:var(--article-accent, #3f8fd4);">operate at different layers</strong>: entry-point distribution, cognitive self-learning, and the local workbench.<br/>
+This article places the three paths on one architectural map rather than trying to prove one universally stronger.
+</blockquote>
+
+<blockquote style="border-left: 3px solid #5fb3ea; padding: 10px 16px; margin: 16px 0; background:var(--article-panel, #f4fbff); color:var(--article-secondary, #3f5f7b); font-size: 14px; border-radius: 0 8px 8px 0;">
+A one-line selection guide:<br/>
+For a multi-platform IM / Bot operation, start with  <strong style="color:var(--article-accent, #3f8fd4);">OpenClaw</strong>。<br/>
+For a self-learning Agent and long-task planning, start with  <strong style="color:var(--article-accent, #3f8fd4);">Hermes</strong>。<br/>
+For a desktop workbench without deployment maintenance that keeps data locally, start with  <strong style="color:var(--article-accent, #3f8fd4);">HexClaw</strong>。
+</blockquote>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">Why Hermes Gained Attention</h2>
+
+<p style="margin: 8px 0;">First, Hermes (<code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">Hermes Agent</code>). To enter the center of developer discussion so quickly, a product needs a clear proposition.</p>
+
+<p style="margin: 8px 0;">By its public numbers, Hermes was a remarkable open-source project:</p>
+
+<ul style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 4px 0;">Quietly open-sourced by Nous Research during February–March 2026</li>
+<li style="margin: 4px 0;">As of 2026-04-25, approximately  <strong style="color:var(--article-accent, #3f8fd4);">116k</strong> GitHub stars and  <strong style="color:var(--article-accent, #3f8fd4);">17k</strong>（<code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">github.com/NousResearch/hermes-agent</code>）</li>
+<li style="margin: 4px 0;">The OpenRouter application page showed approximately  <strong style="color:var(--article-accent, #3f8fd4);">4.4T Total tokens</strong>, ranking number  <strong style="color:var(--article-accent, #3f8fd4);">3</strong>（<code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">openrouter.ai/apps/hermes-agent</code>）</li>
+<li style="margin: 4px 0;">Native WeChat access through  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">iLink Bot API</code>  with QR-code sign-in</li>
+</ul>
+
+<p style="border-left: 3px solid #d4e7f5; padding: 8px 14px; margin: 14px 0; background:var(--article-panel, #fafcfe); color:var(--article-muted, #7b8fa3); font-size: 12px; border-radius: 0 6px 6px 0;"><strong style="color:var(--article-secondary, #5f7b9c);">Dispute disclosure</strong>: Hermes Agent and EvoMap / Evolver have recently been involved in a similarity dispute. This article makes no finding; it discusses engineering tradeoffs using public repositories, documentation, and product forms. References appear at the end.</p>
+
+<p style="margin: 8px 0;">The numbers were not the only reason it spread. Hermes brought the self-learning Agent narrative of a <strong style="color:var(--article-accent, #3f8fd4);">Writable Runtime</strong> to the foreground.</p>
+
+<p style="margin: 8px 0;">A frequently cited summary is: </p>
+
+<blockquote style="border-left: 3px solid #5fb3ea; padding: 10px 16px; margin: 16px 0; background:var(--article-panel, #f4fbff); color:var(--article-secondary, #3f5f7b); font-size: 14px; border-radius: 0 8px 8px 0;">
+OpenClaw had been closer to a stable executor: give it a clear workflow and it keeps running. The problem was that <strong style="color:var(--article-accent, #3f8fd4);">it did not retain lessons</strong>; after completing a complex task once, it started from scratch next time.<br/>
+Hermes took a different approach: automatically review completed tasks, distill experience into a reusable Skill file, and invoke that experience package for a similar problem later.
+</blockquote>
+
+<p style="margin: 8px 0;">In plain terms, the aspiration Agent developers have repeated for two years—<strong style="color:var(--article-accent, #3f8fd4);">smarter with use</strong>—became a clear product proposition in Hermes.</p>
+
+<p style="margin: 8px 0;">Add QR-code WeChat access, a powerful entry point, and its rising profile in Chinese technical communities is unsurprising.</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">OpenClaw Was Not Replaced; the Division of Work Became Clearer</h2>
+
+<p style="margin: 8px 0;">Architecturally, Hermes did not kill the lobster.</p>
+
+<p style="margin: 8px 0;">The two products do different work.</p>
+
+<ul style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 6px 0;">OpenClaw's strength is reliably bringing AI into chat channels people already use: more than twenty platforms, over a hundred plugins, and multi-account operation. Discord administrators, community operators, operations / DevOps teams, and enterprise IT will often consider it first.</li>
+<li style="margin: 6px 0;">Hermes focuses on making an individual Agent improve through continued use: coding, data analysis, and accumulating domain experience. It is more a center for planning, executing, and reviewing long tasks.</li>
+</ul>
+
+<p style="margin: 8px 0;">One common architectural combination is: <strong style="color:var(--article-accent, #3f8fd4);">let Hermes handle planning and learning, and OpenClaw handle distribution across entry points.</strong></p>
+
+<p style="margin: 8px 0;">I agree, with one addition: <strong style="color:var(--article-accent, #3f8fd4);">that combination still needs a workbench connecting the capabilities to local workflows</strong>。</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">Our Animal Is a Crab</h2>
+
+<p style="margin: 8px 0;">Existing readers can skip ahead. If HexClaw is new to you, here is the short introduction.</p>
+
+<p style="margin: 8px 0;"><strong style="color:var(--article-accent, #3f8fd4);">HexClaw</strong>  is an open-source AI Agent stack that actually runs, and an engineering example developed with the  <a href="https://mp.weixin.qq.com/s/1rza-Ye3NF89KNAJp_PttA" style="color:var(--article-accent, #5fb3ea);">《Claude Code SOP》</a>  methodology in the earlier article: <strong style="color:var(--article-accent, #3f8fd4);">design-driven development, a testing feedback loop, and multi-Agent collaboration</strong>. Previous articles covered installation, use, and architecture. This one concerns its place alongside OpenClaw and Hermes. It is Apache-2 licensed, locally deployed, and keeps data private.</p>
+
+<p style="margin: 8px 0;">First, the capability boundary, to distinguish shipping features from plans:</p>
+
+<ul style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">Stable capabilities released in v0.3.12</strong>: chat, native MCP, Markdown Skills, RAG knowledge base, multi-Agent support, IM channels (the backend ecosystem includes additional adapters such as Slack; the desktop currently focuses on Feishu / DingTalk / WeCom / WeChat / Discord / Telegram), voice, and image / video generation</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">v0.4.x roadmap (local validation / next-release goals)</strong>: a Skill self-learning loop, Agent strategy routing, memory injection protection, classified error fallback, model tool-use capability detection, and runtime MCP management, discussed below</li>
+</ul>
+
+<p style="margin: 8px 0;">Its path differs from the other two.</p>
+
+<p style="margin: 8px 0;">OpenClaw uses Node.js and deploys through Docker / Fly.io / Render, aimed at Bot operators. Hermes uses Python but provides one-step installation scripts for Linux / macOS / WSL2 / Android Termux, without requiring users to prepare a Python environment. It suits technical users willing to run a gateway / server / container. Both follow a service-deployment path.</p>
+
+<p style="margin: 8px 0;">HexClaw has pursued another goal from day one: <strong style="color:var(--article-accent, #3f8fd4);">make an AI Agent ordinary desktop software, ready to work after clicking its icon just like a browser, WeChat, or WPS</strong>. That led to Go + Tauri and platform installers—DMG / MSI / AppImage—with no Docker, virtual environment, or systemd setup.</p>
+
+<p style="margin: 8px 0;">The three directions become clearer in this comparison:</p>
+
+<blockquote style="border-left: 3px solid #5fb3ea; padding: 10px 16px; margin: 16px 0; background:var(--article-panel, #f4fbff); color:var(--article-secondary, #3f5f7b); font-size: 14px; border-radius: 0 8px 8px 0;">
+OpenClaw excels at <strong style="color:var(--article-accent, #3f8fd4);">putting AI inside your IM stream</strong>。<br/>
+Hermes excels at <strong style="color:var(--article-accent, #3f8fd4);">making an individual Agent improve with use</strong>。<br/>
+HexClaw aims to <strong style="color:var(--article-accent, #3f8fd4);">put those capabilities into a local workbench that runs without operations expertise</strong>。
+</blockquote>
+
+<p style="margin: 8px 0;">Externally, I call the core engine  <strong style="color:var(--article-accent, #3f8fd4);">Hexagon Agent</strong>; its repository remains  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">hexagon</code>. Underneath is a six-repository hierarchy:  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">toolkit → ai-core → hexagon → hexclaw → hexclaw-desktop / hexagon-ui</code> . The first four layers are Go repositories, independently versioned and independently  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">go get</code>. The desktop and observability UI build and release separately. The details are in <a href="https://mp.weixin.qq.com/s/wIRiJsWLRPWBiTEQtlVQkg" style="color:var(--article-accent, #5fb3ea);">Architecture Deep Dive</a> and are not repeated here.</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">Three Paths, Three Layers</h2>
+
+<p style="margin: 8px 0;">Strictly speaking, these products are not all competing for the same ground. In a layered system, each occupies a different position:</p>
+
+<blockquote style="border-left: 3px solid #5fb3ea; padding: 14px 18px; margin: 16px 0; background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); font-size: 14px; border-radius: 0 8px 8px 0; line-height: 2;">
+<strong style="color:var(--article-accent, #3f8fd4);">OpenClaw</strong> = entry / distribution layer<br/>
+<strong style="color:var(--article-accent, #3f8fd4);">Hermes</strong> = cognition / self-learning layer<br/>
+<strong style="color:var(--article-accent, #3f8fd4);">HexClaw</strong> = local workbench / private-data foundation<br/>
+<span style="color:var(--article-secondary, #5f7b9c); font-size: 13px;">——<strong style="color:var(--article-accent, #3f8fd4);">No product fills the entire three-layer stack. Choose according to the layer you need to address.</strong></span>
+</blockquote>
+
+<p style="margin: 8px 0;">Once that distinction is clear, much of the apparent dilemma disappears: <strong style="color:var(--article-accent, #3f8fd4);">they solve problems at different points in the stack</strong> rather than simply replacing each other. Here is the detailed comparison.</p>
+
+<h3 style="font-size: 15px; font-weight: 600; color:var(--article-accent, #3f8fd4); margin: 20px 0 8px;">The 30-Second Version</h3>
+
+<ul style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 4px 0;"><strong>OpenClaw</strong>: TypeScript / Node.js. Brings AI into existing IM entry points; multiple platforms, accounts, and coordinated operations are its home territory.</li>
+<li style="margin: 4px 0;"><strong>Hermes</strong>: Python, packaged as a one-step installation. Focuses on making an individual Agent more accurate with use; Writable Runtime is the central proposition.</li>
+<li style="margin: 4px 0;"><strong>HexClaw</strong>: Go + Tauri, Sidecar architecture, double-click DMG / MSI / AppImage installation. A desktop workbench that stays local, requires no operations expertise, and keeps data on the machine.</li>
+</ul>
+
+<p style="margin: 8px 0; font-size: 13px; color:var(--article-muted, #7b8fa3);">The 30-second version is enough for mobile readers. The following three profiles provide a fuller reference for those who want the details.</p>
+
+<blockquote style="border-left: 3px solid #5fb3ea; padding: 12px 16px; margin: 16px 0; background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); font-size: 14px; border-radius: 0 8px 8px 0; line-height: 1.9;">
+<strong style="color:var(--article-accent, #3f8fd4);">OpenClaw: Entry / Distribution Layer</strong><br/>
+Position: a multi-platform IM Bot foundation<br/>
+Team: Peter Steinberger / OpenClaw community<br/>
+License: MIT<br/>
+Main language: TypeScript / Node.js<br/>
+Deployment: Docker / Fly.io / Render / Podman<br/>
+IM coverage: Telegram / Discord / Slack / WhatsApp / Signal / iMessage / Feishu / LINE / Matrix / IRC, and others<br/>
+Extensions: a mature extension-package system with sustained community iteration<br/>
+Typical users: Bot operators / community administrators / enterprise IT<br/>
+Design: Adapter Capabilities abstraction and declarative capability coordination<br/>
+Tradeoff: many configuration options and a steep learning curve
+</blockquote>
+
+<blockquote style="border-left: 3px solid #5fb3ea; padding: 12px 16px; margin: 16px 0; background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); font-size: 14px; border-radius: 0 8px 8px 0; line-height: 1.9;">
+<strong style="color:var(--article-accent, #3f8fd4);">Hermes: Cognition / Self-Learning Layer</strong><br/>
+Position: a self-evolving Agent framework<br/>
+Team: Nous Research (an AI research organization)<br/>
+License: MIT<br/>
+Main language: Python<br/>
+Deployment: one-step installation scripts (Linux / macOS / WSL2 / Android Termux)<br/>
+IM coverage: multi-platform gateway, including WeChat<br/>
+Extensions: multiple providers and extensive tool modules, continually expanded by the official team<br/>
+Typical users: AI engineers / researchers / advanced enthusiasts<br/>
+Design: Writable Runtime and dynamic Skill writeback<br/>
+Tradeoff: operating a persistent gateway / server; Agent-generated Skill changes require auditing
+</blockquote>
+
+<blockquote style="border-left: 3px solid #5fb3ea; padding: 12px 16px; margin: 16px 0; background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); font-size: 14px; border-radius: 0 8px 8px 0; line-height: 1.9;">
+<strong style="color:var(--article-accent, #3f8fd4);">HexClaw: Local Workbench / Private-Data Foundation</strong><br/>
+Position: a local desktop Agent workbench<br/>
+Team: hexagon-codes<br/>
+License: Apache-2.0<br/>
+Main languages: Go + Tauri<br/>
+Deployment: double-click DMG / MSI / AppImage installation<br/>
+IM coverage: the desktop focuses on Feishu / DingTalk / WeCom / WeChat / Discord / Telegram; backend adapters cover more platforms, including Slack<br/>
+Extensions: Markdown Skills and native MCP; a Skill self-learning loop is on the v0.4.x roadmap<br/>
+Typical users: individuals / small teams / always-on local use<br/>
+Design: Sidecar architecture, a single Go binary, and a Tauri frontend<br/>
+Tradeoff: an early-stage ecosystem, with the Skill collection still growing
+</blockquote>
+
+<p style="margin: 6px 0 14px; font-size: 12px; color:var(--article-muted, #a5bdd3);">Note: IM coverage, extension ecosystems, and similar entries are broad classifications based on official documentation and current repositories, not a rigorous benchmark. Platform, provider, and tool-module counts measure different things across these projects. Apply the comparison to your actual needs.</p>
+
+<p style="margin: 8px 0;">In everyday terms:</p>
+
+<blockquote style="border-left: 3px solid #5fb3ea; padding: 10px 16px; margin: 16px 0; background:var(--article-panel, #f4fbff); color:var(--article-secondary, #3f5f7b); font-size: 14px; border-radius: 0 8px 8px 0;">
+For <strong style="color:var(--article-accent, #3f8fd4);">running many accounts across platforms and messaging large audiences</strong>, choose OpenClaw.<br/>
+For <strong style="color:var(--article-accent, #3f8fd4);">an Agent that gradually adapts to your workflows and preferences</strong>, choose Hermes.<br/>
+For <strong style="color:var(--article-accent, #3f8fd4);">a workbench on your machine that keeps data local and requires no operations expertise</strong>, choose HexClaw.
+</blockquote>
+
+<p style="margin: 8px 0;">These paths are compatible rather than mutually exclusive. A later section discusses how they could theoretically work together.</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">One Design Worth Studying in Each of OpenClaw and Hermes</h2>
+
+<p style="margin: 8px 0;">Set aside popularity rankings. The most useful lessons in OpenClaw and Hermes are two foundational design ideas relevant to anyone building Agents.</p>
+
+<h3 style="font-size: 16px; font-weight: 600; color:var(--article-accent, #3f8fd4); margin: 20px 0 8px;">OpenClaw: Declare Capability Differences</h3>
+
+<p style="margin: 8px 0;">Feishu, Discord, Slack, Telegram, WhatsApp, and Matrix each behave differently: rich-text buttons, editing sent messages, message-length limits, threads, and card protocols vary. A common older approach put separate branches in every adapter, forcing Agent callers to work out the current platform and available actions.</p>
+
+<p style="margin: 8px 0;">OpenClaw instead <strong style="color:var(--article-accent, #3f8fd4);">elevates those differences into declarative Capabilities</strong>. Adapters declare what they support. The engine uses those declarations to select fallbacks and rendering and enforce length limits. The Agent can concentrate on its task without caring where it runs.</p>
+
+<p style="margin: 8px 0;">It is a clean abstraction built on a deeper judgment than merely supporting many platforms: <strong style="color:var(--article-accent, #3f8fd4);">the hard part of a multi-platform Agent is capability coordination, not connection</strong>. That explains how it stays stable across more than twenty platforms: the abstraction keeps that complexity outside the Agent.</p>
+
+<h3 style="font-size: 16px; font-weight: 600; color:var(--article-accent, #3f8fd4); margin: 20px 0 8px;">Hermes: Treat Skills as Growing Assets</h3>
+
+<p style="margin: 8px 0;">The industry has repeated that Agents should get smarter with use for two years. Hermes deserves attention because it made that idea a clear product feedback loop.</p>
+
+<p style="margin: 8px 0;">A Skill is not configuration written once and frozen; <strong style="color:var(--article-accent, #3f8fd4);">it is an engineering asset that keeps evolving</strong>. If a Skill performs poorly during a task, the Agent distills a patch and writes it to the Skill library for reuse. Once that cycle runs, a static configuration becomes a continually improving capability library.</p>
+
+<p style="margin: 8px 0;">The mechanism is not technically elaborate: assess, distill, write back. The harder decision is letting an Agent modify itself in real projects and putting it into many developers' hands. Crossing from a familiar idea into broad public discussion helped it gain a six-figure star count quickly.</p>
+
+<h3 style="font-size: 16px; font-weight: 600; color:var(--article-accent, #3f8fd4); margin: 20px 0 8px;">What These Two Choices Teach</h3>
+
+<p style="margin: 8px 0;">Together, they highlight two frequently neglected foundations:</p>
+
+<ul style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 6px 0;"><strong>Adapter design</strong> determines whether you can support N platforms comfortably or maintain N branches that overwhelm the project</li>
+<li style="margin: 6px 0;"><strong>The Skill lifecycle</strong> determines whether an Agent becomes easier to use or increasingly redundant</li>
+</ul>
+
+<p style="margin: 8px 0;">These principles cross languages, stacks, and projects. TypeScript, Python, and Go implement them differently, but understanding both layers clarifies the product's direction.</p>
+
+<p style="margin: 8px 0;">OpenClaw is written in TypeScript, Hermes in Python, and HexClaw in Go, with its own Go Agent engine underneath:  <strong style="color:var(--article-accent, #3f8fd4);">Hexagon Agent</strong> (repository  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">hexagon</code>, under development since last year). Languages, engines, and deployment forms differ. <strong style="color:var(--article-accent, #3f8fd4);">Engineering problems can be compared; code and attribution cannot simply be transplanted</strong>. This article does not adjudicate originality disputes between external projects. It discusses architectural choices visible in public materials. Implementing a lesson in HexClaw still requires adapting it to its own Go engine, desktop form, and security boundaries.</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">HexClaw's Approach to a Writable Runtime</h2>
+
+<p style="margin: 8px 0;">HexClaw has also been pursuing the question of making Skills more accurate with use. Its name for that work is the  <strong style="color:var(--article-accent, #3f8fd4);">Skill self-learning loop</strong>, being introduced progressively in v0.4.x.</p>
+
+<p style="margin: 8px 0;">The goal is clear: <strong style="color:var(--article-accent, #3f8fd4);">make Skills improve through use</strong>。</p>
+
+<p style="margin: 8px 0;">The implementation takes a slower, more reviewable route.</p>
+
+<p style="margin: 8px 0;">Hermes follows a Python approach: when a runtime result is insufficient, the Agent generates patch code and writes it into a dynamic Skill library for the next call. It is automatic and learns quickly, fitting Python's natural ability to modify itself at runtime.</p>
+
+<p style="margin: 8px 0;">HexClaw uses Go, so v0.4.x favors a plain approach consistent with Go engineering. The existing SkillWriter can already create Skills and scan them before writing. Next it will join a fuller loop: an LLM-as-judge scores a completed Skill run, then produces a reviewable v2 draft if the score is low, rather than silently replacing the original at runtime. Open the draft, merge it into the skills directory if it is good, or delete it if not. If you regret a change later, <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">git</code>  a rollback restores it.</p>
+
+<p style="margin: 8px 0;">This is slower, but the benefit is clear: <strong style="color:var(--article-accent, #3f8fd4);">you can always see, change, and stop the Agent's modifications to itself</strong>. For a desktop workbench intended for long-term use, visible self-improvement is more reassuring than silent changes.</p>
+
+<p style="margin: 8px 0;">Two other pieces are needed along the local-workbench path:</p>
+
+<p style="margin: 8px 0;">One is <strong style="color:var(--article-accent, #3f8fd4);">progressive loading</strong>. Once many Skills exist, loading all of them into every context is impractical. The design loads only a lightweight index at startup, roughly 20 tokens per Skill, and expands a Skill when it is needed.</p>
+
+<p style="margin: 8px 0;">The other is <strong style="color:var(--article-accent, #3f8fd4);">compositional learning</strong>. Improving one Skill is only the first layer. If you repeatedly call A, then B, then C, HexClaw can distill that sequence into a meta-Skill draft for review. Whether to keep it remains your decision.</p>
+
+<p style="margin: 8px 0;">Neither sounds as striking as Writable Runtime, but for someone using the Agent daily, they may be more useful than promises to automate everything.</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">Other Foundations Being Built for v0.4.x</h2>
+
+<p style="border-left: 3px solid #f5a623; padding: 8px 14px; margin: 12px 0; background:var(--article-panel, #fffbe6); color: #8a6d3b; font-size: 13px; border-radius: 0 6px 6px 0;"><strong>Status disclosure</strong>: the following is the v0.4.x roadmap. Some items have been validated in local development; others target the next release. The published v0.3.12 does not include all of them. Refer to  <code style="background: #ffe8a6; padding: 1px 4px; border-radius: 3px; font-size: 12px; color: #8a6d3b;">CHANGELOG.md</code>  and the release notes for exact status.</p>
+
+<p style="margin: 8px 0;">Beyond the Skill loop, v0.4.x includes other work. These are less novel features than <strong style="color:var(--article-accent, #3f8fd4);">foundational engineering for an Agent intended to stay in use</strong>——</p>
+
+<ul style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 6px 0;"><strong>Agent strategy routing</strong>. The Hexagon Agent engine already provides ReAct, Plan-and-Execute, Reflection, Deep, Supervisor, Sequential, Parallel, Loop, and other Agent constructions. HexClaw's v0.4.x initially focuses on four strategies around the current ReAct engine: auto / react / plan-execute / reflection, selected automatically by task or manually in settings.</li>
+<li style="margin: 6px 0;"><strong>Memory injection protection</strong>. Long-lived memory becomes an attack surface. XML tags and a system note tell the model that memory is reference material rather than new instructions.</li>
+<li style="margin: 6px 0;"><strong>Error classification and fallback</strong>. A 429, 402, or 503 is handled by cause, with backoff, credential changes, context compression, or provider switching rather than indiscriminate retry.</li>
+<li style="margin: 6px 0;"><strong>Model tool-use detection</strong>. Some local models imitate a tool call without executing it. A small probe shows a ✅ / ⚠️ / ❌ badge in settings to avoid misleading users.</li>
+<li style="margin: 6px 0;"><strong>Runtime MCP management</strong>. MCP servers can be added or removed at runtime, normally without a restart. Disconnections are checked for reconnection every 30 seconds.</li>
+</ul>
+
+<p style="margin: 8px 0;">These details sound like engineering housekeeping, but they strongly influence whether a local workbench remains useful over time.</p>
+
+<p style="margin: 8px 0;">They also explain my emphasis on boundaries. More capable Agents need permission control: tool approvals, MCP command allowlists, scans before Skill writes, memory injection protection, and error fallback may be less eye-catching, but affect whether an Agent can keep running on a personal machine.</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">How the Three Paths Could Work Together</h2>
+
+<p style="margin: 8px 0;">This is an architectural proposal, not an existing official integration. The three can fit into one engineering diagram because their responsibilities differ.</p>
+
+<p style="margin: 8px 0;">Agent projects have become composable in recent years because open interfaces such as  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">MCP</code>, HTTP / SSE, and OpenAI-compatible APIs have become a shared language, not because everyone uses one framework.</p>
+
+<p style="margin: 8px 0;">In simple terms: HexClaw provides the local foundation, Hermes handles deep tasks, and OpenClaw sends results to chat channels.<strong style="color:var(--article-accent, #3f8fd4);">Open interfaces let each do its own work without replacing the others.</strong></p>
+
+<p style="margin: 8px 0;">One practical arrangement would be:</p>
+
+<ul style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 6px 0;">Run  <strong>HexClaw</strong> on an always-on local machine, such as a Mac mini, NUC, or small server, as the home for its Go sidecar, Ollama models, <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">MCP</code>  hub, knowledge base, and Skills, exposing capabilities through local REST / WebSocket / MCP SSE interfaces.</li>
+<li style="margin: 6px 0;">Delegate long tasks needing substantial planning and reflection through the standard  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">OpenAI-compatible</code>  protocol to  <strong>Hermes</strong>, for Skill writeback and multi-step reasoning.</li>
+<li style="margin: 6px 0;">Use  <strong>OpenClaw</strong> for multi-platform distribution, account matrices, and chat entry points. HexClaw passes upstream conclusions through HTTP, and OpenClaw applies its Adapter Capabilities for fallback and rendering.</li>
+</ul>
+
+<p style="margin: 8px 0;">All communication uses existing open protocols: HTTP, WebSocket, SSE, MCP, and OpenAI-compatible APIs. None needs to lock another in.<strong style="color:var(--article-accent, #3f8fd4);">Clear boundaries let them run independently and make failures easier to locate</strong>。</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">Closing Thoughts</h2>
+
+<p style="margin: 16px 0; text-align: center; font-size: 16px; color:var(--article-accent, #3f8fd4);"><strong>OpenClaw connects entry points, Hermes retains lessons, and HexClaw anchors local work.</strong></p>
+
+<p style="margin: 8px 0;">In the 2026 open-source Agent space, OpenClaw and Hermes have each advanced a foundational layer: declarative abstraction of multi-platform capabilities, and dynamic Skill lifecycles. Few projects have made both layers solid.</p>
+
+<p style="margin: 8px 0;">HexClaw's path—a persistent local desktop workbench, a single Go binary, Sidecar architecture, and six-repository layering—addresses another foundation: making a local Agent workbench usable without operations expertise. Upcoming versions will go deeper into specific scenarios, discussed in the next article.</p>
+
+<p style="margin: 16px 0;">If what you need is a long-running Agent workbench on your computer, rather than a Bot matrix or a research-oriented self-learning framework, download the appropriate installer from GitHub Releases:</p>
+
+<p style="margin: 8px 0; color:var(--article-muted, #7b8fa3); font-size: 13px;">DMG / MSI / AppImage：<code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">github.com/hexagon-codes/hexclaw-desktop/releases</code></p>
+
+<p style="margin: 8px 0;">macOS users can also use the one-step installation script:</p>
+
+<p style="background: #edf7ff; padding: 12px 14px; border-radius: 8px; font-size: 13px; color: #3f5f7b; margin: 12px 0; line-height: 1.6; word-break: break-all; font-family: Menlo, Consolas, monospace;">curl -fsSL https://raw.githubusercontent.com/hexagon-codes/hexclaw-desktop/main/install.sh | bash</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<p style="margin: 8px 0; font-size: 14px; color:var(--article-muted, #7b8fa3);"><strong style="color:var(--article-accent, #3f8fd4);">Further Reading</strong> — Earlier articles in the HexClaw series:</p>
+
+<ol style="padding-left: 22px; margin: 8px 0; font-size: 14px;">
+<li style="margin: 4px 0;"><a href="https://mp.weixin.qq.com/s/1rza-Ye3NF89KNAJp_PttA" style="color:var(--article-accent, #5fb3ea);">Claude Code SOP</a>  — Design-driven development, testing feedback, and multi-Agent collaboration</li>
+<li style="margin: 4px 0;"><a href="https://mp.weixin.qq.com/s/wIRiJsWLRPWBiTEQtlVQkg" style="color:var(--article-accent, #5fb3ea);">Architecture Deep Dive</a>  — One person, Claude Code, five months, six repositories</li>
+<li style="margin: 4px 0;"><a href="https://mp.weixin.qq.com/s/S49q9gsXABAzcJyNOC7FjQ" style="color:var(--article-accent, #5fb3ea);">From Raising Lobsters to Raising Crabs</a>  — Product launch and the OpenClaw starting point</li>
+<li style="margin: 4px 0;"><a href="https://mp.weixin.qq.com/s/RX-2QOSV2cBEmddwAUj5cg" style="color:var(--article-accent, #5fb3ea);">The Thinking Process</a>  — The last mile for Qwen / Gemma / DeepSeek-R1</li>
+<li style="margin: 4px 0;"><a href="https://mp.weixin.qq.com/s/PdJRKkH4qiBS-IZBifbuag" style="color:var(--article-accent, #5fb3ea);">Complete Guide</a>  — From zero to a working local Agent in five minutes</li>
+<li style="margin: 4px 0;"><a href="https://mp.weixin.qq.com/s/2tHlfZYHxQdQwvVZQEoLRg" style="color:var(--article-accent, #5fb3ea);">Former Leader Skill</a>  — Distilling a leader into an AI Skill</li>
+</ol>
+
+<h3 style="font-size: 15px; font-weight: 600; color:var(--article-accent, #3f8fd4); margin: 24px 0 8px;">References</h3>
+
+<ul style="padding-left: 22px; margin: 8px 0; font-size: 13px; color:var(--article-secondary, #5f7b9c);">
+<li style="margin: 3px 0;">OpenClaw source and documentation: <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 12px; color:var(--article-accent, #3f8fd4);">github.com/openclaw/openclaw</code> / <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 12px; color:var(--article-accent, #3f8fd4);">docs.openclaw.ai</code></li>
+<li style="margin: 3px 0;">Hermes Agent source and documentation: <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 12px; color:var(--article-accent, #3f8fd4);">github.com/NousResearch/hermes-agent</code> / <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 12px; color:var(--article-accent, #3f8fd4);">hermes-agent.nousresearch.com</code></li>
+<li style="margin: 3px 0;">Nous Research website: <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 12px; color:var(--article-accent, #3f8fd4);">nousresearch.com</code></li>
+<li style="margin: 3px 0;">OpenRouter Hermes Agent application page: <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 12px; color:var(--article-accent, #3f8fd4);">openrouter.ai/apps/hermes-agent</code></li>
+<li style="margin: 3px 0;">MCP protocol specification: <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 12px; color:var(--article-accent, #3f8fd4);">modelcontextprotocol.io</code></li>
+<li style="margin: 3px 0;">Hermes WeChat and other integrations: see the integrations section of the official Hermes documentation</li>
+<li style="margin: 3px 0;">References on the Hermes / Evolver dispute: <a href="https://evomap.ai/blog/hermes-agent-evolver-similarity-analysis" style="color:var(--article-accent, #5fb3ea);">EvoMap similarity analysis</a>、<a href="https://github.com/EvoMap/evolver" style="color:var(--article-accent, #5fb3ea);">EvoMap/evolver</a>、<a href="https://github.com/NousResearch/hermes-agent" style="color:var(--article-accent, #5fb3ea);">Official Hermes Agent repository</a>、<a href="https://www.yicai.com/news/103135283.html" style="color:var(--article-accent, #5fb3ea);">Yicai report</a></li>
+<li style="margin: 3px 0;">HexClaw source and documentation: <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 12px; color:var(--article-accent, #3f8fd4);">github.com/hexagon-codes/hexclaw-desktop</code> / <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 12px; color:var(--article-accent, #3f8fd4);">hexclaw.net</code></li>
+</ul>
+
+<p style="margin: 8px 0; font-size: 12px; color:var(--article-muted, #a5bdd3);">External-project data in this article was checked on 2026-04-25. Upstream repositories and official platforms remain authoritative.</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<p class="blog-brand-footer" data-blog-brand-footer="en" data-blog-brand-overrides="{}" style="text-align: center; color: var(--article-muted, #7b8fa3); font-size: 13px; margin: 16px 0 0; line-height: 2;">
+<strong style="color: var(--article-ink, #12324c); font-size: 14px;">HexClaw</strong><br/>
+Deploy locally or in the cloud · Control your data · Free and open-source software<br/>
+<a href="https://hexclaw.net" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">Website: <bdi dir="ltr">hexclaw.net</bdi></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://github.com/hexagon-codes" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">GitHub: <bdi dir="ltr">hexagon-codes</bdi></a><br/>
+<a href="https://weibo.com/u/4097207240" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">Weibo: <bdi dir="ltr">@HexClaw</bdi></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">X: <bdi dir="ltr">@hexclawapp</bdi></a><br/>
+<a href="mailto:ai@hexclaw.net" style="color: var(--article-muted, #999); text-decoration: none;">Email: <bdi dir="ltr">ai@hexclaw.net</bdi></a>
+</p>
+    </article>
+
+
+
+    <nav class="blog-series-nav" aria-label="Previous and next articles">
+      <a href="/en/blog/architecture-deep-dive" class="blog-nav-card prev">
+  <span class="blog-nav-label">← Previous article</span>
+  <span class="blog-nav-title">HexClaw Architecture Deep Dive: One Person, Claude, Five Months, Six Repositories</span>
+</a>
+      <a href="/en/blog/claude-code-sop" class="blog-nav-card next">
+  <span class="blog-nav-label">Next article →</span>
+  <span class="blog-nav-title">The Claude Code SOP Behind HexClaw: Design, Testing, and Multi-Agent Collaboration</span>
+</a>
+    </nav>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-main">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-col-title">Product</div>
+        <a href="/en/#download">Download</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="/en/changelog">Changelog</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Developers</div>
+        <a href="/en/docs/">Documentation</a>
+        <a href="/en/blog/">Technical Blog</a>
+        <a href="/en/docs/getting-started">Getting Started</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">Apache-2.0</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Community</div>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/issues" target="_blank" rel="noopener noreferrer">Issues</a>
+        <a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer">Twitter / X</a>
+        <a href="mailto:ai@hexclaw.net">Contact Us</a>
+        <a href="mailto:support@hexclaw.net">Feedback</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">About</div>
+        <a href="/en/about">About Us</a>
+        <a href="/en/privacy">Privacy Policy</a>
+        <a href="/en/terms">Terms of Service</a>
+        <a href="/en/third-party-ai-services">Third-Party AI Services</a>
+      </div>
+    </div>
+    <div class="footer-wechat">
+      <img width="430" height="430" loading="lazy" decoding="async" src="../../assets/brand/wechat-qr.jpg" alt="HexClaw WeChat QR Code">
+      <span class="footer-wechat-label">WeChat Official Account</span>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">&copy; 2025&ndash;2026 hexagon-codes</span>
+  </div>
+</footer>
+<script src="../../assets/js/theme.js?v=2e4a1828feef"></script>
+<script src="../../assets/js/docs-nav.js?v=5a103861aec2"></script>
+<button type="button" class="back-to-top" id="backToTop" aria-label="Back to top" title="Back to top">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg>
+  <span>Top</span>
+</button>
+
+<script src="../../assets/js/blog.js?v=c72e1db5a6ec"></script>
+</body>
+</html>

@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/favicon-32.png">
+<title>Context Engineering in HexClaw: Keeping Answer-Like Noise Out of the Loop | HexClaw Technical Blog</title>
+<meta name="description" content="A retrieval error is one mistake in a conversation, but compound interest in a loop. Five of this pipeline’s six stages subtract noise: query expansion → broad retrieval → score-weighted RRF → relevance floor → LLM reranking → output instructions. An examination of context engineering through real source code and constants.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:site_name" content="HexClaw">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Context Engineering in HexClaw: Keeping Answer-Like Noise Out of the Loop | HexClaw Technical Blog">
+<meta property="og:description" content="A retrieval error is one mistake in a conversation, but compound interest in a loop. Five of this pipeline’s six stages subtract noise: query expansion → broad retrieval → score-weighted RRF → relevance floor → LLM reranking → output instructions. An examination of context engineering through real source code and constants.">
+<meta property="og:url" content="https://hexclaw.net/en/blog/context-engineering">
+<meta property="og:image" content="https://hexclaw.net/assets/blog/covers/context-engineering-cover.webp">
+<meta property="og:image:alt" content="Context Engineering in HexClaw: Keeping Answer-Like Noise Out of the Loop - 官方技术专栏封面">
+<meta property="og:image:width" content="1918">
+<meta property="og:image:height" content="820">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Context Engineering in HexClaw: Keeping Answer-Like Noise Out of the Loop | HexClaw Technical Blog">
+<meta name="twitter:description" content="A retrieval error is one mistake in a conversation, but compound interest in a loop. Five of this pipeline’s six stages subtract noise: query expansion → broad retrieval → score-weighted RRF → relevance floor → LLM reranking → output instructions. An examination of context engineering through real source code and constants.">
+<meta name="twitter:image" content="https://hexclaw.net/assets/blog/covers/context-engineering-cover.webp">
+<meta name="twitter:image:alt" content="Context Engineering in HexClaw: Keeping Answer-Like Noise Out of the Loop - 官方技术专栏封面">
+<link rel="canonical" href="https://hexclaw.net/en/blog/context-engineering">
+<link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/context-engineering">
+<link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/context-engineering">
+<link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/context-engineering">
+<link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/context-engineering">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Context Engineering in HexClaw: Keeping Answer-Like Noise Out of the Loop",
+  "description": "A retrieval error is one mistake in a conversation, but compound interest in a loop. Five of this pipeline’s six stages subtract noise: query expansion → broad retrieval → score-weighted RRF → relevance floor → LLM reranking → output instructions. An examination of context engineering through real source code and constants.",
+  "url": "https://hexclaw.net/en/blog/context-engineering",
+  "inLanguage": "en",
+  "datePublished": "2026-07-02",
+  "image": "https://hexclaw.net/assets/blog/covers/context-engineering-cover.webp",
+  "publisher": {
+    "@type": "Organization",
+    "name": "hexagon-codes",
+    "url": "https://hexclaw.net/",
+    "@id": "https://hexclaw.net/#organization"
+  },
+  "@id": "https://hexclaw.net/en/blog/context-engineering#article"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "HexClaw",
+      "item": "https://hexclaw.net/en/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Technical Blog",
+      "item": "https://hexclaw.net/en/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Context Engineering in HexClaw: Keeping Answer-Like Noise Out of the Loop",
+      "item": "https://hexclaw.net/en/blog/context-engineering"
+    }
+  ],
+  "@id": "https://hexclaw.net/en/blog/context-engineering#breadcrumb"
+}
+</script>
+<link rel="stylesheet" href="../../assets/css/docs-eb2895dd79c5.css">
+<link rel="stylesheet" href="../../assets/css/blog-a8e5008ac3d1.css">
+</head>
+<body class="blog-page blog-article-page">
+<a href="#main" class="skip-link">Skip to main content</a>
+<nav class="tn topnav" id="nav">
+  <a href="/en/" class="tn-b topnav-brand"><img width="72" height="72" src="../../assets/brand/hexclaw-icon-72.png" class="tn-l topnav-logo" alt="HexClaw"><span class="tn-n topnav-name">HexClaw</span></a>
+  <button type="button" class="tn-burger topnav-burger" aria-label="Menu" aria-expanded="false" aria-controls="primary-navigation"><span></span><span></span><span></span></button><div class="tn-r topnav-links" id="primary-navigation"><a href="/en/">Home</a><a href="/en/#cases">Scenarios</a><a href="/en/#features">Features</a><a href="/en/#quickstart">Quickstart</a><a href="/en/#ecosystem">Ecosystem</a><a href="/en/blog/" class="is-active">Tech Blog</a><a href="/en/docs/">Docs Center</a><div class="lang-menu" data-lang-menu><button type="button" class="lang-trigger" aria-haspopup="menu" aria-expanded="false" aria-label="Switch language"><svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 0 20"></path><path d="M12 2a15.3 15.3 0 0 0 0 20"></path></svg><span class="lang-current">English</span><svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="lang-menu-list" role="menu"><a href="/zh/blog/context-engineering" role="menuitem">中文</a><a href="/en/blog/context-engineering" role="menuitem" class="is-active" aria-current="true">English</a><a href="/ug/blog/context-engineering" role="menuitem" lang="zh-CN" dir="ltr">维吾尔语</a></div></div><button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"><svg class="ti-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="ti-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="nav-cta">GitHub <span class="nav-star-badge" id="gh-stars">&#9733;</span></a></div>
+</nav>
+
+<main id="main" class="blog-main">
+  <div class="blog-article-container">
+    <nav class="blog-breadcrumb" aria-label="Breadcrumb">
+      <a href="/en/">Home</a>
+      <span class="blog-breadcrumb-sep">/</span>
+      <a href="/en/blog/">Technical Blog</a>
+      <span class="blog-breadcrumb-sep">/</span>
+      <span aria-current="page">Four Agent Generations</span>
+    </nav>
+
+    <header class="blog-header">
+      <div class="blog-header-tags">
+        <span class="blog-badge-series">Four Generations · Part Two</span>
+      </div>
+      <h1 class="blog-article-title">Context Engineering in HexClaw: Keeping Answer-Like Noise Out of the Loop</h1>
+      <p class="blog-article-subtitle">A retrieval error is one mistake in a conversation, but compound interest in a loop. Five of this pipeline’s six stages subtract noise: query expansion → broad retrieval → score-weighted RRF → relevance floor → LLM reranking → output instructions. An examination of context engineering through real source code and constants.</p>
+      <div class="article-provenance-banner">
+        <div class="provenance-left">
+          <span class="provenance-origin-badge">First published on WeChat</span>
+          <span class="provenance-text">Originally published in the official technical column of the WeChat account <strong>「hexclaw」</strong> (ID: hexclaw) · Published <strong>2026-07-02</strong> · 13 min read</span>
+        </div>
+        <a href="https://mp.weixin.qq.com/s/H6BoZUcQfBBqh-ScXQyTWw" target="_blank" rel="noopener noreferrer" class="provenance-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          Original on WeChat ↗
+        </a>
+      </div>
+    </header>
+
+    <article class="blog-content">
+
+
+<p style="margin: 16px 0;">You have probably seen this kind of answer: an agent solemnly lists “Reference 1 (relevance: 61%),” complete with title and source, then gives a wrong answer based on it. That is more damaging than an unsupported hallucination. You might doubt a bare assertion, but <strong>a wrong answer that appears sourced can make you drop your guard</strong>. Often, the model has not invented anything. Retrieval served material on a neighboring topic that did not contain the answer, and the model faithfully digested what it was fed.</p>
+
+<p style="margin: 8px 0;">In the <a href="https://mp.weixin.qq.com/s/h60ymjjj3eF9hQyhl0jVcQ">previous article</a>, I opened up HexClaw’s Loop layer: the loop runs itself, a supervisor checks progress against the goal, and another round is dispatched if it falls short. Afterwards, the next topic was obvious. Once the loop starts, an inconspicuous problem becomes systemic: <strong>every iteration consumes context. Noise causes one wrong answer in a conversation; in a loop, that mistake becomes input to the next planning round. It compounds.</strong></p>
+
+<p style="margin: 8px 0;">The industry already has a name for this perspective: Context Engineering. Several prominent practitioners popularized it in the middle of last year, and by now the term is nearly overused. At first, I dismissed it as another round of jargon inflation. After working through HexClaw’s entire knowledge-base path, I admitted it described exactly what I was doing. Shopify CEO Tobi Lütke, among the early executives to put “AI first” into a company-wide memo, offered a useful definition: “the art of providing all the context for the task to be plausibly solvable by the LLM.” The more widely circulated formulation came from OpenAI founding member and former Tesla AI director Andrej Karpathy:</p>
+
+<blockquote style="border-left: 3px solid #3f8fd4; padding: 12px 18px; margin: 16px 0; background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); font-size: 14px; border-radius: 0 8px 8px 0; line-height: 1.8;">“Context engineering is the <strong>delicate art and science</strong> of filling the context window with just the right information for the next step.”<br/><span>The emphasis is on supplying precisely the information the next step needs.</span></blockquote>
+
+<p style="margin: 8px 0;">Notice that neither says “feed it more.” Anthropic’s engineering blog makes the point more explicit: context is scarce, and the goal is <strong>“the smallest possible set of high-signal tokens.”</strong></p>
+
+<p style="margin: 8px 0;">Recent empirical work supports that direction. Chroma calls the deterioration as input grows <strong>Context Rot</strong>: more tokens reduce a model’s ability to retrieve information accurately from its context. Following that evidence, Anthropic describes attention as a <strong>budget</strong>; every added token spends some of it. Liu et al.’s Lost in the Middle had already identified a U-shaped drop in utilization across long contexts. For RAG builders, the most uncomfortable result is SIGIR 2024’s The Power of Noise: <strong>random irrelevant documents are almost harmless; the documents that damage accuracy are distractors on neighboring topics that do not contain the answer</strong>—exactly the kind vector retrieval tends to return.</p>
+
+<p style="margin: 8px 0;">This article therefore will not boast about RAG recall. Most RAG articles explain how to retrieve more. Here I will describe the opposite, where I spent much of my effort in HexClaw’s knowledge-base source: <strong>how to discard more decisively</strong>. We will examine six stages. With one additive exception, they subtract: reduce weights, set a floor, remove duplication, narrow candidates, and require the model to acknowledge insufficient evidence.</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<blockquote style="border-left: 3px solid #3f8fd4; padding: 14px 18px; margin: 20px 0; background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); font-size: 14px; border-radius: 0 8px 8px 0; line-height: 1.85;">The point I most want you to take away is that retrieval’s core capability includes <strong>refusal</strong>. A production RAG path is <strong>a pipeline responsible for saying no</strong>. Every place it says no corresponds to a real failure mode.</blockquote>
+
+<section style="margin: 20px 0; padding: 12px 16px 14px; background:var(--article-panel, #f7fafd); border: 1px solid #d5e6f3; border-radius: 8px; text-align: center; font-size: 13px; line-height: 2.2; color:var(--article-muted, #7b8fa3);">
+<span style="font-size: 12px; color:var(--article-muted, #9db2c4); letter-spacing: 1px;">THIS SERIES · FOUR AGENT GENERATIONS</span><br/>
+<span style="color:var(--article-muted, #7b8fa3);">Prompt<span style="font-size: 12px; color:var(--article-muted, #9db2c4);">(finale)</span></span><span style="color: #b8cbdc;">&nbsp;→&nbsp;</span><span style="display: inline-block; padding: 0 12px; background: #3f8fd4; color: #ffffff; border-radius: 12px; font-weight: 700;">Context ▸ This article</span><span style="color: #b8cbdc;">&nbsp;→&nbsp;</span><span style="color:var(--article-muted, #7b8fa3);">Harness<span style="font-size: 12px; color:var(--article-muted, #9db2c4);">(next)</span></span><span style="color: #b8cbdc;">&nbsp;→&nbsp;</span><a href="https://mp.weixin.qq.com/s/h60ymjjj3eF9hQyhl0jVcQ" style="color:var(--article-accent, #3f8fd4); text-decoration: none;">Loop<span style="font-size: 12px;">(overview · published)</span></a><br/>
+<span style="font-size: 12px; color:var(--article-muted, #9db2c4);">The other half of Context is memory; see  <a href="https://mp.weixin.qq.com/s/YvGGPBZX0V7R6-09unnrcQ" style="color: #5fa5d8; text-decoration: none;">Agent Memory That Dreams</a></span>
+</section>
+
+<p style="margin: 8px 0; text-align: center; color:var(--article-muted, #7b8fa3); font-size: 13px;">Overview: six stages, a complete degradation ladder, and three evaluation gates. Every constant comes from the source; none was invented.</p>
+
+<figure><img src="../../assets/blog/河蟹AI-Context检索流水线图.png" alt="Overview of the HexClaw Context retrieval pipeline" width="2120" height="3744" loading="lazy" decoding="async"><figcaption>Overview of the HexClaw Context retrieval pipeline</figcaption></figure>
+
+<h2 style="font-size: 19px; font-weight: 700; color:var(--article-ink, #12324c); margin: 32px 0 12px; padding-left: 10px; border-left: 4px solid #5fb3ea;">Where the pipeline lives: a gate on every conversation turn</h2>
+
+<p style="margin: 8px 0;">First, its position. When the HexClaw engine handles any user message, it performs a fixed step numbered 5.5 in the source comments: “Knowledge-base retrieval (RAG context augmentation).” Whenever the knowledge base is enabled, the current message runs through <code>kb.Query()</code>, executing the entire retrieval path. Default topK is 3, and retrieved content is injected as context for that turn. A retrieval failure is logged but never blocks the answer. A failure in the reference layer should not interrupt the conversation. This is the first subtraction: <strong>omit references for a turn rather than turn a retrieval error into an answering error</strong>.</p>
+
+<p style="margin: 8px 0;">Alongside that automatic per-turn path, the agent can explicitly call <code>knowledge_search</code>. Source comments distinguish their roles: automatic injection searches the entire knowledge base every turn; the tool is for model-initiated <strong>scoped recall</strong>, filtered by source, type, or date—for example, “only the PDFs I uploaded” or “only what I saved last week.” Filters are pushed down to storage. One path runs in the background; the other is a deliberate search.</p>
+
+<p style="margin: 8px 0;">One filtering detail shows the care involved. Source and type conditions are pushed into storage <strong>before</strong> topK selection. Retrieving topK from the entire store and filtering afterwards could silently omit truly matching documents that never reached the candidate pool. Date filtering is <strong>deliberately not pushed down</strong>. SQLite stores dates as RFC3339 text, and lexicographic comparisons across time zones are unreliable. The code instead compares real <code>time.Time</code> values in Go, with the reason explained in a comment. Different conditions need different treatments. Such details distinguish considered code from a copied recipe.</p>
+
+<p style="margin: 8px 0;">The source summarizes the full sequence in one line: <strong>query expansion → broad retrieval → RRF fusion → relevance floor → LLM reranking</strong>. There is no feature-flag gate; default configuration enables everything, and missing components automatically degrade only the relevant stages. We will return to that “best practice by default” choice.</p>
+
+<h2 style="font-size: 19px; font-weight: 700; color:var(--article-ink, #12324c); margin: 32px 0 12px; padding-left: 10px; border-left: 4px solid #5fb3ea;">Stage zero: noise prevention starts at ingestion</h2>
+
+<p style="margin: 8px 0;">Retrieval quality is partly determined before querying. Common upload formats enter a shared backend extraction path: PDF uses Poppler’s pdftotext, with complete ToUnicode handling to address garbled Chinese; legacy .doc uses system tools; images go to a vision model for transcription into searchable text. The latest work extends that path inside documents: <strong>scanned PDF pages and images embedded in Word—screenshots, charts, and formulas—are extracted individually and transcribed by a VLM</strong>. A “Document visual parsing” section merges those results into the indexed text. Two details matter: visual transcription reuses the knowledge base’s configured vision model rather than creating a separate upload-only call path; when no vision model is configured, ingestion honestly indexes only the text layer and explicitly warns that image semantics were not indexed. <strong>A broader entrance still follows the same downstream rules.</strong></p>
+
+<p style="margin: 8px 0;">The first cut after ingestion is chunking. It can look like mechanical character counting, but it defines <strong>the smallest unit of evidence that can be referenced</strong>. Too small, and the model loses surrounding reasoning; too large, and unrelated text dilutes vector similarity, yielding blocks with only vaguely relevant content. HexClaw uses <strong>structure first, recursive splitting as a fallback</strong>: follow heading hierarchies when present, otherwise split recursively. Defaults are 400 characters per chunk and 80 characters of overlap, preserving meaning across boundaries. This is particularly useful for naturally structured text such as contracts and patents: clauses and claims are evidence units, so structure-aware cuts support references to a specific clause rather than an amorphous block. The first measure below restores global context lost at those cuts.</p>
+
+<p style="margin: 8px 0;">After chunking, the pipeline does three less conspicuous things.</p>
+
+<p style="margin: 8px 0;"><strong>First, attach provenance to every chunk.</strong> A document-level context prefix—its heading path plus an optional LLM-generated contextual summary—is prepended to each chunk. Both vector embeddings and the BM25 full-text index use this augmented text. This is Anthropic’s <strong>Contextual Retrieval</strong>: contextual embeddings plus contextual BM25. Their reported results reduce top-20 retrieval failure by 49%, or 67% with reranking. It solves a concrete problem: an isolated chunk saying “This setting defaults to 30 days” does not identify the system or setting. Its added background helps correct semantic and lexical queries find it and reduces mistaken matches. The contextual-summary calls have their own budget: at most 6000 runes of document text, 1200 runes per chunk, and summaries for only the first 200 chunks of a document. Exceeding that produces a WARN rather than silence. Even the enhancement has cost bounds.</p>
+
+<p style="margin: 8px 0;"><strong>Second, queries and documents enter vector space with different roles.</strong> For embedding models supporting task prefixes, such as the nomic family’s <code>search_query</code> and <code>search_document</code>, query and document inputs receive different instruction prefixes. Questions and answers need not have the same shape in semantic space; asymmetric embeddings align the direction of “question seeking answer” more accurately. Prefixes affect only embedding inputs, without contaminating stored content or BM25.</p>
+
+<p style="margin: 8px 0;"><strong>Third, truncate at the embedding API entrance.</strong> Any text is truncated to 6000 runes before embedding. Even for a worst-case CJK estimate of about 1 token per rune, that stays below mainstream embedding models’ 8191/8192-token limits. A normal 400-character chunk never reaches it; the guard addresses unexpectedly long queries, HyDE hypothetical documents, or an accidentally supplied full article, avoiding a 413 error or excessive billing. Truncation and embedding caching are stackable decorators. The recommended order is truncation outside, cache inside, so <strong>cache keys use truncated text</strong>. Repeated ingestion of the same long document then does not miss the cache because truncation happened at a different point. Even decorator order marks the difference between engineering and a demo.</p>
+
+<p style="margin: 8px 0;">Storage is SQLite with an FTS5 virtual table. There is no separate vector database: vectors and full-text indexes live in the same local file. Startup also removes orphaned FTS5 rows whose chunks have already been deleted, preventing removed material from reappearing in results. That, too, prevents noise—noise from the past.</p>
+
+<h2 style="font-size: 19px; font-weight: 700; color:var(--article-ink, #12324c); margin: 32px 0 12px; padding-left: 10px; border-left: 4px solid #5fb3ea;">Stages one and two: even the additive stage has limits</h2>
+
+<p style="margin: 8px 0;">Only the first stage adds material: query expansion. Original questions are often short and conversational, so direct retrieval misses things. HexClaw runs three branches concurrently: retain the original query, generate 3 multi-query semantic variants, and add HyDE—a hypothetical answer written by an LLM and used as a search query. Questions and answers differ in vector space, while hypothetical and real answers resemble one another. The <strong>total is hard-capped at 5 queries</strong>. The source’s reason is simply “control retrieval cost.” Restraint applies even where the pipeline adds.</p>
+
+<p style="margin: 8px 0;">Broad retrieval follows. Each query takes a vector-search path and a BM25 full-text path. The candidate pool is <code>CandidateK = 50</code>, always at least 3 times the final topK, “leaving enough room for rerank narrowing,” as the comment puts it. This is classic over-retrieval: <strong>deliberately cast a wide net so later subtraction stages have something to work with</strong>.</p>
+
+<h2 style="font-size: 19px; font-weight: 700; color:var(--article-ink, #12324c); margin: 32px 0 12px; padding-left: 10px; border-left: 4px solid #5fb3ea;">Stage three: fusion, and a real bug it had to fix</h2>
+
+<p style="margin: 8px 0;">There are now up to ten ranked lists: 5 queries × vector and text paths. Their score units are incomparable. Cosine similarity is a continuous geometric measure; BM25 is a term-frequency statistic. A direct weighted sum resembles adding temperature to atmospheric pressure. A standard answer is <strong>RRF</strong>, Reciprocal Rank Fusion (Cormack et al., SIGIR 2009): rely on rank rather than raw score, with each list contributing <code>1/(k+rank)</code>, using the conventional k of 60. The constant and paper citation appear directly in the configuration-field comment.</p>
+
+<p style="margin: 8px 0;">HexClaw uses <strong>score-weighted RRF</strong>, because textbook RRF failed in real use. Here is the complete problem. Rank-only RRF grants full rank-1 weight to a single weak hit isolated in one list. Cross-language queries can produce exactly this: ask in Chinese about an English document, with almost no lexical overlap, and BM25 may find a single accidentally shared token. Its score is tiny, but it ranks first on that path. Pure RRF can let this false lexical hit outrank a genuinely strong semantic vector hit. The fix multiplies each rank contribution by the normalized score from its own path:</p>
+
+<section style="margin: 18px 0; padding: 18px 20px; background: #272822; border-radius: 8px; overflow-x: auto; text-align: left; letter-spacing: 0; font-size: 13px; line-height: 1.8; font-family: 'SF Mono', SFMono-Regular, Menlo, Monaco, Consolas, 'Courier New', monospace; color: #F8F8F2; box-shadow: 0 1px 10px rgba(0,0,0,0.12);"><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 2.2em; margin-right: 16px; text-align: right; color: #90908A;">1</span><span style="color: #75715E; font-style: italic;">// #11 修复：纯 rank RRF 会把「孤立弱 BM25 命中」当作与强命中</span></span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 2.2em; margin-right: 16px; text-align: right; color: #90908A;">2</span><span style="color: #75715E; font-style: italic;">// 同等的 rank-1 满权，导致跨语种/无词法重叠时一个虚假词法命中</span></span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 2.2em; margin-right: 16px; text-align: right; color: #90908A;">3</span><span style="color: #75715E; font-style: italic;">// 压过强向量命中。改为按各路归一化分加权 rank 贡献：</span></span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 2.2em; margin-right: 16px; text-align: right; color: #90908A;">4</span><span style="color: #75715E; font-style: italic;">// score(d) = Σ_list w_list · normScore(d,list) / (k + rank)</span></span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 2.2em; margin-right: 16px; text-align: right; color: #90908A;">5</span><span style="color: #F92672;">for</span> _, list := <span style="color: #F92672;">range</span> rankedLists {</span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 2.2em; margin-right: 16px; text-align: right; color: #90908A;">6</span>    w := tw                    <span style="color: #75715E; font-style: italic;">// 文本路权重 0.3</span></span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 2.2em; margin-right: 16px; text-align: right; color: #90908A;">7</span>    <span style="color: #F92672;">if</span> list.isVector { w = vw <span style="color: #75715E; font-style: italic;">/* 向量路权重 0.7 */</span> }</span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 2.2em; margin-right: 16px; text-align: right; color: #90908A;">8</span>    <span style="color: #F92672;">for</span> rank, id := <span style="color: #F92672;">range</span> list.ids {</span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 2.2em; margin-right: 16px; text-align: right; color: #90908A;">9</span>        s := 该路归一化分  <span style="color: #75715E; font-style: italic;">// VectorScore 或 TextScore</span></span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 2.2em; margin-right: 16px; text-align: right; color: #90908A;">10</span>        fused[id] += w * s / (k + <span style="color: #66D9EF;">float64</span>(rank+<span style="color: #AE81FF;">1</span>))</span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 2.2em; margin-right: 16px; text-align: right; color: #90908A;">11</span>    }</span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 2.2em; margin-right: 16px; text-align: right; color: #90908A;">12</span>}</span></section>
+
+<p style="margin: 8px 0; text-align: center; color:var(--article-muted, #7b8fa3); font-size: 13px;">The core fusion logic, slightly shortened for layout; comments are reproduced from the source.</p>
+
+<p style="margin: 8px 0;">The effect works both ways: weak hits with low normalized scores lose the corresponding share of their rank advantage, while genuine exact matches—for example, a function-name search receiving a near-perfect BM25 score—retain full weight. The closing source comment is precise: <strong>“Eliminate false-hit bias without losing exact-term matching capability.”</strong> A 30-day-half-life time decay is then applied to fused scores, preferring newer material when relevance is equal.</p>
+
+<h2 style="font-size: 19px; font-weight: 700; color:var(--article-ink, #12324c); margin: 32px 0 12px; padding-left: 10px; border-left: 4px solid #5fb3ea;">Stages four, five, and six: a floor, reranking, and output instructions</h2>
+
+<p style="margin: 8px 0;">After fusion comes the clearest gate: the <strong>relevance floor</strong>. Candidates with vector similarity below 0.55, applied to cosine scores normalized into 0–1, and no supporting keyword hit are discarded. The source calls these <strong>“pure weak vector hits”</strong>: the semantic model sees a vague resemblance, while lexical matching supplies no evidence. This is exactly the dangerous distractor pattern discussed in The Power of Noise. The entire condition is short enough to show:</p>
+
+<section style="margin: 18px 0; padding: 18px 20px; background: #272822; border-radius: 8px; overflow-x: auto; text-align: left; letter-spacing: 0; font-size: 13px; line-height: 1.8; font-family: 'SF Mono', SFMono-Regular, Menlo, Monaco, Consolas, 'Courier New', monospace; color: #F8F8F2; box-shadow: 0 1px 10px rgba(0,0,0,0.12);"><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">1</span><span style="color: #75715E; font-style: italic;">// 丢弃"纯弱向量命中"（语义低于地板且无关键词支撑）；</span></span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">2</span><span style="color: #75715E; font-style: italic;">// 有关键词命中或纯关键词模式的候选一律保留。</span></span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">3</span><span style="color: #F92672;">for</span> _, r := <span style="color: #F92672;">range</span> candidates {</span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">4</span>    <span style="color: #F92672;">if</span> r.VectorScore >= minScore || r.TextScore > <span style="color: #AE81FF;">0</span> {</span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">5</span>        kept = <span style="color: #66D9EF;">append</span>(kept, r)</span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">6</span>    }</span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">7</span>}</span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">8</span><span style="color: #F92672;">if</span> <span style="color: #66D9EF;">len</span>(kept) == <span style="color: #AE81FF;">0</span> {</span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">9</span>    <span style="color: #F92672;">return</span> candidates <span style="color: #75715E; font-style: italic;">// 放宽回退：避免地板把结果清空</span></span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">10</span>}</span></section>
+
+<p style="margin: 8px 0;">Notice lines 8–10: if the floor removes every candidate, it relaxes and returns the original results. <strong>Even refusal has a boundary. The floor excludes bad entries mixed with good ones, rather than rejecting the user’s entire question.</strong> Prefer fewer, more accurate results, but do not leave none.</p>
+
+<p style="margin: 8px 0;">Surviving candidates are sorted by fused score and limited to a 50-entry reranking pool. There are three levels: prefer a dedicated cross-encoder reranker for speed, cost, and accuracy; otherwise reuse the chat model as an LLM reranker that scores each entry’s relevance; without an LLM, fall back to <strong>MMR diversity selection</strong> with λ=0.7. MMR addresses another noise pattern: <strong>near-duplicate chunks occupying the entire topK</strong>. If three documents contain the same passage and all score highly, selecting all three spends three times the tokens for one piece of information. Diversity also removes noise.</p>
+
+<p style="margin: 8px 0;">The sixth and last stage is the output wording. Retrieved text is not simply concatenated into context. Each entry declares “Reference N (relevance: xx%) + document title · source,” and the injected block always ends with:</p>
+
+<blockquote style="border-left: 3px solid #3f8fd4; padding: 12px 18px; margin: 16px 0; background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); font-size: 14px; border-radius: 0 8px 8px 0; line-height: 1.8;">“Answer the user’s question based on the reference information above. <strong>If the references are insufficient to answer it, say so honestly.</strong>”</blockquote>
+
+<p style="margin: 8px 0;">That sentence is the online pipeline’s last defense. The first five stages choose what to feed; this one governs how to answer afterwards. It is a prompt-level constraint with limited strength. We will account for that in the release-gates section.</p>
+
+<h2 style="font-size: 19px; font-weight: 700; color:var(--article-ink, #12324c); margin: 32px 0 12px; padding-left: 10px; border-left: 4px solid #5fb3ea;">Degradation is part of the design</h2>
+
+<p style="margin: 8px 0;">This degradation philosophy began with something concrete. The first knowledge-base obstacle was not a complex algorithm, but one error line:</p>
+
+<section style="margin: 18px 0; padding: 18px 20px; background: #272822; border-radius: 8px; overflow-x: auto; text-align: left; letter-spacing: 0; font-size: 13px; line-height: 1.8; font-family: 'SF Mono', SFMono-Regular, Menlo, Monaco, Consolas, 'Courier New', monospace; color: #F8F8F2; box-shadow: 0 1px 10px rgba(0,0,0,0.12);"><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">1</span>model <span style="color: #E6DB74;">"nomic-embed-text"</span> not found, try pulling it first</span></section>
+
+<p style="margin: 8px 0;">On the surface, Ollama was simply missing an embedding-model download. Pulling it would fix the immediate error. But it exposed a system boundary: <strong>why should a knowledge base refuse to accept documents just because no embedding model is installed?</strong> If successful vectorization is the first admission requirement, it is still a vector-search demo rather than a knowledge base.</p>
+
+<p style="margin: 8px 0;">The first rung of the degradation ladder therefore sits on the write side: persist the original document and its chunks, and make the FTS5 index usable first. The embedding field is a <strong>nullable BLOB</strong>. A configured model can add vectors; failures only emit warnings and fall back to text indexing. <strong>The document is never rolled back.</strong> A unique constraint on (doc_id, chunk_index) also prevents repeated index rebuilds from piling up chunks at the same position. <strong>Embeddings enhance the index; they are not the document itself.</strong></p>
+
+<p style="margin: 8px 0;">The query-side ladder continues from there:</p>
+
+<p style="margin: 8px 0;">▸ <strong>No LLM</strong>, for example embeddings configured without a chat model: automatically skip query expansion and LLM reranking, falling back to MMR. The path remains complete, with two enhancements absent.<br/>▸ <strong>No embedder</strong>, including no configured models at all: disable the vector path and switch weights to text-only (0/1). Retrieval becomes FTS5 + BM25 keyword search; the relevance floor is automatically inapplicable because it exists for vector scores.<br/>▸ <strong>FTS5 fails</strong>, because of special query characters or zero results from mismatched Chinese segmentation: fall back one level further to a LIKE scan. CJK bigrams plus retained original tokens give Chinese and code symbols a lexical representation.<br/>▸ <strong>The floor empties the pool:</strong> relax it rather than return no results.<br/>▸ <strong>Retrieval errors:</strong> log the failure, omit references for this turn, and continue answering.</p>
+
+<p style="margin: 8px 0;">Every rung has an explicit minimum capability and activates automatically. This reflects the same position as “best practice by default, without feature flags”: <strong>retrieval quality should not require users to study configuration manuals, and one missing model should not stop the whole system</strong>. Local software encounters widely varying environments. Its degradation ladder supplies adaptability.</p>
+
+<p style="margin: 8px 0;">The same honesty applies to capacity. Without a separate vector database, vector retrieval is a <strong>full exact cosine scan</strong> of embedding BLOBs in Go: decode each row, calculate, and discard it; vectors do not stay resident in memory. Check cancellation every 1000 rows so long scans can be interrupted. Above 100000 chunks, emit a WARN explicitly telling the user to consider an approximate index.</p>
+
+<p style="margin: 8px 0;">The tradeoff is clear: at personal-knowledge-base scale, exact scanning is more predictable than approximation. <strong>Do not sacrifice recall for premature performance optimization.</strong> When horizontal scale becomes necessary, the right evolution is not a larger threshold but replacing the index layer with ANN, such as HNSW or DiskANN, while preserving the semantics of evidence fields such as source / doc / chunk. O(n·d) is the real boundary; one hundred thousand chunks is the system’s own warning flag.</p>
+
+<h2 style="font-size: 19px; font-weight: 700; color:var(--article-ink, #12324c); margin: 32px 0 12px; padding-left: 10px; border-left: 4px solid #5fb3ea;">Memory is context too: two retrieval paths, two standards of correctness</h2>
+
+<p style="margin: 8px 0;">HexClaw’s <a href="https://mp.weixin.qq.com/s/YvGGPBZX0V7R6-09unnrcQ">memory system</a> is another source of context. Why do memory recall and knowledge-base retrieval use different mechanisms? Memory combines 0.7 vector + 0.3 BM25 scores, then incorporates recency and importance; the knowledge base uses RRF fusion and LLM reranking. Neither is inherently more advanced. <strong>The two data types demand different standards.</strong></p>
+
+<p style="margin: 8px 0;">Memory contains a small set of valuable facts about you, on the order of hundreds. Something you said last week should generally take precedence over something from three months ago: time and importance are first-class concerns. A knowledge base seeks evidence among tens of thousands of chunks, merging up to ten heterogeneous lists to find the three truly relevant entries: noise resistance comes first. Applying one mechanism indiscriminately would be the lazy choice. This is what Context Engineering means as a layer: <strong>give each information source governance suited to its nature, rather than a single retrieval algorithm</strong>.</p>
+
+<p style="margin: 8px 0;">The <a href="https://mp.weixin.qq.com/s/YvGGPBZX0V7R6-09unnrcQ">earlier memory article</a> examines its rules in full. Here are four designs that make the differing standards particularly clear:</p>
+
+<p style="margin: 8px 0;">▸ <strong>Contradictions supersede, preserving history.</strong> If you usually stay in Yuhang and mention a visit to Xihu, “current location” is a single-valued fact, so those values conflict. Many systems rewrite Yuhang as Xihu. HexClaw keeps both with valid-from and valid-to timestamps, recalls only the currently valid entry, and switches back after your return. History remains inspectable. Preserving document originals and preserving memory history are the same rigor expressed for different data.<br/>▸ <strong>Importance corrects itself.</strong> It is not a static LLM-assigned score at ingestion; recall hits, tracked by HitCount, help frequently used memories rise. Documents demonstrate credibility through their source; memories demonstrate it through repeated need.<br/>▸ <strong>Organization, or “dreaming,” has two phases.</strong> The light phase is mechanical, with zero LLM calls: deduplicate, supersede, promote or demote, and archive, without generating hallucinations. Only the deep phase uses LLM synthesis, with bounded cluster sizes and clusters per round. Like budgeting Contextual summaries, <strong>wherever a model rewrites data, it first receives boundaries</strong>.<br/>▸ <strong>Everything is local Markdown, inspectable with git diff.</strong> Each maintenance action becomes an auditable, reversible file change. This mirrors the knowledge-base ideal of tracing answers to sources: memory maintenance can be traced to actions.</p>
+
+<p style="margin: 8px 0;">Those four choices follow memory’s nature: facts about you change, can be wrong, and expire. Its standard is <strong>history preservation and self-correction</strong>. Documents must not be rewritten by a model, so the knowledge base’s standard is <strong>original text and provenance</strong>. These mechanisms are not duplicate work. They make the same Context Engineering requirement—why trust it?—concrete for two sources.</p>
+
+<figure><img src="../../assets/blog/河蟹AI-Context两种正义图.png" alt="Memory can be reorganized; evidence must not dream: Memory and Documents follow different standards" width="2120" height="1840" loading="lazy" decoding="async"><figcaption>Memory can be reorganized; evidence must not dream: the different standards for Memory and Documents</figcaption></figure>
+
+<p style="margin: 8px 0;">The knowledge base has its own temporal governance. Besides a 30-day-half-life retrieval decay, <a href="https://mp.weixin.qq.com/s/EvQT0VqH9ep6LXo89ZM-fw">scheduled tasks</a> write daily collection results such as trending lists, repository stars, and monitored prices. These are <strong>time series, rather than single documents</strong>. Today’s trend list must neither overwrite yesterday’s nor let yesterday’s persist forever. Each collection receives a timestamped title and becomes an independent document, naturally supporting questions like “What was trending last Wednesday?” Each series retains its latest 100 snapshots by default, preventing an hourly task from clogging the knowledge base. Collected material becomes evidence only after governance.</p>
+
+<h2 style="font-size: 19px; font-weight: 700; color:var(--article-ink, #12324c); margin: 32px 0 12px; padding-left: 10px; border-left: 4px solid #5fb3ea;">Three release gates, and what has not entered the online path</h2>
+
+<p style="margin: 8px 0;">Everything above describes online code executed during actual question answering. Whether the pipeline is good cannot be decided by feel. The knowledge-base source also contains three evaluation guardrails. They run as release gates, <em>outside</em> the online path. Retrieval changes first pass these checks:</p>
+
+<p style="margin: 8px 0;"><strong>First: recall.</strong> A fixed golden corpus and query set quantify recall@k and MRR, with fully deterministic metric calculation. This protects the baseline: has a change lost something the system previously found?</p>
+
+<p style="margin: 8px 0;"><strong>Second: precision.</strong> This directly addresses the article’s theme. A source comment identifies an industry imbalance: evaluations emphasize recall—whether relevant documents appear in top-k—while neglecting precision—how many irrelevant near-topic distractors entered top-k. A dedicated <strong>distractor corpus</strong> pairs each query with relevant documents and deliberately introduces nearby topics with wrong answers: holidays versus leave entitlements, or relational databases versus caches and message queues. It measures precision@k, the purity of top-k and the amount of distractor leakage. This is a targeted check for the dangerous noise described in The Power of Noise.</p>
+
+<p style="margin: 8px 0;"><strong>Third: faithfulness.</strong> Aligned with RAGAS, a strong model judges triples of (question, retrieved context, generated answer) on Faithfulness—the fraction of factual claims supported by context—AnswerRelevance, and ContextRelevance. It also lists individual claims it considers unsupported as evidence of possible fabrication. My favorite design in this scoring system is:</p>
+
+<blockquote style="border-left: 3px solid #3f8fd4; padding: 14px 18px; margin: 20px 0; background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); font-size: 14px; border-radius: 0 8px 8px 0; line-height: 1.85;">If an answer declines to answer because references are insufficient and makes no factual claims, <strong>Faithfulness is 1.0: full marks.</strong><br/>In this scoring system, acknowledging insufficient knowledge is maximally faithful. Fabrication gets zero.</blockquote>
+
+<p style="margin: 8px 0;">Now the limitations. First, these are <strong>release gates, not online gates</strong>. No faithfulness judge evaluates each live answer. The final online defense is still the prompt instruction to disclose insufficient material. Moving the judge online adds latency and cost to every response; that tradeoff has not yet been resolved, so it has not been implemented.</p>
+
+<p style="margin: 8px 0;">Second, <strong>provenance currently stops at context</strong>. Titles and sources are fed to the model, but there is no finished product feature linking a specific answer sentence to reference N, with a click back to the original. A citation-aware context builder exists in embryonic form at the retrieval facade; the last product-facing part is missing. Today, the provenance is for the model to see, rather than for you to verify directly.</p>
+
+<p style="margin: 8px 0;">Finally, the distractor corpus is constructed and small. It can catch a regression that breaks noise resistance, but does not prove resistance on your real corpus. It needs continued cultivation. The 49% and 67% figures are Anthropic’s results on its own material. HexClaw does not yet have publishable comparative measurements for this pipeline; admitting that is better than filling the gap.</p>
+
+<p style="margin: 16px 0 8px;">Here are those tradeoffs compressed into an acceptance checklist. Whether or not you use HexClaw, you can compare your own RAG system against it:</p>
+
+<section style="margin: 18px 0; padding: 16px 22px; background:var(--article-panel, #f7fafd); border: 1px solid #d5e6f3; border-radius: 8px; font-size: 14px; line-height: 2.1; color:var(--article-ink, #12324c);">
+<strong style="color:var(--article-accent, #3f8fd4);">□ 1</strong>&nbsp;&nbsp;Persist original documents and text indexes before vector indexes. Embedding failure degrades retrieval; it never rolls back documents.<br/>
+<strong style="color:var(--article-accent, #3f8fd4);">□ 2</strong>&nbsp;&nbsp;Storing vectors without original text gives up citations, index rebuilds, and auditing at once.<br/>
+<strong style="color:var(--article-accent, #3f8fd4);">□ 3</strong>&nbsp;&nbsp;Make (doc_id, chunk_index) unique so repeated ingestion and index rebuilds cannot accumulate duplicate chunks.<br/>
+<strong style="color:var(--article-accent, #3f8fd4);">□ 4</strong>&nbsp;&nbsp;Apply filters before topK selection, or genuine matches can silently miss the candidate pool.<br/>
+<strong style="color:var(--article-accent, #3f8fd4);">□ 5</strong>&nbsp;&nbsp;BM25 and vector scores use incomparable units. Normalize them before combining, or use RRF.<br/>
+<strong style="color:var(--article-accent, #3f8fd4);">□ 6</strong>&nbsp;&nbsp;The relevance floor removes only pure weak vector hits. Preserve keyword matches, and relax the floor if it empties the pool.<br/>
+<strong style="color:var(--article-accent, #3f8fd4);">□ 7</strong>&nbsp;&nbsp;Keep at least an MMR reranking fallback so near-duplicate chunks cannot occupy all of topK.<br/>
+<strong style="color:var(--article-accent, #3f8fd4);">□ 8</strong>&nbsp;&nbsp;Evaluate more than recall. Use a dedicated corpus to measure nearby-topic distractors leaking into top-k.
+</section>
+
+<h2 style="font-size: 19px; font-weight: 700; color:var(--article-ink, #12324c); margin: 32px 0 12px; padding-left: 10px; border-left: 4px solid #5fb3ea;">Back to the loop: delegate selection to an auditable pipeline</h2>
+
+<p style="margin: 8px 0;">The previous article describes four generations as a control plane moving outward. Each new layer delegates another decision. At the Context layer, you delegate <strong>information selection</strong>: what the model sees and does not see on each turn is no longer reviewed one item at a time by you.</p>
+
+<p style="margin: 8px 0;">We can now complete that statement: delegation is reasonable if you examine what receives it. <strong>Handing control to “stuff the whole store into the window” avoids the real problem. Handing it to a pipeline where every stage has a reason, constants, degradation paths, and release gates is engineering.</strong> Retrieval errors compound inside a loop. So do the benefits of every gate that keeps noise out.</p>
+
+<p style="margin: 8px 0;">The borrowed methods and locally earned solutions are distinguishable. Contextual Retrieval, RRF, HyDE, and RAGAS build on public practice. <strong>The score-weighted RRF fix, CJK-bigram plus LIKE lexical fallbacks, “refusal gets full marks” scoring, snapshot governance for scheduled collections, and history-preserving supersession with two-phase memory dreaming</strong> came from problems encountered in this system. Engineering earns its identity by explaining each tradeoff, without needing to invent a new paradigm.</p>
+
+<p style="margin: 8px 0;">Two generations remain in the series. Next comes Harness. The dictionary’s literal meaning is the equipment fitted to a working animal, and this series already calls an agent a “cyber workhorse.” That connection is the next article’s theme: the model supplies intelligence; the harness supplies the confidence to let it work. We will return to it next. Prompt closes the series.</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<p style="margin: 16px 0 8px; font-size: 14px; color:var(--article-secondary, #5f7b9c);"><strong>Four Generations series</strong></p>
+<p style="margin: 4px 0; font-size: 14px; line-height: 2.1;">▸ <span>Loop · Overview</span> <a href="https://mp.weixin.qq.com/s/h60ymjjj3eF9hQyhl0jVcQ">Inspecting an open-source agent, layer by layer from Prompt to Loop</a><br/>▸ <span>Context · Memory</span> <a href="https://mp.weixin.qq.com/s/YvGGPBZX0V7R6-09unnrcQ">Agent Memory That Dreams: HexClaw’s Dreams Stay on Your Machine</a><br/>▸ <span>Harness · Next</span> <span>The model supplies the “cyber workhorse’s” intelligence; the harness makes it possible to trust it with work (in progress in the original article).</span></p>
+
+<p style="margin: 14px 0 8px; font-size: 14px; color:var(--article-secondary, #5f7b9c);"><strong>More earlier articles</strong></p>
+<p style="margin: 4px 0; font-size: 14px; line-height: 2;">▸ <a href="https://mp.weixin.qq.com/s/EvQT0VqH9ep6LXo89ZM-fw">Raising HexClaw’s “Cyber Workhorse”: Compiling a Sentence into a Self-Healing Sandbox Script</a><br/>▸ <a href="https://mp.weixin.qq.com/s/1rza-Ye3NF89KNAJp_PttA">The Claude Code SOP Behind HexClaw: Design-Driven Development, Testing Feedback Loops, and Multi-Agent Collaboration</a></p>
+
+<p style="margin: 16px 0 8px; font-size: 14px; color:var(--article-secondary, #5f7b9c);"><strong>References</strong></p>
+<p style="margin: 4px 0; font-size: 13px; color:var(--article-muted, #7b8fa3); line-height: 2;">· Andrej Karpathy, X (2025-06), public endorsement of “context engineering”<br/>· Tobi Lütke, X (2025-06), definition of context engineering<br/>· Anthropic, <a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents">Effective context engineering for AI agents</a> (2025-09)<br/>· Anthropic, <a href="https://www.anthropic.com/news/contextual-retrieval">Introducing Contextual Retrieval</a> (2024-09)<br/>· Chroma Research, <a href="https://research.trychroma.com/context-rot">Context Rot: How Increasing Input Tokens Impacts LLM Performance</a> (2025-07)<br/>· Cormack, Clarke &amp; Buettcher, Reciprocal Rank Fusion, SIGIR 2009<br/>· Cuconasu et al., <a href="https://arxiv.org/abs/2401.14887">The Power of Noise: Redefining Retrieval for RAG Systems</a>, SIGIR 2024<br/>· Liu et al., <a href="https://arxiv.org/abs/2307.03172">Lost in the Middle: How Language Models Use Long Contexts</a>, TACL 2024<br/>· Gao et al., <a href="https://arxiv.org/abs/2212.10496">Precise Zero-Shot Dense Retrieval without Relevance Labels</a> (HyDE, 2022)<br/>· Es et al., <a href="https://arxiv.org/abs/2309.15217">RAGAS: Automated Evaluation of Retrieval Augmented Generation</a> (2023)<br/>· All HexClaw mechanisms and constants checked against the repository’s main-branch source on 2026-07-02.</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0 16px;"/>
+
+<p class="blog-brand-footer" data-blog-brand-footer="en" data-blog-brand-overrides="{}" style="text-align: center; color: var(--article-muted, #7b8fa3); font-size: 13px; margin: 16px 0 0; line-height: 2;">
+<strong style="color: var(--article-ink, #12324c); font-size: 14px;">HexClaw</strong><br/>
+Deploy locally or in the cloud · Control your data · Free and open-source software<br/>
+<a href="https://hexclaw.net" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">Website: <bdi dir="ltr">hexclaw.net</bdi></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://github.com/hexagon-codes" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">GitHub: <bdi dir="ltr">hexagon-codes</bdi></a><br/>
+<a href="https://weibo.com/u/4097207240" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">Weibo: <bdi dir="ltr">@HexClaw</bdi></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">X: <bdi dir="ltr">@hexclawapp</bdi></a><br/>
+<a href="mailto:ai@hexclaw.net" style="color: var(--article-muted, #999); text-decoration: none;">Email: <bdi dir="ltr">ai@hexclaw.net</bdi></a>
+</p>
+    </article>
+
+
+
+    <nav class="blog-series-nav" aria-label="Previous and next articles">
+      <a href="/en/blog/harness-engineering" class="blog-nav-card prev">
+  <span class="blog-nav-label">&larr; Previous article</span>
+  <span class="blog-nav-title">Harness Engineering in HexClaw: Intelligence from the Model, Confidence from the Harness</span>
+</a>
+      <a href="/en/blog/loop-engineering" class="blog-nav-card next">
+  <span class="blog-nav-label">Next article &rarr;</span>
+  <span class="blog-nav-title">Loop Engineering in HexClaw: Four Generations, from Prompt to Loop</span>
+</a>
+    </nav>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-main">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-col-title">Product</div>
+        <a href="/en/#download">Download</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="/en/changelog">Changelog</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Developers</div>
+        <a href="/en/docs/">Documentation</a>
+        <a href="/en/blog/">Technical Blog</a>
+        <a href="/en/docs/getting-started">Getting Started</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">Apache-2.0</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Community</div>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/issues" target="_blank" rel="noopener noreferrer">Issues</a>
+        <a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer">Twitter / X</a>
+        <a href="mailto:ai@hexclaw.net">Contact Us</a>
+        <a href="mailto:support@hexclaw.net">Feedback</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">About</div>
+        <a href="/en/about">About Us</a>
+        <a href="/en/privacy">Privacy Policy</a>
+        <a href="/en/terms">Terms of Service</a>
+        <a href="/en/third-party-ai-services">Third-Party AI Services</a>
+      </div>
+    </div>
+    <div class="footer-wechat">
+      <img width="430" height="430" loading="lazy" decoding="async" src="../../assets/brand/wechat-qr.jpg" alt="HexClaw WeChat QR Code">
+      <span class="footer-wechat-label">WeChat Official Account</span>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">&copy; 2025&ndash;2026 hexagon-codes</span>
+  </div>
+</footer>
+<script src="../../assets/js/theme.js?v=2e4a1828feef"></script>
+<script src="../../assets/js/docs-nav.js?v=5a103861aec2"></script>
+<button type="button" class="back-to-top" id="backToTop" aria-label="Back to top" title="Back to top">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg>
+  <span>Top</span>
+</button>
+
+<script src="../../assets/js/blog.js?v=c72e1db5a6ec"></script>
+</body>
+</html>

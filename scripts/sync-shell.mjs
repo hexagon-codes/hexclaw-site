@@ -139,21 +139,14 @@ function walkHtml(dir = root) {
 
 function getLocalizedLinks(relPath) {
   const afterLang = relPath.replace(/^(?:zh|en|ug)\//, '')
-  if (relPath.includes('/blog/')) {
-    return {
-      zh: `/${relPath.replace(/\.html$/, '').replace(/\/index$/, '/')}`,
-      en: '/en/',
-      ug: '/ug/',
-    }
-  }
   let canonicalPath = afterLang.replace(/\.html$/, '')
   if (canonicalPath === 'index') canonicalPath = ''
   else if (canonicalPath.endsWith('/index')) canonicalPath = canonicalPath.slice(0, -5)
 
   return {
-    zh: canonicalPath ? `/zh/${canonicalPath}` : '/zh/',
-    en: canonicalPath ? `/en/${canonicalPath}` : '/en/',
-    ug: canonicalPath ? `/ug/${canonicalPath}` : '/ug/',
+    zh: canonicalPath && fs.existsSync(path.join(root, 'zh', afterLang)) ? `/zh/${canonicalPath}` : '/zh/',
+    en: canonicalPath && fs.existsSync(path.join(root, 'en', afterLang)) ? `/en/${canonicalPath}` : '/en/',
+    ug: canonicalPath && fs.existsSync(path.join(root, 'ug', afterLang)) ? `/ug/${canonicalPath}` : '/ug/',
   }
 }
 
@@ -170,7 +163,7 @@ function generateNav(lang, relPath) {
     <button type="button" class="nav-burger" aria-label="${t.menuAria}" aria-expanded="false" aria-controls="primary-navigation"><span></span><span></span><span></span></button>
     <div class="nav-links" id="primary-navigation">
       <a href="#cases">${t.nav.cases}</a><a href="#features">${t.nav.features}</a><a href="#quickstart">${t.nav.quickstart}</a><a href="#ecosystem">${t.nav.ecosystem}</a>
-      <a href="/zh/blog/">${t.nav.blog}</a>
+      <a href="/${lang}/blog/">${t.nav.blog}</a>
       <a href="/${lang}/docs/">${t.nav.docs}</a>
       <div class="lang-menu" data-lang-menu><button type="button" class="lang-trigger" aria-haspopup="menu" aria-expanded="false" aria-label="${t.langAria}"><svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 0 20"></path><path d="M12 2a15.3 15.3 0 0 0 0 20"></path></svg><span class="lang-current"${lang === 'ug' ? ' lang="zh-CN" dir="ltr"' : ''}>${t.langCurrent}</span><svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="lang-menu-list" role="menu"><a href="/zh/" role="menuitem"${lang === 'zh' ? ' class="is-active" aria-current="true"' : ''}>中文</a><a href="/en/" role="menuitem"${lang === 'en' ? ' class="is-active" aria-current="true"' : ''}>English</a><a href="/ug/" role="menuitem"${lang === 'ug' ? ' class="is-active" aria-current="true"' : ''} lang="zh-CN" dir="ltr">维吾尔语</a></div></div>
       <button type="button" class="nav-theme-toggle" onclick="toggleTheme()" aria-label="${t.themeAria}">
@@ -186,12 +179,12 @@ function generateNav(lang, relPath) {
   </nav>`
   }
 
-  const isBlog = relPath.startsWith('zh/blog/')
+  const isBlog = relPath.includes('/blog/')
   const isDocs = relPath.includes('/docs/')
 
   return `<nav class="tn topnav" id="nav">
   <a href="/${lang}/" class="tn-b topnav-brand"><img width="72" height="72" src="${assetPrefix}assets/brand/hexclaw-icon-72.png" class="tn-l topnav-logo" alt="${t.brandName}"><span class="tn-n topnav-name">${t.brandName}</span></a>
-  <button type="button" class="tn-burger topnav-burger" aria-label="${t.menuAria}" aria-expanded="false" aria-controls="primary-navigation"><span></span><span></span><span></span></button><div class="tn-r topnav-links" id="primary-navigation"><a href="/${lang}/">${t.nav.home}</a><a href="/${lang}/#cases">${t.nav.cases}</a><a href="/${lang}/#features">${t.nav.features}</a><a href="/${lang}/#quickstart">${t.nav.quickstart}</a><a href="/${lang}/#ecosystem">${t.nav.ecosystem}</a><a href="/zh/blog/"${isBlog ? ' class="is-active"' : ''}>${t.nav.blog}</a><a href="/${lang}/docs/"${isDocs ? ' class="is-active"' : ''}>${t.nav.docs}</a><div class="lang-menu" data-lang-menu><button type="button" class="lang-trigger" aria-haspopup="menu" aria-expanded="false" aria-label="${t.langAria}"><svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 0 20"></path><path d="M12 2a15.3 15.3 0 0 0 0 20"></path></svg><span class="lang-current"${lang === 'ug' ? ' lang="zh-CN" dir="ltr"' : ''}>${t.langCurrent}</span><svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="lang-menu-list" role="menu"><a href="${links.zh}" role="menuitem"${lang === 'zh' ? ' class="is-active" aria-current="true"' : ''}>中文</a><a href="${links.en}" role="menuitem"${lang === 'en' ? ' class="is-active" aria-current="true"' : ''}>English</a><a href="${links.ug}" role="menuitem"${lang === 'ug' ? ' class="is-active" aria-current="true"' : ''} lang="zh-CN" dir="ltr">维吾尔语</a></div></div><button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="${t.themeAria}"><svg class="ti-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="ti-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="nav-cta">GitHub <span class="nav-star-badge" id="gh-stars">&#9733;</span></a></div>
+  <button type="button" class="tn-burger topnav-burger" aria-label="${t.menuAria}" aria-expanded="false" aria-controls="primary-navigation"><span></span><span></span><span></span></button><div class="tn-r topnav-links" id="primary-navigation"><a href="/${lang}/">${t.nav.home}</a><a href="/${lang}/#cases">${t.nav.cases}</a><a href="/${lang}/#features">${t.nav.features}</a><a href="/${lang}/#quickstart">${t.nav.quickstart}</a><a href="/${lang}/#ecosystem">${t.nav.ecosystem}</a><a href="/${lang}/blog/"${isBlog ? ' class="is-active"' : ''}>${t.nav.blog}</a><a href="/${lang}/docs/"${isDocs ? ' class="is-active"' : ''}>${t.nav.docs}</a><div class="lang-menu" data-lang-menu><button type="button" class="lang-trigger" aria-haspopup="menu" aria-expanded="false" aria-label="${t.langAria}"><svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 0 20"></path><path d="M12 2a15.3 15.3 0 0 0 0 20"></path></svg><span class="lang-current"${lang === 'ug' ? ' lang="zh-CN" dir="ltr"' : ''}>${t.langCurrent}</span><svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="lang-menu-list" role="menu"><a href="${links.zh}" role="menuitem"${lang === 'zh' ? ' class="is-active" aria-current="true"' : ''}>中文</a><a href="${links.en}" role="menuitem"${lang === 'en' ? ' class="is-active" aria-current="true"' : ''}>English</a><a href="${links.ug}" role="menuitem"${lang === 'ug' ? ' class="is-active" aria-current="true"' : ''} lang="zh-CN" dir="ltr">维吾尔语</a></div></div><button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="${t.themeAria}"><svg class="ti-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="ti-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="nav-cta">GitHub <span class="nav-star-badge" id="gh-stars">&#9733;</span></a></div>
 </nav>`
 }
 
@@ -214,7 +207,7 @@ function generatePortalFooter(lang, relPath) {
       <div class="footer-col">
         <div class="footer-col-title">${t.devTitle}</div>
         <a href="/${lang}/docs/">${t.docsCenter}</a>
-        <a href="/zh/blog/">${t.blog}</a>
+        <a href="/${lang}/blog/">${t.blog}</a>
         <a href="/${lang}/docs/getting-started">${t.gettingStarted}</a>
         <a href="https://github.com/hexagon-codes/hexclaw-desktop/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">Apache-2.0</a>
       </div>
@@ -283,6 +276,14 @@ function syncFile(file) {
   if (footerRegex.test(content)) {
     const newFooter = hasSidebar ? generateArticleFooter(lang) : generatePortalFooter(lang, relPath)
     content = content.replace(footerRegex, newFooter)
+  }
+
+  if (relPath.includes('/blog/')) {
+    content = content.replace(/<script>([\s\S]*?)<\/script>/g, (script, code) =>
+      code.includes("getElementById('backToTop')") || code.includes("querySelectorAll('.blog-filter-btn')") ? '' : script)
+    if (!/src="[^"]*assets\/js\/blog\.js(?:\?[^\"]*)?"/.test(content)) {
+      content = content.replace('</body>', '<script src="../../assets/js/blog.js?v=initial"></script>\n</body>')
+    }
   }
 
   fs.writeFileSync(file, content, 'utf8')

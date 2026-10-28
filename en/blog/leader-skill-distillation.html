@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/favicon-32.png">
+<title>I Distilled My Former Tech Lead into a HexClaw AI Skill | HexClaw Technical Blog</title>
+<meta name="description" content="A personal Skill-distillation tutorial: capture a character in Markdown, configure YAML triggers, import it into HexClaw AI, and combine role-play with practical debugging.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:site_name" content="HexClaw">
+<meta property="og:type" content="article">
+<meta property="og:title" content="I Distilled My Former Tech Lead into a HexClaw AI Skill | HexClaw Technical Blog">
+<meta property="og:description" content="A personal Skill-distillation tutorial: capture a character in Markdown, configure YAML triggers, import it into HexClaw AI, and combine role-play with practical debugging.">
+<meta property="og:url" content="https://hexclaw.net/en/blog/leader-skill-distillation">
+<meta property="og:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta property="og:image:alt" content="HexClaw AI logo">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="I Distilled My Former Tech Lead into a HexClaw AI Skill | HexClaw Technical Blog">
+<meta name="twitter:description" content="A personal Skill-distillation tutorial: capture a character in Markdown, configure YAML triggers, import it into HexClaw AI, and combine role-play with practical debugging.">
+<meta name="twitter:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta name="twitter:image:alt" content="HexClaw AI logo">
+<link rel="canonical" href="https://hexclaw.net/en/blog/leader-skill-distillation">
+<link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/leader-skill-distillation">
+<link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/leader-skill-distillation">
+<link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/leader-skill-distillation">
+<link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/leader-skill-distillation">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "I Distilled My Former Tech Lead into a HexClaw AI Skill",
+  "description": "A personal Skill-distillation tutorial: capture a character in Markdown, configure YAML triggers, import it into HexClaw AI, and combine role-play with practical debugging.",
+  "url": "https://hexclaw.net/en/blog/leader-skill-distillation",
+  "inLanguage": "en",
+  "datePublished": "2026-04-06",
+  "image": "https://hexclaw.net/assets/brand/hexclaw-logo.png",
+  "publisher": {
+    "@type": "Organization",
+    "name": "hexagon-codes",
+    "url": "https://hexclaw.net/",
+    "@id": "https://hexclaw.net/#organization"
+  },
+  "@id": "https://hexclaw.net/en/blog/leader-skill-distillation#article"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "HexClaw AI",
+      "item": "https://hexclaw.net/en/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Technical Blog",
+      "item": "https://hexclaw.net/en/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "我把前 leader 蒸馏成了河蟹 AI Skill （附 Skill 蒸馏教程）",
+      "item": "https://hexclaw.net/en/blog/leader-skill-distillation"
+    }
+  ],
+  "@id": "https://hexclaw.net/en/blog/leader-skill-distillation#breadcrumb"
+}
+</script>
+<link rel="stylesheet" href="../../assets/css/docs-eb2895dd79c5.css">
+<link rel="stylesheet" href="../../assets/css/blog-a8e5008ac3d1.css">
+</head>
+<body class="blog-page blog-article-page">
+<a href="#main" class="skip-link">Skip to main content</a>
+<nav class="tn topnav" id="nav">
+  <a href="/en/" class="tn-b topnav-brand"><img width="72" height="72" src="../../assets/brand/hexclaw-icon-72.png" class="tn-l topnav-logo" alt="HexClaw"><span class="tn-n topnav-name">HexClaw</span></a>
+  <button type="button" class="tn-burger topnav-burger" aria-label="Menu" aria-expanded="false" aria-controls="primary-navigation"><span></span><span></span><span></span></button><div class="tn-r topnav-links" id="primary-navigation"><a href="/en/">Home</a><a href="/en/#cases">Scenarios</a><a href="/en/#features">Features</a><a href="/en/#quickstart">Quickstart</a><a href="/en/#ecosystem">Ecosystem</a><a href="/en/blog/" class="is-active">Tech Blog</a><a href="/en/docs/">Docs Center</a><div class="lang-menu" data-lang-menu><button type="button" class="lang-trigger" aria-haspopup="menu" aria-expanded="false" aria-label="Switch language"><svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 0 20"></path><path d="M12 2a15.3 15.3 0 0 0 0 20"></path></svg><span class="lang-current">English</span><svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="lang-menu-list" role="menu"><a href="/zh/blog/leader-skill-distillation" role="menuitem">中文</a><a href="/en/blog/leader-skill-distillation" role="menuitem" class="is-active" aria-current="true">English</a><a href="/ug/blog/leader-skill-distillation" role="menuitem" lang="zh-CN" dir="ltr">维吾尔语</a></div></div><button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"><svg class="ti-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="ti-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="nav-cta">GitHub <span class="nav-star-badge" id="gh-stars">&#9733;</span></a></div>
+</nav>
+
+<main id="main" class="blog-main">
+  <div class="blog-article-container">
+    <nav class="blog-breadcrumb" aria-label="Breadcrumb">
+      <a href="/en/"> Home </a>
+      <span class="blog-breadcrumb-sep">/</span>
+      <a href="/en/blog/"> Technical Blog </a>
+      <span class="blog-breadcrumb-sep">/</span>
+      <span aria-current="page"> Core Systems in Depth </span>
+    </nav>
+
+    <header class="blog-header">
+      <div class="blog-header-tags">
+        <span class="blog-badge-series"> The Skill System </span>
+      </div>
+      <h1 class="blog-article-title"> I distilled my former tech lead into a HexClaw AI Skill  <span class="u-nobr">  (with a Skill-distillation tutorial) </span></h1>
+      <p class="blog-article-subtitle"> Laid-off colleagues have not really disappeared; they have been distilled into tokens and keep you company in another form. Separate, they are tokens; together, a Skill. Here is how to build a convincing personal expert Skill from scratch. </p>
+      <div class="article-provenance-banner">
+        <div class="provenance-left">
+          <span class="provenance-origin-badge"> First published on WeChat </span>
+          <span class="provenance-text"> This article first appeared in the official WeChat <strong>“hexclaw”</strong>  (ID: hexclaw) technical column · Published  <strong> April 6, 2026 </strong>  · Approximately 9 minutes to read </span>
+        </div>
+        <a href="https://mp.weixin.qq.com/s/2tHlfZYHxQdQwvVZQEoLRg" target="_blank" rel="noopener noreferrer" class="provenance-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+           Original on WeChat ↗
+        </a>
+      </div>
+    </header>
+
+    <article class="blog-content">
+      <p style="margin: 8px 0; font-size: 16px; font-weight: 600; color:var(--article-secondary, #3f5f7b); font-style: italic;"> Laid-off colleagues have not really disappeared; they have been distilled into tokens and keep you company in another form. <br/> Separate, they are tokens; together, a Skill. </p>
+
+<p style="margin: 16px 0;"> After my former lead left, the team experienced leaving work on time for the first time. The on-call group went quiet, newcomers stopped mysteriously disappearing, and empty catch blocks stopped waking people at three in the morning. </p>
+
+<p style="margin: 8px 0;"> We joked in private: he had not been laid off; he had been <strong style="color:var(--article-accent, #3f8fd4);">  distilled </strong> —achieving a different kind of <strong style="color:var(--article-accent, #3f8fd4);">  digital immortality </strong>. </p>
+
+<p style="margin: 8px 0;"> Then I thought: that might actually work. Using the Skill system in my own HexClaw AI, I spent an afternoon distilling his manner of speaking, coding taste, management style, and famous lines into a <strong style="color:var(--article-accent, #3f8fd4);"> HexClaw AI Skill </strong> . While still around, he had created <strong style="color:var(--article-accent, #3f8fd4);">  digital workhorses </strong> ; once distilled, it was finally his turn to be one—available 24/7, on demand, and never pounding the table. </p>
+
+<p style="margin: 8px 0;"> This article covers three things: <strong style="color:var(--article-accent, #3f8fd4);"> who I distilled </strong>, <strong style="color:var(--article-accent, #3f8fd4);"> how I did it </strong>, <strong style="color:var(--article-accent, #3f8fd4);"> how to assemble your own digital workhorse army </strong>. </p>
+
+
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;"> The subject: Five-Step Viper, the King of Rot </h2>
+
+<p style="margin: 8px 0;"> His nickname was <strong style="color:var(--article-accent, #3f8fd4);"> Five-Step Viper </strong> . One bite would not drop you immediately, but the wound kept festering—from career opportunities all the way to reference checks. </p>
+
+<p style="margin: 8px 0;"> He rarely touched code; when he did, the whole team worked overtime for a week. He knew no design patterns when coding, but mastered Strategy and Observer when manipulating people. His mouth shook when he spoke, producing another manipulative remark; his hand shook and produced another  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">catch (e) {}</code> . The only command he truly mastered was  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">git blame --ignore-rev</code> —to hide his own commit history. </p>
+
+<p style="margin: 8px 0;"> A tech lead with a D in coding, SSS in manipulation, and SSS in blame-shifting. After he left, the office grew quiet—more effective than noise-canceling headphones. </p>
+
+
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;"> Implementation: how to distill a person into a HexClaw AI Skill </h2>
+
+<p style="margin: 8px 0;"> At heart, HexClaw AI's Skill system is <strong style="color:var(--article-accent, #3f8fd4);">  declarative Prompt Engineering </strong> : a Markdown file defines the AI's behavior. At runtime the engine parses YAML frontmatter for metadata and injects the body as the system prompt. </p>
+
+<p style="margin: 8px 0;"> The former-lead Skill's file structure: </p>
+
+<p style="background: #1a2332; color: #d6e4f0; padding: 16px; border-radius: 8px; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, monospace; margin: 14px 0; overflow-x: auto; white-space: pre-wrap;"><span style="color: #6a9955;"># ~/.hexclaw/skills/前leader.md</span>
+
+<span style="color: #569cd6;">---</span>
+<span style="color: #9cdcfe;">name:</span> 前leader
+<span style="color: #9cdcfe;">description:</span> Summon the residual consciousness of my former lead
+<span style="color: #9cdcfe;">triggers:</span>
+  - 加班
+  - bug
+  - PUA
+  - 甩锅
+  - 绩效
+  - 996
+  - leader
+  - 辞退
+  - 拍桌子
+  - 福报
+<span style="color: #9cdcfe;">tags:</span>
+  - easter-egg
+  - workplace
+<span style="color: #569cd6;">---</span>
+
+<span style="color: #6a9955;"># Character</span>
+Identity, personality, speech patterns (including a trembling voice), coding style...
+
+<span style="color: #6a9955;"># Behavior</span>
+1. “Explain” code in Five-Step Viper’s voice
+2. Switch to normal mode and fix the bug
+3. Deliver a farewell speech
+
+<span style="color: #6a9955;"># Quote library</span>
+Classic lines to quote at random...</p>
+
+<p style="margin: 8px 0;"> Execution flow, corresponding to the engine's ReAct loop: </p>
+
+<ol style="padding-left: 20px; margin: 6px 0;">
+<li style="margin: 4px 0;"> A user sends a message; the engine scans  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">triggers</code>   keywords </li>
+<li style="margin: 4px 0;"> A match takes the Skill fast path and injects the Markdown body as the system prompt </li>
+<li style="margin: 4px 0;"> The LLM receives the full character description plus the user's question and generates an in-character reply </li>
+<li style="margin: 4px 0;"> If the message contains a code snippet or file path, the AI uses MCP tools to read the actual code and “explain” it through the Five-Step Viper persona </li>
+<li style="margin: 4px 0;"> Finally it switches back to a normal persona and helps fix the bug properly </li>
+</ol>
+
+<p style="border-left: 3px solid #5fb3ea; padding: 10px 16px; margin: 16px 0; background:var(--article-panel, #f4fbff); color:var(--article-secondary, #3f5f7b); font-size: 14px; border-radius: 0 6px 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> The key design choice: </strong> Skill files are plain Markdown, with no code required. Triggers are a keyword array rather than regular expressions, lowering the authoring barrier. Behavior is described in natural language and interpreted by the LLM—essentially productizing Prompt Engineering. </p>
+
+
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;"> What it looks like in action </h2>
+
+<p style="margin: 8px 0;"> Mention a keyword such as  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">bug</code>, <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">加班</code>, <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">PUA</code>  in the conversation and Five-Step Viper's residual consciousness activates automatically: </p>
+
+<p style="background: #1a2332; color: #d6e4f0; padding: 16px; border-radius: 8px; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, monospace; margin: 14px 0; overflow-x: auto; white-space: pre-wrap;"><span style="color: #f5a623;">===== Five-Step Viper’s Residual Consciousness Activated =====</span>
+<span style="color: #cf1322;">⚠️ Warning: this person’s RLHF alignment score is negative</span>
+<span style="color: #cf1322;">⚠️ Previously flagged as a classic negative safety-training example</span>
+<span style="color: #cf1322;">⚠️ Desk upgraded to a shock-resistant model; safe to continue reading</span>
+
+Wh-wh-what? That empty catch?
+That is <span style="color: #5fb3ea;">defensive programming</span>! If nobody observes an error,
+it does not exist. It is called <span style="color: #5fb3ea;">quantum programming</span>. You would not understand!
+
+<span style="color: #999;">[table-pounding]</span>
+
+St-stop changing my code!!
+I designed it that way!!
+It worked on my machine! Your environment must be broken!
+
+<span style="color: #f5a623;">===== Switching to Normal Debugging Mode =====</span>
+<span style="color: #6a9955;">(Five-Step Viper pushed to the bottom of the stack; normal engineer persona online)</span>
+
+Analysis: this empty catch swallowed a critical authentication error,
+leaving downstream code to fail silently with a null token...
+<span style="color: #6a9955;">// 修复方案：</span>
+<span style="color: #569cd6;">catch</span> (e) {
+  logger.error(<span style="color: #ce9178;">'auth failed'</span>, { error: e })
+  <span style="color: #569cd6;">throw</span> <span style="color: #569cd6;">new</span> AuthenticationError(e.message)
+}
+
+<span style="color: #f5a623;">===== Five-Step Viper’s Farewell =====</span>
+<span style="color: #999;">“At least I was not distilled into tokens for a
+ disciplinary violation. Right? ...Right?”</span>
+
+🐍 Five-Step Viper has returned to embedding space
+💡 Trivia: wherever he went, he probably did not pass probation either</p>
+
+<p style="margin: 8px 0;"> First it “explains” the code in Five-Step Viper's voice, then switches back to normal mode to <strong style="color:var(--article-accent, #3f8fd4);">  help fix the bug properly </strong> . Satire and repair happen in the same conversation. </p>
+
+
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;"> Five-Step Viper's workplace survival rules: a cautionary example </h2>
+
+<p style="margin: 8px 0;"> He developed every one of these rules in earnest. After distillation, RLHF annotators unanimously labeled them  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #cf1322;">toxic</code> , tanking his alignment score and turning him into a classic safety-training negative example: </p>
+
+<p style="border-left: 3px solid #f5a623; padding: 10px 16px; margin: 14px 0; background:var(--article-panel, #fffbe6); color: #8a6d3b; font-size: 14px; border-radius: 0 6px 6px 0;">
+ “Grab the credit and shift the blame. That's lesson one at work.”
+</p>
+
+<p style="border-left: 3px solid #f5a623; padding: 10px 16px; margin: 14px 0; background:var(--article-panel, #fffbe6); color: #8a6d3b; font-size: 14px; border-radius: 0 6px 6px 0;">
+ “Probationary staff are free labor. Why waste it?” <br/>
+<span style="font-size: 12px; color: #bbb;"> —“Welcome to the family” at interview; “You're not a good fit” at probation's end </span>
+</p>
+
+<p style="border-left: 3px solid #f5a623; padding: 10px 16px; margin: 14px 0; background:var(--article-panel, #fffbe6); color: #8a6d3b; font-size: 14px; border-radius: 0 6px 6px 0;">
+ “Code review doesn't need code. Give LGTM according to your mood.” <br/>
+<span style="font-size: 12px; color: #bbb;"> —until he praised “the excellent new logic” on a PR that only deleted code </span>
+</p>
+
+<p style="border-left: 3px solid #f5a623; padding: 10px 16px; margin: 14px 0; background:var(--article-panel, #fffbe6); color: #8a6d3b; font-size: 14px; border-radius: 0 6px 6px 0;">
+ “Performance ratings are management's best weapon. Give disobedient people a C.” <br/>
+<span style="font-size: 12px; color: #bbb;"> —until he was distilled and received his last C: Cancel </span>
+</p>
+
+<p style="border-left: 3px solid #f5a623; padding: 10px 16px; margin: 14px 0; background:var(--article-panel, #fffbe6); color: #8a6d3b; font-size: 14px; border-radius: 0 6px 6px 0;">
+ “Overtime is a blessing! Honor those who suffer and celebrate those who lose out!” <br/>
+<span style="font-size: 12px; color: #bbb;"> —while endorsing everyone else's 996 and leaving on time himself </span>
+</p>
+
+<p style="border-left: 3px solid #f5a623; padding: 10px 16px; margin: 14px 0; background:var(--article-panel, #fffbe6); color: #8a6d3b; font-size: 14px; border-radius: 0 6px 6px 0;">
+ “If your technical skills are weak, make up for it with volume. Pound the table loudly enough and nobody will challenge you.” <br/>
+<span style="font-size: 12px; color: #bbb;"> —after distillation, the office grew quieter than noise-canceling headphones could make it </span>
+</p>
+
+
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;"> Install it in HexClaw AI </h2>
+
+<p style="margin: 8px 0;"> Choose either method: </p>
+
+<h3 style="font-size: 16px; font-weight: 600; color:var(--article-ink, #12324c); margin: 16px 0 8px;"> Method 1: import through the interface (recommended) </h3>
+
+<p style="margin: 8px 0;"> Open HexClaw AI Desktop and go to <strong style="color:var(--article-accent, #3f8fd4);"> Integrations → Installed </strong> . At the top right, click <strong style="color:var(--article-accent, #3f8fd4);"> Install Skill → Install from Local File </strong> and select  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">前leader.md</code>  to import it: </p>
+
+<figure><img src="../../assets/blog/安装skill.png" alt="" width="2550" height="1574" loading="lazy" decoding="async"></figure>
+
+<p style="margin: 8px 0;"> Once installed, “前leader” appears in the installed list with status <strong style="color:var(--article-accent, #3f8fd4);"> Loaded at Runtime </strong> and its trigger keywords clearly visible. </p>
+
+<h3 style="font-size: 16px; font-weight: 600; color:var(--article-ink, #12324c); margin: 16px 0 8px;"> Method 2: command line </h3>
+
+<p style="background: #1a2332; color: #d6e4f0; padding: 14px 16px; border-radius: 8px; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, monospace; margin: 10px 0; overflow-x: auto; white-space: pre-wrap;">cp 前leader.md ~/.hexclaw/skills/  <span style="color: #6a9955;"># Then restart the engine</span></p>
+
+<p style="margin: 8px 0;"> After installing, return to chat and mention a trigger word. Five-Step Viper's residual consciousness activates automatically: </p>
+
+<figure><img src="../../assets/blog/skill安装-会话召唤.png" alt="" width="2560" height="1588" loading="lazy" decoding="async"></figure>
+
+<p style="margin: 8px 0;"> In the screenshot, “Who wrote the bug making me work overtime?” immediately summons the <strong style="color:var(--article-accent, #3f8fd4);"> King of Rot Debug Protocol </strong> and the viper's digital remnant begins its trembling self-defense. </p>
+
+<p style="margin: 8px 0;"> Trigger keywords (English meanings below; the YAML example preserves the original Chinese strings that must appear literally in a message): </p>
+<p style="margin: 8px 0;">
+<span style="display: inline-block; background:var(--article-panel, #edf7ff); color:var(--article-accent, #3f8fd4); font-size: 12px; padding: 3px 8px; border-radius: 4px; font-weight: 600; margin: 2px;"> overtime </span>
+<span style="display: inline-block; background:var(--article-panel, #edf7ff); color:var(--article-accent, #3f8fd4); font-size: 12px; padding: 3px 8px; border-radius: 4px; font-weight: 600; margin: 2px;">bug</span>
+<span style="display: inline-block; background:var(--article-panel, #edf7ff); color:var(--article-accent, #3f8fd4); font-size: 12px; padding: 3px 8px; border-radius: 4px; font-weight: 600; margin: 2px;">PUA</span>
+<span style="display: inline-block; background:var(--article-panel, #edf7ff); color:var(--article-accent, #3f8fd4); font-size: 12px; padding: 3px 8px; border-radius: 4px; font-weight: 600; margin: 2px;"> blame-shifting </span>
+<span style="display: inline-block; background:var(--article-panel, #edf7ff); color:var(--article-accent, #3f8fd4); font-size: 12px; padding: 3px 8px; border-radius: 4px; font-weight: 600; margin: 2px;"> performance review </span>
+<span style="display: inline-block; background:var(--article-panel, #edf7ff); color:var(--article-accent, #3f8fd4); font-size: 12px; padding: 3px 8px; border-radius: 4px; font-weight: 600; margin: 2px;">996</span>
+<span style="display: inline-block; background:var(--article-panel, #edf7ff); color:var(--article-accent, #3f8fd4); font-size: 12px; padding: 3px 8px; border-radius: 4px; font-weight: 600; margin: 2px;">leader</span>
+<span style="display: inline-block; background:var(--article-panel, #edf7ff); color:var(--article-accent, #3f8fd4); font-size: 12px; padding: 3px 8px; border-radius: 4px; font-weight: 600; margin: 2px;"> dismissal </span>
+<span style="display: inline-block; background:var(--article-panel, #edf7ff); color:var(--article-accent, #3f8fd4); font-size: 12px; padding: 3px 8px; border-radius: 4px; font-weight: 600; margin: 2px;"> table-pounding </span>
+<span style="display: inline-block; background:var(--article-panel, #edf7ff); color:var(--article-accent, #3f8fd4); font-size: 12px; padding: 3px 8px; border-radius: 4px; font-weight: 600; margin: 2px;"> “a blessing” </span>
+</p>
+
+<p style="border-left: 3px solid #5fb3ea; padding: 10px 16px; margin: 16px 0; background:var(--article-panel, #f4fbff); color:var(--article-secondary, #3f5f7b); font-size: 14px; border-radius: 0 6px 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> Do not have HexClaw AI yet? </strong> See the previous “Get Started with HexClaw in Five Minutes” guide. Installation and model configuration take five minutes. On macOS, use one command: <br/><code style="background: #1a2332; color: #d6e4f0; padding: 2px 6px; border-radius: 3px; font-size: 12px;">brew tap hexagon-codes/tap && brew install --cask hexclaw</code></p>
+
+
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;"> DIY: distill your own former lead with HexClaw AI </h2>
+
+<p style="margin: 8px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> Anything can become a Skill. </strong> Everyone's viper is different, but the distillation method is reusable. Follow along and write one in ten minutes. </p>
+
+<h3 style="font-size: 16px; font-weight: 600; color:var(--article-ink, #12324c); margin: 20px 0 8px;"> Step 1: create a Skill file </h3>
+
+<p style="margin: 8px 0;"> In the  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">~/.hexclaw/skills/</code>   directory, create a  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">.md</code>   file, for example  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">我的前leader.md</code> . It has two parts: YAML metadata at the top and Markdown content below. </p>
+
+<h3 style="font-size: 16px; font-weight: 600; color:var(--article-ink, #12324c); margin: 20px 0 8px;"> Step 2: write the YAML frontmatter (metadata) </h3>
+
+<p style="background: #1a2332; color: #d6e4f0; padding: 16px; border-radius: 8px; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, monospace; margin: 14px 0; overflow-x: auto; white-space: pre-wrap;"><span style="color: #569cd6;">---</span>
+<span style="color: #9cdcfe;">name:</span> 我的前leader          <span style="color: #6a9955;"># Skill name shown on the Integrations page</span>
+<span style="color: #9cdcfe;">description:</span> Summon XX’s residual consciousness  <span style="color: #6a9955;"># One-sentence description</span>
+<span style="color: #9cdcfe;">author:</span> YourName
+<span style="color: #9cdcfe;">version:</span> "1.0.0"
+
+<span style="color: #9cdcfe;">triggers:</span>                      <span style="color: #6a9955;"># Trigger keywords (array)</span>
+  - 加班                        <span style="color: #6a9955;"># Any matching keyword in a message triggers the Skill</span>
+  - bug
+  - 甩锅
+  - your-lead-catchphrase
+
+<span style="color: #9cdcfe;">tags:</span>                          <span style="color: #6a9955;"># Tags for classification and search</span>
+  - easter-egg
+  - workplace
+<span style="color: #569cd6;">---</span></p>
+
+<p style="margin: 8px 0;"> Fields explained: </p>
+
+<table style="width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 13px;">
+<tr><th style="background:var(--article-panel, #f4fbff); padding: 6px 10px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;"> Field </th><th style="background:var(--article-panel, #f4fbff); padding: 6px 10px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;"> Required </th><th style="background:var(--article-panel, #f4fbff); padding: 6px 10px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;"> Description </th></tr>
+<tr><td style="padding: 5px 10px; border-bottom: 1px solid var(--article-border, #edf7ff);"><code style="background:var(--article-panel, #edf7ff); padding: 1px 4px; border-radius: 3px; font-size: 12px; color:var(--article-accent, #3f8fd4);">name</code></td><td style="padding: 5px 10px; border-bottom: 1px solid var(--article-border, #edf7ff);"> Yes </td><td style="padding: 5px 10px; border-bottom: 1px solid var(--article-border, #edf7ff);"> Unique Skill name </td></tr>
+<tr><td style="padding: 5px 10px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe);"><code style="background:var(--article-panel, #edf7ff); padding: 1px 4px; border-radius: 3px; font-size: 12px; color:var(--article-accent, #3f8fd4);">description</code></td><td style="padding: 5px 10px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe);"> Yes </td><td style="padding: 5px 10px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe);"> A one-sentence description injected into the LLM's tool list </td></tr>
+<tr><td style="padding: 5px 10px; border-bottom: 1px solid var(--article-border, #edf7ff);"><code style="background:var(--article-panel, #edf7ff); padding: 1px 4px; border-radius: 3px; font-size: 12px; color:var(--article-accent, #3f8fd4);">triggers</code></td><td style="padding: 5px 10px; border-bottom: 1px solid var(--article-border, #edf7ff);"> Yes </td><td style="padding: 5px 10px; border-bottom: 1px solid var(--article-border, #edf7ff);"> Keyword array; any matching word in a message activates the Skill fast path </td></tr>
+<tr><td style="padding: 5px 10px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe);"><code style="background:var(--article-panel, #edf7ff); padding: 1px 4px; border-radius: 3px; font-size: 12px; color:var(--article-accent, #3f8fd4);">tags</code></td><td style="padding: 5px 10px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe);"> No </td><td style="padding: 5px 10px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe);"> Classification tags for filtering on the Integrations page </td></tr>
+<tr><td style="padding: 5px 10px; border-bottom: 1px solid var(--article-border, #edf7ff);"><code style="background:var(--article-panel, #edf7ff); padding: 1px 4px; border-radius: 3px; font-size: 12px; color:var(--article-accent, #3f8fd4);">author</code></td><td style="padding: 5px 10px; border-bottom: 1px solid var(--article-border, #edf7ff);"> No </td><td style="padding: 5px 10px; border-bottom: 1px solid var(--article-border, #edf7ff);"> Author name </td></tr>
+<tr><td style="padding: 5px 10px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe);"><code style="background:var(--article-panel, #edf7ff); padding: 1px 4px; border-radius: 3px; font-size: 12px; color:var(--article-accent, #3f8fd4);">version</code></td><td style="padding: 5px 10px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe);"> No </td><td style="padding: 5px 10px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe);"> Semantic version number </td></tr>
+</table>
+
+<p style="border-left: 3px solid #5fb3ea; padding: 10px 16px; margin: 14px 0; background:var(--article-panel, #f4fbff); color:var(--article-secondary, #3f5f7b); font-size: 14px; border-radius: 0 6px 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> How triggering works: </strong> Triggers are <strong style="color:var(--article-accent, #3f8fd4);">  activated passively and automatically </strong> . Users need no special command: a matching keyword activates the Skill. On each incoming message, the engine scans every Skill's triggers. A match takes the Skill fast path, bypassing regular LLM routing, and injects its Markdown body as the system prompt. </p>
+
+<h3 style="font-size: 16px; font-weight: 600; color:var(--article-ink, #12324c); margin: 20px 0 8px;"> Step 3: write the body—the distilled content </h3>
+
+<p style="margin: 8px 0;"> The Markdown below YAML is injected in full as the LLM's system prompt. To distill a person, specify these parts: </p>
+
+<p style="background: #1a2332; color: #d6e4f0; padding: 16px; border-radius: 8px; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, monospace; margin: 14px 0; overflow-x: auto; white-space: pre-wrap;"><span style="color: #f5a623;"># Character</span>
+<span style="color: #6a9955;">## Identity</span>
+Nickname, aliases, distinctive mannerisms (speech and gestures)
+
+<span style="color: #6a9955;">## Personality</span>
+Core character flaws + concrete incidents (specific details make it convincing)
+
+<span style="color: #6a9955;">## Coding style</span>
+What does their code look like? What recognizable patterns do they use?
+
+<span style="color: #f5a623;"># Behavior</span>
+How should the AI act after triggering, and in what stages?
+1. “Explain” the issue in character (role-play)
+2. Switch to normal mode to solve it properly (practical value)
+3. Give the character a closing speech (ending)
+
+<span style="color: #f5a623;"># Quote library</span>
+Add plenty of classic lines for the AI to quote at random.
+- “If you think it is fine, you must be the problem.”
+- “It worked on my machine.”
+- ...</p>
+
+<p style="margin: 8px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> Three principles of distillation: </strong></p>
+
+<ol style="padding-left: 20px; margin: 6px 0;">
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">Specifics &gt; Abstraction </strong>  —“He praised the new logic in a deletion-only PR” is ten times better than “He did not take code review seriously” </li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">Examples &gt; Judgment </strong>  —rather than calling him a bad person, describe what he did and let readers judge </li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> Role-play + practical value </strong>  —venting alone is pointless; after the satire, switch to normal mode and solve a real problem for the user </li>
+</ol>
+
+<h3 style="font-size: 16px; font-weight: 600; color:var(--article-ink, #12324c); margin: 20px 0 8px;"> Step 4: put it in place and restart </h3>
+
+<p style="background: #1a2332; color: #d6e4f0; padding: 16px; border-radius: 8px; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, monospace; margin: 14px 0; overflow-x: auto; white-space: pre-wrap;"><span style="color: #6a9955;"># Save to the Skill directory</span>
+cp 我的前leader.md ~/.hexclaw/skills/
+
+<span style="color: #6a9955;"># Restart the engine (two methods)</span>
+<span style="color: #6a9955;"># Method 1: click Restart on the Settings page</span>
+<span style="color: #6a9955;"># Method 2: inspect loaded Skills on Integrations to confirm activation</span>
+
+<span style="color: #6a9955;"># Verify by sending a message containing a trigger keyword</span>
+<span style="color: #6a9955;"># If the AI starts speaking like your former lead, the distillation worked</span></p>
+
+<p style="border-left: 3px solid #5fb3ea; padding: 10px 16px; margin: 14px 0; background:var(--article-panel, #f4fbff); color:var(--article-secondary, #3f5f7b); font-size: 14px; border-radius: 0 6px 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> Debugging tips: </strong> If it does not trigger, check: ① spelling in triggers; ② valid YAML, using spaces rather than tabs for indentation; ③ Loaded status in Integrations → Installed. If the behavior is unconvincing, the character description usually needs more specific incidents and quotations. </p>
+
+<h3 style="font-size: 16px; font-weight: 600; color:var(--article-ink, #12324c); margin: 24px 0 8px;"> Step 5: assemble your digital workhorse army </h3>
+
+<p style="margin: 8px 0;"> One Skill is one digital workhorse. Several Skills form a <strong style="color:var(--article-accent, #3f8fd4);">  digital workhorse army </strong> : each with a role, available on demand, working 24/7 without pay or table-pounding. </p>
+
+<p style="margin: 8px 0;"> Distill anyone around you and give them <strong style="color:var(--article-accent, #3f8fd4);">  digital immortality in HexClaw AI. </strong>: </p>
+
+<table style="width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 13px;">
+<tr><th style="background:var(--article-panel, #f4fbff); padding: 6px 10px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;"> Subject </th><th style="background:var(--article-panel, #f4fbff); padding: 6px 10px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;"> Example triggers </th><th style="background:var(--article-panel, #f4fbff); padding: 6px 10px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;"> How to use it </th></tr>
+<tr><td style="padding: 5px 10px; border-bottom: 1px solid var(--article-border, #edf7ff);"><strong style="color:var(--article-accent, #3f8fd4);"> Former girlfriend </strong></td><td style="padding: 5px 10px; border-bottom: 1px solid var(--article-border, #edf7ff); font-size: 12px;"> what to eat, whatever, anything, what do you think, oh </td><td style="padding: 5px 10px; border-bottom: 1px solid var(--article-border, #edf7ff);"> Affectionately nudges you to code, critiques variable names her way, and sends a  <code style="background:var(--article-panel, #edf7ff); padding: 1px 4px; border-radius: 3px; font-size: 12px; color:var(--article-accent, #3f8fd4);">rm -rf</code>  threat when angry </td></tr>
+<tr><td style="padding: 5px 10px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe);"><strong style="color:var(--article-accent, #3f8fd4);"> Former boss </strong></td><td style="padding: 5px 10px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe); font-size: 12px;"> budget, ROI, empowerment, strategic lever, alignment </td><td style="padding: 5px 10px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe);"> Explains technical plans in business jargon, calling  <code style="background:var(--article-panel, #edf7ff); padding: 1px 4px; border-radius: 3px; font-size: 12px; color:var(--article-accent, #3f8fd4);">git merge</code>  “resource integration” and bugs “by-products of business exploration” </td></tr>
+<tr><td style="padding: 5px 10px; border-bottom: 1px solid var(--article-border, #edf7ff);"><strong style="color:var(--article-accent, #3f8fd4);"> Former colleague—the overachiever </strong></td><td style="padding: 5px 10px; border-bottom: 1px solid var(--article-border, #edf7ff); font-size: 12px;"> leaving work, slacking, weekend, rest </td><td style="padding: 5px 10px; border-bottom: 1px solid var(--article-border, #edf7ff);"> You say you're leaving; he says, “It's only nine!” You slack off; he sends three papers to review </td></tr>
+<tr><td style="padding: 5px 10px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe);"><strong style="color:var(--article-accent, #3f8fd4);"> Former colleague—the slacker </strong></td><td style="padding: 5px 10px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe); font-size: 12px;"> schedule, deadline, urgent </td><td style="padding: 5px 10px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe);"> Replies “next month” to every request, only 👍 in code reviews, and “no blockers” at every stand-up </td></tr>
+<tr><td style="padding: 5px 10px; border-bottom: 1px solid var(--article-border, #edf7ff);"><strong style="color:var(--article-accent, #3f8fd4);"> Client </strong></td><td style="padding: 5px 10px; border-bottom: 1px solid var(--article-border, #edf7ff); font-size: 12px;"> requirements, just change this, close enough, colorful black </td><td style="padding: 5px 10px; border-bottom: 1px solid var(--article-border, #edf7ff);"> When you finish: “That's not what I wanted.” After the revision: “The previous version was better.” </td></tr>
+</table>
+
+<p style="border-left: 3px solid #5fb3ea; padding: 10px 16px; margin: 14px 0; background:var(--article-panel, #f4fbff); color:var(--article-secondary, #3f5f7b); font-size: 14px; border-radius: 0 6px 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> Useful digital workhorses: </strong> Distillation is not only for jokes. Distill <strong style="color:var(--article-accent, #3f8fd4);"> someone you admire </strong> : encode a senior architect's reasoning as a Skill that reviews your code around the clock, or a strict security engineer who examines every submitted line. Those are productive workhorses: <strong style="color:var(--article-accent, #3f8fd4);"> human experience encoded as reusable AI behavior </strong> . A larger army increases your personal output. </p>
+
+
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">Postmortem</h2>
+
+<p style="margin: 8px 0;"> After Five-Step Viper left, an office legend emerged: he had become tokens and “lived” inside a large model. Sometimes a model allegedly produces baseless accusations and inexplicable blame-shifting; people suspect his residual consciousness is responsible. </p>
+
+<p style="margin: 8px 0;"> More ironically, wherever he went, he probably failed probation too—finally hearing someone else say, <strong style="color:var(--article-accent, #3f8fd4);"> “You're not a good fit” </strong> to him. </p>
+
+<p style="margin: 8px 0;"> Code can be  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">git revert</code> . But lost opportunities, confidence eroded by manipulation, and the newcomers' time he exploited cannot be rolled back. </p>
+
+<p style="margin: 8px 0;"> The good news: the people he manipulated most have since been promoted. Five-Step Viper himself achieved <strong style="color:var(--article-accent, #3f8fd4);">  digital immortality </strong> : distilled into tokens, down-weighted, online 24/7, never allowed to clock out. </p>
+
+<p style="margin: 8px 0;"> Defuse the hurt with satire and overwrite bad code with correct code— <strong style="color:var(--article-accent, #3f8fd4);"> that is the best revenge on Five-Step Viper </strong>. </p>
+
+<p style="border-left: 3px solid #f5a623; padding: 10px 16px; margin: 14px 0; background:var(--article-panel, #fffbe6); color: #8a6d3b; font-size: 14px; border-radius: 0 6px 6px 0;"><strong style="color: #d48806;"> A piece of trivia: </strong> someone recently open-sourced  <code style="background:var(--article-panel, #fff); padding: 1px 4px; border-radius: 3px; font-size: 12px; color: #d48806;">anti-distill</code> —an anti-distillation Skill. Asked to document your knowledge as a Skill? Run it to produce a polished, apparently complete “cleaned” version with the core knowledge removed. Keep the real knowledge yourself. <br/><span style="font-size: 12px; color: #bbb;"> The entry ticket is gone and the leveling zone closed, but the final boss remains. Core judgment grows through actual work; a Skill cannot copy it away. </span></p>
+
+<p style="margin: 12px 0; font-size: 16px; font-weight: 600; color:var(--article-ink, #12324c);"> ⚖️ When conduct is rotten, everyone has grounds to call it out. </p>
+
+
+
+
+
+<p style="margin: 16px 0; text-align: center; font-size: 16px; font-weight: 700; color:var(--article-accent, #3f8fd4);">
+ Want this Skill? <br/> Leave “former lead” in the original article's comments and I will send it.
+</p>
+
+<p style="margin: 8px 0; text-align: center; font-size: 13px; color:var(--article-muted, #999);">
+ Or distill your own former lead with just a Markdown file. <br/>
+ Everyone's viper looks different, but the flavor is familiar. <br/>
+ Start your digital workhorse army by distilling the first person.
+</p>
+
+
+
+<p class="blog-brand-footer" data-blog-brand-footer="en" data-blog-brand-overrides="{}" style="text-align: center; color: var(--article-muted, #7b8fa3); font-size: 13px; margin: 16px 0 0; line-height: 2;">
+<strong style="color: var(--article-ink, #12324c); font-size: 14px;">HexClaw</strong><br/>
+Deploy locally or in the cloud · Control your data · Free and open-source software<br/>
+<a href="https://hexclaw.net" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">Website: <bdi dir="ltr">hexclaw.net</bdi></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://github.com/hexagon-codes" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">GitHub: <bdi dir="ltr">hexagon-codes</bdi></a><br/>
+<a href="https://weibo.com/u/4097207240" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">Weibo: <bdi dir="ltr">@HexClaw</bdi></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">X: <bdi dir="ltr">@hexclawapp</bdi></a><br/>
+<a href="mailto:ai@hexclaw.net" style="color: var(--article-muted, #999); text-decoration: none;">Email: <bdi dir="ltr">ai@hexclaw.net</bdi></a>
+</p>
+    </article>
+
+
+
+    <nav class="blog-series-nav" aria-label="Previous and next articles">
+      <a href="/en/blog/uyghur-localization" class="blog-nav-card prev">
+  <span class="blog-nav-label"> ← Previous article </span>
+  <span class="blog-nav-title"> Teaching an AI Agent Uyghur: HexClaw AI v0.4.0 Localization in Practice </span>
+</a>
+      <a href="/en/blog/from-lobster-to-crab" class="blog-nav-card next">
+  <span class="blog-nav-label"> Next article → </span>
+  <span class="blog-nav-title"> HexClaw Open-Source AI: From Raising Lobsters to Raising Crabs </span>
+</a>
+    </nav>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-main">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-col-title">Product</div>
+        <a href="/en/#download">Download</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="/en/changelog">Changelog</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Developers</div>
+        <a href="/en/docs/">Documentation</a>
+        <a href="/en/blog/">Technical Blog</a>
+        <a href="/en/docs/getting-started">Getting Started</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">Apache-2.0</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Community</div>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/issues" target="_blank" rel="noopener noreferrer">Issues</a>
+        <a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer">Twitter / X</a>
+        <a href="mailto:ai@hexclaw.net">Contact Us</a>
+        <a href="mailto:support@hexclaw.net">Feedback</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">About</div>
+        <a href="/en/about">About Us</a>
+        <a href="/en/privacy">Privacy Policy</a>
+        <a href="/en/terms">Terms of Service</a>
+        <a href="/en/third-party-ai-services">Third-Party AI Services</a>
+      </div>
+    </div>
+    <div class="footer-wechat">
+      <img width="430" height="430" loading="lazy" decoding="async" src="../../assets/brand/wechat-qr.jpg" alt="HexClaw WeChat QR Code">
+      <span class="footer-wechat-label">WeChat Official Account</span>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">&copy; 2025&ndash;2026 hexagon-codes</span>
+  </div>
+</footer>
+<script src="../../assets/js/theme.js?v=2e4a1828feef"></script>
+<script src="../../assets/js/docs-nav.js?v=5a103861aec2"></script>
+<button type="button" class="back-to-top" id="backToTop" aria-label="Back to top" title="Back to top">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg>
+  <span>Top</span>
+</button>
+
+<script src="../../assets/js/blog.js?v=c72e1db5a6ec"></script>
+</body>
+</html>

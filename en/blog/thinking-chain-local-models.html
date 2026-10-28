@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/favicon-32.png">
+<title>HexClaw AI’s Thinking Process: The Last Mile for Qwen 3.5, Gemma 4, and DeepSeek-R1 | HexClaw Technical Blog</title>
+<meta name="description" content="Preserving and controlling local model reasoning through streaming extraction, thinking controls, 90-second timeout recovery, context compression, and multi-step tool workflows.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:site_name" content="HexClaw">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HexClaw AI’s Thinking Process: The Last Mile for Qwen 3.5, Gemma 4, and DeepSeek-R1 | HexClaw Technical Blog">
+<meta property="og:description" content="Preserving and controlling local model reasoning through streaming extraction, thinking controls, 90-second timeout recovery, context compression, and multi-step tool workflows.">
+<meta property="og:url" content="https://hexclaw.net/en/blog/thinking-chain-local-models">
+<meta property="og:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta property="og:image:alt" content="HexClaw AI logo">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="HexClaw AI’s Thinking Process: The Last Mile for Qwen 3.5, Gemma 4, and DeepSeek-R1 | HexClaw Technical Blog">
+<meta name="twitter:description" content="Preserving and controlling local model reasoning through streaming extraction, thinking controls, 90-second timeout recovery, context compression, and multi-step tool workflows.">
+<meta name="twitter:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta name="twitter:image:alt" content="HexClaw AI logo">
+<link rel="canonical" href="https://hexclaw.net/en/blog/thinking-chain-local-models">
+<link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/thinking-chain-local-models">
+<link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/thinking-chain-local-models">
+<link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/thinking-chain-local-models">
+<link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/thinking-chain-local-models">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "HexClaw AI’s Thinking Process: The Last Mile for Qwen 3.5, Gemma 4, and DeepSeek-R1",
+  "description": "Preserving and controlling local model reasoning through streaming extraction, thinking controls, 90-second timeout recovery, context compression, and multi-step tool workflows.",
+  "url": "https://hexclaw.net/en/blog/thinking-chain-local-models",
+  "inLanguage": "en",
+  "datePublished": "2026-04-13",
+  "image": "https://hexclaw.net/assets/brand/hexclaw-logo.png",
+  "publisher": {
+    "@type": "Organization",
+    "name": "hexagon-codes",
+    "url": "https://hexclaw.net/",
+    "@id": "https://hexclaw.net/#organization"
+  },
+  "@id": "https://hexclaw.net/en/blog/thinking-chain-local-models#article"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "HexClaw AI",
+      "item": "https://hexclaw.net/en/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Technical Blog",
+      "item": "https://hexclaw.net/en/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "HexClaw AI's Thinking Process: The Last Mile for Qwen 3.5, Gemma 4, and DeepSeek-R1",
+      "item": "https://hexclaw.net/en/blog/thinking-chain-local-models"
+    }
+  ],
+  "@id": "https://hexclaw.net/en/blog/thinking-chain-local-models#breadcrumb"
+}
+</script>
+<link rel="stylesheet" href="../../assets/css/docs-eb2895dd79c5.css">
+<link rel="stylesheet" href="../../assets/css/blog-a8e5008ac3d1.css">
+</head>
+<body class="blog-page blog-article-page">
+<a href="#main" class="skip-link">Skip to main content</a>
+<nav class="tn topnav" id="nav">
+  <a href="/en/" class="tn-b topnav-brand"><img width="72" height="72" src="../../assets/brand/hexclaw-icon-72.png" class="tn-l topnav-logo" alt="HexClaw"><span class="tn-n topnav-name">HexClaw</span></a>
+  <button type="button" class="tn-burger topnav-burger" aria-label="Menu" aria-expanded="false" aria-controls="primary-navigation"><span></span><span></span><span></span></button><div class="tn-r topnav-links" id="primary-navigation"><a href="/en/">Home</a><a href="/en/#cases">Scenarios</a><a href="/en/#features">Features</a><a href="/en/#quickstart">Quickstart</a><a href="/en/#ecosystem">Ecosystem</a><a href="/en/blog/" class="is-active">Tech Blog</a><a href="/en/docs/">Docs Center</a><div class="lang-menu" data-lang-menu><button type="button" class="lang-trigger" aria-haspopup="menu" aria-expanded="false" aria-label="Switch language"><svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 0 20"></path><path d="M12 2a15.3 15.3 0 0 0 0 20"></path></svg><span class="lang-current">English</span><svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="lang-menu-list" role="menu"><a href="/zh/blog/thinking-chain-local-models" role="menuitem">中文</a><a href="/en/blog/thinking-chain-local-models" role="menuitem" class="is-active" aria-current="true">English</a><a href="/ug/blog/thinking-chain-local-models" role="menuitem" lang="zh-CN" dir="ltr">维吾尔语</a></div></div><button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"><svg class="ti-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="ti-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="nav-cta">GitHub <span class="nav-star-badge" id="gh-stars">&#9733;</span></a></div>
+</nav>
+
+<main id="main" class="blog-main">
+  <div class="blog-article-container">
+    <nav class="blog-breadcrumb" aria-label="Breadcrumb">
+      <a href="/en/"> Home </a>
+      <span class="blog-breadcrumb-sep">/</span>
+      <a href="/en/blog/"> Technical Blog </a>
+      <span class="blog-breadcrumb-sep">/</span>
+      <span aria-current="page"> Core Systems in Depth </span>
+    </nav>
+
+    <header class="blog-header">
+      <div class="blog-header-tags">
+        <span class="blog-badge-series"> On-device Reasoning </span>
+      </div>
+      <h1 class="blog-article-title"> HexClaw AI's Thinking Process: The Last Mile for Qwen 3.5, Gemma 4, and DeepSeek-R1 </h1>
+      <p class="blog-article-subtitle"> Local reasoning models really have changed this year. The bottleneck often lies in the client: streaming reasoning extraction, collapsible presentation, and reasoning-budget limits—the last mile between a capable model and useful work. </p>
+      <div class="article-provenance-banner">
+        <div class="provenance-left">
+          <span class="provenance-origin-badge"> First published on WeChat </span>
+          <span class="provenance-text"> This article first appeared in the official WeChat <strong>“hexclaw”</strong>  (ID: hexclaw) technical column · Published  <strong> April 13, 2026 </strong>  · Approximately 10 minutes to read </span>
+        </div>
+        <a href="https://mp.weixin.qq.com/s/RX-2QOSV2cBEmddwAUj5cg" target="_blank" rel="noopener noreferrer" class="provenance-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+           Original on WeChat ↗
+        </a>
+      </div>
+    </header>
+
+    <article class="blog-content">
+      <p style="margin: 16px 0;"> The previous articles covered HexClaw AI's main threads: installation, everyday use, architecture, and Skills. </p>
+
+<p style="margin: 8px 0;"> One easily overlooked path strongly determines the experience, however, and deserves its own article: <strong style="color:var(--article-accent, #3f8fd4);"> can a local reasoning model's thinking be preserved in full and actually support useful work? </strong>. </p>
+
+<p style="margin: 16px 0;"> Last year I asked a local reasoning model to solve a moderately difficult math problem. It spent ages inside  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">&lt;think&gt;</code>  , produced a long reasoning chain, and still got the final answer wrong. </p>
+
+<p style="margin: 8px 0;"> My conclusion then was simple: <strong style="color:var(--article-accent, #3f8fd4);"> local reasoning models still had a long way to go </strong>. </p>
+
+<p style="margin: 8px 0;"> By 2026, that no longer quite holds. Open reasoning models have advanced quickly: small models are more than demos, MoE improves efficiency, and distilled models are becoming useful on real tasks. </p>
+
+<p style="margin: 8px 0;"> The question now goes beyond <strong style="color:var(--article-accent, #3f8fd4);"> whether the model can run </strong> to <strong style="color:var(--article-accent, #3f8fd4);"> whether you have tools that can make use of its capability </strong>. </p>
+
+<p style="margin: 8px 0;"> Many local clients stumble here: the model reasons at length, but the result becomes just another chat bubble. Its thinking gets swallowed, cut off, or stuck halfway through. </p>
+
+<p style="border-left: 3px solid #f5a623; padding: 10px 16px; margin: 16px 0; background:var(--article-panel, #fffbe6); color: #8a6d3b; font-size: 14px; border-radius: 0 6px 6px 0;"><strong> Here is the conclusion if you are short on time: </strong><br/>
+ With a 16 GB Mac or a PC with roughly 8 GB of GPU memory, start with  <strong style="color:var(--article-accent, #3f8fd4);">Qwen 3.5</strong>  . For speed and English-language work, look at  <strong style="color:var(--article-accent, #3f8fd4);">Gemma 4</strong> ; for the most detailed reasoning chain and an informative view into its process, choose  <strong style="color:var(--article-accent, #3f8fd4);">DeepSeek-R1</strong> . The experience depends on more than model scores: the client must connect  <strong style="color:var(--article-accent, #3f8fd4);"> reasoning display, thinking controls, timeout recovery, context compression, and tools </strong>  into a complete workflow. That is what HexClaw AI v0.3.x addresses. </p>
+
+<p style="margin: 8px 0;"> Here is the detail. </p>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;"> Why local reasoning deserves another look in 2026 </h2>
+
+<p style="margin: 8px 0;"> Many people remember local models as slow, weak, and confidently wrong. That impression came from real limitations last year. </p>
+
+<p style="margin: 8px 0;"> The past year's change is more than another doubling of parameters: <strong style="color:var(--article-accent, #3f8fd4);"> parameter efficiency, reasoning strategies, quantization, and engineering usability </strong> have advanced together. </p>
+
+<p style="margin: 8px 0;"> Three changes stand out: </p>
+
+<ol style="padding-left: 20px; margin: 6px 0;">
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> Small models are more than demos. </strong> The 8B class can now reliably cover frequent tasks such as Chinese Q&amp;A, code explanation, light troubleshooting, and document organization. </li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> Reasoning has engineering value. </strong> It can help diagnose errors, check hypotheses, and explain tool decisions, rather than merely provide a spectacle. </li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> Local deployment is easier. </strong> A 16 GB Mac or a PC with roughly 8 GB of GPU memory can now support a respectable local AI workflow. </li>
+</ol>
+
+<p style="margin: 8px 0;"> This article is not claiming that local models replace everything in the cloud. Its central judgment is: <strong style="color:var(--article-accent, #3f8fd4);"> for some frequent, private tasks requiring control, local reasoning has become a first choice rather than a fallback </strong>. </p>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;"> First, the practical choice: which model should you use? </h2>
+
+<p style="margin: 8px 0;"> If rankings and benchmarks have become overwhelming, stop chasing the largest model. For most people, getting the local reasoning workflow working matters more than adding parameters. </p>
+
+<table style="width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13px;">
+<thead>
+<tr>
+<th style="background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); padding: 8px 12px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;"> Your situation </th>
+<th style="background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); padding: 8px 12px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;"> Recommended model </th>
+<th style="background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); padding: 8px 12px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;"> Why </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);"> 16 GB Mac / 8 GB GPU, mainly Chinese tasks </td>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);"><strong style="color:var(--article-accent, #3f8fd4);">qwen3.5:9b</strong></td>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);"> Low memory barrier and steady Chinese performance; a sensible default local workhorse </td>
+</tr>
+<tr>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe); color:var(--article-ink, #12324c);"> 18 GB+ GPU memory, prioritizing speed and English tasks </td>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe); color:var(--article-ink, #12324c);"><strong style="color:var(--article-accent, #3f8fd4);">Gemma4:26b</strong></td>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe); color:var(--article-ink, #12324c);"> MoE delivers a fast perceived experience, especially appealing for coding and English reasoning </td>
+</tr>
+<tr>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);"> Inspecting complete reasoning chains or doing complex troubleshooting </td>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);"><strong style="color:var(--article-accent, #3f8fd4);">deepseek-r1:14b / 32b</strong></td>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);"> The most detailed thinking chain, useful for observing its process, but costs more time and memory </td>
+</tr>
+<tr>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe); color:var(--article-ink, #12324c);"> 32 GB+ memory, seeking stronger overall capability </td>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe); color:var(--article-ink, #12324c);"><strong style="color:var(--article-accent, #3f8fd4);">qwen3.5:27b</strong></td>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe); color:var(--article-ink, #12324c);"> Stronger overall capability and steadier Chinese coding and document workflows </td>
+</tr>
+</tbody>
+</table>
+
+<p style="border-left: 3px solid #5fb3ea; padding: 10px 16px; margin: 16px 0; background:var(--article-panel, #f4fbff); color:var(--article-secondary, #3f5f7b); font-size: 14px; border-radius: 0 6px 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> In everyday terms: </strong> most people can simply start with  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">qwen3.5:9b</code>  . Get the workflow running before chasing the biggest model. </p>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;"> Three reasoning families: which suits local work? </h2>
+
+<p style="margin: 8px 0;"> As of April 13, 2026, Qwen 3.5, Gemma 4, and DeepSeek-R1 remain three common Ollama families suited to local reasoning workflows. They have distinct personalities. </p>
+
+<table style="width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13px;">
+<thead>
+<tr>
+<th style="background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); padding: 8px 12px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;"></th>
+<th style="background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); padding: 8px 12px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;">Qwen 3.5<br/><span style="font-weight: 400; font-size: 11px; color: #667085;">  (Alibaba) </span></th>
+<th style="background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); padding: 8px 12px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;">Gemma 4<br/><span style="font-weight: 400; font-size: 11px; color: #667085;">(Google)</span></th>
+<th style="background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); padding: 8px 12px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;">DeepSeek-R1<br/><span style="font-weight: 400; font-size: 11px; color: #667085;">  (DeepSeek) </span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe); color:var(--article-ink, #12324c);"><strong style="color:var(--article-accent, #3f8fd4);"> Common local variants </strong></td>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe); color:var(--article-ink, #12324c);">9B / 27B</td>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe); color:var(--article-ink, #12324c);">e4b / 26B / 31B</td>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe); color:var(--article-ink, #12324c);">14B / 32B</td>
+</tr>
+<tr>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe); color:var(--article-ink, #12324c);"><strong style="color:var(--article-accent, #3f8fd4);"> Common Ollama sizes </strong></td>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe); color:var(--article-ink, #12324c);">6.6GB / 17GB</td>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe); color:var(--article-ink, #12324c);">9.6GB / 18GB / 20GB</td>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe); color:var(--article-ink, #12324c);">9.0GB / 20GB</td>
+</tr>
+<tr>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);"><strong style="color:var(--article-accent, #3f8fd4);"> Common context windows </strong></td>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);">256K / 256K</td>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);">128K / 256K / 256K</td>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);">128K / 128K</td>
+</tr>
+<tr>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe); color:var(--article-ink, #12324c);"><strong style="color:var(--article-accent, #3f8fd4);"> Standout strength </strong></td>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe); color:var(--article-ink, #12324c);"> Steady Chinese, low barrier, default starting point </td>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe); color:var(--article-ink, #12324c);"> Fast perceived response, friendly to English and code </td>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe); color:var(--article-ink, #12324c);"> Most detailed reasoning chain, useful for complex troubleshooting </td>
+</tr>
+</tbody>
+</table>
+
+<h3 style="font-size: 16px; font-weight: 600; color:var(--article-ink, #12324c); margin: 24px 0 8px;"> Qwen 3.5: the one you are likely to open every day </h3>
+
+<p style="margin: 8px 0;"> What impresses me about Qwen 3.5 is not one benchmark; <strong style="color:var(--article-accent, #3f8fd4);"> it fits into an everyday workflow </strong> . Take  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">qwen3.5:9b</code>  : its hardware demands are modest enough while covering Chinese Q&amp;A, code explanation, file organization, and light troubleshooting. </p>
+
+<p style="margin: 8px 0;"> For an M-series Mac with 16 GB or a PC with an 8 GB-class GPU, this is usually the steadiest starting point. It may not put on the grandest thinking show, but it is likely to be <strong style="color:var(--article-accent, #3f8fd4);">  the one you actually use every day </strong>. </p>
+
+<h3 style="font-size: 16px; font-weight: 600; color:var(--article-ink, #12324c); margin: 24px 0 8px;"> Gemma 4: the engineering appeal of speed </h3>
+
+<p style="margin: 8px 0;"> Gemma 4's strength is practical: <strong style="color:var(--article-accent, #3f8fd4);"> it feels fast </strong> . Its 26B variant is not small, but MoE makes it noticeably lighter in operation. </p>
+
+<p style="margin: 8px 0;"> It is competitive for English coding, mathematical reasoning, and English technical documents. Its limitation is clear too: Chinese tasks are generally less comfortable than with Qwen. </p>
+
+<h3 style="font-size: 16px; font-weight: 600; color:var(--article-ink, #12324c); margin: 24px 0 8px;"> DeepSeek-R1: laying out the thought process </h3>
+
+<p style="margin: 8px 0;"> DeepSeek-R1's value lies largely in <strong style="color:var(--article-accent, #3f8fd4);">  observability </strong> . It more deliberately lists hypotheses, explores paths, and checks itself. Often you see an extended reasoning process alongside the answer. </p>
+
+<p style="margin: 8px 0;"> That slowness and length may be unwelcome in casual chat, but help with code troubleshooting, complex task decomposition, and planning tool calls. DeepSeek's official Distill-Qwen-32B results, <strong style="color:var(--article-accent, #3f8fd4);">MATH-500 94.3, LiveCodeBench 57.2</strong> , show that it has substance beyond merely thinking at length. </p>
+
+<p style="border-left: 3px solid #5fb3ea; padding: 10px 16px; margin: 16px 0; background:var(--article-panel, #f4fbff); color:var(--article-secondary, #3f5f7b); font-size: 14px; border-radius: 0 6px 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> Do not put your faith in one leaderboard. </strong> The real local-model experience is model capability × quantization × client engineering × hardware. The first two receive plenty of attention; the latter two are where most users encounter trouble. </p>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;"> Why seeing the reasoning matters </h2>
+
+<p style="margin: 8px 0;"> On first seeing a reasoning chain, many people ask: isn't the model just talking to itself? Why read it? </p>
+
+<p style="margin: 8px 0;"> For weather, translation, or polishing one sentence, it may not matter. For a slightly more complicated task, the value becomes clearer. </p>
+
+<table style="width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13px;">
+<thead>
+<tr>
+<th style="background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); padding: 8px 12px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;"> Scenario </th>
+<th style="background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); padding: 8px 12px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;"> What the reasoning lets you see </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);"> Code troubleshooting </td>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);"> Its first suspicions and rejected paths, helping you notice a wrong direction quickly </td>
+</tr>
+<tr>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe); color:var(--article-ink, #12324c);"> Tool calls </td>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe); color:var(--article-ink, #12324c);"> Why it searches, reads, and then edits, rather than blindly experimenting </td>
+</tr>
+<tr>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);"> Complex questions </td>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);"> Whether it has changed the premise or missed your constraints </td>
+</tr>
+</tbody>
+</table>
+
+<p style="margin: 8px 0;"> More fundamentally, <strong style="color:var(--article-accent, #3f8fd4);"> visible reasoning itself provides a safety mechanism </strong> . When the model goes off course, at least you can notice before accepting a confident final answer. </p>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;"> The problem lies in the client's last mile </h2>
+
+<p style="margin: 8px 0;"> After trying several local clients last year, I came away with the same impression: <strong style="color:var(--article-accent, #3f8fd4);"> many products handle model API calls well but still do not treat reasoning models as a distinct kind of model </strong>. </p>
+
+<p style="margin: 8px 0;"> The common problems are: </p>
+
+<ul style="padding-left: 18px; margin: 8px 0;">
+<li style="margin: 4px 0;"> rendering output as an ordinary chat bubble, <strong style="color:var(--article-accent, #3f8fd4);"> without properly handling reasoning </strong></li>
+<li style="margin: 4px 0;"> showing reasoning but offering no control; when the model takes too long, <strong style="color:var(--article-accent, #3f8fd4);"> the user can only wait </strong></li>
+<li style="margin: 4px 0;"> no compression for long conversations; reasoning consumes the context window, <strong style="color:var(--article-accent, #3f8fd4);"> and the model loses track after several turns </strong></li>
+<li style="margin: 4px 0;"> reasoning and tool calls remain disconnected, <strong style="color:var(--article-accent, #3f8fd4);"> so you cannot see why it chooses the next action </strong></li>
+</ul>
+
+<p style="margin: 8px 0;"> This led to a clear decision when building HexClaw AI: <strong style="color:var(--article-accent, #3f8fd4);"> reasoning is one of a reasoning model's most valuable outputs </strong> . It deserves more than decorative treatment. </p>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;"> How HexClaw AI completes the reasoning workflow: four layers </h2>
+
+<p style="margin: 8px 0;"> In v0.3.x, the aim was more than a chat shell displaying think tags. I split the complete local reasoning workflow into four necessary layers: <strong style="color:var(--article-accent, #3f8fd4);"> extraction, control, recovery, and compression </strong>. </p>
+
+<h3 style="font-size: 16px; font-weight: 600; color:var(--article-ink, #12324c); margin: 24px 0 8px;"> Layer 1: extract multiple reasoning-tag formats </h3>
+
+<p style="margin: 8px 0;"> At the engine level, HexClaw AI uses <strong style="color:var(--article-accent, #3f8fd4);">  two extraction paths </strong> . It handles the stream first, then scans the final output again, extracting formats such as  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">&lt;think&gt;</code>, <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">&lt;thinking&gt;</code>, <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">&lt;|think|&gt;</code>   consistently. </p>
+
+<p style="margin: 8px 0;"> The purpose is straightforward: <strong style="color:var(--article-accent, #3f8fd4);"> changing models should not require changing how you think about the interface </strong> . Users should not have to guess why reasoning suddenly vanished because tag formats differ. </p>
+
+<p style="margin: 8px 0;"> Extracted reasoning is persisted in message metadata. Reopen the conversation and it remains available; refreshing does not erase it. </p>
+
+<h3 style="font-size: 16px; font-weight: 600; color:var(--article-ink, #12324c); margin: 24px 0 8px;"> Layer 2: a one-click thinking switch </h3>
+
+<p style="margin: 8px 0;"> Not every question deserves deep reasoning. “What day is it?” and “Why does this code deadlock?” are different tasks. </p>
+
+<p style="margin: 8px 0;"> HexClaw AI therefore places a <strong style="color:var(--article-accent, #3f8fd4);">  Deep Thinking switch </strong> below the input. It directly changes the model's output strategy: </p>
+
+<ol style="padding-left: 20px; margin: 6px 0;">
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> Off </strong> : inject  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">/no_think</code>  to suppress lengthy reasoning and prioritize a quick reply </li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> On </strong> : preserve the full reasoning chain and display its streaming thought process </li>
+</ol>
+
+<p style="margin: 8px 0;"> From the user's perspective, these are two working modes of the same model. <strong style="color:var(--article-accent, #3f8fd4);"> Switch reasoning depth to suit the task, without changing models every time </strong>. </p>
+
+
+<h3 style="font-size: 16px; font-weight: 600; color:var(--article-ink, #12324c); margin: 24px 0 8px;"> Layer 3: automatic recovery after a 90-second reasoning timeout </h3>
+
+<p style="margin: 8px 0;"> The largest engineering problem is often not a wrong answer but <strong style="color:var(--article-accent, #3f8fd4);">  thinking for too long </strong> . Small local models can repeatedly revise themselves on complex tasks and never produce a final answer. </p>
+
+<p style="margin: 8px 0;"> HexClaw AI adds a practical fallback: <strong style="color:var(--article-accent, #3f8fd4);"> automatic recovery after a 90-second reasoning timeout </strong>. </p>
+
+<ol style="padding-left: 20px; margin: 6px 0;">
+<li style="margin: 4px 0;"> Interrupt automatically if no final answer appears within 90 seconds </li>
+<li style="margin: 4px 0;"> Automatically inject  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">/no_think</code>   and request again </li>
+<li style="margin: 4px 0;"> Also detect and retry reasoning-only output with no final answer </li>
+</ol>
+
+<p style="margin: 8px 0;"> This aims to make local reasoning reliable more often, rather than merely usable on occasional runs. </p>
+
+<h3 style="font-size: 16px; font-weight: 600; color:var(--article-ink, #12324c); margin: 24px 0 8px;"> Layer 4: automatic context compression </h3>
+
+<p style="margin: 8px 0;"> Another hard constraint is <strong style="color:var(--article-accent, #3f8fd4);">  a finite context window </strong> . Reasoning consumes many tokens; tool inputs and outputs add more. A few complex turns can quickly approach the limit. </p>
+
+<p style="margin: 8px 0;"> Some clients simply truncate the earliest messages. That is dangerous because early messages often hold the user's real constraints. </p>
+
+<p style="margin: 8px 0;"> HexClaw AI instead <strong style="color:var(--article-accent, #3f8fd4);">  preserves the system prompt and recent messages </strong> and turns the intervening history into a structured summary. If summarization fails, it falls back to heuristic extraction. History is compressed rather than simply forgotten. </p>
+
+<p style="background: #1a2332; color: #d6e4f0; padding: 16px; border-radius: 8px; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, monospace; margin: 14px 0; overflow-x: auto; white-space: pre-wrap;"><span style="color: #6a9955;">// Context compression strategy</span>
+
+Triggers automatically as message volume approaches the threshold
+  ↓
+Keep the <span style="color: #5fb3ea;">system prompt</span>
+Keep <span style="color: #5fb3ea;">recent messages</span>
+  ↓
+Create a <span style="color: #5fb3ea;">structured summary</span> of the intervening history
+  ↓
+Insert <span style="color: #f5a623;">[Prior tool interactions summary]</span>
+  ↓
+Continue the next turn without overflowing the context window</p>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;"> When should Deep Thinking be on or off? </h2>
+
+<p style="margin: 8px 0;"> This is a practical question. A common mistake is <strong style="color:var(--article-accent, #3f8fd4);"> assuming that because a model can think deeply, it should always do so </strong>. </p>
+
+<table style="width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13px;">
+<thead>
+<tr>
+<th style="background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); padding: 8px 12px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;"> Task </th>
+<th style="background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); padding: 8px 12px; text-align: center; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;"> Recommendation </th>
+<th style="background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); padding: 8px 12px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;"> Why </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);"> Code troubleshooting / architecture analysis </td>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c); text-align: center;"><strong style="color:var(--article-accent, #3f8fd4);"> On </strong></td>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);"> Inspect rejected paths and catch a wrong direction early </td>
+</tr>
+<tr>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe); color:var(--article-ink, #12324c);"> Multi-step tool use / organizing TODOs </td>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe); color:var(--article-ink, #12324c); text-align: center;"><strong style="color:var(--article-accent, #3f8fd4);"> On </strong></td>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe); color:var(--article-ink, #12324c);"> See why it chooses each tool and sequence </td>
+</tr>
+<tr>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);"> Everyday Q&amp;A / copy edits / translation </td>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c); text-align: center;"><strong style="color:var(--article-muted, #999);"> Off </strong></td>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);"> Faster, fewer tokens, and a cleaner experience </td>
+</tr>
+<tr>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe); color:var(--article-ink, #12324c);"> The model is clearly repeating itself </td>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe); color:var(--article-ink, #12324c); text-align: center;"><strong style="color: #cf1322;"> Off </strong></td>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe); color:var(--article-ink, #12324c);"> Get a result before it consumes all the time and context </td>
+</tr>
+</tbody>
+</table>
+
+<p style="margin: 8px 0;"> My own habit is: <strong style="color:var(--article-accent, #3f8fd4);"> leave it off by default and enable it for complex questions </strong> . This makes a local model feel more like a dependable tool and less like a machine trapped in strenuous self-debate. </p>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;"> A real comparison: three models thinking through the same question </h2>
+
+<p style=”margin: 8px 0;”> Benchmarks alone are abstract. On a  <strong style=”color: #3f8fd4;”>M1 MacBook Pro 16GB</strong> , I ran three models in HexClaw AI on the same Chinese knowledge-trap question with Deep Thinking enabled, and watched how they reasoned. </p>
+
+<p style=”border-left: 3px solid #5fb3ea; padding: 10px 16px; margin: 16px 0; background: #f4fbff; color: #3f5f7b; font-size: 14px; border-radius: 0 6px 6px 0;”><strong style=”color: #3f8fd4;”> Question: </strong> Which book contains the story of Lin Daiyu uprooting a weeping willow? </p>
+
+<p style=”margin: 8px 0;”> The correct reply is neither Dream of the Red Chamber nor Water Margin; it must <strong style=”color: #3f8fd4;”> point out that the event never happened </strong> . Uprooting a weeping willow is Lu Zhishen's episode in Water Margin; Lin Daiyu belongs to Dream of the Red Chamber. The two never meet. Detecting this trap directly exposes a reasoning model's resistance to hallucination. </p>
+
+<p style=”margin: 8px 0;”><strong style=”color: #3f8fd4;”> qwen3.5:9b (correct): </strong> A concise reasoning chain quickly identified that the event never happened and used a table to distinguish the characters' sources. Like <strong style=”color: #3f8fd4;”>  a strong student who reads the question carefully </strong> , it checked the premise before answering. </p>
+
+<p style=”margin: 8px 0;”><strong style=”color: #3f8fd4;”> Gemma4:e4b (incorrect): </strong> Its reasoning visibly went off course from step four, assigning the story to Dream of the Red Chamber without questioning whether it happened. It ended with <strong style=”color: #3f8fd4;”>  a confident wrong answer </strong> . This illustrates the point: <strong style=”color: #3f8fd4;”> without its reasoning, you cannot see how it is making things up </strong> . Expanding the chain makes the first wrong turn clear. </p>
+
+<p style=”margin: 8px 0;”><strong style=”color: #3f8fd4;”> deepseek-r1:14b (correct): </strong> The longest chain recalled both novels, traced the willow episode, then confirmed that Lin Daiyu could not have done it. It most closely resembled <strong style=”color: #3f8fd4;”> laying out the entire thought process </strong> : slower, but with the most complete reasoning path and the most credible conclusion in this comparison. </p>
+
+<p style=”margin: 8px 0;”> The most useful finding is more than “two correct and one wrong”: <strong style=”color: #3f8fd4;”> visible reasoning makes both success and failure explainable </strong> . You can see why one answer is right and where another goes astray. Without the chains, you would see three confident answers, one wrong, with little basis for distinguishing them. </p>
+
+<figure><img src="../../assets/blog/thinking-chain-local-models-wechat-image/001.png" alt="" width="2880" height="1800" loading="lazy" decoding="async"></figure>
+<p style=”margin-top: 4px; padding: 0 6px; color: #667085; font-size: 13px; line-height: 1.6;”> Qwen 3.5-9B: detects the trap and tabulates the two characters' sources </p>
+
+<figure><img src="../../assets/blog/thinking-chain-local-models-wechat-image/002.png" alt="" width="2880" height="1800" loading="lazy" decoding="async"></figure>
+<p style=”margin-top: 4px; padding: 0 6px; color: #667085; font-size: 13px; line-height: 1.6;”> Gemma 4 E4B: reasoning goes off course from step four and ends with an incorrect answer </p>
+
+<figure><img src="../../assets/blog/thinking-chain-local-models-wechat-image/003.png" alt="" width="2880" height="1800" loading="lazy" decoding="async"></figure>
+<p style=”margin-top: 4px; padding: 0 6px; color: #667085; font-size: 13px; line-height: 1.6;”> DeepSeek-R1-14B: the longest chain checks both works before confirming the event never happened </p>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;"> What HexClaw AI adds compared with other local clients </h2>
+
+<p style="margin: 8px 0;"> First, clear up a misconception: <strong style="color:var(--article-accent, #3f8fd4);"> supporting local models is no longer a rare capability </strong>. </p>
+
+<p style="margin: 8px 0;"> OpenClaw supports Ollama and LM Studio with local models, tool calls, and context compression. Open WebUI is mature in reasoning display and web deployment. Cherry Studio offers a strong multi-model aggregation experience. These products all run local models. </p>
+
+<p style="margin: 8px 0;"> The difference lies in <strong style="color:var(--article-accent, #3f8fd4);">  product focus </strong> : </p>
+
+<ul style="padding-left: 18px; margin: 8px 0;">
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">OpenClaw</strong>  Emphasis on terminal agents and long-context workflows </li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">Open WebUI</strong>  Emphasis on web deployment and general-purpose chat </li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">Cherry Studio</strong>  Emphasis on multiple-model access and a unified experience </li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> HexClaw AI </strong>  Emphasis on Desktop, local reasoning workflows, and a complete interaction combining reasoning, tools, and guardrails </li>
+</ul>
+
+<p style="margin: 8px 0;"> The claim here is not that every other product fails. It is: <strong style="color:var(--article-accent, #3f8fd4);"> if a complete local reasoning workflow is your priority, HexClaw AI goes deeper there </strong>. </p>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;"> Four local-reasoning pitfalls I encountered </h2>
+
+<p style="margin: 8px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> Pitfall 1: reasoning loops with no way out. </strong> A model repeatedly says “Wait, let me rethink that” and never answers. Timeout interruption and automatic fallback are necessary. </p>
+
+<p style="margin: 8px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> Pitfall 2: fragmented tag formats. </strong> You may think support for  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">&lt;think&gt;</code>  is enough, but different models, templates, and reasoning modes use inconsistent output formats. </p>
+
+<p style="margin: 8px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> Pitfall 3: context grows faster than expected. </strong> Reasoning plus tool inputs and outputs can fill the window after a few complex exchanges. Without compression, a local model quickly loses the thread. </p>
+
+<p style="margin: 8px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> Pitfall 4: cold starts spoil the first impression. </strong> Loading a large model into memory can easily take more than ten seconds. HexClaw AI prewarms the default model so a first message does not make the app appear frozen. </p>
+
+<p style="border-left: 3px solid #5fb3ea; padding: 10px 16px; margin: 16px 0; background:var(--article-panel, #f4fbff); color:var(--article-secondary, #3f5f7b); font-size: 14px; border-radius: 0 6px 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> Many complaints that local models are unusable ultimately trace to unfinished engineering details. </strong></p>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;"> Reasoning plus tools is when a local model starts to act like an agent </h2>
+
+<p style="margin: 8px 0;"> Reasoning matters less for the number of visible tokens than for <strong style="color:var(--article-accent, #3f8fd4);"> whether it guides the next action </strong>. </p>
+
+<p style="margin: 8px 0;"> HexClaw AI's engine supports multi-step tool loops. The model can search, read, analyze, edit, and verify in sequence, completing a task instead of stopping after one tool call. </p>
+
+<p style="margin: 8px 0;"> For example, ask: <strong style="color:var(--article-accent, #3f8fd4);"> “Find every TODO in the project and organize them into a prioritized task list.” </strong></p>
+
+<ol style="padding-left: 20px; margin: 6px 0;">
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> Reasoning: </strong> Search for TODO / FIXME / HACK first </li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> Tool call: </strong> Search file contents </li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> Reasoning: </strong> Use context to distinguish security risks, missing functionality, and code improvements </li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> Tool call: </strong> Read the relevant file sections </li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> Output: </strong> A prioritized task list with file locations and suggestions </li>
+</ol>
+
+<p style="margin: 8px 0;"> Throughout, you can see why each step happens. That is the main experiential difference between a reasoning model and an ordinary chat model: <strong style="color:var(--article-accent, #3f8fd4);"> it reveals its decision path as well as its answer </strong>. </p>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;"> The safety baseline: thinking and acting without running wild </h2>
+
+<p style="margin: 8px 0;"> Reasoning models think; tool calls act. Combining them increases capability and risk together. </p>
+
+<p style="margin: 8px 0;"> Small local models generally follow instructions less reliably than the strongest cloud models. If their reasoning takes a wrong turn without guardrails, they can take a wrong action too. </p>
+
+<p style="margin: 8px 0;"> HexClaw AI follows a clear approach: </p>
+
+<ul style="padding-left: 18px; margin: 8px 0;">
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> Tool approval </strong> : distinguish risk levels and require approval for sensitive and dangerous operations </li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> Budget fallbacks </strong> : token, time, and cost limits prevent uncontrolled reasoning growth </li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> Sandboxed execution </strong> : run code in isolation to reduce unauthorized actions and mistakes </li>
+</ul>
+
+<p style="border-left: 3px solid #5fb3ea; padding: 10px 16px; margin: 16px 0; background:var(--article-panel, #f4fbff); color:var(--article-secondary, #3f5f7b); font-size: 14px; border-radius: 0 6px 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> The point is: </strong> a weaker model is manageable; an unguarded model is the concern. HexClaw AI aims to let you delegate with confidence while retaining control. </p>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;"> Free and private: concrete engineering benefits </h2>
+
+<p style="margin: 8px 0;"> If you use cloud reasoning models for complex tasks, expensive reasoning tokens are probably familiar. </p>
+
+<p style="margin: 8px 0;"> Local reasoning models do not match the strongest cloud models, but offer two advantages a cloud deployment cannot provide in the same way: </p>
+
+<ul style="padding-left: 18px; margin: 8px 0;">
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> Your data stays on your machine. </strong> Code, contracts, logs, and customer information do not first need to be assessed for whether sending them out is appropriate. </li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> The running cost is mostly electricity. </strong> Let the model try or reason again without counting the cost at every step. </li>
+</ul>
+
+<p style="margin: 8px 0;"> This is why I increasingly use local models for part of my workflow: <strong style="color:var(--article-accent, #3f8fd4);"> they have become good enough while remaining inexpensive, private, and controllable </strong>. </p>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;"> Getting started: a suggested route through the series </h2>
+
+<p style="margin: 8px 0;"> If this is your first encounter with the HexClaw AI series, you need not begin with this deeper article. Follow this sequence: </p>
+
+<ol style="padding-left: 20px; margin: 6px 0;">
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> Start with the getting-started guide: </strong> install the app, run Ollama, and send your first message </li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> Then read the architecture article: </strong> understand the complete agent system behind the chat interface </li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> Next, the Skill article: </strong> learn its extension model and boundaries </li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> Finally, return here: </strong> complete the local reasoning workflow </li>
+</ol>
+
+<p style="margin: 16px 0; padding: 16px; border-radius: 8px; background:var(--article-panel, #f4fbff); border: 1px solid var(--article-border, #edf7ff);">
+<strong style="color:var(--article-accent, #3f8fd4);"> Full tutorial, hardware choices, and model recommendations: </strong><a href="https://mp.weixin.qq.com/s/PdJRKkH4qiBS-IZBifbuag" style="color:var(--article-accent, #5fb3ea); text-decoration: none;"> “HexClaw AI Complete Guide: From Zero to a Local AI Agent in Five Minutes” </a>
+</p>
+
+<p style="margin: 8px 0;"> Once installed, choose a reasoning model and chat. To <strong style="color:var(--article-accent, #3f8fd4);"> see the full reasoning chain </strong> , enable Deep Thinking below the input and watch the model reason step by step before its final answer. </p>
+
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;"> Who this suits </h2>
+
+<p style="margin: 8px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> A good fit if: </strong> you have a Mac with 16 GB+ memory or a PC with 8 GB+ GPU memory; work with sensitive data you prefer not to send to the cloud; want AI to search files, edit code, and run scripts; or already use Ollama and want more from a client. </p>
+
+<p style="margin: 8px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> A less suitable fit if: </strong> you only need lightweight chat; prioritize top reasoning quality regardless of cost (use GPT-5.4 or Claude Opus 4.6 directly); or have less than 8 GB of memory. </p>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;"> Closing: local reasoning has moved from runnable to useful </h2>
+
+<p style="margin: 8px 0;"> A year ago, local reasoning models felt more like toys to me. Now I use them in real workflows. </p>
+
+<p style="margin: 8px 0;"> They have not overtaken cloud models everywhere. Many tasks simply need <strong style="color:var(--article-accent, #3f8fd4);"> sufficient intelligence, ready availability, local data, acceptable cost, and an observable process </strong>. </p>
+
+<p style="margin: 8px 0;"> Qwen 3.5, Gemma 4, and DeepSeek-R1 have advanced the model side. HexClaw AI aims to complete the other half: <strong style="color:var(--article-accent, #3f8fd4);"> the engineering workflow around local reasoning </strong> , so it can do useful work rather than merely run. </p>
+
+<p style="margin: 8px 0;"> If you already use Ollama, try going beyond the final answer: <strong style="color:var(--article-accent, #3f8fd4);"> expand the reasoning process </strong> . It becomes easier to judge whether a model is reasoning or merely sounding knowledgeable. </p>
+
+
+
+<p class="blog-brand-footer" data-blog-brand-footer="en" data-blog-brand-overrides="{}" style="text-align: center; color: var(--article-muted, #7b8fa3); font-size: 13px; margin: 16px 0 0; line-height: 2;">
+<strong style="color: var(--article-ink, #12324c); font-size: 14px;">HexClaw</strong><br/>
+Deploy locally or in the cloud · Control your data · Free and open-source software<br/>
+<a href="https://hexclaw.net" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">Website: <bdi dir="ltr">hexclaw.net</bdi></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://github.com/hexagon-codes" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">GitHub: <bdi dir="ltr">hexagon-codes</bdi></a><br/>
+<a href="https://weibo.com/u/4097207240" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">Weibo: <bdi dir="ltr">@HexClaw</bdi></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">X: <bdi dir="ltr">@hexclawapp</bdi></a><br/>
+<a href="mailto:ai@hexclaw.net" style="color: var(--article-muted, #999); text-decoration: none;">Email: <bdi dir="ltr">ai@hexclaw.net</bdi></a>
+</p>
+    </article>
+
+
+
+    <nav class="blog-series-nav" aria-label="Previous and next articles">
+      <a href="/en/blog/cyber-niuma-cron-sandbox" class="blog-nav-card prev">
+  <span class="blog-nav-label"> ← Previous article </span>
+  <span class="blog-nav-title"> Raising HexClaw AI's Digital Workhorse: Compiling a Sentence into a Self-healing Sandbox Script That Works 24/7 </span>
+</a>
+      <a href="/en/blog/uyghur-localization" class="blog-nav-card next">
+  <span class="blog-nav-label"> Next article → </span>
+  <span class="blog-nav-title"> Teaching an AI Agent Uyghur: HexClaw AI v0.4.0 Localization in Practice </span>
+</a>
+    </nav>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-main">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-col-title">Product</div>
+        <a href="/en/#download">Download</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="/en/changelog">Changelog</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Developers</div>
+        <a href="/en/docs/">Documentation</a>
+        <a href="/en/blog/">Technical Blog</a>
+        <a href="/en/docs/getting-started">Getting Started</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">Apache-2.0</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Community</div>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/issues" target="_blank" rel="noopener noreferrer">Issues</a>
+        <a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer">Twitter / X</a>
+        <a href="mailto:ai@hexclaw.net">Contact Us</a>
+        <a href="mailto:support@hexclaw.net">Feedback</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">About</div>
+        <a href="/en/about">About Us</a>
+        <a href="/en/privacy">Privacy Policy</a>
+        <a href="/en/terms">Terms of Service</a>
+        <a href="/en/third-party-ai-services">Third-Party AI Services</a>
+      </div>
+    </div>
+    <div class="footer-wechat">
+      <img width="430" height="430" loading="lazy" decoding="async" src="../../assets/brand/wechat-qr.jpg" alt="HexClaw WeChat QR Code">
+      <span class="footer-wechat-label">WeChat Official Account</span>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">&copy; 2025&ndash;2026 hexagon-codes</span>
+  </div>
+</footer>
+<script src="../../assets/js/theme.js?v=2e4a1828feef"></script>
+<script src="../../assets/js/docs-nav.js?v=5a103861aec2"></script>
+<button type="button" class="back-to-top" id="backToTop" aria-label="Back to top" title="Back to top">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg>
+  <span>Top</span>
+</button>
+
+<script src="../../assets/js/blog.js?v=c72e1db5a6ec"></script>
+</body>
+</html>

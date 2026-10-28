@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/favicon-32.png">
+<title>Harness Engineering in HexClaw: the Model Supplies the Intelligence, the Harness Makes It Fit for Work | HexClaw Technical Blog</title>
+<meta name="description" content="A harness is literally the equipment put on working animals: permission gates, independent judges, budgets, and controlled failure. The same model with a different harness has different system capabilities. Moving from code snippets to real projects requires a complete harness, documented here with actual source and constants.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:site_name" content="HexClaw">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Harness Engineering in HexClaw: the Model Supplies the Intelligence, the Harness Makes It Fit for Work | HexClaw Technical Blog">
+<meta property="og:description" content="A harness is literally the equipment put on working animals: permission gates, independent judges, budgets, and controlled failure. The same model with a different harness has different system capabilities. Moving from code snippets to real projects requires a complete harness, documented here with actual source and constants.">
+<meta property="og:url" content="https://hexclaw.net/en/blog/harness-engineering">
+<meta property="og:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta property="og:image:alt" content="HexClaw logo">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Harness Engineering in HexClaw: the Model Supplies the Intelligence, the Harness Makes It Fit for Work | HexClaw Technical Blog">
+<meta name="twitter:description" content="A harness is literally the equipment put on working animals: permission gates, independent judges, budgets, and controlled failure. The same model with a different harness has different system capabilities. Moving from code snippets to real projects requires a complete harness, documented here with actual source and constants.">
+<meta name="twitter:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta name="twitter:image:alt" content="HexClaw logo">
+<link rel="canonical" href="https://hexclaw.net/en/blog/harness-engineering">
+<link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/harness-engineering">
+<link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/harness-engineering">
+<link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/harness-engineering">
+<link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/harness-engineering">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Harness Engineering in HexClaw: the Model Supplies the Intelligence, the Harness Makes It Fit for Work",
+  "description": "A harness is literally the equipment put on working animals: permission gates, independent judges, budgets, and controlled failure. The same model with a different harness has different system capabilities. Moving from code snippets to real projects requires a complete harness, documented here with actual source and constants.",
+  "url": "https://hexclaw.net/en/blog/harness-engineering",
+  "inLanguage": "en",
+  "datePublished": "2026-07-04",
+  "image": "https://hexclaw.net/assets/brand/hexclaw-logo.png",
+  "publisher": {
+    "@type": "Organization",
+    "name": "hexagon-codes",
+    "url": "https://hexclaw.net/",
+    "@id": "https://hexclaw.net/#organization"
+  },
+  "@id": "https://hexclaw.net/en/blog/harness-engineering#article"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "HexClaw", "item": "https://hexclaw.net/en/"},
+    {"@type": "ListItem", "position": 2, "name": "Technical Blog", "item": "https://hexclaw.net/en/blog/"},
+    {"@type": "ListItem", "position": 3, "name": "Harness Engineering in HexClaw: the Model Supplies the Intelligence, the Harness Makes It Fit for Work", "item": "https://hexclaw.net/en/blog/harness-engineering"}
+  ],
+  "@id": "https://hexclaw.net/en/blog/harness-engineering#breadcrumb"
+}
+</script>
+<link rel="stylesheet" href="../../assets/css/docs-eb2895dd79c5.css">
+<link rel="stylesheet" href="../../assets/css/blog-a8e5008ac3d1.css">
+</head>
+<body class="blog-page blog-article-page">
+<a href="#main" class="skip-link">Skip to main content</a>
+<nav class="tn topnav" id="nav">
+  <a href="/en/" class="tn-b topnav-brand"><img width="72" height="72" src="../../assets/brand/hexclaw-icon-72.png" class="tn-l topnav-logo" alt="HexClaw"><span class="tn-n topnav-name">HexClaw</span></a>
+  <button type="button" class="tn-burger topnav-burger" aria-label="Menu" aria-expanded="false" aria-controls="primary-navigation"><span></span><span></span><span></span></button><div class="tn-r topnav-links" id="primary-navigation"><a href="/en/">Home</a><a href="/en/#cases">Scenarios</a><a href="/en/#features">Features</a><a href="/en/#quickstart">Quickstart</a><a href="/en/#ecosystem">Ecosystem</a><a href="/en/blog/" class="is-active">Tech Blog</a><a href="/en/docs/">Docs Center</a><div class="lang-menu" data-lang-menu><button type="button" class="lang-trigger" aria-haspopup="menu" aria-expanded="false" aria-label="Switch language"><svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 0 20"></path><path d="M12 2a15.3 15.3 0 0 0 0 20"></path></svg><span class="lang-current">English</span><svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="lang-menu-list" role="menu"><a href="/zh/blog/harness-engineering" role="menuitem">中文</a><a href="/en/blog/harness-engineering" role="menuitem" class="is-active" aria-current="true">English</a><a href="/ug/blog/harness-engineering" role="menuitem" lang="zh-CN" dir="ltr">维吾尔语</a></div></div><button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"><svg class="ti-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="ti-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="nav-cta">GitHub <span class="nav-star-badge" id="gh-stars">&#9733;</span></a></div>
+</nav>
+
+<main id="main" class="blog-main">
+  <div class="blog-article-container">
+    <nav class="blog-breadcrumb" aria-label="Breadcrumb">
+      <a href="/en/">Home</a>
+      <span class="blog-breadcrumb-sep">/</span>
+      <a href="/en/blog/">Technical Blog</a>
+      <span class="blog-breadcrumb-sep">/</span>
+      <span aria-current="page">Four Agent Paradigms</span>
+    </nav>
+
+    <header class="blog-header">
+      <div class="blog-header-tags">
+        <span class="blog-badge-series">Four Paradigms · Part Three</span>
+      </div>
+      <h1 class="blog-article-title">Harness Engineering in HexClaw: the Model Supplies the Intelligence, the Harness Makes It Fit for Work</h1>
+      <p class="blog-article-subtitle">A harness is literally the equipment put on working animals: permission gates, independent judges, budgets, and controlled failure.<br>The same model with a different harness has different system capabilities. Moving from code snippets to real projects requires a complete harness, documented here with actual source and constants.</p>
+      <div class="article-provenance-banner">
+        <div class="provenance-left">
+          <span class="provenance-origin-badge">First published on WeChat</span>
+          <span class="provenance-text">Originally published in the official technical column of the WeChat account <strong>「hexclaw」</strong> (ID: hexclaw) · Published  <strong>July 4, 2026</strong>  · About 12 minutes</span>
+        </div>
+        <a href="https://mp.weixin.qq.com/s/kDi-LSWB4UHtS_6jbTfvow" target="_blank" rel="noopener noreferrer" class="provenance-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          WeChat original ↗
+        </a>
+      </div>
+    </header>
+
+    <article class="blog-content">
+
+
+<p style="margin: 16px 0;">Start with a dictionary entry.<strong style="color:var(--article-accent, #3f8fd4);">harness</strong>, as a noun, has a first definition that has nothing to do with software engineering. It means <strong style="color:var(--article-accent, #3f8fd4);">equipment for a working animal</strong>: the complete set that lets an ox or horse pull a cart without running out of control. More precisely, a harness is the equipment used for <strong style="color:var(--article-accent, #3f8fd4);">pulling and working</strong>; saddles and stirrups for riding do not count. The word was made for working animals. Reins control direction, a bit provides an emergency stop, shafts transfer force to the cart, and protective gear guards against accidents. Calling the system around a model a Harness, as the industry has done over the past two years, is remarkably honest: <a href="https://mp.weixin.qq.com/s/EvQT0VqH9ep6LXo89ZM-fw" style="color:var(--article-accent, #3f8fd4); text-decoration: none; border-bottom: 1px dashed #3f8fd4;">in an earlier article</a>we called an Agent that works for you around the clock a cyber workhorse. Before a workhorse can work, it needs a harness.</p>
+
+<p style="margin: 8px 0;">Why give this layer its own article? Because of a fact that rarely gets stated plainly: <strong style="color:var(--article-accent, #3f8fd4);">the model's intelligence is rented.</strong>You and your competitors call the same few APIs. The ceiling of model capability is the same for everyone. What you own is the harness around the model. It determines whether that model becomes a chat box or a system you trust with real work. The industry now expresses this as an equation: <strong style="color:var(--article-accent, #3f8fd4);">Agent = Model + Harness</strong>. The overview article cited a LangChain experiment in which the model stayed unchanged and only the Harness changed: the terminal-task score rose from 52.8% to 66.5%. That entire difference came from the harness.</p>
+
+<p style="margin: 8px 0;">So this article examines the harness, not the model. It is organized around a user's concern rather than a maintainer's component list: <strong style="color:var(--article-accent, #3f8fd4);">what gives me the confidence to let it work?</strong>That breaks down into four smaller questions: what can it touch, what happens when it fails, who watches it, and where does it work? HexClaw's engine source provides an answer to each.</p>
+
+<section style="margin: 20px 0; padding: 12px 16px 14px; background:var(--article-panel, #f7fafd); border: 1px solid #d5e6f3; border-radius: 8px; text-align: center; font-size: 13px; line-height: 2.2; color:var(--article-muted, #7b8fa3);">
+<span style="font-size: 12px; color:var(--article-muted, #9db2c4); letter-spacing: 1px;">THIS SERIES · FOUR AGENT PARADIGMS</span><br/>
+<span style="color:var(--article-muted, #7b8fa3);">Prompt<span style="font-size: 12px; color:var(--article-muted, #9db2c4);"> (finale)</span></span><span style="color: #b8cbdc;">&nbsp;→&nbsp;</span><a href="https://mp.weixin.qq.com/s/H6BoZUcQfBBqh-ScXQyTWw" style="color:var(--article-accent, #3f8fd4); text-decoration: none;">Context<span style="font-size: 12px;"> (previous article)</span></a><span style="color: #b8cbdc;">&nbsp;→&nbsp;</span><span style="display: inline-block; padding: 0 12px; background: #3f8fd4; color: #ffffff; border-radius: 12px; font-weight: 700;">Harness ▸ This article</span><span style="color: #b8cbdc;">&nbsp;→&nbsp;</span><a href="https://mp.weixin.qq.com/s/h60ymjjj3eF9hQyhl0jVcQ" style="color:var(--article-accent, #3f8fd4); text-decoration: none;">Loop<span style="font-size: 12px;"> (overview)</span></a><br/>
+<span style="font-size: 12px; color:var(--article-muted, #9db2c4);">For the memory side of Context, see  <a href="https://mp.weixin.qq.com/s/YvGGPBZX0V7R6-09unnrcQ" style="color: #5fa5d8; text-decoration: none;">Agent Memory That Dreams</a></span>
+</section>
+
+<p style="margin: 8px 0; text-align: center; color:var(--article-muted, #7b8fa3); font-size: 13px;">(A map of the harness. Each corner answers one trust question; the rented engine sits in the middle. The protective layer has just had a major overhaul.)</p>
+
+<figure><img src="../../assets/blog/河蟹AI-Harness马具全景图.png" alt="Overview of the HexClaw runtime harness" width="2120" height="2500" loading="lazy" decoding="async"><figcaption>HexClaw Harness overview</figcaption></figure>
+
+<h2 style="font-size: 19px; font-weight: 700; color:var(--article-ink, #12324c); margin: 32px 0 12px; padding-left: 10px; border-left: 4px solid #5fb3ea;">Question 1: What Can It Touch? Tools and Permission Gates</h2>
+
+<p style="margin: 8px 0;">The first strap is the rein. HexClaw's engine uses a unified tool loop, following the mainstream Agent approach: every round presents the full tool list to the model. If the model returns tool calls, they run and the loop continues; otherwise, the response is the answer. The ordinary path does not branch on whether this round should expose tools. <strong style="color:var(--article-accent, #3f8fd4);">The boundary is enforced by gates, not by hiding tools</strong>. Some protocol-specific cases do narrow the tool surface, forcing one tool or applying a source-dependent minimum tool set. Those are routing and error-prevention mechanisms, not an attempt to make invisibility a security boundary.</p>
+
+<p style="margin: 8px 0;">There are two gates. The first is permission approval, enabled by default. Each tool has one of three risk levels: <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">safe / sensitive / dangerous</code> . Consequential actions—running shell commands, writing files, sending messages, or changing capabilities—become an approval request in the frontend, with the tool name, arguments, and reason, and wait for your consent. An approval can be remembered for the current session so the same tool need not keep interrupting you. It resembles a bank's second-person check: the action itself cannot judge intent, but <strong style="color:var(--article-accent, #3f8fd4);">having consequences is enough reason to pause</strong>. In an interactive session, code execution, file changes, and capability changes all ask first, without exceptions.</p>
+
+<p style="margin: 8px 0;">The second gate sits at the filesystem boundary and is more interesting. To import local files into the knowledge base in bulk, the Agent calls  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">knowledge_ingest_path</code>. Notice that it accepts only <strong style="color:var(--article-accent, #3f8fd4);">paths</strong>, not file contents. Code reads the files itself: at most 200 per call, valid UTF-8 text only, with paths passing safe resolution. Symlink escapes and  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">..</code>  traversal are rejected. Every directory entry is resolved again during enumeration to prevent symlink detours. The implication is worth considering: <strong style="color:var(--article-accent, #3f8fd4);">what the model says it read is not evidence; what the code actually reads is.</strong>Taking data acquisition out of the model's hands is a more fundamental gate than an approval popup.</p>
+
+<p style="margin: 8px 0;">The tool surface creates another, more recent problem: it is not fixed at release. MCP can connect third-party tools at any time, and Skills can be installed or created. HexClaw provides a direct route through its built-in <strong style="color:var(--article-accent, #3f8fd4);">Skill / MCP marketplace</strong>, which fetches a catalog from the official hub repository for search, browsing, and one-click installation. New parts can always be attached to the harness, and the supply channel remains open. That creates a self-referential requirement: <strong style="color:var(--article-accent, #3f8fd4);">changing the harness must itself pass through the harness's gates.</strong>HexClaw classifies create_skill, manage_skill, and manage_mcp_server as sensitive and requires approval. The code calls these actions capability injection / capability changes; the regression test's English name is even more vivid: <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">capability mutation</code>. The difficult case is unattended execution: nobody is there to click Allow. How is the gate maintained? HexClaw <strong style="color:var(--article-accent, #3f8fd4);">does not hide these tools from the toolbox</strong>. That was the old approach: a hardcoded stripping list, now reduced to a compatibility no-op. A visible, configurable automatic-approval matrix replaces it. In the default profile, called function-first in the source, unattended scheduled jobs and webhooks automatically allow routine reading, browsing, execution <strong style="color:var(--article-accent, #3f8fd4);">inside a sandbox</strong>, file editing, and external delivery. Running shell commands directly on the host remains outside that boundary and always goes to approval. Two categories are held back: <strong style="color:var(--article-accent, #3f8fd4);">capability changes</strong>—the three tools above—and <strong style="color:var(--article-accent, #3f8fd4);">scheduling new jobs for itself</strong>. The comment calls the latter a self-replication loop: jobs creating jobs. A workhorse cannot alter its own harness or hire another workhorse. The refusal now comes from the gate, not from hiding tools. This returns to the point at the beginning of this section: <strong style="color:var(--article-accent, #3f8fd4);">enforce boundaries with gates, not concealment</strong>。</p>
+
+<p style="margin: 8px 0;">Are these gates a rigid blanket rule, or can you adjust them? The <strong style="color:var(--article-accent, #3f8fd4);">Automation Permissions</strong>settings page answers that by exposing the matrix as a control panel. You can choose <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">Function First / Strict Approval / Full Capability</code> . The engine also recognizes a balanced state, but the desktop does not give it a separate card, avoiding too many profiles. Each profile explains which capabilities run automatically and which require approval; installing / modifying capabilities even gets its own row. Unsure about a newly connected Webhook? Start with Strict Approval, let every automatic job ask first, and observe before relaxing it. Finer than a global profile is <strong style="color:var(--article-accent, #3f8fd4);">per-job authorization</strong>. Instead of relaxing the global default for one job, authorize only the capabilities that job needs. Deleting the job revokes its authorization automatically. MCP connector tools without a built-in category use this route for unattended execution.<strong style="color:var(--article-accent, #3f8fd4);">Trusting an Agent with work therefore becomes a graduated control, rather than an all-or-nothing bet.</strong>One boundary with the next article: a Markdown Skill is different. It contains instructions for the model, not a tool, and belongs in the finale.</p>
+
+<!-- 此处对应已发布稿的自动化权限页截图，原始图片尚未归档。 -->
+
+
+<h2 style="font-size: 19px; font-weight: 700; color:var(--article-ink, #12324c); margin: 32px 0 12px; padding-left: 10px; border-left: 4px solid #5fb3ea;">Question 2: What Happens When It Fails? Controlled Failure</h2>
+
+<p style="margin: 8px 0;">Workhorses stumble; tools time out. A harness cannot guarantee no fall, but it can make a fall survivable. HexClaw wraps tool execution in a retry layer. The parameters are modest, and each has a reason:</p>
+
+<section style="margin: 18px 0; padding: 18px 20px; background: #272822; border-radius: 8px; overflow-x: auto; text-align: left; letter-spacing: 0; font-size: 13px; line-height: 1.8; font-family: 'SF Mono', SFMono-Regular, Menlo, Monaco, Consolas, 'Courier New', monospace; color: #F8F8F2; box-shadow: 0 1px 10px rgba(0,0,0,0.12);"><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">1</span>DefaultTimeout: <span style="color: #AE81FF;">30</span> * time.Second,</span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">2</span>TimeoutOverrides: map[<span style="color: #66D9EF;">string</span>]time.Duration{</span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">3</span>    <span style="color: #E6DB74;">"browser"</span>:   <span style="color: #AE81FF;">120</span> * time.Second,</span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">4</span>    <span style="color: #E6DB74;">"code_exec"</span>: <span style="color: #AE81FF;">60</span> * time.Second,</span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">5</span>},</span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">6</span>retry.Delay(time.Second),          <span style="color: #75715E; font-style: italic;">// 首次退避 1s</span></span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">7</span>retry.MaxDelay(<span style="color: #AE81FF;">8</span>*time.Second),    <span style="color: #75715E; font-style: italic;">// 封顶 8s</span></span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">8</span>retry.Multiplier(<span style="color: #AE81FF;">2.0</span>),             <span style="color: #75715E; font-style: italic;">// 指数翻倍</span></span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">9</span>retry.RetryIf(isTransientError),   <span style="color: #75715E; font-style: italic;">// 只重瞬时错</span></span></section>
+
+<p style="margin: 8px 0;">The last line is the key. The policy comment states it plainly: retry only clearly transient errors; treat unknown errors conservatively. A network hiccup merits another try. Invalid arguments remain invalid after a hundred attempts. <strong style="color:var(--article-accent, #3f8fd4);">Retries address bad luck, not bugs</strong>. Browsers get 120 seconds and code execution 60 seconds according to their actual runtime distributions, rather than one arbitrary global timeout.</p>
+
+<p style="margin: 8px 0;">A task that never ends needs more control than a single failure. The tool loop has a round budget: 25 by default. The comment explains that this allows normal tasks enough space, and reaching the limit is normal termination rather than an error. Budget mode adds an absolute safety cap of 50 rounds. These numbers appeared in the overview, but read differently here: <strong style="color:var(--article-accent, #3f8fd4);">a budget gives an unfinished task a clean stopping point</strong>. A runaway long task costs much more than a failed short task.</p>
+
+<h2 style="font-size: 19px; font-weight: 700; color:var(--article-ink, #12324c); margin: 32px 0 12px; padding-left: 10px; border-left: 4px solid #5fb3ea;">Question 3: Who Watches It? Judges That Do Not Trust the Executor</h2>
+
+<p style="margin: 8px 0;">This is the section I most want to examine, because it corresponds to the most counterintuitive piece of equipment: a <strong style="color:var(--article-accent, #3f8fd4);">supervisor outside the workhorse's control</strong>. Financial systems call this maker/checker: the person handling a transaction and the person checking it must be different. HexClaw's engine has an entire family of judges with one shared rule: <strong style="color:var(--article-accent, #3f8fd4);">never accept the executor's own report as proof</strong>。</p>
+
+<p style="margin: 8px 0;">The first judge provides an optional <em>stricter admission check</em>for unattended work. The matrix from Question 1 normally determines what unattended tasks may touch. Above it, the engine offers a pluggable, stricter judge: an independent risk reviewer. It receives a task description and a prompt asking for one word—low / medium / high. Its MaxTokens is only  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">16</code>; the comment says a one-word verdict should stay cheap. Its decision rule is strict: <strong style="color:var(--article-accent, #3f8fd4);">only low passes; medium, high, classification failure, or even an unconfigured judge all reject</strong>. Anything other than an explicit low is treated toward high. The source is clear that this does not replace the matrix by default; it is an extra tightening option for deployments needing a more conservative policy. The design itself is a textbook fail-closed gate: if the gate breaks, it locks rather than opens.</p>
+
+<p style="margin: 8px 0;">The second judge scores quality. An LLM-as-judge samples Agent tool-call performance, and poor performance becomes a Skill improvement draft. Its tradeoff is described directly in the source:</p>
+
+<blockquote style="border-left: 3px solid #3f8fd4; padding: 12px 18px; margin: 16px 0; background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); font-size: 14px; border-radius: 0 8px 8px 0; line-height: 1.8;">
+Scoring every tool call consumes LLM quota, so use sampling (default 0.1 = 10%)… On LLM failure, timeout, or parsing failure, return 10 points (fail-open), <strong style="color:var(--article-accent, #3f8fd4);">so judge instability does not generate false-positive draft noise</strong>。"<br/>
+<span style="color:var(--article-muted, #7b8fa3); font-size: 13px;">— from the header comment in skill_judge.go. The quotations in this article come from code comments, not conference stages.</span>
+</blockquote>
+
+<p style="margin: 8px 0;">Together, these judges reveal an easy-to-miss symmetry. A broken risk review returns high, failing closed; broken quality scoring returns full marks, failing open. <strong style="color:var(--article-accent, #3f8fd4);">Two gates in the same system deliberately fail in opposite directions</strong>. That is a consistent design: a gatekeeper must lock when broken, while an optional enhancement must get out of the way. Before adding a gate, decide which direction it should fall when it fails.</p>
+
+<p style="margin: 8px 0;">The third judge handles independently checkable work such as mathematics. After the solving Agent gives an answer, a verifier subrole recalculates it with code in a <strong style="color:var(--article-accent, #3f8fd4);">fresh context</strong> and compares the results. It has only one tool,  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">code_exec</code> , and cannot see the solving process, so it must calculate independently. The fourth judge is simpler and sharper: it checks whether claimed work actually occurred. A scheduled job says it saved material to the knowledge base? Check the tool-call record:</p>
+
+<section style="margin: 18px 0; padding: 18px 20px; background: #272822; border-radius: 8px; overflow-x: auto; text-align: left; letter-spacing: 0; font-size: 13px; line-height: 1.8; font-family: 'SF Mono', SFMono-Regular, Menlo, Monaco, Consolas, 'Courier New', monospace; color: #F8F8F2; box-shadow: 0 1px 10px rgba(0,0,0,0.12);"><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">1</span><span style="color: #75715E; font-style: italic;">// C1: a job whose stated purpose is to store knowledge must</span></span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">2</span><span style="color: #75715E; font-style: italic;">// actually invoke knowledge_ingest ... A "done" verdict with no</span></span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">3</span><span style="color: #75715E; font-style: italic;">// such tool call means the agent hallucinated the ingest.</span></span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">4</span><span style="color: #F92672;">if</span> jobRequiresIngest(job) &amp;&amp; !containsToolFold(res.ToolNames, knowledgeIngestTool) {</span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">5</span>    <span style="color: #F92672;">return</span> &amp;RunResult{Status: <span style="color: #E6DB74;">"failed"</span>,</span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">6</span>        Error: <span style="color: #E6DB74;">"agent reported success but never called knowledge_ingest — no document was stored"</span>}</span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">7</span>}</span></section>
+
+<p style="margin: 8px 0;">The job claims ingestion succeeded, but its tool-call list contains no  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">knowledge_ingest</code> call. The result is failure, with a blunt reason: success was reported without ever invoking the ingestion tool; nothing was stored. Those seven lines capture the entire family's worldview: <strong style="color:var(--article-accent, #3f8fd4);">a claim does not count; the invocation and its side effects do.</strong>Another judge maintains order: multi-Agent spawning has a dedicated fan-out guard. Once the total across the tree reaches its limit, new subtasks are rejected. That belongs to the Loop overview, so I will not repeat it here.</p>
+
+<h2 style="font-size: 19px; font-weight: 700; color:var(--article-ink, #12324c); margin: 32px 0 12px; padding-left: 10px; border-left: 4px solid #5fb3ea;">Question 4: Where Does It Work? The Recently Overhauled Sandbox</h2>
+
+<p style="margin: 8px 0;">HexClaw has complete answers to the first three questions. The fourth needs a more qualified discussion. Start with what exists:  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">code_exec</code>  uses an independent sandbox abstraction. Its configuration can be hot-reloaded: changed limits rebuild the sandbox instance without a restart. macOS applies a Seatbelt profile. The scheduled-job script sandbox was covered in <a href="https://mp.weixin.qq.com/s/EvQT0VqH9ep6LXo89ZM-fw" style="color:var(--article-accent, #3f8fd4); text-decoration: none; border-bottom: 1px dashed #3f8fd4;">the cyber workhorse article</a>: a Starlark interpreter, an 8 MiB cap per HTTP fetch, a 100-million-step instruction limit, and a 300-second timeout. Self-healing scripts are compiled into that cage.</p>
+
+<p style="margin: 8px 0;">This protective layer has just had a major overhaul. The old  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">code_exec</code>  was closer to a snippet executor: submit code, obtain a result. The overhaul adds four execution modes—<code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">snippet / file / module / project</code>—covering a snippet, a file in a repository, a module, and project commands in a workspace. Artifact files such as charts, CSVs, and logs can come back; long output has enforced bounds. Unauthorized host paths stay out of isolated runs: project mode exposes only explicitly authorized project roots, with secrets-deny rules taking precedence over that exposure. Entry-point inference also accommodates weaker tool-using models, guiding a model that can emit only mode=file toward the correct execution mode. Most tellingly, the sandbox now has <strong style="color:var(--article-accent, #3f8fd4);">its own dedicated CI</strong>, with a cross-operating-system matrix. The old problem of apparent cross-platform support is now checked continuously. All four pieces of the harness are in place. Protective equipment always has another layer to add—more complete dependency installation and deeper platform isolation remain on the roadmap—but <strong style="color:var(--article-accent, #3f8fd4);">the work we trust it with has expanded from running a snippet to operating on a project</strong>。</p>
+
+<p style="margin: 8px 0;">The most overlooked layer is not a resource limit. It is that the sandbox <strong style="color:var(--article-accent, #3f8fd4);">keeps your secrets outside</strong>. Even if  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">project</code>  mode receives your entire  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">$HOME</code>  as a workspace, default deny rules still take precedence over several path classes: external credential directories  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">~/.ssh</code>、<code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">~/.aws</code>, gcloud, and gnupg, plus HexClaw's own critical files: the master key  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">master.key</code> that can decrypt all credentials encrypted at rest, the configuration file  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">hexclaw.yaml</code> containing provider API keys, and the encrypted store  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">data.db</code>. Another rule is  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">DenyLoopback</code>. Code may fetch web pages and call APIs, but cannot reach local loopback. This prevents an unattended Agent from probing local administration ports to escalate its privileges, a textbook SSRF self-escalation surface. One platform boundary needs stating honestly: macOS enforces loopback blocking at the Seatbelt layer. Linux currently does not isolate the network namespace, so loopback remains reachable. That is a known capability gap requiring higher-level or deployment-side controls.<strong style="color:var(--article-accent, #3f8fd4);">The cage controls more than how long code runs: it also controls what it can read and where it can connect.</strong></p>
+
+<h2 style="font-size: 19px; font-weight: 700; color:var(--article-ink, #12324c); margin: 32px 0 12px; padding-left: 10px; border-left: 4px solid #5fb3ea;">The Leading Vendors Are Building the Same Layer Under Different Names</h2>
+
+<p style="margin: 8px 0;">Look at leading model vendors' Agent documentation and many of the longest chapters concern the harness. Harness is the now-common name for this layer; the working-animal metaphor follows its literal dictionary meaning. Individual product documents use different terms. OpenAI's Agents SDK makes input/output guardrails first-class features. Codex's local sandbox varies by platform: Seatbelt on macOS, bubblewrap on the main Linux/WSL2 path, with Landlock/seccomp terminology for the CLI sandbox helper, and a native Windows sandbox. Anthropic documents permissions and sandboxing for its Claude Agent system and has open-sourced its sandbox runtime. That announcement describes the same threat model as the secrets-deny rules above: without network isolation, a compromised Agent could send out your SSH key. Google's ADK inserts checks around tool calls through callbacks. The terminology differs, but the direction agrees: <strong style="color:var(--article-accent, #3f8fd4);">even the model vendors repeatedly say a model alone is not ready for the road</strong>. It is strong support for Agent = Model + Harness: the people supplying the first term work hard on the second. A paper this year makes the point explicit in its title,  <strong style="color:var(--article-accent, #3f8fd4);">Harness as an Asset</strong>. Treating the harness as an asset is the academic formulation of rented model, owned harness.</p>
+
+<p style="margin: 8px 0;">A terminology distinction helps here. Two groups are pulling Harness Engineering in different directions. OpenAI's February article about Codex and Martin Fowler's article of the same name use it for a <strong style="color:var(--article-accent, #3f8fd4);">software-development paradigm</strong>. Engineers write constraints—AGENTS.md, lint rules, or self-running loops such as Ralph—instead of writing the code directly, and the Agent writes the codebase. That harness faces the development bench. This article concerns the <strong style="color:var(--article-accent, #3f8fd4);">runtime</strong> layer around the model that lets an Agent inside your product act without causing trouble. Both meanings are real and growing; they should not be conflated. This series covers the latter. The former is closer to <a href="https://mp.weixin.qq.com/s/1rza-Ye3NF89KNAJp_PttA" style="color:var(--article-accent, #3f8fd4); text-decoration: none; border-bottom: 1px dashed #3f8fd4;">our Claude Code SOP article</a>  and could merit a separate discussion.</p>
+
+<p style="margin: 8px 0;">Back to the series: the previous article explained how retrieval makes what the Agent <strong style="color:var(--article-accent, #3f8fd4);">sees each round trustworthy</strong>. This article explains how what it <strong style="color:var(--article-accent, #3f8fd4);">does afterward stays controlled</strong>. Together, trustworthy evidence and controlled action give trusting it with work an engineering meaning.</p>
+
+<p style="margin: 8px 0;">But the harness is not the whole story. Everything here has been a <strong style="color:var(--article-accent, #3f8fd4);">hard gate</strong>: approval, timeouts, verdicts, and cages enforced by code. Each round's system prompt also contains thousands of words of softer constraints: its personality, discipline, and when to ask instead of acting. Hard gates contain failure; soft constraints define expectations. The industry calls that soft, foundational layer Prompt, the first of the four paradigms. The finale explains why it did not die, but settled into a protocol.</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<p style="margin: 16px 0 8px; font-size: 14px; color:var(--article-secondary, #5f7b9c);"><strong>The Four-Paradigm Series</strong></p>
+<p style="margin: 4px 0; font-size: 14px; line-height: 2.1;">
+▸ <span style="display: inline-block; font-size: 12px; padding: 0 8px; background:var(--article-panel, #edf7ff); color:var(--article-accent, #3f8fd4); border-radius: 10px; font-weight: 700;">Loop · Overview</span>&nbsp;<a href="https://mp.weixin.qq.com/s/h60ymjjj3eF9hQyhl0jVcQ" style="color:var(--article-accent, #3f8fd4); text-decoration: none;">Tracing the Four Paradigms from Prompt to Loop Through an Open-Source Agent</a><br/>
+▸ <span style="display: inline-block; font-size: 12px; padding: 0 8px; background:var(--article-panel, #edf7ff); color:var(--article-accent, #3f8fd4); border-radius: 10px; font-weight: 700;">Context · Documents</span>&nbsp;<a href="https://mp.weixin.qq.com/s/H6BoZUcQfBBqh-ScXQyTWw" style="color:var(--article-accent, #3f8fd4); text-decoration: none;">The Hard Part of RAG Is Keeping Answer-Shaped Noise Out of the Loop</a><br/>
+▸ <span style="display: inline-block; font-size: 12px; padding: 0 8px; background:var(--article-panel, #edf7ff); color:var(--article-accent, #3f8fd4); border-radius: 10px; font-weight: 700;">Context · Memory</span>&nbsp;<a href="https://mp.weixin.qq.com/s/YvGGPBZX0V7R6-09unnrcQ" style="color:var(--article-accent, #3f8fd4); text-decoration: none;">Agent Memory That Dreams: HexClaw Dreams on Your Machine</a><br/>
+▸ <span style="display: inline-block; font-size: 12px; padding: 0 8px; background:var(--article-panel, #f0f4f8); color:var(--article-muted, #7b8fa3); border-radius: 10px; font-weight: 700;">Prompt · Finale</span>&nbsp;<span style="color:var(--article-muted, #9db2c4);">Prompt Engineering Became the Agent's Foundational Protocol (finale, coming soon)</span>
+</p>
+
+<p style="margin: 14px 0 8px; font-size: 14px; color:var(--article-secondary, #5f7b9c);"><strong>More Articles</strong></p>
+<p style="margin: 4px 0; font-size: 14px; line-height: 2;">
+▸ <a href="https://mp.weixin.qq.com/s/EvQT0VqH9ep6LXo89ZM-fw" style="color:var(--article-accent, #3f8fd4); text-decoration: none;">The HexClaw Cyber Workhorse: Compiling a Sentence into a Self-Healing Sandbox Script</a><br/>
+▸ <a href="https://mp.weixin.qq.com/s/1rza-Ye3NF89KNAJp_PttA" style="color:var(--article-accent, #3f8fd4); text-decoration: none;">The Claude Code SOP Behind HexClaw: Design, Testing, and Multi-Agent Collaboration</a>
+</p>
+
+<p style="margin: 16px 0 8px; font-size: 14px; color:var(--article-secondary, #5f7b9c);"><strong>References</strong></p>
+<p style="margin: 4px 0; font-size: 13px; color:var(--article-muted, #7b8fa3); line-height: 2;">
+· OpenAI, Agents SDK — official Guardrails documentation; Codex sandbox documentation (macOS Seatbelt / Linux and WSL2 bubblewrap, Landlock + seccomp for the CLI helper / native Windows sandbox, with restricted-token unelevated fallback)<br/>
+· Anthropic, Claude Agent permissions and sandboxing documentation; open-source sandbox-runtime<br/>
+· Google, Agent Development Kit (ADK) — callbacks<br/>
+· LangChain, Terminal-Bench 2.0 comparison with a fixed model (GPT-5.2-Codex) and a changed Harness (52.8% → 66.5%; see the series overview)<br/>
+· Harness as an Asset: Enforcing Determinism via the Convergent AI Agent Framework (CAAF), arXiv:2604.17025 — an academic treatment of the harness as an asset<br/>
+· Terminology: OpenAI, Harness engineering: leveraging Codex in an agent-first world (2026-02), and Martin Fowler's article of the same name refer to a development paradigm in which humans write constraints and Agents write code, distinct from the runtime harness discussed here<br/>
+· Maker/checker (the four-eyes principle), the banking industry's standard two-person review control<br/>
+· All HexClaw mechanisms and constants cited here were checked against the repositories' main branches on 2026-07-04. the code_exec sandbox upgrade, the four execution modes snippet / file / module / project, and cross-platform CI had all been merged into main
+</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0 16px;"/>
+
+<p class="blog-brand-footer" data-blog-brand-footer="en" data-blog-brand-overrides="{}" style="text-align: center; color: var(--article-muted, #7b8fa3); font-size: 13px; margin: 16px 0 0; line-height: 2;">
+<strong style="color: var(--article-ink, #12324c); font-size: 14px;">HexClaw</strong><br/>
+Deploy locally or in the cloud · Control your data · Free and open-source software<br/>
+<a href="https://hexclaw.net" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">Website: <bdi dir="ltr">hexclaw.net</bdi></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://github.com/hexagon-codes" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">GitHub: <bdi dir="ltr">hexagon-codes</bdi></a><br/>
+<a href="https://weibo.com/u/4097207240" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">Weibo: <bdi dir="ltr">@HexClaw</bdi></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">X: <bdi dir="ltr">@hexclawapp</bdi></a><br/>
+<a href="mailto:ai@hexclaw.net" style="color: var(--article-muted, #999); text-decoration: none;">Email: <bdi dir="ltr">ai@hexclaw.net</bdi></a>
+</p>
+    </article>
+
+
+
+    <nav class="blog-series-nav" aria-label="Previous and next articles">
+      <a href="/en/blog/prompt-engineering" class="blog-nav-card prev">
+  <span class="blog-nav-label">← Previous article</span>
+  <span class="blog-nav-title">Prompt Engineering in HexClaw: the Agent's Foundational Protocol</span>
+</a>
+      <a href="/en/blog/context-engineering" class="blog-nav-card next">
+  <span class="blog-nav-label">Next article →</span>
+  <span class="blog-nav-title">Context Engineering in HexClaw: Keeping Answer-Shaped Noise Out of the Loop</span>
+</a>
+    </nav>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-main">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-col-title">Product</div>
+        <a href="/en/#download">Download</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="/en/changelog">Changelog</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Developers</div>
+        <a href="/en/docs/">Documentation</a>
+        <a href="/en/blog/">Technical Blog</a>
+        <a href="/en/docs/getting-started">Getting Started</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">Apache-2.0</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Community</div>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/issues" target="_blank" rel="noopener noreferrer">Issues</a>
+        <a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer">Twitter / X</a>
+        <a href="mailto:ai@hexclaw.net">Contact Us</a>
+        <a href="mailto:support@hexclaw.net">Feedback</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">About</div>
+        <a href="/en/about">About Us</a>
+        <a href="/en/privacy">Privacy Policy</a>
+        <a href="/en/terms">Terms of Service</a>
+        <a href="/en/third-party-ai-services">Third-Party AI Services</a>
+      </div>
+    </div>
+    <div class="footer-wechat">
+      <img width="430" height="430" loading="lazy" decoding="async" src="../../assets/brand/wechat-qr.jpg" alt="HexClaw WeChat QR Code">
+      <span class="footer-wechat-label">WeChat Official Account</span>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">&copy; 2025&ndash;2026 hexagon-codes</span>
+  </div>
+</footer>
+<script src="../../assets/js/theme.js?v=2e4a1828feef"></script>
+<script src="../../assets/js/docs-nav.js?v=5a103861aec2"></script>
+<button type="button" class="back-to-top" id="backToTop" aria-label="Back to top" title="Back to top">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg>
+  <span>Top</span>
+</button>
+
+<script src="../../assets/js/blog.js?v=c72e1db5a6ec"></script>
+</body>
+</html>

@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/favicon-32.png">
+<title>Agent Memory That Dreams: Claude and ChatGPT Dream in the Cloud; HexClaw Dreams on Your Machine | HexClaw Technical Blog</title>
+<meta name="description" content="A local implementation you can inspect with git diff: three tiers, three-dimensional recall, and two-phase dreaming. Follow an “I live here” memory to see how a local agent organizes, distills, and forgets information during its sleep cycles.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:site_name" content="HexClaw">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Agent Memory That Dreams: Claude and ChatGPT Dream in the Cloud; HexClaw Dreams on Your Machine | HexClaw Technical Blog">
+<meta property="og:description" content="A local implementation you can inspect with git diff: three tiers, three-dimensional recall, and two-phase dreaming. Follow an “I live here” memory to see how a local agent organizes, distills, and forgets information during its sleep cycles.">
+<meta property="og:url" content="https://hexclaw.net/en/blog/memory-dreaming">
+<meta property="og:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta property="og:image:alt" content="HexClaw logo">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Agent Memory That Dreams: Claude and ChatGPT Dream in the Cloud; HexClaw Dreams on Your Machine | HexClaw Technical Blog">
+<meta name="twitter:description" content="A local implementation you can inspect with git diff: three tiers, three-dimensional recall, and two-phase dreaming. Follow an “I live here” memory to see how a local agent organizes, distills, and forgets information during its sleep cycles.">
+<meta name="twitter:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta name="twitter:image:alt" content="HexClaw logo">
+<link rel="canonical" href="https://hexclaw.net/en/blog/memory-dreaming">
+<link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/memory-dreaming">
+<link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/memory-dreaming">
+<link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/memory-dreaming">
+<link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/memory-dreaming">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Agent Memory That Dreams: Claude and ChatGPT Dream in the Cloud; HexClaw Dreams on Your Machine",
+  "description": "A local implementation you can inspect with git diff: three tiers, three-dimensional recall, and two-phase dreaming. Follow an “I live here” memory to see how a local agent organizes, distills, and forgets information during its sleep cycles.",
+  "url": "https://hexclaw.net/en/blog/memory-dreaming",
+  "inLanguage": "en",
+  "datePublished": "2026-06-27",
+  "image": "https://hexclaw.net/assets/brand/hexclaw-logo.png",
+  "publisher": {
+    "@type": "Organization",
+    "name": "hexagon-codes",
+    "url": "https://hexclaw.net/",
+    "@id": "https://hexclaw.net/#organization"
+  },
+  "@id": "https://hexclaw.net/en/blog/memory-dreaming#article"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "HexClaw",
+      "item": "https://hexclaw.net/en/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Technical Blog",
+      "item": "https://hexclaw.net/en/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Agent Memory That Dreams: Claude and ChatGPT Dream in the Cloud; HexClaw Dreams on Your Machine",
+      "item": "https://hexclaw.net/en/blog/memory-dreaming"
+    }
+  ],
+  "@id": "https://hexclaw.net/en/blog/memory-dreaming#breadcrumb"
+}
+</script>
+<link rel="stylesheet" href="../../assets/css/docs-eb2895dd79c5.css">
+<link rel="stylesheet" href="../../assets/css/blog-a8e5008ac3d1.css">
+</head>
+<body class="blog-page blog-article-page">
+<a href="#main" class="skip-link">Skip to main content</a>
+<nav class="tn topnav" id="nav">
+  <a href="/en/" class="tn-b topnav-brand"><img width="72" height="72" src="../../assets/brand/hexclaw-icon-72.png" class="tn-l topnav-logo" alt="HexClaw"><span class="tn-n topnav-name">HexClaw</span></a>
+  <button type="button" class="tn-burger topnav-burger" aria-label="Menu" aria-expanded="false" aria-controls="primary-navigation"><span></span><span></span><span></span></button><div class="tn-r topnav-links" id="primary-navigation"><a href="/en/">Home</a><a href="/en/#cases">Scenarios</a><a href="/en/#features">Features</a><a href="/en/#quickstart">Quickstart</a><a href="/en/#ecosystem">Ecosystem</a><a href="/en/blog/" class="is-active">Tech Blog</a><a href="/en/docs/">Docs Center</a><div class="lang-menu" data-lang-menu><button type="button" class="lang-trigger" aria-haspopup="menu" aria-expanded="false" aria-label="Switch language"><svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 0 20"></path><path d="M12 2a15.3 15.3 0 0 0 0 20"></path></svg><span class="lang-current">English</span><svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="lang-menu-list" role="menu"><a href="/zh/blog/memory-dreaming" role="menuitem">中文</a><a href="/en/blog/memory-dreaming" role="menuitem" class="is-active" aria-current="true">English</a><a href="/ug/blog/memory-dreaming" role="menuitem" lang="zh-CN" dir="ltr">维吾尔语</a></div></div><button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"><svg class="ti-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="ti-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="nav-cta">GitHub <span class="nav-star-badge" id="gh-stars">&#9733;</span></a></div>
+</nav>
+
+<main id="main" class="blog-main">
+  <div class="blog-article-container">
+    <nav class="blog-breadcrumb" aria-label="Breadcrumb">
+      <a href="/en/">Home</a>
+      <span class="blog-breadcrumb-sep">/</span>
+      <a href="/en/blog/">Technical Blog</a>
+      <span class="blog-breadcrumb-sep">/</span>
+      <span aria-current="page">Core Systems</span>
+    </nav>
+
+    <header class="blog-header">
+      <div class="blog-header-tags">
+        <span class="blog-badge-series">Memory System</span>
+      </div>
+      <h1 class="blog-article-title">Agent Memory That Dreams: Claude and ChatGPT Dream in the Cloud; HexClaw Dreams on Your Machine</h1>
+      <p class="blog-article-subtitle">A local implementation you can inspect with git diff: three tiers, three-dimensional recall, and two-phase dreaming. Follow an “I live here” memory to see how a local agent organizes, distills, and forgets information during its sleep cycles.</p>
+      <div class="article-provenance-banner">
+        <div class="provenance-left">
+          <span class="provenance-origin-badge">First published on WeChat</span>
+          <span class="provenance-text">Originally published in the official technical column of the WeChat account <strong>「hexclaw」</strong> (ID: hexclaw) · Published <strong>2026-06-27</strong> · 11 min read</span>
+        </div>
+        <a href="https://mp.weixin.qq.com/s/YvGGPBZX0V7R6-09unnrcQ" target="_blank" rel="noopener noreferrer" class="provenance-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          Original on WeChat ↗
+        </a>
+      </div>
+    </header>
+
+    <article class="blog-content">
+
+
+<p style="margin: 16px 0;">A few days ago, I was looking through HexClaw’s memory files and found this line:</p>
+
+<section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 12px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;"><span style="display: block; white-space: pre; min-height: 1.4em;">- 我在西湖区 &lt;!--m:subj=所在地;</span><span style="display: block; white-space: pre; min-height: 1.4em;">  vf=2026-06-20;conf=0.90;hc=2--&gt;</span></code></section>
+
+<p style="margin: 8px 0;">That HTML comment at the end of the line disappears when Markdown is rendered. Further down, I found that the “Xihu District” entry was <strong>still there</strong>, just marked with an expiry time: I had visited the previous week. The currently valid entry was a newer “I am in Yuhang District,” where I usually spend my time. HexClaw <strong>had not deleted Xihu</strong>; it had simply stamped it with a time.</p>
+
+<p style="margin: 8px 0;">Claude and ChatGPT have recently added “dreaming” to memory: background processes that organize what you have said into a profile. Anthropic’s May release calls it Claude Dreaming; OpenAI’s June release calls it Dreaming V3. Both borrow the analogy of the brain consolidating memories during sleep. I wanted something similar for HexClaw, but deliberately made two choices differently:</p>
+
+<ul style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 6px 0;">Every step of memory organization lands in plain text you can <code>cat</code> and <code>git diff</code>, rather than somewhere in a cloud you cannot see.</li>
+<li style="margin: 6px 0;">The part of “dreaming” that can actually hallucinate—asking an LLM to rewrite your memories—sits inside a bounded enclosure that is <strong>locked by default</strong>. You control the switch.</li>
+</ul>
+
+<p style="margin: 8px 0;">Those are the conditions that let me use it comfortably, rather than feature slogans. Let’s follow the opening “location” memory through its life in HexClaw.</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">First, the building: three tiers and six categories</h2>
+
+<p style="margin: 8px 0;">Before following that memory, here is the whole building. HexClaw memory is <strong>not one large pool</strong>, but three floors. The idea borrows from operating-system memory management: <strong>Letta / MemGPT call these core / recall / archival</strong>, applying virtual-memory management ideas to agent memory:</p>
+
+<ul style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 6px 0;"><strong>Resident tier, the top floor:</strong> who you are, your hard rules, and long-term preferences. It is <strong>frozen into a snapshot</strong> at the beginning of a session and injected every turn.</li>
+<li style="margin: 6px 0;"><strong>Retrieval tier, the middle floor:</strong> discrete facts such as “in Yuhang District,” “fixing a RAG bug last week,” or “uses Go.” These are not carried every turn. They are <strong>scored in three dimensions against the current question, and the most relevant entries are recalled</strong>.</li>
+<li style="margin: 6px 0;"><strong>Raw tier, the basement:</strong> the complete text of all conversations. Normally left alone, it can be retrieved through <strong>full-text search</strong> when needed.</li>
+</ul>
+
+<p style="margin: 8px 0;">A memory’s <strong>type</strong> selects its tier automatically; you do not fill it in manually. Rules, identity, instructions, and preferences are resident; ordinary facts and context are retrievable. Every entry also belongs to a <code>(user, role)</code> pair. If several people share an agent through Feishu, <strong>their memories stay separate</strong>.</p>
+
+<p style="margin: 8px 0;">Every change in this building—something you mention, something the AI decides to remember, a midnight dreaming pass, or a manual file edit—<strong>goes through the same single writer</strong>. Writes are queued and atomic, without overwriting one another. Even manually edited entries are compared before writing instead of being blindly replaced. We will visit each floor below; this diagram provides the overview:</p>
+
+<figure style="margin: 18px 0; text-align: center;">
+<img src="../../assets/blog/河蟹AI-记忆系统流程图.png" alt="HexClaw memory system: write path, read path, and background dreaming loop" width="1520" height="2290" loading="lazy" decoding="async">
+<figcaption style="color:var(--article-secondary, #5f7b9c); font-size: 13px; margin-top: 8px; line-height: 1.6;">The life of a memory: ① write (deduplicate → supersede while retaining history); ② read (assemble and inject three tiers); ③ dream (mechanical light phase + LLM deep phase, then write back).</figcaption>
+</figure>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">Storage: a human-readable line with a hidden annotation</h2>
+
+<p style="margin: 8px 0;">Say “I am in Yuhang District,” and HexClaw remembers it. There are two common storage approaches: ChatGPT keeps memories in the cloud, exposing a list in settings; Claude Code stores local files. HexClaw follows the latter, adding one thing: <strong>a hidden annotation attached to each memory</strong> in <code>structured_entry.go</code>.</p>
+
+<p style="margin: 8px 0;">That is the end-of-line comment from the opening. <code>subj</code> is the fact’s subject, here its location; <code>vf</code> is the valid-from time; <code>conf</code> is confidence; <code>hc</code> counts recalls. <strong>No field depends on a database.</strong> They all live in comments at the ends of Markdown lines. It remains plain text you can <code>cat</code>, edit, and <code>git diff</code>, while gaining enough structure to sort, compare, and expire entries. Older entries without annotations still work: parsing simply gives their fields zero values.</p>
+
+<p style="margin: 8px 0;">Why not put the metadata in a database or vector store? <strong>Then you could no longer inspect it with cat, compare it with git diff, or edit it by hand.</strong> HexClaw accepts the structural work of “plain text + inline comments + serialized single-writer persistence” to preserve visibility, editing, and rollback. The tradeoff is deliberate: <strong>sacrifice a little write throughput for end-to-end transparency</strong>. For memory that runs on your machine and edits itself overnight, I consider that worthwhile.</p>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">Changing your mind: expire the old entry instead of deleting it</h2>
+
+<p style="margin: 8px 0;">How did this design emerge? Initially, memory was an <strong>append-only ledger</strong>: keep adding lines and never look back. Over time, two problems appeared: <strong>contradictions</strong>—which of two values for the same thing should it believe?—and <strong>accumulating clutter</strong>. History-preserving supersession and overnight dreaming grew out of those problems.</p>
+
+<p style="margin: 8px 0;">Suppose you usually stay in Yuhang District, then visit Xihu District and mention it. Many memory systems do something I find hard to trust: <strong>rewrite the Yuhang entry directly as Xihu</strong>. ChatGPT’s Dreaming belongs to that category: background rewriting removes the old value, making it difficult to review what changed.</p>
+
+<p style="margin: 8px 0;">HexClaw does not overwrite it. It first checks for duplication in <code>upsert.go</code>: a character-bigram similarity above <strong>0.65</strong> makes a new statement a rewrite of an existing fact. But under the subject “location,” Yuhang ≠ Xihu is a <strong>contradiction</strong>, so it uses supersede—temporal replacement—instead of overwriting. <strong>Each fact has a validity window. A contradiction supersedes rather than erases it; Zep / Graphiti call this bi-temporal handling</strong>:</p>
+
+<section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 12px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;"><span style="display: block; white-space: pre; min-height: 1.4em;">// 召回默认只取"当前有效"的条目</span><span style="display: block; white-space: pre; min-height: 1.4em;">func IsCurrentlyValid(e, now) bool {</span><span style="display: block; white-space: pre; min-height: 1.4em;">  if e.ValidTo != nil &amp;&amp;</span><span style="display: block; white-space: pre; min-height: 1.4em;">     !now.Before(*e.ValidTo) {</span><span style="display: block; white-space: pre; min-height: 1.4em;">    return false  // 已被取代,失效</span><span style="display: block; white-space: pre; min-height: 1.4em;">  }</span><span style="display: block; white-space: pre; min-height: 1.4em;">  return true</span><span style="display: block; white-space: pre; min-height: 1.4em;">}</span></code></section>
+
+<p style="margin: 8px 0;">The Yuhang entry is retained, with a <code>vt</code> expiry time added to its hidden annotation. A new Xihu entry includes <code>sup</code>, pointing back to the old one. Recall defaults to currently valid entries: while you are in Xihu, it answers Xihu; when you return to Yuhang, another supersession switches your location back. The complete round trip—which days you were in Yuhang and when you visited Xihu—stays in the file, visible through <code>git log</code>.</p>
+
+<blockquote style="border-left: 3px solid #3f8fd4; padding: 14px 18px; margin: 20px 0; background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); font-size: 14px; border-radius: 0 8px 8px 0; line-height: 1.85;"><strong>Overwriting erases history; superseding timestamps it. With the former, you have to trust it. With the latter, you can inspect it.</strong></blockquote>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">Recall: frozen resident memory, three-dimensional scoring, and active recall</h2>
+
+<p style="margin: 8px 0;">When memory is needed, each floor contributes differently.</p>
+
+<p style="margin: 8px 0;"><strong>The top floor, resident memory, is included every turn.</strong> At the start of a session, the engine <strong>freezes it into a snapshot</strong>, selecting entries within a token budget: pinned entries first, then importance, then recency (<code>resident.go</code>). Your identity and hard rules do not depend on retrieval luck.</p>
+
+<p style="margin: 8px 0;"><strong>The middle floor, retrieval memory, is selected on demand.</strong> Once memories exceed the available space, something has to choose. The simplest approach uses <strong>vector similarity</strong>: recall whatever most resembles the current question. I soon hit its limitation: <strong>pure similarity buries important older facts</strong>. Suppose two months ago you warned the agent, “That legacy API sometimes acts up; make absolutely sure there is a timeout fallback.” A later question may be semantically unrelated, yet failing to recall that warning could send you into the same trap. HexClaw therefore scores in <strong>three dimensions</strong>: <strong>recency × importance × relevance, following Stanford’s Generative Agents paper</strong> (<code>recall/entry.go</code>):</p>
+
+<section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 12px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;"><span style="display: block; white-space: pre; min-height: 1.4em;">// 三维加权,确定性,零 LLM</span><span style="display: block; white-space: pre; min-height: 1.4em;">Score = 新近度 + 重要度 + 相关度</span><span style="display: block; white-space: pre; min-height: 1.4em;"></span><span style="display: block; white-space: pre; min-height: 1.4em;">// 重要度 = 类型先验 + 显著性 + 召回频次</span><span style="display: block; white-space: pre; min-height: 1.4em;">//   规则/身份 1.0 · 指令 0.8</span><span style="display: block; white-space: pre; min-height: 1.4em;">//   偏好 0.6 · 普通事实 0.4</span></code></section>
+
+<ul style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 6px 0;"><strong>Relevance:</strong> when an embedding model is configured, use a weighted blend of cosine 0.7 + keyword BM25 0.3. Otherwise, <strong>degrade gracefully to keywords alone</strong>.</li>
+<li style="margin: 6px 0;"><strong>Recency:</strong> exponential decay with a 30-day half-life.</li>
+<li style="margin: 6px 0;"><strong>Importance:</strong> calculated from “type prior + salience + recall count,” rather than asking an LLM to score it. Words such as “allergy,” “must,” and “absolutely” add salience, so an important new fact can qualify on its first recall. Every successful recall adds a little more, up to a cap.</li>
+</ul>
+
+<p style="margin: 8px 0;">“Make absolutely sure there is a timeout fallback” is an important old warning. “Absolutely” triggers salience, raising importance, so the three-dimensional weighted score can still surface it even when it is old or not today’s closest semantic match. There is another deliberate detail: <strong>the dimensions have different ranges</strong>. Importance can reach 2.0 as type prior, salience, and recalls accumulate, while recency and relevance each top out at 1.0. In other words, <strong>sufficient importance can naturally outweigh sufficient similarity</strong>. HexClaw calculates how much a fact matters as well as how similar it is.</p>
+
+<p style="margin: 8px 0;"><strong>The basement, raw history, is searched only when needed.</strong> These are two separate channels: high-trust <strong>curated facts</strong> are automatically injected every turn; the <strong>full text of raw conversations</strong> is accessed on demand. In addition to searches the model chooses itself, HexClaw actively searches old conversations <strong>before</strong> answering (<code>active_recall.go</code>, enabled by default), surfacing snippets it should remember. This is tightly bounded: at most 3 results; a 1.5-second timeout; entirely local full-text search with <strong>zero LLM calls</strong>; a circuit breaker after 3 consecutive failures with a 60-second cooldown; one-to-one chats only. Failure silently falls back and <strong>never holds up your answer</strong>.</p>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">Dreaming: organization is allowed; the hallucinating half stays locked</h2>
+
+<p style="margin: 8px 0;">The mechanisms above cover everyday use, but memories <strong>become increasingly fragmented</strong>. You mention the same project three times this week and five scattered preferences. Periodically, those pieces need organizing into a clear statement and a stable profile. That is “dreaming,” and the origin of this article’s title. HexClaw splits it into <strong>two phases</strong>, distinguished by what the LLM is allowed to touch.</p>
+
+<h3 style="font-size: 16px; font-weight: 700; color:var(--article-ink, #12324c); margin: 24px 0 10px;">Light phase: mechanical organization without an LLM</h3>
+
+<p style="margin: 8px 0;">The light phase (<code>reflect.go</code>) only moves and marks entries: merge near duplicates, invalidate contradictions, promote frequently recalled facts to resident memory, and archive stale ones. A deterministic <strong>lifecycle state machine</strong> (<code>lifecycle.go</code>) applies fixed thresholds with zero LLM calls:</p>
+
+<section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 12px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;"><span style="display: block; white-space: pre; min-height: 1.4em;">被取代/失效        → 归档(可恢复,非删)</span><span style="display: block; white-space: pre; min-height: 1.4em;">检索条召回 ≥ 3 次   → 晋升常驻</span><span style="display: block; white-space: pre; min-height: 1.4em;">又旧又不重要        → 归档</span><span style="display: block; white-space: pre; min-height: 1.4em;">常驻偏好长期零召回   → 降级回检索</span><span style="display: block; white-space: pre; min-height: 1.4em;">pinned / 硬规则      → 永远不动</span></code></section>
+
+<p style="margin: 8px 0;">The key is that <strong>this phase cannot rewrite the text</strong>. It only moves and marks entries, without touching their literal contents, so it <strong>cannot hallucinate</strong>. Frequently recalled facts rise into resident memory, while long-unused ones sink into the archive. None of this requires or uses a model call.</p>
+
+<h3 style="font-size: 16px; font-weight: 700; color:var(--article-ink, #12324c); margin: 24px 0 10px;">Deep phase: LLM synthesis inside a bounded enclosure</h3>
+
+<p style="margin: 8px 0;">The deep phase (<code>dreaming.go</code>) introduces an LLM to <strong>synthesize</strong> a cluster of related, redundant fragments into one coherent memory. This is the part that most resembles dreaming, and <strong>the only place new text may be generated</strong>. Because it can hallucinate, it has explicit boundaries:</p>
+
+<ul style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 6px 0;"><strong>Only retrieval memory can be touched, never resident memory.</strong> Rules, identity, pinned entries, frequently recalled entries (≥ 3 times), and very recent entries (within roughly 4.5 days) are never folded together. Important or still-evolving material stays intact.</li>
+<li style="margin: 6px 0;"><strong>Bounded work:</strong> at most 4 clusters per round and 8 entries per cluster enter the prompt. It cannot rewrite your entire memory store overnight.</li>
+<li style="margin: 6px 0;"><strong>Synthesis still never overwrites.</strong> New consolidated entries use history-preserving supersession: old entries are invalidated, never hard-deleted, and new ones point back to them. Changes made during dreaming remain visible through <code>git diff</code>.</li>
+<li style="margin: 6px 0;"><strong>The prompt explicitly forbids invention.</strong> Consolidation instructions require preserving all key information, dropping no facts, and inventing nothing that was not mentioned.</li>
+</ul>
+
+<h3 style="font-size: 16px; font-weight: 700; color:var(--article-ink, #12324c); margin: 24px 0 10px;">Replay, and turning fragments into a picture of you</h3>
+
+<p style="margin: 8px 0;">Two further steps sit alongside the deep phase. The first is a <strong>replay phase</strong> at the <code>engine level</code>, conceptually aligned with Claude Dreaming’s replay of historical sessions: infrequently revisit older conversations to recover facts that were not saved during the live exchange. The second is <strong>profile distillation</strong> (<code>profile.go</code>): turn scattered preferences and habits—appearing late at night, often saying you are tired, always talking about Go—into a stable <strong>user profile</strong>, pinned in resident memory. An example is “a tired engineer who often stays up until 5 a.m.” That is what “organizing a profile” means here. The light phase runs more often; deep synthesis and replay run less frequently.</p>
+
+<h3 style="font-size: 16px; font-weight: 700; color:var(--article-ink, #12324c); margin: 24px 0 10px;">What dreaming actually does for an agent</h3>
+
+<p style="margin: 8px 0;">After all those mechanisms, what practical difference separates an agent that dreams from one that does not?</p>
+
+<ul style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 6px 0;"><strong>Memory does not become a junk drawer.</strong> Fragments accumulate with use; without maintenance, noise increases and recall gets less accurate. Regular deduplication, archiving, and merging keep the resident budget and retrieval pool concise. OpenAI also uses “junk drawer” to describe memory without dreaming.</li>
+<li style="margin: 6px 0;"><strong>A picture of you emerges from fragments.</strong> Today you mention preferring dark mode; tomorrow you complain that a framework is verbose. Individually, those are fragments. Dreaming distills them into a stable profile, so the next conversation feels more informed rather than starting from scratch.</li>
+<li style="margin: 6px 0;"><strong>Answers avoid expired information.</strong> When you move cities, change your stack, or give something up, contradictory old facts are invalidated. The agent recognizes the currently valid entry.</li>
+<li style="margin: 6px 0;"><strong>Lessons survive across sessions.</strong> Replay revisits old conversations and extracts patterns such as “where do I repeatedly get stuck on this kind of task?” Harvey reported approximately a <strong>6×</strong> increase in completion of repeatedly failing legal-drafting tasks after enabling Claude Dreaming, rather than making the agent repeat the same mistake each time.</li>
+<li style="margin: 6px 0;"><strong>Missed facts can be recovered.</strong> Memory may have been disabled during a live chat, a weaker model may not have saved something, or you may have imported old sessions. Replay can recover those facts afterwards.</li>
+</ul>
+
+<blockquote style="border-left: 3px solid #3f8fd4; padding: 14px 18px; margin: 20px 0; background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); font-size: 14px; border-radius: 0 8px 8px 0; line-height: 1.85;">In one sentence, <strong>dreaming is the maintenance process for an agent’s long-term memory</strong>. Without it, memory only grows, contradictions accumulate, and profiles become scattered. With it, memory can become more concise, profiles more accurate, and lessons transferable across sessions—the basis for an agent that understands you better over time.</blockquote>
+
+<p style="margin: 8px 0;">When does it run, and must you manage it? <strong>It is enabled by default</strong>, running infrequently in the background without repeatedly disturbing your machine. The hallucination-capable phase, LLM synthesis, has an extra guard: <strong>you must configure a model yourself before it runs</strong>. Without one, only mechanical, non-generative organization executes; an LLM never touches your memories. A desktop-specific detail also matters: <strong>shutdown does not lose the schedule. If enough time has elapsed at the next startup, it catches up on the missed sleep</strong>, then resumes its infrequent schedule. You can disable it whenever you want. Letting a model change memories remains contingent on your actively configuring that model.</p>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">You remain in control, with safety boundaries</h2>
+
+<p style="margin: 8px 0;"><strong>Manage it conversationally</strong> through <code>manage_memory.go</code>: “Remember that I like dark themes,” “Forget that last entry,” or “Always reply in Chinese” lets the model add, update, delete, or pin memories. It can also decide during a chat what deserves remembering. Two boundaries are fixed: <strong>credentials never enter memory</strong>—suspected passwords or keys are rejected and directed to the encrypted Connection Center—and every write uses <strong>the same single writer, deduplication, and history-preserving rules</strong>. Neither proactive AI writes, manual edits, nor overnight dreaming bypass those rules.</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<p style="margin: 8px 0;">That completes the location memory’s life: stored as an annotated Markdown line; <strong>invalidated</strong> rather than erased when circumstances change; recalled with <strong>three-dimensional scoring</strong>; and organized into a profile by <strong>two-phase dreaming</strong> at night. Throughout, you can <code>cat</code> it, <code>git diff</code> it, and change it with one sentence.</p>
+
+<p style="margin: 8px 0;">A qualification is necessary: the title’s claim that “their dreams are in the cloud” is not entirely accurate. Claude Code’s Auto Dream also organizes <strong>local</strong> files. HexClaw’s distinction is the combination of three things: the dreaming <strong>logic is open source</strong> and inspectable; compute can run <strong>entirely locally</strong> through Ollama, so even consolidation need not send memories elsewhere; and everything stays in plain text with <strong>git rollback</strong>. None is unique on its own; the combination is the point. I have not published any HexClaw benchmark here. The ChatGPT 82.8% and Harvey 6× figures above come from their public reports. For HexClaw, I am showing mechanisms and constants; without comparative evaluation, I will not invent measurements.</p>
+
+<p style="margin: 24px 0 16px; color:var(--article-secondary, #5f7b9c); font-size: 14.5px; line-height: 2; text-align: center; font-style: italic; padding: 8px 16px;">While you sleep, it turns the day’s scattered remarks into a profile that understands you better. This particular dream stays on your machine, on pages you can inspect line by line.</p>
+
+<p style="margin: 8px 0;">This article covers only <strong>memory</strong>, the half of a “second brain” that learns and organizes on its own. The other half contains material you deliberately supply—documents, references, and source code: the <strong>knowledge base</strong>. They share the same local retrieval foundation, but form two distinct kinds of remembering. Memory dreams; the knowledge base does not. That is the subject of the next article.</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h3 style="font-size: 15px; font-weight: 600; color:var(--article-accent, #3f8fd4); margin: 24px 0 8px;">Earlier articles · HexClaw series</h3>
+
+<ul style="padding-left: 20px; margin: 8px 0; font-size: 14px; color:var(--article-ink, #12324c); line-height: 1.9;">
+<li style="margin: 6px 0;"><a href="https://mp.weixin.qq.com/s/EvQT0VqH9ep6LXo89ZM-fw">Previous: Raising a “Cyber Workhorse”</a>—compile a sentence into a self-healing sandbox script that runs scheduled work for you, 24/7.</li>
+<li style="margin: 6px 0;"><a href="https://mp.weixin.qq.com/s/CuVTbUv2kJRePybo_MudYA">vs OpenClaw / Hermes</a>—three paths for local AI agents in 2026.</li>
+<li style="margin: 6px 0;"><a href="https://mp.weixin.qq.com/s/1rza-Ye3NF89KNAJp_PttA">Claude Code SOP</a>—design-driven development, a testing feedback loop, and multi-agent collaboration.</li>
+<li style="margin: 6px 0;"><a href="https://mp.weixin.qq.com/s/wIRiJsWLRPWBiTEQtlVQkg">Architecture Deep Dive</a>—one person, Claude, and five months to build six repositories from scratch in Go.</li>
+<li style="margin: 6px 0;"><a href="https://mp.weixin.qq.com/s/RX-2QOSV2cBEmddwAUj5cg">Connecting Local Reasoning Models</a>—the last mile for Qwen 3.5, Gemma 4, and DeepSeek-R1.</li>
+</ul>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h3 style="font-size: 15px; font-weight: 600; color:var(--article-accent, #3f8fd4); margin: 24px 0 8px;">References</h3>
+
+<ul style="padding-left: 20px; margin: 8px 0; font-size: 13px; color:var(--article-secondary, #5f7b9c); line-height: 1.7;">
+<li style="margin: 8px 0;">OpenAI · <a href="https://openai.com/index/chatgpt-memory-dreaming/">Dreaming: Better memory for a more helpful ChatGPT</a><br/><span>openai.com/index/chatgpt-memory-dreaming/</span></li>
+<li style="margin: 8px 0;">TechTimes · <a href="https://www.techtimes.com/articles/317840/20260605/chatgpt-memory-dreaming-update-openai-rewrites-personalization-engine-limits-audit-trail.htm">ChatGPT Memory Dreaming Update: Rewrites Personalization Engine, Limits Audit Trail</a><br/><span>techtimes.com/articles/317840</span></li>
+<li style="margin: 8px 0;">Claude Platform Docs · <a href="https://platform.claude.com/docs/en/managed-agents/dreams">Dreams (Managed Agents)</a><br/><span>platform.claude.com/docs/en/managed-agents/dreams</span></li>
+<li style="margin: 8px 0;"><a href="https://decodethefuture.org/en/claude-code-auto-dream-explained/">Claude Code Auto Dream Explained: Memory Like REM Sleep</a><br/><span>decodethefuture.org/en/claude-code-auto-dream-explained</span></li>
+<li style="margin: 8px 0;"><a href="https://www.grandlinux.com/en/blogs/claude-dreaming.html">Claude Dreaming — When AI Starts to “Dream”, and Why It Might Hallucinate More</a><br/><span>grandlinux.com/en/blogs/claude-dreaming.html</span></li>
+<li style="margin: 8px 0;">Design reference · <a href="https://arxiv.org/abs/2304.03442">Generative Agents: Interactive Simulacra of Human Behavior (Park et al., 2023—the source of three-dimensional recency × importance × relevance scoring)</a><br/><span>arxiv.org/abs/2304.03442</span></li>
+</ul>
+
+<p style="margin: 8px 0; font-size: 12px; color:var(--article-muted, #a5bdd3);">Mechanisms and constants in this article follow the upstream source of the hexclaw memory subsystem, checked on 2026-06-27. Information about related systems and design references comes from the public sources listed above.</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<p class="blog-brand-footer" data-blog-brand-footer="en" data-blog-brand-overrides="{}" style="text-align: center; color: var(--article-muted, #7b8fa3); font-size: 13px; margin: 16px 0 0; line-height: 2;">
+<strong style="color: var(--article-ink, #12324c); font-size: 14px;">HexClaw</strong><br/>
+Deploy locally or in the cloud · Control your data · Free and open-source software<br/>
+<a href="https://hexclaw.net" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">Website: <bdi dir="ltr">hexclaw.net</bdi></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://github.com/hexagon-codes" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">GitHub: <bdi dir="ltr">hexagon-codes</bdi></a><br/>
+<a href="https://weibo.com/u/4097207240" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">Weibo: <bdi dir="ltr">@HexClaw</bdi></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">X: <bdi dir="ltr">@hexclawapp</bdi></a><br/>
+<a href="mailto:ai@hexclaw.net" style="color: var(--article-muted, #999); text-decoration: none;">Email: <bdi dir="ltr">ai@hexclaw.net</bdi></a>
+</p>
+    </article>
+
+
+
+    <nav class="blog-series-nav" aria-label="Previous and next articles">
+      <a href="/en/blog/loop-engineering" class="blog-nav-card prev">
+  <span class="blog-nav-label">&larr; Previous article</span>
+  <span class="blog-nav-title">Loop Engineering in HexClaw: Four Generations, from Prompt to Loop</span>
+</a>
+      <a href="/en/blog/cyber-niuma-cron-sandbox" class="blog-nav-card next">
+  <span class="blog-nav-label">Next article &rarr;</span>
+  <span class="blog-nav-title">Raising HexClaw’s “Cyber Workhorse”: Self-Healing Sandbox Scripts, 24/7</span>
+</a>
+    </nav>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-main">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-col-title">Product</div>
+        <a href="/en/#download">Download</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="/en/changelog">Changelog</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Developers</div>
+        <a href="/en/docs/">Documentation</a>
+        <a href="/en/blog/">Technical Blog</a>
+        <a href="/en/docs/getting-started">Getting Started</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">Apache-2.0</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Community</div>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/issues" target="_blank" rel="noopener noreferrer">Issues</a>
+        <a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer">Twitter / X</a>
+        <a href="mailto:ai@hexclaw.net">Contact Us</a>
+        <a href="mailto:support@hexclaw.net">Feedback</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">About</div>
+        <a href="/en/about">About Us</a>
+        <a href="/en/privacy">Privacy Policy</a>
+        <a href="/en/terms">Terms of Service</a>
+        <a href="/en/third-party-ai-services">Third-Party AI Services</a>
+      </div>
+    </div>
+    <div class="footer-wechat">
+      <img width="430" height="430" loading="lazy" decoding="async" src="../../assets/brand/wechat-qr.jpg" alt="HexClaw WeChat QR Code">
+      <span class="footer-wechat-label">WeChat Official Account</span>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">&copy; 2025&ndash;2026 hexagon-codes</span>
+  </div>
+</footer>
+<script src="../../assets/js/theme.js?v=2e4a1828feef"></script>
+<script src="../../assets/js/docs-nav.js?v=5a103861aec2"></script>
+<button type="button" class="back-to-top" id="backToTop" aria-label="Back to top" title="Back to top">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg>
+  <span>Top</span>
+</button>
+
+<script src="../../assets/js/blog.js?v=c72e1db5a6ec"></script>
+</body>
+</html>

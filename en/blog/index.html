@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/favicon-32.png">
+<title>Technical Blog &amp; Engineering Practice | HexClaw</title>
+<meta name="description" content="The HexClaw technical blog: agent control loops, context and prompt protocols, memory, self-healing sandboxes, local inference, and K12 tutoring in practice.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:site_name" content="HexClaw">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Technical Blog &amp; Engineering Practice | HexClaw">
+<meta property="og:description" content="The HexClaw technical blog: agent control loops, context and prompt protocols, memory, self-healing sandboxes, local inference, and K12 tutoring in practice.">
+<meta property="og:url" content="https://hexclaw.net/en/blog/">
+<meta property="og:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta property="og:image:alt" content="HexClaw logo">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Technical Blog &amp; Engineering Practice | HexClaw">
+<meta name="twitter:description" content="The HexClaw technical blog: agent control loops, context and prompt protocols, memory, self-healing sandboxes, local inference, and K12 tutoring in practice.">
+<meta name="twitter:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta name="twitter:image:alt" content="HexClaw logo">
+<link rel="canonical" href="https://hexclaw.net/en/blog/">
+<link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/">
+<link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/">
+<link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/">
+<link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "HexClaw Technical Blog",
+  "url": "https://hexclaw.net/en/blog/",
+  "inLanguage": "en",
+  "description": "The HexClaw technical blog: agent control loops, context and prompt protocols, memory, self-healing sandboxes, local inference, and K12 tutoring in practice.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "hexagon-codes",
+    "url": "https://hexclaw.net/",
+    "@id": "https://hexclaw.net/#organization"
+  },
+  "@id": "https://hexclaw.net/en/blog/#webpage"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "HexClaw", "item": "https://hexclaw.net/en/"},
+    {"@type": "ListItem", "position": 2, "name": "Technical Blog", "item": "https://hexclaw.net/en/blog/"}
+  ],
+  "@id": "https://hexclaw.net/en/blog/#breadcrumb"
+}
+</script>
+<link rel="stylesheet" href="../../assets/css/docs-eb2895dd79c5.css">
+<link rel="stylesheet" href="../../assets/css/blog-a8e5008ac3d1.css">
+</head>
+<body class="blog-page blog-hub-page">
+<a href="#main" class="skip-link">Skip to main content</a>
+<nav class="tn topnav" id="nav">
+  <a href="/en/" class="tn-b topnav-brand"><img width="72" height="72" src="../../assets/brand/hexclaw-icon-72.png" class="tn-l topnav-logo" alt="HexClaw"><span class="tn-n topnav-name">HexClaw</span></a>
+  <button type="button" class="tn-burger topnav-burger" aria-label="Menu" aria-expanded="false" aria-controls="primary-navigation"><span></span><span></span><span></span></button><div class="tn-r topnav-links" id="primary-navigation"><a href="/en/">Home</a><a href="/en/#cases">Scenarios</a><a href="/en/#features">Features</a><a href="/en/#quickstart">Quickstart</a><a href="/en/#ecosystem">Ecosystem</a><a href="/en/blog/" class="is-active">Tech Blog</a><a href="/en/docs/">Docs Center</a><div class="lang-menu" data-lang-menu><button type="button" class="lang-trigger" aria-haspopup="menu" aria-expanded="false" aria-label="Switch language"><svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 0 20"></path><path d="M12 2a15.3 15.3 0 0 0 0 20"></path></svg><span class="lang-current">English</span><svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="lang-menu-list" role="menu"><a href="/zh/blog/" role="menuitem">中文</a><a href="/en/blog/" role="menuitem" class="is-active" aria-current="true">English</a><a href="/ug/blog/" role="menuitem" lang="zh-CN" dir="ltr">维吾尔语</a></div></div><button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"><svg class="ti-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="ti-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="nav-cta">GitHub <span class="nav-star-badge" id="gh-stars">&#9733;</span></a></div>
+</nav>
+
+<main id="main" class="blog-main">
+  <header class="blog-hub-header">
+    <div class="blog-hub-badge">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+      HexClaw Official Technical Blog
+    </div>
+    <h1 class="blog-hub-title">Open Architecture · Four Paradigms · Engineering Practice</h1>
+    <p class="blog-hub-desc">Explore agents through their source code: four engineering paradigms, protocol layers, memory, self-healing sandboxes, and practical deployments. Chinese originals are published on the official WeChat account “hexclaw” (ID: hexclaw).</p>
+
+    <div class="blog-filter-bar" role="tablist" aria-label="Filter articles by category">
+      <button type="button" class="blog-filter-btn is-active" data-filter="all" role="tab" aria-selected="true">
+        All <span class="blog-filter-count">18</span>
+      </button>
+      <button type="button" class="blog-filter-btn" data-filter="paradigms" role="tab" aria-selected="false">
+        Four Agent Paradigms <span class="blog-filter-count">4</span>
+      </button>
+      <button type="button" class="blog-filter-btn" data-filter="deep-dive" role="tab" aria-selected="false">
+        Core Systems <span class="blog-filter-count">6</span>
+      </button>
+      <button type="button" class="blog-filter-btn" data-filter="architecture" role="tab" aria-selected="false">
+        Architecture &amp; Engineering <span class="blog-filter-count">4</span>
+      </button>
+      <button type="button" class="blog-filter-btn" data-filter="practice" role="tab" aria-selected="false">
+        Use Cases &amp; Practice <span class="blog-filter-count">4</span>
+      </button>
+    </div>
+  </header>
+
+  <div class="blog-stream" id="blog-stream">
+    <article class="blog-row" data-category="practice">
+      <div class="blog-row-top"><div class="blog-row-tags"><span class="blog-badge-series">K12 Case Study</span><span class="blog-badge-cat">Use Cases &amp; Practice</span></div><div class="blog-row-date">#18</div></div>
+      <h2 class="blog-row-title"><a href="/en/blog/k12-fraction-case" style="color: inherit; text-decoration: none;">How Does 4.8 TB Become 12 TB? A Teacher’s Approach to a Sixth-Grade Fraction Problem</a></h2>
+      <p class="blog-row-desc">From a lesson report in DingTalk to tape diagrams and Socratic questions at the desk. A manually reviewed, anonymized real example explains three solution methods, questions for parents, and the limits of separate tutoring for each child.</p>
+      <div class="blog-row-foot"><span class="blog-row-date">Anonymized real example · Manually reviewed</span><a href="/en/blog/k12-fraction-case" class="blog-row-readlink">Read article &rarr;</a></div>
+    </article>
+    <article class="blog-row" data-category="deep-dive">
+      <div class="blog-row-top"><div class="blog-row-tags"><span class="blog-badge-series">Knowledge Base Engineering</span><span class="blog-badge-cat">Core Systems</span></div><div class="blog-row-date">#17</div></div>
+      <h2 class="blog-row-title"><a href="/en/blog/embedding-schema-migration" style="color: inherit; text-decoration: none;">The Hidden Schema of Embeddings in HexClaw: Migrating a Textbook’s Index from 768 to 4096 Dimensions</a></h2>
+      <p class="blog-row-desc">From Nomic’s 768 dimensions to Qwen’s 4096: manage execution contracts, budgets, dual index revisions, resumable rebuilds, and CAS cutover separately. The old index serves valid unchanged content while its replacement builds in the background.</p>
+      <div class="blog-row-foot"><span class="blog-row-date">Execution Contracts · Index Migration</span><a href="/en/blog/embedding-schema-migration" class="blog-row-readlink">Read article &rarr;</a></div>
+    </article>
+
+    <article class="blog-row" data-category="paradigms">
+  <div class="blog-row-top">
+    <div class="blog-row-tags">
+      <span class="blog-badge-series">Four Paradigms · Finale</span>
+      <span class="blog-badge-cat">Four Agent Paradigms</span>
+    </div>
+    <div class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+      2026-07-06 · #14
+    </div>
+  </div>
+  <h2 class="blog-row-title"><a href="/en/blog/prompt-engineering" style="color: inherit; text-decoration: none;">Prompt Engineering in HexClaw AI: Declared Dead, It Became the Agent's Lowest-Level Protocol</a></h2>
+  <p class="blog-row-desc">You can change an agent&#x27;s personality, but not its operating discipline. SOUL × operating manual × Skills × tool schemas: write protocols, not incantations. The four-paradigm series concludes by tracing how a system prompt is assembled layer by layer, with real source code and constants showing which constraints cannot rely on prompting alone.</p>
+  <div class="blog-row-foot">
+    <span class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      14 min read
+    </span>
+    <a href="/en/blog/prompt-engineering" class="blog-row-readlink">Read article &rarr;</a>
+  </div>
+</article>
+<article class="blog-row" data-category="paradigms">
+  <div class="blog-row-top">
+    <div class="blog-row-tags">
+      <span class="blog-badge-series">Four Paradigms · Part 3</span>
+      <span class="blog-badge-cat">Four Agent Paradigms</span>
+    </div>
+    <div class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+      2026-07-04 · #13
+    </div>
+  </div>
+  <h2 class="blog-row-title"><a href="/en/blog/harness-engineering" style="color: inherit; text-decoration: none;">Harness Engineering in HexClaw: the Model Supplies the Intelligence, the Harness Makes It Fit for Work</a></h2>
+  <p class="blog-row-desc">A harness is literally the equipment put on working animals: permission gates, independent judges, budgets, and controlled failure. The same model with a different harness has different system capabilities. Moving from code snippets to real projects requires a complete harness, documented here with actual source and constants.</p>
+  <div class="blog-row-foot">
+    <span class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      12 min read
+    </span>
+    <a href="/en/blog/harness-engineering" class="blog-row-readlink">Read article &rarr;</a>
+  </div>
+</article>
+<article class="blog-row" data-category="paradigms">
+  <div class="blog-row-top">
+    <div class="blog-row-tags">
+      <span class="blog-badge-series">Four Paradigms · Part 2</span>
+      <span class="blog-badge-cat">Four Agent Paradigms</span>
+    </div>
+    <div class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+      2026-07-02 · #12
+    </div>
+  </div>
+  <h2 class="blog-row-title"><a href="/en/blog/context-engineering" style="color: inherit; text-decoration: none;">Context Engineering in HexClaw: Keeping Answer-Like Noise Out of the Loop</a></h2>
+  <p class="blog-row-desc">A retrieval error is one mistake in a conversation, but compound interest in a loop. Five of this pipeline’s six stages subtract noise: query expansion → broad retrieval → score-weighted RRF → relevance floor → LLM reranking → output instructions. An examination of context engineering through real source code and constants.</p>
+  <div class="blog-row-foot">
+    <span class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      13 min read
+    </span>
+    <a href="/en/blog/context-engineering" class="blog-row-readlink">Read article &rarr;</a>
+  </div>
+</article>
+<article class="blog-row" data-category="paradigms">
+  <div class="blog-row-top">
+    <div class="blog-row-tags">
+      <span class="blog-badge-series">Four Paradigms · Overview</span>
+      <span class="blog-badge-cat">Four Agent Paradigms</span>
+    </div>
+    <div class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+      2026-06-28 · #11
+    </div>
+  </div>
+  <h2 class="blog-row-title"><a href="/en/blog/loop-engineering" style="color: inherit; text-decoration: none;">Loop Engineering in HexClaw: Four Generations, from Prompt to Loop, Through an Open-Source Agent’s Code</a></h2>
+  <p class="blog-row-desc">Prompt → Context → Harness → Loop moves the control plane outward: message → session → system → time. Each layer delegates another decision. Real code shows what is complete, what is still developing, and who decides what “done” means.</p>
+  <div class="blog-row-foot">
+    <span class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      15 min read
+    </span>
+    <a href="/en/blog/loop-engineering" class="blog-row-readlink">Read article &rarr;</a>
+  </div>
+</article>
+<article class="blog-row" data-category="deep-dive">
+  <div class="blog-row-top">
+    <div class="blog-row-tags">
+      <span class="blog-badge-series">Memory</span>
+      <span class="blog-badge-cat">Core Systems</span>
+    </div>
+    <div class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+      2026-06-27 · #10
+    </div>
+  </div>
+  <h2 class="blog-row-title"><a href="/en/blog/memory-dreaming" style="color: inherit; text-decoration: none;">Agent Memory That Dreams: Claude and ChatGPT Dream in the Cloud; HexClaw Dreams on Your Machine</a></h2>
+  <p class="blog-row-desc">A local implementation you can inspect with git diff: three tiers, three-dimensional recall, and two-phase dreaming. Follow an “I live here” memory to see how a local agent organizes, distills, and forgets information during its sleep cycles.</p>
+  <div class="blog-row-foot">
+    <span class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      11 min read
+    </span>
+    <a href="/en/blog/memory-dreaming" class="blog-row-readlink">Read article &rarr;</a>
+  </div>
+</article>
+<article class="blog-row" data-category="deep-dive">
+  <div class="blog-row-top">
+    <div class="blog-row-tags">
+      <span class="blog-badge-series">Automation</span>
+      <span class="blog-badge-cat">Core Systems</span>
+    </div>
+    <div class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+      2026-06-24 · #9
+    </div>
+  </div>
+  <h2 class="blog-row-title"><a href="/en/blog/cyber-niuma-cron-sandbox" style="color: inherit; text-decoration: none;">Building HexClaw's Cyber Workhorse: Compile a Sentence into a Self-Healing Sandbox Script That Works Around the Clock</a></h2>
+  <p class="blog-row-desc">Compile natural language into a self-healing sandbox script and automatically decide whether the task should run as a script or as an Agent.</p>
+  <div class="blog-row-foot">
+    <span class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      12 min read
+    </span>
+    <a href="/en/blog/cyber-niuma-cron-sandbox" class="blog-row-readlink">Read article &rarr;</a>
+  </div>
+</article>
+<article class="blog-row" data-category="deep-dive">
+  <div class="blog-row-top">
+    <div class="blog-row-tags">
+      <span class="blog-badge-series">Local Inference</span>
+      <span class="blog-badge-cat">Core Systems</span>
+    </div>
+    <div class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+      2026-04-13 · #5
+    </div>
+  </div>
+  <h2 class="blog-row-title"><a href="/en/blog/thinking-chain-local-models" style="color: inherit; text-decoration: none;"> HexClaw AI's Thinking Process: The Last Mile for Qwen 3.5, Gemma 4, and DeepSeek-R1 </a></h2>
+  <p class="blog-row-desc">Preserving and controlling local model reasoning through streaming extraction, thinking controls, 90-second timeout recovery, context compression, and multi-step tool workflows.</p>
+  <div class="blog-row-foot">
+    <span class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      10 min read
+    </span>
+    <a href="/en/blog/thinking-chain-local-models" class="blog-row-readlink">Read article &rarr;</a>
+  </div>
+</article>
+<article class="blog-row" data-category="deep-dive">
+  <div class="blog-row-top">
+    <div class="blog-row-tags">
+      <span class="blog-badge-series">Localization &amp; RTL</span>
+      <span class="blog-badge-cat">Core Systems</span>
+    </div>
+    <div class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+      2026-05-01 · #8
+    </div>
+  </div>
+  <h2 class="blog-row-title"><a href="/en/blog/uyghur-localization" style="color: inherit; text-decoration: none;">Making an AI Agent Speak Uyghur: Localization in HexClaw v0.4.0</a></h2>
+  <p class="blog-row-desc">Engineering notes from i18n to RTL: 1400+ translation keys, a global RTL bidi fallback, and backend language directives. All three layers are needed for an out-of-the-box Uyghur experience.</p>
+  <div class="blog-row-foot">
+    <span class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      11 min read
+    </span>
+    <a href="/en/blog/uyghur-localization" class="blog-row-readlink">Read article &rarr;</a>
+  </div>
+</article>
+<article class="blog-row" data-category="deep-dive">
+  <div class="blog-row-top">
+    <div class="blog-row-tags">
+      <span class="blog-badge-series">Skills</span>
+      <span class="blog-badge-cat">Core Systems</span>
+    </div>
+    <div class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+      2026-04-06 · #4
+    </div>
+  </div>
+  <h2 class="blog-row-title"><a href="/en/blog/leader-skill-distillation" style="color: inherit; text-decoration: none;"> I distilled my former tech lead into a HexClaw AI Skill  <span class="u-nobr">  (with a Skill-distillation tutorial) </span></a></h2>
+  <p class="blog-row-desc">A personal Skill-distillation tutorial: capture a character in Markdown, configure YAML triggers, import it into HexClaw AI, and combine role-play with practical debugging.</p>
+  <div class="blog-row-foot">
+    <span class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      9 min read
+    </span>
+    <a href="/en/blog/leader-skill-distillation" class="blog-row-readlink">Read article &rarr;</a>
+  </div>
+</article>
+<article class="blog-row" data-category="architecture">
+  <div class="blog-row-top">
+    <div class="blog-row-tags">
+      <span class="blog-badge-series">Product Launch</span>
+      <span class="blog-badge-cat">Architecture &amp; Engineering</span>
+    </div>
+    <div class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+      2026-03-23 · #1
+    </div>
+  </div>
+  <h2 class="blog-row-title"><a href="/en/blog/from-lobster-to-crab" style="color: inherit; text-decoration: none;">HexClaw Open-Source AI: From Raising a Lobster to Raising a Crab</a></h2>
+  <p class="blog-row-desc">Have you adopted a lobster 🦞 yet? Starting today, our crab 🦀 can help with the work that lobster can do. But HexClaw aims to handle more than one conversation: it aims to support ongoing work.</p>
+  <div class="blog-row-foot">
+    <span class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      8 min read
+    </span>
+    <a href="/en/blog/from-lobster-to-crab" class="blog-row-readlink">Read article &rarr;</a>
+  </div>
+</article>
+<article class="blog-row" data-category="architecture">
+  <div class="blog-row-top">
+    <div class="blog-row-tags">
+      <span class="blog-badge-series">Ecosystem</span>
+      <span class="blog-badge-cat">Architecture &amp; Engineering</span>
+    </div>
+    <div class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+      2026-03-30 · #2
+    </div>
+  </div>
+  <h2 class="blog-row-title"><a href="/en/blog/architecture-deep-dive" style="color: inherit; text-decoration: none;">HexClaw Architecture Explained: One Person + Claude + Five Months, Building a Six-Repository Full-Stack Open-Source AI Agent Ecosystem in Go</a></h2>
+  <p class="blog-row-desc">One person, Claude, and five months: building a six-repository full-stack open-source AI agent ecosystem in Go. A detailed look at HexClaw&#x27;s layered architecture, core protocols, and communication contracts.</p>
+  <div class="blog-row-foot">
+    <span class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      13 min read
+    </span>
+    <a href="/en/blog/architecture-deep-dive" class="blog-row-readlink">Read article &rarr;</a>
+  </div>
+</article>
+<article class="blog-row" data-category="architecture">
+  <div class="blog-row-top">
+    <div class="blog-row-tags">
+      <span class="blog-badge-series">Comparisons</span>
+      <span class="blog-badge-cat">Architecture &amp; Engineering</span>
+    </div>
+    <div class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+      2026-04-25 · #7
+    </div>
+  </div>
+  <h2 class="blog-row-title"><a href="/en/blog/vs-openclaw-hermes" style="color: inherit; text-decoration: none;">HexClaw vs OpenClaw / Hermes: Three Paths for Local AI Agents in 2026</a></h2>
+  <p class="blog-row-desc">Lobster, horse, and crab: three paths addressing three problems. Similar feature lists, very different product directions. As on-device AI expands, where do their architectural tradeoffs lead?</p>
+  <div class="blog-row-foot">
+    <span class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      12 min read
+    </span>
+    <a href="/en/blog/vs-openclaw-hermes" class="blog-row-readlink">Read article &rarr;</a>
+  </div>
+</article>
+<article class="blog-row" data-category="architecture">
+  <div class="blog-row-top">
+    <div class="blog-row-tags">
+      <span class="blog-badge-series">Development SOP</span>
+      <span class="blog-badge-cat">Architecture &amp; Engineering</span>
+    </div>
+    <div class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+      2026-04-18 · #6
+    </div>
+  </div>
+  <h2 class="blog-row-title"><a href="/en/blog/claude-code-sop" style="color: inherit; text-decoration: none;">The Claude Code SOP Behind HexClaw: Design-Driven Development, Testing Feedback, and Multi-Agent Collaboration</a></h2>
+  <p class="blog-row-desc">One person, spare time, six core repositories, and 680,000 lines of code. The key is a development SOP that connects design, tests, and multiple Agents into a complete feedback loop.</p>
+  <div class="blog-row-foot">
+    <span class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      11 min read
+    </span>
+    <a href="/en/blog/claude-code-sop" class="blog-row-readlink">Read article &rarr;</a>
+  </div>
+</article>
+<article class="blog-row" data-category="practice">
+  <div class="blog-row-top">
+    <div class="blog-row-tags">
+      <span class="blog-badge-series">Getting Started</span>
+      <span class="blog-badge-cat">Use Cases &amp; Practice</span>
+    </div>
+    <div class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+      2026-04-12 · #3
+    </div>
+  </div>
+  <h2 class="blog-row-title"><a href="/en/blog/hexclaw-user-guide" style="color: inherit; text-decoration: none;">The Complete HexClaw AI Guide: From Zero to a Local AI Agent That Gets Work Done in Five Minutes<span class="u-nobr"> (with Model Recommendations)</span></a></h2>
+  <p class="blog-row-desc">Configure local Ollama or a cloud API from scratch, create an agent assistant, and add knowledge bases and skills. Start using your own desktop AI assistant in five minutes.</p>
+  <div class="blog-row-foot">
+    <span class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      10 min read
+    </span>
+    <a href="/en/blog/hexclaw-user-guide" class="blog-row-readlink">Read article &rarr;</a>
+  </div>
+</article>
+<article class="blog-row" data-category="practice">
+  <div class="blog-row-top">
+    <div class="blog-row-tags">
+      <span class="blog-badge-series">Flagship Use Case</span>
+      <span class="blog-badge-cat">Use Cases &amp; Practice</span>
+    </div>
+    <div class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+      2026-10-04 · #15
+    </div>
+  </div>
+  <h2 class="blog-row-title"><a href="/en/blog/k12-engineering-practice" style="color: inherit; text-decoration: none;"> Calmer Homework Time with HexClaw AI: Engineering the First K12 Flagship Scenario </a></h2>
+  <p class="blog-row-desc">A K12 parent lesson-preparation assistant with grade-appropriate teaching Skills, execution-backed calculation evidence, isolated learning records, spaced review, durable delivery, and removable scenario assembly.</p>
+  <div class="blog-row-foot">
+    <span class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      14 min read
+    </span>
+    <a href="/en/blog/k12-engineering-practice" class="blog-row-readlink">Read article &rarr;</a>
+  </div>
+</article>
+<article class="blog-row" data-category="practice">
+  <div class="blog-row-top">
+    <div class="blog-row-tags">
+      <span class="blog-badge-series">K12 Tutorial</span>
+      <span class="blog-badge-cat">Use Cases &amp; Practice</span>
+    </div>
+    <div class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+      2026-10-04 · #16
+    </div>
+  </div>
+  <h2 class="blog-row-title"><a href="/en/blog/k12-user-guide" style="color: inherit; text-decoration: none;"> A calmer homework routine: a hands-on guide to tutoring with HexClaw AI <span class="u-nobr">  (K12 User Guide) </span></a></h2>
+  <p class="blog-row-desc">Create a tutor, send homework photos, inspect answers and evidence, manage mistakes, and review through Desktop or a bound DingTalk private chat. Guide for v0.5.0-beta.3.</p>
+  <div class="blog-row-foot">
+    <span class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      12 min read
+    </span>
+    <a href="/en/blog/k12-user-guide" class="blog-row-readlink">Read article &rarr;</a>
+  </div>
+</article>
+  </div>
+
+
+</main>
+
+<footer class="footer">
+  <div class="footer-main">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-col-title">Product</div>
+        <a href="/en/#download">Download</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="/en/changelog">Changelog</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Developers</div>
+        <a href="/en/docs/">Documentation</a>
+        <a href="/en/blog/">Technical Blog</a>
+        <a href="/en/docs/getting-started">Getting Started</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">Apache-2.0</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Community</div>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/issues" target="_blank" rel="noopener noreferrer">Issues</a>
+        <a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer">Twitter / X</a>
+        <a href="mailto:ai@hexclaw.net">Contact Us</a>
+        <a href="mailto:support@hexclaw.net">Feedback</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">About</div>
+        <a href="/en/about">About Us</a>
+        <a href="/en/privacy">Privacy Policy</a>
+        <a href="/en/terms">Terms of Service</a>
+        <a href="/en/third-party-ai-services">Third-Party AI Services</a>
+      </div>
+    </div>
+    <div class="footer-wechat">
+      <img width="430" height="430" loading="lazy" decoding="async" src="../../assets/brand/wechat-qr.jpg" alt="HexClaw WeChat QR Code">
+      <span class="footer-wechat-label">WeChat Official Account</span>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">&copy; 2025&ndash;2026 hexagon-codes</span>
+  </div>
+</footer>
+<script src="../../assets/js/theme.js?v=2e4a1828feef"></script>
+<script src="../../assets/js/docs-nav.js?v=5a103861aec2"></script>
+<button type="button" class="back-to-top" id="backToTop" aria-label="Back to top" title="Back to top">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg>
+  <span>Top</span>
+</button>
+
+
+<script src="../../assets/js/blog.js?v=c72e1db5a6ec"></script>
+</body>
+</html>

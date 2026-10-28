@@ -391,4 +391,460 @@
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/docs/automation-delivery" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/docs/automation-delivery" />
   </url>
+<url>
+    <loc>https://hexclaw.net/zh/blog/claude-code-sop</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/claude-code-sop" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/claude-code-sop" />
+    <xhtml:link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/claude-code-sop" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/claude-code-sop" />
+  </url>
+<url>
+    <loc>https://hexclaw.net/zh/blog/cyber-niuma-cron-sandbox</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/cyber-niuma-cron-sandbox" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/cyber-niuma-cron-sandbox" />
+    <xhtml:link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/cyber-niuma-cron-sandbox" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/cyber-niuma-cron-sandbox" />
+  </url>
+<url>
+    <loc>https://hexclaw.net/zh/blog/harness-engineering</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/harness-engineering" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/harness-engineering" />
+    <xhtml:link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/harness-engineering" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/harness-engineering" />
+  </url>
+<url>
+    <loc>https://hexclaw.net/zh/blog/</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/" />
+    <xhtml:link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/" />
+  </url>
+<url>
+    <loc>https://hexclaw.net/zh/blog/k12-fraction-case</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/k12-fraction-case" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/k12-fraction-case" />
+    <xhtml:link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/k12-fraction-case" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/k12-fraction-case" />
+  </url>
+<url>
+    <loc>https://hexclaw.net/zh/blog/leader-skill-distillation</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/leader-skill-distillation" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/leader-skill-distillation" />
+    <xhtml:link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/leader-skill-distillation" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/leader-skill-distillation" />
+  </url>
+<url>
+    <loc>https://hexclaw.net/zh/blog/memory-dreaming</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/memory-dreaming" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/memory-dreaming" />
+    <xhtml:link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/memory-dreaming" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/memory-dreaming" />
+  </url>
+<url>
+    <loc>https://hexclaw.net/zh/blog/thinking-chain-local-models</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/thinking-chain-local-models" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/thinking-chain-local-models" />
+    <xhtml:link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/thinking-chain-local-models" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/thinking-chain-local-models" />
+  </url>
+<url>
+    <loc>https://hexclaw.net/zh/blog/vs-openclaw-hermes</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/vs-openclaw-hermes" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/vs-openclaw-hermes" />
+    <xhtml:link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/vs-openclaw-hermes" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/vs-openclaw-hermes" />
+  </url>
+<url>
+    <loc>https://hexclaw.net/en/blog/claude-code-sop</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/claude-code-sop" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/claude-code-sop" />
+    <xhtml:link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/claude-code-sop" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/claude-code-sop" />
+  </url>
+<url>
+    <loc>https://hexclaw.net/en/blog/cyber-niuma-cron-sandbox</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/cyber-niuma-cron-sandbox" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/cyber-niuma-cron-sandbox" />
+    <xhtml:link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/cyber-niuma-cron-sandbox" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/cyber-niuma-cron-sandbox" />
+  </url>
+<url>
+    <loc>https://hexclaw.net/en/blog/harness-engineering</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/harness-engineering" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/harness-engineering" />
+    <xhtml:link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/harness-engineering" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/harness-engineering" />
+  </url>
+<url>
+    <loc>https://hexclaw.net/en/blog/</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/" />
+    <xhtml:link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/" />
+  </url>
+<url>
+    <loc>https://hexclaw.net/en/blog/k12-fraction-case</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/k12-fraction-case" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/k12-fraction-case" />
+    <xhtml:link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/k12-fraction-case" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/k12-fraction-case" />
+  </url>
+<url>
+    <loc>https://hexclaw.net/en/blog/leader-skill-distillation</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/leader-skill-distillation" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/leader-skill-distillation" />
+    <xhtml:link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/leader-skill-distillation" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/leader-skill-distillation" />
+  </url>
+<url>
+    <loc>https://hexclaw.net/en/blog/memory-dreaming</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/memory-dreaming" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/memory-dreaming" />
+    <xhtml:link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/memory-dreaming" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/memory-dreaming" />
+  </url>
+<url>
+    <loc>https://hexclaw.net/en/blog/thinking-chain-local-models</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/thinking-chain-local-models" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/thinking-chain-local-models" />
+    <xhtml:link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/thinking-chain-local-models" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/thinking-chain-local-models" />
+  </url>
+<url>
+    <loc>https://hexclaw.net/en/blog/vs-openclaw-hermes</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/vs-openclaw-hermes" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/vs-openclaw-hermes" />
+    <xhtml:link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/vs-openclaw-hermes" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/vs-openclaw-hermes" />
+  </url>
+<url>
+    <loc>https://hexclaw.net/ug/blog/claude-code-sop</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/claude-code-sop" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/claude-code-sop" />
+    <xhtml:link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/claude-code-sop" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/claude-code-sop" />
+  </url>
+<url>
+    <loc>https://hexclaw.net/ug/blog/cyber-niuma-cron-sandbox</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/cyber-niuma-cron-sandbox" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/cyber-niuma-cron-sandbox" />
+    <xhtml:link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/cyber-niuma-cron-sandbox" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/cyber-niuma-cron-sandbox" />
+  </url>
+<url>
+    <loc>https://hexclaw.net/ug/blog/harness-engineering</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/harness-engineering" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/harness-engineering" />
+    <xhtml:link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/harness-engineering" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/harness-engineering" />
+  </url>
+<url>
+    <loc>https://hexclaw.net/ug/blog/</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/" />
+    <xhtml:link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/" />
+  </url>
+<url>
+    <loc>https://hexclaw.net/ug/blog/k12-fraction-case</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/k12-fraction-case" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/k12-fraction-case" />
+    <xhtml:link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/k12-fraction-case" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/k12-fraction-case" />
+  </url>
+<url>
+    <loc>https://hexclaw.net/ug/blog/leader-skill-distillation</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/leader-skill-distillation" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/leader-skill-distillation" />
+    <xhtml:link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/leader-skill-distillation" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/leader-skill-distillation" />
+  </url>
+<url>
+    <loc>https://hexclaw.net/ug/blog/memory-dreaming</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/memory-dreaming" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/memory-dreaming" />
+    <xhtml:link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/memory-dreaming" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/memory-dreaming" />
+  </url>
+<url>
+    <loc>https://hexclaw.net/ug/blog/thinking-chain-local-models</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/thinking-chain-local-models" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/thinking-chain-local-models" />
+    <xhtml:link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/thinking-chain-local-models" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/thinking-chain-local-models" />
+  </url>
+<url>
+    <loc>https://hexclaw.net/ug/blog/vs-openclaw-hermes</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/vs-openclaw-hermes" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/vs-openclaw-hermes" />
+    <xhtml:link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/vs-openclaw-hermes" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/vs-openclaw-hermes" />
+  </url>
+  <url>
+    <loc>https://hexclaw.net/zh/blog/architecture-deep-dive</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/architecture-deep-dive" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/architecture-deep-dive" />
+    <xhtml:link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/architecture-deep-dive" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/architecture-deep-dive" />
+  </url>
+  <url>
+    <loc>https://hexclaw.net/zh/blog/context-engineering</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/context-engineering" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/context-engineering" />
+    <xhtml:link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/context-engineering" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/context-engineering" />
+  </url>
+  <url>
+    <loc>https://hexclaw.net/zh/blog/embedding-schema-migration</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/embedding-schema-migration" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/embedding-schema-migration" />
+    <xhtml:link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/embedding-schema-migration" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/embedding-schema-migration" />
+  </url>
+  <url>
+    <loc>https://hexclaw.net/zh/blog/from-lobster-to-crab</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/from-lobster-to-crab" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/from-lobster-to-crab" />
+    <xhtml:link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/from-lobster-to-crab" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/from-lobster-to-crab" />
+  </url>
+  <url>
+    <loc>https://hexclaw.net/zh/blog/hexclaw-user-guide</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/hexclaw-user-guide" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/hexclaw-user-guide" />
+    <xhtml:link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/hexclaw-user-guide" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/hexclaw-user-guide" />
+  </url>
+  <url>
+    <loc>https://hexclaw.net/zh/blog/k12-engineering-practice</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/k12-engineering-practice" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/k12-engineering-practice" />
+    <xhtml:link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/k12-engineering-practice" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/k12-engineering-practice" />
+  </url>
+  <url>
+    <loc>https://hexclaw.net/zh/blog/k12-user-guide</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/k12-user-guide" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/k12-user-guide" />
+    <xhtml:link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/k12-user-guide" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/k12-user-guide" />
+  </url>
+  <url>
+    <loc>https://hexclaw.net/zh/blog/loop-engineering</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/loop-engineering" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/loop-engineering" />
+    <xhtml:link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/loop-engineering" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/loop-engineering" />
+  </url>
+  <url>
+    <loc>https://hexclaw.net/zh/blog/prompt-engineering</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/prompt-engineering" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/prompt-engineering" />
+    <xhtml:link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/prompt-engineering" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/prompt-engineering" />
+  </url>
+  <url>
+    <loc>https://hexclaw.net/zh/blog/uyghur-localization</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/uyghur-localization" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/uyghur-localization" />
+    <xhtml:link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/uyghur-localization" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/uyghur-localization" />
+  </url>
+  <url>
+    <loc>https://hexclaw.net/en/blog/architecture-deep-dive</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/architecture-deep-dive" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/architecture-deep-dive" />
+    <xhtml:link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/architecture-deep-dive" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/architecture-deep-dive" />
+  </url>
+  <url>
+    <loc>https://hexclaw.net/en/blog/context-engineering</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/context-engineering" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/context-engineering" />
+    <xhtml:link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/context-engineering" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/context-engineering" />
+  </url>
+  <url>
+    <loc>https://hexclaw.net/en/blog/embedding-schema-migration</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/embedding-schema-migration" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/embedding-schema-migration" />
+    <xhtml:link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/embedding-schema-migration" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/embedding-schema-migration" />
+  </url>
+  <url>
+    <loc>https://hexclaw.net/en/blog/from-lobster-to-crab</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/from-lobster-to-crab" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/from-lobster-to-crab" />
+    <xhtml:link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/from-lobster-to-crab" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/from-lobster-to-crab" />
+  </url>
+  <url>
+    <loc>https://hexclaw.net/en/blog/hexclaw-user-guide</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/hexclaw-user-guide" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/hexclaw-user-guide" />
+    <xhtml:link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/hexclaw-user-guide" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/hexclaw-user-guide" />
+  </url>
+  <url>
+    <loc>https://hexclaw.net/en/blog/k12-engineering-practice</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/k12-engineering-practice" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/k12-engineering-practice" />
+    <xhtml:link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/k12-engineering-practice" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/k12-engineering-practice" />
+  </url>
+  <url>
+    <loc>https://hexclaw.net/en/blog/k12-user-guide</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/k12-user-guide" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/k12-user-guide" />
+    <xhtml:link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/k12-user-guide" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/k12-user-guide" />
+  </url>
+  <url>
+    <loc>https://hexclaw.net/en/blog/loop-engineering</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/loop-engineering" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/loop-engineering" />
+    <xhtml:link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/loop-engineering" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/loop-engineering" />
+  </url>
+  <url>
+    <loc>https://hexclaw.net/en/blog/prompt-engineering</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/prompt-engineering" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/prompt-engineering" />
+    <xhtml:link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/prompt-engineering" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/prompt-engineering" />
+  </url>
+  <url>
+    <loc>https://hexclaw.net/en/blog/uyghur-localization</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/uyghur-localization" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/uyghur-localization" />
+    <xhtml:link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/uyghur-localization" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/uyghur-localization" />
+  </url>
+  <url>
+    <loc>https://hexclaw.net/ug/blog/architecture-deep-dive</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/architecture-deep-dive" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/architecture-deep-dive" />
+    <xhtml:link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/architecture-deep-dive" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/architecture-deep-dive" />
+  </url>
+  <url>
+    <loc>https://hexclaw.net/ug/blog/context-engineering</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/context-engineering" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/context-engineering" />
+    <xhtml:link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/context-engineering" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/context-engineering" />
+  </url>
+  <url>
+    <loc>https://hexclaw.net/ug/blog/embedding-schema-migration</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/embedding-schema-migration" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/embedding-schema-migration" />
+    <xhtml:link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/embedding-schema-migration" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/embedding-schema-migration" />
+  </url>
+  <url>
+    <loc>https://hexclaw.net/ug/blog/from-lobster-to-crab</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/from-lobster-to-crab" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/from-lobster-to-crab" />
+    <xhtml:link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/from-lobster-to-crab" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/from-lobster-to-crab" />
+  </url>
+  <url>
+    <loc>https://hexclaw.net/ug/blog/hexclaw-user-guide</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/hexclaw-user-guide" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/hexclaw-user-guide" />
+    <xhtml:link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/hexclaw-user-guide" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/hexclaw-user-guide" />
+  </url>
+  <url>
+    <loc>https://hexclaw.net/ug/blog/k12-engineering-practice</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/k12-engineering-practice" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/k12-engineering-practice" />
+    <xhtml:link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/k12-engineering-practice" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/k12-engineering-practice" />
+  </url>
+  <url>
+    <loc>https://hexclaw.net/ug/blog/k12-user-guide</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/k12-user-guide" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/k12-user-guide" />
+    <xhtml:link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/k12-user-guide" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/k12-user-guide" />
+  </url>
+  <url>
+    <loc>https://hexclaw.net/ug/blog/loop-engineering</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/loop-engineering" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/loop-engineering" />
+    <xhtml:link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/loop-engineering" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/loop-engineering" />
+  </url>
+  <url>
+    <loc>https://hexclaw.net/ug/blog/prompt-engineering</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/prompt-engineering" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/prompt-engineering" />
+    <xhtml:link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/prompt-engineering" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/prompt-engineering" />
+  </url>
+  <url>
+    <loc>https://hexclaw.net/ug/blog/uyghur-localization</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/uyghur-localization" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/uyghur-localization" />
+    <xhtml:link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/uyghur-localization" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/uyghur-localization" />
+  </url>
 </urlset>

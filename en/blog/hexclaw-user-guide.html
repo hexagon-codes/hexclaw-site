@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/favicon-32.png">
+<title>The Complete HexClaw AI Guide: From Zero to a Local AI Agent That Gets Work Done in Five Minutes (with Model Recommendations) | HexClaw Technical Blog</title>
+<meta name="description" content="Configure local Ollama or a cloud API from scratch, create an agent assistant, and add knowledge bases and skills. Start using your own desktop AI assistant in five minutes.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:site_name" content="HexClaw">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The Complete HexClaw AI Guide: From Zero to a Local AI Agent That Gets Work Done in Five Minutes (with Model Recommendations) | HexClaw Technical Blog">
+<meta property="og:description" content="Configure local Ollama or a cloud API from scratch, create an agent assistant, and add knowledge bases and skills. Start using your own desktop AI assistant in five minutes.">
+<meta property="og:url" content="https://hexclaw.net/en/blog/hexclaw-user-guide">
+<meta property="og:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta property="og:image:alt" content="HexClaw logo">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Complete HexClaw AI Guide: From Zero to a Local AI Agent That Gets Work Done in Five Minutes (with Model Recommendations) | HexClaw Technical Blog">
+<meta name="twitter:description" content="Configure local Ollama or a cloud API from scratch, create an agent assistant, and add knowledge bases and skills. Start using your own desktop AI assistant in five minutes.">
+<meta name="twitter:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta name="twitter:image:alt" content="HexClaw logo">
+<link rel="canonical" href="https://hexclaw.net/en/blog/hexclaw-user-guide">
+<link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/hexclaw-user-guide">
+<link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/hexclaw-user-guide">
+<link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/hexclaw-user-guide">
+<link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/hexclaw-user-guide">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "The Complete HexClaw AI Guide: From Zero to a Local AI Agent That Gets Work Done in Five Minutes (with Model Recommendations)",
+  "description": "Configure local Ollama or a cloud API from scratch, create an agent assistant, and add knowledge bases and skills. Start using your own desktop AI assistant in five minutes.",
+  "url": "https://hexclaw.net/en/blog/hexclaw-user-guide",
+  "inLanguage": "en",
+  "datePublished": "2026-04-12",
+  "image": "https://hexclaw.net/assets/brand/hexclaw-logo.png",
+  "publisher": {
+    "@type": "Organization",
+    "name": "hexagon-codes",
+    "url": "https://hexclaw.net/",
+    "@id": "https://hexclaw.net/#organization"
+  },
+  "@id": "https://hexclaw.net/en/blog/hexclaw-user-guide#article"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "HexClaw",
+      "item": "https://hexclaw.net/en/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Technical Blog",
+      "item": "https://hexclaw.net/en/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "The Complete HexClaw AI Guide: From Zero to a Local AI Agent That Gets Work Done in Five Minutes (with Model Recommendations)",
+      "item": "https://hexclaw.net/en/blog/hexclaw-user-guide"
+    }
+  ],
+  "@id": "https://hexclaw.net/en/blog/hexclaw-user-guide#breadcrumb"
+}
+</script>
+<link rel="stylesheet" href="../../assets/css/docs-eb2895dd79c5.css">
+<link rel="stylesheet" href="../../assets/css/blog-a8e5008ac3d1.css">
+</head>
+<body class="blog-page blog-article-page">
+<a href="#main" class="skip-link">Skip to main content</a>
+<nav class="tn topnav" id="nav">
+  <a href="/en/" class="tn-b topnav-brand"><img width="72" height="72" src="../../assets/brand/hexclaw-icon-72.png" class="tn-l topnav-logo" alt="HexClaw"><span class="tn-n topnav-name">HexClaw</span></a>
+  <button type="button" class="tn-burger topnav-burger" aria-label="Menu" aria-expanded="false" aria-controls="primary-navigation"><span></span><span></span><span></span></button><div class="tn-r topnav-links" id="primary-navigation"><a href="/en/">Home</a><a href="/en/#cases">Scenarios</a><a href="/en/#features">Features</a><a href="/en/#quickstart">Quickstart</a><a href="/en/#ecosystem">Ecosystem</a><a href="/en/blog/" class="is-active">Tech Blog</a><a href="/en/docs/">Docs Center</a><div class="lang-menu" data-lang-menu><button type="button" class="lang-trigger" aria-haspopup="menu" aria-expanded="false" aria-label="Switch language"><svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 0 20"></path><path d="M12 2a15.3 15.3 0 0 0 0 20"></path></svg><span class="lang-current">English</span><svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="lang-menu-list" role="menu"><a href="/zh/blog/hexclaw-user-guide" role="menuitem">中文</a><a href="/en/blog/hexclaw-user-guide" role="menuitem" class="is-active" aria-current="true">English</a><a href="/ug/blog/hexclaw-user-guide" role="menuitem" lang="zh-CN" dir="ltr">维吾尔语</a></div></div><button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"><svg class="ti-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="ti-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="nav-cta">GitHub <span class="nav-star-badge" id="gh-stars">&#9733;</span></a></div>
+</nav>
+
+<main id="main" class="blog-main">
+  <div class="blog-article-container">
+    <nav class="blog-breadcrumb" aria-label="Breadcrumb navigation">
+      <a href="/en/">Home</a>
+      <span class="blog-breadcrumb-sep">/</span>
+      <a href="/en/blog/">Technical Blog</a>
+      <span class="blog-breadcrumb-sep">/</span>
+      <span aria-current="page">Lighthouse Scenarios & Practice</span>
+    </nav>
+
+    <header class="blog-header">
+      <div class="blog-header-tags">
+        <span class="blog-badge-series">The Complete Getting-Started Guide</span>
+      </div>
+      <h1 class="blog-article-title">The Complete HexClaw AI Guide: From Zero to a Local AI Agent That Gets Work Done in Five Minutes<span class="u-nobr"> (with Model Recommendations)</span></h1>
+      <p class="blog-article-subtitle">Configure local Ollama or a cloud API from scratch, create an agent assistant, and add knowledge bases and skills. Start using your own desktop AI assistant in five minutes.</p>
+      <div class="article-provenance-banner">
+        <div class="provenance-left">
+          <span class="provenance-origin-badge">First published on WeChat</span>
+          <span class="provenance-text">Originally published in the official technical column of the WeChat account <strong>「hexclaw」</strong> (ID: hexclaw) · Published on  <strong>April 12, 2026</strong>  · Estimated reading time: 10 minutes</span>
+        </div>
+        <a href="https://mp.weixin.qq.com/s/PdJRKkH4qiBS-IZBifbuag" target="_blank" rel="noopener noreferrer" class="provenance-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          Read the WeChat original ↗
+        </a>
+      </div>
+    </header>
+
+    <article class="blog-content">
+      <p style="margin: 16px 0;">In the previous article, we unpacked HexClaw AI's six repositories and explained the architecture layer by layer, from the underlying framework to the desktop client.</p>
+
+<p style="margin: 8px 0;">Understanding the architecture is one thing; finding out whether the product is useful takes hands-on use. This article <strong style="color:var(--article-accent, #3f8fd4);">focuses on operation, not theory</strong>: from installation to having AI read files, query a knowledge base, and connect to Feishu, all in five minutes.</p>
+
+<p style="margin: 8px 0;">By the end, you will have a free, open-source AI agent running on your own computer, with data staying on your machine.</p>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 32px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">Installation: One Command</h2>
+
+<p style="margin: 8px 0; text-align: center; background:var(--article-panel, #f4fbff); padding: 10px 16px; border-radius: 8px; font-size: 14px; color:var(--article-secondary, #3f5f7b);">Download from the official website: <strong style="color:var(--article-accent, #3f8fd4);">hexclaw.net</strong> (copy it into your browser; macOS, Windows, and Linux are all supported)</p>
+
+<p style="margin: 8px 0;"><strong style="color:var(--article-accent, #3f8fd4);">macOS: </strong></p>
+
+<p style="background: #1a2332; color: #d6e4f0; padding: 14px 16px; border-radius: 8px; font-size: 13px; line-height: 1.6; font-family: 'SF Mono', Menlo, Monaco, monospace; margin: 10px 0; overflow-x: auto;">brew tap hexagon-codes/tap && brew install --cask hexclaw</p>
+
+<p style="margin: 8px 0;">No Homebrew? Use curl:</p>
+
+<p style="background: #1a2332; color: #d6e4f0; padding: 14px 16px; border-radius: 8px; font-size: 13px; line-height: 1.6; font-family: 'SF Mono', Menlo, Monaco, monospace; margin: 10px 0; overflow-x: auto;">curl -fsSL https://raw.githubusercontent.com/hexagon-codes/hexclaw-desktop/main/install.sh | bash</p>
+
+<p style="margin: 8px 0;"><strong style="color:var(--article-accent, #3f8fd4);">Windows / Linux: </strong>Visit  <strong style="color:var(--article-accent, #3f8fd4);">hexclaw.net</strong>  to download the appropriate installer (.exe / .deb / .AppImage), then double-click to install.</p>
+
+<p style="margin: 8px 0;">After installation, open HexClaw AI to see the setup wizard. Three steps, done in 30 seconds.</p>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">From Setup to Your First Conversation</h2>
+
+<p style="margin: 8px 0;"><strong style="color:var(--article-accent, #3f8fd4);">Choose a model. </strong>HexClaw AI supports OpenAI, DeepSeek, Zhipu, Qwen, and local Ollama models. Enter an API key, click “Test Connection,” and check that it succeeds.</p>
+
+<figure><img src="../../assets/blog/setup-1.png" alt="" width="2560" height="1570" loading="lazy" decoding="async"></figure>
+
+<p style="margin: 8px 0;"><strong style="color:var(--article-accent, #3f8fd4);">Choose a role. </strong>General assistant, coding assistant, or writing assistant: this sets the AI's default persona, which you can change later.</p>
+
+<figure><img src="../../assets/blog/setup-2.png" alt="" width="2560" height="1570" loading="lazy" decoding="async"></figure>
+
+<p style="margin: 8px 0;"><strong style="color:var(--article-accent, #3f8fd4);">Confirm and start. </strong>Review the configuration summary and click “Get Started.”</p>
+
+<figure><img src="../../assets/blog/setup-3.png" alt="" width="2560" height="1570" loading="lazy" decoding="async"></figure>
+
+<p style="margin: 8px 0;">In the main interface, the overview page shows usage statistics and common workflows:</p>
+
+<figure><img src="../../assets/blog/dashboard.png" alt="" width="2560" height="1570" loading="lazy" decoding="async"></figure>
+
+<p style="margin: 8px 0;">Once configuration is complete, start chatting. Open the chat page and the crab will greet you:</p>
+
+<figure><img src="../../assets/blog/012.png" alt="" width="2560" height="1588" loading="lazy" decoding="async"></figure>
+
+<p style="margin: 8px 0;">I asked, <strong style="color:var(--article-accent, #3f8fd4);">“What is the right way to enjoy Hangzhou cuisine?”</strong> HexClaw automatically searched the documents in the knowledge base and gave an answer with references:</p>
+
+<figure><img src="../../assets/blog/001.png" alt="" width="2560" height="1584" loading="lazy" decoding="async"></figure>
+
+<p style="margin: 8px 0;">Look at the bottom of the chat box: the <strong style="color:var(--article-accent, #3f8fd4);">model chip</strong> shows that the current model is  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">qwen3.5:9b</code> (a local model); click it to change models. The <strong style="color:var(--article-accent, #3f8fd4);">Deep Thinking</strong> switch lets the model reason before answering. The <strong style="color:var(--article-accent, #3f8fd4);">paperclip</strong> lets you upload images and PDFs for the AI to read and analyze directly.</p>
+
+<p style="margin: 8px 0;">After sending that first message, you are already using it. But chatting is only the beginning. The interesting part of HexClaw AI is that it can <strong style="color:var(--article-accent, #3f8fd4);">get work done for you</strong>.</p>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">Tool Calling: More Than Talk</h2>
+
+<p style="margin: 8px 0;">I asked, “What files are in my hexclaw directory?” HexClaw called the  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">list_directory</code>  tool and actually read the local filesystem:</p>
+
+<figure><img src="../../assets/blog/002.png" alt="" width="2560" height="1584" loading="lazy" decoding="async"></figure>
+
+<p style="margin: 8px 0;">It did not invent the answer: it read the files. Tool-call results are collapsed beneath the message; expand them to see the full content.</p>
+
+<p style="margin: 8px 0;">The mechanism behind tool calling is  <strong style="color:var(--article-accent, #3f8fd4);">MCP</strong> (Model Context Protocol). Think of it as a <strong style="color:var(--article-accent, #3f8fd4);">universal USB adapter</strong>: when AI needs to operate on files, plug in the filesystem adapter; when it needs to query a database, plug in the database adapter. HexClaw AI supports MCP natively: configure it and use it, without writing code.</p>
+
+<p style="margin: 8px 0;">The process is automatic: you send a message → the LLM decides which tool to call → the engine routes the request to the corresponding MCP server → the result comes back → the LLM generates a reply based on that result. If one step is not enough, the loop continues: search, then read, then summarize, making successive calls until it reaches a final answer. This is the  <strong style="color:var(--article-accent, #3f8fd4);">ReAct tool loop</strong>.</p>
+
+<p style="margin: 8px 0;">Next, I asked, <strong style="color:var(--article-accent, #3f8fd4);">“What did I buy last year?”</strong> I had mentioned this casually in an earlier conversation. HexClaw remembered:</p>
+
+<figure><img src="../../assets/blog/003.png" alt="" width="2560" height="1584" loading="lazy" decoding="async"></figure>
+
+<p style="margin: 8px 0;">It recalled the previous conversation and answered correctly. Rather than stretching the context window, this uses <strong style="color:var(--article-accent, #3f8fd4);">long-term memory</strong>: the information was actually stored and can be recalled in a new conversation. The next section explains how memory works.</p>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">Knowledge Bases and Memory: Two Ways AI Remembers</h2>
+
+<p style="margin: 8px 0;">HexClaw “remembers” things in two ways: through material you deliberately provide and through information it learns from conversations.</p>
+
+<p style="margin: 8px 0;"><strong style="color:var(--article-accent, #3f8fd4);">Knowledge base: you upload, and it answers from sources. </strong>Open the knowledge-base page and drop in a PDF, TXT, or Markdown file to create an index automatically:</p>
+
+<figure><img src="../../assets/blog/005.png" alt="" width="2560" height="1584" loading="lazy" decoding="async"></figure>
+
+<p style="margin: 8px 0;">During later conversations, AI uses vector retrieval to find the most relevant passages in your documents and injects them into the prompt. The earlier answer about Hangzhou cuisine came from the knowledge base. It was <strong style="color:var(--article-accent, #3f8fd4);">answering from sources</strong> rather than making things up. This is RAG: retrieval-augmented generation.</p>
+
+<p style="margin: 8px 0;"><strong style="color:var(--article-accent, #3f8fd4);">Memory: key information from conversations is stored and recalled automatically.</strong></p>
+
+<figure><img src="../../assets/blog/006.png" alt="" width="2560" height="1584" loading="lazy" decoding="async"></figure>
+
+<p style="margin: 8px 0;">After a conversation, the engine analyzes it asynchronously and extracts information worth remembering. In the next conversation, relevant memories are automatically added to the context, and HexClaw “remembers.” You can also add, edit, and delete memories manually.</p>
+
+<p style="margin: 8px 0;">Put simply, a knowledge base is an <strong style="color:var(--article-accent, #3f8fd4);">external reference library</strong>, while memory is the <strong style="color:var(--article-accent, #3f8fd4);">AI's notebook</strong>. One stores documents; the other stores the useful essence of conversations.</p>
+
+<p style="margin: 8px 0;">You have now seen chat, tool calling, knowledge bases, and memory. Wondering how many steps happen between your input and the AI's reply? The diagram below shows the <strong style="color:var(--article-accent, #3f8fd4);">complete processing chain</strong>: </p>
+
+<figure><img src="../../assets/blog/flow-diagram.png" alt="" width="1440" height="1656" loading="lazy" decoding="async"></figure>
+
+<p style="margin: 8px 0;">It looks long, but the engine completes these steps on a millisecond timescale. What you perceive is simply streaming text.</p>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">IM Channels: Your Team Can @ It in Feishu</h2>
+
+<p style="margin: 8px 0;">If you have a team, not everyone needs to install the client. Connect HexClaw AI to <strong style="color:var(--article-accent, #3f8fd4);">Feishu, DingTalk, Discord, or Telegram</strong> and enable it on the IM Channels page. Green means it is running:</p>
+
+<figure><img src="../../assets/blog/009.png" alt="" width="2560" height="1584" loading="lazy" decoding="async"></figure>
+
+<p style="margin: 8px 0;">Then just @ it in Feishu. I asked, “Where did the colleague who left go?” It retrieved material from the knowledge base and answered:</p>
+
+<figure><img src="../../assets/blog/011.png" alt="" width="2136" height="1446" loading="lazy" decoding="async"></figure>
+
+<p style="margin: 8px 0;">The Feishu bot shows a “Thinking” status and sends its reply when the answer is complete. Team members can use it directly in Feishu without installing anything.</p>
+
+<h3 style="font-size: 16px; font-weight: 600; color:var(--article-ink, #12324c); margin: 24px 0 8px;">Configure a Feishu Bot in Three Minutes</h3>
+
+<p style="margin: 8px 0;">To make HexClaw AI available in Feishu, create an internal application on the <strong style="color:var(--article-accent, #3f8fd4);">Feishu Open Platform</strong>. The process is straightforward:</p>
+
+<p style="margin: 8px 0;"><strong style="color:var(--article-accent, #3f8fd4);">1. Create an application and obtain its credentials. </strong>Go to the Feishu Open Platform and create an enterprise internal application. Under “Credentials & Basic Info,” obtain the  <strong style="color:var(--article-accent, #3f8fd4);">App ID</strong>  and  <strong style="color:var(--article-accent, #3f8fd4);">App Secret</strong>: </p>
+
+<figure><img src="../../assets/blog/014.png" alt="" width="2866" height="1478" loading="lazy" decoding="async"></figure>
+
+<p style="margin: 8px 0;"><strong style="color:var(--article-accent, #3f8fd4);">2. Configure permissions. </strong>On the “Permissions” page, click “Batch Import/Export Permissions” and paste the JSON below to import the complete permission set in one go. It covers sending and receiving messages, reading group and private chats, resource files, group information, user information, document access, and more:</p>
+
+<p style="background: #1a2332; color: #d6e4f0; padding: 14px 16px; border-radius: 8px; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, monospace; margin: 10px 0; overflow-x: auto; white-space: pre-wrap;">{
+  "scopes": {
+    "tenant": [
+      "im:message",
+      "im:message:send_as_bot",
+      "im:message.group_at_msg",
+      "im:message.group_at_msg:readonly",
+      "im:message.p2p_msg",
+      "im:message.p2p_msg:readonly",
+      "im:message:readonly",
+      "im:resource",
+      "im:chat",
+      "im:chat:readonly",
+      "contact:user.base:readonly",
+      "document:readonly"
+    ],
+    "user": [
+      "docs:document:readonly"
+    ]
+  }
+}</p>
+
+<figure><img src="../../assets/blog/016.png" alt="" width="2856" height="1496" loading="lazy" decoding="async"></figure>
+
+<p style="margin: 8px 0;"><strong style="color:var(--article-accent, #3f8fd4);">3. Configure event subscriptions. </strong>On the “Events & Callbacks” page, select “Receive events through a persistent connection” and add the  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">im.message.receive_v1</code> event to receive group and private-chat messages:</p>
+
+<figure><img src="../../assets/blog/013.png" alt="" width="2862" height="1498" loading="lazy" decoding="async"></figure>
+
+<p style="margin: 8px 0;"><strong style="color:var(--article-accent, #3f8fd4);">4. Publish a version. </strong>On the “Version Management & Release” page, create a version, select “Bot” as the default desktop capability, and submit it for release:</p>
+
+<figure><img src="../../assets/blog/015.png" alt="" width="2854" height="1484" loading="lazy" decoding="async"></figure>
+
+<p style="margin: 8px 0;"><strong style="color:var(--article-accent, #3f8fd4);">5. Return to HexClaw AI. </strong>Create a Feishu instance on the IM Channels page, enter the App ID and App Secret, and enable it. When you see the green “Running” status, you are done.</p>
+
+<p style="border-left: 3px solid #5fb3ea; padding: 10px 16px; margin: 16px 0; background:var(--article-panel, #f4fbff); color:var(--article-secondary, #3f5f7b); font-size: 14px; border-radius: 0 6px 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">DingTalk / Discord / Telegram</strong>  follow similar setup processes: create a bot application on the relevant platform, obtain its credentials, and enter them on HexClaw AI's IM Channels configuration page.</p>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">Model Configuration: Cloud and Local, Your Choice</h2>
+
+<p style="margin: 8px 0;">HexClaw AI lets you <strong style="color:var(--article-accent, #3f8fd4);">configure several models at once</strong> and route between them automatically according to a policy. At the top of Settings, choose a default model and a routing policy (cost first / quality first); manage providers at the bottom:</p>
+
+<figure><img src="../../assets/blog/004.png" alt="" width="2560" height="1584" loading="lazy" decoding="async"></figure>
+
+<p style="margin: 8px 0;">Want data to stay on your machine? Use <strong style="color:var(--article-accent, #3f8fd4);">local models</strong>. With built-in Ollama management, you can search for a model and download it directly:</p>
+
+<figure><img src="../../assets/blog/010.png" alt="" width="2560" height="1584" loading="lazy" decoding="async"></figure>
+
+<p style="margin: 8px 0;">Free, offline, and with data staying on your machine. The application warms the model up automatically at startup, so you can chat as soon as it opens. The appendix provides detailed recommendations for model choice and hardware.</p>
+
+<p style="margin: 8px 0;">The central idea is simple: <strong style="color:var(--article-accent, #3f8fd4);">configure both cloud and local models</strong> and choose “Cost First” routing. Simple questions use a free local model; complex questions switch to the cloud automatically. For sensitive data, keep the entire process local, with no API requests leaving your computer.</p>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">Skills and MCP: Two Extension Layers</h2>
+
+<p style="margin: 8px 0;">HexClaw AI's capabilities are not hard-coded. It has two extension mechanisms.</p>
+
+<p style="margin: 8px 0;"><strong style="color:var(--article-accent, #3f8fd4);">A Skill</strong> defines a high-level role: Markdown specifies its trigger conditions, system prompt, and available tools. After installing the  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">cron-scheduler</code>  skill, say “Collect the news for me every day at 10,” and AI calls the skill to create a scheduled task. You do not need to know the skill exists; AI decides whether to use it.</p>
+
+<figure><img src="../../assets/blog/007.png" alt="" width="2560" height="1584" loading="lazy" decoding="async"></figure>
+
+<p style="margin: 8px 0;"><strong style="color:var(--article-accent, #3f8fd4);">MCP (Model Context Protocol)</strong> provides the low-level hands and feet. Each MCP server exposes a set of tools; the engine gathers all their definitions at startup, and AI calls them as needed. Below is the built-in  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">filesystem</code>  MCP server, providing 14 tools:</p>
+
+<figure><img src="../../assets/blog/008.png" alt="" width="2560" height="1584" loading="lazy" decoding="async"></figure>
+
+<p style="margin: 8px 0;">For an analogy, a Skill means “you hired a professional accountant,” while MCP means “you gave the accountant a calculator and Excel.” One defines the role and strategy; the other provides concrete operational capabilities. You can use either alone, but <strong style="color:var(--article-accent, #3f8fd4);">they are strongest in combination</strong>.</p>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">Agents and the Open-Source Ecosystem</h2>
+
+<p style="margin: 8px 0;">HexClaw AI includes six built-in <strong style="color:var(--article-accent, #3f8fd4);">preset agents</strong>, including data analyst, coding assistant, research analyst, translator, and writing assistant. Click “Chat” to switch roles directly. Different agents have different system prompts and behavior patterns:</p>
+
+<figure><img src="../../assets/blog/agents.png" alt="" width="2560" height="1570" loading="lazy" decoding="async"></figure>
+
+<p style="margin: 8px 0;">Behind all of this is a <strong style="color:var(--article-accent, #3f8fd4);">complete open-source ecosystem</strong>: seven repositories arranged in decoupled layers, from underlying infrastructure to the client, each usable independently:</p>
+
+<figure><img src="../../assets/blog/ecosystem.png" alt="" width="1352" height="766" loading="lazy" decoding="async"></figure>
+
+<p style="margin: 8px 0;">You can use just the desktop client or build your own agent with the hexagon framework. Open source, free, and <strong style="color:var(--article-accent, #3f8fd4);">your data stays under your control</strong>.</p>
+
+
+
+
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 32px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">Appendix: Model Recommendations and Hardware Reference</h2>
+
+<h3 style="font-size: 16px; font-weight: 600; color:var(--article-ink, #12324c); margin: 20px 0 8px;">Local Models (Ollama)</h3>
+
+<table style="width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 13px;">
+<tr>
+<th style="background:var(--article-panel, #f4fbff); padding: 6px 8px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;">Model</th>
+<th style="background:var(--article-panel, #f4fbff); padding: 6px 8px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;">Size</th>
+<th style="background:var(--article-panel, #f4fbff); padding: 6px 8px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;">Recommended Memory</th>
+<th style="background:var(--article-panel, #f4fbff); padding: 6px 8px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;">Characteristics</th>
+</tr>
+<tr><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff);"><strong style="color:var(--article-accent, #3f8fd4);">qwen3.5:9b</strong></td><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff);">5.6 GB</td><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff);">16 GB</td><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff);">Strongest Chinese performance, good reasoning, first choice</td></tr>
+<tr><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe);">qwen3:8b</td><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe);">4.9 GB</td><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe);">16 GB</td><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe);">A balanced choice with fast responses</td></tr>
+<tr><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff);">deepseek-r1:7b</td><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff);">4.7 GB</td><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff);">16 GB</td><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff);">Deep reasoning; strong at math and code</td></tr>
+<tr><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe);">llama3.1:8b</td><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe);">4.7 GB</td><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe);">16 GB</td><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe);">Open source from Meta; good English performance</td></tr>
+<tr><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff);">qwen3:32b</td><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff);">20 GB</td><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff);">32 GB+</td><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff);">Large parameter count, with results approaching cloud models</td></tr>
+</table>
+
+<p style="border-left: 3px solid #5fb3ea; padding: 10px 16px; margin: 14px 0; background:var(--article-panel, #f4fbff); color:var(--article-secondary, #3f5f7b); font-size: 14px; border-radius: 0 6px 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">Hardware recommendations: </strong>With 8 GB of memory, you can try a small 3b model; 16 GB runs 7–9b models smoothly and is recommended; 32 GB or more can run large 32b models, with results approaching cloud models. Apple Silicon Macs have a clear advantage: unified memory can serve directly as GPU memory.</p>
+
+<h3 style="font-size: 16px; font-weight: 600; color:var(--article-ink, #12324c); margin: 20px 0 8px;">Cloud Models — Free & Paid Recommendations</h3>
+
+<table style="width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 13px;">
+<tr>
+<th style="background:var(--article-panel, #f4fbff); padding: 6px 8px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;">Provider</th>
+<th style="background:var(--article-panel, #f4fbff); padding: 6px 8px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;">Recommended Model</th>
+<th style="background:var(--article-panel, #f4fbff); padding: 6px 8px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;">Price</th>
+<th style="background:var(--article-panel, #f4fbff); padding: 6px 8px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;">Characteristics</th>
+</tr>
+<tr><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff);"><strong style="color: #52c41a;">Zhipu AI</strong></td><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff);">glm-4-flash</td><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff); color: #52c41a; font-weight: 600;">Free</td><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff);">Signup credits, good Chinese performance, first choice for beginners</td></tr>
+<tr><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe);"><strong style="color: #52c41a;">DeepSeek</strong></td><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe);">deepseek-chat</td><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe); color: #52c41a; font-weight: 600;">Very inexpensive</td><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe);">CNY 1 per million tokens; excellent value</td></tr>
+<tr><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff);"><strong style="color: #52c41a;">Qwen</strong></td><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff);">qwen-max</td><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff); color: #52c41a; font-weight: 600;">Free allowance available</td><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff);">From Alibaba; reliable tool calling</td></tr>
+<tr><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe);">Zhipu AI</td><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe);">glm-z1-airx</td><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe);">Paid</td><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe);">Deep reasoning; strong on complex tasks</td></tr>
+<tr><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff);">OpenAI</td><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff);">gpt-4o</td><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff);">Paid</td><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff);">Strongest overall; good multimodal capabilities</td></tr>
+<tr><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe);">Anthropic</td><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe);">claude-sonnet-4</td><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe);">Paid</td><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe);">Top-tier code, long-text, and reasoning capabilities</td></tr>
+<tr><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff);">Google</td><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff);">gemini-2.5-flash</td><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff); color: #52c41a; font-weight: 600;">Free allowance available</td><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff);">One-million-token context; fast</td></tr>
+</table>
+
+<p style="border-left: 3px solid #5fb3ea; padding: 10px 16px; margin: 14px 0; background:var(--article-panel, #f4fbff); color:var(--article-secondary, #3f5f7b); font-size: 14px; border-radius: 0 6px 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">A zero-cost setup: </strong>Zhipu's free allowance plus Ollama qwen3.5:9b gives you a complete AI agent without spending anything. Add other models as needed once you are familiar with it. All providers use OpenAI-compatible interfaces: enter an API key and Base URL to connect.</p>
+
+<p style="border-left: 3px solid #5fb3ea; padding: 10px 16px; margin: 14px 0; background:var(--article-panel, #f4fbff); color:var(--article-secondary, #3f5f7b); font-size: 14px; border-radius: 0 6px 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">Who Should Use Local Models?</strong>Lawyers, doctors, financial professionals, internal enterprise users: any scenario with data-privacy requirements. Conversation content, knowledge-base documents, and memory data all live in local SQLite and do not pass through third-party servers.</p>
+
+
+
+
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 28px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">Bonus: former-leader.skill 🐍</h2>
+
+<p style="margin: 8px 0;">One last Easter egg.</p>
+
+<p style="margin: 8px 0;">I distilled my former leader into a <strong style="color:var(--article-accent, #3f8fd4);">HexClaw AI Skill</strong>.</p>
+
+<p style="margin: 8px 0;">Yes, that kind of leader: rarely writes code, yet one encounter with a keyboard leaves the whole team working overtime for a week. The kind who conspires with HRBP to dismiss employees without compensation, extracts free work from new hires on probation, manipulates subordinates, suppresses performance ratings, shifts blame and claims credit, shouts and pounds the table, and leaves on time while everyone else works 996.</p>
+
+<p style="margin: 8px 0;">After installing the skill, use trigger words such as <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">overtime</code>, <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">bug</code>, <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">PUA</code>, <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">blame-shifting</code>  and the AI is infused with the viper's lingering consciousness. It first “explains” in his voice why the code looks like that, complete with a trembling mouth, then switches back to normal mode to fix your bug.</p>
+
+<p style="border-left: 3px solid #f5a623; padding: 10px 16px; margin: 16px 0; background:var(--article-panel, #fffbe6); color: #8a6d3b; font-size: 14px; border-radius: 0 6px 6px 0;">
+<strong style="color: #d48806;">🐍 Example conversation:</strong><br/>
+You: “A production bug woke me up at 3 a.m. The catch block is empty. Who wrote this?”<br/>
+Viper: “Wh-wh-what? Y-you mean that empty catch? Th-that's <strong style="color: #d48806;">defensive programming</strong>! If an error isn't observed, it doesn't exist. It's called <strong style="color: #d48806;">quantum programming</strong>. You wouldn't understand! [Pounds the table]”<br/>
+Then the AI gets serious and fixes the bug.
+</p>
+
+<p style="margin: 12px 0;"><strong style="color:var(--article-accent, #3f8fd4);">Want this skill? Leave “former leader” in the comments and I will send it to you.</strong></p>
+
+<p style="margin: 8px 0; font-size: 13px; color:var(--article-muted, #999);">(Use satire to defuse workplace trauma and good code to overwrite bad code: that is the best revenge on the viper. Such poor conduct deserves everyone's condemnation.)</p>
+
+
+
+<p class="blog-brand-footer" data-blog-brand-footer="en" data-blog-brand-overrides="{}" style="text-align: center; color: var(--article-muted, #7b8fa3); font-size: 13px; margin: 16px 0 0; line-height: 2;">
+<strong style="color: var(--article-ink, #12324c); font-size: 14px;">HexClaw</strong><br/>
+Deploy locally or in the cloud · Control your data · Free and open-source software<br/>
+<a href="https://hexclaw.net" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">Website: <bdi dir="ltr">hexclaw.net</bdi></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://github.com/hexagon-codes" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">GitHub: <bdi dir="ltr">hexagon-codes</bdi></a><br/>
+<a href="https://weibo.com/u/4097207240" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">Weibo: <bdi dir="ltr">@HexClaw</bdi></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">X: <bdi dir="ltr">@hexclawapp</bdi></a><br/>
+<a href="mailto:ai@hexclaw.net" style="color: var(--article-muted, #999); text-decoration: none;">Email: <bdi dir="ltr">ai@hexclaw.net</bdi></a>
+</p>
+    </article>
+
+
+
+    <nav class="blog-series-nav" aria-label="Previous and next articles">
+      <a href="/en/blog/claude-code-sop" class="blog-nav-card prev">
+  <span class="blog-nav-label">&larr; Previous</span>
+  <span class="blog-nav-title">The Claude Code SOP Behind HexClaw AI: Design-Driven Development × Testing Feedback Loops × Multi-Agent Collaboration</span>
+</a>
+      <a href="/en/blog/k12-engineering-practice" class="blog-nav-card next">
+  <span class="blog-nav-label">Next &rarr;</span>
+  <span class="blog-nav-title">HexClaw AI Brings &quot;Calmer Homework Time&quot;: K12 Engineering for Its First Lighthouse Scenario</span>
+</a>
+    </nav>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-main">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-col-title">Product</div>
+        <a href="/en/#download">Download</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="/en/changelog">Changelog</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Developers</div>
+        <a href="/en/docs/">Documentation</a>
+        <a href="/en/blog/">Technical Blog</a>
+        <a href="/en/docs/getting-started">Getting Started</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">Apache-2.0</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Community</div>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/issues" target="_blank" rel="noopener noreferrer">Issues</a>
+        <a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer">Twitter / X</a>
+        <a href="mailto:ai@hexclaw.net">Contact Us</a>
+        <a href="mailto:support@hexclaw.net">Feedback</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">About</div>
+        <a href="/en/about">About Us</a>
+        <a href="/en/privacy">Privacy Policy</a>
+        <a href="/en/terms">Terms of Service</a>
+        <a href="/en/third-party-ai-services">Third-Party AI Services</a>
+      </div>
+    </div>
+    <div class="footer-wechat">
+      <img width="430" height="430" loading="lazy" decoding="async" src="../../assets/brand/wechat-qr.jpg" alt="HexClaw WeChat QR Code">
+      <span class="footer-wechat-label">WeChat Official Account</span>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">&copy; 2025&ndash;2026 hexagon-codes</span>
+  </div>
+</footer>
+<script src="../../assets/js/theme.js?v=2e4a1828feef"></script>
+<script src="../../assets/js/docs-nav.js?v=5a103861aec2"></script>
+<button type="button" class="back-to-top" id="backToTop" aria-label="Back to top" title="Back to top">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg>
+  <span>Top</span>
+</button>
+
+<script src="../../assets/js/blog.js?v=c72e1db5a6ec"></script>
+</body>
+</html>

@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/favicon-32.png">
+<title>Calmer Homework Time with HexClaw AI: Engineering the First K12 Flagship Scenario | HexClaw Technical Blog</title>
+<meta name="description" content="A K12 parent lesson-preparation assistant with grade-appropriate teaching Skills, execution-backed calculation evidence, isolated learning records, spaced review, durable delivery, and removable scenario assembly.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:site_name" content="HexClaw">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Calmer Homework Time with HexClaw AI: Engineering the First K12 Flagship Scenario | HexClaw Technical Blog">
+<meta property="og:description" content="A K12 parent lesson-preparation assistant with grade-appropriate teaching Skills, execution-backed calculation evidence, isolated learning records, spaced review, durable delivery, and removable scenario assembly.">
+<meta property="og:url" content="https://hexclaw.net/en/blog/k12-engineering-practice">
+<meta property="og:image" content="https://hexclaw.net/assets/blog/covers/k12-engineering-practice-cover.webp">
+<meta property="og:image:alt" content="河蟹 AI 让你&quot;父慈子笑&quot;：首个灯塔场景的 K12 工程实践 - 官方技术专栏封面">
+<meta property="og:image:width" content="1919">
+<meta property="og:image:height" content="820">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Calmer Homework Time with HexClaw AI: Engineering the First K12 Flagship Scenario | HexClaw Technical Blog">
+<meta name="twitter:description" content="A K12 parent lesson-preparation assistant with grade-appropriate teaching Skills, execution-backed calculation evidence, isolated learning records, spaced review, durable delivery, and removable scenario assembly.">
+<meta name="twitter:image" content="https://hexclaw.net/assets/blog/covers/k12-engineering-practice-cover.webp">
+<meta name="twitter:image:alt" content="河蟹 AI 让你&quot;父慈子笑&quot;：首个灯塔场景的 K12 工程实践 - 官方技术专栏封面">
+<link rel="canonical" href="https://hexclaw.net/en/blog/k12-engineering-practice">
+<link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/k12-engineering-practice">
+<link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/k12-engineering-practice">
+<link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/k12-engineering-practice">
+<link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/k12-engineering-practice">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Calmer Homework Time with HexClaw AI: Engineering the First K12 Flagship Scenario",
+  "description": "A K12 parent lesson-preparation assistant with grade-appropriate teaching Skills, execution-backed calculation evidence, isolated learning records, spaced review, durable delivery, and removable scenario assembly.",
+  "url": "https://hexclaw.net/en/blog/k12-engineering-practice",
+  "inLanguage": "en",
+  "datePublished": "2026-10-04",
+  "image": "https://hexclaw.net/assets/blog/covers/k12-engineering-practice-cover.webp",
+  "publisher": {
+    "@type": "Organization",
+    "name": "hexagon-codes",
+    "url": "https://hexclaw.net/",
+    "@id": "https://hexclaw.net/#organization"
+  },
+  "@id": "https://hexclaw.net/en/blog/k12-engineering-practice#article"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "HexClaw AI",
+      "item": "https://hexclaw.net/en/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Technical Blog",
+      "item": "https://hexclaw.net/en/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "河蟹 AI 让你\"父慈子笑\"：首个灯塔场景的 K12 工程实践",
+      "item": "https://hexclaw.net/en/blog/k12-engineering-practice"
+    }
+  ],
+  "@id": "https://hexclaw.net/en/blog/k12-engineering-practice#breadcrumb"
+}
+</script>
+<link rel="stylesheet" href="../../assets/css/docs-eb2895dd79c5.css">
+<link rel="stylesheet" href="../../assets/css/blog-a8e5008ac3d1.css">
+</head>
+<body class="blog-page blog-article-page">
+<a href="#main" class="skip-link">Skip to main content</a>
+<nav class="tn topnav" id="nav">
+  <a href="/en/" class="tn-b topnav-brand"><img width="72" height="72" src="../../assets/brand/hexclaw-icon-72.png" class="tn-l topnav-logo" alt="HexClaw"><span class="tn-n topnav-name">HexClaw</span></a>
+  <button type="button" class="tn-burger topnav-burger" aria-label="Menu" aria-expanded="false" aria-controls="primary-navigation"><span></span><span></span><span></span></button><div class="tn-r topnav-links" id="primary-navigation"><a href="/en/">Home</a><a href="/en/#cases">Scenarios</a><a href="/en/#features">Features</a><a href="/en/#quickstart">Quickstart</a><a href="/en/#ecosystem">Ecosystem</a><a href="/en/blog/" class="is-active">Tech Blog</a><a href="/en/docs/">Docs Center</a><div class="lang-menu" data-lang-menu><button type="button" class="lang-trigger" aria-haspopup="menu" aria-expanded="false" aria-label="Switch language"><svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 0 20"></path><path d="M12 2a15.3 15.3 0 0 0 0 20"></path></svg><span class="lang-current">English</span><svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="lang-menu-list" role="menu"><a href="/zh/blog/k12-engineering-practice" role="menuitem">中文</a><a href="/en/blog/k12-engineering-practice" role="menuitem" class="is-active" aria-current="true">English</a><a href="/ug/blog/k12-engineering-practice" role="menuitem" lang="zh-CN" dir="ltr">维吾尔语</a></div></div><button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"><svg class="ti-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="ti-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="nav-cta">GitHub <span class="nav-star-badge" id="gh-stars">&#9733;</span></a></div>
+</nav>
+
+<main id="main" class="blog-main">
+  <div class="blog-article-container">
+    <nav class="blog-breadcrumb" aria-label="Breadcrumb">
+      <a href="/en/"> Home </a>
+      <span class="blog-breadcrumb-sep">/</span>
+      <a href="/en/blog/"> Technical Blog </a>
+      <span class="blog-breadcrumb-sep">/</span>
+      <span aria-current="page"> Scenarios &amp; Practice </span>
+    </nav>
+
+    <header class="blog-header">
+      <div class="blog-header-tags">
+        <span class="blog-badge-series"> Engineering a Flagship Scenario </span>
+      </div>
+      <h1 class="blog-article-title"> Calmer Homework Time with HexClaw AI: Engineering the First K12 Flagship Scenario </h1>
+      <p class="blog-article-subtitle"> Teaching Skills for six subjects address “Can it explain?” The first hard engineering questions are: what if the explanation is wrong, where does the child's data live, and will adding a scenario contaminate the platform? Keep the core clean and leave other users undisturbed. </p>
+      <div class="article-provenance-banner">
+        <div class="provenance-left">
+          <span class="provenance-origin-badge"> First published on WeChat </span>
+          <span class="provenance-text"> This article first appeared in the official WeChat <strong>“hexclaw”</strong>  (ID: hexclaw) technical column · Published  <strong> October 4, 2026 </strong>  · Approximately 14 minutes to read </span>
+        </div>
+        <a href="https://mp.weixin.qq.com/s/8xUoFrig10zxpxni1rgm9Q" target="_blank" rel="noopener noreferrer" class="provenance-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+           Original on WeChat ↗
+        </a>
+      </div>
+    </header>
+
+    <article class="blog-content">
+
+
+
+<p style="margin: 16px 0;"> Can a general-purpose agent platform support a genuinely trustworthy specialist scenario without contaminating its core or disturbing other users? The familiar “general or vertical?” question returns in the agent era. For this version, HexClaw chose <strong style="color:var(--article-accent, #3f8fd4);">  a scenario where mistakes matter especially deeply </strong> : helping children with homework. <strong style="color:var(--article-accent, #3f8fd4);"> One AI mistake becomes a parent's mistaken explanation and a child's mistaken understanding </strong>. </p>
+
+<p style="margin: 8px 0;"> The everyday version is a familiar Chinese joke: parent and child get along until homework begins. Behind it is a public frustration that official media have covered for five years: China Youth Daily asked how parents could escape “homework tutoring anxiety” in 2021, and Zhejiang Publicity was still asking why homework tutoring drives parents to anger in February 2026. <strong style="color:var(--article-accent, #3f8fd4);"> In our view, no product has fully met that need in those five years. </strong></p>
+
+<p style="margin: 8px 0;"> Headlines have certainly noticed. Search for AI homework help and the same formula appears: <strong style="color:var(--article-accent, #3f8fd4);"> “From homework chaos to family harmony—all it takes is AI” </strong> . It contains some truth: today's multimodal models recognize photographed questions and answer them. Leading vendors are also moving toward guided learning: Anthropic's Claude for Education Learning mode, OpenAI's ChatGPT Study mode, and Google's Gemini Guided Learning launched in 2025 for different stages from higher education to K12. But articles using that formula usually test whether the AI explains smoothly, rarely treating a wrong explanation as an engineering problem. Put plainly: <strong style="color:var(--article-accent, #3f8fd4);"> would you teach your own child using the AI's answer? </strong> The closer a parent is to exhaustion, the less capacity they have to verify every step. </p>
+
+<p style="margin: 8px 0;"> Parents also need more than a correct answer. The explanation must use what the child has learned, without baffling a fifth grader with simultaneous linear equations. Sensitive family data—mistakes and learning records—must not drift into the cloud without a clear account. </p>
+
+<p style="margin: 8px 0;"> HexClaw AI <a href="https://github.com/hexagon-codes/hexclaw-desktop/releases/tag/v0.5.0-beta.3" style="color:var(--article-accent, #5fb3ea);"> Desktop v0.5.0-beta.3 </a>  (backend hexclaw v0.5.0-beta.1) makes homework tutoring the platform's first flagship scenario: <strong style="color:var(--article-accent, #3f8fd4);"> a K12 lesson-preparation assistant for parents </strong> . Parents prepare teacher-like explanations rather than placing a child directly in front of AI. With the default local deployment, learning assets stay on the local machine. This version covers primary grades 1–6; middle and high school remain long-term plans. The Chinese title changes “filial obedience” to “smiles”: a smiling child matters more. This article examines what really lies between AI and a calmer homework routine: <strong style="color:var(--article-accent, #3f8fd4);"> first, why the AI can teach—evidence-based Skills grounded in educational theory, plus a two-layer design putting correctness in Go and explanation in Markdown—then three questions about trust that are entirely engineering questions </strong>. </p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<blockquote style="border-left: 3px solid #3f8fd4; padding: 14px 18px; margin: 20px 0; background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); font-size: 14px; border-radius: 0 8px 8px 0; line-height: 1.85;">
+<strong style="color:var(--article-accent, #3f8fd4);"> The central judgment </strong><br/>
+ Putting AI into tutoring is difficult for more than explaining a problem; large models can already do that. The challenge is three <strong style="color:var(--article-accent, #3f8fd4);">  questions of trust </strong>: <br/>
+① <strong style="color:var(--article-accent, #3f8fd4);"> What if the explanation is wrong? </strong> —a calculation-evidence chain records program-execution evidence separately from model judgment; <br/>
+② <strong style="color:var(--article-accent, #3f8fd4);"> Where is the data stored? </strong> —storage follows the local or cloud service, while cloud-model use is checked by purpose and data category; <br/>
+③ <strong style="color:var(--article-accent, #3f8fd4);"> Will the scenario erode the platform? </strong> —K12 is a scenario package removable at compile time; the platform must still work independently after removal.
+</blockquote>
+
+<blockquote style="border-left: 3px solid #5fb3ea; padding: 10px 16px; margin: 16px 0; background:var(--article-panel, #f4fbff); color:var(--article-secondary, #3f5f7b); font-size: 14px; border-radius: 0 8px 8px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> The 30-second version </strong>: <br/> Desktop v0.5.0-beta.3 makes tutoring HexClaw's first scenario package. A photo's source is saved before per-question recognition. Blank questions give parents answers and explanations; completed questions are judged separately. Precisely evaluable problems use deterministic code in the current service; reliable question assets can reuse verified solutions; the rest use Solver + Verifier. For computational verification, the app executes model-generated code, <strong style="color:var(--article-accent, #3f8fd4);"> with separate evidence for the final value, the process, and the parent explanation </strong> . Mistakes follow a 1 / 3 / 7 / 14-day review ladder, and learning profiles can be exported. Durable tasks and itemized delivery receipts connect “computed” to “received by the parent.” Six backend seams, Manifest v2, and Desktop registration slots assemble the scenario. Where data is stored and where models run are two separate questions. </blockquote>
+
+<figure style="margin: 22px 0; text-align: center;">
+<img src="../../assets/blog/河蟹 AI 让你「父慈子笑」：首个灯塔场景的 K12 工程实践-wechat/01-辅导闭环.png" alt="The current K12 tutoring loop: source recognition, blank/completed branching, genuine final artifacts, mistake review, and answer return" width="2000" height="2800" loading="lazy" decoding="async">
+<figcaption style="color:var(--article-secondary, #5f7b9c); font-size: 13px; margin-top: 8px; line-height: 1.6;"> Figure 1 | From a homework photo to the next review. Blank questions do not become mistakes; completed question-based work delivers text and a genuinely annotated original. A question asset reuses a solution, but the current answer must still be assessed. </figcaption>
+</figure>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;"> Positioning: teach parents how to teach </h2>
+
+<p style="margin: 8px 0;"> The product starts simply: a parent selects Homework Tutor from the template library and enters the child's name, grade and term, and math textbook edition, creating <strong style="color:var(--article-accent, #3f8fd4);">  a dedicated tutor instance for that child </strong> . This version covers six primary-school subjects; configurable textbook editions and progress currently focus on math. Families with multiple children create separate instances with their own mistakes, learning records, and memory. </p>
+
+<p style="margin: 8px 0;"> Send a homework photo. The system extracts each handwritten answer, identifies the subject, and branches according to whether each question was answered. Blank questions produce answers and explanations for parents. Completed questions are marked, and incorrect ones enter the mistake notebook automatically. Review is scheduled, due mistakes are delivered on Friday, and questions can be added to practice sets. Desktop works directly; after binding a DingTalk bot private chat, parents can send photos from phones too. There is no per-question OCR confirmation requirement: only unclear source facts that affect the conclusion need minimal clarification. Family groups, WeChat, and Feishu are outside this version's K12 integration scope. </p>
+
+<p style="margin: 8px 0;"> This version develops photo handling in depth. Recognition preserves each question, the child's currently valid answer, and answer regions; crossed-out old calculations must not be mixed into the active answer. <strong style="color:var(--article-accent, #3f8fd4);"> An initial classification is not permanent </strong> : when a sheet first classified as blank later yields clear mathematical answers, the program corrects the effective intent in the same transaction that saves source facts, preserving the original classification receipt. Blank questions give parents answers and explanations without inventing student answers or creating mistake/mastery evidence. Finalized completed question-based work retains an annotated original. Unreadable questions or missing/out-of-bounds coordinates receive text explanations rather than guessed red crosses; this does not justify omitting annotations for the entire completed sheet. </p>
+
+<p style="margin: 8px 0;"> These choices follow three first principles: </p>
+
+<ul style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> Grade correctness </strong> —use knowledge the child has learned. Grade and term come from the tutor profile; the current range is first grade's first term through sixth grade's second term. Math also uses curriculum references and linked textbook progress. Lookup, prechecks, and profile injection are deterministic; recognizing whether a solution exceeds the allowed level still involves model judgment. <strong style="color:var(--article-accent, #3f8fd4);"> Keep hard guarantees hard and acknowledge soft judgments </strong>. </li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> Visible trust </strong> —retain evidence types and distinguish verification badges accordingly; homework marking presents the annotated original and per-question conclusions. Admit uncertainty rather than being confidently wrong. </li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> Give parents the answer and the explanation </strong> —a complete answer, solution process, and usable teaching sequence: what to ask, how to respond when the child gets stuck, and how to check understanding. Socratic questions are a parent's teaching method, not a barrier requiring parents to solve it themselves first. </li>
+</ul>
+
+<p style="margin: 8px 0;"> Tutoring also retains an <strong style="color:var(--article-accent, #3f8fd4);">  emotional gatekeeper </strong> : when signals such as “the child is crying / angry / fed up” appear, parent-facing guidance acknowledges emotion first—with empathy, recognition of effort, and smaller steps. Complete answers and lesson references remain available without an unlocking process. At nine or ten at night, the real obstacle is often <strong style="color:var(--article-accent, #3f8fd4);"> unacknowledged emotion </strong>. </p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;"> Why the AI can teach: pedagogy in Go and Markdown </h2>
+
+<p style="margin: 8px 0;"> Before the trust questions, answer the first question parents ask: <strong style="color:var(--article-accent, #3f8fd4);"> what qualifies the AI to teach? </strong></p>
+
+<p style="margin: 8px 0;"> Backend v0.5.0-beta.1 ships the scenario package with <strong style="color:var(--article-accent, #3f8fd4);">  a set of teaching Skills </strong> compiled into the binary and written to the service machine at first startup. Grade Boundaries and K12 Pedagogy form the foundation. Subject tutors focus on six primary-school subjects: <strong style="color:var(--article-accent, #3f8fd4);"> math, Chinese, English, science, information technology, and art </strong> , supported by recognition/marking, reading, writing, vocabulary, and worksheet assembly. Subject tutors build on the foundation and inherit its boundaries. The manifest declares a Skill list generated from the bundled directory; two engine tools connect marking and review persistence ( <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">k12_grade</code> / <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">k12_review</code> ) to the tool loop. </p>
+
+<p style="margin: 8px 0;"> They contain <strong style="color:var(--article-accent, #3f8fd4);">  evidence-based teaching methods </strong> , rather than a vague instruction to be patient. The foundational Skill states its theoretical basis: stepwise teaching follows Vygotsky's <strong style="color:var(--article-accent, #3f8fd4);"> Zone of Proximal Development </strong> and gradual release of responsibility (I do → We do → You do), alongside Rosenshine's Principles of Instruction: small steps, checks for understanding, and a high success rate. Emotional guidance follows Dweck's <strong style="color:var(--article-accent, #3f8fd4);">  growth mindset </strong> : praise effort and strategies rather than intelligence or comparisons. Review combines retrieval practice and spaced repetition, also grounding the mistake-review ladder below. The Skill states the intended stance clearly: <strong style="color:var(--article-accent, #3f8fd4);"> “You need not recite these terms to parents, but every action should be grounded in them.” </strong> These frameworks guide the design; they do not constitute empirical promises of learning outcomes. </p>
+
+<p style="margin: 8px 0;"> Each subject adds its own methods. The math tutor follows Pólya's How to Solve It and its <strong style="color:var(--article-accent, #3f8fd4);"> four steps </strong> —understand, plan, execute, review. Consolidation follows Gu Lingyuan's <strong style="color:var(--article-accent, #3f8fd4);">  variation teaching </strong> from the Qingpu experience: vary numbers, situations, and questions to expose a stable underlying model rather than rote memorization. For a fifth grader, explain equations as adding or subtracting equally on both sides, not moving terms and changing signs. Essay feedback provides structure, material, and concrete revisions, with complete reference drafts for parents if needed while preserving the child's original. Art feedback starts from visible evidence and offers encouragement, questions, and one small next action, without inventing artistic intent. <strong style="color:var(--article-accent, #3f8fd4);"> Pedagogy must become a sentence the parent can say and a step they can guide right now </strong> , rather than educational jargon pasted onto an answer. Skill acceptance criteria remain goals, not measured rankings. </p>
+
+<p style="margin: 8px 0;"> For engineers, the reusable part is the <strong style="color:var(--article-accent, #3f8fd4);">  two-layer architecture </strong> . This split began with an honest correction. Early research estimated that “90% of homework marking could be implemented through Skills.” Implementation revealed that <strong style="color:var(--article-accent, #3f8fd4);">  the remaining 10%—grade boundaries, verification evidence, mistake state, and separation between children—determines whether the product is trustworthy </strong> , and none belongs solely in a prompt. Teaching capability is deliberately divided: </p>
+
+<ul style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> Deterministic correctness belongs in Go </strong> —curriculum lookup and concept prechecks, input versions and source binding, numerical comparison and state transitions are compiled into the binary. <strong style="color:var(--article-accent, #3f8fd4);"> The model does not decide these rules </strong> ; polished prompting cannot alter the judgment logic. Model-based recognition and explanation must not be presented as program guarantees. </li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> How to explain belongs in Markdown </strong> —explanation wording, Socratic questions, emotional guidance, and mappings from out-of-level language to grade-appropriate alternatives are injected at runtime into the system prompt. <strong style="color:var(--article-accent, #3f8fd4);"> Readable, editable, and versioned </strong> , these mounted Skills let the community change wording and teaching flow, while actual behavior remains subject to the tutor persona and program contracts. </li>
+</ul>
+
+<p style="margin: 8px 0;"> Soft constraints aim for good teaching; hard constraints enforce boundaries. Do not expect prompts to control what they cannot. The pattern of distilling human methodology into Skill files appeared in <a href="https://mp.weixin.qq.com/s/2tHlfZYHxQdQwvVZQEoLRg" style="color:var(--article-accent, #5fb3ea);">  the former-lead Skill article </a> ; here the subject changes from one person to a discipline's teaching methods. </p>
+
+<p style="margin: 8px 0;"> The next three trust questions show where this release puts those constraints in code. </p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;"> First checkpoint: what if the AI teaches it wrong? The verification-evidence chain </h2>
+
+<p style="margin: 8px 0;"> Start with a fact large-model vendors rarely put on their homepages: <strong style="color:var(--article-accent, #3f8fd4);"> an LLM is not a calculator </strong> . It generates answer-like numbers by token probabilities and can fail probabilistically at multi-step arithmetic, sounding just as confident when wrong. </p>
+
+<p style="margin: 8px 0;"> An arithmetic error may be tolerable in casual chat. Tutoring is different: <strong style="color:var(--article-accent, #3f8fd4);"> parents use the explanation to teach their children </strong> . That is where the opening chain—AI error, mistaken teaching, mistaken learning—starts amplifying the mistake. </p>
+
+<p style="margin: 8px 0;"> HexClaw joins two repeatedly studied academic approaches into an engineering chain: <strong style="color:var(--article-accent, #3f8fd4);"> self-consistency sampling </strong>  (Wang et al., ICLR 2023) improves solution accuracy, while <strong style="color:var(--article-accent, #3f8fd4);"> program-aided verification </strong>  (the PAL lineage, Gao et al., arXiv 2022 / ICML 2023, letting an interpreter execute computations) moves correctness checking from the model's assertions to deterministic execution. </p>
+
+<h3 style="font-size: 16px; font-weight: 700; color:var(--article-ink, #12324c); margin: 24px 0 10px;"> Solver: argue with yourself first </h3>
+
+<p style="margin: 8px 0;"> Complex questions do not rely on a single generation. <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">engine/solve.go</code>  contains two Solver reinforcement modes: <strong style="color:var(--article-accent, #3f8fd4);">self_consistency</strong>  (sample the same method repeatedly and use a majority vote, capped at  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">maxSelfConsistency = 5</code>  to bound latency and cost) and  <strong style="color:var(--article-accent, #3f8fd4);">method_diversity</strong>  (deliberately solve with two different methods and check whether they converge). </p>
+
+<p style="margin: 8px 0;"> Complexity routing selects the effort: long questions, multiple subquestions, and certain reasoning keywords raise solver strength; simple arithmetic avoids repeated sampling. The current implementation removes textbook appendices, printed examples, and already-selected individual question numbers from <strong style="color:var(--article-accent, #3f8fd4);">  the copy used to judge complexity </strong> while preserving the full genuine question. That prevents layout text from promoting a simple problem into a “hard” one. An earlier fast path uses Go AST and  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">big.Rat</code> for exact arithmetic, simplest integer ratios, linear equations, and structurally clear fraction, unit-rate, and some geometry word problems. Incomplete structural recognition falls back to the model chain. </p>
+
+<h3 style="font-size: 16px; font-weight: 700; color:var(--article-ink, #12324c); margin: 24px 0 10px;"> Verifier: the model supplies the program; the app executes it </h3>
+
+<p style="margin: 8px 0;"> A verdict should require more than another model glance. The latest code consolidates <strong style="color:var(--article-accent, #3f8fd4);">  computational checks supported by the numerical comparator </strong> into an independent node. With a fresh context, the Verifier receives the question, complete candidate solution, and grade constraints, and supplies only a Python program plus stepwise audit JSON. The app then calls  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">code_exec</code> and reads the actual execution receipt. This removes the round trip in which the model decides when to call the tool and describes its result, without removing execution itself. </p>
+
+<section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0;"><code style="display: block; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: Menlo, Monaco, Consolas, monospace;"><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">computed, executed := receipt.computed(task)</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">switch {</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">case program.Scope == &quot;OUT_OF_SCOPE&quot;:</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">    verdict = verdictOutOfScope</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">case process == &quot;INVALID&quot;:</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">    verdict = verdictDisagree</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">case executed &amp;&amp; answersEqual(computed, input.Candidate):</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">    verdict = verdictAgree</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">case executed &amp;&amp; answersDefinitelyDiffer(computed, input.Candidate):</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">    verdict = verdictDisagree</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">}</span></code></section>
+
+<p style="margin: 8px 0;"> This comes from the actual adjudication code in  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">engine/solve_verifier_node.go</code>  . Its order is meaningful: check grade scope, then process, then numerical values. “I checked it” is not execution evidence; the question's input digest, run ID, success state, exit code, and stdout must match. Other question types retain their existing tool loop, and the verification subagent may only execute code, without further delegation. The candidate solution remains in the input, so a fresh context does not imply information isolation. Understanding the question and semantically auditing steps still involve the model. </p>
+
+<p style="margin: 8px 0;"> The verdict has four states, not two: </p>
+
+<section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;"><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">verdictUnverifiable verifyVerdict = iota // 非计算题/无法判定/verifier 不可用</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">verdictAgree</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">verdictDisagree</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">verdictOutOfScope // 解法用了 constraint 白名单之外的方法（超纲），</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">                  // 需学段内重解</span></code></section>
+
+<p style="margin: 8px 0;"> The fourth state,  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">out_of_scope</code>  carries the educational constraint: even with a correct answer, <strong style="color:var(--article-accent, #3f8fd4);"> a detected out-of-scope method is rejected </strong> —for example, simultaneous linear equations for a fifth-grade question. In a solving chain outside direct marking, explicit grade constraints and remaining budget allow <strong style="color:var(--article-accent, #3f8fd4);"> one attempt to solve again within the grade, followed by full-process verification </strong> ; if it still violates constraints, OutOfScope remains. The reference combines profile grade and curriculum mappings. Built-in People's Education Press math keys mainly cover Grade 4 first term through Grade 7 second term; if a concept appears in several grades, the constructor keeps the earliest to avoid false scope violations. Secondary-school entries also help detect out-of-scope methods and do not open secondary tutoring in this version. The table is deterministic; identifying a method against the whitelist is still model-based semantic judgment, not a formal proof. </p>
+
+<p style="margin: 8px 0;"> The practical change is making “did the judge actually calculate?” an inspectable fact instead of a prompt instruction. A model can write faulty code or misread a source, but <strong style="color:var(--article-accent, #3f8fd4);"> without a successful execution receipt for this question, it cannot claim “Programmatically checked” </strong> . A later failed execution cannot borrow an earlier successful receipt either. </p>
+<figure style="margin: 22px 0; text-align: center;">
+<img src="../../assets/blog/河蟹 AI 让你「父慈子笑」：首个灯塔场景的 K12 工程实践-wechat/02-验算证据链.png" alt="Computational verification: model-generated program and audit, app execution, and joint adjudication using receipts and process" width="2000" height="2620" loading="lazy" decoding="async">
+<figcaption style="color:var(--article-secondary, #5f7b9c); font-size: 13px; margin-top: 8px; line-height: 1.6;"> Figure 2 | Responsibility boundaries: the model supplies code and an audit; the app executes and reads this question's receipt. Matching final answers cannot erase process errors or out-of-scope findings. This diagram illustrates the code mechanism. </figcaption>
+</figure>
+
+<h3 style="font-size: 16px; font-weight: 700; color:var(--article-ink, #12324c); margin: 24px 0 10px;"> Numerical guardrails: do not entirely trust the judge either </h3>
+
+<p style="margin: 8px 0;"> Another easily missed defense asks: <strong style="color:var(--article-accent, #3f8fd4);"> what if the code computes correctly but the model's verbal verdict contradicts it? </strong> The current guardrail normalizes comparable fractions, decimals, percentages, and supported quantity expressions, then compares them with  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">answerTol = 1e-6</code>  . Equal numbers have a precondition: when a complete solution is supplied, its process audit must explicitly pass before a verbal disagreement can be corrected. <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">PROCESS: INVALID</code>  and  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">OUT_OF_SCOPE</code>  cannot be erased by equal final values. </p>
+
+<p style="margin: 8px 0;"> For parents: accidentally reaching the right answer does not mean every intermediate step is teachable. Marking distinguishes a wrong answer from a correct answer with a problematic process; the latter shows the step problem and explanation without automatically creating a mistake record. Answers that cannot be reliably parsed or compared remain uncertain; differing strings are not automatically arithmetic errors. </p>
+
+<h3 style="font-size: 16px; font-weight: 700; color:var(--article-ink, #12324c); margin: 24px 0 10px;"> Audit the sentences parents will teach, as well as the answer </h3>
+
+<p style="margin: 8px 0;"> The parent guide has seven fields: answer, complete steps, grade-appropriate method, pitfalls, teaching order, follow-up questions, and checks. The solution and explanation may be generated together but remain candidates. The explanation binds to the chosen solution digest and receives its own itemized audit. <strong style="color:var(--article-accent, #3f8fd4);"> A correct answer cannot validate a faulty worked example or misleading follow-up question </strong> . This is a model-content audit and must not be presented as numerical program proof. </p>
+
+<h3 style="font-size: 16px; font-weight: 700; color:var(--article-ink, #12324c); margin: 24px 0 10px;"> Evidence honesty: execution and model judgment are different </h3>
+
+<p style="margin: 8px 0;"> The chain's final step preserves evidence strength <strong style="color:var(--article-accent, #3f8fd4);">  honestly </strong> . There are six domain evidence types: numerical execution, symbolic execution, heterogeneous-model review, same-model heuristic, original-word reproduction, and none. The backend excerpt below judges strong trust. Badge-displaying entries distinguish Programmatically Checked from Cross-checked; not every result page displays a badge, and green alone does not establish evidence strength. </p>
+
+<section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;"><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">func (e SolveEvidence) StrongTrust() bool {</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">    switch e.EvidenceType {</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">    case EvidenceNumericExec, EvidenceSymbolicExec, EvidenceVerbatim:</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">        return true</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">    case EvidenceHeterogeneousModel:</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">        return e.SolverModel != &quot;&quot; &amp;&amp; e.SolverModel != e.VerifierModel</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">    default:</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">        return false</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">    }</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">}</span></code></section>
+
+<p style="margin: 8px 0;"> The section's most candid point is that Solver and Verifier  <strong style="color:var(--article-accent, #3f8fd4);">  use the same underlying model by default </strong> . Independence comes from fresh context and grounded program execution, not heterogeneous models. Agreement between two same-source models is only model-review evidence, <strong style="color:var(--article-accent, #3f8fd4);"> not programmatic verification </strong> . And  <strong style="color:var(--article-accent, #3f8fd4);">  program-execution evidence </strong> needs further qualification: complex questions require the runtime to check this question's input digest, sandbox run ID, success status, and actual output ( <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">CodeExecutionReceipt</code>  carries  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">InputDigest</code>  and  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">RunID</code>), <strong style="color:var(--article-accent, #3f8fd4);"> only a receipt matched to this question supports programmatic verification </strong> ; the deterministic fast path instead comes directly from evaluation. The original tool loop can supplement checks within budget. An independent computational-verification node without a valid receipt, with execution failure, or with an unknown call outcome retains its failure or unverified state. It cannot be packaged as successful verification. Parseable model judgments remain separate from execution evidence; unresolved disagreement remains uncertain. The same discipline keeps internal audit details out of marking output: <strong style="color:var(--article-accent, #3f8fd4);"> mistake explanations remove the verifier's tick/cross self-checks and “whether...” self-questions, leaving one human-readable cause for the parent </strong> . Verification scratch work stays out of the interface. </p>
+
+<p style="margin: 8px 0;"> A shared model does not mean any model will work. A durable K12 marking task currently <strong style="color:var(--article-accent, #3f8fd4);">  freezes the selected model at creation, requiring both image and text support </strong> . Recognition, solving, and verification keep that route without silently switching midway. General solve uses a separately configured reasoning model only when provider/model were not explicitly specified. Seeing images does not guarantee good marking; model capability remains a prerequisite throughout. </p>
+
+<blockquote style="border-left: 3px solid #3f8fd4; padding: 14px 18px; margin: 20px 0; background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); font-size: 14px; border-radius: 0 8px 8px 0; line-height: 1.85;">
+ Extract correctness from a model's confident tone and turn it into inspectable evidence— <strong style="color:var(--article-accent, #3f8fd4);"> that is the engineering boundary between tutoring and chat </strong>.
+</blockquote>
+
+<h3 style="font-size: 16px; font-weight: 700; color:var(--article-ink, #12324c); margin: 24px 0 10px;"> From a chat request to a durable task: recovery is more than rerunning </h3>
+
+<p style="margin: 8px 0;"> A homework photo passes through recognition, solving, verification, finalization, and delivery. The system first saves the original-image reference, source digest, model route, request digest, and stage budgets. Physical calls distinguish prepared, sent, succeeded, and outcome_unknown. Recovery reuses completed units and resumes only from known safe checkpoints; <strong style="color:var(--article-accent, #3f8fd4);"> when a sent request has an unknown result, check the original request before resending </strong> . Page state and service task state are separate; closing a page does not cancel a durable task. </p>
+
+<h3 style="font-size: 16px; font-weight: 700; color:var(--article-ink, #12324c); margin: 24px 0 10px;"> What a question bank can save—and what it cannot </h3>
+
+<p style="margin: 8px 0;"> Distinguish textbook grounding, cross-task question assets, and reuse within the same task. <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">verified_text</code>  means direct reading of verified textbook text, freezing the textbook, page, and source digest to establish where evidence comes from. Question assets match reliable facts such as question text and grade, retain versions and adoption receipts, and reuse verified solutions. Within one task, an already verified solution goes to the grader to compare with the student's answer rather than being solved again. <strong style="color:var(--article-accent, #3f8fd4);"> A matching answer asset cannot skip current-image recognition or assessment of the student's answer and steps </strong> , nor overwrite the ledger of an earlier unresolved call. </p>
+
+<p style="margin: 8px 0;"> Trust has a cost. General solve has a default five-minute wall-clock guardrail, while durable K12 marking uses frozen stage budgets. A local installed-app report from October 3, 2026 found that <strong style="color:var(--article-accent, #3f8fd4);"> one complete DingTalk workflow for a messy math assignment took 285.507 seconds, including 248.214 seconds for recognition review, missing the 120-second target </strong> . That run used gpt-6-sol, fully processed 16 questions, and actually delivered both text and annotated PNG. It proves only that sample, model, and installed version—not an accuracy ranking or performance for every model. Saving solver calls does not remove the slowest recognition stage. </p>
+
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;"> Second checkpoint, part 1: where mistakes live—record primitives and a spaced-review engine </h2>
+
+<p style="margin: 8px 0;"> Incorrectly marked questions enter the mistake notebook automatically. Initially, they used a <strong style="color:var(--article-accent, #3f8fd4);">  domain-neutral record primitive </strong> <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">agent_records</code>   (storage migration V8). As domain constraints became clearer, typed tables such as  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">k12_mistakes</code>, <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">k12_accumulations</code>   took over in V9, with a scenario-installation ledger in V10 and deduplication-key backfill in V11. <strong style="color:var(--article-accent, #3f8fd4);"> The record contract is general; domain fields have their own home </strong>. </p>
+
+<p style="margin: 8px 0;"> The contract still uses  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">collection</code>  to distinguish collections. Typed tables retain generic columns such as  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">status</code>  (state machine), <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">due_at</code>  (due scheduling), and <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">version</code>  (optimistic locking), while questions, answers, and mistake causes occupy explicit domain columns. Three details are reusable: </p>
+
+<ul style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> Database constraints and same-question matching jointly handle idempotent deduplication </strong> —typed tables have  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">UNIQUE(agent_name, dedupe_key)</code> . Mistake keys combine the source session with normalized question text, absorbing whitespace and capitalization differences in OCR. Collections deduplicate by subject, type, and normalized content. Marking also matches a unique exact existing mistake source for the current child, then updates its review result. <strong style="color:var(--article-accent, #3f8fd4);"> The database key alone does not promise global uniqueness across sessions </strong>. </li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> The isolation key is an immutable primary key </strong> —on the  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">agents(name)</code>   foreign key. Renaming changes display_name; schema enforces isolation across children/instances, and deleting an instance cascades to its data. </li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> A second use demonstrates the generality </strong> —the Chinese/English Collection notebook, storing dictation mistakes, useful words and sentences, and poems, is another collection under the same contract, persisted in its own table. </li>
+</ul>
+
+<p style="margin: 8px 0;"> Mistake sources are not limited to in-app marking. A parent can add a teacher's oral feedback, a workbook question, or something the child says they did not understand through <strong style="color:var(--article-accent, #3f8fd4);"> Record a Mistake </strong> . Save the question and child's answer; if the cause is blank, one <strong style="color:var(--article-accent, #3f8fd4);"> lightweight reasoning call summarizes it in a sentence </strong> , then schedules review as usual. This path deliberately <strong style="color:var(--article-accent, #3f8fd4);"> skips the adversarial verification chain </strong> . It records a question already known to be wrong rather than judging correctness, avoiding full-chain latency merely to keep a record. </p>
+
+<p style="margin: 8px 0;"> For scale, the earliest research estimated <strong style="color:var(--article-accent, #3f8fd4);"> about 450 records per school year on one machine </strong> . This is a single-user Desktop design scale, not a measured capacity ceiling. Household cloud sync or multiple users would require revisiting pagination, incremental sync, and conflict handling together. <strong style="color:var(--article-accent, #3f8fd4);"> A single-machine design does not scale sideways unchanged </strong>. </p>
+
+<h3 style="font-size: 16px; font-weight: 700; color:var(--article-ink, #12324c); margin: 24px 0 10px;"> The review engine: four intervals that lengthen with correct attempts </h3>
+
+<p style="margin: 8px 0;"> Mistakes have five states: <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">new / explained / retried / mastered / archived</code> . They normally advance from new to explained to retried to mastered; failed spot checks return them to review, and archived records can be restored. A few core lines drive this: </p>
+
+<section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;"><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">// reviewIntervalLadder 艾宾浩斯式间隔阶梯（秒）：</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">// 卡片每成功重做一次，下次复习推得更远</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">var reviewIntervalLadder = []int64{</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">    1 * 86400, 3 * 86400, 7 * 86400, 14 * 86400,</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">}</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;"></span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">// MasteryGapInterval 掌握判定的最小间隔（秒）：</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">// 第二次做对距上次 ≥ 此值 → mastered</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">const MasteryGapInterval int64 = 3 * 86400 // 3 天</span></code></section>
+
+<p style="margin: 8px 0;"> In plain terms: a new mistake is due after one day; the first correct retry schedules it three days later. When the system re-marks it correct, a record already in retried with a previous correct timestamp and a gap of at least three days can become Mastered and leave the queue. <strong style="color:var(--article-accent, #3f8fd4);"> This fixed state-and-time rule does not strictly check “two consecutive correct answers” </strong> . Before mastery, the ladder advances through 1 / 3 / 7 / 14 days, capped at 14. Unmastered questions do not hide simply because they have not been practiced for a while. Generated variants on the same concept <strong style="color:var(--article-accent, #3f8fd4);"> must themselves pass the verification chain </strong> before entering a printable practice set. </p>
+
+<p style="margin: 8px 0;"> Anki and SuperMemo users will recognize the spaced-repetition structure. The 1/3/7/14 values are <strong style="color:var(--article-accent, #3f8fd4);">  product-defined fixed intervals </strong> inspired by the scale of spaced-repetition research, not original Ebbinghaus experiment data or an SM-2-style dynamic difficulty factor. For tens or hundreds of mistakes per child per term, this fixed ladder is a reasonable complexity tradeoff while completing the workflow. </p>
+
+<p style="margin: 8px 0;"> Parents see a few lightweight actions: <strong style="color:var(--article-accent, #3f8fd4);"> Review This Week </strong> queues due mistakes. After adding them to a <strong style="color:var(--article-accent, #3f8fd4);"> Practice Set </strong> , print or send it, let the child answer, and return a photo for system re-marking and rescheduling. Parents can manually record results to advance review, but system mastery still depends on verified actual answers. Misrecognized source work can be corrected and re-marked through an <strong style="color:var(--article-accent, #3f8fd4);">  immutable correction chain </strong> : each correction appends a historical final artifact instead of overwriting it. If the unique mistake record it created is no longer valid, the system withdraws it while preserving the audit. <strong style="color:var(--article-accent, #3f8fd4);"> Correcting a source does not count as the child's practice </strong> . Learning profiles export to  <strong style="color:var(--article-accent, #3f8fd4);"> PDF, Word (.docx), and Markdown </strong> . PDF uses the platform render service's pandoc + typst layout; practice sets separately provide question and answer sheets for printing and PDF saving. </p>
+
+<p style="margin: 8px 0;"> One subject-specific detail: Chinese dictation and English vocabulary use  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">verbatim</code>  (original-word reproduction) evidence, <strong style="color:var(--article-accent, #3f8fd4);"> taking the reference answer directly from the saved original </strong> . Collections can generate dictation or gap-fill questions for practice sets, with photographic answer return and re-marking. Faithfulness to the original at question generation is not proof that the child answered correctly; student answers follow a separate marking chain. Evidence types extend by subject rather than being math-only. </p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<blockquote style="border-left: 3px solid #5fb3ea; padding: 10px 16px; margin: 16px 0; background:var(--article-panel, #f4fbff); color:var(--article-secondary, #3f5f7b); font-size: 14px; border-radius: 0 8px 8px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> Parents can skip ahead </strong> : the next two sections, on the egress gateway and scenario architecture, are for engineers. Parents interested mainly in practical use can jump to <strong style="color:var(--article-accent, #3f8fd4);"> “An honest look: this version's boundaries” </strong> and then follow the screenshots in the companion <a href="/en/blog/k12-user-guide" style="color:var(--article-accent, #5fb3ea);"> “A Calmer Homework Routine” guide </a> . </blockquote>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;"> Second checkpoint, part 2: does the child's data leave the network? A fail-closed egress gateway </h2>
+
+<p style="margin: 8px 0;"> First, state the product position clearly: <strong style="color:var(--article-accent, #3f8fd4);"> where data is stored and where the model runs are separate questions </strong> . The default local service stores mistakes, learning records, and profiles in local SQLite, with original images, textbooks, and backups on the same machine. After switching to a cloud service, that service manages conversations, learning records, models, and DingTalk connections. Switching does not migrate data automatically. Now distinguish the outgoing paths: </p>
+
+<ul style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> Model calls </strong> —depend on the provider configured in the current service. Only the corresponding calls from a local service to a local model stay on this computer; a “local model” in a cloud service runs on that server. </li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> Sensitive data categories: child profiles, homework photos, mistake records, and learning memories </strong> —cloud-model calls are checked by purpose and data class. The allowlist permits necessary data for recognition, explicitly attached-image chat, and solving/verification. Local storage does not mean model calls stay offline; what is sent depends on purpose and the chosen model. </li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> IM delivery </strong> —sending practice sheets or reminders to a bound DingTalk private chat sends content to the IM provider. This third-party channel is enabled by the user, controlled by the user, and outside the egress gateway's scope. </li>
+</ul>
+
+<p style="margin: 8px 0;"> Another distinction matters: this policy decides <strong style="color:var(--article-accent, #3f8fd4);"> whether HexClaw permits the request </strong> . Once data legitimately goes to a cloud vision/model provider or IM provider, its retention and use follow that provider's terms. HexClaw cannot control that and does not pretend otherwise. </p>
+
+<p style="margin: 8px 0;"> The current  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">egress</code>  package defines nine Purposes and six DataClasses. Its fixed purpose table grants the necessary classes separately for recognition, explicitly attached-image chat, solving/verification, and profile maintenance. <strong style="color:var(--article-accent, #3f8fd4);"> Do not omit this branch </strong> : when memory is actually enabled for the current chat, general_chat / vision_chat may carry memory. That setting belongs only to this request and is not inherited by new subrequests. An allowlist table does not justify claiming that learning memory never leaves the machine. </p>
+
+<section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;"><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">// sensitiveClasses 默认不得出本机的数据类。</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">var sensitiveClasses = map[DataClass]bool{</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">    ClassSensitiveProfile: true,</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">    ClassSensitiveMedia:   true,</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">    ClassRecord:           true,</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">    ClassMemory:           true,</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">}</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;"></span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">// purposeAllowsSensitive 白名单：允许携敏感数据出网的用途。</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">var purposeAllowsSensitive = map[Purpose]map[DataClass]bool{</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">    PurposeMemoryProfile: {ClassMemory: true},</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">    PurposeVisionOCR:     {ClassSensitiveMedia: true},</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">    PurposeVisionChat:    {ClassSensitiveMedia: true}, // 用户主动附图</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">    PurposeSolveVerify:   {ClassSensitiveProfile: true, ClassSensitiveMedia: true},</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">}</span></code></section>
+
+<p style="margin: 8px 0;"> At K12 call sites, these four classes map to child profiles, homework photos, mistake/collection records, and learning memory. But <strong style="color:var(--article-accent, #3f8fd4);"> that mapping exists only at the call site </strong> ; the egress package contains no domain terminology. The third checkpoint explains why that matters. </p>
+
+<p style="margin: 8px 0;"> The key property is  <strong style="color:var(--article-accent, #3f8fd4);">fail-closed</strong> : every outgoing request declares its purpose and data classes in its context. Request envelopes do not inherit a parent's declaration, preventing purpose drift. At the gateway, <strong style="color:var(--article-accent, #3f8fd4);"> requests without an envelope or with empty data classes are blocked </strong> . Forgetting to declare blocks the request rather than silently bypassing the gate. This Guard sits on real vision, chat, embedding, and cron-compilation call sites. Its scope must be stated precisely: <strong style="color:var(--article-accent, #3f8fd4);"> the call chain toward cloud models </strong> , not a system-wide operating-system network gateway. Call sites annotate data classes; there is no automatic content classifier. </p>
+
+<blockquote style="border-left: 3px solid #3f8fd4; padding: 14px 18px; margin: 20px 0; background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); font-size: 14px;"> The gateway makes a call's purpose and data classes explicit and its decision inspectable. It is not proof that data never leaves the machine, nor a substitute for explaining service location, enabled memory, and third-party delivery. </blockquote>
+
+<figure style="margin: 22px 0; text-align: center;">
+<img src="../../assets/blog/河蟹 AI 让你「父慈子笑」：首个灯塔场景的 K12 工程实践-wechat/04-数据流边界.png" alt="Local/cloud storage locations, outgoing model calls, and the separate IM delivery channel" width="2000" height="2760" loading="lazy" decoding="async">
+<figcaption style="color:var(--article-secondary, #5f7b9c); font-size: 13px; margin-top: 8px; line-height: 1.6;"> Figure 3 | Inspect storage, model calls, and IM delivery separately. Explicitly enabled memory for the current chat can accompany cloud-model requests; delivered text and attachments reach the corresponding IM provider. </figcaption>
+</figure>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;"> Third checkpoint, for architects: will adding K12 damage the platform? </h2>
+
+<p style="margin: 8px 0;"> This is the release's largest architectural investment and its most reusable lesson for teams combining general platforms with vertical products. </p>
+
+<p style="margin: 8px 0;"> The risk had already materialized. In an earlier exploration, domain terms such as mistakes, review, and exam preparation spread into  <strong style="color:var(--article-accent, #3f8fd4);"> multiple platform files </strong> across engines, APIs, and adapters. Every scenario would grow more  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">if</code> inside the core until three scenarios made it unmanageable. Backend v0.5.0-beta.1 repaid that debt around a single mechanism: <strong style="color:var(--article-accent, #3f8fd4);"> Scenario Pack + six injection seams </strong>. </p>
+
+<p style="margin: 8px 0;"> A less technical analogy: imagine the platform as an <strong style="color:var(--article-accent, #3f8fd4);">  exhibition center </strong> . It hosts no event of its own but provides <strong style="color:var(--article-accent, #3f8fd4);"> standard connections </strong> : power, load-bearing rigging points, networking, stage-lighting lines, and ticket gates. Today's wedding and tomorrow's product launch use the same venue wiring; organizers bring flowers, signs, and schedules to connect. K12 is the first event. HexClaw's connections are laid out in this  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">scenario.Registry</code>: </p>
+
+<section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;"><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">// scenario.Registry —— 六个资源注入缝（节选）</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">type Registry struct {</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">    Records     *records.RecordSchemaRegistry // 记录集 schema</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">    Constraints *ConstraintRegistry           // 约束域（key 如 "math"）</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">    Views       *ViewExtensionRegistry        // 视图描述符</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">    Modes       *ModeFeatureRegistry          // 模式路由关键词</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">    Buttons     *ButtonRegistry               // 交互按钮</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">    Evals       *EvalSuiteRegistry            // eval 套件</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">}</span></code></section>
+
+<p style="margin: 8px 0;"> The mistake-notebook schema, grade allowlist, and scenario buttons enter through Records / Constraints / Buttons. The six seams now have an outer  <strong style="color:var(--article-accent, #3f8fd4);">Manifest v2</strong> that declares scenario version, capabilities, mount points, dependencies, and scheduled workflows. <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">Install</code>  validates and registers resources, returning an installation receipt. Uninstall uses that receipt to remove this scenario's resources while retaining business data. The venue has both standard connections and entry/exit inventories. Three rules are <strong style="color:var(--article-accent, #3f8fd4);">  falsifiable </strong> , stronger than a verbal layering guideline: </p>
+
+<ul style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> Purely declarative assembly </strong>——<code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">Assemble(*Pack)</code>  performs registration only; a code comment states the rule: <strong style="color:var(--article-accent, #3f8fd4);"> no business branching such as  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">if pack == k12</code></strong>  . </li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> Domain rules stay together; the composition root wires them </strong> —mistake, review, and learning-state rules live mainly in  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">scenarios/k12/</code> , with wiring in the composition root. The current  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">cmd/hexclaw/</code>  contains several K12 adapters. K12 routes mount through the generic  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">srv.Mount("/api/k12", …)</code>  , so the general router only mounts handlers. The engine still contains parent-explanation output and audit protocols, however; the layering goal must not be described as eliminating every domain semantic. </li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> Removability is the acceptance criterion </strong> —remove  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">scenarios/k12</code>  and the corresponding assembly/adapters from the composition root, and the platform must still compile and run independently. The expectation is: <strong style="color:var(--article-accent, #3f8fd4);"> when the event leaves, the venue becomes empty again and can host something else tomorrow </strong> . Conversely, attach a mock scenario filling all six seams to the empty platform and check whether the core needs changes—an empty-event rehearsal that checks every connection. Internally, this is the  <strong style="color:var(--article-accent, #3f8fd4);"> AP-1 bidirectional gate </strong> . More precisely, it is <strong style="color:var(--article-accent, #3f8fd4);">  a source-level, compile-time assembly boundary </strong> , not a user-facing hot-pluggable marketplace. </li>
+</ul>
+
+<p style="margin: 8px 0;"> Desktop mirrors this structure: <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">src/contracts/</code>  (contracts, with a top-level barrel strictly free of domain terms) +  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">src/shell/</code>  (a domain-neutral general shell) +  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">src/features/k12/</code>  (scenario packages). The frontend  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">scenarioRegistry</code>  provides  <strong style="color:var(--article-accent, #3f8fd4);">  fourteen domain-neutral registration slots </strong> for view descriptors, record schemas, identity projections, conversation enhancements, agent-card extensions and badges, profile templates, webhook management, ambient presentation, appearance settings, scheduled-task display, and more. Vue dynamic components render chat enhancements from <strong style="color:var(--article-accent, #3f8fd4);">  view descriptors </strong> . Header tabs, message badges, and record views are registered by the scenario package. Frontend registration is mainly static; backend  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">GET /api/k12/view-descriptor</code>  currently supplies mostly composer shortcuts dynamically. Scenarios assemble mainly through extension mechanisms such as  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">&lt;component :is&gt;</code>  . ChatView still directly retains K12 image-attachment identity and reading adapters, however; <strong style="color:var(--article-accent, #3f8fd4);"> the registration slots exist, and residual coupling exists too </strong> . The source-removal boundary still needs actual build acceptance. VS Code extension users will recognize contribution points: <strong style="color:var(--article-accent, #3f8fd4);"> the platform defines seams, scenarios declare contributions, and runtime assembles them </strong>. </p>
+
+<figure style="margin: 22px 0; text-align: center;">
+<img src="../../assets/blog/河蟹 AI 让你「父慈子笑」：首个灯塔场景的 K12 工程实践-wechat/03-场景包装配.png" alt="Assembly among Manifest v2, six backend injection seams, and Desktop registration extensions" width="2000" height="2440" loading="lazy" decoding="async">
+<figcaption style="color:var(--article-secondary, #5f7b9c); font-size: 13px; margin-top: 8px; line-height: 1.6;"> Figure 4 | Manifest and the six seams declare and assemble resources; Desktop connects scenario extensions through contracts / shell. This is a source-level boundary, not a hot-plug marketplace. Registration mechanisms do not prove all dependencies have been removed. </figcaption>
+</figure>
+
+<p style="margin: 8px 0;"> Why invest so much? K12 is a flagship, not the destination. Whether the next pack is a fitness coach or legal assistant, <strong style="color:var(--article-accent, #3f8fd4);"> platform-side code changes should approach zero </strong> . That is the test of whether a general platform with vertical scenarios can endure. </p>
+
+<p style="margin: 8px 0;"> “Approach zero” is abstract. Fill the same seams with an unrelated domain to see the flexibility more concretely. Consider a <strong style="color:var(--article-accent, #3f8fd4);"> legal consultation assistant </strong> as an illustration— <strong style="color:var(--article-accent, #3f8fd4);"> a proposal, not a released scenario pack </strong> —with all six seams taking different content: </p>
+
+<table style="width: 100%; max-width: 100%; border-collapse: collapse; overflow-wrap: anywhere; margin: 16px 0; font-size: 14px;">
+<thead>
+<tr>
+<th style="background: #5fb3ea; color: #fff; padding: 10px 8px; text-align: left; font-weight: 600;"> Injection seam </th>
+<th style="background: #5fb3ea; color: #fff; padding: 10px 8px; text-align: left; font-weight: 600;"> K12 parent assistant (implemented) </th>
+<th style="background: #5fb3ea; color: #fff; padding: 10px 8px; text-align: left; font-weight: 600;"> Legal consultation assistant (proposed) </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding: 10px 8px; border-bottom: 1px solid var(--article-border, #d8e6f0); background:var(--article-panel, #f9fcff);"><code style="white-space: nowrap; background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">Records</code><br/> Records </td>
+<td style="padding: 10px 8px; border-bottom: 1px solid var(--article-border, #d8e6f0); background:var(--article-panel, #f9fcff);"> Mistake notebook: question / cause / concept / review state </td>
+<td style="padding: 10px 8px; border-bottom: 1px solid var(--article-border, #d8e6f0); background:var(--article-panel, #f9fcff);"> Case file: requested remedy / facts / evidence list </td>
+</tr>
+<tr>
+<td style="padding: 10px 8px; border-bottom: 1px solid var(--article-border, #d8e6f0);"><code style="white-space: nowrap; background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">Constraints</code><br/> Constraints </td>
+<td style="padding: 10px 8px; border-bottom: 1px solid var(--article-border, #d8e6f0);"> Grade/curriculum boundaries—no simultaneous linear equations for a fifth grader </td>
+<td style="padding: 10px 8px; border-bottom: 1px solid var(--article-border, #d8e6f0);"> Limitation periods / jurisdiction checks—flag missing facts rather than suggesting further delay </td>
+</tr>
+<tr>
+<td style="padding: 10px 8px; border-bottom: 1px solid var(--article-border, #d8e6f0); background:var(--article-panel, #f9fcff);"><code style="white-space: nowrap; background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">Views</code><br/> Views </td>
+<td style="padding: 10px 8px; border-bottom: 1px solid var(--article-border, #d8e6f0); background:var(--article-panel, #f9fcff);"> Mistake tab and marking ✓/✗ badges </td>
+<td style="padding: 10px 8px; border-bottom: 1px solid var(--article-border, #d8e6f0); background:var(--article-panel, #f9fcff);"> Case-card tab and disputed-issue annotations </td>
+</tr>
+<tr>
+<td style="padding: 10px 8px; border-bottom: 1px solid var(--article-border, #d8e6f0);"><code style="white-space: nowrap; background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">Modes</code><br/> Mode routing </td>
+<td style="padding: 10px 8px; border-bottom: 1px solid var(--article-border, #d8e6f0);"> “Photo marking” / “review” keywords </td>
+<td style="padding: 10px 8px; border-bottom: 1px solid var(--article-border, #d8e6f0);"> “Draft a document” / “risk assessment” keywords </td>
+</tr>
+<tr>
+<td style="padding: 10px 8px; border-bottom: 1px solid var(--article-border, #d8e6f0); background:var(--article-panel, #f9fcff);"><code style="white-space: nowrap; background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">Buttons</code><br/> Interactions </td>
+<td style="padding: 10px 8px; border-bottom: 1px solid var(--article-border, #d8e6f0); background:var(--article-panel, #f9fcff);"> Add to Practice Set and Print </td>
+<td style="padding: 10px 8px; border-bottom: 1px solid var(--article-border, #d8e6f0); background:var(--article-panel, #f9fcff);"> Generate a complaint draft in one action </td>
+</tr>
+<tr>
+<td style="padding: 10px 8px; border-bottom: 1px solid var(--article-border, #d8e6f0);"><code style="white-space: nowrap; background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">Evals</code><br/> Suites </td>
+<td style="padding: 10px 8px; border-bottom: 1px solid var(--article-border, #d8e6f0);"> Evaluation goals for marking verdicts, process quality, and confidently wrong answers </td>
+<td style="padding: 10px 8px; border-bottom: 1px solid var(--article-border, #d8e6f0);"> Accuracy of statutory references and limitation-period judgment thresholds </td>
+</tr>
+</tbody>
+</table>
+
+<p style="margin: 8px 0;"> With the same  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">scenario.Registry</code> , if existing contracts can express the right-hand column, resources need only be declared in  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">scenarios/law/</code>  and registered in the composition root. <strong style="color:var(--article-accent, #3f8fd4);"> That is the precise code-level meaning of a general foundation producing a vertical product </strong> : solving/verification, record contracts, egress, cron, and evaluation are platform mechanisms; mistakes versus causes of action, and grades versus limitation periods, belong to scenario packs. </p>
+
+<p style="margin: 8px 0;"> The cost is real: six seams add indirection, descriptor protocols need maintenance, and the mock pack needs testing. Until a second pack exists, <strong style="color:var(--article-accent, #3f8fd4);"> its generality remains a hypothesis to validate through another real scenario </strong> . The investment bets on at least two scenarios; otherwise it may be overengineering. Making AP-1 falsifiable lets us discover that promptly. </p>
+
+<p style="margin: 8px 0;"> In the wider landscape, this mechanism targets a third layer: <strong style="color:var(--article-accent, #3f8fd4);">MCP</strong>  answers “What can the agent call?” through a common tool/data-source protocol; <strong style="color:var(--article-accent, #3f8fd4);">Agent Skills</strong>  answers “How should it work?” through portable procedural knowledge; while <strong style="color:var(--article-accent, #3f8fd4);"> scenario packs ask “How does it become a domain product?” </strong> Beyond tools and prompts, that means assembling UI, business state, hard constraints, evidence, automation, and evaluation. This is HexClaw's own engineering abstraction, not an industry standard. It explains why installing several K12 Skills is not equivalent to delivering a parent-tutoring product. </p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;"> Add automation: due mistakes arrive Friday at 7 p.m. </h2>
+
+<p style="margin: 8px 0;"> Mistakes and review queues are ready; the last hurdle is parents forgetting to open the app. Backend v0.5.0-beta.1 creates four default cron tasks when the tutor instance is created: </p>
+
+<table style="width: 100%; max-width: 100%; border-collapse: collapse; overflow-wrap: anywhere; margin: 16px 0; font-size: 14px;">
+<thead>
+<tr>
+<th style="background: #5fb3ea; color: #fff; padding: 10px 12px; text-align: left; font-weight: 600;"> Task </th>
+<th style="background: #5fb3ea; color: #fff; padding: 10px 12px; text-align: left; font-weight: 600;"> Cron expression </th>
+<th style="background: #5fb3ea; color: #fff; padding: 10px 12px; text-align: left; font-weight: 600;"> Delivery </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding: 10px 12px; border-bottom: 1px solid var(--article-border, #d8e6f0); background:var(--article-panel, #f9fcff);"> Mistake review list (Friday) </td>
+<td style="padding: 10px 12px; border-bottom: 1px solid var(--article-border, #d8e6f0); background:var(--article-panel, #f9fcff);"><code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">0 19 * * 5</code></td>
+<td style="padding: 10px 12px; border-bottom: 1px solid var(--article-border, #d8e6f0); background:var(--article-panel, #f9fcff);"> Markdown containing mistakes due for review </td>
+</tr>
+<tr>
+<td style="padding: 10px 12px; border-bottom: 1px solid var(--article-border, #d8e6f0);"> Answer-return reminder (daily) </td>
+<td style="padding: 10px 12px; border-bottom: 1px solid var(--article-border, #d8e6f0);"><code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">0 20 * * *</code></td>
+<td style="padding: 10px 12px; border-bottom: 1px solid var(--article-border, #d8e6f0);"> Sheets printed or sent the previous day whose answers remain incomplete; one reminder per sheet </td>
+</tr>
+<tr>
+<td style="padding: 10px 12px; border-bottom: 1px solid var(--article-border, #d8e6f0); background:var(--article-panel, #f9fcff);"> Term confirmation (March 1) </td>
+<td style="padding: 10px 12px; border-bottom: 1px solid var(--article-border, #d8e6f0); background:var(--article-panel, #f9fcff);"><code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">0 9 1 3 *</code></td>
+<td style="padding: 10px 12px; border-bottom: 1px solid var(--article-border, #d8e6f0); background:var(--article-panel, #f9fcff);"> Ask whether to change term; update the profile after confirmation </td>
+</tr>
+<tr>
+<td style="padding: 10px 12px; border-bottom: 1px solid var(--article-border, #d8e6f0);"> Term confirmation (September 1) </td>
+<td style="padding: 10px 12px; border-bottom: 1px solid var(--article-border, #d8e6f0);"><code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">0 9 1 9 *</code></td>
+<td style="padding: 10px 12px; border-bottom: 1px solid var(--article-border, #d8e6f0);"> Ask whether to change term; update the profile after confirmation </td>
+</tr>
+</tbody>
+</table>
+
+<p style="margin: 8px 0;"> Delivery follows the Starlark sandbox-script approach from <a href="https://mp.weixin.qq.com/s/EvQT0VqH9ep6LXo89ZM-fw" style="color:var(--article-accent, #5fb3ea);">  the digital-workhorse article </a> , but these scripts have <strong style="color:var(--article-accent, #3f8fd4);">  no LLM involvement </strong> : they periodically use  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">http_get</code>  to call K12 delivery endpoints in the current service, sending content to the bound DingTalk private chat or Desktop only when available; <strong style="color:var(--article-accent, #3f8fd4);"> empty content is silently skipped </strong> . On Fridays with no due mistakes, parents receive no empty “No mistakes this week!” notification. The idempotency key is instance name / task type, keeping children's reminders separate. Friday tasks organize and deliver due mistakes; parents add practice sets as needed. Local cron requires the computer and HexClaw service online; cloud-service mode requires the server online, so turning off the computer does not stop cloud tasks. </p>
+
+<p style="margin: 8px 0;"> The last mile to a phone also needs evidence. One click on Send to Phone delivers to the tutor's currently valid bound targets; text, annotations, and other attachments each retain their own status. <strong style="color:var(--article-accent, #3f8fd4);"> Platform acceptance is not parental receipt; all necessary components must arrive for the batch to count as delivered </strong> . Query the original batch when results are unknown; recover only explicitly failed items. </p>
+
+<p style="margin: 8px 0;"> Automatic image-task return follows the same artifact-completeness rule: blank worksheets send answers and explanations; completed question-based work sends text and actual annotated images. A successful request cannot conceal a missing image. Essays and art send feedback text. </p>
+
+<p style="margin: 8px 0;"> Tutoring content follows the same source discipline: textbook support, AI synthesis, local records, program checks, and learning signals are labeled separately. Essay and art feedback starts from visible evidence and offers encouragement, questions, and one next action. Unknown sources must not impersonate textbook authority. </p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;"> An honest look: this version's boundaries </h2>
+
+<p style="margin: 8px 0;"> As usual, separate implemented mechanisms from the boundaries that remain: </p>
+
+
+
+<ul style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> Curriculum references and textbook progress are different </strong> . Built-in curriculum tables focus on People's Education Press math. Math textbooks can currently be linked with unit, lesson, or page progress. Other primary subjects follow the profile and teaching Skills, without equivalent textbook-progress configuration. </li>
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> Original-image marking still depends on source and location quality </strong> —completed question-based work must deliver a genuinely annotated original. Questions without reliable coordinates keep text explanations rather than guessed marks. Blank worksheets give explanations without manufacturing annotated images. </li>
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> Program checks preserve process and scope vetoes but are not formal proofs </strong> —real receipts prove execution and numerical results. Question interpretation, fidelity of model-generated code, semantic step audits, and teaching outcomes each have separate limits. </li>
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> Recognition and re-marking still depend on source quality </strong> —blurred originals, missing question text, and unclear handwriting affect conclusions. Correct the source and re-mark using the new input; source correction does not count as the child's practice. </li>
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> Solver and Verifier share a model by default </strong> . Heterogeneous review seams exist: heterogeneous_model evidence is strong only when solver ≠ verifier. Current same-model agreement is not execution evidence, which is why badges avoid claiming “double verification.” </li>
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> Marking accuracy and speed depend on the chosen model </strong> . Local and cloud providers are configurable, and image tasks need an actually selected vision-capable model. Outcomes vary by model, hardware, and assignment type; provider rules determine cloud-call charges. </li>
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> The review engine is a fixed ladder </strong> , not an adaptive algorithm with SM-2-style difficulty factors. It suits the notebook's scale, but its simplified nature must be explicit. </li>
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> Continuous operation requires the current service online </strong> —local mode needs the computer and service running; cloud mode needs the server and relevant models available. Each side keeps its own data; switching does not migrate it automatically. </li>
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> The complete workflow still has a performance bottleneck </strong> —the 120-second target remains unmet. Successful samples do not establish success across every model, image quality, or deployment. </li>
+</ul>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;"> This release goes beyond K12 </h2>
+
+<p style="margin: 8px 0;"> K12 is the main feature, but making it work also produced platform changes useful to people without children: </p>
+
+<ul style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> 🛡️ Consolidated execution primitives </strong> —code/command execution centers on code_exec, with timeout, resource, and receipt management. Legacy code / shell are deprecated but retain configurable compatibility entries and have not been fully removed from source </li>
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> 🧩 Scenario injection infrastructure </strong> —the six-seam Registry, engine scenario injection and reply-metadata channel, and generic Mount hooks are platform mechanisms reusable by a second pack </li>
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> 📦 General records + egress gateway </strong> —records contracts and egress policy are not K12-specific. Structured records and controlled cloud-model calls use general mechanisms; K12 typed tables remain in the scenario data layer </li>
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> 🖥️ Three-part Desktop scenario extensions </strong> —contracts / shell / features layering plus backend view descriptors let scenarios register their own interface enhancements </li>
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> 📚 Backups and exports preserve actual assets </strong> —.hexbak checks integrity with SHA-256. Learning profiles cover weekly review, mistakes, practice sets, collections, and work. PDF / Word save frozen server artifacts directly. Markdown with attachments is a ZIP containing archive.md, manifest.json, and originals. Practice sets separately provide question/answer printing and PDF saving. </li>
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> 📖 Textbook grounding and question-asset reuse </strong> —direct textbook reading establishes the source; qualified assets identify solutions that need not be recomputed. Neither replaces recognition and judgment of this student's current answer or promises an entire page in seconds. </li>
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> 🌐 Local and cloud forms </strong> —the backend can run beside Desktop or as a single-instance cloud service. DingTalk tutoring follows the bound service; data location and availability follow the deployment. </li>
+</ul>
+
+<p style="margin: 16px 0 8px;"> Three forward-looking judgments remain. The next verification step is a <strong style="color:var(--article-accent, #3f8fd4);">  genuinely heterogeneous Verifier </strong> . The seam exists—different solver/verifier models are required for strong evidence—but second-model routing and evidence production still need to be connected. Curriculum tables can extend through Constraints for other editions such as Beijing Normal University and Jiangsu Education Press. And the six-seam architecture must <strong style="color:var(--article-accent, #3f8fd4);"> wait for a second pack to complete its falsification test </strong> . Only if it holds does the opening question receive a real answer: <strong style="color:var(--article-accent, #3f8fd4);"> a general platform can produce a trustworthy vertical scenario without contaminating its core </strong> , completing that platform-plus-scenario route. Domains change; the discipline remains: <strong style="color:var(--article-accent, #3f8fd4);"> separate probabilistic intelligence from deterministic constraints, results from evidence, facts from profiles and documents; keep scenario semantics in packs; turn every conversation into an executable next step </strong> rather than burying it in chat history. </p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<p style="margin: 24px 0 16px; color:var(--article-secondary, #5f7b9c); font-size: 14.5px; line-height: 2; text-align: center; font-style: italic; padding: 8px 16px;"> Photo question search gives a child an answer. Parents need the twenty minutes that help the child understand it. <br/> A calmer homework routine takes more than more fluent AI— <br/> it needs evidence when right, honesty when wrong, traceable mistakes, and connected review. </p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<p style="margin: 8px 0; font-size: 14px; color:var(--article-muted, #7b8fa3);"> This article explains why it can be trusted; <strong style="color:var(--article-accent, #3f8fd4);"> how to start—download, create a profile, and send the first homework photo— </strong> is covered step by step in the companion <a href="/en/blog/k12-user-guide" style="color:var(--article-accent, #5fb3ea);"> “A Calmer Homework Routine” guide </a> with screenshots. </p>
+
+<p style="margin: 8px 0; font-size: 14px; color:var(--article-muted, #7b8fa3);"><strong style="color:var(--article-accent, #3f8fd4);"> Further reading </strong> —earlier articles in the HexClaw series: </p>
+
+<ol style="padding-left: 22px; margin: 8px 0; font-size: 14px;">
+<li style="margin: 4px 0;"><a href="https://mp.weixin.qq.com/s/EvQT0VqH9ep6LXo89ZM-fw" style="color:var(--article-accent, #5fb3ea);"> Raising a Digital Workhorse </a>  —compile a sentence into a self-healing sandbox script, the foundation for this article's cron delivery </li>
+<li style="margin: 4px 0;"><a href="https://mp.weixin.qq.com/s/2tHlfZYHxQdQwvVZQEoLRg" style="color:var(--article-accent, #5fb3ea);"> Former-lead Skill </a>  —distill methodology into a Skill file, the same pattern used for teaching Skills here </li>
+<li style="margin: 4px 0;"><a href="https://mp.weixin.qq.com/s/h60ymjjj3eF9hQyhl0jVcQ" style="color:var(--article-accent, #5fb3ea);">Loop Engineering</a>  —the four-generation framework from Prompt to Loop </li>
+<li style="margin: 4px 0;"><a href="https://mp.weixin.qq.com/s/YvGGPBZX0V7R6-09unnrcQ" style="color:var(--article-accent, #5fb3ea);"> Agent Memory That Dreams </a>  —the memory system behind learning profiles </li>
+<li style="margin: 4px 0;"><a href="https://mp.weixin.qq.com/s/tgFKPr4Ke1OR3Uiud1CiWA" style="color:var(--article-accent, #5fb3ea);"> v0.4.0 Uyghur Localization </a>  —engineering notes on Uyghur localization </li>
+<li style="margin: 4px 0;"><a href="https://mp.weixin.qq.com/s/wIRiJsWLRPWBiTEQtlVQkg" style="color:var(--article-accent, #5fb3ea);"> Architecture Deep Dive </a>  —one developer × Claude Code × a six-repository ecosystem </li>
+</ol>
+
+<h3 style="font-size: 15px; font-weight: 600; color:var(--article-accent, #3f8fd4); margin: 24px 0 8px;"> References </h3>
+
+<ul style="padding-left: 22px; margin: 8px 0; font-size: 13px; color:var(--article-secondary, #5f7b9c);">
+<li style="margin: 3px 0;"> HexClaw AI ecosystem repositories: <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 12px; color:var(--article-accent, #3f8fd4);">github.com/hexagon-codes</code></li>
+<li style="margin: 3px 0;">Wang et al., <a href="https://arxiv.org/abs/2203.11171" style="color:var(--article-accent, #5fb3ea);"><em>Self-Consistency Improves Chain of Thought Reasoning in Language Models</em></a> , ICLR 2023 (self-consistency sampling and majority voting) </li>
+<li style="margin: 3px 0;">Gao et al., <a href="https://proceedings.mlr.press/v202/gao23f.html" style="color:var(--article-accent, #5fb3ea);"><em>PAL: Program-aided Language Models</em></a> , arXiv 2022 / ICML 2023 (delegating calculation to an interpreter) </li>
+<li style="margin: 3px 0;"> Ebbinghaus forgetting curves and spaced repetition: SuperMemo SM-2 algorithm (1987), <a href="https://docs.ankiweb.net/background.html" style="color:var(--article-accent, #5fb3ea);"> Anki documentation </a></li>
+<li style="margin: 3px 0;"> Pedagogy: Pólya, How to Solve It (1945); Rosenshine, Principles of Instruction (2012); Dweck's growth mindset; Vygotsky's Zone of Proximal Development; Gu Lingyuan's Qingpu experiment and variation teaching </li>
+<li style="margin: 3px 0;"><a href="https://code.visualstudio.com/api/references/contribution-points" style="color:var(--article-accent, #5fb3ea);">VS Code Extension API · Contribution Points</a></li>
+<li style="margin: 3px 0;"> Industry learning modes: <a href="https://www.anthropic.com/news/introducing-claude-for-education" style="color:var(--article-accent, #5fb3ea);">Anthropic《Introducing Claude for Education》</a>(2025-04-02)· <a href="https://openai.com/index/chatgpt-study-mode/" style="color:var(--article-accent, #5fb3ea);">OpenAI《Introducing study mode》</a>(2025-07-29)· <a href="https://blog.google/products-and-platforms/products/education/guided-learning/" style="color:var(--article-accent, #5fb3ea);">Google《Guided Learning in Gemini》</a>  (August 6, 2025), all official announcement pages </li>
+<li style="margin: 3px 0;"> Zhejiang Publicity, Zhejiang Provincial Party Committee Publicity Department: <a href="https://zjnews.zjol.com.cn/zjxc/202602/t20260203_31487580.shtml" style="color:var(--article-accent, #5fb3ea);"> “Why Does Homework Tutoring Make Parents Angry and Frantic?” </a>  (reprinted by Zhejiang Online, February 3, 2026); China Youth Daily: <a href="https://www.peopleweekly.cn/html/2021/tebieguanzhu_0413/67551.html" style="color:var(--article-accent, #5fb3ea);"> “How Can Parents Escape Homework Tutoring Anxiety?” </a>  (April 13, 2021, reprinted by People's Weekly) </li>
+</ul>
+
+<p style="margin: 8px 0; font-size: 12px; color:var(--article-muted, #7b8fa3);"> Source index: engine/solve_verifier_node.go (independent verification), engine/solve.go (process vetoes), scenarios/k12/usecase/grading_problem_assets.go (question assets), egress/egress.go (egress decisions); Desktop src/shell/scenario/registry.ts (14 slots), ChatView.vue (asset adapters), features/k12/export.ts (exports). </p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<p class="blog-brand-footer" data-blog-brand-footer="en" data-blog-brand-overrides="{}" style="text-align: center; color: var(--article-muted, #7b8fa3); font-size: 13px; margin: 16px 0 0; line-height: 2;">
+<strong style="color: var(--article-ink, #12324c); font-size: 14px;">HexClaw</strong><br/>
+Deploy locally or in the cloud · Control your data · Free and open-source software<br/>
+<a href="https://hexclaw.net" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">Website: <bdi dir="ltr">hexclaw.net</bdi></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://github.com/hexagon-codes" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">GitHub: <bdi dir="ltr">hexagon-codes</bdi></a><br/>
+<a href="https://weibo.com/u/4097207240" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">Weibo: <bdi dir="ltr">@HexClaw</bdi></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">X: <bdi dir="ltr">@hexclawapp</bdi></a><br/>
+<a href="mailto:ai@hexclaw.net" style="color: var(--article-muted, #999); text-decoration: none;">Email: <bdi dir="ltr">ai@hexclaw.net</bdi></a>
+</p>
+    </article>
+
+
+
+    <nav class="blog-series-nav" aria-label="Previous and next articles">
+      <a href="/en/blog/hexclaw-user-guide" class="blog-nav-card prev">
+  <span class="blog-nav-label"> ← Previous article </span>
+  <span class="blog-nav-title"> HexClaw AI Complete Guide: From Zero to a Local AI Agent in Five Minutes (with Model Recommendations) </span>
+</a>
+      <a href="/en/blog/k12-user-guide" class="blog-nav-card next">
+  <span class="blog-nav-label"> Next article → </span>
+  <span class="blog-nav-title"> A Calmer Homework Routine: A Hands-on Guide to Tutoring with HexClaw AI (K12 User Guide) </span>
+</a>
+    </nav>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-main">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-col-title">Product</div>
+        <a href="/en/#download">Download</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="/en/changelog">Changelog</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Developers</div>
+        <a href="/en/docs/">Documentation</a>
+        <a href="/en/blog/">Technical Blog</a>
+        <a href="/en/docs/getting-started">Getting Started</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">Apache-2.0</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Community</div>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/issues" target="_blank" rel="noopener noreferrer">Issues</a>
+        <a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer">Twitter / X</a>
+        <a href="mailto:ai@hexclaw.net">Contact Us</a>
+        <a href="mailto:support@hexclaw.net">Feedback</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">About</div>
+        <a href="/en/about">About Us</a>
+        <a href="/en/privacy">Privacy Policy</a>
+        <a href="/en/terms">Terms of Service</a>
+        <a href="/en/third-party-ai-services">Third-Party AI Services</a>
+      </div>
+    </div>
+    <div class="footer-wechat">
+      <img width="430" height="430" loading="lazy" decoding="async" src="../../assets/brand/wechat-qr.jpg" alt="HexClaw WeChat QR Code">
+      <span class="footer-wechat-label">WeChat Official Account</span>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">&copy; 2025&ndash;2026 hexagon-codes</span>
+  </div>
+</footer>
+<script src="../../assets/js/theme.js?v=2e4a1828feef"></script>
+<script src="../../assets/js/docs-nav.js?v=5a103861aec2"></script>
+<button type="button" class="back-to-top" id="backToTop" aria-label="Back to top" title="Back to top">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg>
+  <span>Top</span>
+</button>
+
+<script src="../../assets/js/blog.js?v=c72e1db5a6ec"></script>
+</body>
+</html>

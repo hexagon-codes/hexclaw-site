@@ -24,6 +24,10 @@
 <meta name="twitter:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
 <meta name="twitter:image:alt" content="河蟹 AI 标志">
 <link rel="canonical" href="https://hexclaw.net/zh/blog/architecture-deep-dive">
+<link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/architecture-deep-dive">
+<link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/architecture-deep-dive">
+<link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/architecture-deep-dive">
+<link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/architecture-deep-dive">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -55,14 +59,14 @@
   "@id": "https://hexclaw.net/zh/blog/architecture-deep-dive#breadcrumb"
 }
 </script>
-<link rel="stylesheet" href="../../assets/css/docs-c647c829bf22.css">
-<link rel="stylesheet" href="../../assets/css/blog.css">
+<link rel="stylesheet" href="../../assets/css/docs-eb2895dd79c5.css">
+<link rel="stylesheet" href="../../assets/css/blog-a8e5008ac3d1.css">
 </head>
 <body class="blog-page blog-article-page">
 <a href="#main" class="skip-link">跳转到主要内容</a>
 <nav class="tn topnav" id="nav">
   <a href="/zh/" class="tn-b topnav-brand"><img width="72" height="72" src="../../assets/brand/hexclaw-icon-72.png" class="tn-l topnav-logo" alt="河蟹 AI"><span class="tn-n topnav-name">河蟹 AI</span></a>
-  <button type="button" class="tn-burger topnav-burger" aria-label="菜单" aria-expanded="false" aria-controls="primary-navigation"><span></span><span></span><span></span></button><div class="tn-r topnav-links" id="primary-navigation"><a href="/zh/">首页</a><a href="/zh/#cases">使用场景</a><a href="/zh/#features">产品能力</a><a href="/zh/#quickstart">开始使用</a><a href="/zh/#ecosystem">开源生态</a><a href="/zh/blog/" class="is-active">技术博客</a><a href="/zh/docs/">文档中心</a><div class="lang-menu" data-lang-menu><button type="button" class="lang-trigger" aria-haspopup="menu" aria-expanded="false" aria-label="切换语言"><svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 0 20"></path><path d="M12 2a15.3 15.3 0 0 0 0 20"></path></svg><span class="lang-current">中文</span><svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="lang-menu-list" role="menu"><a href="/zh/blog/architecture-deep-dive" role="menuitem" class="is-active" aria-current="true">中文</a><a href="/en/" role="menuitem">English</a><a href="/ug/" role="menuitem" lang="zh-CN" dir="ltr">维吾尔语</a></div></div><button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="切换主题"><svg class="ti-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="ti-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="nav-cta">GitHub <span class="nav-star-badge" id="gh-stars">&#9733;</span></a></div>
+  <button type="button" class="tn-burger topnav-burger" aria-label="菜单" aria-expanded="false" aria-controls="primary-navigation"><span></span><span></span><span></span></button><div class="tn-r topnav-links" id="primary-navigation"><a href="/zh/">首页</a><a href="/zh/#cases">使用场景</a><a href="/zh/#features">产品能力</a><a href="/zh/#quickstart">开始使用</a><a href="/zh/#ecosystem">开源生态</a><a href="/zh/blog/" class="is-active">技术博客</a><a href="/zh/docs/">文档中心</a><div class="lang-menu" data-lang-menu><button type="button" class="lang-trigger" aria-haspopup="menu" aria-expanded="false" aria-label="切换语言"><svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 0 20"></path><path d="M12 2a15.3 15.3 0 0 0 0 20"></path></svg><span class="lang-current">中文</span><svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="lang-menu-list" role="menu"><a href="/zh/blog/architecture-deep-dive" role="menuitem" class="is-active" aria-current="true">中文</a><a href="/en/blog/architecture-deep-dive" role="menuitem">English</a><a href="/ug/blog/architecture-deep-dive" role="menuitem" lang="zh-CN" dir="ltr">维吾尔语</a></div></div><button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="切换主题"><svg class="ti-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="ti-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="nav-cta">GitHub <span class="nav-star-badge" id="gh-stars">&#9733;</span></a></div>
 </nav>
 
 <main id="main" class="blog-main">
@@ -185,7 +189,7 @@ Milvus / Chroma / Pinecone / Weaviate）</td>
 <hr />
 <h2 id="全景六仓库五层架构">全景：六仓库、五层架构</h2>
 <figure>
-<p style="background:#f0f0f0; padding:30px 20px; text-align:center; color:#999; border-radius:6px; margin:15px 0;">【图片位置：HexClaw 生态依赖关系图】</p>
+<p class="architecture-diagram-caption">HexClaw 生态依赖关系图</p>
 <figcaption aria-hidden="true">HexClaw 生态依赖关系图</figcaption>
 </figure>
 <pre><code>                    hexclaw-desktop (Tauri 桌面端)
@@ -274,7 +278,7 @@ Eino（字节出品，但安全模块缺失）。最终自建——因为 <stron
 <p>Hexagon
 取名自「六边形战士」，聚焦六大维度均衡发展：易用性、性能、扩展性、编排、可观测性、安全。</p>
 <figure>
-<p style="background:#f0f0f0; padding:30px 20px; text-align:center; color:#999; border-radius:6px; margin:15px 0;">【图片位置：Hexagon AI Agent Framework 六层架构图】</p>
+<p class="architecture-diagram-caption">Hexagon AI Agent Framework 六层架构图</p>
 <figcaption aria-hidden="true">Hexagon AI Agent Framework
 六层架构图</figcaption>
 </figure>
@@ -454,7 +458,7 @@ Snapshot/Restore。</p>
 子图嵌套 · Pregel BSP · 循环 +
 屏障。另有链式编排、工作流引擎、确定性流程（Process，状态机驱动）。</p>
 <figure>
-<p style="background:#f0f0f0; padding:30px 20px; text-align:center; color:#999; border-radius:6px; margin:15px 0;">【图片位置：Hexagon 数据流：User → Agent → LLM → Tool → Result】</p>
+<p class="architecture-diagram-caption">Hexagon 数据流：User → Agent → LLM → Tool → Result</p>
 <figcaption aria-hidden="true">Hexagon 数据流：User → Agent → LLM → Tool
 → Result</figcaption>
 </figure>
@@ -803,7 +807,7 @@ WAL，四种部署：桌面 / Docker / systemd / K8s。</p>
 id="hexclaw-desktop让-ai-agent-像-docker-desktop-一样双击即用">hexclaw-desktop：让
 AI Agent 像 Docker Desktop 一样”双击即用”</h2>
 <figure>
-<p style="background:#f0f0f0; padding:30px 20px; text-align:center; color:#999; border-radius:6px; margin:15px 0;">【图片位置：HexClaw Desktop 聊天界面截图】</p>
+<img src="../../assets/blog/012.png" alt="HexClaw Desktop 聊天界面（历史界面示例）" width="2560" height="1588" loading="lazy" decoding="async">
 <figcaption aria-hidden="true">HexClaw Desktop 聊天界面截图</figcaption>
 </figure>
 <h3 id="tauri-壳管理-go-sidecar">Tauri 壳管理 Go Sidecar</h3>
@@ -928,7 +932,7 @@ OAuth PKCE</td>
 Headless。安装：<code>curl | bash</code> / Homebrew / DMG / MSI / DEB /
 AppImage。</p>
 <figure>
-<p style="background:#f0f0f0; padding:30px 20px; text-align:center; color:#999; border-radius:6px; margin:15px 0;">【图片位置：HexClaw Desktop 功能使用总览图】</p>
+<img src="../../assets/blog/从养龙虾到养河蟹-wechat/hexclaw-desktop-user-overview.png" alt="HexClaw Desktop 功能使用总览" width="4600" height="3200" loading="lazy" decoding="async">
 <figcaption aria-hidden="true">HexClaw Desktop
 功能使用总览图</figcaption>
 </figure>
@@ -1051,10 +1055,10 @@ AppImage。</p>
 <hr />
 <h2 id="踩过的坑和架构取舍">踩过的坑和架构取舍</h2>
 <p><strong>坑 1：Docker 沙箱——“装个聊天助手还要装 Docker？”</strong></p>
-<p>早期 Skill 执行依赖 Docker。本地测试没问题，但 macOS 上 Docker
+<p>早期 Skill 执行依赖 Docker。一般MacBook配置没问题，但 macOS 上 Docker
 Desktop 额外吃 2-4GB 内存——让用户为了跑个天气查询装
 Docker，这不合理。</p>
-<p>花两个月和 Claude 用 Go syscall 重写三平台原生沙箱。2713
+<p>花一星期 用 Go syscall 重写三平台原生沙箱。2713
 行、零依赖、&lt;10ms 启动。隔离强度不如完整容器，但 Skill
 执行场景够了。</p>
 <p><strong>坑 2：Wails → Tauri——选型翻车的正确姿势</strong></p>
@@ -1069,10 +1073,7 @@ Docker，这不合理。</p>
 循环会无限调 LLM 直到账单爆炸——这不是理论风险，是确定性灾难。</p>
 <p>当天重构为 6 层不可绕过管道。开发期经常触发限流，但总比半夜收到 API
 账单好。</p>
-<p><strong>坑 4：框架做太薄——代码搬家记</strong></p>
-<p>最初 hexagon 只有 LLM 调用和基础 Agent，hexclaw 里堆了大量
-RAG、安全、编排代码。后来统一下沉到 hexagon，hexclaw 精简
-40%+。结论：应用层出现”通用能力”代码，说明该下沉到框架了。</p>
+
 <p><strong>取舍总结：</strong></p>
 <table>
 <colgroup>
@@ -1240,10 +1241,13 @@ Agent</strong>。如果你也有同样的需求，欢迎在 GitHub 搜索
 <p><strong>最后一个问题：</strong> 你在用 AI Agent
 时最头疼的是什么——安全信任、成本控制、还是平台适配？评论区聊聊，这些真实痛点会直接影响
 HexClaw 的优先级。</p>
-<p><strong>找到我们：</strong> GitHub：github.com/hexagon-codes/hexclaw
-· 官网：hexclaw.net · 微博：<span class="citation"
-data-cites="HexClaw">@HexClaw</span> · X：<span class="citation"
-data-cites="hexclawapp">@hexclawapp</span></p>
+<p class="blog-brand-footer" data-blog-brand-footer="zh" data-blog-brand-overrides="{}" style="text-align: center; color: var(--article-muted, #7b8fa3); font-size: 13px; margin: 16px 0 0; line-height: 2;">
+<strong style="color: var(--article-ink, #12324c); font-size: 14px;">HexClaw 河蟹 AI</strong><br/>
+本地云端均可部署 · 数据自主掌控 · 软件开源免费<br/>
+<a href="https://hexclaw.net" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">官网 <bdi dir="ltr">hexclaw.net</bdi></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://github.com/hexagon-codes" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">GitHub <bdi dir="ltr">hexagon-codes</bdi></a><br/>
+<a href="https://weibo.com/u/4097207240" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">微博 <bdi dir="ltr">@HexClaw</bdi></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">X <bdi dir="ltr">@hexclawapp</bdi></a><br/>
+<a href="mailto:ai@hexclaw.net" style="color: var(--article-muted, #999); text-decoration: none;">邮箱：<bdi dir="ltr">ai@hexclaw.net</bdi></a>
+</p>
     </article>
 
 
@@ -1301,33 +1305,13 @@ data-cites="hexclawapp">@hexclawapp</span></p>
     <span class="footer-copy">&copy; 2025&ndash;2026 hexagon-codes</span>
   </div>
 </footer>
-<script src="../../assets/js/home.js"></script>
+<script src="../../assets/js/theme.js?v=2e4a1828feef"></script>
+<script src="../../assets/js/docs-nav.js?v=5a103861aec2"></script>
 <button type="button" class="back-to-top" id="backToTop" aria-label="返回顶部" title="返回顶部">
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg>
   <span>顶部</span>
 </button>
-<script>
-(function() {
-  const btn = document.getElementById('backToTop');
-  if (!btn) return;
-  let ticking = false;
-  window.addEventListener('scroll', function() {
-    if (!ticking) {
-      window.requestAnimationFrame(function() {
-        if (window.scrollY > 320) {
-          btn.classList.add('is-visible');
-        } else {
-          btn.classList.remove('is-visible');
-        }
-        ticking = false;
-      });
-      ticking = true;
-    }
-  }, { passive: true });
-  btn.addEventListener('click', function() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-})();
-</script>
+
+<script src="../../assets/js/blog.js?v=c72e1db5a6ec"></script>
 </body>
 </html>

@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="ug" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/favicon-32.png">
+<title> HexClaw بىلەن &quot; ئاتا-بالا خۇشاللىقى &quot; : تۇنجى باشلامچى سىنارىيەدىكى K12 ئىنژېنېرلىق ئەمەلىيىتى｜HexClaw تېخنىكا بىلوگى </title>
+<meta name="description" content="«قانداق چۈشەندۈرىدۇ؟»غا ئالتە پەنلىك ئوقۇتۇش Skill ى ئاساس بولىدۇ. ئالدى بىلەن ھەل قىلىدىغان ئۈچ مەسىلە: خاتا چۈشەندۈرسە قانداق قىلىمىز؟ بالىنىڭ سانلىق مەلۇماتى قەيەردە؟ يەنە بىر سىنارىيە قوشۇلسا سۇپا بۇلغىنىپ كېتەمدۇ؟ قۇرۇلمىنىڭ بىر گېپى: ئىچكى قەۋەتنى بۇلغىماسلىق، سىرتتىكىلەرنى ئاۋارە قىلماسلىق.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:site_name" content="HexClaw">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HexClaw بىلەن «ئاتا-بالا خۇشاللىقى»: تۇنجى باشلامچى سىنارىيەدىكى K12 ئىنژېنېرلىق ئەمەلىيىتى｜HexClaw تېخنىكا بىلوگى">
+<meta property="og:description" content="«قانداق چۈشەندۈرىدۇ؟»غا ئالتە پەنلىك ئوقۇتۇش Skill ى ئاساس بولىدۇ. ئالدى بىلەن ھەل قىلىدىغان ئۈچ مەسىلە: خاتا چۈشەندۈرسە قانداق قىلىمىز؟ بالىنىڭ سانلىق مەلۇماتى قەيەردە؟ يەنە بىر سىنارىيە قوشۇلسا سۇپا بۇلغىنىپ كېتەمدۇ؟ قۇرۇلمىنىڭ بىر گېپى: ئىچكى قەۋەتنى بۇلغىماسلىق، سىرتتىكىلەرنى ئاۋارە قىلماسلىق.">
+<meta property="og:url" content="https://hexclaw.net/ug/blog/k12-engineering-practice">
+<meta property="og:image" content="https://hexclaw.net/assets/blog/covers/k12-engineering-practice-cover.webp">
+<meta property="og:image:alt" content="HexClaw بىلەن «ئاتا-بالا خۇشاللىقى»: تۇنجى باشلامچى سىنارىيەدىكى K12 ئىنژېنېرلىق ئەمەلىيىتى — رەسمىي تېخنىكا سەھىپىسى مۇقاۋىسى">
+<meta property="og:image:width" content="1919">
+<meta property="og:image:height" content="820">
+<meta property="og:locale" content="ug_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="HexClaw بىلەن «ئاتا-بالا خۇشاللىقى»: تۇنجى باشلامچى سىنارىيەدىكى K12 ئىنژېنېرلىق ئەمەلىيىتى｜HexClaw تېخنىكا بىلوگى">
+<meta name="twitter:description" content="«قانداق چۈشەندۈرىدۇ؟»غا ئالتە پەنلىك ئوقۇتۇش Skill ى ئاساس بولىدۇ. ئالدى بىلەن ھەل قىلىدىغان ئۈچ مەسىلە: خاتا چۈشەندۈرسە قانداق قىلىمىز؟ بالىنىڭ سانلىق مەلۇماتى قەيەردە؟ يەنە بىر سىنارىيە قوشۇلسا سۇپا بۇلغىنىپ كېتەمدۇ؟ قۇرۇلمىنىڭ بىر گېپى: ئىچكى قەۋەتنى بۇلغىماسلىق، سىرتتىكىلەرنى ئاۋارە قىلماسلىق.">
+<meta name="twitter:image" content="https://hexclaw.net/assets/blog/covers/k12-engineering-practice-cover.webp">
+<meta name="twitter:image:alt" content="HexClaw بىلەن «ئاتا-بالا خۇشاللىقى»: تۇنجى باشلامچى سىنارىيەدىكى K12 ئىنژېنېرلىق ئەمەلىيىتى — رەسمىي تېخنىكا سەھىپىسى مۇقاۋىسى">
+<link rel="canonical" href="https://hexclaw.net/ug/blog/k12-engineering-practice">
+<link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/k12-engineering-practice">
+<link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/k12-engineering-practice">
+<link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/k12-engineering-practice">
+<link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/k12-engineering-practice">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "HexClaw بىلەن «ئاتا-بالا خۇشاللىقى»: تۇنجى باشلامچى سىنارىيەدىكى K12 ئىنژېنېرلىق ئەمەلىيىتى",
+  "description": "«قانداق چۈشەندۈرىدۇ؟»غا ئالتە پەنلىك ئوقۇتۇش Skill ى ئاساس بولىدۇ. ئالدى بىلەن ھەل قىلىدىغان ئۈچ مەسىلە: خاتا چۈشەندۈرسە قانداق قىلىمىز؟ بالىنىڭ سانلىق مەلۇماتى قەيەردە؟ يەنە بىر سىنارىيە قوشۇلسا سۇپا بۇلغىنىپ كېتەمدۇ؟ قۇرۇلمىنىڭ بىر گېپى: ئىچكى قەۋەتنى بۇلغىماسلىق، سىرتتىكىلەرنى ئاۋارە قىلماسلىق.",
+  "url": "https://hexclaw.net/ug/blog/k12-engineering-practice",
+  "inLanguage": "ug",
+  "datePublished": "2026-10-04",
+  "image": "https://hexclaw.net/assets/blog/covers/k12-engineering-practice-cover.webp",
+  "publisher": {
+    "@type": "Organization",
+    "name": "hexagon-codes",
+    "url": "https://hexclaw.net/",
+    "@id": "https://hexclaw.net/#organization"
+  },
+  "@id": "https://hexclaw.net/ug/blog/k12-engineering-practice#article"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "HexClaw",
+      "item": "https://hexclaw.net/ug/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "تېخنىكا بىلوگى",
+      "item": "https://hexclaw.net/ug/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "HexClaw بىلەن «ئاتا-بالا خۇشاللىقى»: تۇنجى باشلامچى سىنارىيەدىكى K12 ئىنژېنېرلىق ئەمەلىيىتى",
+      "item": "https://hexclaw.net/ug/blog/k12-engineering-practice"
+    }
+  ],
+  "@id": "https://hexclaw.net/ug/blog/k12-engineering-practice#breadcrumb"
+}
+</script>
+<link rel="stylesheet" href="../../assets/css/docs-eb2895dd79c5.css">
+<link rel="stylesheet" href="../../assets/css/blog-a8e5008ac3d1.css">
+</head>
+<body class="blog-page blog-article-page">
+<a href="#main" class="skip-link">ئاساسلىق مەزمۇنغا ئاتلاش</a>
+<nav class="tn topnav" id="nav">
+  <a href="/ug/" class="tn-b topnav-brand"><img width="72" height="72" src="../../assets/brand/hexclaw-icon-72.png" class="tn-l topnav-logo" alt="ھېشى AI"><span class="tn-n topnav-name">ھېشى AI</span></a>
+  <button type="button" class="tn-burger topnav-burger" aria-label="تىزىملىك" aria-expanded="false" aria-controls="primary-navigation"><span></span><span></span><span></span></button><div class="tn-r topnav-links" id="primary-navigation"><a href="/ug/">باش بەت</a><a href="/ug/#cases">ئىشلىتىش كۆرۈنۈشلىرى</a><a href="/ug/#features">ئىقتىدارلار</a><a href="/ug/#quickstart">باشلاش</a><a href="/ug/#ecosystem">ئوچۇق ئېكولوگىيە</a><a href="/ug/blog/" class="is-active">تېخنىكا بىلوگى</a><a href="/ug/docs/">ھۆججەتلەر مەركىزى</a><div class="lang-menu" data-lang-menu><button type="button" class="lang-trigger" aria-haspopup="menu" aria-expanded="false" aria-label="تىل ئالماشتۇرۇش"><svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 0 20"></path><path d="M12 2a15.3 15.3 0 0 0 0 20"></path></svg><span class="lang-current" lang="zh-CN" dir="ltr">维吾尔语</span><svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="lang-menu-list" role="menu"><a href="/zh/blog/k12-engineering-practice" role="menuitem">中文</a><a href="/en/blog/k12-engineering-practice" role="menuitem">English</a><a href="/ug/blog/k12-engineering-practice" role="menuitem" class="is-active" aria-current="true" lang="zh-CN" dir="ltr">维吾尔语</a></div></div><button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="ئۇسلۇب ئالماشتۇرۇش"><svg class="ti-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="ti-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="nav-cta">GitHub <span class="nav-star-badge" id="gh-stars">&#9733;</span></a></div>
+</nav>
+
+<main id="main" class="blog-main">
+  <div class="blog-article-container">
+    <nav class="blog-breadcrumb" aria-label="بەت يولى كۆرسەتمىسى">
+      <a href="/ug/"> باش بەت </a>
+      <span class="blog-breadcrumb-sep">/</span>
+      <a href="/ug/blog/"> تېخنىكا بىلوگى </a>
+      <span class="blog-breadcrumb-sep">/</span>
+      <span aria-current="page"> باشلامچى ئەھۋال ۋە ئەمەلىيەت </span>
+    </nav>
+
+    <header class="blog-header">
+      <div class="blog-header-tags">
+        <span class="blog-badge-series"> باشلامچى سىنارىيە ئىنژېنېرلىقى </span>
+      </div>
+      <h1 class="blog-article-title"> HexClaw بىلەن &quot; ئاتا-بالا خۇشاللىقى &quot; : تۇنجى باشلامچى سىنارىيەدىكى K12 ئىنژېنېرلىق ئەمەلىيىتى </h1>
+      <p class="blog-article-subtitle"> «قانداق چۈشەندۈرىدۇ؟»غا ئالتە پەنلىك ئوقۇتۇش Skill ى ئاساس بولىدۇ. ئالدى بىلەن ھەل قىلىدىغان ئۈچ مەسىلە: خاتا چۈشەندۈرسە قانداق قىلىمىز؟ بالىنىڭ سانلىق مەلۇماتى قەيەردە؟ يەنە بىر سىنارىيە قوشۇلسا سۇپا بۇلغىنىپ كېتەمدۇ؟ قۇرۇلمىنىڭ بىر گېپى: ئىچكى قەۋەتنى بۇلغىماسلىق، سىرتتىكىلەرنى ئاۋارە قىلماسلىق. </p>
+      <div class="article-provenance-banner">
+        <div class="provenance-left">
+          <span class="provenance-origin-badge"> ئالدى بىلەن WeChat رەسمىي ھېساباتىدا ئېلان قىلىنغان </span>
+          <span class="provenance-text"> بۇ ماقالە ئالدى بىلەن WeChat رەسمىي ھېساباتى <strong>「hexclaw」</strong> （ID: hexclaw）نىڭ رەسمىي تېخنىكا سەھىپىسىدە ئېلان قىلىنغان · ئېلان قىلىنغان ۋاقتى:  <strong> 2026-يىلى 10-ئاينىڭ 4-كۈنى </strong>  · ئوقۇشقا تەخمىنەن 14 مىنۇت </span>
+        </div>
+        <a href="https://mp.weixin.qq.com/s/8xUoFrig10zxpxni1rgm9Q" target="_blank" rel="noopener noreferrer" class="provenance-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+           WeChat تىكى ئەسلى ماقالە ↗
+        </a>
+      </div>
+    </header>
+
+    <article class="blog-content">
+
+
+
+<p style="margin: 16px 0;"> بىر ئومۇمىي Agent سۇپىسى ئۆزىنى بۇلغىماي، باشقىلارنى ئاۋارە قىلماي، ھەقىقەتەن ئىشەنچلىك بىر ساھە سىنارىيەسىنى ئۆستۈرەلەمدۇ؟ «ئومۇمىيمۇ ياكى مەخسۇسمۇ؟» دېگەن كونا سوئال Agent دەۋرىدە يەنە سورالدى. HexClaw بۇ نەشردە <strong style="color:var(--article-accent, #3f8fd4);"> خاتالىققا ئەڭ يول قويغىلى بولمايدىغان سىنارىيەنى </strong> تاللاپ دەلىللىدى — بالىغا تاپشۇرۇق يېتەكلەش: <strong style="color:var(--article-accent, #3f8fd4);"> AI بىر قېتىم خاتالاشسا، ئاتا-ئانا بىر قېتىم خاتا ئۆگىتىدۇ، بالا بىر نۆۋەت خاتا ئەستە ساقلايدۇ </strong>。</p>
+
+<p style="margin: 8px 0;"> بۇ «خاتالىققا ئەڭ يول قويغىلى بولمايدىغان» يېتەكلەش كۈندىلىك تۇرمۇشتا كونا چاقچاققا ئايلىنىدۇ: «تاپشۇرۇق يوقتا ئانا-بالا ئىناق، تاپشۇرۇق باشلانسا ئۆي قالايمىقان». ئۇنىڭ ئارقىسىدا رەسمىي تاراتقۇلار بەش يىل يازغان ئاممىۋى ھېسسىيات مەسىلىسى بار: «جۇڭگو ياشلار گېزىتى» 2021-يىلىلا «ئاتا-ئانا تاپشۇرۇق يېتەكلەش قورقۇنچىدىن قانداق قۇتۇلىدۇ؟»نى ئېلان قىلغان؛ 2026-يىلى 2-ئايدا ئۆلكە تەشۋىقات بۆلۈمىنىڭ «جېجياڭ تەشۋىقاتى» يەنىلا «نېمىشقا تاپشۇرۇق يېتەكلەش ئادەمنى ئاچچىقلاندۇرۇپ ساراڭ قىلىدۇ؟» دەپ سورىغان. <strong style="color:var(--article-accent, #3f8fd4);"> بەش يىل ئۆتتى، بىزنىڭ قارىشىمىزچە بۇ مەسىلىنى تېخى ھېچقانداق مەھسۇلات ھەقىقىي تۇتۇپ ئالالمىدى. </strong></p>
+
+<p style="margin: 8px 0;"> لېكىن ماۋزۇلار ئالدى بىلەن تۇتۇپ ئالدى — «AI تاپشۇرۇق يېتەكلەش»نى ئىزدىسىڭىز، بىر ماۋزۇ فورمۇلاسى قايتا-قايتا كۆرۈنىدۇ: <strong style="color:var(--article-accent, #3f8fd4);"> «ئۆي قالايمىقانچىلىقى»دىن «ئانا-بالا ئىناقلىقى»غىچە، پەقەت بىر AI كەم </strong> . بۇ فورمۇلانىڭ توغرا يېرى بار: رەسىم تارتىش، سوئال تونۇش ۋە جاۋاب بېرىشنى بۈگۈنكى كۆپ موداللىق مودېللار قىلالايدۇ؛ باشلامچى شىركەتلەرمۇ «يېتەكلەنگەن ئۆگىنىش»كە ماڭدى — Anthropic نىڭ Claude for Education Learning mode، OpenAI نىڭ ChatGPT Study mode ۋە Google نىڭ Gemini Guided Learning 2025-يىلى ئارقا-ئارقىدىن ئېلان قىلىنىپ، ئۇنىۋېرسىتېتتىن K12 گىچە ئوخشىمىغان باسقۇچقا يۈزلەندى. ئەمما بۇ فورمۇلادىكى ماقالىلەر «AI چۈشەندۈرەلەمدۇ، راۋانمۇ؟»نى سىنايدۇ، «خاتا چۈشەندۈرسە قانداق قىلىمىز؟»نى ئىنژېنېرلىق مەسىلىسى قىلىپ ئاز سۆزلەيدۇ. ئوچۇق ئېيتقاندا: <strong style="color:var(--article-accent, #3f8fd4);"> AI بەرگەن جاۋابنى ئۆز بالىڭىزغا ئۆگىتىشكە ئىشلىتىشكە جۈرئەت قىلامسىز؟ </strong> ھالىدىن كەتكىلى تۇرغان ئاتا-ئانا ئۇنىڭ ھەر قەدىمىنى تەكشۈرۈشكە تېخىمۇ كۈچ تاپالمايدۇ. </p>
+
+<p style="margin: 8px 0;"> ئاتا-ئانىغا لازىمىمۇ بىر توغرا جاۋابتىن كۆپ: بالا ئۆگەنگەن ئۇسۇل بىلەن چۈشەندۈرۈپ ئۆگىتىش؛ بەشىنچى سىنىپتىكى بالىنى «ئىككى نامەلۇملۇق بىرىنچى دەرىجىلىك تەڭلىمىلەر سىستېمىسى» بىلەن گاڭگىرىتىپ قويماسلىق. خاتا سوئال ۋە ئۆگىنىش ئەھۋالىدەك ئەڭ سەزگۈر ئائىلە سانلىق مەلۇماتىمۇ ئېنىقسىز ھالدا بۇلۇتقا ئەۋەتىلمەسلىكى كېرەك. </p>
+
+<p style="margin: 8px 0;"> HexClaw نىڭ <a href="https://github.com/hexagon-codes/hexclaw-desktop/releases/tag/v0.5.0-beta.3" style="color:var(--article-accent, #5fb3ea);"> ئۈستەل يۈزى v0.5.0-beta.3 </a> （ئارقا سۇپا hexclaw v0.5.0-beta.1）تاپشۇرۇق يېتەكلەشنى سۇپىنىڭ تۇنجى «باشلامچى سىنارىيەسى» قىلدى: <strong style="color:var(--article-accent, #3f8fd4);"> K12 ئاتا-ئانا دەرس تەييارلاش ياردەمچىسى </strong> — ئاتا-ئانىنىڭ ئۇستازغا ئوخشاش بالىغا يېتەكلىشىگە ياردەم بېرىدۇ؛ بالا بىۋاسىتە AI غا قارىمايدۇ، كۆڭۈلدىكى يەرلىك ئورۇنلاشتۇرۇشتا ئۆگىنىش مۈلكى كومپيۇتېردا قالىدۇ. بۇ نەشر پەقەت باشلانغۇچ 1–6-سىنىپ؛ تولۇقسىز ۋە تولۇق ئوتتۇرا ئۇزۇن مۇددەتلىك پىلاندا. ماۋزۇدىكى «ئىتائەت»نى «كۈلكە»گە ئالماشتۇردۇق — بالىنىڭ كۈلەلەشى ھەممىدىن ئەلا. بۇ ماقالە «پەقەت بىر AI كەم» دېگەن تەڭلىمىنىڭ ئارىسىدا نېمە بارلىقىنى ئەستايىدىل تەكشۈرىدۇ: <strong style="color:var(--article-accent, #3f8fd4);"> ئالدى بىلەن «AI نېمىگە تايىنىپ ئۆگىتىدۇ؟»غا جاۋاب — دەلىلگە تايانغان ئوقۇتۇش Skill لىرى（ۋىگوتسكىيدىن پولىياگىچە ھەر ئۇسۇلنىڭ پېداگوگىكا مەنبەسى بار）ۋە «توغرا-خاتا Go غا، سۆزلەش Markdown غا» دېگەن ئىككى قەۋەتلىك قۇرۇلما؛ ئاندىن «مائارىپ»تىن كۆرە «ئىنژېنېرلىق»قا تەۋە ئۈچ ئىشەنچ مەسىلىسىنى پارچىلايمىز </strong>。</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<blockquote style="border-left: 3px solid #3f8fd4; padding: 14px 18px; margin: 20px 0; background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); font-size: 14px; border-radius: 0 8px 8px 0; line-height: 1.85;">
+<strong style="color:var(--article-accent, #3f8fd4);"> ماقالىنىڭ ئاساسلىق قارىشى </strong><br/>
+ AI نى يېتەكلەش سىنارىيەسىگە كىرگۈزۈشتە قىيىنى «سوئال چۈشەندۈرەلەمدۇ؟» ئەمەس — چوڭ مودېل بۇنى ئاللىبۇرۇن قىلالايدۇ. قىيىنى ئۈچ <strong style="color:var(--article-accent, #3f8fd4);"> ئىشەنچ مەسىلىسى </strong>：<br/>
+① <strong style="color:var(--article-accent, #3f8fd4);"> خاتا چۈشەندۈرسە قانداق قىلىمىز؟ </strong> — ھېساب تەكشۈرۈش دەلىل زەنجىرى پروگرامما ئىجرا دەلىلى بىلەن مودېل ھۆكۈمىنى ئايرىم خاتىرىلەيدۇ؛ <br/>
+② <strong style="color:var(--article-accent, #3f8fd4);"> سانلىق مەلۇمات قەيەردە؟ </strong> — ساقلاش ئورنى يەرلىك / بۇلۇت مۇلازىمىتىگە باغلىق؛ بۇلۇت مودېل چاقىرىشى مەقسەت ۋە سانلىق مەلۇمات تۈرى بويىچە تەكشۈرۈلىدۇ؛ <br/>
+③ <strong style="color:var(--article-accent, #3f8fd4);"> سىنارىيە سۇپىنى بۇزامدۇ؟ </strong> — K12 قۇرۇش ۋاقتىدا چىقىرىۋەتكىلى بولىدىغان سىنارىيە بوغچىسى قىلىپ تەشكىللەنگەن؛ ئۇنى چىقىرىۋەتكەندىن كېيىن سۇپىنىڭ مۇستەقىل ئىشلىشى قۇرۇلما ئۆلچىمى.
+</blockquote>
+
+<blockquote style="border-left: 3px solid #5fb3ea; padding: 10px 16px; margin: 16px 0; background:var(--article-panel, #f4fbff); color:var(--article-secondary, #3f5f7b); font-size: 14px; border-radius: 0 8px 8px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> 30 سېكۇنتلۇق نۇسخا </strong>：<br/> ئۈستەل يۈزى v0.5.0-beta.3 تاپشۇرۇق يېتەكلەشنى HexClaw نىڭ تۇنجى سىنارىيە بوغچىسى قىلدى. بىر رەسىمنىڭ ئالدى بىلەن مەنبەسى ساقلىنىپ، ئاندىن سوئاللار تونۇلىدۇ: بوش سوئالغا ئاتا-ئانا ئۈچۈن جاۋاب ۋە چۈشەندۈرۈش، جاۋابلىق سوئالغا مۇستەقىل ھۆكۈم. ئېنىق قىممەت ھېسابلىنىدىغانلىرى ھازىرقى مۇلازىمەتتىكى دېتېرمىنىستىك پروگراممىغا ئۆتىدۇ؛ ئىشەنچلىك سوئال مۈلكى دەلىللەنگەن ھەل قىلىشنى قايتا ئىشلىتىدۇ؛ قالغانلىرى Solver + Verifier غا كىرىدۇ. ھېسابلاش تىپىدىكى دەلىللەشتە ئەپ مودېل ياسىغان پروگراممىنى ئىجرا قىلىدۇ؛ <strong style="color:var(--article-accent, #3f8fd4);"> ئاخىرقى قىممەت، جەريان ۋە ئاتا-ئانا چۈشەندۈرۈشىنىڭ ھەر بىرىگە دەلىل بار </strong> . خاتا سوئال 1 / 3 / 7 / 14 كۈنلۈك پەلەمپەي بويىچە تەكرارلىنىدۇ، ئۆگىنىش ئارخىپى چىقىرىلىدۇ؛ داۋاملىق ۋەزىپە ۋە بۆلەكلىك يەتكۈزۈش تالونى «ھېسابلىنىپ بولدى»نى «ئاتا-ئانا قوبۇل قىلدى»غا ئۇلايدۇ. ئارقا سۇپىدىكى ئالتە ئۇلاش نۇقتىسى، Manifest v2 ۋە ئۈستەل يۈزى تىزىملاش ئورۇنلىرى قۇراشتۇرۇشقا مەسئۇل. سانلىق مەلۇمات قەيەردە ساقلىنىدۇ، مودېل قەيەردە ئىجرا بولىدۇ — بۇ ئىككىسىگە ئايرىم جاۋاب بېرىش كېرەك. </blockquote>
+
+<figure style="margin: 22px 0; text-align: center;">
+<img src="../../assets/blog/河蟹 AI 让你「父慈子笑」：首个灯塔场景的 K12 工程实践-wechat/01-辅导闭环.png" alt="ھازىرقى K12 يېتەكلەش ھالقىسى: بۇ قېتىمقى مەنبەنى تونۇش، بوش ۋە جاۋابلىقنى ئايرىش، ھەقىقىي ئاخىرقى نۇسخا، خاتا سوئال تەكرارلاش ۋە جاۋاب قايتۇرۇش" width="2000" height="2800" loading="lazy" decoding="async">
+<figcaption style="color:var(--article-secondary, #5f7b9c); font-size: 13px; margin-top: 8px; line-height: 1.6;"> 1-رەسىم｜بىر تاپشۇرۇق رەسىمىدىن كېيىنكى تەكرارلاشقىچە. بوش سوئال خاتا سوئالغا يېزىلمايدۇ؛ جاۋابلىق سوئاللىق تاپشۇرۇققا تېكىست ۋە ھەقىقىي بەلگىلىك ئەسلى رەسىم يەتكۈزۈلىدۇ. سوئال ئامبىرى ھەل قىلىش ئۇسۇلىنى قايتا ئىشلىتىدۇ، بۇ قېتىمقى جاۋابنى يەنىلا ھۆكۈم قىلىش كېرەك. </figcaption>
+</figure>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;"> ئورنىنى ئايدىڭلاشتۇرايلى: سوئال ئىزدىگۈچ ئەمەس، «ئاتا-ئانىغا قانداق ئۆگىتىشنى ئۆگىتىش» </h2>
+
+<p style="margin: 8px 0;"> مەھسۇلات شەكلى بىر جۈملە: ئاتا-ئانا قېلىپ كۈتۈپخانىسىدىن «تاپشۇرۇق يېتەكچى ياردەمچىسى»نى بېسىپ، بالىنىڭ ئاتىلىشى، سىنىپ-مەۋسۇم ۋە ماتېماتىكا دەرسلىك نۇسخىسىنى تولدۇرىدۇ؛ <strong style="color:var(--article-accent, #3f8fd4);"> بۇ بالىغا خاس يېتەكچى ياردەمچى مىسالى </strong> ھاسىل بولىدۇ. بۇ نەشر باشلانغۇچتىكى ئالتە پەننى قاپلايدۇ، تەڭشىگىلى بولىدىغان دەرسلىك نۇسخىسى ۋە ئىلگىرىلەش ھازىر ماتېماتىكىدا؛ كۆپ بالىلىق ئائىلە كۆپ مىسال قۇرۇپ، خاتا سوئال، ئۆگىنىش ئەھۋالى ۋە ئەسلىمىنى ئايرىم ساقلايدۇ. </p>
+
+<p style="margin: 8px 0;"> ئاندىن تاپشۇرۇق رەسىمى ئەۋەتىلسە، سىستېما ھەر سوئالدىكى بالىنىڭ قوليازما جاۋابىنى يىغىپ، پەننى ئاپتوماتىك ھۆكۈم قىلىپ، «بۇ سوئالغا جاۋاب يازدىمۇ؟» بويىچە ئايرىيدۇ: بوش سوئالغا ئاتا-ئانىغا جاۋاب ۋە چۈشەندۈرۈش، جاۋابلىق سوئالغا جاۋابنى ئېلىپ تەكشۈرۈش؛ خاتا بولسا سېزدۈرمەي خاتا سوئال دەپتىرىگە كىرگۈزۈش؛ ئاندىن تەكرارلاش نۆۋىتى، جۈمە ۋاقتى كەلگەن خاتا سوئالنى يەتكۈزۈش، ئېھتىياجغا قاراپ مەشىق توپلىمىغا قوشۇش — بىر تولۇق ھالقا. ئۈستەل يۈزىدە ئىشلەيدۇ، بۇ نەشر DingTalk ماشىنا ئادەم شەخسىي سۆھبىتىگە باغلانسا تېلېفوندىن رەسىم ئەۋەتىپمۇ ئىشلەيدۇ؛ OCR نى ئالدى بىلەن ھەر سوئالدا جەزملەشتۈرۈش ھاجەت ئەمەس، خۇلاسىگە تەسىر قىلىدىغان مەنبە پاكىتى ئېنىق بولمىغاندىلا ئەڭ ئاز قوشۇمچە ئۇچۇر سورايدۇ. ئائىلە توپى، WeChat ۋە Feishu بۇ نەشردىكى K12 دائىرىسىدە ئەمەس. </p>
+
+<p style="margin: 8px 0;"> بۇ نەشر «رەسىم تارتىش»نى چوڭقۇر قىلدى. سوئال تونۇش بىلەن بىللە سوئال تېكىستى، بالىنىڭ ھازىرقى كۈچكە ئىگە جاۋابى ۋە جاۋاب رايونى ساقلىنىدۇ؛ سىزىپ تاشلانغان كونا ھېساب ئاكتىپ جاۋابقا ئارىلاشماسلىقى كېرەك. <strong style="color:var(--article-accent, #3f8fd4);"> دەسلەپكى تۈرگە ئايرىش ئۆمۈرلۈك ھۆكۈم ئەمەس </strong> : دەسلەپ بوش قەغەز دەپ قارىلىپ، كېيىن ئېنىق ماتېماتىكا جاۋابى تونۇلسا، پروگرامما مەنبە پاكىتىنى ساقلىغان شۇ transaction ئىچىدە كۈچكە ئىگە مەقسەتنى تۈزىتىپ، ئەسلى تۈرگە ئايرىش تالونىنى ساقلايدۇ. بوش سوئالغا ئاتا-ئانا جاۋابى ۋە چۈشەندۈرۈش بېرىلىدۇ، «ئوقۇغۇچى جاۋابى» ئويدۇرۇلمايدۇ، خاتا سوئال ياكى ئىگىلەش دەلىلى يېزىلمايدۇ؛ جاۋابلىق سوئاللىق تاپشۇرۇقنىڭ ئاخىرقى نۇسخىسىدا بەلگىلىك ئەسلى رەسىم بار. بىر سوئال ئېنىق كۆرۈنمىسە، كوئوردىناتى يوق ياكى چەكتىن چىقسا، تېكىست رايونىدا چۈشەندۈرۈلىدۇ، پەرەز قىلىپ قىزىل خاتا بەلگىسى قويۇلمايدۇ؛ بۇ پۈتۈن جاۋابلىق قەغەزنىڭ بەلگىلىك رەسىمىنى تاشلاپ كەتسە بولىدۇ دېگەنلىك ئەمەس. </p>
+
+<p style="margin: 8px 0;"> بۇ تاللاشلار خالىغانچە بېكىتىلمىگەن — پۈتۈن لايىھە ئۈچ بىرىنچى پىرىنسىپقا تايىنىدۇ: </p>
+
+<ul style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> سىنىپقا ماس توغرىلىق </strong> — چۈشەندۈرۈش پەقەت بالا ئۆگەنگەن بىلىمنى ئىشلىتىدۇ. سىنىپ-مەۋسۇم يېتەكلەش ئارخىپىدىن كېلىدۇ؛ بۇ نەشر بىرىنچى سىنىپ بىرىنچى مەۋسۇمدىن ئالتىنچى سىنىپ ئىككىنچى مەۋسۇمغىچە. ماتېماتىكىدا يەنە ئۆلچەم پايدىلىنىشى ۋە باغلانغان دەرسلىك ئىلگىرىلىشى قوشۇلىدۇ. جەدۋەل قاراش، ئالدىن تەكشۈرۈش ۋە ئارخىپ قوشۇش دېتېرمىنىستىك؛ «بۇ ھەل قىلىش ئۇسۇلى چەكتىن ئاشامدۇ؟» دېگەن مەنىۋى تونۇشتا مودېل يەنىلا قاتنىشىدۇ — <strong style="color:var(--article-accent, #3f8fd4);"> قاتتىق قائىدە قاتتىق، يۇمشاق ھۆكۈم يۇمشاق دەپ ئېتىراپ قىلىنىدۇ </strong>。</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> ئىشەنچ كۆرۈنەرلىك </strong> — ھەل قىلىش نەتىجىسىدە دەلىل تۈرى ساقلىنىدۇ، ھېساب تەكشۈرۈش بەلگىسى كۆرسىتىدىغان كىرىشلەر شۇنىڭغا قاراپ ئايرىيدۇ؛ تاپشۇرۇق تەكشۈرۈش بېتى بەلگىلىك ئەسلى رەسىم ۋە ھەر سوئال خۇلاسىسىنى كۆرسىتىدۇ. ئىشەنچ بىلەن خاتالاشقاندىن كۆرە ئېنىق ئەمەس دېيىش ياخشى. </li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> ئاتا-ئانىغا جاۋاب ۋە چۈشەندۈرۈش بېرىش </strong> — تولۇق جاۋاب، ھەل قىلىش جەريانى ۋە ئاتا-ئانا شۇ ھامان سۆزلىيەلەيدىغان قەدەملەر: ئالدى بىلەن نېمە سوراش، بالا قىينالسا قانداق داۋاملاشتۇرۇش، ئاخىرىدا چۈشەنگەنلىكىنى قانداق تەكشۈرۈش. سوقراتچە سوراش ئاتا-ئانىنىڭ بالىغا ئۆگىتىش ئۇسۇلى، ئاتا-ئانىنى ئالدى بىلەن ئۆزى سوئال ئىشلەشكە مەجبۇرلايدىغان بوسۇغا ئەمەس. </li>
+</ul>
+
+<p style="margin: 8px 0;"> يېتەكلەشتە يەنە بىر <strong style="color:var(--article-accent, #3f8fd4);"> ھېسسىيات قاراۋۇلى </strong> بار: «بالا يىغلىدى / ئاچچىقلاندى / بىزار بولدى» دېگەن سىگنالدا، ئاتا-ئانىغا بېرىلگەن چۈشەندۈرۈش ئالدى بىلەن ھېسسىياتنى تۇتىدۇ — ھېسداشلىق ۋە خاتىرجەم قىلىش، بالىنىڭ قىلغان تىرىشچانلىقىنى ئېتىراپ قىلىش، سوئالنى تېخىمۇ كىچىك قەدەمگە ئايرىش؛ تولۇق جاۋاب ۋە دەرس تەييارلاش ماتېرىيالى نورمال بېرىلىدۇ، ئاتا-ئانا قۇلۇپ ئېچىلىشنى كۈتمەيدۇ. كەچ سائەت توققۇز-ئوندىكى يېتەكلەشتە كۆپىنچە سوئالنى چۈشەندۈرەلمەسلىك ئەمەس، <strong style="color:var(--article-accent, #3f8fd4);"> ھېسسىياتنىڭ تۇتۇلمىغانلىقى </strong>。</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;"> AI نېمىگە تايىنىپ ئۆگىتىدۇ: ئوقۇتۇشنىڭ يېرىمى Go دا قۇرۇلغان، يېرىمى Markdown دا يېزىلغان </h2>
+
+<p style="margin: 8px 0;"> ئىشەنچ مەسىلىسىدىن بۇرۇن، ئاتا-ئانا سورايدىغان بىرىنچى سوئالغا جاۋاب: <strong style="color:var(--article-accent, #3f8fd4);"> AI نېمىگە تايىنىپ ئۆگىتىدۇ؟ </strong></p>
+
+<p style="margin: 8px 0;"> ئارقا سۇپا v0.5.0-beta.1 سىنارىيە بوغچىسى بىلەن بىللە <strong style="color:var(--article-accent, #3f8fd4);"> بىر گۇرۇپپا ئوقۇتۇش Skill ى </strong> نى seed قىلدى（ئىككىلىك ھۆججەتكە قۇرۇلغان، تۇنجى قوزغىلىشتا مۇلازىمەت تۇرغان ماشىنىغا يېزىلىدۇ）. ئاساس يەنىلا «سىنىپ چېگراسى چەكلىمىسى» ۋە «K12 ئوقۇتۇش ئۇسۇلى»؛ پەن ئوقۇتقۇچىلىرى باشلانغۇچتىكى ئالتە پەنگە يىغىلدى — <strong style="color:var(--article-accent, #3f8fd4);"> ماتېماتىكا، خەنزۇ تىلى، ئىنگلىز تىلى، تەبىئەت، ئۇچۇر تېخنىكىسى ۋە گۈزەل سەنئەت </strong> ؛ يەنە سوئال تونۇش-تەكشۈرۈش، ئوقۇش، يېزىش، سۆزلۈك ۋە قەغەز تۈزۈش ئىقتىدارلىرى بار. پەن ئوقۇتقۇچىلىرى ئاساس ئۈستىگە قوشۇلىدۇ؛ قىزىل سىزىق ئاساستىن، ھەر پەن پەقەت كەسپىي مەزمۇن تولۇقلايدۇ. Skill تىزىملىكى بوغچا مۇندەرىجىسىدىن ھاسىل بولۇپ، Manifest تا ئېلان قىلىنىدۇ؛ تەكشۈرۈش ۋە تەكرارلاشنى سانلىق مەلۇمات ئامبىرىغا يېزىشنى يەنە ئىككى ماتور قورالى（ <code dir="ltr" style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">k12_grade</code> / <code dir="ltr" style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">k12_review</code> ）قورال دەۋرىگە ئۇلايدۇ. </p>
+
+<p style="margin: 8px 0;"> ئىچىدە يېزىلغىنى <strong style="color:var(--article-accent, #3f8fd4);"> دەلىلگە تايانغان ئوقۇتۇش ئۇسۇلى </strong> ، «سەن سەۋرچان ئوقۇتقۇچى» دېگەن قۇرۇق گەپ ئەمەس. ئاساس skill باشلىنىشىدىلا ئۇسۇلنىڭ نەزەرىيە ئاساسىنى بايان قىلىدۇ: قەدەملىك ئوقۇتۇشنىڭ نەزەرىيەۋى قۇرۇلمىسى ۋىگوتسكىينىڭ <strong style="color:var(--article-accent, #3f8fd4);"> «يېقىن تەرەققىيات رايونى» </strong> + مەسئۇلىيەتنى تەدرىجىي ئۆتكۈزۈش ئەندىزىسى（I do → We do → You do）； روزېنشايننىڭ «ئوقۇتۇش پىرىنسىپلىرى»دىكى «كىچىك قەدەمدە ئىلگىرىلەش، ھەر قەدەمدە چۈشىنىشنى تەكشۈرۈش، يۇقىرى مۇۋەپپەقىيەت نىسبىتىنى ساقلاش» باشتىن-ئاخىر بار؛ ھېسسىيات سۆزلىرى دۋېكنىڭ <strong style="color:var(--article-accent, #3f8fd4);"> «ئۆسۈپ يېتىلىش تەپەككۇرى» </strong> بويىچە بېكىتىلىدۇ — ئالدى بىلەن تىرىشچانلىق ۋە ئۇسۇلنى ماختاش، ئەقىللىق-ئەقىلسىز ھۆكۈم قىلماسلىق، سېلىشتۇرماسلىق؛ تەكرارلاش رېتىمى = ئەسلەپ چىقىرىش مەشىقى + ئارىلىقلىق تەكرارلاش（كېيىنكى خاتا سوئال پەلەمپەيسىنىڭ نەزەرىيە مەنبەسىمۇ مۇشۇ）. skill ئەسلى تېكىستىدىكى بىر گەپ پوزىتسىيەنى توغرا قويدۇ: <strong style="color:var(--article-accent, #3f8fd4);"> «بۇ ئاتالغۇلارنى ئاتا-ئانىغا يادلاپ بېرىش ھاجەت ئەمەس، ئەمما ھەر ھەرىكىتىڭ ئۇلارغا تايىنىشى كېرەك.» </strong> ئەلۋەتتە، بۇ رامكىلار لايىھە ئاساسى؛ ئۆگىنىش ئۈنۈمى ھەققىدىكى ئەمەلىي ئىسپات ۋەدىسى ئەمەس. </p>
+
+<p style="margin: 8px 0;"> ھەر پەن قەۋىتى ئۆزىچە قوشۇلىدۇ: ماتېماتىكا ئوقۇتقۇچىسى پولىيانىڭ «مەسىلىنى قانداق ھەل قىلىش»ىدىكى <strong style="color:var(--article-accent, #3f8fd4);"> تۆت قەدەم </strong> （چۈشىنىش → پىلان → ئىجرا → قايتا قاراش）نى قۇرۇلما قىلىدۇ، مۇستەھكەملەش گۇ لىڭيۈەننىڭ <strong style="color:var(--article-accent, #3f8fd4);"> «ئۆزگەرمە مىسال بىلەن ئوقۇتۇش» </strong> （چىڭپۇ تەجرىبىسى）بويىچە — سان، ئەھۋال ۋە سوئالنى ئالماشتۇرۇپ، بالىنى سوئال يادلاشقا ئەمەس، ئۆزگىرىش ئىچىدىكى ئۆزگەرمەس ئەندىزىنى تۇتۇشقا يېتەكلەيدۇ؛ بەشىنچى سىنىپقا تەڭلىمە چۈشەندۈرگەندە «ئىككى تەرەپكە ئوخشاش ساننى قوشۇش-ئېلىش» دەيدۇ، «تەرەپ ئالماشتۇرۇپ بەلگە ئۆزگەرتىش» دېمەيدۇ. ئىنشاء باھاسىدا قۇرۇلما، ماتېرىيال ۋە كونكرېت تۈزىتىش مىسالى، ئاتا-ئانىغا تولۇق پايدىلىنىش نۇسخىسىمۇ بېرىلىدۇ، ئەمما بالىنىڭ ئەسلىسى قاپلانمايدۇ. سەنئەت باھاسى ئالدى بىلەن كۆرۈنەرلىك رەسىم دەلىلىگە قاراپ، ئاتا-ئانىغا ماختاش، سوراش ۋە كېيىنكى قېتىم سىنايدىغان كىچىك ھەرىكەتنى بېرىدۇ؛ بالىنىڭ ئىجادىي مەقسىتى ئويدۇرۇلمايدۇ. <strong style="color:var(--article-accent, #3f8fd4);"> ئۇسۇل ئاخىرىدا ئاتا-ئانا ھازىرلا ئېيتالايدىغان بىر جۈملە، يېتەكلىيەلەيدىغان بىر قەدەمگە ئايلىنىشى كېرەك </strong> ، جاۋابقا پېداگوگىكا ئاتالغۇلىرىنى چاپلاش ئەمەس. Skill دىكى قوبۇل قىلىش ئۆلچىمى يەنىلا نىشان، ئەمەلىي سىناق رەت تەرتىپى ئەمەس. </p>
+
+<p style="margin: 8px 0;"> لېكىن ئىنژېنېر ئوقۇرمەنگە ھەقىقەتەن ئۆگىنىشكە ئەرزىيدىغىنى <strong style="color:var(--article-accent, #3f8fd4);"> ئىككى قەۋەتلىك قۇرۇلما </strong> . بۇ بۆلۈشنىڭ راستچىل باشلىنىشى بار: ئەڭ دەسلەپكى تەتقىقات ھۆججىتى «تاپشۇرۇق تەكشۈرۈشنىڭ 90% ىنى Skill بىلەن قىلغىلى بولىدۇ» دېگەن — ئەمەلىي قىلغاندا، <strong style="color:var(--article-accent, #3f8fd4);"> قالغان 10%（سىنىپ قاتتىق چېگراسى، ھېساب دەلىلى، خاتا سوئال ھالىتى ۋە كۆپ بالا ئايرىمىسى）دەل بۇ مەھسۇلاتنىڭ ئىشەنچلىك بولۇش-بولماسلىقىنى بەلگىلىدى </strong> ؛ ئۇلارنىڭ ھېچقايسىسى prompt قا يېزىلماسلىقى كېرەك ئىدى. شۇڭا ئوقۇتۇش ئىقتىدارى مەقسەتلىك ئىككى قەۋەتكە ئايرىلدى: </p>
+
+<ul style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> «توغرا-خاتا»نى باشقۇرىدىغان دېتېرمىنىستىك قىسىم Go غا كىرىدۇ </strong> — دەرس ئۆلچىمى جەدۋىلى ۋە بىلىم نۇقتىسى ئالدىن تەكشۈرۈش، كىرگۈزۈش نەشرى ۋە مەنبە باغلاش، سان سېلىشتۇرۇش ۋە ھالەت يۆتكەشنىڭ ھەممىسى ئىككىلىك ھۆججەتكە قۇرۇلىدۇ. <strong style="color:var(--article-accent, #3f8fd4);"> بۇ ئىشلاردا مودېلنىڭ گېپى ھېساب ئەمەس </strong> ؛ prompt قانچە گۈزەل بولسىمۇ، بىر قۇر ھۆكۈم لوگىكىسىنى ئۆزگەرتەلمەيدۇ. سوئال تونۇش ۋە چۈشەندۈرۈشتىكى مودېل ھۆكۈمىنى پروگرامما كاپالىتى دەپ كۆرسىتىشكە بولمايدۇ. </li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> «قانداق سۆزلەش» Markdown غا كىرىدۇ </strong> — چۈشەندۈرۈش سۆزلىرى، سوقراتچە قوشۇمچە سوئال ئىبارىسى، ھېسسىيات يېتەكلەش، «باسقۇچتىن ئاشقان ئىپادە → باسقۇچقا ماس ئالماشتۇرۇش» جەدۋىلى ئىجرا ۋاقتىدا system prompt قا قوشۇلىدۇ. <strong style="color:var(--article-accent, #3f8fd4);"> ئوقۇغىلى، ئۆزگەرتكىلى ۋە نەشر باشقۇرغىلى بولىدۇ </strong> ؛ جەمئىيەت ئورنىتىلغان Skill نىڭ سۆزلىرى ۋە ئوقۇتۇش ئېقىمىنى ئۆزگەرتەلەيدۇ، ئەمەلىي ھەرىكەت يەنىلا ياردەمچى خاراكتېرى ۋە پروگرامما كېلىشىمى بىلەن چەكلىنىدۇ. </li>
+</ul>
+
+<p style="margin: 8px 0;"> يۇمشاق چەكلىمە ياخشى ئوقۇتقۇچىدەك بولۇشقا، قاتتىق چەكلىمە چەكتىن چىقماسلىققا مەسئۇل — prompt باشقۇرالمىغان ئىشنى prompt تىن كۈتمەڭ. «ئادەمنىڭ ئۇسۇلىنى Skill ھۆججىتىگە ئايرىپ ئېلىش»نى <a href="https://mp.weixin.qq.com/s/2tHlfZYHxQdQwvVZQEoLRg" style="color:var(--article-accent, #5fb3ea);"> «بۇرۇنقى leader Skill» ماقالىسى </a> بىر قېتىم كۆرسەتكەن — بۇ قېتىم ئوبيېكت بىر ئادەمدىن بىر پەننىڭ ئوقۇتۇش ئۇسۇلىغا ئالماشتى. </p>
+
+<p style="margin: 8px 0;"> تۆۋەندە ئۈچ ئىشەنچ مەسىلىسى بويىچە قاتلاممۇ-قاتلام ئايرىپ، بۇ نەشردە چەكلىمىلەرنىڭ قايسى كودقا چۈشكەنلىكىنى كۆرىمىز. </p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;"> بىرىنچى ئۆتكەل: AI خاتا چۈشەندۈرسە قانداق قىلىمىز — ھېساب دەلىل زەنجىرى </h2>
+
+<p style="margin: 8px 0;"> ئالدى بىلەن چوڭ مودېل شىركەتلىرى باش بەتكە قويۇشنى خالىمايدىغان بىر پاكىتنى ئېتىراپ قىلايلى: <strong style="color:var(--article-accent, #3f8fd4);"> LLM ھېسابلىغۇچ ئەمەس </strong> . ئۇ token ئېھتىماللىقى بويىچە «جاۋابقا ئوخشايدىغان سان» ھاسىل قىلىدۇ؛ كۆپ قەدەملىك ھېسابتا ئېھتىماللىق بىلەن خاتالىشىدۇ، خاتا چاغدىكى ئاھاڭى توغرا چاغدىكىدەك ئىشەنچلىك. </p>
+
+<p style="margin: 8px 0;"> سۆھبەتتە بىر سوئالنى خاتا ھېسابلاش چوڭ ئىش ئەمەس. يېتەكلەشتە ئۇنداق ئەمەس: <strong style="color:var(--article-accent, #3f8fd4);"> ئاتا-ئانا AI نىڭ چۈشەندۈرۈشىنى بالىغا ئۆگىتىدۇ </strong> — باشتىكى ئىككىنچى قېتىم چوڭىيىدىغان زەنجىر（AI خاتا، ئاتا-ئانا خاتا ئۆگىتىش، بالا خاتا ئەستە ساقلاش）دەل مۇشۇ يەردىن تۇتىشىدۇ. </p>
+
+<p style="margin: 8px 0;"> HexClaw ئىلمىي ساھەدە قايتا-قايتا دەلىللەنگەن ئىككى ئىدىيەنى بىر ئىنژېنېرلىق زەنجىرىگە ئۇلايدۇ: <strong style="color:var(--article-accent, #3f8fd4);"> ئۆز-ئارا بىردەكلىك ئەۋرىشكىسى </strong> （Self-Consistency، Wang et al., ICLR 2023）ھەل قىلىش توغرىلىقىنى ئاشۇرىدۇ؛ <strong style="color:var(--article-accent, #3f8fd4);"> پروگرامما ياردەملىك دەلىللەش </strong> （PAL يولى، Gao et al., arXiv 2022 / ICML 2023 — تىل مودېلى ھېسابنى ئىزاھلىغۇچقا تاپشۇرۇپ ئىجرا قىلدۇرىدۇ）«توغرىمۇ؟»نى مودېلنىڭ ئاغزىدىن ئېلىپ، دېتېرمىنىستىك كود ئىجراسىغا بېرىدۇ. </p>
+
+<h3 style="font-size: 16px; font-weight: 700; color:var(--article-ink, #12324c); margin: 24px 0 10px;"> Solver: ئالدى بىلەن ئۆزى بىلەن تالاشىش </h3>
+
+<p style="margin: 8px 0;"> مۇرەككەپ سوئالنى بىر قېتىم ھاسىل قىلىشقىلا تايانمايدۇ. <code dir="ltr" style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">engine/solve.go</code>  دىكى Solver نىڭ ئىككى خىل كۈچەيتىش شەكلى بار: <strong style="color:var(--article-accent, #3f8fd4);">self_consistency</strong> （ئوخشاش ئۇسۇلدا كۆپ قېتىم ئەۋرىشكە ئېلىپ، كۆپ سانلىق ئاۋاز بىلەن ھۆكۈم قىلىدۇ، يۇقىرى چېكى  <code dir="ltr" style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">maxSelfConsistency = 5</code> ؛ كېچىكىش ۋە تەننەرخنى كونترول قىلىدۇ）ۋە  <strong style="color:var(--article-accent, #3f8fd4);">method_diversity</strong> （مەقسەتلىك ئىككى پەرقلىق ئۇسۇلدا بىردىن يېشىدۇ؛ ئوخشاش نەتىجىگە يەتسە ئىشەنچلىك）. </p>
+
+<p style="margin: 8px 0;"> كۈچلۈكلۈك مۇرەككەپلىك بويىچە بۆلۈنىدۇ: ئۇزۇن، كۆپ سوئاللىق ۋە بەلگىلىك پىكىر يۈرگۈزۈش سۆزلىرى كۈچنى ئاشۇرىدۇ؛ ئاددىي ھېساب كۆپ نۆۋەتلىك ئەۋرىشكىدىن ساقلىنىدۇ. ھازىر يەنە <strong style="color:var(--article-accent, #3f8fd4);"> مۇرەككەپلىك ھۆكۈم قىلىش كۆپەيتمىسىدىن </strong> دەرسلىك قوشۇمچىسى، باسما مىسال ۋە تاللانغان يەككە سوئال نومۇرى چىقىرىلىدۇ؛ ھەقىقىي سوئال تولۇق ساقلىنىپ، باسما سۆزلىرى ئاددىي سوئالنى «قىيىن»غا ئايلاندۇرمايدۇ. تېخىمۇ ئالدىنقى بىر يول Go AST +  <code dir="ltr" style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">big.Rat</code> بىلەن تۆت ئەمەل، ئەڭ ئاددىي پۈتۈن سان نىسبىتى، بىرىنچى دەرىجىلىك تەڭلىمە ۋە قۇرۇلمىسى ئېنىق كەسىر، بىرلىك مىقدار، قىسمەن گېئومېتىرىيە مەسىلىسىنى ئېنىق ھېسابلايدۇ؛ قۇرۇلما تولۇق تونۇلمىسا مودېل زەنجىرىگە قايتىدۇ. </p>
+
+<h3 style="font-size: 16px; font-weight: 700; color:var(--article-ink, #12324c); margin: 24px 0 10px;"> Verifier: پروگراممىنى تاپشۇرۇش، ئىجرا قىلىشقا ئەپ مەسئۇل </h3>
+
+<p style="margin: 8px 0;"> لايىھە بويىچە ھۆكۈم مودېلنىڭ يەنە بىر «قاراپ قويۇشى»غىلا تايانمايدۇ. ئەڭ يېڭى كود <strong style="color:var(--article-accent, #3f8fd4);"> سان سېلىشتۇرغۇچ بىر تەرەپ قىلالايدىغان ھېسابلاش تىپىدىكى دەلىللەشنى </strong> مۇستەقىل تۈگۈنگە يىغدى: Verifier يېڭى كونتېكستتا سوئال، تولۇق نامزات ھەل قىلىش ۋە ئوقۇش باسقۇچى چەكلىمىسىنى ئېلىپ، پەقەت Python پروگراممىسى ۋە قەدەملىك تەكشۈرۈش JSON ىنى تاپشۇرىدۇ؛ ئەپ ئاندىن  <code dir="ltr" style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">code_exec</code> نى چاقىرىپ، ھەقىقىي ئىجرا تالونىنى ئوقۇيدۇ. بۇ مودېلنىڭ قاچان قورال چاقىرىشنى قارار قىلىپ، ئىجرا نەتىجىسىنى ئېغىزچە بايان قىلىش بېرىپ-كېلىشىنى ئازايتىدۇ، ئەمما ئىجرانى تاشلىمايدۇ. </p>
+
+<section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0;"><code dir="ltr" style="display: block; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: Menlo, Monaco, Consolas, monospace;"><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">computed, executed := receipt.computed(task)</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">switch {</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">case program.Scope == &quot;OUT_OF_SCOPE&quot;:</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">    verdict = verdictOutOfScope</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">case process == &quot;INVALID&quot;:</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">    verdict = verdictDisagree</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">case executed &amp;&amp; answersEqual(computed, input.Candidate):</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">    verdict = verdictAgree</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">case executed &amp;&amp; answersDefinitelyDiffer(computed, input.Candidate):</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">    verdict = verdictDisagree</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">}</span></code></section>
+
+<p style="margin: 8px 0;"> بۇ بۆلەك  <code dir="ltr" style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">engine/solve_verifier_node.go</code>  دىكى ھەقىقىي ھۆكۈم كودى؛ تەرتىپنىڭ ئۆزى مەنا: ئالدى بىلەن باسقۇچ، ئاندىن جەريان، ئاخىرىدا سان سېلىشتۇرۇش. مودېلنىڭ «ھېسابلاپ بولدۇم» دېگىنى ئىجرا دەلىلى ئەمەس؛ بۇ سوئالنىڭ كىرگۈزۈش قىسقىچە ئىمزاسى، ئىجرا ID، مۇۋەپپەقىيەت ھالىتى، چېكىنىش كودى ۋە stdout ماس كېلىشى كېرەك. باشقا سوئال تۈرلىرى ئەسلى قورال دەۋرىدە قالىدۇ؛ دەلىللەش تارماق Agent ى پەقەت كود ئىجرا قورالى ئىشلىتەلەيدۇ، يەنە تۆۋەنگە تارقاتمايدۇ. نامزات ھەل قىلىش يەنىلا كىرگۈزۈشتە بولغاچقا، يېڭى كونتېكست ئۇچۇر ئايرىلىشى ئەمەس؛ سوئال چۈشىنىش ۋە قەدەملىك مەنا تەكشۈرۈشىگە مودېل يەنىلا قاتنىشىدۇ. </p>
+
+<p style="margin: 8px 0;"> ھۆكۈم نەتىجىسى ئىككى ئەمەس، تۆت ھالەت: </p>
+
+<section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code dir="ltr" style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;"><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">verdictUnverifiable verifyVerdict = iota // 非计算题/无法判定/verifier 不可用</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">verdictAgree</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">verdictDisagree</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">verdictOutOfScope // 解法用了 constraint 白名单之外的方法（超纲），</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">                  // 需学段内重解</span></code></section>
+
+<p style="margin: 8px 0;"> تۆتىنچى ھالەت  <code dir="ltr" style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">out_of_scope</code>  بۇ يەردە مائارىپ چەكلىمىسىنى ئۈستىگە ئالىدۇ: جاۋاب توغرا بولسىمۇ، <strong style="color:var(--article-accent, #3f8fd4);"> ئۇسۇلنىڭ ئۆلچەمدىن ئاشقانلىقى بايقالسا ئۆتكۈزمەيدۇ </strong> — مەسىلەن بەشىنچى سىنىپ سوئالىغا ئىككى نامەلۇملۇق بىرىنچى دەرىجىلىك تەڭلىمىلەر سىستېمىسى ئىشلىتىش. بىۋاسىتە تەكشۈرۈش بولمىغان ھەل قىلىش زەنجىرىدە، ئېنىق باسقۇچ چەكلىمىسى ۋە قالغان خامچوت بولسا، <strong style="color:var(--article-accent, #3f8fd4);"> باسقۇچ ئىچىدىكى ئۇسۇل بىلەن بىر قېتىم قايتا يېشىپ، تولۇق جەرياننى قايتا دەلىللەشكە تىرىشىدۇ </strong> ؛ يەنىلا ماس كەلمىسە، ئۆلچەمدىن ئاشقان ھالىتى ساقلىنىدۇ. پايدىلىنىش رامكىسى ئارخىپتىكى سىنىپ + دەرس ئۆلچىمى جەدۋىلىنى ئۆز ئىچىگە ئالىدۇ（ئىچكى خەلق مائارىپ نەشرى ماتېماتىكا جەدۋىلىنىڭ key لىرى ئاساسەن تۆتىنچى سىنىپ بىرىنچى مەۋسۇمدىن يەتتىنچى سىنىپ ئىككىنچى مەۋسۇمغىچە؛ بىر بىلىم نۇقتىسى كۆپ سىنىپتا كۆرۈنسە، قۇرغۇچ ئەڭ بۇرۇنقى سىنىپنى ساقلاپ، خاتا چەكتىن ئاشۇرۇش ھۆكۈمىدىن ساقلىنىدۇ؛ ئوتتۇرا مەكتەپ تۈرلىرى چەكتىن ئاشقاننى تونۇشقىمۇ ئىشلىتىلىدۇ، بۇ نەشر ئوتتۇرا مەكتەپ يېتەكلەشنى ئاچتى دېگەنلىك ئەمەس）. چەكلىمە جەدۋىلى ئېنىق، ئەمما «ئۇسۇل چەكتىن ئاشتىمۇ؟»نى Verifier رۇخسەت تىزىملىكىگە سېلىشتۇرۇپ مەنىۋى ھۆكۈم قىلىدۇ؛ بۇ كۈچلۈك پايدىلىنىش ئاستىدىكى مودېل ھۆكۈمى، فورمال ئىسپات ئەمەس. </p>
+
+<p style="margin: 8px 0;"> بۇ لايىھەنىڭ ئەڭ ئەمەلىي ئۆزگىرىشى «ھۆكۈمچى راستىنلا قەلەم تەۋرەتتىمۇ؟»نى prompt تىن تەكشۈرگىلى بولىدىغان پاكىتقا ئايلاندۇرۇش. مودېل پروگراممىنى خاتا يېزىشى، مەنبەمۇ خاتا ئوقۇلۇشى مۇمكىن؛ ئەمما <strong style="color:var(--article-accent, #3f8fd4);"> بۇ سوئالنىڭ مۇۋەپپەقىيەتلىك ئىجرا تالونى بولمىسا، بىر ئېغىز بايان بىلەن «پروگرامما ھېساب تەكشۈرۈشىدىن ئۆتتى» دېيەلمەيدۇ </strong> . كېيىنكى ئىجرا مەغلۇپ بولسىمۇ، ئالدىنقى مۇۋەپپەقىيەت تالونىنى ئىشلىتىپ بولمايدۇ. </p>
+<figure style="margin: 22px 0; text-align: center;">
+<img src="../../assets/blog/河蟹 AI 让你「父慈子笑」：首个灯塔场景的 K12 工程实践-wechat/02-验算证据链.png" alt="ھېسابلاش تىپىدىكى دەلىللەش زەنجىرى: مودېل پروگرامما ۋە تەكشۈرۈش ھاسىل قىلىدۇ، ئەپ ئىجرا قىلىدۇ، تالون بىلەن جەريان بىرلىكتە ھۆكۈم قىلىدۇ" width="2000" height="2620" loading="lazy" decoding="async">
+<figcaption style="color:var(--article-secondary, #5f7b9c); font-size: 13px; margin-top: 8px; line-height: 1.6;"> 2-رەسىم｜ھېسابلاش تىپىدىكى دەلىللەش مەسئۇلىيەت چېگراسى: مودېل پروگرامما ۋە تەكشۈرۈش تاپشۇرىدۇ، ئەپ ئىجرا قىلىپ بۇ سوئالنىڭ تالونىنى ئوقۇيدۇ. جاۋاب ماسلىقى جەريان خاتالىقى ياكى باسقۇچتىن ئاشقانلىق ھۆكۈمىنى قاپلىيالمايدۇ؛ رەسىم كود مېخانىزمىنىڭ ئىزاھى. </figcaption>
+</figure>
+
+<h3 style="font-size: 16px; font-weight: 700; color:var(--article-ink, #12324c); margin: 24px 0 10px;"> سان قوغدىغۇچىسى: «ھۆكۈمچى»گىمۇ تولۇق ئىشەنمەسلىك </h3>
+
+<p style="margin: 8px 0;"> ئاسان نەزەردىن ساقىت بولىدىغان يەنە بىر قەۋەت بار: <strong style="color:var(--article-accent, #3f8fd4);"> كود توغرا ھېسابلىسىمۇ، مودېل ئېغىزچە ھۆكۈمدە تەتۈر ئېيتسىچۇ؟ </strong> ھازىرقى سان قوغدىغۇچىسى سېلىشتۇرغىلى بولىدىغان كەسىر، ئونلۇق، پىرسەنت ۋە قوللىنىدىغان مىقدار ئىپادىلىرىنى نورماللاشتۇرۇپ،  <code dir="ltr" style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">answerTol = 1e-6</code>  بويىچە سېلىشتۇرىدۇ. ئەمما «سان ئوخشاش»نىڭ شەرتى بار: تولۇق ھەل قىلىش بېرىلگەن بولسا، جەريان تەكشۈرۈشى ئېنىق ئۆتكەندىلا ئېغىزچە پەرقنى تۈزەتكىلى بولىدۇ. <code dir="ltr" style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">PROCESS: INVALID</code>  ۋە  <code dir="ltr" style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">OUT_OF_SCOPE</code>  ئوخشاش ئاخىرقى قىممەت بىلەن يوقىتىلمايدۇ. </p>
+
+<p style="margin: 8px 0;"> ئاتا-ئانا چۈشىنىدىغان قىلىپ: ئاخىرى تاسادىپىي توغرا چىقىش، ئوتتۇرىدىكى ھەر قەدەمنى ئۆگىتىشكە بولىدۇ دېگەنلىك ئەمەس. تەكشۈرۈشمۇ «خاتا جاۋاب» بىلەن «جاۋاب توغرا، جەرياندا مەسىلە»نى ئايرىيدۇ؛ كېيىنكىسى كونكرېت قەدەم مەسىلىسى ۋە چۈشەندۈرۈشنى كۆرسىتىدۇ، ئاپتوماتىك خاتا سوئال قىلىنمايدۇ. ئىشەنچلىك تەھلىل ياكى سېلىشتۇرۇش مۇمكىن بولمىغان جاۋاب ئېنىقسىز قالىدۇ؛ string پەرقلىق دەپلا ھېساب خاتا دېمەيدۇ. </p>
+
+<h3 style="font-size: 16px; font-weight: 700; color:var(--article-ink, #12324c); margin: 24px 0 10px;"> جاۋابنىلا ئەمەس، ئاتا-ئانا سۆزلەيدىغان جۈملىلەرنىمۇ تەكشۈرۈش </h3>
+
+<p style="margin: 8px 0;"> ئاتا-ئانا دەرس تەييارلاش قوللانمىسىدا جاۋاب، تولۇق قەدەملەر، باسقۇچقا ماس ئۇسۇل، ئاسان خاتالىق، ئوقۇتۇش تەرتىپى، قوشۇمچە سوئال ۋە تەكشۈرۈشتىن ئىبارەت يەتتە ساھە بار. ھەل قىلىش بىلەن چۈشەندۈرۈش بىر نۆۋەتتە ھاسىل بولسىمۇ، يەنىلا نامزاتلا؛ چۈشەندۈرۈش تاللانغان ھەل قىلىش ئىمزاسىغا باغلىنىپ، ئايرىم بىرمۇبىر تەكشۈرۈلىدۇ. <strong style="color:var(--article-accent, #3f8fd4);"> بىر سوئالنىڭ جاۋابى توغرا بولۇشى خاتا مىسال ياكى ئازدۇرغۇچى قوشۇمچە سوئالغا كاپالەت بولالمايدۇ </strong> . بۇ مودېل مەزمۇنىنى تەكشۈرۈش، ئۇنى سانلىق پروگرامما ئىسپاتى دەپ كۆرسىتىشكە بولمايدۇ. </p>
+
+<h3 style="font-size: 16px; font-weight: 700; color:var(--article-ink, #12324c); margin: 24px 0 10px;"> دەلىلگە سەمىمىي بولۇش: پروگرامما ھېساب تەكشۈرۈشى بىلەن مودېل ھۆكۈمىنى ئارىلاشتۇرماسلىق </h3>
+
+<p style="margin: 8px 0;"> زەنجىرنىڭ ئاخىرقى ھالقىسى دەلىل كۈچىنى <strong style="color:var(--article-accent, #3f8fd4);"> راستچىل </strong> ساقلاش. ساھە دەلىلى ئالتە تۈر（سانلىق ئىجرا / سىمۋوللۇق ئىجرا / ئوخشىمىغان مودېل قايتا تەكشۈرۈشى / ئوخشاش مودېلغا تايانغان ھۆكۈم / ئەسلى سۆزنى قايتا بېرىش / يوق）. تۆۋەندە ئارقا سۇپىنىڭ كۈچلۈك ئىشەنچ ھۆكۈمىدىن بىر بۆلەك. ھازىر بەلگە كۆرسىتىدىغان كىرىش «پروگرامما ھېساب تەكشۈرۈشىدىن ئۆتتى» بىلەن «تەكشۈرۈلدى»نى ئايرىيدۇ؛ ھەر نەتىجە بېتىدە بەلگە يوق، يېشىل رەڭگىگىلا قاراپ دەلىل كۈچىنى ھۆكۈم قىلالمايسىز. </p>
+
+<section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code dir="ltr" style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;"><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">func (e SolveEvidence) StrongTrust() bool {</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">    switch e.EvidenceType {</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">    case EvidenceNumericExec, EvidenceSymbolicExec, EvidenceVerbatim:</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">        return true</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">    case EvidenceHeterogeneousModel:</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">        return e.SolverModel != &quot;&quot; &amp;&amp; e.SolverModel != e.VerifierModel</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">    default:</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">        return false</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">    }</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">}</span></code></section>
+
+<p style="margin: 8px 0;"> بۇ بۆلەكتىكى ئەڭ راستچىل گەپ: HexClaw نىڭ Solver ۋە Verifier ى  <strong style="color:var(--article-accent, #3f8fd4);"> كۆڭۈلدىكى ھالەتتە ئوخشاش ئاساس مودېل </strong> . مۇستەقىللىق fresh context ۋە پروگرامما ئىجراسىغا تايىنىشتىن كېلىدۇ، مودېل پەرقىدىن ئەمەس. شۇڭا «ئوخشاش مەنبەلىك ئىككى مودېلنىڭ ئۆزئارا ماقۇللىشى» پەقەت مودېل قايتا تەكشۈرۈش ئاساسى، <strong style="color:var(--article-accent, #3f8fd4);"> پروگرامما ھېساب تەكشۈرۈشى ئەمەس </strong> . يەنە  <strong style="color:var(--article-accent, #3f8fd4);"> پروگرامما ئىجرا دەلىلى </strong> دە بىر نۇقتىنى ئايدىڭلاشتۇرۇش كېرەك: مۇرەككەپ سوئالدا ئىجرا مۇھىتى بۇ سوئالنىڭ كىرگۈزۈش ئىمزاسى، قۇم ساندۇقى ئىجرا ID سى، مۇۋەپپەقىيەت ھالىتى ۋە ھەقىقىي چىقىرىشنى تەكشۈرىدۇ（ <code dir="ltr" style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">CodeExecutionReceipt</code>  ئېلىپ يۈرىدىغىنى  <code dir="ltr" style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">InputDigest</code>  ۋە  <code dir="ltr" style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">RunID</code>），<strong style="color:var(--article-accent, #3f8fd4);"> تالون مۇشۇ سوئالغا ماس كەلگەندىلا پروگرامما ھېساب تەكشۈرۈشىنىڭ ئاساسى بولىدۇ </strong> ؛ دېتېرمىنىستىك تېز يول بولسا بىۋاسىتە پروگرامما قىممەت ھېسابىدىن كېلىدۇ. ئەسلى قورال دەۋرى خامچوت ئىچىدە قوشۇمچە تەكشۈرەلەيدۇ؛ مۇستەقىل ھېساب دەلىللەش تۈگۈنىدە كۈچكە ئىگە تالون يوق، ئىجرا مەغلۇپ ياكى نەتىجە نامەلۇم بولسا، ماس مەغلۇپ ياكى تەكشۈرۈشنى كۈتۈش ھالىتى ساقلىنىدۇ، تاماملانغان ھېساب تەكشۈرۈشى قىلىپ ئوراشقا بولمايدۇ. تەھلىل قىلغىلى بولىدىغان مودېل ھۆكۈمىمۇ پروگرامما ئىجرا دەلىلىدىن ئايرىلىشى كېرەك. ھەل بولمىغان پەرق بولسا، نەتىجە ئېنىقسىزلىقنى ساقلىشى كېرەك. «ئىچكى تەكشۈرۈشنى سىرتقا چىقارماسلىق» ئىنتىزامى تەكشۈرۈش چىقىرىشىغىمۇ داۋاملىشىدۇ: <strong style="color:var(--article-accent, #3f8fd4);"> خاتالىق سەۋەبى تېكىستىدىن verifier نىڭ ئۆز-ئۆزىنى تەكشۈرۈشىدىكى توغرا-خاتا بەلگىلىرى ۋە «...مۇ؟» دېگەن ئۆز سوئاللىرى تازىلىنىپ، ئاتا-ئانىغا پەقەت ئادەم چۈشىنىدىغان بىر جۈملە سەۋەب بېرىلىدۇ </strong> — ھېساب تەكشۈرۈشنىڭ قارا نۇسخىسى ئىشلەتكۈچى كۆرۈنمە يۈزىگە كىرمەيدۇ. </p>
+
+<p style="margin: 8px 0;"> ئوخشاش مەنبە بولۇشمۇ «خالىغان مودېل بولىدۇ» دېگەنلىك ئەمەس. بۇ يەردە ئاسان ئۇنتۇلىدىغان يول تاللاش بار: ھازىر بىر K12 داۋاملىق تەكشۈرۈش ۋەزىپىسى <strong style="color:var(--article-accent, #3f8fd4);"> قۇرۇلغاندا تاللانغان، رەسىم ۋە تېكىستنى تەڭ قوللايدىغان مودېلنى مۇقىملايدۇ </strong> ؛ سوئال تونۇش، ھەل قىلىش ۋە ھېساب تەكشۈرۈش شۇ يولدا، يېرىم يولدا يوشۇرۇن ئالماشتۇرمايدۇ. ئومۇمىي solve پەقەت provider/model ئېنىق بېكىتىلمىگەندە ئايرىم تەڭشەلگەن پىكىر يۈرگۈزۈش مودېلىنى ئىشلىتىدۇ. رەسىم كۆرەلەش چوقۇم تەكشۈرەلەيدۇ دېگەنلىك ئەمەس؛ تاللانغان مودېلنىڭ ھەقىقىي ئىقتىدارى پۈتۈن زەنجىرنىڭ ئالدىنقى شەرتى. </p>
+
+<blockquote style="border-left: 3px solid #3f8fd4; padding: 14px 18px; margin: 20px 0; background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); font-size: 14px; border-radius: 0 8px 8px 0; line-height: 1.85;">
+ «توغرىمۇ؟»نى مودېلنىڭ ئاھاڭىدىن ئايرىپ، تەكشۈرگىلى بولىدىغان دەلىل زەنجىرىگە ئايلاندۇرۇش — <strong style="color:var(--article-accent, #3f8fd4);"> يېتەكلەش سىنارىيەسى بىلەن سۆھبەت سىنارىيەسىنىڭ ئىنژېنېرلىق جەھەتتىكى ئايرىلىش نۇقتىسى </strong>。
+</blockquote>
+
+<h3 style="font-size: 16px; font-weight: 700; color:var(--article-ink, #12324c); margin: 24px 0 10px;"> سۆھبەت تەلىپىدىن داۋاملىق ۋەزىپىگە: ئەسلىگە كەلتۈرۈش قايتا بىر قېتىم ئىجرا قىلىش ئەمەس </h3>
+
+<p style="margin: 8px 0;"> بىر تاپشۇرۇق رەسىمى سوئال تونۇش، ھەل قىلىش، ھېساب تەكشۈرۈش، ئاخىرقى نۇسخا ۋە يەتكۈزۈشتىن ئۆتىدۇ. ھازىر ئالدى بىلەن ئەسلى رەسىم نەقىلى، مەنبە ئىمزاسى، مودېل يولى، تەلەپ خۇلاسىسى ۋە باسقۇچ خامچوتى ساقلىنىدۇ؛ فىزىكىلىق چاقىرىش prepared، sent، succeeded، outcome_unknown غا ئايرىلىدۇ. ئەسلىگە كەلتۈرگەندە تاماملانغان بىرلىك قايتا ئىشلىتىلىپ، پەقەت ئېنىق بىخەتەر تەكشۈرۈش نۇقتىسىدىن داۋاملىشىدۇ؛ <strong style="color:var(--article-accent, #3f8fd4);"> تەلەپ ئەۋەتىلىپ نەتىجە نامەلۇم بولسا، ئالدى بىلەن ئەسلى تەلەپنى تەكشۈرۈش كېرەك، قارىغۇلارچە قايتا ئەۋەتىشكە بولمايدۇ </strong> . بەت ھالىتى بىلەن مۇلازىمەت ۋەزىپىسى ئايرىم؛ بەتنى تاقاشمۇ ساقلانغان ۋەزىپىنى بىكار قىلىش ئەمەس. </p>
+
+<h3 style="font-size: 16px; font-weight: 700; color:var(--article-ink, #12324c); margin: 24px 0 10px;"> سوئال ئامبىرى قايسى قەدەمنى تېجەيدۇ، قايسىسىنى تېجىيەلمەيدۇ؟ </h3>
+
+<p style="margin: 8px 0;"> بۇ يەردە ئۈچ ئىش ئاسان ئارىلاشتۇرۇلىدۇ: دەرسلىككە تايىنىش، ۋەزىپىلەر ئارا سوئال مۈلكى، بىر ۋەزىپە ئىچىدىكى قايتا ئىشلىتىش. <code dir="ltr" style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">verified_text</code>  تەكشۈرۈلگەن دەرسلىك ئاساسىي تېكىستىنى بىۋاسىتە ئوقۇشنى كۆرسىتىدۇ؛ دەرسلىك، بەت ۋە مەنبە ئىمزاسى مۇقىملىنىپ، «بۇ ئاساس نەدىن كەلدى؟»گە جاۋاب بېرىدۇ. سوئال مۈلكى ئىشەنچلىك سوئال تېكىستى ۋە باسقۇچ قاتارلىق پاكىتلارغا ماسلىشىپ، نەشر ۋە قوللىنىش تالونىنى ساقلاپ، دەلىللەنگەن ھەل قىلىشنى قايتا ئىشلىتىدۇ؛ شۇ ۋەزىپىدە تەكشۈرۈلگەن ھەل قىلىش grader غا بېرىلىپ، ئوقۇغۇچى جاۋابى سېلىشتۇرۇلىدۇ، باشتىن قايتا ھېسابلاش ئازىيىدۇ. <strong style="color:var(--article-accent, #3f8fd4);"> جاۋاب مۈلكىگە ماس كېلىشمۇ بۇ قېتىمقى رەسىم تونۇش، ئوقۇغۇچى جاۋابى ۋە قەدەم ھۆكۈمىدىن ئاتلاپ ئۆتەلمەيدۇ </strong> ؛ كېيىن ماس كەلگەن مۈلۈك بىلەن بۇرۇنقى نەتىجىسى نامەلۇم چاقىرىش ھېساب دەپتىرىنى قاپلاش تېخىمۇ بولمايدۇ. </p>
+
+<p style="margin: 8px 0;"> ئىشەنچنىڭ بەدىلى بار. ئادەتتىكى solve دا كۆڭۈلدىكى 5 مىنۇتلۇق تام سائىتى چېكى بار؛ K12 داۋاملىق تەكشۈرۈشى ۋەزىپىدە مۇقىملانغان باسقۇچ خامچوتىنى ئىشلىتىدۇ. 2026-10-03 دىكى يەرلىك ئورنىتىلغان نۇسخا دوكلاتى بويىچە، <strong style="color:var(--article-accent, #3f8fd4);"> ھازىرقى بىر قالايمىقان ماتېماتىكا تاپشۇرۇقىنىڭ تولۇق DingTalk زەنجىرى 285.507 سېكۇنت، سوئال تونۇشنى قايتا تەكشۈرۈش 248.214 سېكۇنت؛ 120 سېكۇنتلۇق نىشانغا تېخى يەتمىدى </strong> . شۇ قېتىم gpt-6-sol ئىشلىتىلگەن، 16 سوئال تولۇق بىر تەرەپ قىلىنغان، تېكىست ۋە بەلگىلىك PNG ھەقىقەتەن قوبۇل قىلىنغان؛ بۇ پەقەت شۇ ئەۋرىشكە، مودېل ۋە ئورنىتىلغان نۇسخىنى ئىسپاتلايدۇ، توغرىلىق رەت تەرتىپى ياكى بارلىق مودېلنىڭ ئىقتىدارىغا كېڭەيتىشكە بولمايدۇ. ئۇ يەنە ھەل قىلىش چاقىرىشىنى تېجەش ئەڭ ئاستا سوئال تونۇش باسقۇچىنى يوقىتىش ئەمەسلىكىنى ئەسكەرتىدۇ. </p>
+
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;"> ئىككىنچى ئۆتكەل（ئۈستى）: خاتا سوئال قەيەردە خاتىرىلىنىدۇ — خاتىرە ئاساسىي بىرىكمىسى + ئېببىڭخاۋۇسچە تەكرارلاش ماتورى </h2>
+
+<p style="margin: 8px 0;"> تەكشۈرۈشتە خاتا ھۆكۈم قىلىنغان سوئال خاتا سوئال دەپتىرىگە ئاپتوماتىك كىرىدۇ. دەسلەپ ئۇ بىر <strong style="color:var(--article-accent, #3f8fd4);"> ساھەگە باغلانمىغان خاتىرە ئاساسىي بىرىكمىسىگە </strong> <code dir="ltr" style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">agent_records</code>  چۈشەتتى（storage migration V8）؛ خاتا سوئال ۋە توپلامنىڭ سودا چەكلىمىسى ئېنىقلاشقاندىن كېيىن، ھازىر  <code dir="ltr" style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">k12_mistakes</code>、<code dir="ltr" style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">k12_accumulations</code>  قاتارلىق تىپلىق جەدۋەللەر ئۈستىگە ئالدى（V9）؛ سىنارىيە ئورنىتىش ھېسابى V10 غا، تەكرارسىز ئاچقۇچ تولۇقلاش V11 غا چۈشتى. <strong style="color:var(--article-accent, #3f8fd4);"> ئومۇمىيسى خاتىرە كېلىشىمى، ساھە ساھەلىرىنىڭ ئۆز ئورنى بار </strong>。</p>
+
+<p style="margin: 8px 0;"> خاتىرە كېلىشىمى يەنىلا  <code dir="ltr" style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">collection</code>  بىلەن خاتىرە توپلىمىنى ئايرىيدۇ؛ تىپلىق جەدۋەللەردە  <code dir="ltr" style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">status</code> （ھالەت ماشىنىسى）、 <code dir="ltr" style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">due_at</code> （ۋاقتى كەلگەندە پىلانلاش）、 <code dir="ltr" style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">version</code> （ئۈمىدۋار قۇلۇپ）قاتارلىق ئومۇمىي ستونلار بار؛ سوئال تېكىستى، جاۋاب ۋە خاتالىق سەۋەبى ئېنىق ساھە ستونلىرىغا چۈشىدۇ. ئۈچ تەپسىلاتنى ئۆگىنىشكە ئەرزىيدۇ: </p>
+
+<ul style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> ئىدېمپوتېنت تەكرارسىزلاشتۇرۇشنى ئامبار چەكلىمىسى بىلەن ئوخشاش سوئال ماسلاشتۇرۇشى بىرلىكتە ئۈستىگە ئالىدۇ </strong> — ھەر تىپلىق جەدۋەلدە  <code dir="ltr" style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">UNIQUE(agent_name, dedupe_key)</code> بار؛ خاتا سوئال ئاچقۇچى مەنبە سۆھبىتى ۋە نورماللاشتۇرۇلغان سوئال تېكىستىدىن ھاسىل بولىدۇ（بوشلۇق، چوڭ-كىچىك ھەرپ دەرىجىسىدىكى OCR پەرقىنى سۈمۈرىدۇ）؛ توپلام بولسا پەن، تۈر ۋە نورماللاشتۇرۇلغان مەزمۇن بويىچە تەكرارسىزلاشتۇرۇلىدۇ. تەكشۈرۈش يەنە ھازىرقى بالىنىڭ بىردىنبىر ئېنىق خاتا سوئال مەنبەسىگە ماسلاشتۇرىدۇ؛ ماس كەلسە تەكرارلاش نەتىجىسىنى يېڭىلايدۇ — <strong style="color:var(--article-accent, #3f8fd4);"> ئامبار ئاچقۇچىنىڭ ئۆزى سۆھبەتلەر ئارا ئومۇمىي بىردىنبىرلىكنى ۋەدە قىلمايدۇ </strong>。</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> ئايرىش ئاچقۇچى ئۆزگەرمەس ئاساسىي ئاچقۇچ </strong> — ئۇ  <code dir="ltr" style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">agents(name)</code>  سىرتقى ئاچقۇچىغا باغلانغان（نام ئالماشتۇرۇشتا display_name ئۆزگىرىدۇ）؛ كۆپ بالا-كۆپ مىسالنى schema ئايرىيدۇ، مىسال ئۆچۈرۈلسە ماس سانلىق مەلۇمات زەنجىرسىمان ئۆچۈرۈلىدۇ. </li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> ئومۇمىيلىقنىڭ ئىككىنچى مىسالى بار </strong> — خەنزۇچە / ئىنگلىزچە «توپلام دەپتىرى»（يادىدىن يېزىشتا خاتا سۆز، ياخشى سۆز-جۈملە، قەدىمكى شېئىر）ئوخشاش خاتىرە كېلىشىمىدىكى باشقا collection بولۇپ، توپلام جەدۋىلىگە ساقلىنىدۇ. </li>
+</ul>
+
+<p style="margin: 8px 0;"> خاتا سوئال مەنبەسىمۇ ئەپ ئىچىدىكى تەكشۈرۈش بىلەنلا چەكلەنمەيدۇ. ئاتا-ئانا رەسىمگە تارتىپ تەكشۈرۈلمىگەن سوئالغا دۇچ كەلسە — ئوقۇتقۇچى ئاغزاكى چۈشەندۈرگەن، قوشۇمچە كىتابتىكى ياكى بالا چۈشەنمىدىم دېگەن — بىۋاسىتە <strong style="color:var(--article-accent, #3f8fd4);"> «بىر خاتا سوئال خاتىرىلەش» </strong> بىلەن يېنىك كىرگۈزەلەيدۇ: سوئال ۋە بالىنىڭ جاۋابى ساقلىنىدۇ، خاتالىق سەۋەبى بوش بولسا بىر قېتىملىق <strong style="color:var(--article-accent, #3f8fd4);"> يېنىك reasoning بىر جۈملىگە يەكۈنلەيدۇ </strong> ، ئوخشاشلا تەكرارلاش نۆۋىتىگە كىرىدۇ. بۇ يول مەقسەتلىك <strong style="color:var(--article-accent, #3f8fd4);"> قارشى تۇرۇشلۇق ھېساب دەلىل زەنجىرىنى ئىجرا قىلمايدۇ </strong> — بۇ توغرا-خاتا ھۆكۈم قىلىش ئەمەس، سىز خاتالىقىنى بىلىدىغان بىر سوئالنى خاتىرىلەش؛ خاتىرە ئۈچۈن تولۇق زەنجىرنىڭ كېچىكىش بەدىلىنى تۆلىمەيدۇ. </p>
+
+<p style="margin: 8px 0;"> سىغىم ھەققىدە بىر گەپ: ئەڭ دەسلەپكى تەتقىقات ھۆججىتى <strong style="color:var(--article-accent, #3f8fd4);"> بىر ماشىنىدا بىر ئوقۇش يىلىغا تەخمىنەن 450 خاتىرە </strong> دەپ مۆلچەرلىگەن؛ بۇ بىر ئىشلەتكۈچى ئۈستەل يۈزىنىڭ لايىھە مىقدارى، سىغىم سىنىقىنىڭ يۇقىرى چېكى ئەمەس. بۇ ئالدىنقى شەرت ئائىلە بۇلۇت ماسقەدەملەش ياكى كۆپ ئىشلەتكۈچىگە يۈزلەنسە، بەتلەش، قوشۇلما ماسقەدەملەش ۋە توقۇنۇش ئەندىزىسىنى بىللە قايتا ئىشلەش كېرەك؛ <strong style="color:var(--article-accent, #3f8fd4);"> بىر ماشىنىلىق چارىنى بىۋاسىتە يانغا كېڭەيتكىلى بولمايدۇ </strong>。</p>
+
+<h3 style="font-size: 16px; font-weight: 700; color:var(--article-ink, #12324c); margin: 24px 0 10px;"> تەكرارلاش ماتورى: تۆت دەرىجىلىك پەلەمپەي، قانچە توغرا ئىشلىسە شۇنچە يىراققا سۈرۈلىدۇ </h3>
+
+<p style="margin: 8px 0;"> خاتا سوئالنىڭ بەش ھالىتى بار: <code dir="ltr" style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">new / explained / retried / mastered / archived</code> . ئادەتتە يېڭى خاتا سوئالدىن چۈشەندۈرۈلگەن، قايتا مەشىق قىلىنغان، ئاندىن ئىگىلەنگەنگە ئۆتىدۇ؛ تاللاپ سىناشتىن ئۆتمىسە تەكرارلاشقا قايتىدۇ، ئارخىپلانغاننىمۇ ئەسلىگە كەلتۈرگىلى بولىدۇ. ھالەتنى ئىلگىرى سۈرىدىغىنى تەكرارلاش ماتورى؛ يادروسى مۇشۇ بىرنەچچە قۇر: </p>
+
+<section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code dir="ltr" style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;"><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">// reviewIntervalLadder 艾宾浩斯式间隔阶梯（秒）：</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">// 卡片每成功重做一次，下次复习推得更远</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">var reviewIntervalLadder = []int64{</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">    1 * 86400, 3 * 86400, 7 * 86400, 14 * 86400,</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">}</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;"></span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">// MasteryGapInterval 掌握判定的最小间隔（秒）：</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">// 第二次做对距上次 ≥ 此值 → mastered</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">const MasteryGapInterval int64 = 3 * 86400 // 3 天</span></code></section>
+
+<p style="margin: 8px 0;"> قائىدە ئاددىي قىلىپ: خاتا سوئال كىرگەن بىرىنچى كۈنى ۋاقتى كېلىدۇ؛ تۇنجى توغرا ئىشلىگەندە 3 كۈندىن كېيىنگە سۈرۈلىدۇ. ھازىرقى سىستېما قايتا تەكشۈرۈپ توغرا دېگەندە، خاتىرە retried ھالىتىدە، ئالدىنقى توغرا ئىشلىگەن ۋاقىت ساقلانغان ۋە ئارىلىق ≥3 كۈن بولسا، «ئىگىلەنگەن»گە ئۆتۈپ نۆۋەتتىن چىقىدۇ. <strong style="color:var(--article-accent, #3f8fd4);"> بۇ ھالەت ۋە ۋاقىت ئارىلىقىغا تايانغان مۇقىم قائىدە، «ئارقا-ئارقىدىن ئىككى قېتىم توغرا»نى قاتتىق تەكشۈرۈش ئەمەس </strong> ؛ ئىگىلەش شەرتىگە يەتمىسە، تەكرارلاش 1 / 3 / 7 / 14 كۈن بويىچە ئىلگىرىلەپ، 14 كۈندە توختايدۇ. ئىگىلەنمىگەن سوئال ئۇزۇن مەشىق قىلىنمىدى دەپ يوشۇرۇلمايدۇ. ئوخشاش بىلىم نۇقتىلىق ئۆزگەرمە سوئال ھاسىل قىلغاندا، <strong style="color:var(--article-accent, #3f8fd4);"> ئوخشاش سوئالنىڭ ئۆزىمۇ ھېساب دەلىل زەنجىرىدىن ئۆتىدۇ </strong> ، ئاندىن بېسىپ چىقارغىلى بولىدىغان مەشىق توپلىمىغا كىرىدۇ. </p>
+
+<p style="margin: 8px 0;"> Anki / SuperMemo نى بىلىدىغان ئوقۇرمەن بۇنىڭ ئارىلىقلىق تەكرارلاش（spaced repetition）قۇرۇلمىسى ئىكەنلىكىنى تونۇيدۇ. راستىنى ئېيتساق، 1/3/7/14 سانلىرى <strong style="color:var(--article-accent, #3f8fd4);"> مەھسۇلات ئالدىن بېكىتكەن مۇقىم پەلەمپەي </strong> — ئارىلىقلىق تەكرارلاش تەتقىقاتىنىڭ مىقدارىدىن پايدىلانغان، ئېببىڭخاۋۇس تەجرىبىسىنىڭ ئەسلى سانلىق مەلۇماتى ئەمەس، SM-2 دىكىدەك ئۆزگىرىشچان قىيىنلىق فاكتورىمۇ يوق. خاتا سوئال دەپتىرىنىڭ مىقدارىدا（بىر بالىغا بىر مەۋسۇمدا نەچچە ئوندىن يۈزگىچە خاتا سوئال）مۇقىم پەلەمپەينىڭ مۇرەككەپلىك-پايدا نىسبىتى مۇۋاپىق؛ ئالدى بىلەن ھالقىنى ئىشلىتىش مۇھىم. </p>
+
+<p style="margin: 8px 0;"> ئاتا-ئانا تەرەپتە بۇ ماتور بىرنەچچە يۈك پەيدا قىلمايدىغان ھەرىكەتكە يىغىلدى: <strong style="color:var(--article-accent, #3f8fd4);"> «بۇ ھەپتە تەكرارلاش» </strong> ۋاقتى كەلگەن خاتا سوئالنى تەكرارلاشقا تىزىدۇ؛ <strong style="color:var(--article-accent, #3f8fd4);"> «مەشىق توپلىمى» </strong> غا قوشقاندىن كېيىن بېسىلىدۇ ياكى ئاتا-ئانىغا ئەۋەتىلىدۇ، بالا ئىشلىگەندىن كېيىن رەسىمنى قايتۇرىدۇ، سىستېما قايتا تەكشۈرۈپ ۋاقىتنى يېڭىلايدۇ. ئاتا-ئانا نەتىجىنى قولدا خاتىرىلەپ تەكرارلاشنى ئىلگىرى سۈرەلەيدۇ، ئەمما سىستېما ئىگىلەش ھۆكۈمىدە ھەقىقىي جاۋاب دەلىلىنى ئاساس قىلىدۇ. ئەسلى تاپشۇرۇق خاتا تونۇلسا، مەنبەنى تۈزىتىپ قايتا تەكشۈرگىلى بولىدۇ؛ تۈزىتىش <strong style="color:var(--article-accent, #3f8fd4);"> ئۆزگەرمەس تۈزىتىش زەنجىرى </strong> بويىچە（ھەر تۈزىتىش تارىخىي ئاخىرقى نۇسخىنى قوشىدۇ، قاپلىمايدۇ）. پەقەت شۇ مەنبەدىن ھاسىل بولغان خاتا سوئال ئاساسسىز بولسا، سىستېما ئۇنى ئاپتوماتىك قايتۇرۇپ، تەكشۈرۈش ئىزىنى ساقلايدۇ؛ <strong style="color:var(--article-accent, #3f8fd4);"> مەنبە تۈزىتىش بالىنىڭ قايتا مەشىقى ھېسابلانمايدۇ </strong> . ئۆگىنىش ئارخىپىنى  <strong style="color:var(--article-accent, #3f8fd4);"> PDF، Word（.docx）ۋە Markdown </strong> قىلىپ چىقارغىلى بولىدۇ؛ PDF سۇپىنىڭ render مۇلازىمىتىدىكى pandoc + typst بىلەن تىزىلىدۇ؛ مەشىق توپلىمىدا سوئال ۋە جاۋاب قەغىزىنى ئايرىم بېسىش ۋە PDF ساقلاش بار. </p>
+
+<p style="margin: 8px 0;"> يەنە بىر پەن ئالاھىدىلىكى بار: خەنزۇچە يادىدىن يېزىش، ئىنگلىزچە سۆز قاتارلىق مەشىق  <code dir="ltr" style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">verbatim</code> （ئەسلى سۆزنى قايتا بېرىش）دەلىلىنى ئىشلىتىدۇ؛ <strong style="color:var(--article-accent, #3f8fd4);"> پايدىلىنىش جاۋابى بىۋاسىتە توپلامنىڭ ئەسلى تېكىستىدىن ئېلىنىدۇ </strong> . توپلامدىن يادىدىن يېزىش ياكى بوشلۇق تولدۇرۇش سوئالى ھاسىل قىلىپ مەشىق توپلىمىغا قوشقىلى، ئىشلىگەندىن كېيىن رەسىم قايتۇرۇپ قايتا تەكشۈرتكىلى بولىدۇ. ئىككى ئىشنى ئايرىش كېرەك: سوئال تۈزگەندە جاۋابنىڭ ئەسلىگە سادىق بولۇشى بالىنىڭ توغرا يازغانلىقى دەلىللەندى دېگەنلىك ئەمەس؛ ئوقۇغۇچى جاۋابى ئايرىم تەكشۈرۈش زەنجىرىدە. دەلىل تۈرى پەن بويىچە كېڭەيتىلىدۇ، ماتېماتىكىغىلا خاس ئەمەس. </p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<blockquote style="border-left: 3px solid #5fb3ea; padding: 10px 16px; margin: 16px 0; background:var(--article-panel, #f4fbff); color:var(--article-secondary, #3f5f7b); font-size: 14px; border-radius: 0 8px 8px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> ئاتا-ئانا ئوقۇرمەن بۇ يەردىن ئاتلاپ ئۆتسە بولىدۇ </strong> : كېيىنكى ئىككى بۆلەك（چىقىش دەرۋازىسى، سىنارىيە بوغچىسى قۇرۇلمىسى）ئىنژېنېرلار ئۈچۈن. پەقەت «قانداق ئىشلىتىمەن؟»گە قىزىقىدىغان ئاتا-ئانا بىۋاسىتە ئاخىردىكى <strong style="color:var(--article-accent, #3f8fd4);"> «راستىنى يازايلى: بۇ نەشرنىڭ چېگرىسى» </strong> غا ئۆتۈپ، ئاندىن قوشما <a href="/ug/blog/k12-user-guide" style="color:var(--article-accent, #5fb3ea);"> «ئاتا-بالا خۇشاللىقى باشلاش دەرسلىكى» </a> دە رەسىمگە ئەگىشىپ ئىشلەڭ. </blockquote>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;"> ئىككىنچى ئۆتكەل（ئاستى）: بالىنىڭ سانلىق مەلۇماتى توردىن چىقامدۇ — fail-closed چىقىش دەرۋازىسى </h2>
+
+<p style="margin: 8px 0;"> ئالدى بىلەن مەھسۇلات بايانىنى ئېنىق قويايلى: <strong style="color:var(--article-accent, #3f8fd4);"> سانلىق مەلۇمات قەيەردە ساقلىنىدۇ، مودېل قەيەردە ئىجرا بولىدۇ — بۇ ئىككى ئايرىم ئىش </strong> . كۆڭۈلدىكى يەرلىك مۇلازىمەت خاتا سوئال، ئۆگىنىش ئەھۋالى ۋە ئارخىپنى يەرلىك SQLite غا ساقلايدۇ، ئەسلى رەسىم، دەرسلىك ۋە زاپاس نۇسخىمۇ يەرلىكتە؛ بۇلۇت مۇلازىمىتىگە ئۆتسە، سۆھبەت، ئۆگىنىش خاتىرىسى، مودېل ۋە DingTalk ئۇلىنىشىنى شۇ مۇلازىمەت باشقۇرىدۇ، ئالماشتۇرۇش ئىككى تەرەپ سانلىق مەلۇماتىنى ئاپتوماتىك كۆچۈرمەيدۇ. ئاندىن مودېل ۋە ئۇچۇرنىڭ تورغا چىقىش يولىنى كۆرەيلى: </p>
+
+<ul style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> مودېل چاقىرىش </strong> — ھازىرقى مۇلازىمەت تەڭشىگەن Provider غا باغلىق. پەقەت يەرلىك مۇلازىمەت + يەرلىك مودېلنىڭ ماس چاقىرىشى مۇشۇ كومپيۇتېردا قالىدۇ؛ بۇلۇت مۇلازىمىتىدىكى «يەرلىك مودېل»مۇ بۇلۇت مۇلازىمىتى تۇرغان ماشىنىدا ئىجرا بولىدۇ. </li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> سەزگۈر سانلىق مەلۇمات تۈرى（بالا ئارخىپى، تاپشۇرۇق رەسىمى، خاتا سوئال خاتىرىسى، ئۆگىنىش ئەسلىمىسى） </strong> — بۇلۇت مودېل چاقىرىشى مەقسەت ۋە سانلىق مەلۇمات تۈرى بويىچە تەكشۈرۈلىدۇ؛ رۇخسەت تىزىملىكى رەسىم تونۇش، رەسىملىك سۆھبەت ۋە ھەل قىلىش-ھېساب تەكشۈرۈشكە لازىملىق سانلىق مەلۇماتقا يول قويىدۇ. يەرلىكتە ساقلاش مودېل چاقىرىشى تورغا چىقمايدۇ دېگەنلىك ئەمەس؛ ھەقىقىي ئەۋەتىش دائىرىسى چاقىرىش مەقسىتى ۋە تاللانغان مودېلغا باغلىق. </li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> IM يەتكۈزۈش </strong> — تەكرارلاش قەغىزى ۋە ئەسكەرتىشنى باغلانغان DingTalk شەخسىي سۆھبىتىگە ئەۋەتسە، مەزمۇن IM تەمىنلىگۈچىگە يېتىدۇ. بۇ ئىشلەتكۈچى ئۆزى ئاچقان ئۈچىنچى تەرەپ يولى، ئېچىش-تاقاش ئۇنىڭ قولىدا، چىقىش دەرۋازىسى باشقۇرمايدۇ. </li>
+</ul>
+
+<p style="margin: 8px 0;"> يەنە بىر گەپنى ئېنىق ئېيتىش كېرەك: بۇ بايان باشقۇرىدىغىنى <strong style="color:var(--article-accent, #3f8fd4);"> HexClaw تەرەپ يول قويامدۇ-يوق </strong> دېگەنلىك. سانلىق مەلۇمات قانۇنلۇق تورغا چىقىپ — بۇلۇت كۆرۈش / چوڭ مودېل ياكى IM تەمىنلىگۈچىگە ئەۋەتىلگەندىن كېيىن — قارشى تەرەپنىڭ ساقلاش ۋە ئىشلىتىشى ئۇنىڭ مۇلازىمەت شەرتى بويىچە؛ HexClaw ئۇنى باشقۇرالمايدۇ، باشقۇرالايدىغاندەك قىياپەت قىلمايدۇ. </p>
+
+<p style="margin: 8px 0;"> ھازىرقى  <code dir="ltr" style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">egress</code>  بوغچىسى 9 خىل مەقسەت（Purpose）ۋە 6 خىل سانلىق مەلۇمات تۈرى（DataClass）نى بەلگىلەيدۇ. تۆۋەندىكىسى مۇقىم مەقسەت جەدۋىلى: رەسىم تونۇش، ئۆزلۈكىدىن رەسىم قوشۇلغان سۆھبەت، ھەل قىلىش-ھېساب تەكشۈرۈش ۋە ئارخىپ ئاسراش ئۆزىگە لازىملىق تۈرلەرگە يول قويىدۇ. <strong style="color:var(--article-accent, #3f8fd4);"> تاشلاپ كەتكىلى بولمايدىغان يەنە بىر شاخ بار </strong> : ھازىرقى سۆھبەتتە ئەسلىمە ھەقىقەتەن ئېچىلغاندا، general_chat / vision_chat memory نى ئېلىپ يۈرەلەيدۇ؛ بۇ ئالماشتۇرغۇچ پەقەت بۇ تەلەپكە تەۋە، يېڭى تارماق تەلەپ ۋارىسلىق قىلمايدۇ. بىر رۇخسەت تىزىملىكىگە قاراپلا «ئۆگىنىش ئەسلىمىسى ھەرگىز تورغا چىقمايدۇ» دەپ تەشۋىق قىلىشقا بولمايدۇ. </p>
+
+<section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code dir="ltr" style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;"><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">// sensitiveClasses 默认不得出本机的数据类。</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">var sensitiveClasses = map[DataClass]bool{</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">    ClassSensitiveProfile: true,</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">    ClassSensitiveMedia:   true,</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">    ClassRecord:           true,</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">    ClassMemory:           true,</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">}</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;"></span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">// purposeAllowsSensitive 白名单：允许携敏感数据出网的用途。</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">var purposeAllowsSensitive = map[Purpose]map[DataClass]bool{</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">    PurposeMemoryProfile: {ClassMemory: true},</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">    PurposeVisionOCR:     {ClassSensitiveMedia: true},</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">    PurposeVisionChat:    {ClassSensitiveMedia: true}, // 用户主动附图</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">    PurposeSolveVerify:   {ClassSensitiveProfile: true, ClassSensitiveMedia: true},</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">}</span></code></section>
+
+<p style="margin: 8px 0;"> K12 چاقىرىش نۇقتىسىدا بۇ تۆت سانلىق مەلۇمات تۈرى ئايرىم ھالدا بالا ئارخىپى، تاپشۇرۇق رەسىمى، خاتا سوئال / توپلام خاتىرىسى ۋە ئۆگىنىش ئەسلىمىسىگە ماس؛ ئەمما دىققەت: <strong style="color:var(--article-accent, #3f8fd4);"> بۇ ماسلاشتۇرۇش پەقەت چاقىرىش نۇقتىسىدىلا بار </strong> ؛ egress بوغچىسىنىڭ ئۆزىدە بىر ساھە سۆزىمۇ يوق（نېمىشقا مۇھىملىقىنى ئۈچىنچى ئۆتكەلدە سۆزلەيمىز）. </p>
+
+<p style="margin: 8px 0;"> مۇھىم خۇسۇسىيىتى  <strong style="color:var(--article-accent, #3f8fd4);">fail-closed</strong> : تورغا چىقىدىغان ھەر تەلەپ ئالدى بىلەن context ئىچىدە «مەقسىتىم نېمە، قايسى سانلىق مەلۇماتنى ئېلىپ يۈرىمەن؟» دەپ ئېلان قىلىشى كېرەك（مەقسەت يۆتكىلىشىدىن ساقلىنىش ئۈچۈن تەلەپ كونۋېرتى ئاتا تەلەپنىڭ ئېلانىغا ۋارىسلىق قىلمايدۇ）؛ دەرۋازىدا، <strong style="color:var(--article-accent, #3f8fd4);"> كونۋېرتى يوق ياكى سانلىق مەلۇمات تۈرى بوش بولسا بىۋاسىتە توسۇلىدۇ </strong> . ئېلان قىلىشنى ئۇنتۇش تورغا سىڭىپ ئۆتۈش ئەمەس، تورنى ئۈزۈش. بۇ Guard ھەقىقىي چاقىرىش نۇقتىلىرىغا ئۇلانغان — vision تونۇش، سۆھبەت زەنجىرى، embedding ۋە cron تەرجىمە قۇرۇش ھەممىسى مۇشۇ دەرۋازىدىن ئۆتىدۇ. تەبىئىتىنىمۇ توغرا ئېيتىش كېرەك: ئۇ قوغدايدىغىنى <strong style="color:var(--article-accent, #3f8fd4);"> بۇلۇت مودېلىغا يۈزلەنگەن چاقىرىش زەنجىرى </strong> ، مەشغۇلات سىستېمىسى دەرىجىسىدىكى ئومۇمىي تور چىقىشى ئەمەس؛ سانلىق مەلۇمات تۈرىنى چاقىرىش نۇقتىسى بەلگىلەيدۇ، مەزمۇننى ئاپتوماتىك تونۇش ئەمەس. </p>
+
+<blockquote style="border-left: 3px solid #3f8fd4; padding: 14px 18px; margin: 20px 0; background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); font-size: 14px;"> بۇ دەرۋازىنىڭ قىممىتى ھازىرقى چاقىرىش مەقسىتى ۋە سانلىق مەلۇمات تۈرىنى ئاشكارا قىلىپ، ھۆكۈمنى ئىزچىل تەكشۈرگىلى بولۇش. ئۇ «سانلىق مەلۇمات ھەرگىز تورغا چىقمايدۇ»نىڭ ئىسپاتى ئەمەس؛ ئەمەلىي مۇلازىمەت ئورنى، ئېچىلغان ئەسلىمە ۋە ئۈچىنچى تەرەپ يەتكۈزۈشىنى چۈشەندۈرۈشنىڭ ئورنىنى باسالمايدۇ. </blockquote>
+
+<figure style="margin: 22px 0; text-align: center;">
+<img src="../../assets/blog/河蟹 AI 让你「父慈子笑」：首个灯塔场景的 K12 工程实践-wechat/04-数据流边界.png" alt="يەرلىك ۋە بۇلۇت مۇلازىمىتىنىڭ سانلىق مەلۇمات ئورنى، مودېل تور چىقىشى ۋە مۇستەقىل IM يەتكۈزۈش يولى" width="2000" height="2760" loading="lazy" decoding="async">
+<figcaption style="color:var(--article-secondary, #5f7b9c); font-size: 13px; margin-top: 8px; line-height: 1.6;"> 3-رەسىم｜ساقلاش ئورنى، مودېل چاقىرىش ۋە IM يەتكۈزۈشنى ئايرىم كۆرۈڭ. ئېنىق ئېچىلغان ھازىرقى سۆھبەت ئەسلىمىسى بۇلۇت مودېل تەلىپى بىلەن ئەۋەتىلىشى مۇمكىن؛ يەتكۈزۈلگەن تېكىست ۋە قوشۇمچە ماس IM تەمىنلىگۈچىگە كىرىدۇ. </figcaption>
+</figure>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;"> ئۈچىنچى ئۆتكەل（ئارخىتېكتورلار ئۈچۈن）: K12 قوشساق سۇپا بۇزۇلامدۇ؟ </h2>
+
+<p style="margin: 8px 0;"> بۇ نەشردە قۇرۇلما جەھەتتىن ئەڭ چوڭ مەبلەغ سېلىنغان جاي، «ئومۇمىي سۇپىدا ساھە سىنارىيەسى قىلماقچى» بولغان گۇرۇپپىغا ئەڭ پايدىلىق بۆلەك. </p>
+
+<p style="margin: 8px 0;"> خەۋپ ھەقىقەتەن يۈز بەرگەن: بۇرۇنقى بىر ئىزدىنىشتە، «خاتا سوئال / تەكرارلاش / ئىمتىھان تەييارلىقى» قاتارلىق ساھە سۆزلىرى ماتور، API ۋە ماسلاشتۇرغۇچ قەۋىتىدىكى  <strong style="color:var(--article-accent, #3f8fd4);"> كۆپ سۇپا ھۆججىتىگە </strong> تارقالغان — ھەر بىر سىنارىيە قوشقاندا يادروغا بىر تۈركۈم  <code dir="ltr" style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">if</code> ئۆسىدۇ، ئۈچ سىنارىيەدىن كېيىن سۇپىغا قارىغىلى بولمايدۇ. ئارقا سۇپا v0.5.0-beta.1 بۇ چېگرانى تازىلاپ، جاۋابنى بىر مېخانىزمغا يىغدى: <strong style="color:var(--article-accent, #3f8fd4);"> سىنارىيە بوغچىسى（Scenario Pack）+ ئالتە ئۇلاش نۇقتىسى </strong>。</p>
+
+<p style="margin: 8px 0;"> ئانچە تېخنىكىلىق بولمىغان مىسال: سۇپىنى بىر <strong style="color:var(--article-accent, #3f8fd4);"> كۆرگەزمە مەركىزى </strong> دەپ ئويلاڭ — ئۆزى پائالىيەت ئۆتكۈزمەيدۇ، لېكىن بىر يۈرۈش <strong style="color:var(--article-accent, #3f8fd4);"> ئۆلچەملىك ئېغىز </strong> تەييارلايدۇ: توك، ئېغىرلىق كۆتۈرۈش ئېسىش نۇقتىسى، تور، سەھنە يورۇتۇش سىمى ۋە بېلەت دەرۋازىسى. بۈگۈن توي، ئەتە ئېلان قىلىش مۇراسىمى؛ مەيداندا بىر سىممۇ قايتا تارتىلمايدۇ، تەشكىللىگۈچى پەقەت گۈل، ئۈستەل كارتىسى ۋە ئېقىم جەدۋىلىنى ئېغىزغا ئېسىدۇ. K12 تۇنجى كىرگەن پائالىيەت؛ HexClaw نىڭ «ئېغىز»لىرىنى ئاچساق، تۆۋەندىكى جەدۋەل  <code dir="ltr" style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">scenario.Registry</code>：</p>
+
+<section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code dir="ltr" style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;"><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">// scenario.Registry —— 六个资源注入缝（节选）</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">type Registry struct {</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">    Records     *records.RecordSchemaRegistry // 记录集 schema</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">    Constraints *ConstraintRegistry           // 约束域（key 如 "math"）</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">    Views       *ViewExtensionRegistry        // 视图描述符</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">    Modes       *ModeFeatureRegistry          // 模式路由关键词</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">    Buttons     *ButtonRegistry               // 交互按钮</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">    Evals       *EvalSuiteRegistry            // eval 套件</span><span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.4em;">}</span></code></section>
+
+<p style="margin: 8px 0;"> خاتا سوئال schema سى، سىنىپ رۇخسەت تىزىملىكى ۋە سىنارىيە كۇنۇپكىسى ئايرىم Records / Constraints / Buttons نۇقتىلىرىدىن قوشۇلىدۇ. ھازىر ئالتە نۇقتا سىرتىغا يەنە بىر قەۋەت  <strong style="color:var(--article-accent, #3f8fd4);">Manifest v2</strong> قوشۇلدى: سىنارىيە نەشرى، ئىقتىدار، باغلاش نۇقتىسى، بېقىندىلىق ۋە ۋاقىتلىق خىزمەت ئېقىمى بىردەك ئېلان قىلىنىدۇ؛ <code dir="ltr" style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">Install</code>  دەلىللەنگەندىن كېيىن بايلىق تىزىملىنىپ، ئورنىتىش تالونى قايتىدۇ؛ ئۆچۈرۈشتە تالون بويىچە بۇ سىنارىيە بايلىقى تازىلىنىپ، سودا سانلىق مەلۇماتى ساقلىنىدۇ. كۆرگەزمە مەركىزى ئېغىزلا ئەمەس، كىرىش-چىقىش تىزىملىكىگىمۇ ئىگە بولدى. قائىدە ئۈچلا، ئەمما ھەر بىرى <strong style="color:var(--article-accent, #3f8fd4);"> خاتالىقىنى دەلىللىگىلى بولىدىغان </strong> — بۇ «قاتلاملاش ئۆلچىمى» دېگەندەك ئېغىزچە قۇرۇلمىدىن كۈچلۈك: </p>
+
+<ul style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> قۇراشتۇرۇش ساپ بايان شەكلىدە </strong>——<code dir="ltr" style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">Assemble(*Pack)</code>  پەقەت تىزىملەيدۇ؛ مەنبە كود ئىزاھاتىدا قاتتىق قائىدە بار: <strong style="color:var(--article-accent, #3f8fd4);"> مۇنداق  <code dir="ltr" style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">if pack == k12</code></strong>  سودا شاخلىرى كۆرۈنمەيدۇ. </li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> ساھە قائىدىسى مەركەزلەشكەن، بىرىكتۈرۈش يىلتىزى سىم ئۇلايدۇ </strong> — خاتا سوئال، تەكرارلاش ۋە ئۆگىنىش ئەھۋالى قاتارلىق سودا قائىدىلىرى ئاساسەن  <code dir="ltr" style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">scenarios/k12/</code> دا، بىرىكتۈرۈش يىلتىزى سىم ئۇلاشقا مەسئۇل؛ ھازىر  <code dir="ltr" style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">cmd/hexclaw/</code>  ئاستىدا كۆپ K12 ماسلاشتۇرۇش ھۆججىتى بار. K12 يولى ئومۇمىي  <code dir="ltr" style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">srv.Mount("/api/k12", …)</code>  ئارقىلىق باغلىنىدۇ — ئومۇمىي يوللاش قەۋىتى پەقەت handler باغلايدۇ. ئەمما ماتوردا يەنىلا ئاتا-ئانا چۈشەندۈرۈش چىقىرىشى ۋە تەكشۈرۈش كېلىشىمى بار؛ قاتلاملاش نىشانىنى «بارلىق ساھە مەنىسى نۆللەندى» دەپ يېزىشقا بولمايدۇ. </li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> چىقىرىۋەتكىلى بولۇش قوبۇل قىلىش ئۆلچىمى </strong> — بۇنى  <code dir="ltr" style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">scenarios/k12</code>  ۋە بىرىكتۈرۈش يىلتىزىدىكى ماس قۇراشتۇرۇش-ماسلاشتۇرۇش كودىنى چىقىرىۋەتكەندىن كېيىن، سۇپىنىڭ يەنىلا مۇستەقىل قۇرۇلۇپ ئىجرا بولۇشى قوبۇل قىلىش ئۆلچىمى؛ كۈتىدىغىنى: <strong style="color:var(--article-accent, #3f8fd4);"> پائالىيەت چىقسىلا مەيدان قۇرۇق ھالىتىگە قايتىپ، ئەتە باشقا ئىشنى ئۆتكۈزەلەيدۇ </strong> . تەتۈر يۆنىلىشتە، قۇرۇق سۇپىغا ئالتە نۇقتىنى تولدۇرغان mock بوغچا باغلاپ، يادرونى ئۆزگەرتىش كېرەكمۇ تەكشۈرۈلىدۇ（ھېچ ئىش قىلمايدىغان قۇرۇق مەيدان رېپېتىتسىيەسىگە ئوخشاش، ئېغىزلارنىڭ بارلىقىنى تەكشۈرىدۇ）. ئىچكى جەھەتتە بۇنى  <strong style="color:var(--article-accent, #3f8fd4);"> AP-1 ئىككى يۆنىلىشلىك دەرۋازا </strong> دەيمىز. ئېنىق ئېيتقاندا بۇ <strong style="color:var(--article-accent, #3f8fd4);"> مەنبە كود دەرىجىسىدىكى، قۇرۇش ۋاقتىدىكى قۇراشتۇرۇش چېگراسى </strong> ، ئىشلەتكۈچىگە قارىتىلغان قىزىق ئالماشتۇرۇلدىغان قىستۇرما بازىرى ئەمەس. </li>
+</ul>
+
+<p style="margin: 8px 0;"> ئۈستەل يۈزى ئوخشاش قۇرۇلمىنىڭ ئەكسى: <code dir="ltr" style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">src/contracts/</code> （كېلىشىم قەۋىتى، ئۈستىدىكى barrel ساھەگە باغلانماسلىق قىزىل سىزىقىنى قاتتىق ساقلايدۇ）+  <code dir="ltr" style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">src/shell/</code> （ساھەگە باغلانمىغان ئومۇمىي قاپ）+  <code dir="ltr" style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">src/features/k12/</code> （سىنارىيە بوغچىسى）. ئالدى سۇپىدىكى  <code dir="ltr" style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">scenarioRegistry</code>  تەمىنلەيدىغىنى  <strong style="color:var(--article-accent, #3f8fd4);"> 14 ساھەگە باغلانمىغان تىزىملاش ئورنى </strong> — كۆرۈنۈش تەسۋىرلىگۈچى، خاتىرە توپلىمى Schema سى، كىملىك پرويېكسىيەسى، سۆھبەت كۈچەيتىش بىرىكمىسى، Agent كارتىسى كېڭەيتمىسى ۋە بەلگىسى، ئارخىپ قۇرۇش قېلىپى، Webhook باشقۇرۇش، ئومۇمىي كەيپىيات كۆرسىتىش، كۆرۈنۈش تەڭشىكى، ۋاقىتلىق ۋەزىپە كۆرسىتىش قاتارلىقلار. سۆھبەت قېپى Vue ھەرىكەتچان بىرىكمىسى بىلەن <strong style="color:var(--article-accent, #3f8fd4);"> كۆرۈنۈش تەسۋىرلىگۈچى </strong> بويىچە سىنارىيە كۈچەيتىشىنى كۆرسىتىدۇ — باش بەتكۈچ، ئۇچۇر بەلگىسى ۋە خاتىرە توپلىمى كۆرۈنۈشىنى سىنارىيە بوغچىسى تىزىملاپ ئېلان قىلىدۇ（ئالدى سۇپىدا ئاساسەن تۇراقلىق تىزىملاش؛ ئارقا سۇپا  <code dir="ltr" style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">GET /api/k12/view-descriptor</code>  ئارقىلىق ھازىر ئاساسەن composer تېز كىرىشلىرىنى ھەرىكەتچان تارقىتىدۇ）؛ سىنارىيە ئاساسەن  <code dir="ltr" style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">&lt;component :is&gt;</code>  قاتارلىق كېڭەيتىش مېخانىزملىرى بىلەن قۇراشتۇرۇلىدۇ. ئەمما ھازىرقى ChatView دا K12 رەسىم قوشۇمچىسىنىڭ كىملىكى ۋە ئوقۇش ماسلاشتۇرۇشى بىۋاسىتە بار؛ <strong style="color:var(--article-accent, #3f8fd4);"> تىزىملاش ئورنى قۇرۇلغان، قالدۇق باغلىنىشمۇ ھەقىقەتەن مەۋجۇت </strong> ؛ مەنبە كودنى چىقىرىۋېتىش چېگراسىنى ئەمەلىي قۇرۇش قوبۇل قىلىشى بىلەن تەكشۈرۈش كېرەك. VS Code قىستۇرما سىستېمىسىنى بىلگەن ئوقۇرمەنگە تونۇش تۇيۇلىدۇ؛ بۇ contribution points ئىدىيەسى — <strong style="color:var(--article-accent, #3f8fd4);"> سۇپا ئۇلاش نۇقتىسىنى بەلگىلەيدۇ، سىنارىيە تولدۇرغۇچىنى ئېلان قىلىدۇ، ئىجرا ۋاقتى پەقەت قۇراشتۇرىدۇ </strong>。</p>
+
+<figure style="margin: 22px 0; text-align: center;">
+<img src="../../assets/blog/河蟹 AI 让你「父慈子笑」：首个灯塔场景的 K12 工程实践-wechat/03-场景包装配.png" alt="Manifest v2، ئارقا سۇپىدىكى ئالتە بايلىق ئۇلاش نۇقتىسى ۋە ئۈستەل يۈزى تىزىملاش كېڭەيتمىسىنىڭ قۇراشتۇرۇش مۇناسىۋىتى" width="2000" height="2440" loading="lazy" decoding="async">
+<figcaption style="color:var(--article-secondary, #5f7b9c); font-size: 13px; margin-top: 8px; line-height: 1.6;"> 4-رەسىم｜Manifest بىلەن ئالتە نۇقتا ئېلان قىلىش ۋە قۇراشتۇرۇشقا مەسئۇل، ئۈستەل يۈزى contracts / shell ئارقىلىق سىنارىيە كېڭەيتمىسىنى ئۇلايدۇ. بۇ مەنبە كود چېگراسى، قىزىق ئالماشتۇرۇش بازىرى ئەمەس؛ تىزىملاش مېخانىزمىنىڭ بارلىقى ھازىرقى ھەر بېقىندىلىق يوقىتىلدى دېگەنلىك ئەمەس. </figcaption>
+</figure>
+
+<p style="margin: 8px 0;"> نېمىشقا بۇنچە چوڭ مەبلەغ سېلىشقا ئەرزىيدۇ؟ چۈنكى K12 باشلامچى، ئاخىرقى نۇقتا ئەمەس. ئوخشاش ئالتە نۇقتىدا، كېيىنكى سىنارىيە بوغچىسى چېنىقىش يېتەكچىسى ياكى قانۇن ياردەمچىسى بولسۇن، <strong style="color:var(--article-accent, #3f8fd4);"> سۇپا تەرەپتە ئۆزگەرتىدىغان كود مىقدارى نۆلگە يېقىنلىشىشى كېرەك </strong> — «ئومۇمىي سۇپا + ساھە سىنارىيەسى» يولىنىڭ ئۇزاققا بارالايدىغانلىقىنىڭ ئۆلچىمى مۇشۇ. </p>
+
+<p style="margin: 8px 0;"> «ئۆزگەرتىش نۆلگە يېقىن» ئابستراكت گەپ. ئالتە نۇقتىنى ئېچىپ، K12 غا پۈتۈنلەي ئالاقىسىز ساھە بىلەن تولدۇرغاندىلا جانلىقلىقىنى ھېس قىلغىلى بولىدۇ. تۆۋەندە بىر <strong style="color:var(--article-accent, #3f8fd4);"> قانۇندىن مەسلىھەت بېرىش ياردەمچىسى </strong> نى مىسال قىلىمىز — <strong style="color:var(--article-accent, #3f8fd4);"> بۇ تەسەۋۋۇر، ئېلان قىلىنغان سىنارىيە بوغچىسى ئەمەس </strong> — ئوخشاش ئالتە نۇقتىنىڭ تولدۇرۇلمىسى پۈتۈنلەي ئۆزگىرىدۇ: </p>
+
+<table style="width: 100%; max-width: 100%; border-collapse: collapse; overflow-wrap: anywhere; margin: 16px 0; font-size: 14px;">
+<thead>
+<tr>
+<th style="background: #5fb3ea; color: #fff; padding: 10px 8px; text-align: left; font-weight: 600;"> ئۇلاش نۇقتىسى </th>
+<th style="background: #5fb3ea; color: #fff; padding: 10px 8px; text-align: left; font-weight: 600;"> K12 ئاتا-ئانا ياردەمچىسى（ئەمەلگە ئاشقان） </th>
+<th style="background: #5fb3ea; color: #fff; padding: 10px 8px; text-align: left; font-weight: 600;"> قانۇن مەسلىھەت ياردەمچىسى（تەسەۋۋۇر） </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding: 10px 8px; border-bottom: 1px solid var(--article-border, #d8e6f0); background:var(--article-panel, #f9fcff);"><code dir="ltr" style="white-space: nowrap; background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">Records</code><br/> خاتىرە توپلىمى </td>
+<td style="padding: 10px 8px; border-bottom: 1px solid var(--article-border, #d8e6f0); background:var(--article-panel, #f9fcff);"> خاتا سوئال دەپتىرى: سوئال / خاتالىق سەۋەبى / بىلىم نۇقتىسى / تەكرارلاش ھالىتى </td>
+<td style="padding: 10px 8px; border-bottom: 1px solid var(--article-border, #d8e6f0); background:var(--article-panel, #f9fcff);"> دېلو ئارخىپى: تەلەپ / پاكىت / دەلىل تىزىملىكى </td>
+</tr>
+<tr>
+<td style="padding: 10px 8px; border-bottom: 1px solid var(--article-border, #d8e6f0);"><code dir="ltr" style="white-space: nowrap; background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">Constraints</code><br/> چەكلىمە ساھەسى </td>
+<td style="padding: 10px 8px; border-bottom: 1px solid var(--article-border, #d8e6f0);"> سىنىپ دەرس ئۆلچىمى چېگراسى — بەشىنچى سىنىپقا ئىككى نامەلۇملۇق تەڭلىمە سىستېمىسى چۈشەندۈرمەسلىك </td>
+<td style="padding: 10px 8px; border-bottom: 1px solid var(--article-border, #d8e6f0);"> دەۋا مۇددىتى / باشقۇرۇش تەكشۈرۈشى — پاكىت كەم بولسا ئالدى بىلەن ئەسكەرتىش، «يەنە سوزايلى» دېگەن ناچار تەكلىپ بەرمەسلىك </td>
+</tr>
+<tr>
+<td style="padding: 10px 8px; border-bottom: 1px solid var(--article-border, #d8e6f0); background:var(--article-panel, #f9fcff);"><code dir="ltr" style="white-space: nowrap; background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">Views</code><br/> كۆرۈنۈش </td>
+<td style="padding: 10px 8px; border-bottom: 1px solid var(--article-border, #d8e6f0); background:var(--article-panel, #f9fcff);"> خاتا سوئال tab، تەكشۈرۈش ✓/✗ بەلگىسى </td>
+<td style="padding: 10px 8px; border-bottom: 1px solid var(--article-border, #d8e6f0); background:var(--article-panel, #f9fcff);"> دېلو كارتىسى tab، تالاش-تارتىش مۇھىم نۇقتىسى بەلگىسى </td>
+</tr>
+<tr>
+<td style="padding: 10px 8px; border-bottom: 1px solid var(--article-border, #d8e6f0);"><code dir="ltr" style="white-space: nowrap; background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">Modes</code><br/> ھالەت يوللاش </td>
+<td style="padding: 10px 8px; border-bottom: 1px solid var(--article-border, #d8e6f0);"> «رەسىمدىن تەكشۈرۈش» / «تەكرارلاش» ئاچقۇچلۇق سۆزلىرى </td>
+<td style="padding: 10px 8px; border-bottom: 1px solid var(--article-border, #d8e6f0);"> «ھۆججەت لايىھەسى يېزىش» / «خەۋپ باھالاش» ئاچقۇچلۇق سۆزلىرى </td>
+</tr>
+<tr>
+<td style="padding: 10px 8px; border-bottom: 1px solid var(--article-border, #d8e6f0); background:var(--article-panel, #f9fcff);"><code dir="ltr" style="white-space: nowrap; background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">Buttons</code><br/> ئۆزئارا تەسىر </td>
+<td style="padding: 10px 8px; border-bottom: 1px solid var(--article-border, #d8e6f0); background:var(--article-panel, #f9fcff);"> مەشىق توپلىمىغا قوشۇش، بېسىش </td>
+<td style="padding: 10px 8px; border-bottom: 1px solid var(--article-border, #d8e6f0); background:var(--article-panel, #f9fcff);"> بىر چېكىشتە دەۋا ئەرزى لايىھەسى ھاسىل قىلىش </td>
+</tr>
+<tr>
+<td style="padding: 10px 8px; border-bottom: 1px solid var(--article-border, #d8e6f0);"><code dir="ltr" style="white-space: nowrap; background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">Evals</code><br/> يۈرۈشلۈك </td>
+<td style="padding: 10px 8px; border-bottom: 1px solid var(--article-border, #d8e6f0);"> تەكشۈرۈش ھۆكۈمى، جەريان سۈپىتى ۋە ئىشەنچلىك خاتا جاۋابنى باھالاش نىشانى </td>
+<td style="padding: 10px 8px; border-bottom: 1px solid var(--article-border, #d8e6f0);"> قانۇن ماددىسى نەقىل توغرىلىقى، مۇددەت ھۆكۈم قىلىش بوسۇغىسى </td>
+</tr>
+</tbody>
+</table>
+
+<p style="margin: 8px 0;"> ئوخشاش بىر  <code dir="ltr" style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">scenario.Registry</code> دە، بار كېلىشىم ئوڭدىكى ستوننى كۆتۈرەلىسە، پەقەت  <code dir="ltr" style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">scenarios/law/</code>  ئىچىدە بايلىقنى ئېلان قىلىپ، بىرىكتۈرۈش يىلتىزىدا تىزىملاش كۇپايە. <strong style="color:var(--article-accent, #3f8fd4);"> «ئومۇمىي ئاساستىن ساھە مەھسۇلاتى ئۆسۈش»نىڭ كودتىكى ئېنىق مەنىسى مۇشۇ </strong> : ئومۇمىي مېخانىزم（ھەل قىلىش-ھېساب تەكشۈرۈش، خاتىرە كېلىشىمى، چىقىش دەرۋازىسى، cron، eval）سۇپىنىڭ، ساھە（خاتا سوئالمۇ ياكى دېلو سەۋەبىمۇ، سىنىپمۇ ياكى مۇددەتمۇ）سىنارىيە بوغچىسىنىڭ. </p>
+
+<p style="margin: 8px 0;"> بەدىلىنىمۇ ئېنىق يېزىش كېرەك: ئالتە نۇقتا ھەقىقىي بىر ۋاسىتىلىك قەۋەت؛ descriptor كېلىشىمىنى ئاسراش، mock سىنارىيە بوغچىسىنى سىناق بىلەن بىللە يۈرگۈزۈش كېرەك. يەنە ئىككىنچى سىنارىيە بوغچىسى چىقىشتىن بۇرۇن، <strong style="color:var(--article-accent, #3f8fd4);"> ئۇنىڭ ئومۇمىيلىقى ھەقىقىي سىنارىيە بىلەن يەنە دەلىللەشنى كۈتۈۋاتقان پەرەز </strong> . بۇ مەبلەغ «سىنارىيە سانى ≥ 2» گە تىكىلگەن؛ خاتا بولسا ئارتۇقچە لايىھە. AP-1 دەرۋازىسىنى خاتالىقىنى دەلىللىگىلى بولىدىغان قىلىشنىڭ بىر سەۋەبىمۇ مۇشۇ: خاتا تىكسەك، ھېچ بولمىغاندا دەرھال بىلىمىز. </p>
+
+<p style="margin: 8px 0;"> ساھەدىكى ئورنىدىن قارىغاندا، بۇ مېخانىزم ئۈچىنچى قەۋەتنى تولۇقلايدۇ: <strong style="color:var(--article-accent, #3f8fd4);">MCP</strong>  «Agent نېمىنى چاقىرالايدۇ؟»غا جاۋاب（قورال ۋە سانلىق مەلۇمات مەنبەسىنىڭ بىردەك كېلىشىمى）、 <strong style="color:var(--article-accent, #3f8fd4);">Agent Skills</strong>  «قانداق قىلىش كېرەك؟»كە جاۋاب（ئېقىم بىلىمىنى ئېلىپ يۈرگىلى بولىدىغان بوغچىلاش）، ئەمما <strong style="color:var(--article-accent, #3f8fd4);"> سىنارىيە بوغچىسى «قانداق قىلىپ بىر ساھە مەھسۇلاتى بولىدۇ؟»غا جاۋاب بەرمەكچى </strong> — قورال ۋە prompt تىن باشقا UI، سودا ھالىتى، قاتتىق چەكلىمە، دەلىل ئەندىزىسى، ئاپتوماتلاشتۇرۇش ۋە eval نىمۇ بىللە قۇراشتۇرىدۇ. بۇ HexClaw نىڭ ئۆز ئىنژېنېرلىق ئابستراكسىيەسى، ساھە ئۆلچىمى ئەمەس؛ ئەمما «بىرنەچچە K12 Skill ئورنىتىش»نىڭ نېمىشقا «ئاتا-ئانا يېتەكلەش مەھسۇلاتى ياساش»قا تەڭ ئەمەسلىكىنى چۈشەندۈرىدۇ. </p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;"> بىر ئۈلۈش ئاپتوماتلاشتۇرۇش: ۋاقتى كەلگەن خاتا سوئال جۈمە كەچ سائەت يەتتىدە كېلىدۇ </h2>
+
+<p style="margin: 8px 0;"> خاتا سوئال توپلىنىپ، تەكرارلاش نۆۋىتى تىزىلغاندىن كېيىن ئاخىرقى بىر چاقىرىم «ئاتا-ئانا ئەپنى ئېچىشنى ئەسلىيەلمەيدۇ». ئارقا سۇپا v0.5.0-beta.1 يېتەكچى مىسال قۇرغاندا تۆت كۆڭۈلدىكى cron ۋەزىپىسىنى ئاپتوماتىك ھاسىل قىلىدۇ: </p>
+
+<table style="width: 100%; max-width: 100%; border-collapse: collapse; overflow-wrap: anywhere; margin: 16px 0; font-size: 14px;">
+<thead>
+<tr>
+<th style="background: #5fb3ea; color: #fff; padding: 10px 12px; text-align: left; font-weight: 600;"> ۋەزىپە </th>
+<th style="background: #5fb3ea; color: #fff; padding: 10px 12px; text-align: left; font-weight: 600;"> cron ئىپادىسى </th>
+<th style="background: #5fb3ea; color: #fff; padding: 10px 12px; text-align: left; font-weight: 600;"> يەتكۈزۈلىدىغان نەرسە </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding: 10px 12px; border-bottom: 1px solid var(--article-border, #d8e6f0); background:var(--article-panel, #f9fcff);"> خاتا سوئال قەغىزى（ھەر جۈمە） </td>
+<td style="padding: 10px 12px; border-bottom: 1px solid var(--article-border, #d8e6f0); background:var(--article-panel, #f9fcff);"><code dir="ltr" style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">0 19 * * 5</code></td>
+<td style="padding: 10px 12px; border-bottom: 1px solid var(--article-border, #d8e6f0); background:var(--article-panel, #f9fcff);"> ۋاقتى كەلگەن خاتا سوئاللاردىن تۈزۈلگەن Markdown مەزمۇنى </td>
+</tr>
+<tr>
+<td style="padding: 10px 12px; border-bottom: 1px solid var(--article-border, #d8e6f0);"> جاۋاب قايتۇرۇش ئەسكەرتىشى（ھەر كۈنى） </td>
+<td style="padding: 10px 12px; border-bottom: 1px solid var(--article-border, #d8e6f0);"><code dir="ltr" style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">0 20 * * *</code></td>
+<td style="padding: 10px 12px; border-bottom: 1px solid var(--article-border, #d8e6f0);"> ئالدىنقى كۈنى بېسىلغان ياكى ئەۋەتىلگەن، تېخى جاۋابى قايتۇرۇلمىغان قەغەز؛ ھەر قەغەزگە بىر قېتىم </td>
+</tr>
+<tr>
+<td style="padding: 10px 12px; border-bottom: 1px solid var(--article-border, #d8e6f0); background:var(--article-panel, #f9fcff);"> مەۋسۇم جەزملەشتۈرۈش（3/1） </td>
+<td style="padding: 10px 12px; border-bottom: 1px solid var(--article-border, #d8e6f0); background:var(--article-panel, #f9fcff);"><code dir="ltr" style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">0 9 1 3 *</code></td>
+<td style="padding: 10px 12px; border-bottom: 1px solid var(--article-border, #d8e6f0); background:var(--article-panel, #f9fcff);"> مەۋسۇم ئالماشتۇرۇشنى جەزملەشتۈرۈش، جەزملەشتۈرگەندىن كېيىن ئارخىپ يېڭىلاش </td>
+</tr>
+<tr>
+<td style="padding: 10px 12px; border-bottom: 1px solid var(--article-border, #d8e6f0);"> مەۋسۇم جەزملەشتۈرۈش（9/1） </td>
+<td style="padding: 10px 12px; border-bottom: 1px solid var(--article-border, #d8e6f0);"><code dir="ltr" style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">0 9 1 9 *</code></td>
+<td style="padding: 10px 12px; border-bottom: 1px solid var(--article-border, #d8e6f0);"> مەۋسۇم ئالماشتۇرۇشنى جەزملەشتۈرۈش، جەزملەشتۈرگەندىن كېيىن ئارخىپ يېڭىلاش </td>
+</tr>
+</tbody>
+</table>
+
+<p style="margin: 8px 0;"> يەتكۈزۈش مېخانىزمى <a href="https://mp.weixin.qq.com/s/EvQT0VqH9ep6LXo89ZM-fw" style="color:var(--article-accent, #5fb3ea);"> «سىبېر ئىش ماشىنىسى» ماقالىسىدە </a> سۆزلەنگەن Starlark قۇم ساندۇقى قوليازمىسىنى داۋاملاشتۇردى؛ ئەمما بۇ قېتىمقى قوليازمىغا <strong style="color:var(--article-accent, #3f8fd4);"> LLM ھېچ قاتناشمايدۇ </strong> : بەلگىلەنگەن ۋاقىتتا  <code dir="ltr" style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">http_get</code>  بىلەن ھازىرقى مۇلازىمەتنىڭ K12 يەتكۈزۈش ئۇچىغا كىرىدۇ؛ مەزمۇن بولسىلا باغلانغان DingTalk شەخسىي سۆھبىتىگە ياكى ئۈستەل يۈزىگە ئەۋەتىدۇ، <strong style="color:var(--article-accent, #3f8fd4);"> مەزمۇن بوش بولسا جىمجىت ئاتلايدۇ </strong> — ۋاقتى كەلگەن خاتا سوئال يوق جۈمىدە ئاتا-ئانىغا «بۇ ھەپتە خاتا سوئال يوق~» دېگەن قۇرۇق ئۇقتۇرۇش كەلمەيدۇ. ۋەزىپە ئىدېمپوتېنت ئاچقۇچى «مىسال نامى / ۋەزىپە تۈرى»؛ كۆپ بالىنىڭ ئەسكەرتىشى بىر-بىرىنى قىستىمايدۇ. جۈمە ۋەزىپىسى ۋاقتى كەلگەن خاتا سوئالنى رەتلەپ يەتكۈزىدۇ؛ مەشىق توپلىمىنى ئاتا-ئانا لازىم بويىچە قوشىدۇ. ئىشلىتىش چېگراسى: يەرلىك cron كومپيۇتېر ۋە HexClaw مۇلازىمىتىنىڭ توردا بولۇشىغا؛ بۇلۇت مۇلازىمەت ھالىتى مۇلازىمېتىرنىڭ توردا بولۇشىغا تايىنىدۇ، كومپيۇتېر ئۆچۈش بۇلۇت ۋەزىپىسى توختىدى دېگەنلىك ئەمەس. </p>
+
+<p style="margin: 8px 0;"> تېلېفونغىچە بولغان ئاخىرقى بىر چاقىرىممۇ دەلىل تەلەپ قىلىدۇ. «تېلېفونغا ئەۋەتىش»نى بىر قېتىم باسسىڭىز، سىستېما شۇ ياردەمچىنىڭ ھازىر كۈچكە ئىگە باغلانغان نىشانلىرىغا يەتكۈزىدۇ؛ تېكىست، بەلگىلىك رەسىم ياكى باشقا قوشۇمچە ھالىتى ئايرىم خاتىرىلىنىدۇ. <strong style="color:var(--article-accent, #3f8fd4);"> سۇپا قوبۇل قىلدى دېگەن ئاتا-ئانا تاپشۇرۇۋالدى دېگەنلىك ئەمەس؛ زۆرۈر قىسىملار يەتكەندىلا پۈتۈن تۈركۈم يەتكەن بولىدۇ </strong> . نەتىجە نامەلۇم بولسا ئالدى بىلەن ئەسلى تۈركۈمنى سۈرۈشتۈرۈڭ؛ ئېنىق مەغلۇپ بولسا پەقەت مەغلۇپ تارماقنى ئەسلىگە كەلتۈرۈڭ. </p>
+
+<p style="margin: 8px 0;"> رەسىم ۋەزىپىسىنىڭ ئاپتوماتىك قايتۇرۇشىمۇ مەھسۇلات تولۇقلۇقى تەلىپىگە ئەمەل قىلىدۇ: بوش قەغەزگە جاۋاب ۋە چۈشەندۈرۈش؛ جاۋابلىق سوئاللىق تاپشۇرۇققا تېكىست ۋە ھەقىقىي بەلگىلىك رەسىم؛ «تەلەپ مۇۋەپپەقىيەتلىك» بىلەن رەسىم يوقلۇقىنى يوشۇرۇشقا بولمايدۇ؛ ئىنشاء ۋە سەنئەت ئەسىرىگە باھا تېكىستى. </p>
+
+<p style="margin: 8px 0;"> يېتەكلەش مەزمۇنىمۇ ئوخشاش مەنبە ئىنتىزامىدا: دەرسلىك ئاساسى، AI يەكۈنى، يەرلىك خاتىرە، پروگرامما ھېساب تەكشۈرۈشى ۋە ئۆگىنىش سىگنالى ئايرىم بەلگىلىنىدۇ. ئىنشاء ۋە سەنئەت باھاسى كۆرۈنەرلىك دەلىلدىن باشلىنىپ، ئاتا-ئانىغا قانداق ماختاش، قانداق سوراش ۋە كېيىنكى قېتىم قايسى بىر نۇقتىنى سىناشنى بېرىدۇ. مەنبەسى نامەلۇم مەزمۇن دەرسلىك نوپۇزى قىلىپ كۆرسىتىلمەيدۇ. </p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;"> راستىنى يازايلى: بۇ نەشرنىڭ چېگرىسى </h2>
+
+<p style="margin: 8px 0;"> يۈرۈشلۈك ئادىتى بويىچە، ئەمەلگە ئاشقان مېخانىزم بىلەن قالغان چېگرانى ئايرىم قويايلى: </p>
+
+
+
+<ul style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> دەرس ئۆلچىمى پايدىلىنىشى بىلەن دەرسلىك ئىلگىرىلىشى يەنىلا ئوخشاش ئىش ئەمەس </strong> . ئىچكى دەرس ئۆلچىمى جەدۋىلى ئاساسەن خەلق مائارىپ نەشرى ماتېماتىكىسى؛ ھازىر ماتېماتىكا دەرسلىكى باغلاپ، بۆلەك، دەرس ياكى بەت ئىلگىرىلىشىنى تەڭشىگىلى بولىدۇ. باشقا باشلانغۇچ پەنلەر ئارخىپ ۋە پەن Skill ى بويىچە يېتەكلىنىدۇ، ئوخشاش دەرسلىك ئىلگىرىلەش تەڭشىكى تېخى يوق. </li>
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> ئەسلى رەسىمنى تەكشۈرۈش يەنىلا مەنبە ۋە ئورۇن بېكىتىش سۈپىتىگە تايىنىدۇ </strong> — جاۋابلىق سوئاللىق تاپشۇرۇقتا ھەقىقىي بەلگىلىك ئەسلى رەسىم يەتكۈزۈلۈشى كېرەك؛ ئورنى ئىشەنچلىك بولمىغان سوئال تېكىست چۈشەندۈرۈشىدە قالىدۇ، كوئوردىنات پەرەز قىلىنمايدۇ. بوش قەغەز ئۆز مەنىسى بويىچە پەقەت چۈشەندۈرۈش ئالىدۇ، بەلگىلىك رەسىم ياسالمايدۇ. </li>
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> پروگرامما ھېساب تەكشۈرۈشى جەريان ۋە چەكتىن ئاشقانلىق رەت قىلىشىنى ساقلايدۇ، ئەمما فورمال ئىسپات ئەمەس </strong> — ھەقىقىي تالون پروگرامما ئىجراسى ۋە سان نەتىجىسىنى ئىسپاتلايدۇ؛ سوئال چۈشىنىش، مودېل ياسىغان پروگراممىنىڭ سوئالغا سادىقلىقى، قەدەملىك مەنا تەكشۈرۈش ۋە ئوقۇتۇش ئۈنۈمىنىڭ ھەر بىرىدە چېگرا بار. </li>
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> سوئال تونۇش ۋە قايتا تەكشۈرۈش يەنىلا مەنبە سۈپىتىگە تايىنىدۇ </strong> — ئەسلى رەسىم تۇتۇق، سوئال تېكىستى كەم ياكى قوليازما جاۋاب ئېنىق بولمىسا خۇلاسىگە تەسىر قىلىدۇ؛ مەنبە تۈزىتىلىپ قايتا تەكشۈرگەندە يېڭى كىرگۈزۈش بويىچە نەتىجە يېڭىلىنىدۇ، مەنبە تۈزىتىش بالىنىڭ قايتا مەشىقى ھېسابلانمايدۇ. </li>
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> Solver ۋە Verifier كۆڭۈلدىكى ھالەتتە ئوخشاش مەنبە </strong> . ئوخشىمىغان مودېل ئۆزئارا تەكشۈرۈش ئۇلاش نۇقتىسى بار（دەلىل تۈرىدە heterogeneous_model بار، solver ≠ verifier بولغاندىلا كۈچلۈك دەلىل）؛ ئەمما ھازىرقى ئوخشاش مودېلنىڭ ئۆزئارا ماقۇللىشى ئۆزىلا پروگرامما ئىجرا دەلىلى ئەمەس. بەلگە تېكىستىگە «قوش دەلىللەش» دېيەلمەسلىكنىڭ سەۋەبىمۇ مۇشۇ. </li>
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> تەكشۈرۈش توغرىلىقى ۋە سۈرئىتى تاللانغان مودېلغا تايىنىدۇ </strong> . يەرلىك ۋە بۇلۇت Provider نى تەڭشىگىلى بولىدۇ؛ رەسىم ۋەزىپىسىدە ھەقىقەتەن رەسىم ئوقۇشنى قوللايدىغان مودېل كېرەك؛ مودېل، ماشىنا ۋە تاپشۇرۇق تۈرى ئوخشىمىسا ئۈنۈممۇ ئوخشىمايدۇ. بۇلۇت چاقىرىش ھەققى تەمىنلىگۈچى قائىدىسى بويىچە. </li>
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> تەكرارلاش ماتورى مۇقىم پەلەمپەي </strong> ، SM-2 غا ئوخشاش قىيىنلىق فاكتورلۇق ماسلىشىشچان ھېسابلاش ئۇسۇلى ئەمەس؛ خاتا سوئال دەپتىرى مىقدارىغا يېتىدۇ، ئەمما «ئاددىيلاشتۇرۇلغان نۇسخا» دېگەننى يېزىش كېرەك. </li>
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> داۋاملىق ئىجرا ھازىرقى مۇلازىمەتنىڭ توردا بولۇشىغا تايىنىدۇ </strong> — يەرلىك ھالەتتە كومپيۇتېر ۋە مۇلازىمەت ئىجرا بولۇشى كېرەك؛ بۇلۇت ھالىتىدە مۇلازىمېتىر ۋە ماس مودېل ئىشلىشى كېرەك. ئىككى تەرەپ سانلىق مەلۇماتى ئايرىم ساقلىنىدۇ، ئالماشتۇرۇش ئاپتوماتىك كۆچۈرمەيدۇ. </li>
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> تولۇق زەنجىردە يەنىلا ئىقتىدار توسالغۇسى بار </strong> — 120 سېكۇنتلۇق نىشانغا تېخى يەتمىدى؛ بار مۇۋەپپەقىيەتلىك ئەۋرىشكەمۇ بارلىق مودېل، رەسىم سۈپىتى ياكى ئورۇنلاشتۇرۇش مۇھىتى ئۆتتى دېگەنلىك ئەمەس. </li>
+</ul>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;"> بۇ نەشر پەقەت K12 لا قىلمىدى </h2>
+
+<p style="margin: 8px 0;"> K12 بۇ نەشرنىڭ باش پېرسوناژى، ئەمما ئۇنى تۇرغۇزۇش ئۈچۈن سۇپا قەۋىتىدىمۇ بىرنەچچە ئىش ئۆزگەردى؛ ئاتا-ئانا بولمىغان ئىشلەتكۈچىلەرگىمۇ پايدىلىق: </p>
+
+<ul style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> 🛡️ ئىجرا ئاساسىي بىرىكمىلىرىنى بىرلەشتۈرۈش </strong> — كود / بۇيرۇق ئىجراسىدا code_exec قۇم ساندۇقى ئاساسلىق كىرىش؛ ۋاقىت چېكى، بايلىق ۋە ئىجرا تالونى مەركەزلىك باشقۇرۇلىدۇ؛ كونا code / shell ئەمەلدىن قالدۇرۇلغان دەپ بەلگىلەنگەن، ئەمما تەڭشەك بىلەن ئېچىلىدىغان ماسلىشىش كىرىشى يەنىلا بار، مەنبە كودتىن تولۇق ئۆچۈرۈلمىگەن </li>
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> 🧩 سىنارىيە قوشۇش ئاساسىي قۇرۇلۇشى </strong> — ئالتە نۇقتىلىق Registry، ماتور تەرەپ سىنارىيە قوشۇش ۋە جاۋاب مېتامەلۇمات يولى، ئومۇمىي Mount ئىلمىكى سۇپا مېخانىزملىرى؛ ئىككىنچى بوغچا بىۋاسىتە قايتا ئىشلىتىدۇ </li>
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> 📦 ئومۇمىي خاتىرە دەپتىرى + چىقىش دەرۋازىسى </strong> — records كېلىشىمى ۋە egress سىياسىتى K12 غا خاس ئەمەس؛ قۇرۇلمىلىق خاتىرە ۋە كونتروللۇق بۇلۇت مودېل چاقىرىشى ئومۇمىي مېخانىزمغا تايىنىدۇ، K12 تىپلىق جەدۋىلى سىنارىيە سانلىق مەلۇمات قەۋىتىدە قالىدۇ </li>
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> 🖥️ ئۈستەل يۈزى سىنارىيە كېڭەيتمىسىنىڭ ئۈچ بۆلىكى </strong> — contracts / shell / features ئالدى سۇپا قاتلامى + ئارقا سۇپا تارقاتقان كۆرۈنۈش تەسۋىرلىگۈچى؛ سىنارىيە ئۆز كۆرۈنمە يۈز كېڭەيتمىسىنى تىزىملايدۇ </li>
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> 📚 زاپاسلاش ۋە چىقىرىشتا ھەقىقىي مۈلۈكنى ساقلاش </strong> — .hexbak تولۇقلۇقنى SHA-256 بىلەن تەكشۈرىدۇ؛ ئۆگىنىش ئارخىپى بۇ ھەپتە تەكرارلاش، خاتا سوئال، مەشىق توپلىمى، توپلام ۋە ئەسەرلەرنى قاپلايدۇ. PDF / Word مۇلازىمېتىردا مۇقىملانغان مەھسۇلاتنى بىۋاسىتە ساقلايدۇ؛ Markdown قوشۇمچە بولسا ZIP غا بوغچىلىنىپ، archive.md، manifest.json ۋە ئەسلى ھۆججەتنى ئۆز ئىچىگە ئالىدۇ. مەشىق توپلىمىدا يەنە سوئال ۋە جاۋاب قەغىزىنى ئايرىم بېسىش، PDF ساقلاش بار. </li>
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> 📖 دەرسلىككە تايىنىش ۋە سوئال مۈلكىنى قايتا ئىشلىتىش </strong> — دەرسلىك ئاساسىي تېكىستىنى بىۋاسىتە ئوقۇش «ئاساس قەيەردە؟»گە، لاياقەتلىك سوئال مۈلكىنى قايتا ئىشلىتىش «قايسى ھەل قىلىشنى قايتا ھېسابلىمايمىز؟»غا جاۋاب بېرىدۇ. ئىككىسىمۇ بۇ قېتىمقى ئوقۇغۇچى جاۋابىنى تونۇش ۋە ھۆكۈم قىلىشنىڭ ئورنىنى باسمايدۇ، پۈتۈن بەتنى سېكۇنتتا قىلىشقا ۋەدە بەرمەيدۇ. </li>
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> 🌐 يەرلىك / بۇلۇت ئىككى شەكىل </strong> — ئارقا سۇپا ئۈستەل يۈزى بىلەن ئوخشاش ماشىنىدا ئىجرا بولالايدۇ ياكى بۇلۇتتىكى يەككە مىساللىق مۇلازىمەتكە ئۇلىنالايدۇ. DingTalk يېتەكلەش باغلانغان مۇلازىمەتكە ئەگىشىدۇ؛ سانلىق مەلۇمات ئورنى ۋە ئىشلىتىش ۋاقتى ماس ئورۇنلاشتۇرۇشقا باغلىق. </li>
+</ul>
+
+<p style="margin: 16px 0 8px;"> ئاخىرىدا ئالدىغا قارايدىغان ئۈچ قاراش: ھېساب دەلىل زەنجىرىنىڭ كېيىنكى قەدىمى <strong style="color:var(--article-accent, #3f8fd4);"> ھەقىقىي ئوخشىمىغان مودېل Verifier </strong> — ئۇلاش نۇقتىسى بار（solver ≠ verifier بولغاندىلا كۈچلۈك دەلىل）، كەم قالغىنى ئىككىنچى مودېل يول تاللىشى بىلەن دەلىل ئىشلەپچىقىرىشنى راستىنلا ئۇلاش؛ دەرس ئۆلچىمى جەدۋىلى Constraints نۇقتىسى ئارقىلىق دەرسلىك نۇسخىسى بويىچە كېڭىيىدۇ（بېيجىڭ پېداگوگىكا نەشرى، جياڭسۇ نەشرى）؛ ئالتە نۇقتىلىق قۇرۇلما بولسا <strong style="color:var(--article-accent, #3f8fd4);"> ئىككىنچى سىنارىيە بوغچىسىنىڭ خاتالىقىنى دەلىللەش سىنىقىنى تاماملىشىنى كۈتىدۇ </strong> — ئۇ تۇرالىسا، باشتىكى سوئالغا ھەقىقىي جاۋاب بولىدۇ: <strong style="color:var(--article-accent, #3f8fd4);"> ئومۇمىي سۇپا ئۆزىنى بۇلغىماي ئىشەنچلىك بىر ساھە سىنارىيەسىنى ئۆستۈرەلەيدۇ </strong> ؛ «ئومۇمىي سۇپا + ساھە سىنارىيەسى» يولىمۇ شۇندىلا راستىنلا تۇتاشقان بولىدۇ. ساھە ئۆزگىرىدۇ، ئىنتىزام ئۆزگەرمەيدۇ: <strong style="color:var(--article-accent, #3f8fd4);"> ئېھتىماللىق ئەقلى بىلەن دېتېرمىنىستىك چەكلىمىنى ئايرىش؛ نەتىجە بىلەن دەلىلنى ئايرىش؛ پاكىت، ئارخىپ ۋە ھۆججەتنى ئايرىش؛ ساھە مەنىسىنى سىنارىيە بوغچىسىدا ساقلاش؛ ھەر سۆھبەتنى ئاخىرىدا ئىجرا قىلىنىدىغان كېيىنكى قەدەمگە ئايلاندۇرۇش </strong> ، سۆھبەت تارىخىغا چۆكتۈرۈپ قويماسلىق. </p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<p style="margin: 24px 0 16px; color:var(--article-secondary, #5f7b9c); font-size: 14.5px; line-height: 2; text-align: center; font-style: italic; padding: 8px 16px;"> رەسىملىك سوئال ئىزدەش بالىغا بىر جاۋاب بېرىدۇ؛ ئاتا-ئانىغا لازىمى سوئالنى ئۆگىتىدىغان يىگىرمە مىنۇت. <br/> «ئۆي قالايمىقانچىلىقى»دىن «ئاتا-بالا خۇشاللىقى»غىچە، AI نىڭ راۋان گېپىگىلا تايانمايدۇ — <br/> توغرا چۈشەندۈرگەننىڭ دەلىلى بولۇش، خاتانى ئېتىراپ قىلىش، خاتا سوئالنىڭ مەنبەسى بولۇش، تەكرارلاشنىڭ داۋاملىشىشىغا تايىنىدۇ. </p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<p style="margin: 8px 0; font-size: 14px; color:var(--article-muted, #7b8fa3);"> بۇ ماقالە «نېمىگە تايىنىپ ئىشەنچلىك؟»نى سۆزلەيدۇ؛ <strong style="color:var(--article-accent, #3f8fd4);"> «قانداق باشلاپ ئىشلىتىش؟»（چۈشۈرۈش، ئارخىپ قۇرۇش، تۇنجى تاپشۇرۇق رەسىمىنى تارتىش） </strong> قوشما <a href="/ug/blog/k12-user-guide" style="color:var(--article-accent, #5fb3ea);"> «ئاتا-بالا خۇشاللىقى باشلاش دەرسلىكى» </a> دەرسلىكىدە رەسىم بىلەن قەدەممۇ-قەدەم چۈشەندۈرۈلگەن. </p>
+
+<p style="margin: 8px 0; font-size: 14px; color:var(--article-muted, #7b8fa3);"><strong style="color:var(--article-accent, #3f8fd4);"> قوشۇمچە ئوقۇش </strong> — HexClaw يۈرۈشلۈكىدىكى ئالدىنقى ماقالىلەر: </p>
+
+<ol style="padding-left: 22px; margin: 8px 0; font-size: 14px;">
+<li style="margin: 4px 0;"><a href="https://mp.weixin.qq.com/s/EvQT0VqH9ep6LXo89ZM-fw" style="color:var(--article-accent, #5fb3ea);"> «سىبېر ئىش ماشىنىسى»نىڭ يېتىلىش ھېكايىسى </a>  — بىر جۈملىنى ئۆزىنى ئەسلىگە كەلتۈرىدىغان قۇم ساندۇقى قوليازمىسىغا ئايلاندۇرۇش（بۇ ماقالىدىكى cron يەتكۈزۈشنىڭ ئاساسى） </li>
+<li style="margin: 4px 0;"><a href="https://mp.weixin.qq.com/s/2tHlfZYHxQdQwvVZQEoLRg" style="color:var(--article-accent, #5fb3ea);"> بۇرۇنقى leader Skill </a>  — ئۇسۇلنى Skill ھۆججىتىگە ئايرىپ ئېلىش（بۇ ماقالىدىكى ئوقۇتۇش Skill ى بىلەن ئوخشاش ئۇسۇل） </li>
+<li style="margin: 4px 0;"><a href="https://mp.weixin.qq.com/s/h60ymjjj3eF9hQyhl0jVcQ" style="color:var(--article-accent, #5fb3ea);">Loop Engineering</a>  — Prompt تىن Loop قا بولغان تۆت ئەۋلاد ئەندىزىسىنىڭ ئاساسىي لىنىيەسى </li>
+<li style="margin: 4px 0;"><a href="https://mp.weixin.qq.com/s/YvGGPBZX0V7R6-09unnrcQ" style="color:var(--article-accent, #5fb3ea);"> «چۈش كۆرىدىغان» Agent ئەسلىمىسى </a>  — ئۆگىنىش ئارخىپىنىڭ ئارقىسىدىكى ئەسلىمە سىستېمىسى </li>
+<li style="margin: 4px 0;"><a href="https://mp.weixin.qq.com/s/tgFKPr4Ke1OR3Uiud1CiWA" style="color:var(--article-accent, #5fb3ea);"> v0.4.0 ئۇيغۇرچە يەرلىكلەشتۈرۈش </a>  — ئۇيغۇرچە يەرلىكلەشتۈرۈش ئىنژېنېرلىق خاتىرىسى </li>
+<li style="margin: 4px 0;"><a href="https://mp.weixin.qq.com/s/wIRiJsWLRPWBiTEQtlVQkg" style="color:var(--article-accent, #5fb3ea);"> قۇرۇلمىنى تەپسىلىي چۈشەندۈرۈش </a>  — بىر ئادەم × Claude Code × 6 ئامبارلىق ئېكولوگىيە </li>
+</ol>
+
+<h3 style="font-size: 15px; font-weight: 600; color:var(--article-accent, #3f8fd4); margin: 24px 0 8px;"> پايدىلىنىش ماتېرىياللىرى </h3>
+
+<ul style="padding-left: 22px; margin: 8px 0; font-size: 13px; color:var(--article-secondary, #5f7b9c);">
+<li style="margin: 3px 0;"> HexClaw AI ئېكولوگىيە ئامبارلىرى: <code dir="ltr" style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 12px; color:var(--article-accent, #3f8fd4);">github.com/hexagon-codes</code></li>
+<li style="margin: 3px 0;">Wang et al., <a href="https://arxiv.org/abs/2203.11171" style="color:var(--article-accent, #5fb3ea);"><em>Self-Consistency Improves Chain of Thought Reasoning in Language Models</em></a> , ICLR 2023（ئۆز-ئارا بىردەك ئەۋرىشكە ۋە كۆپ سانلىق ئاۋاز） </li>
+<li style="margin: 3px 0;">Gao et al., <a href="https://proceedings.mlr.press/v202/gao23f.html" style="color:var(--article-accent, #5fb3ea);"><em>PAL: Program-aided Language Models</em></a> , arXiv 2022 / ICML 2023（ھېسابنى ئىزاھلىغۇچقا تاپشۇرۇپ ئىجرا قىلىش） </li>
+<li style="margin: 3px 0;"> ئېببىڭخاۋۇس ئۇنتۇش ئەگرى سىزىقى ۋە ئارىلىقلىق تەكرارلاش: SuperMemo SM-2 ھېسابلاش ئۇسۇلى（1987）、 <a href="https://docs.ankiweb.net/background.html" style="color:var(--article-accent, #5fb3ea);"> Anki ھۆججىتى </a></li>
+<li style="margin: 3px 0;"> ئوقۇتۇش مەنبەلىرى: Polya «How to Solve It»（1945）、Rosenshine «Principles of Instruction»（2012）、Dweck ئۆسۈپ يېتىلىش تەپەككۇرى، ۋىگوتسكىي «يېقىن تەرەققىيات رايونى»، گۇ لىڭيۈەن چىڭپۇ تەجرىبىسى（ئۆزگەرمە مىساللىق ئوقۇتۇش） </li>
+<li style="margin: 3px 0;"><a href="https://code.visualstudio.com/api/references/contribution-points" style="color:var(--article-accent, #5fb3ea);">VS Code Extension API · Contribution Points</a></li>
+<li style="margin: 3px 0;"> مائارىپ ھالىتى ساھە يېڭىلىقلىرى: <a href="https://www.anthropic.com/news/introducing-claude-for-education" style="color:var(--article-accent, #5fb3ea);">Anthropic《Introducing Claude for Education》</a>（2025-04-02）· <a href="https://openai.com/index/chatgpt-study-mode/" style="color:var(--article-accent, #5fb3ea);">OpenAI《Introducing study mode》</a>（2025-07-29）· <a href="https://blog.google/products-and-platforms/products/education/guided-learning/" style="color:var(--article-accent, #5fb3ea);">Google《Guided Learning in Gemini》</a> （2025-08-06）، ھەممىسى رەسمىي ئېلان بەتلىرى </li>
+<li style="margin: 3px 0;"> جېجياڭ ئۆلكىلىك پارتىيە كومىتېتى تەشۋىقات بۆلۈمىنىڭ «جېجياڭ تەشۋىقاتى»: <a href="https://zjnews.zjol.com.cn/zjxc/202602/t20260203_31487580.shtml" style="color:var(--article-accent, #5fb3ea);"> «نېمىشقا تاپشۇرۇق يېتەكلەش ئادەمنى ئاچچىقلاندۇرۇپ ساراڭ قىلىدۇ؟» </a> （جېجياڭ تورى قايتا تارقاتقان، 2026-02-03）；«جۇڭگو ياشلار گېزىتى»: <a href="https://www.peopleweekly.cn/html/2021/tebieguanzhu_0413/67551.html" style="color:var(--article-accent, #5fb3ea);"> «ئاتا-ئانا تاپشۇرۇق يېتەكلەش قورقۇنچىدىن قانداق قۇتۇلىدۇ؟» </a> （2021-04-13، خەلق ھەپتىلىك ژۇرنال تورى قايتا تارقاتقان） </li>
+</ul>
+
+<p style="margin: 8px 0; font-size: 12px; color:var(--article-muted, #7b8fa3);"> مەنبە كود كۆرسەتكۈچى: engine/solve_verifier_node.go（مۇستەقىل دەلىللەش）、engine/solve.go（جەرياننى رەت قىلىش）、scenarios/k12/usecase/grading_problem_assets.go（سوئال مۈلكى）、egress/egress.go（تور چىقىشى ھۆكۈمى）；ئۈستەل يۈزى src/shell/scenario/registry.ts（14 ئورۇن）、ChatView.vue（مۈلۈك ماسلاشتۇرۇش）、features/k12/export.ts（چىقىرىش）. </p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<p class="blog-brand-footer" data-blog-brand-footer="ug" data-blog-brand-overrides="{}" style="text-align: center; color: var(--article-muted, #7b8fa3); font-size: 13px; margin: 16px 0 0; line-height: 2;">
+<strong style="color: var(--article-ink, #12324c); font-size: 14px;">HexClaw ھېشى AI</strong><br/>
+يەرلىكتە ياكى بۇلۇتتا ئورۇنلاشتۇرۇش · سانلىق مەلۇماتنى ئۆزىڭىز باشقۇرۇش · ئوچۇق كودلۇق ۋە ھەقسىز يۇمشاق دېتال<br/>
+<a href="https://hexclaw.net" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">تور بېكەت: <bdi dir="ltr">hexclaw.net</bdi></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://github.com/hexagon-codes" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">GitHub: <bdi dir="ltr">hexagon-codes</bdi></a><br/>
+<a href="https://weibo.com/u/4097207240" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">Weibo: <bdi dir="ltr">@HexClaw</bdi></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">X: <bdi dir="ltr">@hexclawapp</bdi></a><br/>
+<a href="mailto:ai@hexclaw.net" style="color: var(--article-muted, #999); text-decoration: none;">ئېلخەت: <bdi dir="ltr">ai@hexclaw.net</bdi></a>
+</p>
+    </article>
+
+
+
+    <nav class="blog-series-nav" aria-label="ئالدىنقى ۋە كېيىنكى ماقالە">
+      <a href="/ug/blog/hexclaw-user-guide" class="blog-nav-card prev">
+  <span class="blog-nav-label">&larr;  ئالدىنقى ماقالە </span>
+  <span class="blog-nav-title"> HexClaw تولۇق قوللانمىسى: 5 مىنۇتتا نۆلدىن ئىش قىلىدىغان يەرلىك AI Agent غا（مودېل تاللاش تەۋسىيەسى بىلەن） </span>
+</a>
+      <a href="/ug/blog/k12-user-guide" class="blog-nav-card next">
+  <span class="blog-nav-label"> كېيىنكى ماقالە  &rarr;</span>
+  <span class="blog-nav-title"> «ئاتا-بالا خۇشاللىقى» باشلاش دەرسلىكى: HexClaw بىلەن تاپشۇرۇق يېتەكلەشنى قولمۇقول ئۆگىنىش（K12 ئىشلىتىش دەرسلىكى） </span>
+</a>
+    </nav>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-main">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-col-title">مەھسۇلات</div>
+        <a href="/ug/#download">ئۈستەلئۈستى نۇسخىسىنى چۈشۈرۈش</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="/ug/changelog">يېڭىلىنىش خاتىرىسى</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">ئىجادكار</div>
+        <a href="/ug/docs/">ھۆججەتلەر مەركىزى</a>
+        <a href="/ug/blog/">تېخنىكا بىلوگى</a>
+        <a href="/ug/docs/getting-started">تېز باشلاش</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">Apache-2.0</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">جامائەت</div>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/issues" target="_blank" rel="noopener noreferrer">Issues</a>
+        <a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer">Twitter / X</a>
+        <a href="mailto:ai@hexclaw.net">بىز بىلەن ئالاقىلىشىش</a>
+        <a href="mailto:support@hexclaw.net">سوئال-پىكىر</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">ھەققىدە</div>
+        <a href="/ug/about">بىز ھەققىدە</a>
+        <a href="/ug/privacy">شەخسىيەت سىياسىتى</a>
+        <a href="/ug/terms">ئىشلىتىش شەرتلىرى</a>
+        <a href="/ug/third-party-ai-services">ئۈچىنچى تەرەپ AI مۇلازىمىتى</a>
+      </div>
+    </div>
+    <div class="footer-wechat">
+      <img width="430" height="430" loading="lazy" decoding="async" src="../../assets/brand/wechat-qr.jpg" alt="HexClaw ۋېيشىن رەسمىي ھېسابات QR كودى">
+      <span class="footer-wechat-label">ۋېيشىن رەسمىي ھېساباتى</span>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">&copy; 2025&ndash;2026 hexagon-codes</span>
+  </div>
+</footer>
+<script src="../../assets/js/theme.js?v=2e4a1828feef"></script>
+<script src="../../assets/js/docs-nav.js?v=5a103861aec2"></script>
+<button type="button" class="back-to-top" id="backToTop" aria-label="ئۈستىگە قايتىش" title="ئۈستىگە قايتىش">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg>
+  <span>ئۈستىگە</span>
+</button>
+
+<script src="../../assets/js/blog.js?v=c72e1db5a6ec"></script>
+</body>
+</html>

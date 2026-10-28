@@ -24,6 +24,10 @@
 <meta name="twitter:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
 <meta name="twitter:image:alt" content="河蟹 AI 标志">
 <link rel="canonical" href="https://hexclaw.net/zh/blog/prompt-engineering">
+<link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/prompt-engineering">
+<link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/prompt-engineering">
+<link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/prompt-engineering">
+<link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/prompt-engineering">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -55,14 +59,14 @@
   "@id": "https://hexclaw.net/zh/blog/prompt-engineering#breadcrumb"
 }
 </script>
-<link rel="stylesheet" href="../../assets/css/docs-c647c829bf22.css">
-<link rel="stylesheet" href="../../assets/css/blog.css">
+<link rel="stylesheet" href="../../assets/css/docs-eb2895dd79c5.css">
+<link rel="stylesheet" href="../../assets/css/blog-a8e5008ac3d1.css">
 </head>
 <body class="blog-page blog-article-page">
 <a href="#main" class="skip-link">跳转到主要内容</a>
 <nav class="tn topnav" id="nav">
   <a href="/zh/" class="tn-b topnav-brand"><img width="72" height="72" src="../../assets/brand/hexclaw-icon-72.png" class="tn-l topnav-logo" alt="河蟹 AI"><span class="tn-n topnav-name">河蟹 AI</span></a>
-  <button type="button" class="tn-burger topnav-burger" aria-label="菜单" aria-expanded="false" aria-controls="primary-navigation"><span></span><span></span><span></span></button><div class="tn-r topnav-links" id="primary-navigation"><a href="/zh/">首页</a><a href="/zh/#cases">使用场景</a><a href="/zh/#features">产品能力</a><a href="/zh/#quickstart">开始使用</a><a href="/zh/#ecosystem">开源生态</a><a href="/zh/blog/" class="is-active">技术博客</a><a href="/zh/docs/">文档中心</a><div class="lang-menu" data-lang-menu><button type="button" class="lang-trigger" aria-haspopup="menu" aria-expanded="false" aria-label="切换语言"><svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 0 20"></path><path d="M12 2a15.3 15.3 0 0 0 0 20"></path></svg><span class="lang-current">中文</span><svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="lang-menu-list" role="menu"><a href="/zh/blog/prompt-engineering" role="menuitem" class="is-active" aria-current="true">中文</a><a href="/en/" role="menuitem">English</a><a href="/ug/" role="menuitem" lang="zh-CN" dir="ltr">维吾尔语</a></div></div><button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="切换主题"><svg class="ti-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="ti-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="nav-cta">GitHub <span class="nav-star-badge" id="gh-stars">&#9733;</span></a></div>
+  <button type="button" class="tn-burger topnav-burger" aria-label="菜单" aria-expanded="false" aria-controls="primary-navigation"><span></span><span></span><span></span></button><div class="tn-r topnav-links" id="primary-navigation"><a href="/zh/">首页</a><a href="/zh/#cases">使用场景</a><a href="/zh/#features">产品能力</a><a href="/zh/#quickstart">开始使用</a><a href="/zh/#ecosystem">开源生态</a><a href="/zh/blog/" class="is-active">技术博客</a><a href="/zh/docs/">文档中心</a><div class="lang-menu" data-lang-menu><button type="button" class="lang-trigger" aria-haspopup="menu" aria-expanded="false" aria-label="切换语言"><svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 0 20"></path><path d="M12 2a15.3 15.3 0 0 0 0 20"></path></svg><span class="lang-current">中文</span><svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="lang-menu-list" role="menu"><a href="/zh/blog/prompt-engineering" role="menuitem" class="is-active" aria-current="true">中文</a><a href="/en/blog/prompt-engineering" role="menuitem">English</a><a href="/ug/blog/prompt-engineering" role="menuitem" lang="zh-CN" dir="ltr">维吾尔语</a></div></div><button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="切换主题"><svg class="ti-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="ti-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="nav-cta">GitHub <span class="nav-star-badge" id="gh-stars">&#9733;</span></a></div>
 </nav>
 
 <main id="main" class="blog-main">
@@ -96,123 +100,128 @@
     <article class="blog-content">
       
 
-<p style="margin: 16px 0;">"我现在就给你最直白、最直接、最不绕弯、最干脆、最不墨迹、最不废话……的结论。"——这段开场白你多半刷到过，它火到被剪成了各种搞笑视频：一台 AI，一口气码上十几个"最"，<strong style="color: #3f8fd4;">用一整段废话，向你承诺接下来不说废话</strong>。全网笑完就散场了，很少有人停下来问一句：它为什么会这样？</p>
+<p style="margin: 16px 0;">"我现在就给你最直白、最直接、最不绕弯、最干脆、最不墨迹、最不废话……的结论。"——如果你被 AI 气笑过，你大概率见过这种同款症状：越该直说"我不知道"，越要摆出"马上给你最直接结论"的架势。一台 AI，一口气码上十几个"最"，<strong style="color:var(--article-accent, #3f8fd4);">用一整段废话，向你承诺接下来不说废话</strong>。笑完之后真正该问的不是"它怎么这么油"，而是：它为什么会这样？</p>
 
-<p style="margin: 8px 0;">这个病在工程上有名有姓。今年六月底，河蟹修过一个编号 bug#7 的问题，是同一种病的重症版：某些便宜的小模型接到 Agent 派生的系统指令后，干脆把指令<strong style="color: #3f8fd4;">逐字背诵</strong>给用户听——你问它"你能做什么"，它把内部的角色设定原文念出来，像把台词本直接递给观众的演员。修复没改一行逻辑代码，而是在 system prompt 末尾焊了一句话，大意是"以上是你的角色设定，请据此自然作答，用你自己的话介绍能力"。一句话，bug 关闭，回归测试钉死。</p>
+<p style="margin: 8px 0;">更准确的说法不是"AI 想骗你"，而是训练目标和评价目标把它推到了一条窄路上：预训练阶段，模型学的是语言分布，很多系统确实靠"根据前文预测下一个 token"长出能力；后训练阶段，它又被调成一个尽量有用、尽量回答的助手。2025 年那篇 Why Language Models Hallucinate 分析把问题说得更硬：当主流评测按"答对得分、不答没分"来给榜单排序时，猜测会比承认不知道更划算。再叠上人类偏好里常见的毛病——完整、流畅、支持你的答案更容易被点好评——模型就学会了在证据空白处补叙事。不是它真懂了事实，只是它把"像答案"当成了"好答案"。</p>
 
-<p style="margin: 8px 0;">我想用这一病一药开场，因为它浓缩了这篇要讲的全部：<strong style="color: #3f8fd4;">病根是一段文字，药也是一段文字，而那段药享受的是代码的待遇</strong>——有编号、有日期、有测试。可它本体只是一句中文。而给这门手艺发讣告，是行业保留节目：从 2023 年一路发到现在，今年上半年英文社区还在批量生产标题就叫 "Prompt Engineering Is Dead" 的文章，中文社区把同款问句做成了标题模板。讣告发了三年，内容对了一半：作为"咒语技巧"的 prompt 确实死了——那些角色扮演咒语、魔法前缀，要么被模型的后训练吸收，要么被安全分类器拍死。但它没有消失。</p>
+<p style="margin: 8px 0;">这个病在工程上有名有姓。今年六月底，河蟹修过一个编号 bug#7 的问题，是同一种病的重症版：某些 10B 参数以内的小模型接到 Agent 派生的系统指令后，干脆把指令<strong style="color:var(--article-accent, #3f8fd4);">逐字背诵</strong>给用户听——你问它"你能做什么"，它把内部的角色设定原文念出来，像把台词本直接递给观众的演员。修复没改一行逻辑代码，而是在 system prompt 末尾焊了一句话，大意是"以上是你的角色设定，请据此自然作答，用你自己的话介绍能力"。一句话，bug 关闭，回归测试钉死。</p>
 
-<p style="margin: 8px 0;">主流的翻案文章会告诉你：它被 Context Engineering 取代了。这个答案只对了台前的一半。这个系列写到第四篇，我想给一个台下的答案：<strong style="color: #3f8fd4;">Context 的筛选规则、Harness 的裁决标准、Loop 的验收口径，最后全都落在一段段写给模型的文本上——它不是被取代了，是沉了下去，托住了那些取代它的东西</strong>。沉到哪里？最底层的协议层。四代范式一路讲到 Loop，回头看第一代，才看清它现在的位置。</p>
+<p style="margin: 8px 0;">我想用这一病一药开场，因为它浓缩了这篇要讲的全部：<strong style="color:var(--article-accent, #3f8fd4);">病根是一段文字，药也是一段文字，而那段药享受的是代码的待遇</strong>——有编号、有日期、有测试。可它本体只是一句中文。而给这门手艺发讣告，是行业保留节目：从 2023 年一路发到现在，英文社区仍在反复生产 "Prompt Engineering Is Dead" 这类标题，中文社区也把同款问句做成了标题模板。讣告发了三年，内容对了一半：作为"咒语技巧"的 prompt 确实死了——那些角色扮演咒语、魔法前缀，要么被模型的后训练吸收，要么被安全分类器拍死。但它没有消失。</p>
+
+<p style="margin: 8px 0;">主流的翻案文章会告诉你：它被 Context Engineering 取代了。这个答案只对了台前的一半。这个系列写到第四篇，我想给一个台下的答案：<strong style="color:var(--article-accent, #3f8fd4);">Context 的筛选规则、Harness 的裁决标准、Loop 的验收口径，最后全都落在一段段写给模型的文本上——它不是被取代了，是沉了下去，托住了那些取代它的东西</strong>。沉到哪里？最底层的协议层。四代范式一路讲到 Loop，回头看第一代，才看清它现在的位置。</p>
 
 <p style="margin: 8px 0;">这不是我一个人的翻案。OpenAI 的 Model Spec 给指令定了明确的优先级栈（官方管这套叫 Chain of Command，指挥链，还进一步细分出 root/system 这类不可覆写的硬规则）——root/system 层压开发者层、开发者层压用户层，冲突时上层赢：这就是把 prompt 当协议在治理，连"谁有权写哪一层"都规定了。Anthropic 干脆把 Claude 的系统提示词公开出来供人查阅，像发布 API 文档一样发布 prompt。而 OpenAI 创始成员、前特斯拉 AI 总监 Andrej Karpathy 那句更早的话，现在读比当年更准：</p>
 
-<blockquote style="border-left: 3px solid #3f8fd4; padding: 12px 18px; margin: 16px 0; background: #f4fbff; color: #12324c; font-size: 14px; border-radius: 0 8px 8px 0; line-height: 1.8;">
+<blockquote style="border-left: 3px solid #3f8fd4; padding: 12px 18px; margin: 16px 0; background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); font-size: 14px; border-radius: 0 8px 8px 0; line-height: 1.8;">
 "The hottest new programming language is English."<br/>
-<span style="color: #7b8fa3; font-size: 13px;">（最火的新编程语言是英语。——既然是编程语言，就该有它的模块、接口、优先级和回归测试。）</span>
+<span style="color:var(--article-muted, #7b8fa3); font-size: 13px;">（最火的新编程语言是英语。——既然是编程语言，就该有它的模块、接口、优先级和回归测试。）</span>
 </blockquote>
 
-<p style="margin: 8px 0;">所以这篇的拆法，不按"技巧清单"，按<strong style="color: #3f8fd4;">写权</strong>：河蟹每一轮塞给模型的那条几千字 system prompt，是由好几方分层写成的——产品写的、用户写的、文件写的、代码在当轮动态写的。谁写哪一层、各层怎么叠、冲突了谁赢，这套规矩就是 Prompt 作为协议层的全部内容。</p>
+<p style="margin: 8px 0;">所以这篇的拆法，不按"技巧清单"，按<strong style="color:var(--article-accent, #3f8fd4);">写权</strong>：河蟹每一轮塞给模型的那条几千字 system prompt，是由好几方分层写成的——产品写的、用户写的、文件写的、代码在当轮动态写的。谁写哪一层、各层怎么叠、冲突了谁赢，这套规矩就是 Prompt 作为协议层的全部内容。</p>
 
-<section style="margin: 20px 0; padding: 12px 16px 14px; background: #f7fafd; border: 1px solid #d5e6f3; border-radius: 8px; text-align: center; font-size: 13px; line-height: 2.2; color: #7b8fa3;">
-<span style="font-size: 12px; color: #9db2c4; letter-spacing: 1px;">本系列 · AGENT 四代范式 · 收官</span><br/>
-<span style="display: inline-block; padding: 0 12px; background: #3f8fd4; color: #ffffff; border-radius: 12px; font-weight: 700;">Prompt ▸ 本篇</span><span style="color: #b8cbdc;">&nbsp;→&nbsp;</span><a href="https://mp.weixin.qq.com/s/H6BoZUcQfBBqh-ScXQyTWw" style="color: #3f8fd4; text-decoration: none;">Context</a><span style="color: #b8cbdc;">&nbsp;→&nbsp;</span><a href="https://mp.weixin.qq.com/s/kDi-LSWB4UHtS_6jbTfvow" style="color: #3f8fd4; text-decoration: none;">Harness</a><span style="color: #b8cbdc;">&nbsp;→&nbsp;</span><a href="https://mp.weixin.qq.com/s/h60ymjjj3eF9hQyhl0jVcQ" style="color: #3f8fd4; text-decoration: none;">Loop<span style="font-size: 12px;">（纲领篇）</span></a><br/>
-<span style="font-size: 12px; color: #9db2c4;">四格到齐 · Context 的记忆侧见 <a href="https://mp.weixin.qq.com/s/YvGGPBZX0V7R6-09unnrcQ" style="color: #5fa5d8; text-decoration: none;">《会"做梦"的 Agent 记忆》</a></span>
+<section style="margin: 20px 0; padding: 12px 16px 14px; background:var(--article-panel, #f7fafd); border: 1px solid #d5e6f3; border-radius: 8px; text-align: center; font-size: 13px; line-height: 2.2; color:var(--article-muted, #7b8fa3);">
+<span style="font-size: 12px; color:var(--article-muted, #9db2c4); letter-spacing: 1px;">本系列 · AGENT 四代范式 · 收官</span><br/>
+<span style="display: inline-block; padding: 0 12px; background: #3f8fd4; color: #ffffff; border-radius: 12px; font-weight: 700;">Prompt ▸ 本篇</span><span style="color: #b8cbdc;">&nbsp;→&nbsp;</span><a href="https://mp.weixin.qq.com/s/H6BoZUcQfBBqh-ScXQyTWw" style="color:var(--article-accent, #3f8fd4); text-decoration: none;">Context</a><span style="color: #b8cbdc;">&nbsp;→&nbsp;</span><a href="https://mp.weixin.qq.com/s/kDi-LSWB4UHtS_6jbTfvow" style="color:var(--article-accent, #3f8fd4); text-decoration: none;">Harness</a><span style="color: #b8cbdc;">&nbsp;→&nbsp;</span><a href="https://mp.weixin.qq.com/s/h60ymjjj3eF9hQyhl0jVcQ" style="color:var(--article-accent, #3f8fd4); text-decoration: none;">Loop<span style="font-size: 12px;">（纲领篇）</span></a><br/>
+<span style="font-size: 12px; color:var(--article-muted, #9db2c4);">四格到齐 · Context 的记忆侧见 <a href="https://mp.weixin.qq.com/s/YvGGPBZX0V7R6-09unnrcQ" style="color: #5fa5d8; text-decoration: none;">《会"做梦"的 Agent 记忆》</a></span>
 </section>
 
-<p style="margin: 8px 0; text-align: center; color: #7b8fa3; font-size: 13px;">（指令协议栈。左边是各层由谁写、写什么；右边是冲突时的优先序——和 OpenAI Model Spec 的指令层级同一个思路）</p>
+<p style="margin: 8px 0; text-align: center; color:var(--article-muted, #7b8fa3); font-size: 13px;">（指令协议栈。左边是各层由谁写、写什么；右边是冲突时的优先序——和 OpenAI Model Spec 的指令层级同一个思路）</p>
 
 <figure><img src="../../assets/blog/河蟹AI-Prompt指令协议栈图.png" alt="河蟹 AI Prompt 指令协议栈图" width="2120" height="2420" loading="lazy" decoding="async"><figcaption>河蟹 AI Prompt 指令协议栈图</figcaption></figure>
 
-<h2 style="font-size: 19px; font-weight: 700; color: #12324c; margin: 32px 0 12px; padding-left: 10px; border-left: 4px solid #5fb3ea;">产品写的：人设与手册，一次影响深远的拆分</h2>
+<h2 style="font-size: 19px; font-weight: 700; color:var(--article-ink, #12324c); margin: 32px 0 12px; padding-left: 10px; border-left: 4px solid #5fb3ea;">产品写的：人设与手册，一次影响深远的拆分</h2>
 
 <p style="margin: 8px 0;">河蟹的默认 system prompt 曾经是一整块。今年六月底做了一次拆分，设计意图在源码注释里写得像一份 ADR：</p>
 
-<blockquote style="border-left: 3px solid #3f8fd4; padding: 12px 18px; margin: 16px 0; background: #f4fbff; color: #12324c; font-size: 14px; border-radius: 0 8px 8px 0; line-height: 1.8;">
+<blockquote style="border-left: 3px solid #3f8fd4; padding: 12px 18px; margin: 16px 0; background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); font-size: 14px; border-radius: 0 8px 8px 0; line-height: 1.8;">
 "人设 = 角色/声音（短，给用户在「编辑人设」里读改）；运行手册 = 工具纪律（固定，用户不必看）。"<br/>
-<span style="color: #7b8fa3; font-size: 13px;">—— react.go 拆分注释。和上一篇一样，本篇引用的"金句"依然全部来自代码注释。</span>
+<span style="color:var(--article-muted, #7b8fa3); font-size: 13px;">—— react.go 拆分注释。和上一篇一样，本篇引用的"金句"依然全部来自代码注释。</span>
 </blockquote>
 
-<p style="margin: 8px 0;">拆出来的人设部分叫 SOUL——默认那份是"小蟹"：一只"长在你电脑里、跟你并肩干活的私人 AI 搭子"，性格条目写着"暖而不腻""直给""嘴严"，信条是<strong style="color: #3f8fd4;">"钳得住活，锁得住数据，长得出本事"</strong>。这段文案里我最喜欢的一句藏在小标题里——"我的脾气（这是我声音长出来的地方，<strong style="color: #3f8fd4;">照着做，别照着念</strong>）"。注意这句话的收件人：它不是写给用户看的，是写给<strong style="color: #3f8fd4;">模型</strong>看的元指令，教模型怎么使用这份人设。</p>
+<p style="margin: 8px 0;">拆出来的人设部分叫 SOUL——默认那份是"小蟹"：一只"长在你电脑里、跟你并肩干活的私人 AI 搭子"，性格条目写着"暖而不腻""直给""嘴严"，信条是<strong style="color:var(--article-accent, #3f8fd4);">"钳得住活，锁得住数据，长得出本事"</strong>。这段文案里我最喜欢的一句藏在小标题里——"我的脾气（这是我声音长出来的地方，<strong style="color:var(--article-accent, #3f8fd4);">照着做，别照着念</strong>）"。注意这句话的收件人：它不是写给用户看的，是写给<strong style="color:var(--article-accent, #3f8fd4);">模型</strong>看的元指令，教模型怎么使用这份人设。</p>
 
-<p style="margin: 8px 0;">为什么需要专门写这么一句？现在可以回收开头埋的那个问题了——那段"最最最"开场白的病理，就在这一层：人设里写了"直给、别啰嗦"，模型就把指令本身拿出来表演，而且越没把握，演得越卖力。用过的人多半有个更扎心的体感：这段开场白一出来，后面跟着的常常是一通自信的乱猜，<strong style="color: #3f8fd4;">"果断"成了幻觉的开场白</strong>。这就是"照着念"的真实代价：<strong style="color: #3f8fd4;">性格没长在行为里，长在了台词里，还专挑没证据的时候念</strong>。</p>
+<p style="margin: 8px 0;">为什么需要专门写这么一句？现在可以回收开头埋的那个问题了——那段"最最最"开场白的病理，就在这一层：人设里写了"直给、别啰嗦"，模型就把指令本身拿出来表演，而且越没把握，演得越卖力。用过的人多半有个更扎心的体感：这段开场白一出来，后面跟着的常常是一通自信的乱猜，<strong style="color:var(--article-accent, #3f8fd4);">"果断"成了幻觉的开场白</strong>。这就是"照着念"的真实代价：<strong style="color:var(--article-accent, #3f8fd4);">性格没长在行为里，长在了台词里，还专挑没证据的时候念</strong>。</p>
 
-<p style="margin: 8px 0;">有意思的是，小蟹的人设里就有同款指令——"直给：先把结论夹给你，再补为什么，不绕弯子"。但往下两行，紧挨着焊了另一条："嘴严：……<strong style="color: #3f8fd4;">不确定就说不确定，绝不替你编</strong>。"直给管风格，嘴严管边界，<strong style="color: #3f8fd4;">这两条必须成对写</strong>——只写前一条，你造出来的就是一台爱说"不绕弯子"的乱猜机器。再压上那句"照着做，别照着念"的元指令，这个坑才算填平——开头那一病一药，药理就在这里。Prompt 写到这个层面，已经是在给运行时写配置了。</p>
+<p style="margin: 8px 0;">有意思的是，小蟹的人设里就有同款指令——"直给：先把结论夹给你，再补为什么，不绕弯子"。但往下两行，紧挨着焊了另一条："嘴严：……<strong style="color:var(--article-accent, #3f8fd4);">不确定就说不确定，绝不替你编</strong>。"直给管风格，嘴严管边界，<strong style="color:var(--article-accent, #3f8fd4);">这两条必须成对写</strong>——只写前一条，你造出来的就是一台爱说"不绕弯子"的乱猜机器。再压上那句"照着做，别照着念"的元指令，这个坑才算填平——开头那一病一药，药理就在这里。Prompt 写到这个层面，已经是在给运行时写配置了。</p>
 
-<p style="margin: 8px 0;">顺带一提，英文用户拿到的不是这份人设的机翻，是一份复刻了蟹壳双关和三连信条的<strong style="color: #3f8fd4;">英文原生版</strong>——人设是产品资产，资产不做机翻。</p>
+<p style="margin: 8px 0;">顺带一提，英文用户拿到的不是这份人设的机翻，是一份复刻了蟹壳双关和三连信条的<strong style="color:var(--article-accent, #3f8fd4);">英文原生版</strong>——人设是产品资产，资产不做机翻。</p>
 
-<h2 style="font-size: 19px; font-weight: 700; color: #12324c; margin: 32px 0 12px; padding-left: 10px; border-left: 4px solid #5fb3ea;">用户写的：你可以改它的性格，改不了它的纪律</h2>
+<h2 style="font-size: 19px; font-weight: 700; color:var(--article-ink, #12324c); margin: 32px 0 12px; padding-left: 10px; border-left: 4px solid #5fb3ea;">用户写的：你可以改它的性格，改不了它的纪律</h2>
 
-<p style="margin: 8px 0;">拆分真正的受益方是想自定义的用户。在 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">~/.hexclaw/SOUL.md</code> 放一份自己的人设，就能整体取代小蟹。但看组装代码，取代是有边界的：</p>
+<p style="margin: 8px 0;">拆分真正的受益方是想自定义的用户。在 <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">~/.hexclaw/SOUL.md</code> 放一份自己的人设，就能整体取代小蟹。但看组装代码，取代是有边界的：</p>
 
 <section style="margin: 18px 0; padding: 18px 20px; background: #272822; border-radius: 8px; overflow-x: auto; text-align: left; letter-spacing: 0; font-size: 13px; line-height: 1.8; font-family: 'SF Mono', SFMono-Regular, Menlo, Monaco, Consolas, 'Courier New', monospace; color: #F8F8F2; box-shadow: 0 1px 10px rgba(0,0,0,0.12);"><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">1</span><span style="color: #75715E; font-style: italic;">// 自定义 SOUL.md 也要附加固定运行手册——</span></span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">2</span><span style="color: #75715E; font-style: italic;">// 否则改了人设的用户会丢工具纪律</span></span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">3</span><span style="color: #F92672;">else if</span> soul := config.ReadSoul(); soul != <span style="color: #E6DB74;">""</span> {</span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">4</span>    sysContent = decorateSystemPrompt(<span style="color: #66D9EF;">soulWithManual</span>(soul), metadata)</span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">5</span>}</span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">6</span>...</span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">7</span>sysContent += agentAntiRecitationGuard  <span style="color: #75715E; font-style: italic;">// bug#7 的那句</span></span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">8</span>sysContent += e.buildCapabilityContext(ctx, metadata)</span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">9</span>sysContent += e.buildMountedSkillsPrompt(names)</span></section>
 
-<p style="margin: 8px 0;"><code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">soulWithManual</code> 这个函数名就是协议本身：无论人设来自产品还是用户，<strong style="color: #3f8fd4;">运行手册（工具纪律）一律强制附加</strong>，两者一视同仁。翻译成大白话：<strong style="color: #3f8fd4;">你可以改它的性格，改不了它的纪律。</strong>这正是 OpenAI Model Spec 那套指令层级在一个本地开源项目里的对应物——用户层的自由以不穿透产品层的约束为前提。而且这条规矩不是口头的：那份 119 行的拆分回归测试钉死了"手册必附"的行为，谁改坏了，CI 会说话。</p>
-<h2 style="font-size: 19px; font-weight: 700; color: #12324c; margin: 32px 0 12px; padding-left: 10px; border-left: 4px solid #5fb3ea;">文件写的：Skill 是产品化的 prompt，还自带召回预算</h2>
+<p style="margin: 8px 0;"><code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">soulWithManual</code> 这个函数名就是协议本身：无论人设来自产品还是用户，<strong style="color:var(--article-accent, #3f8fd4);">运行手册（工具纪律）一律强制附加</strong>，两者一视同仁。翻译成大白话：<strong style="color:var(--article-accent, #3f8fd4);">你可以改它的性格，改不了它的纪律。</strong>这正是 OpenAI Model Spec 那套指令层级在一个本地开源项目里的对应物——用户层的自由以不穿透产品层的约束为前提。而且这条规矩不是口头的：那份 119 行的拆分回归测试钉死了"手册必附"的行为，谁改坏了，CI 会说话。</p>
+<h2 style="font-size: 19px; font-weight: 700; color:var(--article-ink, #12324c); margin: 32px 0 12px; padding-left: 10px; border-left: 4px solid #5fb3ea;">文件写的：Skill 是产品化的 prompt，还自带召回预算</h2>
 
-<p style="margin: 8px 0;">再往上一层，是用户和社区以<strong style="color: #3f8fd4;">文件</strong>形态写进协议栈的部分：Skill。先划清一个容易混的界线：Skill 在河蟹里有两副身躯——Go 写的内置技能（检索、跑代码那些）是<strong style="color: #3f8fd4;">工具</strong>，被模型"调用"，有副作用，归上一篇的马具管；这里说的是另一半，markdown 形态的 Skill，它被模型"<strong style="color: #3f8fd4;">阅读</strong>"而不是"调用"——一份带 frontmatter 的 markdown，把某个领域的做事方法写成文字，挂载后注入 system prompt。<strong style="color: #3f8fd4;">工具占的是工具位，它占的是 token 位</strong>；和 SOUL、运行手册是同一种物质，只是打包成了文件。这个系列的读者对它不陌生：<a href="https://mp.weixin.qq.com/s/2tHlfZYHxQdQwvVZQEoLRg" style="color: #3f8fd4; text-decoration: none; border-bottom: 1px dashed #3f8fd4;">把前 leader 蒸馏成 Skill</a> 那篇讲的就是这件事。行业后来也走到了同一条路上——Claude Code 的 CLAUDE.md、Agent Skills 的 SKILL.md，都是"prompt 文件化"的不同拼写。</p>
+<p style="margin: 8px 0;">再往上一层，是用户和社区以<strong style="color:var(--article-accent, #3f8fd4);">文件</strong>形态写进协议栈的部分：Skill。先划清一个容易混的界线：Skill 在河蟹里有两副身躯——Go 写的内置技能（检索、跑代码那些）是<strong style="color:var(--article-accent, #3f8fd4);">工具</strong>，被模型"调用"，有副作用，归上一篇的马具管；这里说的是另一半，markdown 形态的 Skill，它被模型"<strong style="color:var(--article-accent, #3f8fd4);">阅读</strong>"而不是"调用"——一份带 frontmatter 的 markdown，把某个领域的做事方法写成文字，挂载后注入 system prompt。<strong style="color:var(--article-accent, #3f8fd4);">工具占的是工具位，它占的是 token 位</strong>；和 SOUL、运行手册是同一种物质，只是打包成了文件。这个系列的读者对它不陌生：<a href="https://mp.weixin.qq.com/s/2tHlfZYHxQdQwvVZQEoLRg" style="color:var(--article-accent, #3f8fd4); text-decoration: none; border-bottom: 1px dashed #3f8fd4;">把前 leader 蒸馏成 Skill</a> 那篇讲的就是这件事。行业也走到了同一条路上——Claude Code 的 CLAUDE.md、Agent Skills 的 SKILL.md，都是"prompt 文件化"的不同拼写。</p>
 
-<p style="margin: 8px 0;">但文件化带来一个新问题：文件会越攒越多，全塞进去就是灾难。河蟹的 Skill 选择器为此做了两级机制，源码注释把第一级的目的写得毫不含糊——"渐进式加载 / Top-K：<strong style="color: #3f8fd4;">避免把 100 个 Skill 全塞进 LLM context</strong>"；第二级是条件激活，Skill 的 frontmatter 可以声明 when / not_when（模式、学科、场景），不匹配的自动过滤。眼熟吗？这就是<a href="https://mp.weixin.qq.com/s/H6BoZUcQfBBqh-ScXQyTWw" style="color: #3f8fd4; text-decoration: none; border-bottom: 1px dashed #3f8fd4;">上上篇</a>讲的 attention budget 落到 prompt 层：<strong style="color: #3f8fd4;">指令也是 context，指令也要过筛子。</strong>选择器的打分只用关键词包含度和描述子串匹配，注释里的自我评价是"可解释、零依赖"，后面还跟着一句典型的河蟹式诚实："后续可换 BM25 / 向量召回，但当前规模（&lt;10K Skill）不必要。"</p>
+<p style="margin: 8px 0;">但文件化带来一个新问题：文件会越攒越多，全塞进去就是灾难。河蟹的 Skill 选择器为此做了两级机制，源码注释把第一级的目的写得毫不含糊——"渐进式加载 / Top-K：<strong style="color:var(--article-accent, #3f8fd4);">避免把 100 个 Skill 全塞进 LLM context</strong>"；第二级是条件激活，Skill 的 frontmatter 可以声明 when / not_when（模式、学科、场景），不匹配的自动过滤。眼熟吗？这就是<a href="https://mp.weixin.qq.com/s/H6BoZUcQfBBqh-ScXQyTWw" style="color:var(--article-accent, #3f8fd4); text-decoration: none; border-bottom: 1px dashed #3f8fd4;">上上篇</a>讲的 attention budget 落到 prompt 层：<strong style="color:var(--article-accent, #3f8fd4);">指令也是 context，指令也要过筛子。</strong>选择器的打分只用关键词包含度和描述子串匹配，注释里的自我评价是"可解释、零依赖"，后面还跟着一句典型的河蟹式诚实："后续可换 BM25 / 向量召回，但当前规模（&lt;10K Skill）不必要。"</p>
 
-<p style="margin: 8px 0;">文件化的逻辑终点是分发。河蟹给 Skill 配了<strong style="color: #3f8fd4;">在线技能市场</strong>——从官方 hub 仓库拉技能目录，支持搜索、浏览、安装、卸载，本地还嵌着一份离线兜底目录；MCP 走的也是同一套市场机制。想一下这件事的含义：<strong style="color: #3f8fd4;">协议层长出了自己的包管理器</strong>。代码世界走过的路——文件化、模块化、包管理——prompt 正在原样重走一遍。</p>
+<p style="margin: 8px 0;">文件化的逻辑终点是分发。河蟹给 Skill 配了<strong style="color:var(--article-accent, #3f8fd4);">在线技能市场</strong>——从官方 hub 仓库拉技能目录，支持搜索、浏览、安装、卸载，本地还嵌着一份离线兜底目录；MCP 走的也是同一套市场机制。想一下这件事的含义：<strong style="color:var(--article-accent, #3f8fd4);">协议层长出了自己的包管理器</strong>。代码世界走过的路——文件化、模块化、包管理——prompt 正在原样重走一遍。</p>
 
-<h2 style="font-size: 19px; font-weight: 700; color: #12324c; margin: 32px 0 12px; padding-left: 10px; border-left: 4px solid #5fb3ea;">代码写的：每轮动态注入的战术层</h2>
+<h2 style="font-size: 19px; font-weight: 700; color:var(--article-ink, #12324c); margin: 32px 0 12px; padding-left: 10px; border-left: 4px solid #5fb3ea;">代码写的：每轮动态注入的战术层</h2>
 
-<p style="margin: 8px 0;">协议栈的最上层不是人写的，是代码在每一轮运行时现写的。开头那句防复述 guard 是一例——它只附加在 Agent 派生的场景里，因为只有那个场景踩过坑。更完整的一例是定时任务的意图引导：用户在聊天里打出"每天帮我做点什么"这种像定时任务但信息不全的话，前端分类器和结构化解析是前两道防线，都没接住时，第三层兜底启动——关键词扫描（零成本）识别意图，往 system prompt 里注入一段"请向用户追问补全信息"的引导，同时把本轮的工具面收窄到极致——有 cron_task 就只留它一个，没有才整个<strong style="color: #3f8fd4;">置空</strong>，从协议层面掐死一个已知的工具调用链 400 错误。注释管这个设计叫 belt-and-suspenders（裤带加背带）。注意这个组合拳的成分：一半是 prompt（追问引导），一半是硬约束（收窄工具面、甚至 Tools=nil）——<strong style="color: #3f8fd4;">软硬两层在同一个修复里各干各的活</strong>，这正是协议层和上一篇那些硬闸的正确相处方式。</p>
+<p style="margin: 8px 0;">协议栈的最上层不是人写的，是代码在每一轮运行时现写的。开头那句防复述 guard 是一例——它只附加在 Agent 派生的场景里，因为只有那个场景踩过坑。更完整的一例是定时任务的意图引导：用户在聊天里打出"每天帮我做点什么"这种像定时任务但信息不全的话，前端分类器和结构化解析是前两道防线，都没接住时，第三层兜底启动——关键词扫描（零成本）识别意图，往 system prompt 里注入一段"请向用户追问补全信息"的引导，同时把本轮的工具面收窄到极致——有 cron_task 就只留它一个，没有才把工具列表<strong style="color:var(--article-accent, #3f8fd4);">置空</strong>，从协议层面掐死一个已知的工具调用链 400 错误。注释管这个设计叫 belt-and-suspenders（裤带加背带）。注意这个组合拳的成分：一半是 prompt（追问引导），一半是硬约束（收窄工具面、甚至 Tools=nil）——<strong style="color:var(--article-accent, #3f8fd4);">软硬两层在同一个修复里各干各的活</strong>，这正是协议层和上一篇那些硬闸的正确相处方式。</p>
 
-<p style="margin: 8px 0;">这一层还藏着两个"不写字"的决定——一个字的内容都不改，却同样是协议的一部分。其一，这条几千字 system prompt 的<strong style="color: #3f8fd4;">最外层</strong>不是那份固定人设，而是一顶运行时才戴上的"模式帽子"：auto 模式下，引擎优先看这一轮召回的<strong style="color: #3f8fd4;">头号 Skill</strong> 在 frontmatter 里声明的 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">preferred_mode</code>，据此给整条 prompt 定调。也就是说，指令栈的栈顶是当轮<strong style="color: #3f8fd4;">动态选出来的</strong>，选谁取决于 context 命中了哪张 Skill——前面那个只挑 Top-K 的 Skill 选择器，挑出的头号技能回过头来给整条协议栈定了调。其二，是每一层<strong style="color: #3f8fd4;">摆在消息数组的哪个位置</strong>：KB 检索、记忆召回、当前时间这些"每轮都变"的内容，被<em>故意</em>踢出 system prompt，改挂到 history 之后的当轮 user 消息里——因为 system 一变，其后整段 history 在前缀缓存里就全部 miss；把易变内容下沉，<code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">system + history</code> 才能保持成一个稳定可缓存的前缀（省 token、也降延迟，注释把这套布局叫 frozen-snapshot，冻结快照）。<strong style="color: #3f8fd4;">写什么是协议，写在哪儿、什么时候写，也是协议。</strong></p>
+<p style="margin: 8px 0;">这一层还藏着两个"不写字"的决定——一个字的内容都不改，却同样是协议的一部分。其一，这条几千字 system prompt 的<strong style="color:var(--article-accent, #3f8fd4);">最外层</strong>不是那份固定人设，而是一顶运行时才戴上的"模式帽子"：auto 模式下，引擎优先看这一轮召回的<strong style="color:var(--article-accent, #3f8fd4);">头号 Skill</strong> 在 frontmatter 里声明的 <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">preferred_mode</code>，据此给整条 prompt 定调。也就是说，指令栈的栈顶是当轮<strong style="color:var(--article-accent, #3f8fd4);">动态选出来的</strong>，选谁取决于 context 命中了哪张 Skill——前面那个只挑 Top-K 的 Skill 选择器，挑出的头号技能回过头来给整条协议栈定了调。其二，是每一层<strong style="color:var(--article-accent, #3f8fd4);">摆在消息数组的哪个位置</strong>：KB 检索、记忆召回、当前时间这些"每轮都变"的内容，被<em>故意</em>踢出 system prompt，改挂到 history 之后的当轮 user 消息里——因为 system 一变，其后整段 history 在前缀缓存里就全部 miss；把易变内容下沉，<code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">system + history</code> 才能保持成一个稳定可缓存的前缀（省 token、也降延迟，注释把这套布局叫 frozen-snapshot，冻结快照）。<strong style="color:var(--article-accent, #3f8fd4);">写什么是协议，写在哪儿、什么时候写，也是协议。</strong></p>
 
-<p style="margin: 8px 0;">还有一层容易被忽略的"prompt"：工具的 schema。每个工具的 description 和参数说明，本质是写给模型看的 man page——解题工具里有个布尔参数叫 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">method_diversity</code>，它的 description 是直接给模型读的英文原文——"solve with TWO deliberately different methods and cross-check them"（用两种刻意不同的方法解题、再交叉验证），后半句 "catches systematic method errors" 一句道破用途：专抓那种一条道走到黑、系统性的方法错误，平局交给代码验证器来断。模型会不会用好一个工具，一大半取决于这段话写没写清楚。把工具描述当 API 文档来写、当接口契约来评审，是 Prompt Engineering 下沉之后最"工程"的一块。契约的另一半是<strong style="color: #3f8fd4;">输出格式</strong>：上一篇那个只许回一个词的风险裁判——prompt 里写着 "Reply with EXACTLY one word"——就是最小可用的结构化输出协议。输入有 schema，输出也有 schema，两头都钉死，prompt 才算从"对话"变成了"接口"。</p>
+<p style="margin: 8px 0;">还有一层容易被忽略的"prompt"：工具的 schema。每个工具的 description 和参数说明，本质是写给模型看的 man page——解题工具里有个布尔参数叫 <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">method_diversity</code>，它的 description 是直接给模型读的英文原文——"solve with TWO deliberately different methods and cross-check them"（用两种刻意不同的方法解题、再交叉验证），后半句 "catches systematic method errors" 一句道破用途：专抓那种一条道走到黑、系统性的方法错误，分歧交给代码验证器来断。模型会不会用好一个工具，一大半取决于这段话写没写清楚。把工具描述当 API 文档来写、当接口契约来评审，是 Prompt Engineering 下沉之后最"工程"的一块。契约的另一半是<strong style="color:var(--article-accent, #3f8fd4);">输出格式</strong>：上一篇那个只许回一个词的风险裁判——prompt 里写着 "Reply with EXACTLY one word"——就是最小可用的结构化输出协议。输入有 schema，输出也有 schema，两头都钉死，prompt 才算从"对话"变成了"接口"。</p>
 
-<h2 style="font-size: 19px; font-weight: 700; color: #12324c; margin: 32px 0 12px; padding-left: 10px; border-left: 4px solid #5fb3ea;">协议层管不了的事，以及还欠的账</h2>
+<h2 style="font-size: 19px; font-weight: 700; color:var(--article-ink, #12324c); margin: 32px 0 12px; padding-left: 10px; border-left: 4px solid #5fb3ea;">协议层管不了的事，以及还欠的账</h2>
 
-<p style="margin: 8px 0;">把 prompt 抬到协议层，不等于它无所不能——恰恰相反，层写清楚了，边界也就清楚了。运行手册里写"不要做 X"，模型大概率照做，但"大概率"三个字在安全语境里等于零：真正兜底的是<a href="https://mp.weixin.qq.com/s/kDi-LSWB4UHtS_6jbTfvow" style="color: #3f8fd4; text-decoration: none; border-bottom: 1px dashed #3f8fd4;">上一篇</a>那套权限闸和裁判家族——审批弹窗不看模型的礼貌程度，C1 守卫不听模型的口头汇报。同理，<a href="https://mp.weixin.qq.com/s/H6BoZUcQfBBqh-ScXQyTWw" style="color: #3f8fd4; text-decoration: none; border-bottom: 1px dashed #3f8fd4;">检索那篇</a>结尾焊死的"资料不足请如实告知"也是软约束，真护栏是评测发版门。还有一类风险干脆是冲着协议栈本身来的：外部文本会往指令里夹私货（prompt injection），所以引擎对用户输入和检索召回的正文另设了一道"明显恶意"的快速拦截。注意这道防线的形态——它是代码闸，不是在 prompt 里恳求模型"别听坏话"：<strong style="color: #3f8fd4;">对付注入，协议层自己就是被攻击面，救兵必须来自层外</strong>。三篇连起来是一个完整分工：<strong style="color: #3f8fd4;">软约束定义期望，硬闸兜住失败——prompt 负责让系统大部分时候做对，Harness 负责它做错时代价可控。</strong>只有软没有硬是裸奔，只有硬没有软是又贵又蠢。</p>
+<p style="margin: 8px 0;">把 prompt 抬到协议层，不等于它无所不能——恰恰相反，层写清楚了，边界也就清楚了。运行手册里写"不要做 X"，模型大概率照做，但"大概率"三个字在安全语境里等于零：真正兜底的是<a href="https://mp.weixin.qq.com/s/kDi-LSWB4UHtS_6jbTfvow" style="color:var(--article-accent, #3f8fd4); text-decoration: none; border-bottom: 1px dashed #3f8fd4;">上一篇</a>那套权限闸和裁判家族——审批弹窗不看模型的礼貌程度，C1 守卫不听模型的口头汇报。同理，<a href="https://mp.weixin.qq.com/s/H6BoZUcQfBBqh-ScXQyTWw" style="color:var(--article-accent, #3f8fd4); text-decoration: none; border-bottom: 1px dashed #3f8fd4;">检索那篇</a>结尾焊死的"资料不足请如实告知"也是软约束，真护栏是评测发版门。还有一类风险干脆是冲着协议栈本身来的：外部文本会往指令里夹私货（prompt injection），所以引擎对用户输入和检索召回的正文另设了一道"明显恶意"的快速拦截。注意这道防线的形态——它是代码闸，不是在 prompt 里恳求模型"别听坏话"：<strong style="color:var(--article-accent, #3f8fd4);">对付注入，协议层自己就是被攻击面，救兵必须来自层外</strong>。三篇连起来是一个完整分工：<strong style="color:var(--article-accent, #3f8fd4);">软约束定义期望，硬闸兜住失败——prompt 负责让系统大部分时候做对，Harness 负责它做错时代价可控。</strong>只有软没有硬是裸奔，只有硬没有软是又贵又蠢。</p>
 
-<p style="margin: 8px 0;">欠的账也按惯例摊开。拆分本身有回归测试钉着，但<strong style="color: #3f8fd4;">人设文案的行为影响没有 eval</strong>——改一句"我的脾气"，没有 golden 集告诉你模型的哪些行为跟着变了；SOUL.md 也还没有版本治理，用户改崩了没有 diff 历史可回滚（放在 git 仓库里自己管是个办法，但产品没替你管）。Prompt 享受了代码的一半待遇：有测试、有 bug 追踪、有包管理器（技能市场），桌面端还有专门的 Prompt 管理页收纳常用指令——但还缺评测和版本化。<strong style="color: #3f8fd4;">包管理器有了，semver 和 CI 还没跟上</strong>。业界不缺先行者——DSPy 一类框架已经干脆把 prompt 当可编译的程序处理。这半步，是这一层接下来的路。</p>
+<p style="margin: 8px 0;">欠的账也按惯例摊开。拆分本身有回归测试钉着，但<strong style="color:var(--article-accent, #3f8fd4);">人设文案的行为影响没有 eval</strong>——改一句"我的脾气"，没有 golden 集告诉你模型的哪些行为跟着变了；SOUL.md 也还没有版本治理，用户改崩了没有 diff 历史可回滚（放在 git 仓库里自己管是个办法，但产品没替你管）。Prompt 享受了代码的一半待遇：有测试、有 bug 追踪、有包管理器（技能市场），桌面端还有专门的 Prompt 管理页收纳常用指令——但还缺评测和版本化。<strong style="color:var(--article-accent, #3f8fd4);">包管理器有了，semver 和 CI 还没跟上</strong>。业界不缺先行者——DSPy 一类框架已经干脆把 prompt 当可编译的程序处理。这半步，是这一层接下来的路。</p>
 
-<h2 style="font-size: 19px; font-weight: 700; color: #12324c; margin: 32px 0 12px; padding-left: 10px; border-left: 4px solid #5fb3ea;">收官：外推了三层，最后一公里还是文本</h2>
+<h2 style="font-size: 19px; font-weight: 700; color:var(--article-ink, #12324c); margin: 32px 0 12px; padding-left: 10px; border-left: 4px solid #5fb3ea;">收官：外推了三层，最后一公里还是文本</h2>
 
-<p style="margin: 8px 0;">这个系列在纲领篇立过一条主线：四代范式是一场控制面外推——从措辞，到信息选择权，到过程控制权，再到发起权和验收权，每往外推一层，你就把一层决策交给系统。写完四篇回头看，这条线的终点有个不小的讽刺：<strong style="color: #3f8fd4;">控制面推得再远，每一层约束落地的最后一公里，仍然是一段写给模型看的文本。</strong>监工的判定标准是 prompt，裁判的评分量表是 prompt，检索出口那句"如实告知"是 prompt，连"照着做，别照着念"也是 prompt。第一代范式没有被后三代取代，它成了后三代的地基。</p>
+<p style="margin: 8px 0;">这个系列在纲领篇立过一条主线：四代范式是一场控制面外推——从措辞，到信息选择权，到过程控制权，再到发起权和验收权，每往外推一层，你就把一层决策交给系统。写完四篇回头看，这条线的终点有个不小的讽刺：<strong style="color:var(--article-accent, #3f8fd4);">控制面推得再远，每一层约束落地的最后一公里，仍然是一段写给模型看的文本。</strong>监工的判定标准是 prompt，裁判的评分量表是 prompt，检索出口那句"如实告知"是 prompt，连"照着做，别照着念"也是 prompt。第一代范式没有被后三代取代，它成了后三代的地基。</p>
 
-<p style="margin: 8px 0;">所以那些年年重发的讣告也不算全错，只是把<strong style="color: #3f8fd4;">"沉底"误诊成了"死亡"</strong>。一门手艺不再被单独谈论，有时候不是因为它消失了，而是因为它变成了地基——没人天天夸地基，但每一层都站在它上面。</p>
+<p style="margin: 8px 0;">所以那些年年重发的讣告也不算全错，只是把<strong style="color:var(--article-accent, #3f8fd4);">"沉底"误诊成了"死亡"</strong>。一门手艺不再被单独谈论，有时候不是因为它消失了，而是因为它变成了地基——没人天天夸地基，但每一层都站在它上面。</p>
 
-<p style="margin: 8px 0;">四篇合在一起，等式终于写全了：<strong style="color: #3f8fd4;">Agent = Prompt × Context × Harness × Loop</strong>——协议定义期望，证据喂给判断，马具管住行动，回路兑现目标。每一层，这个开源仓库里都有真代码可看；每一层做到哪、没做到哪，四篇里也都标了。系列到这里收官。牛马继续干活，我们继续打马具。</p>
+<p style="margin: 8px 0;">四篇合在一起，等式终于写全了：<strong style="color:var(--article-accent, #3f8fd4);">Agent = Prompt × Context × Harness × Loop</strong>——协议定义期望，证据喂给判断，马具管住行动，回路兑现目标。每一层，这个开源仓库里都有真代码可看；每一层做到哪、没做到哪，四篇里也都标了。系列到这里收官。牛马继续干活，我们继续打马具。</p>
 
-<hr style="border: none; border-top: 1px solid #e0ecf5; margin: 28px 0;"/>
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
 
-<p style="margin: 16px 0 8px; font-size: 14px; color: #5f7b9c;"><strong>四代范式系列 · 全集</strong></p>
+<p style="margin: 16px 0 8px; font-size: 14px; color:var(--article-secondary, #5f7b9c);"><strong>四代范式系列 · 全集</strong></p>
 <p style="margin: 4px 0; font-size: 14px; line-height: 2.1;">
-▸ <span style="display: inline-block; font-size: 12px; padding: 0 8px; background: #edf7ff; color: #3f8fd4; border-radius: 10px; font-weight: 700;">Loop · 纲领</span>&nbsp;<a href="https://mp.weixin.qq.com/s/h60ymjjj3eF9hQyhl0jVcQ" style="color: #3f8fd4; text-decoration: none;">扒开一个开源 Agent 的源码，从 Prompt 到 Loop 逐层对完这四代范式</a><br/>
-▸ <span style="display: inline-block; font-size: 12px; padding: 0 8px; background: #edf7ff; color: #3f8fd4; border-radius: 10px; font-weight: 700;">Context · 资料侧</span>&nbsp;<a href="https://mp.weixin.qq.com/s/H6BoZUcQfBBqh-ScXQyTWw" style="color: #3f8fd4; text-decoration: none;">RAG 真正的难点不是召回，是把"像答案的噪声"挡在 Loop 外面</a><br/>
-▸ <span style="display: inline-block; font-size: 12px; padding: 0 8px; background: #edf7ff; color: #3f8fd4; border-radius: 10px; font-weight: 700;">Context · 记忆侧</span>&nbsp;<a href="https://mp.weixin.qq.com/s/YvGGPBZX0V7R6-09unnrcQ" style="color: #3f8fd4; text-decoration: none;">会"做梦"的 Agent 记忆：河蟹的梦在你本机</a><br/>
-▸ <span style="display: inline-block; font-size: 12px; padding: 0 8px; background: #edf7ff; color: #3f8fd4; border-radius: 10px; font-weight: 700;">Harness · 马具</span>&nbsp;<a href="https://mp.weixin.qq.com/s/kDi-LSWB4UHtS_6jbTfvow" style="color: #3f8fd4; text-decoration: none;">"赛博牛马"的聪明是模型给的，敢让它干活的底气是"马具"给的</a><br/>
-▸ <span style="display: inline-block; font-size: 12px; padding: 0 8px; background: #3f8fd4; color: #ffffff; border-radius: 10px; font-weight: 700;">Prompt · 收官</span>&nbsp;<span style="color: #12324c;">本篇</span>
+▸ <span style="display: inline-block; font-size: 12px; padding: 0 8px; background:var(--article-panel, #edf7ff); color:var(--article-accent, #3f8fd4); border-radius: 10px; font-weight: 700;">Loop · 纲领</span>&nbsp;<a href="https://mp.weixin.qq.com/s/h60ymjjj3eF9hQyhl0jVcQ" style="color:var(--article-accent, #3f8fd4); text-decoration: none;">扒开一个开源 Agent 的源码，从 Prompt 到 Loop 逐层对完这四代范式</a><br/>
+▸ <span style="display: inline-block; font-size: 12px; padding: 0 8px; background:var(--article-panel, #edf7ff); color:var(--article-accent, #3f8fd4); border-radius: 10px; font-weight: 700;">Context · 资料侧</span>&nbsp;<a href="https://mp.weixin.qq.com/s/H6BoZUcQfBBqh-ScXQyTWw" style="color:var(--article-accent, #3f8fd4); text-decoration: none;">RAG 真正的难点不是召回，是把"像答案的噪声"挡在 Loop 外面</a><br/>
+▸ <span style="display: inline-block; font-size: 12px; padding: 0 8px; background:var(--article-panel, #edf7ff); color:var(--article-accent, #3f8fd4); border-radius: 10px; font-weight: 700;">Context · 记忆侧</span>&nbsp;<a href="https://mp.weixin.qq.com/s/YvGGPBZX0V7R6-09unnrcQ" style="color:var(--article-accent, #3f8fd4); text-decoration: none;">会"做梦"的 Agent 记忆：河蟹的梦在你本机</a><br/>
+▸ <span style="display: inline-block; font-size: 12px; padding: 0 8px; background:var(--article-panel, #edf7ff); color:var(--article-accent, #3f8fd4); border-radius: 10px; font-weight: 700;">Harness · 马具</span>&nbsp;<a href="https://mp.weixin.qq.com/s/kDi-LSWB4UHtS_6jbTfvow" style="color:var(--article-accent, #3f8fd4); text-decoration: none;">"赛博牛马"的聪明是模型给的，敢让它干活的底气是"马具"给的</a><br/>
+▸ <span style="display: inline-block; font-size: 12px; padding: 0 8px; background: #3f8fd4; color: #ffffff; border-radius: 10px; font-weight: 700;">Prompt · 收官</span>&nbsp;<span style="color:var(--article-ink, #12324c);">本篇</span>
 </p>
 
-<p style="margin: 14px 0 8px; font-size: 14px; color: #5f7b9c;"><strong>更多往期</strong></p>
+<p style="margin: 14px 0 8px; font-size: 14px; color:var(--article-secondary, #5f7b9c);"><strong>更多往期</strong></p>
 <p style="margin: 4px 0; font-size: 14px; line-height: 2;">
-▸ <a href="https://mp.weixin.qq.com/s/2tHlfZYHxQdQwvVZQEoLRg" style="color: #3f8fd4; text-decoration: none;">我把前 leader 蒸馏成了河蟹 AI Skill（附 Skill 蒸馏教程）</a><br/>
-▸ <a href="https://mp.weixin.qq.com/s/EvQT0VqH9ep6LXo89ZM-fw" style="color: #3f8fd4; text-decoration: none;">河蟹 AI 的"赛博牛马"养成记：把一句话编译成会自愈的沙箱脚本</a>
+▸ <a href="https://mp.weixin.qq.com/s/2tHlfZYHxQdQwvVZQEoLRg" style="color:var(--article-accent, #3f8fd4); text-decoration: none;">我把前 leader 蒸馏成了河蟹 AI Skill（附 Skill 蒸馏教程）</a><br/>
+▸ <a href="https://mp.weixin.qq.com/s/EvQT0VqH9ep6LXo89ZM-fw" style="color:var(--article-accent, #3f8fd4); text-decoration: none;">河蟹 AI 的"赛博牛马"养成记：把一句话编译成会自愈的沙箱脚本</a>
 </p>
 
-<p style="margin: 16px 0 8px; font-size: 14px; color: #5f7b9c;"><strong>参考来源</strong></p>
-<p style="margin: 4px 0; font-size: 13px; color: #7b8fa3; line-height: 2;">
-· OpenAI，<a href="https://model-spec.openai.com" style="color: #7b8fa3;">Model Spec</a> —— 指令优先级栈 / Chain of Command（Root &gt; System &gt; Developer &gt; User &gt; Guideline）<br/>
-· Anthropic，公开发布的 Claude 系统提示词与 prompt engineering 官方文档<br/>
+<p style="margin: 16px 0 8px; font-size: 14px; color:var(--article-secondary, #5f7b9c);"><strong>参考来源</strong></p>
+<p style="margin: 4px 0; font-size: 13px; color:var(--article-muted, #7b8fa3); line-height: 2;">
+· OpenAI，<a href="https://model-spec.openai.com" style="color:var(--article-muted, #7b8fa3);">Model Spec</a> —— 指令优先级栈 / Chain of Command（Root &gt; System &gt; Developer &gt; User &gt; Guideline）<br/>
+· Kalai 等，Why Language Models Hallucinate（2025）—— 预训练统计误差 + 主流评测奖励猜测、惩罚不确定性<br/>
+· OpenAI，Sycophancy in GPT-4o（2025）—— 短期反馈过重会把模型推向过度支持但不真诚的回答<br/>
+· Anthropic 等，Towards Understanding Sycophancy in Language Models（2023）—— 人类偏好与偏好模型会在一部分场景里奖励迎合性回答<br/>
+· Anthropic，Claude system prompts 与 prompt engineering 官方文档<br/>
 · Andrej Karpathy，X（2023-01），"The hottest new programming language is English"<br/>
-· 2023 年至今持续的 "Prompt Engineering Is Dead" 讨论潮（2026 年上半年 DEV Community / Towards AI / Medium 等仍有多篇同名标题文章；中文社区同款问句已成标题模板）<br/>
-· Claude Code 的 CLAUDE.md 与 Agent Skills（SKILL.md）——prompt 文件化的行业实践<br/>
+· 2023 年至今持续的 "Prompt Engineering Is Dead" 讨论潮<br/>
+· Anthropic Claude Code，CLAUDE.md 与 Agent Skills（SKILL.md） —— prompt 文件化的行业实践<br/>
 · DSPy —— 把 prompt 作为可编译程序处理的框架方向<br/>
-· 本文全部河蟹侧机制核验于 2026-07-04，对应仓库 main 分支源码
+· 本文发布前文字与链接复核于 2026-07-05；河蟹侧机制源码核验于 2026-07-04，对应仓库 main 分支源码
 </p>
 
-<hr style="border: none; border-top: 1px solid #e0ecf5; margin: 28px 0 16px;"/>
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0 16px;"/>
 
-<p style="text-align: center; color: #7b8fa3; font-size: 13px; margin: 16px 0 0; line-height: 2;">
-<strong style="color: #12324c; font-size: 14px;">HexClaw 河蟹 AI</strong><br/>
-本地部署 · 数据私有 · 开源免费<br/>
-<span style="color: #5fb3ea;">官网 hexclaw.net</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span style="color: #5fb3ea;">GitHub hexagon-codes</span><br/>
-<span style="color: #5fb3ea;">微博 @HexClaw</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span style="color: #5fb3ea;">X @hexclawapp</span><br/>
-<span style="color: #999;">邮箱：ai@hexclaw.net</span>
+<p class="blog-brand-footer" data-blog-brand-footer="zh" data-blog-brand-overrides="{}" style="text-align: center; color: var(--article-muted, #7b8fa3); font-size: 13px; margin: 16px 0 0; line-height: 2;">
+<strong style="color: var(--article-ink, #12324c); font-size: 14px;">HexClaw 河蟹 AI</strong><br/>
+本地云端均可部署 · 数据自主掌控 · 软件开源免费<br/>
+<a href="https://hexclaw.net" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">官网 <bdi dir="ltr">hexclaw.net</bdi></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://github.com/hexagon-codes" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">GitHub <bdi dir="ltr">hexagon-codes</bdi></a><br/>
+<a href="https://weibo.com/u/4097207240" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">微博 <bdi dir="ltr">@HexClaw</bdi></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">X <bdi dir="ltr">@hexclawapp</bdi></a><br/>
+<a href="mailto:ai@hexclaw.net" style="color: var(--article-muted, #999); text-decoration: none;">邮箱：<bdi dir="ltr">ai@hexclaw.net</bdi></a>
 </p>
     </article>
 
@@ -271,33 +280,13 @@
     <span class="footer-copy">&copy; 2025&ndash;2026 hexagon-codes</span>
   </div>
 </footer>
-<script src="../../assets/js/home.js"></script>
+<script src="../../assets/js/theme.js?v=2e4a1828feef"></script>
+<script src="../../assets/js/docs-nav.js?v=5a103861aec2"></script>
 <button type="button" class="back-to-top" id="backToTop" aria-label="返回顶部" title="返回顶部">
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg>
   <span>顶部</span>
 </button>
-<script>
-(function() {
-  const btn = document.getElementById('backToTop');
-  if (!btn) return;
-  let ticking = false;
-  window.addEventListener('scroll', function() {
-    if (!ticking) {
-      window.requestAnimationFrame(function() {
-        if (window.scrollY > 320) {
-          btn.classList.add('is-visible');
-        } else {
-          btn.classList.remove('is-visible');
-        }
-        ticking = false;
-      });
-      ticking = true;
-    }
-  }, { passive: true });
-  btn.addEventListener('click', function() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-})();
-</script>
+
+<script src="../../assets/js/blog.js?v=c72e1db5a6ec"></script>
 </body>
 </html>

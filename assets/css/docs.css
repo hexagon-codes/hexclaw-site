@@ -703,6 +703,11 @@ kbd {
   box-shadow: 0 12px 30px rgba(var(--accent-rgb), 0.06);
 }
 
+/* 深色主题下图注和窄屏使用路线继承浅字，截图容器同步使用主题卡片底色。 */
+[data-theme="dark"] .doc-shot {
+  background: var(--bg-card);
+}
+
 .doc-shot figcaption {
   margin-top: 12px;
   padding: 0 6px 2px;
@@ -2592,6 +2597,15 @@ body.docs-hub {
   box-shadow: 0 4px 14px rgba(46, 101, 136, 0.25);
 }
 
+/* 深色主题的主按钮底色较浅，默认用深字；悬浮切深底时再恢复浅字。 */
+[data-theme="dark"] :is(.about-btn-primary, .changelog-btn-primary) {
+  color: var(--bg) !important;
+}
+
+[data-theme="dark"] :is(.about-btn-primary, .changelog-btn-primary):hover {
+  color: var(--text-primary) !important;
+}
+
 .about-btn-subtle {
   display: inline-flex;
   align-items: center;
@@ -2915,6 +2929,8 @@ body.docs-hub {
 }
 
 @media (max-width: 1024px) {
+  .about-page .content-main > ul:first-of-type li:nth-child(-n+4),
+  .about-page .content-main > ul:first-of-type li:nth-child(n+5),
   .about-page .about-repos li:nth-child(-n+4),
   .about-page .about-repos li:nth-child(n+5) {
     grid-column: span 6;
@@ -2922,12 +2938,24 @@ body.docs-hub {
   .about-arch-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+  .about-page .content-main > ul:last-of-type,
   .about-page .about-contact {
     grid-template-columns: 1fr;
+  }
+  .repo-card-head,
+  .repo-meta,
+  .about-hero-links {
+    flex-wrap: wrap;
+  }
+  .about-page .about-repos li,
+  .about-page .about-contact li {
+    min-width: 0;
   }
 }
 
 @media (max-width: 640px) {
+  .about-page .content-main > ul:first-of-type li:nth-child(-n+4),
+  .about-page .content-main > ul:first-of-type li:nth-child(n+5),
   .about-page .about-repos li:nth-child(-n+4),
   .about-page .about-repos li:nth-child(n+5) {
     grid-column: span 12;
@@ -2938,6 +2966,10 @@ body.docs-hub {
   .about-page .page-lead-top {
     flex-direction: column;
     gap: 18px;
+  }
+  /* 纵向排列时按内容定高，横向布局的 basis 不再作为高度。 */
+  .about-page .page-lead-titles {
+    flex-basis: auto;
   }
 }
 
@@ -3392,4 +3424,3 @@ body.docs-hub {
     font-size: 12px;
   }
 }
-

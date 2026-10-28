@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="ug" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/favicon-32.png">
+<title>تېخنىكا بىلوگى ۋە ئىنژېنېرلىق ئەمەلىيىتى | HexClaw</title>
+<meta name="description" content="HexClaw رەسمىي تېخنىكا بىلوگى: Agent نىڭ تۆت ئىنژېنېرلىق ئەندىزىسى، كۆرسەتمە كېلىشىمى، ئەستە ساقلاش، ئۆزلۈكىدىن ئەسلىگە كېلىدىغان قۇم ساندۇقى، يەرلىك مودېل ۋە K12 تاپشۇرۇق يېتەكچىلىكى.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:site_name" content="ھېشى AI">
+<meta property="og:type" content="website">
+<meta property="og:title" content="تېخنىكا بىلوگى ۋە ئىنژېنېرلىق ئەمەلىيىتى | HexClaw">
+<meta property="og:description" content="HexClaw رەسمىي تېخنىكا بىلوگى: Agent نىڭ تۆت ئىنژېنېرلىق ئەندىزىسى، كۆرسەتمە كېلىشىمى، ئەستە ساقلاش، ئۆزلۈكىدىن ئەسلىگە كېلىدىغان قۇم ساندۇقى، يەرلىك مودېل ۋە K12 تاپشۇرۇق يېتەكچىلىكى.">
+<meta property="og:url" content="https://hexclaw.net/ug/blog/">
+<meta property="og:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta property="og:image:alt" content="ھېشى AI بەلگىسى">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta property="og:locale" content="ug_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="تېخنىكا بىلوگى ۋە ئىنژېنېرلىق ئەمەلىيىتى | HexClaw">
+<meta name="twitter:description" content="HexClaw رەسمىي تېخنىكا بىلوگى: Agent نىڭ تۆت ئىنژېنېرلىق ئەندىزىسى، كۆرسەتمە كېلىشىمى، ئەستە ساقلاش، ئۆزلۈكىدىن ئەسلىگە كېلىدىغان قۇم ساندۇقى، يەرلىك مودېل ۋە K12 تاپشۇرۇق يېتەكچىلىكى.">
+<meta name="twitter:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta name="twitter:image:alt" content="ھېشى AI بەلگىسى">
+<link rel="canonical" href="https://hexclaw.net/ug/blog/">
+<link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/">
+<link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/">
+<link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/">
+<link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "HexClaw تېخنىكا بىلوگى",
+  "url": "https://hexclaw.net/ug/blog/",
+  "inLanguage": "ug",
+  "description": "HexClaw رەسمىي تېخنىكا بىلوگى: Agent نىڭ تۆت ئىنژېنېرلىق ئەندىزىسى، كۆرسەتمە كېلىشىمى، ئەستە ساقلاش، ئۆزلۈكىدىن ئەسلىگە كېلىدىغان قۇم ساندۇقى، يەرلىك مودېل ۋە K12 تاپشۇرۇق يېتەكچىلىكى.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "hexagon-codes",
+    "url": "https://hexclaw.net/",
+    "@id": "https://hexclaw.net/#organization"
+  },
+  "@id": "https://hexclaw.net/ug/blog/#webpage"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "ھېشى AI", "item": "https://hexclaw.net/ug/"},
+    {"@type": "ListItem", "position": 2, "name": "تېخنىكا بىلوگى", "item": "https://hexclaw.net/ug/blog/"}
+  ],
+  "@id": "https://hexclaw.net/ug/blog/#breadcrumb"
+}
+</script>
+<link rel="stylesheet" href="../../assets/css/docs-eb2895dd79c5.css">
+<link rel="stylesheet" href="../../assets/css/blog-a8e5008ac3d1.css">
+</head>
+<body class="blog-page blog-hub-page">
+<a href="#main" class="skip-link">ئاساسلىق مەزمۇنغا ئاتلاش</a>
+<nav class="tn topnav" id="nav">
+  <a href="/ug/" class="tn-b topnav-brand"><img width="72" height="72" src="../../assets/brand/hexclaw-icon-72.png" class="tn-l topnav-logo" alt="ھېشى AI"><span class="tn-n topnav-name">ھېشى AI</span></a>
+  <button type="button" class="tn-burger topnav-burger" aria-label="تىزىملىك" aria-expanded="false" aria-controls="primary-navigation"><span></span><span></span><span></span></button><div class="tn-r topnav-links" id="primary-navigation"><a href="/ug/">باش بەت</a><a href="/ug/#cases">ئىشلىتىش كۆرۈنۈشلىرى</a><a href="/ug/#features">ئىقتىدارلار</a><a href="/ug/#quickstart">باشلاش</a><a href="/ug/#ecosystem">ئوچۇق ئېكولوگىيە</a><a href="/ug/blog/" class="is-active">تېخنىكا بىلوگى</a><a href="/ug/docs/">ھۆججەتلەر مەركىزى</a><div class="lang-menu" data-lang-menu><button type="button" class="lang-trigger" aria-haspopup="menu" aria-expanded="false" aria-label="تىل ئالماشتۇرۇش"><svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 0 20"></path><path d="M12 2a15.3 15.3 0 0 0 0 20"></path></svg><span class="lang-current" lang="zh-CN" dir="ltr">维吾尔语</span><svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="lang-menu-list" role="menu"><a href="/zh/blog/" role="menuitem">中文</a><a href="/en/blog/" role="menuitem">English</a><a href="/ug/blog/" role="menuitem" class="is-active" aria-current="true" lang="zh-CN" dir="ltr">维吾尔语</a></div></div><button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="ئۇسلۇب ئالماشتۇرۇش"><svg class="ti-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="ti-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="nav-cta">GitHub <span class="nav-star-badge" id="gh-stars">&#9733;</span></a></div>
+</nav>
+
+<main id="main" class="blog-main">
+  <header class="blog-hub-header">
+    <div class="blog-hub-badge">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+      HexClaw رەسمىي تېخنىكا بىلوگى
+    </div>
+    <h1 class="blog-hub-title">ئوچۇق كودلۇق قۇرۇلما · تۆت ئەندىزە · ئەمەلىي تەجرىبە</h1>
+    <p class="blog-hub-desc">مەنبە كود ئارقىلىق Agent نى چۈشىنىڭ: تۆت ئىنژېنېرلىق ئەندىزىسى، كېلىشىم قاتلاملىرى، ئەستە ساقلاش، ئۆزلۈكىدىن ئەسلىگە كېلىدىغان قۇم ساندۇقى ۋە ئەمەلىي قوللىنىش. خەنزۇچە ئەسلى ماقالىلەر «hexclaw» ئۈندىدار ئاممىۋى ھېساباتىدا ئېلان قىلىنىدۇ (ID: hexclaw).</p>
+
+    <div class="blog-filter-bar" role="tablist" aria-label="ماقالىلەرنى تۈر بويىچە سۈزۈش">
+      <button type="button" class="blog-filter-btn is-active" data-filter="all" role="tab" aria-selected="true">
+        ھەممىسى <span class="blog-filter-count">18</span>
+      </button>
+      <button type="button" class="blog-filter-btn" data-filter="paradigms" role="tab" aria-selected="false">
+        Agent نىڭ تۆت ئەندىزىسى <span class="blog-filter-count">4</span>
+      </button>
+      <button type="button" class="blog-filter-btn" data-filter="deep-dive" role="tab" aria-selected="false">
+        يادرولۇق سىستېمىلار <span class="blog-filter-count">6</span>
+      </button>
+      <button type="button" class="blog-filter-btn" data-filter="architecture" role="tab" aria-selected="false">
+        قۇرۇلما ۋە ئىنژېنېرلىق <span class="blog-filter-count">4</span>
+      </button>
+      <button type="button" class="blog-filter-btn" data-filter="practice" role="tab" aria-selected="false">
+        قوللىنىش ۋە ئەمەلىيەت <span class="blog-filter-count">4</span>
+      </button>
+    </div>
+  </header>
+
+  <div class="blog-stream" id="blog-stream">
+    <article class="blog-row" data-category="practice">
+      <div class="blog-row-top"><div class="blog-row-tags"><span class="blog-badge-series">K12 ھەقىقىي مىسالى</span><span class="blog-badge-cat">قوللىنىش ۋە ئەمەلىيەت</span></div><div class="blog-row-date">#18</div></div>
+      <h2 class="blog-row-title"><a href="/ug/blog/k12-fraction-case" style="color: inherit; text-decoration: none;">4.8 TB دىن 12 TB قانداق چىقىدۇ؟ ئالتىنچى سىنىپ كەسىر مەسىلىسىنى ئۇستازچە چۈشەندۈرۈش</a></h2>
+      <p class="blog-row-desc">DingTalk تا تاپشۇرۇق چۈشەندۈرۈش دوكلاتىنى تاپشۇرۇۋېلىشتىن، سىزما بىلەن ساننى باغلاش ۋە سوقراتچە سوئاللارنى بالىنىڭ ئۈستىلىگە ئېلىپ بېرىشكىچە. قولدا تەكشۈرۈلگەن، شەخسىي ئۇچۇرى يوشۇرۇلغان ھەقىقىي مىسال ئارقىلىق ئۈچ خىل يېشىش ئۇسۇلى، ئاتا-ئانىلارنىڭ سوئاللىرى ۋە ھەر بىر بالىنى ئايرىم يېتەكلەشنىڭ چېگراسى چۈشەندۈرۈلىدۇ.</p>
+      <div class="blog-row-foot"><span class="blog-row-date">ھەقىقىي نامسىز مىسال · قولدا تەكشۈرۈلگەن</span><a href="/ug/blog/k12-fraction-case" class="blog-row-readlink">ماقالىنى ئوقۇش &rarr;</a></div>
+    </article>
+    <article class="blog-row" data-category="deep-dive">
+      <div class="blog-row-top"><div class="blog-row-tags"><span class="blog-badge-series">بىلىم ئامبىرى ئىنژېنېرلىقى</span><span class="blog-badge-cat">يادرولۇق سىستېمىلار</span></div><div class="blog-row-date">#17</div></div>
+      <h2 class="blog-row-title"><a href="/ug/blog/embedding-schema-migration" style="color: inherit; text-decoration: none;">HexClaw AI نىڭ Embedding يوشۇرۇن Schema سى: بىر دەرسلىكنىڭ ئىندېكسىنى 768 دىن 4096 ئۆلچەمگە ئالماشتۇرۇش</a></h2>
+      <p class="blog-row-desc">Nomic نىڭ 768 ئۆلچىمىدىن Qwen نىڭ 4096 ئۆلچىمىگە: ئىجرا كېلىشىمى، ئىجرا خامچوتى، ئىككى ئەۋلاد ئىندېكس، ئەسلىگە كەلتۈرگىلى بولىدىغان قايتا قۇرۇش ۋە CAS ئارقىلىق ئۆتكۈزۈۋېلىش ئايرىم باشقۇرۇلىدۇ. كونا ئىندېكس كۈچكە ئىگە كونا مەزمۇنغا مۇلازىمەت قىلىدۇ، يېڭى ئىندېكس ئارقا سۇپىدا قۇرۇلىدۇ.</p>
+      <div class="blog-row-foot"><span class="blog-row-date">ئىجرا كېلىشىمى · كۆرسەتكۈچ ئالماشتۇرۇش</span><a href="/ug/blog/embedding-schema-migration" class="blog-row-readlink">ماقالىنى ئوقۇش &rarr;</a></div>
+    </article>
+
+    <article class="blog-row" data-category="paradigms">
+  <div class="blog-row-top">
+    <div class="blog-row-tags">
+      <span class="blog-badge-series">تۆت ئەندىزە · ئاخىرقى بۆلەك</span>
+      <span class="blog-badge-cat">Agent نىڭ تۆت ئەندىزىسى</span>
+    </div>
+    <div class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+      2026-07-06 · #14
+    </div>
+  </div>
+  <h2 class="blog-row-title"><a href="/ug/blog/prompt-engineering" style="color: inherit; text-decoration: none;">HexClaw AI نىڭ Prompt Engineering ى: ھەممە ئۇنى ئۆلدى دەيدۇ، ئەمەلىيەتتە ئۇ تۆۋەنگە چۆكۈپ Agent نىڭ ئەڭ تۆۋەنكى كېلىشىمىگە ئايلاندى</a></h2>
+  <p class="blog-row-desc">Agent نىڭ مىجەزىنى ئۆزگەرتەلەيسىز، ئىنتىزامىنى ئۆزگەرتەلمەيسىز: SOUL × ئىجرا قوللانمىسى × Skill × قورال schema سى؛ سېھىرلىك سۆز ئەمەس، كېلىشىم يېزىڭ. تۆت ئەۋلاد پارادىگما يۈرۈشلۈكىنىڭ ئاخىرى: بىر system prompt نىڭ قاتلاممۇقاتلام قانداق قۇراشتۇرۇلىدىغانلىقى، قايسى چەكلىمىلەرنىڭ prompt قا تايىنىپلا ئىشقا ئاشمايدىغانلىقى ھەقىقىي كود ۋە تۇراقلىقلار بىلەن كۆرسىتىلىدۇ.</p>
+  <div class="blog-row-foot">
+    <span class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      ئوقۇش ۋاقتى: 14 مىنۇت
+    </span>
+    <a href="/ug/blog/prompt-engineering" class="blog-row-readlink">ماقالىنى ئوقۇش &rarr;</a>
+  </div>
+</article>
+<article class="blog-row" data-category="paradigms">
+  <div class="blog-row-top">
+    <div class="blog-row-tags">
+      <span class="blog-badge-series">تۆت ئەندىزە · 3-بۆلەك</span>
+      <span class="blog-badge-cat">Agent نىڭ تۆت ئەندىزىسى</span>
+    </div>
+    <div class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+      2026-07-04 · #13
+    </div>
+  </div>
+  <h2 class="blog-row-title"><a href="/ug/blog/harness-engineering" style="color: inherit; text-decoration: none;">HexClaw نىڭ Harness Engineering ى: «رەقەملىك ئىش ھايۋىنى»نىڭ ئەقلى مودېلدىن، ئۇنى ئىشقا سېلىش ئىشەنچى جابدۇقتىن كېلىدۇ</a></h2>
+  <p class="blog-row-desc">Harness ئەسلىدە ئىش ھايۋىنىغا سېلىنىدىغان جابدۇق — ئىجازەت دەرۋازىسى × ئىجراچىغا ئىشەنمەيدىغان باھالىغۇچىلار × خامچوت ۋە كونترول قىلىنغان مەغلۇبىيەت ئوخشاش مودېل، باشقا جابدۇق بىلەن باشقا سىستېما ئىقتىدارى؛ پەقەت كود پارچىسىنى ئىجرا قىلىشتىن ھەقىقىي تۈرىڭىزنى ئىجرا قىلىشقىچە بىر پۈتۈن جابدۇق بار — ھەممىسى ھەقىقىي مەنبە كود ۋە تۇراقلىق سانلار بىلەن كۆرسىتىلدى</p>
+  <div class="blog-row-foot">
+    <span class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      ئوقۇش ۋاقتى: 12 مىنۇت
+    </span>
+    <a href="/ug/blog/harness-engineering" class="blog-row-readlink">ماقالىنى ئوقۇش &rarr;</a>
+  </div>
+</article>
+<article class="blog-row" data-category="paradigms">
+  <div class="blog-row-top">
+    <div class="blog-row-tags">
+      <span class="blog-badge-series">تۆت ئەندىزە · 2-بۆلەك</span>
+      <span class="blog-badge-cat">Agent نىڭ تۆت ئەندىزىسى</span>
+    </div>
+    <div class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+      2026-07-02 · #12
+    </div>
+  </div>
+  <h2 class="blog-row-title"><a href="/ug/blog/context-engineering" style="color: inherit; text-decoration: none;">HexClaw AI نىڭ Context Engineering ى: RAG نىڭ ھەقىقىي قىيىن يېرى ئەسلەش ئەمەس، «جاۋابقا ئوخشايدىغان شاۋقۇن»نى Loop سىرتىدا تۇتۇش</a></h2>
+  <p class="blog-row-desc">ئىزدەش خاتالىقى پاراڭدا بىر قېتىملىق، Loop دا قوشۇلما ئۆسۈم. شۇڭا ئالتە جەرياننىڭ بەشى ئېلىش قىلىدۇ: سوئال كېڭەيتىش، كەڭ ئەسلەش، نومۇر ئېغىرلىقى قوشۇلغان RRF، مۇناسىۋەت تۆۋەن چېكى، LLM قايتا رەتلەش ۋە چىقىش ئىپادىسى. ھەقىقىي كود ۋە تۇراقلىق قىممەت بىلەن context engineering نى چۈشەندۈرۈش.</p>
+  <div class="blog-row-foot">
+    <span class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      ئوقۇش ۋاقتى: 13 مىنۇت
+    </span>
+    <a href="/ug/blog/context-engineering" class="blog-row-readlink">ماقالىنى ئوقۇش &rarr;</a>
+  </div>
+</article>
+<article class="blog-row" data-category="paradigms">
+  <div class="blog-row-top">
+    <div class="blog-row-tags">
+      <span class="blog-badge-series">تۆت ئەندىزە · ئومۇمىي كۆرۈنۈش</span>
+      <span class="blog-badge-cat">Agent نىڭ تۆت ئەندىزىسى</span>
+    </div>
+    <div class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+      2026-06-28 · #11
+    </div>
+  </div>
+  <h2 class="blog-row-title"><a href="/ug/blog/loop-engineering" style="color: inherit; text-decoration: none;">HexClaw AI نىڭ Loop Engineering ى: ئوچۇق كودلۇق Agent نىڭ كودىنى ئېچىپ، Prompt تىن Loop قىچە تۆت ئەندىزىنى قاتلاممۇقاتلام سېلىشتۇرۇش</a></h2>
+  <p class="blog-row-desc">Prompt → Context → Harness → Loop كونترول يۈزىنى ئۇچۇر قاتلىمىدىن سۆھبەت، سىستېما ۋە ۋاقىت قاتلىمىغا كېڭەيتىدۇ. ھەر بىر قاتلامدا بىر قاتلام قارار ھوقۇقىنى بېرىسىز. قايسىسى تولۇق، قايسىسى تولۇقلىنىۋاتىدۇ ۋە «تامام» نېمە دېگەنلەر ھەقىقىي كود بىلەن كۆرسىتىلىدۇ.</p>
+  <div class="blog-row-foot">
+    <span class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      ئوقۇش ۋاقتى: 15 مىنۇت
+    </span>
+    <a href="/ug/blog/loop-engineering" class="blog-row-readlink">ماقالىنى ئوقۇش &rarr;</a>
+  </div>
+</article>
+<article class="blog-row" data-category="deep-dive">
+  <div class="blog-row-top">
+    <div class="blog-row-tags">
+      <span class="blog-badge-series">ئەستە ساقلاش</span>
+      <span class="blog-badge-cat">يادرولۇق سىستېمىلار</span>
+    </div>
+    <div class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+      2026-06-27 · #10
+    </div>
+  </div>
+  <h2 class="blog-row-title"><a href="/ug/blog/memory-dreaming" style="color: inherit; text-decoration: none;">«چۈش كۆرىدىغان» Agent ئەسلەتمىسى: Claude بىلەن ChatGPT بۇلۇتتا، HexClaw ئۆز كومپيۇتېرىڭىزدا چۈش كۆرىدۇ</a></h2>
+  <p class="blog-row-desc">بۇلۇتقا چىقمايدىغان، git diff بىلەن كۆرگىلى بولىدىغان يەرلىك يولغا قويۇش: ئۈچ قاتلام، ئۈچ ئۆلچەملىك ئەسلەش ۋە ئىككى باسقۇچلۇق چۈش كۆرۈش. بىر «مەن قەيەردە» ئەسلەتمىسىگە ئەگىشىپ، يەرلىك Agent نىڭ ئۇيقۇ دەۋرىدە ئۇچۇرنى قانداق رەتلەيدىغانلىقى، ئايرىپ چىقىرىدىغانلىقى ۋە ئۇنتۇيدىغانلىقىنى كۆرىمىز.</p>
+  <div class="blog-row-foot">
+    <span class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      ئوقۇش ۋاقتى: 11 مىنۇت
+    </span>
+    <a href="/ug/blog/memory-dreaming" class="blog-row-readlink">ماقالىنى ئوقۇش &rarr;</a>
+  </div>
+</article>
+<article class="blog-row" data-category="deep-dive">
+  <div class="blog-row-top">
+    <div class="blog-row-tags">
+      <span class="blog-badge-series">ئاپتوماتلاشتۇرۇش</span>
+      <span class="blog-badge-cat">يادرولۇق سىستېمىلار</span>
+    </div>
+    <div class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+      2026-06-24 · #9
+    </div>
+  </div>
+  <h2 class="blog-row-title"><a href="/ug/blog/cyber-niuma-cron-sandbox" style="color: inherit; text-decoration: none;">HexClaw نىڭ «رەقەملىك ئىش ھايۋىنى»نى يېتىشتۈرۈش خاتىرىسى: بىر جۈملىنى ئۆزىنى ئوڭشايدىغان قۇم ساندۇقى script ىغا تۈزۈپ، 7×24 ئىش قىلدۇرۇش</a></h2>
+  <p class="blog-row-desc">بىر جۈملە تەبىئىي تىلنى ئۆزىنى ئوڭشايدىغان قۇم ساندۇقى script ىغا تۈزۈش، ھەمدە بۇ ئىشنى script ياكى Agent ئىجرا قىلىشىنى ئاپتوماتىك بەلگىلەش.</p>
+  <div class="blog-row-foot">
+    <span class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      ئوقۇش ۋاقتى: 12 مىنۇت
+    </span>
+    <a href="/ug/blog/cyber-niuma-cron-sandbox" class="blog-row-readlink">ماقالىنى ئوقۇش &rarr;</a>
+  </div>
+</article>
+<article class="blog-row" data-category="deep-dive">
+  <div class="blog-row-top">
+    <div class="blog-row-tags">
+      <span class="blog-badge-series">يەرلىك يەكۈن چىقىرىش</span>
+      <span class="blog-badge-cat">يادرولۇق سىستېمىلار</span>
+    </div>
+    <div class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+      2026-04-13 · #5
+    </div>
+  </div>
+  <h2 class="blog-row-title"><a href="/ug/blog/thinking-chain-local-models" style="color: inherit; text-decoration: none;"> HexClaw نىڭ تەپەككۇر جەريانى: Qwen 3.5/Gemma 4/DeepSeek-R1 يەرلىك پىكىر يۈرگۈزۈش مودېللىرىنىڭ ئاخىرقى بىر چاقىرىمىنى تۇتاشتۇرۇش </a></h2>
+  <p class="blog-row-desc">بۇ يىل يەرلىك پىكىر يۈرگۈزۈش مودېللىرى ھەقىقەتەن ئۆزگەردى. مەسىلە كۆپىنچە مودېلنىڭ ئۆزىدە ئەمەس، بەلكى خېرىدارنىڭ بۇ «ئاخىرقى بىر چاقىرىم»نى قانداق تۇتاشتۇرىدىغانلىقىدا: ئېقىملىق تەپەككۇرنى تەھلىل قىلىش، قاتلاپ كۆرسىتىش ۋە پىكىر يۈرگۈزۈش خامچوتىنى كونترول قىلىش.</p>
+  <div class="blog-row-foot">
+    <span class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      ئوقۇش ۋاقتى: 10 مىنۇت
+    </span>
+    <a href="/ug/blog/thinking-chain-local-models" class="blog-row-readlink">ماقالىنى ئوقۇش &rarr;</a>
+  </div>
+</article>
+<article class="blog-row" data-category="deep-dive">
+  <div class="blog-row-top">
+    <div class="blog-row-tags">
+      <span class="blog-badge-series">يەرلىكلەشتۈرۈش ۋە RTL</span>
+      <span class="blog-badge-cat">يادرولۇق سىستېمىلار</span>
+    </div>
+    <div class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+      2026-05-01 · #8
+    </div>
+  </div>
+  <h2 class="blog-row-title"><a href="/ug/blog/uyghur-localization" style="color: inherit; text-decoration: none;">AI Agent نى ئۇيغۇرچە سۆزلەش: HexClaw AI v0.4.0 نىڭ يەرلىكلەشتۈرۈش ئەمەلىيىتى</a></h2>
+  <p class="blog-row-desc">i18n دىن RTL غىچە: 1400 دىن ئارتۇق مەزمۇن ئاچقۇچى، ئومۇمىي RTL bidi قائىدىسى ۋە ئارقا تەرەپ تىل بۇيرۇقى ھەققىدىكى ئىنژېنېرلىق خاتىرىسى. ئۈچ قاتلام تولۇق بولغاندىلا ئاچقاندىنلا ئۇيغۇرچە سۆزلەيدۇ.</p>
+  <div class="blog-row-foot">
+    <span class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      ئوقۇش ۋاقتى: 11 مىنۇت
+    </span>
+    <a href="/ug/blog/uyghur-localization" class="blog-row-readlink">ماقالىنى ئوقۇش &rarr;</a>
+  </div>
+</article>
+<article class="blog-row" data-category="deep-dive">
+  <div class="blog-row-top">
+    <div class="blog-row-tags">
+      <span class="blog-badge-series">Skill سىستېمىسى</span>
+      <span class="blog-badge-cat">يادرولۇق سىستېمىلار</span>
+    </div>
+    <div class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+      2026-04-06 · #4
+    </div>
+  </div>
+  <h2 class="blog-row-title"><a href="/ug/blog/leader-skill-distillation" style="color: inherit; text-decoration: none;"> مەن بۇرۇنقى leader نى HexClaw Skill غا ئايلاندۇردۇم  <span class="u-nobr"> （Skill ئايرىپ ئېلىش دەرسلىكى بىلەن） </span></a></h2>
+  <p class="blog-row-desc">ئىشتىن كەتكەن خىزمەتداشلار ئەمەلىيەتتە يوقالغىنى يوق؛ ئۇلار Token غا ئايرىلىپ، باشقا شەكىلدە يېنىڭىزدا قالدى. چېچىلغاندا Token، يىغىلغاندا Skill. نۆلدىن باشلاپ رېئاللىققا يېقىن خاس مۇتەخەسسىس Skill يېزىشنى كۆرسىتىمەن.</p>
+  <div class="blog-row-foot">
+    <span class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      ئوقۇش ۋاقتى: 9 مىنۇت
+    </span>
+    <a href="/ug/blog/leader-skill-distillation" class="blog-row-readlink">ماقالىنى ئوقۇش &rarr;</a>
+  </div>
+</article>
+<article class="blog-row" data-category="architecture">
+  <div class="blog-row-top">
+    <div class="blog-row-tags">
+      <span class="blog-badge-series">مەھسۇلات تونۇشتۇرۇشى</span>
+      <span class="blog-badge-cat">قۇرۇلما ۋە ئىنژېنېرلىق</span>
+    </div>
+    <div class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+      2026-03-23 · #1
+    </div>
+  </div>
+  <h2 class="blog-row-title"><a href="/ug/blog/from-lobster-to-crab" style="color: inherit; text-decoration: none;">HexClaw ئوچۇق كودلۇق AI: «قىسقۇچپاقا بېقىش»تىن «دەريا قىسقۇچپاقىسى بېقىش»قىچە</a></h2>
+  <p class="blog-row-desc">سىز تېخى «قىسقۇچپاقا» 🦞 بېقىپ باقتىڭىزمۇ؟ بۈگۈندىن باشلاپ، 🦞 قىسقۇچپاقا قىلىپ بېرەلەيدىغان ئىشنى 🦀 دەريا قىسقۇچپاقىسىمۇ قىلالايدۇ. لېكىن HexClaw بىر قېتىملىق سۆھبەتنىلا قوبۇل قىلىش بىلەن توختىماي، داۋاملىق خىزمەت ۋەزىپىلىرىنىمۇ ئۆز ئۈستىگە ئېلىشنى كۆزلەيدۇ.</p>
+  <div class="blog-row-foot">
+    <span class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      ئوقۇش ۋاقتى: 8 مىنۇت
+    </span>
+    <a href="/ug/blog/from-lobster-to-crab" class="blog-row-readlink">ماقالىنى ئوقۇش &rarr;</a>
+  </div>
+</article>
+<article class="blog-row" data-category="architecture">
+  <div class="blog-row-top">
+    <div class="blog-row-tags">
+      <span class="blog-badge-series">ئېكوسىستېما</span>
+      <span class="blog-badge-cat">قۇرۇلما ۋە ئىنژېنېرلىق</span>
+    </div>
+    <div class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+      2026-03-30 · #2
+    </div>
+  </div>
+  <h2 class="blog-row-title"><a href="/ug/blog/architecture-deep-dive" style="color: inherit; text-decoration: none;">HexClaw ئارخىتېكتۇرا تەپسىلاتى: بىر كىشى + Claude + 5 ئاي، Go بىلەن نۆلدىن قۇرۇلغان ئالتە ئامبارلىق پۈتۈن قاتلاملىق ئوچۇق كودلۇق AI Agent ئېكولوگىيەسى</a></h2>
+  <p class="blog-row-desc">HexClaw ئارخىتېكتۇرا تەپسىلاتى: بىر كىشى + Claude + 5 ئاي، Go بىلەن نۆلدىن ئالتە ئامبارلىق پۈتۈن قاتلاملىق ئوچۇق كودلۇق AI Agent ئېكولوگىيەسى قۇرۇش. قاتلاملىق ئارخىتېكتۇرا، يادرولۇق كېلىشىملەر ۋە ئالاقە كېلىشىملىرى تەپسىلىي چۈشەندۈرۈلىدۇ.</p>
+  <div class="blog-row-foot">
+    <span class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      ئوقۇش ۋاقتى: 13 مىنۇت
+    </span>
+    <a href="/ug/blog/architecture-deep-dive" class="blog-row-readlink">ماقالىنى ئوقۇش &rarr;</a>
+  </div>
+</article>
+<article class="blog-row" data-category="architecture">
+  <div class="blog-row-top">
+    <div class="blog-row-tags">
+      <span class="blog-badge-series">سېلىشتۇرۇش</span>
+      <span class="blog-badge-cat">قۇرۇلما ۋە ئىنژېنېرلىق</span>
+    </div>
+    <div class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+      2026-04-25 · #7
+    </div>
+  </div>
+  <h2 class="blog-row-title"><a href="/ug/blog/vs-openclaw-hermes" style="color: inherit; text-decoration: none;">HexClaw vs OpenClaw / Hermes: 2026-يىلى يەرلىك AI Agent نىڭ ئۈچ يولى</a></h2>
+  <p class="blog-row-desc">راكنى، ئاتنى ياكى قىسقۇچپاقىنى بېقىش: ئۈچ يول ئۈچ مەسىلىنى ھەل قىلىدۇ. ئىقتىدار تىزىملىكى ئوخشىشىپ كەتسىمۇ، مەھسۇلات يولى باشقا. ئۈسكۈنە تەرەپ AI تېز كېڭىيىۋاتقاندا، ھەر بىرىنىڭ قۇرۇلما تاللىشى نەگە بارىدۇ؟</p>
+  <div class="blog-row-foot">
+    <span class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      ئوقۇش ۋاقتى: 12 مىنۇت
+    </span>
+    <a href="/ug/blog/vs-openclaw-hermes" class="blog-row-readlink">ماقالىنى ئوقۇش &rarr;</a>
+  </div>
+</article>
+<article class="blog-row" data-category="architecture">
+  <div class="blog-row-top">
+    <div class="blog-row-tags">
+      <span class="blog-badge-series">تەرەققىي قىلدۇرۇش SOP</span>
+      <span class="blog-badge-cat">قۇرۇلما ۋە ئىنژېنېرلىق</span>
+    </div>
+    <div class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+      2026-04-18 · #6
+    </div>
+  </div>
+  <h2 class="blog-row-title"><a href="/ug/blog/claude-code-sop" style="color: inherit; text-decoration: none;">HexClaw ئارقىسىدىكى Claude Code SOP: لايىھە يېتەكچىلىكى × سىناقنى تاماملاش × كۆپ Agent ھەمكارلىقى</a></h2>
+  <p class="blog-row-desc">بىر ئادەم، ئىشتىن سىرتقى ۋاقىت، 6 يادرولۇق ئامبار، 680 مىڭ قۇر كود. يادرولۇق مەسىلە «AI غا كود يازدۇرۇش» ئەمەس؛ لايىھە، سىناق ۋە كۆپ Agent ھەمكارلىقىنى ئۆزلۈكىدىن تاماملىنىدىغان ئېچىش SOP سىغا ئايلاندۇرۇش.</p>
+  <div class="blog-row-foot">
+    <span class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      ئوقۇش ۋاقتى: 11 مىنۇت
+    </span>
+    <a href="/ug/blog/claude-code-sop" class="blog-row-readlink">ماقالىنى ئوقۇش &rarr;</a>
+  </div>
+</article>
+<article class="blog-row" data-category="practice">
+  <div class="blog-row-top">
+    <div class="blog-row-tags">
+      <span class="blog-badge-series">تولۇق باشلاش قوللانمىسى</span>
+      <span class="blog-badge-cat">قوللىنىش ۋە ئەمەلىيەت</span>
+    </div>
+    <div class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+      2026-04-12 · #3
+    </div>
+  </div>
+  <h2 class="blog-row-title"><a href="/ug/blog/hexclaw-user-guide" style="color: inherit; text-decoration: none;">HexClaw AI تولۇق قوللانمىسى: 5 مىنۇتتا نۆلدىن باشلاپ سىزگە ئىش قىلىدىغان يەرلىك AI Agent غىچە<span class="u-nobr">(مودېل تاللاش تەۋسىيەلىرى بىلەن)</span></a></h2>
+  <p class="blog-row-desc">يەرلىك Ollama ياكى بۇلۇت API نى نۆلدىن سەپلەش، Agent ياردەمچى قۇرۇش، بىلىم ئامبىرى ۋە Skill يۈكلەش. 5 مىنۇتتا ئۆزىڭىزگە تەۋە شەخسىي ئۈستەل يۈزى AI ياردەمچىسىنى باشلاڭ.</p>
+  <div class="blog-row-foot">
+    <span class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      ئوقۇش ۋاقتى: 10 مىنۇت
+    </span>
+    <a href="/ug/blog/hexclaw-user-guide" class="blog-row-readlink">ماقالىنى ئوقۇش &rarr;</a>
+  </div>
+</article>
+<article class="blog-row" data-category="practice">
+  <div class="blog-row-top">
+    <div class="blog-row-tags">
+      <span class="blog-badge-series">ئۈلگىلىك قوللىنىش</span>
+      <span class="blog-badge-cat">قوللىنىش ۋە ئەمەلىيەت</span>
+    </div>
+    <div class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+      2026-10-04 · #15
+    </div>
+  </div>
+  <h2 class="blog-row-title"><a href="/ug/blog/k12-engineering-practice" style="color: inherit; text-decoration: none;"> HexClaw بىلەن &quot; ئاتا-بالا خۇشاللىقى &quot; : تۇنجى باشلامچى سىنارىيەدىكى K12 ئىنژېنېرلىق ئەمەلىيىتى </a></h2>
+  <p class="blog-row-desc">«قانداق چۈشەندۈرىدۇ؟»غا ئالتە پەنلىك ئوقۇتۇش Skill ى ئاساس بولىدۇ. ئالدى بىلەن ھەل قىلىدىغان ئۈچ مەسىلە: خاتا چۈشەندۈرسە قانداق قىلىمىز؟ بالىنىڭ سانلىق مەلۇماتى قەيەردە؟ يەنە بىر سىنارىيە قوشۇلسا سۇپا بۇلغىنىپ كېتەمدۇ؟ قۇرۇلمىنىڭ بىر گېپى: ئىچكى قەۋەتنى بۇلغىماسلىق، سىرتتىكىلەرنى ئاۋارە قىلماسلىق.</p>
+  <div class="blog-row-foot">
+    <span class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      ئوقۇش ۋاقتى: 14 مىنۇت
+    </span>
+    <a href="/ug/blog/k12-engineering-practice" class="blog-row-readlink">ماقالىنى ئوقۇش &rarr;</a>
+  </div>
+</article>
+<article class="blog-row" data-category="practice">
+  <div class="blog-row-top">
+    <div class="blog-row-tags">
+      <span class="blog-badge-series">K12 قوللانمىسى</span>
+      <span class="blog-badge-cat">قوللىنىش ۋە ئەمەلىيەت</span>
+    </div>
+    <div class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+      2026-10-04 · #16
+    </div>
+  </div>
+  <h2 class="blog-row-title"><a href="/ug/blog/k12-user-guide" style="color: inherit; text-decoration: none;"> «ئاتا-بالا خۇشاللىقى» باشلاش دەرسلىكى: HexClaw بىلەن تاپشۇرۇق يېتەكلەشنى قولمۇقول ئۆگىنىش <span class="u-nobr"> （K12 ئىشلىتىش دەرسلىكى） </span></a></h2>
+  <p class="blog-row-desc">كەچ سائەت توققۇزدا، بالىنىڭ مەسىلىسىنى يېشەلەيسىز، ئەمما قانداق چۈشەندۈرۈشنى بىلمەيسىز. بۇ رەسىملىك دەرسلىككە ئەگىشىپ بىر قېتىم قىلىپ بېقىڭ: ياردەمچى قۇرۇش، تاپشۇرۇق رەسىمى ئەۋەتىش، تولۇق جاۋاب ۋە شۇ سىنىپقا ماس ئۇستازچە چۈشەندۈرۈشنى كۆرۈش. ئالدى بىلەن نېمە سوراش، بالا قىينالسا قانداق ياردەم بېرىش، چۈشەندۈرگەندىن كېيىن قانداق تەكشۈرۈشنىڭ ھەممىسى بار.</p>
+  <div class="blog-row-foot">
+    <span class="blog-row-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      ئوقۇش ۋاقتى: 12 مىنۇت
+    </span>
+    <a href="/ug/blog/k12-user-guide" class="blog-row-readlink">ماقالىنى ئوقۇش &rarr;</a>
+  </div>
+</article>
+  </div>
+
+
+</main>
+
+<footer class="footer">
+  <div class="footer-main">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-col-title">مەھسۇلات</div>
+        <a href="/ug/#download">ئۈستەلئۈستى نۇسخىسىنى چۈشۈرۈش</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="/ug/changelog">يېڭىلىنىش خاتىرىسى</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">ئىجادكار</div>
+        <a href="/ug/docs/">ھۆججەتلەر مەركىزى</a>
+        <a href="/ug/blog/">تېخنىكا بىلوگى</a>
+        <a href="/ug/docs/getting-started">تېز باشلاش</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">Apache-2.0</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">جامائەت</div>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/issues" target="_blank" rel="noopener noreferrer">Issues</a>
+        <a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer">Twitter / X</a>
+        <a href="mailto:ai@hexclaw.net">بىز بىلەن ئالاقىلىشىش</a>
+        <a href="mailto:support@hexclaw.net">سوئال-پىكىر</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">ھەققىدە</div>
+        <a href="/ug/about">بىز ھەققىدە</a>
+        <a href="/ug/privacy">شەخسىيەت سىياسىتى</a>
+        <a href="/ug/terms">ئىشلىتىش شەرتلىرى</a>
+        <a href="/ug/third-party-ai-services">ئۈچىنچى تەرەپ AI مۇلازىمىتى</a>
+      </div>
+    </div>
+    <div class="footer-wechat">
+      <img width="430" height="430" loading="lazy" decoding="async" src="../../assets/brand/wechat-qr.jpg" alt="HexClaw ۋېيشىن رەسمىي ھېسابات QR كودى">
+      <span class="footer-wechat-label">ۋېيشىن رەسمىي ھېساباتى</span>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">&copy; 2025&ndash;2026 hexagon-codes</span>
+  </div>
+</footer>
+<script src="../../assets/js/theme.js?v=2e4a1828feef"></script>
+<script src="../../assets/js/docs-nav.js?v=5a103861aec2"></script>
+<button type="button" class="back-to-top" id="backToTop" aria-label="ئۈستىگە قايتىش" title="ئۈستىگە قايتىش">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg>
+  <span>ئۈستىگە</span>
+</button>
+
+
+<script src="../../assets/js/blog.js?v=c72e1db5a6ec"></script>
+</body>
+</html>

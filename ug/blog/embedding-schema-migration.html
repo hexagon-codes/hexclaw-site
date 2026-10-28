@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="ug" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/favicon-32.png">
+<title>HexClaw AI نىڭ Embedding يوشۇرۇن Schema سى: بىر دەرسلىكنىڭ ئىندېكسىنى 768 دىن 4096 ئۆلچەمگە ئالماشتۇرۇش｜HexClaw تېخنىكا بىلوگى</title>
+<meta name="description" content="Nomic نىڭ 768 ئۆلچىمىدىن Qwen نىڭ 4096 ئۆلچىمىگە: ئىجرا كېلىشىمى، ئىجرا خامچوتى، ئىككى ئەۋلاد ئىندېكس، ئەسلىگە كەلتۈرگىلى بولىدىغان قايتا قۇرۇش ۋە CAS ئارقىلىق ئۆتكۈزۈۋېلىش ئايرىم باشقۇرۇلىدۇ. كونا ئىندېكس كۈچكە ئىگە كونا مەزمۇنغا مۇلازىمەت قىلىدۇ، يېڭى ئىندېكس ئارقا سۇپىدا قۇرۇلىدۇ.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:site_name" content="HexClaw">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HexClaw AI نىڭ Embedding يوشۇرۇن Schema سى: بىر دەرسلىكنىڭ ئىندېكسىنى 768 دىن 4096 ئۆلچەمگە ئالماشتۇرۇش｜HexClaw تېخنىكا بىلوگى">
+<meta property="og:description" content="Nomic نىڭ 768 ئۆلچىمىدىن Qwen نىڭ 4096 ئۆلچىمىگە: ئىجرا كېلىشىمى، ئىجرا خامچوتى، ئىككى ئەۋلاد ئىندېكس، ئەسلىگە كەلتۈرگىلى بولىدىغان قايتا قۇرۇش ۋە CAS ئارقىلىق ئۆتكۈزۈۋېلىش ئايرىم باشقۇرۇلىدۇ. كونا ئىندېكس كۈچكە ئىگە كونا مەزمۇنغا مۇلازىمەت قىلىدۇ، يېڭى ئىندېكس ئارقا سۇپىدا قۇرۇلىدۇ.">
+<meta property="og:url" content="https://hexclaw.net/ug/blog/embedding-schema-migration">
+<meta property="og:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta property="og:image:alt" content="HexClaw بەلگىسى">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta property="og:locale" content="ug_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="HexClaw AI نىڭ Embedding يوشۇرۇن Schema سى: بىر دەرسلىكنىڭ ئىندېكسىنى 768 دىن 4096 ئۆلچەمگە ئالماشتۇرۇش｜HexClaw تېخنىكا بىلوگى">
+<meta name="twitter:description" content="Nomic نىڭ 768 ئۆلچىمىدىن Qwen نىڭ 4096 ئۆلچىمىگە: ئىجرا كېلىشىمى، ئىجرا خامچوتى، ئىككى ئەۋلاد ئىندېكس، ئەسلىگە كەلتۈرگىلى بولىدىغان قايتا قۇرۇش ۋە CAS ئارقىلىق ئۆتكۈزۈۋېلىش ئايرىم باشقۇرۇلىدۇ. كونا ئىندېكس كۈچكە ئىگە كونا مەزمۇنغا مۇلازىمەت قىلىدۇ، يېڭى ئىندېكس ئارقا سۇپىدا قۇرۇلىدۇ.">
+<meta name="twitter:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta name="twitter:image:alt" content="HexClaw بەلگىسى">
+<link rel="canonical" href="https://hexclaw.net/ug/blog/embedding-schema-migration">
+<link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/embedding-schema-migration">
+<link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/embedding-schema-migration">
+<link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/embedding-schema-migration">
+<link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/embedding-schema-migration">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "HexClaw AI نىڭ Embedding يوشۇرۇن Schema سى: بىر دەرسلىكنىڭ ئىندېكسىنى 768 دىن 4096 ئۆلچەمگە ئالماشتۇرۇش",
+  "description": "Nomic نىڭ 768 ئۆلچىمىدىن Qwen نىڭ 4096 ئۆلچىمىگە: ئىجرا كېلىشىمى، ئىجرا خامچوتى، ئىككى ئەۋلاد ئىندېكس، ئەسلىگە كەلتۈرگىلى بولىدىغان قايتا قۇرۇش ۋە CAS ئارقىلىق ئۆتكۈزۈۋېلىش ئايرىم باشقۇرۇلىدۇ. كونا ئىندېكس كۈچكە ئىگە كونا مەزمۇنغا مۇلازىمەت قىلىدۇ، يېڭى ئىندېكس ئارقا سۇپىدا قۇرۇلىدۇ.",
+  "url": "https://hexclaw.net/ug/blog/embedding-schema-migration",
+  "inLanguage": "ug",
+  "dateModified": "2026-10-29",
+  "image": "https://hexclaw.net/assets/brand/hexclaw-logo.png",
+  "publisher": {
+    "@type": "Organization",
+    "name": "hexagon-codes",
+    "url": "https://hexclaw.net/",
+    "@id": "https://hexclaw.net/#organization"
+  },
+  "@id": "https://hexclaw.net/ug/blog/embedding-schema-migration#article"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "HexClaw", "item": "https://hexclaw.net/ug/"},
+    {"@type": "ListItem", "position": 2, "name": "تېخنىكا بىلوگى", "item": "https://hexclaw.net/ug/blog/"},
+    {"@type": "ListItem", "position": 3, "name": "HexClaw AI نىڭ Embedding يوشۇرۇن Schema سى: بىر دەرسلىكنىڭ ئىندېكسىنى 768 دىن 4096 ئۆلچەمگە ئالماشتۇرۇش", "item": "https://hexclaw.net/ug/blog/embedding-schema-migration"}
+  ],
+  "@id": "https://hexclaw.net/ug/blog/embedding-schema-migration#breadcrumb"
+}
+</script>
+<link rel="stylesheet" href="../../assets/css/docs-eb2895dd79c5.css">
+<link rel="stylesheet" href="../../assets/css/blog-a8e5008ac3d1.css">
+</head>
+<body class="blog-page blog-article-page">
+<a href="#main" class="skip-link">ئاساسىي مەزمۇنغا ئۆتۈش</a>
+<nav class="tn topnav" id="nav">
+  <a href="/ug/" class="tn-b topnav-brand"><img width="72" height="72" src="../../assets/brand/hexclaw-icon-72.png" class="tn-l topnav-logo" alt="ھېشى AI"><span class="tn-n topnav-name">ھېشى AI</span></a>
+  <button type="button" class="tn-burger topnav-burger" aria-label="تىزىملىك" aria-expanded="false" aria-controls="primary-navigation"><span></span><span></span><span></span></button><div class="tn-r topnav-links" id="primary-navigation"><a href="/ug/">باش بەت</a><a href="/ug/#cases">ئىشلىتىش كۆرۈنۈشلىرى</a><a href="/ug/#features">ئىقتىدارلار</a><a href="/ug/#quickstart">باشلاش</a><a href="/ug/#ecosystem">ئوچۇق ئېكولوگىيە</a><a href="/ug/blog/" class="is-active">تېخنىكا بىلوگى</a><a href="/ug/docs/">ھۆججەتلەر مەركىزى</a><div class="lang-menu" data-lang-menu><button type="button" class="lang-trigger" aria-haspopup="menu" aria-expanded="false" aria-label="تىل ئالماشتۇرۇش"><svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 0 20"></path><path d="M12 2a15.3 15.3 0 0 0 0 20"></path></svg><span class="lang-current" lang="zh-CN" dir="ltr">维吾尔语</span><svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="lang-menu-list" role="menu"><a href="/zh/blog/embedding-schema-migration" role="menuitem">中文</a><a href="/en/blog/embedding-schema-migration" role="menuitem">English</a><a href="/ug/blog/embedding-schema-migration" role="menuitem" class="is-active" aria-current="true" lang="zh-CN" dir="ltr">维吾尔语</a></div></div><button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="ئۇسلۇب ئالماشتۇرۇش"><svg class="ti-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="ti-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="nav-cta">GitHub <span class="nav-star-badge" id="gh-stars">&#9733;</span></a></div>
+</nav>
+
+<main id="main" class="blog-main">
+  <div class="blog-article-container">
+    <nav class="blog-breadcrumb" aria-label="يول باشلاش">
+      <a href="/ug/">باش بەت</a>
+      <span class="blog-breadcrumb-sep">/</span>
+      <a href="/ug/blog/">تېخنىكا بىلوگى</a>
+      <span class="blog-breadcrumb-sep">/</span>
+      <span aria-current="page">يادرولۇق سىستېمىلارنى چوڭقۇر تەھلىل قىلىش</span>
+    </nav>
+
+    <header class="blog-header">
+      <div class="blog-header-tags">
+        <span class="blog-badge-series">بىلىم ئامبىرى قۇرۇلۇشى</span>
+      </div>
+      <h1 class="blog-article-title">HexClaw AI نىڭ Embedding يوشۇرۇن Schema سى: بىر دەرسلىكنىڭ ئىندېكسىنى 768 دىن 4096 ئۆلچەمگە ئالماشتۇرۇش</h1>
+      <p class="blog-article-subtitle">Nomic نىڭ 768 ئۆلچىمىدىن Qwen نىڭ 4096 ئۆلچىمىگە: ئىجرا كېلىشىمى، ئىجرا خامچوتى، ئىككى ئەۋلاد ئىندېكس، ئەسلىگە كەلتۈرگىلى بولىدىغان قايتا قۇرۇش ۋە CAS ئارقىلىق ئۆتكۈزۈۋېلىش ئايرىم باشقۇرۇلىدۇ. كونا ئىندېكس كۈچكە ئىگە كونا مەزمۇنغا مۇلازىمەت قىلىدۇ، يېڭى ئىندېكس ئارقا سۇپىدا قۇرۇلىدۇ.</p>
+      <div class="article-provenance-banner">
+        <div class="provenance-left">
+          <span class="provenance-origin-badge">تۇنجى نەشرى WeChat تا</span>
+          <span class="provenance-text">بۇ ماقالە تۇنجى قېتىم WeChat ئاممىۋى ھېساباتى <strong>「hexclaw」</strong> (ID: hexclaw) دا ئېلان قىلىنغان · Embedding ئىندېكسىنى ئالماشتۇرۇش قۇرۇلۇش خاتىرىسى</span>
+        </div>
+        <a href="https://mp.weixin.qq.com/s/TNEm03svQW3eUcBPZloMHw" target="_blank" rel="noopener noreferrer" class="provenance-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>WeChat تىكى ئەسلى ماقالە ↗</a>
+      </div>
+    </header>
+
+    <article class="blog-content">
+
+
+<p style="margin:16px 0;">بىلىم ئامبىرىنىڭ ۋېكتورلۇق ئىزدەش مودېلىنى باشقا Embedding مودېلىغا ئالماشتۇرۇش، قارىماققا پەقەت سەپلىمە ئۆزگەرتىشتەك: مودېل نامىنى ئالماشتۇرۇش، ئۆلچىمىنى تەڭشەش، قايتا قوزغىتىش. لېكىن بىلىم ئامبىرىدا ھەقىقىي بىر دەرسلىك بار بولسا، ئىش بۇنچە ئاددىي بولمايدۇ.</p>
+
+<p style="margin:16px 0;">HexClaw AI v0.5.0 نىڭ <a href="https://mp.weixin.qq.com/s/8xUoFrig10zxpxni1rgm9Q" style="color:var(--article-accent, #3f8fd4);text-decoration:none;">K12 ئاتا-ئانىلارغا ياردەم بېرىش</a> ئىقتىدارىنى تەتقىق قىلىۋاتقاندا، بىلىم ئامبىرى پەقەت «بىر نەچچە ماتېرىيال يۈكلەش» بىلەن چەكلەنمەيدىغان بولدى. بالىنىڭ ئارخىپى مەلۇم دەرسلىككە باغلىنىدۇ، نۆۋەتتىكى بۆلەك ۋە بەت دائىرىسىمۇ يېتەكچىلىك زەنجىرىگە بىللە بېرىلىدۇ. بۇنىڭ ئىچىدە 131 بەتلىك «ماتېماتىكا، بەشىنچى سىنىپنىڭ كېيىنكى يېرىم يىلى.pdf» بار؛ نۆۋەتتىكى دائىرە تۆتىنچى بۆلەك، 45～62-بەتلەر. ماس مەشىق ھاسىل قىلىش ياكى يېتەكچىلىككە ئاساس بېرىش ئۈچۈن، مۇشۇ دەرسلىكتىن دەلىل تېپىش كېرەك.</p>
+
+<p style="margin:8px 0;">دەل مۇشۇ نەشر يېڭىلىنىشىدا، يەرلىك بىلىم ئىندېكسىنىڭ ئىچىگە قوشۇلغان سۈكۈتتىكى Embedding مودېلىنى <code dir="ltr" style="background:var(--article-panel, #edf7ff);padding:1px 5px;border-radius:3px;font-size:13px;color:var(--article-accent, #3f8fd4);">nomic-embed-text</code> دىن Ollama دىكى <code dir="ltr" style="background:var(--article-panel, #edf7ff);padding:1px 5px;border-radius:3px;font-size:13px;color:var(--article-accent, #3f8fd4);">qwen3-embedding:8b</code> غا ئالماشتۇردۇق. ئىككى مودېلنىمۇ HexClaw نىڭ Ollama باشقۇرۇش كىرىش نۇقتىسىدىن چۈشۈرگىلى بولىدۇ. كونا دەرسلىك Nomic ئارقىلىق 768 ئۆلچەملىك ئىندېكسقا ئايلانغان؛ يېڭى مودېل 4096 ئۆلچەم چىقىرىدۇ، سۈرۈشتۈرۈش تەرىپىگە ۋەزىپە كۆرسەتمىسىمۇ قوشۇلىدۇ. نەشر يېڭىلانغاندىن كېيىنمۇ دەرسلىكنى ئىزدەشكە بولۇشى كېرەك.<strong style="color:var(--article-accent, #3f8fd4);">مودېلنى بىز ئالماشتۇردۇق؛ «دەرسلىكنى قايتا يۈكلەش» دېگەن تاپشۇرۇقنى ئاتا-ئانىغا قالدۇرمايلى.</strong></p>
+
+<p style="margin:8px 0;">ئالدى بىلەن بۇ قېتىمقى يەرلىك كۆچۈرۈشنى كۆرەيلى. تۇنجى قاراشتا مودېل نامى بىلەن ئۆلچەمنى ئۆزگەرتىشلا ئەمەسمۇ؟ سەپلىمە مىسالىغا يازساق، ھەقىقەتەن ئىككىلا قۇر:</p>
+
+<section dir="ltr" style="margin:14px 0;padding:14px 16px;overflow-x:auto;background:#102a3d;color:#d9edf7;border-radius:8px;font-size:12px;line-height:1.7;font-family:SFMono-Regular,Menlo,Monaco,Consolas,'Courier New',monospace;box-sizing:border-box;">
+<span style="display:block;white-space:pre;min-height:1.7em;">default_model = "qwen3-embedding:8b"</span>
+<span style="display:block;white-space:pre;min-height:1.7em;">dimension     = 4096  # old: 768</span>
+</section>
+
+<p style="margin:8px 0;">لېكىن بۇ ئىككى قۇر ئۆزگەرتىلگەندە، ئىش ئەمدى باشلىنىدۇ. <strong style="color:var(--article-accent, #3f8fd4);">كونا ۋېكتور ئۆزلىكىدىن «ئۆلچەم ئۆستۈرمەيدۇ»</strong>. كونا ھۆججەتلەرگە قايتىدىن ۋېكتور ھاسىل قىلىش، 8B يەرلىك مودېلنىڭ توپلام چوڭلۇقى ۋە ۋاقىت خامچوتىنى قايتا بەلگىلەش كېرەك. ئىزدەش نومۇرلىرىنىڭ تارقىلىشى ئۆزگەرگەچكە، مۇناسىۋەتلىكلىك چېكىنىمۇ ھەقىقىي دەرسلىك ئەۋرىشكىسى بىلەن قايتا تەڭشەش لازىم.</p>
+
+<p style="margin:8px 0;">يەنە بىر چېگرانى ئېنىقلاي: v0.5.0 بۇلۇتتا ئورۇنلاشتۇرۇشنىمۇ قوللايدۇ، لېكىن <strong style="color:var(--article-accent, #3f8fd4);">ئارقا تەرەپنىڭ قەيەردە ئورۇنلاشتۇرۇلۇشى بىلەن Embedding مودېلىنىڭ قەيەردە ئىجرا بولۇشى ئىككى باشقا ئىش</strong>. يەرلىك ئورۇنلاشتۇرۇشمۇ بۇلۇت Embedding مۇلازىمىتىنى چاقىرالايدۇ؛ كونكرېت مودېل ئىشلەتكۈچىنىڭ سەپلىمىسى ۋە بىلىم ئامبىرى سىياسىتىگە باغلىق. مودېل قەيەردە ئىجرا بولسۇن، يېڭى ئىندېكس قانداق قۇرۇلىدۇ، كونا ئىندېكس قاچان ئۆتكۈزۈپ بېرىدۇ، يولدىكى سۈرۈشتۈرۈش قايسى ئەۋلادنى ئوقۇيدۇ — ھەممىسى ئېنىق بولۇشى كېرەك.</p>
+
+<hr style="border:none;border-top:1px solid var(--article-border, #e0ecf5);margin:28px 0;"/>
+
+<blockquote style="border-left:3px solid #3f8fd4;padding:14px 18px;margin:20px 0;background:var(--article-panel, #f4fbff);color:var(--article-ink, #12324c);font-size:14px;border-radius:0 8px 8px 0;line-height:1.85;">
+<p style="margin:0 0 6px;"><span style="color:var(--article-accent, #3f8fd4);font-weight:700;">بۇ ماقالىنىڭ ئاساسلىق قارىشى</span></p>
+<p style="margin:0 0 6px;">دەرسلىكنىڭ ئەسلى تېكىستىنى ساقلاپ قېلىشقا بولىدۇ؛ Embedding مودېلى ئالماشتۇرۇلغاندا ئۈچ ئىشنى ئايرىم باشقۇرۇش كېرەك:</p>
+<p style="margin:0 0 6px;">① <strong style="color:var(--article-accent, #3f8fd4);">ۋېكتور قانداق ھاسىل قىلىنىدۇ</strong> — مودېل، ئۆلچەم ۋە كىرگۈزۈش ئۆزگەرتىشى ئىجرا كېلىشىمىنى تەشكىل قىلىدۇ؛ ھازىرقى ئېھتىياتچان سىياسەت بويىچە، كېلىشىم ئۆزگەرسە يېڭى ئەۋلاد ئىندېكس قۇرۇلۇپ قايتا ھېسابلىنىدۇ.</p>
+<p style="margin:0 0 6px;">② <strong style="color:var(--article-accent, #3f8fd4);">قايتا قۇرۇش قانداق يۈرىدۇ</strong> — ھەر توپلامدىكى دانە سانى، ئومۇمىي rune سانى ۋە ۋاقىت چېكى ئىجرا خامچوتىغا تەۋە؛ بۇلارنى ئۆزگەرتىش پەقەت جەدۋەللەشنى ئۆزگەرتىدۇ، تاپشۇرۇلغان ۋېكتورلارنى قايتا ھېسابلىمايدۇ.</p>
+<p style="margin:0 0 6px;">③ <strong style="color:var(--article-accent, #3f8fd4);">نەتىجە قانچىلىك مۇناسىۋەتلىك بولسا قوبۇل قىلىنىدۇ</strong> — مۇناسىۋەتلىكلىك چېكى ئىزدەش سىياسىتىگە تەۋە؛ قايتا باھالاش ۋە تەڭشەش لازىم، ۋېكتورنى قايتا ھېسابلاش ھاجەتسىز.</p>
+<p style="margin:0;">ئۈچىنى ئايرىم باشقۇرغاندىلا، بىر ۋاقىت چېكى تەڭشىكى پۈتۈن ئامبارنى قايتا ھېسابلاشقا ئايلانمايدۇ.</p>
+</blockquote>
+
+<blockquote style="border-left:3px solid #5fb3ea;padding:10px 16px;margin:16px 0;background:var(--article-panel, #f4fbff);color:var(--article-secondary, #3f5f7b);font-size:14px;border-radius:0 8px 8px 0;line-height:1.85;">
+<p style="margin:0 0 6px;"><span style="color:var(--article-accent, #3f8fd4);font-weight:700;">30 سېكۇنتلۇق نۇسخا:</span></p>
+<p style="margin:0;">131 بەتلىك بەشىنچى سىنىپ ماتېماتىكا دەرسلىكىنى مىسال قىلىپ، يەرلىك ئىندېكس Nomic نىڭ 768 ئۆلچىمىدىن Qwen نىڭ 4096 ئۆلچىمىگە ئالماشتۇرۇلىدۇ. HexClaw ئەسلى تېكىستنى ساقلاپ، نەشرلەنگەن ئىندېكس بىلەن يېڭى-كونا ۋېكتورنى ئايرىيدۇ؛ <strong style="color:var(--article-accent, #3f8fd4);">كونا ئىجرا قىلغۇچ يەنىلا ئىشلىسە، كونا ئىندېكس ئۆزگەرمىگەن، ئەۋلاد كىملىكى كۈچكە ئىگە مەزمۇنغا داۋاملىق مۇلازىمەت قىلىدۇ</strong>، يېڭى ئىندېكس ئارقا سۇپىدا كىچىك توپلاملارغا بۆلۈنۈپ قايتا قۇرۇلىدۇ. داۋاملىق ساقلىنىدىغان ۋەزىپە ۋە توپلام تىزىملىكى مەلۇم بولغان ئىلگىرىلەشنى ئەسلىگە كەلتۈرەلەيدۇ؛ چاقىرىش نەتىجىسى نامەلۇم بولسا ئاپتوماتىك قارىغۇلارچە قايتا سىنىمايدۇ. CAS ترانزاكسىيەسى سىياسەت، مەزمۇن نەشرى، ئىجارە ۋە قۇرۇلۇش ھالىتىنى تەكشۈرگەندىن كېيىن، ئوقۇش كىرىش نۇقتىسىنى ئاتوملۇق ئالماشتۇرىدۇ؛ مۇناسىۋەتلىكلىك چېكى ھەقىقىي ئەۋرىشكە بىلەن ئايرىم تەڭشىلىدۇ. ئارقا تەرەپنىڭ يەرلىكتە ياكى بۇلۇتتا ئورۇنلىشىشى Embedding مودېلىنىڭ قەيەردە ئىجرا بولۇشىنى بەلگىلىمەيدۇ.</p>
+</blockquote>
+
+<h2 style="font-size:18px;font-weight:700;color:var(--article-ink, #12324c);margin:36px 0 10px;padding-bottom:6px;border-bottom:2px solid #5fb3ea;">«ئامبارغا كىرگۈزۈلدى» بىرلا ھالەت ئەمەس</h2>
+
+<p style="margin:8px 0;">ئالدى بىلەن «ئامبارغا كىرگۈزۈلدى»نى ئايرىپ كۆرەيلى. ئاتا-ئانا «دەرسلىك ئامبارغا كىرگۈزۈلدى» دېگەندە، كودتا بۇ ئەمەلىيەتتە ئۈچ خىل پاكىتقا توغرا كېلىدۇ.</p>
+
+<p style="margin:6px 0;color:var(--article-muted, #7b8fa3);font-size:12px;">جەدۋەلنى سول-ئوڭغا سىيرىپ بارلىق ستونلارنى كۆرگىلى بولىدۇ.</p>
+<div style="max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;">
+<table style="width:100%;min-width:660px;border-collapse:collapse;margin:16px 0;font-size:13px;line-height:1.8;">
+  <tr style="background:var(--article-panel, #f4fbff);">
+    <th style="background:var(--article-panel, #f4fbff);color:var(--article-ink, #12324c);padding:8px 12px;text-align:left;font-weight:600;font-size:12px;border-bottom:2px solid #5fb3ea;">چېگرا</th>
+    <th style="background:var(--article-panel, #f4fbff);color:var(--article-ink, #12324c);padding:8px 12px;text-align:left;font-weight:600;font-size:12px;border-bottom:2px solid #5fb3ea;">تاپشۇرۇلغان پاكىت</th>
+    <th style="background:var(--article-panel, #f4fbff);color:var(--article-ink, #12324c);padding:8px 12px;text-align:left;font-weight:600;font-size:12px;border-bottom:2px solid #5fb3ea;">تاپشۇرۇلغاندىن كېيىن نېمە قىلغىلى بولىدۇ</th>
+    <th style="background:var(--article-panel, #f4fbff);color:var(--article-ink, #12324c);padding:8px 12px;text-align:left;font-weight:600;font-size:12px;border-bottom:2px solid #5fb3ea;">مەغلۇپ بولغاندا قانداق ئوقۇلىدۇ</th>
+  </tr>
+  <tr>
+    <td style="padding:9px 8px;border:1px solid var(--article-border, #e0ecf5);">قوبۇل قىلىش ترانزاكسىيەسى</td>
+    <td style="padding:9px 8px;border:1px solid var(--article-border, #e0ecf5);">ئەسلى ھۆججەت، مەنبە، ھۆججەت خاتىرىسى، ئارقا سۇپا ۋەزىپىسى</td>
+    <td style="padding:9px 8px;border:1px solid var(--article-border, #e0ecf5);">202 قايتۇرىدۇ؛ ئىلگىرىلەشنى سۈرۈشتۈرگىلى بولىدۇ</td>
+    <td style="padding:9px 8px;border:1px solid var(--article-border, #e0ecf5);">تېخى ئىزدەشكە بولمايدۇ</td>
+  </tr>
+  <tr>
+    <td style="padding:9px 8px;border:1px solid var(--article-border, #e0ecf5);">تېكىستنى ئېلان قىلىش</td>
+    <td style="padding:9px 8px;border:1px solid var(--article-border, #e0ecf5);">ھۆججەت، تېكىست پارچىلىرى (chunk)، تولۇق تېكىست ئىندېكسى (FTS)، مەزمۇن نەشرى</td>
+    <td style="padding:9px 8px;border:1px solid var(--article-border, #e0ecf5);">تولۇق تېكىست ئىزدەش ۋە بەت نەقىلى ئىشلىتىلىدۇ</td>
+    <td style="padding:9px 8px;border:1px solid var(--article-border, #e0ecf5);">ۋەزىپە مەغلۇپ ياكى قايتا سىناشنى كۈتىدۇ؛ تاماملانمىغان تېكىست بىر تەرەپ قىلىش نەتىجىسى بىلىم ئامبىرى ئىزدەشىگە كىرمەيدۇ</td>
+  </tr>
+  <tr>
+    <td style="padding:9px 8px;border:1px solid var(--article-border, #e0ecf5);">مەنىلىك ئىندېكسنى ئېلان قىلىش / ئۆتكۈزۈۋېلىش</td>
+    <td style="padding:9px 8px;border:1px solid var(--article-border, #e0ecf5);">ھۆججەت مەلۇم ئەۋلاد ئىندېكستا تەييار بولىدۇ، ياكى پۈتۈن ئەۋلاد ئىندېكس قۇرۇلۇپ ئوقۇش كىرىش نۇقتىسى ئالماشتۇرۇلىدۇ</td>
+    <td style="padding:9px 8px;border:1px solid var(--article-border, #e0ecf5);">يېڭى ھۆججەت نۆۋەتتىكى بوشلۇققا كىرىدۇ، ياكى يېڭى بوشلۇق سۈرۈشتۈرۈشنى ئۆتكۈزۈۋالىدۇ</td>
+    <td style="padding:9px 8px;border:1px solid var(--article-border, #e0ecf5);">كۈچكە ئىگە كونا مەزمۇنغا نۆۋەتتىكى ئىندېكس مۇلازىمەت قىلىدۇ؛ ئوچۇق ئىزدەشتە تېكىستكە قايتىشقا بولىدۇ</td>
+  </tr>
+</table>
+</div>
+
+<p style="margin:8px 0;">بۇ ئاۋارىچىلىق پەقەت يەرلىك بىلىم ئامبىرىغىلا خاس ئەمەس. OpenAI نىڭ File Search ى مەنىلىك ئىزدەش بىلەن ئاچقۇچلۇق سۆز ئىزدەشنى باشقۇرۇلىدىغان قورال قىلغان؛ ھۆججەت ۋېكتور ئامبىرىغا قوشۇلغاندىن كېيىن، پارچىلاش، Embedding ۋە ئىندېكسنى سۇپا تاماملايدۇ. رەسمىي ھۆججەتتە بەزى ئىندېكس قۇرۇش مەشغۇلاتلىرى يەنىلا ئاسىنخرون ۋەزىپە دەپ كۆرسىتىلگەن؛ تاماملىنىشىنى كۈتۈش ياكى ھالىتىنى سۈرۈشتۈرۈش لازىم.<span style="font-size:11px;vertical-align:super;color:var(--article-secondary, #5f7b9c);">［1］</span><strong style="color:var(--article-accent, #3f8fd4);">ھۆججەتنىڭ يۈكلىنىشى بىلەن ئىزدەشنىڭ تەييار بولۇشى ئىككى باشقا ئىش.</strong>باشقۇرۇلىدىغان مۇلازىمەت ئەپنىڭ بىر قىسمىنى ئۈستىگە ئالىدۇ، لېكىن بۇ ھالەت چېگرىسى يەنىلا مەۋجۇت.</p>
+
+<p style="margin:8px 0;">HexClaw زەنجىرىگە قايتساق، ئالدىنقى ئىككى قەدەم ئەسلى ھۆججەت بىلەن تېكىستنى بىر تەرەپ قىلىدۇ، ئۈچىنچى قەدەمدىلا ۋېكتور ئىندېكسىگە كېلىدۇ. ماقالىنىڭ مەزمۇنىمۇ شۇ.</p>
+
+<p style="margin:8px 0;">PDF يېشىش ئەسلى ھۆججەت ۋە بەت دەرىجىلىك تەكشۈرۈش نۇقتىلىرىنى ساقلايدۇ، ئۈزۈلگەندىن كېيىن تاماملانغان بەتلەرنى قايتا ئىشلىتەلەيدۇ. پۈتۈن تېكىست تاماملىنىش تەكشۈرۈشىدىن ئۆتكەندىن كېيىن، بىلىم ئامبىرى ئىزدەشىگە كىرىدۇ. تۆۋەندە تېكىست، تولۇق تېكىست ئىندېكسى ۋە بەت نەقىلى تەييار ھالەتتىن باشلايمىز؛ كىرگۈزۈش جەريانىنى ئاچمايمىز.</p>
+
+<hr style="border:none;border-top:1px solid var(--article-border, #e0ecf5);margin:28px 0;"/>
+
+<h2 style="font-size:18px;font-weight:700;color:var(--article-ink, #12324c);margin:36px 0 10px;padding-bottom:6px;border-bottom:2px solid #5fb3ea;">ئۆلچەم پەقەت ئاشكارا مەيدان، ئىجرا كېلىشىمى ھەقىقىي يوشۇرۇن Schema</h2>
+
+<p style="margin:8px 0;">بۇ قېتىم 768 دىن 4096 ئۆلچەمگە ئۆتۈشتىكى فىزىكىلىق ماس كەلمەسلىك روشەن: ئۇزۇنلۇق تەكشۈرۈشىلا Qwen سۈرۈشتۈرۈش ۋېكتورىنىڭ Nomic ھۆججەت ۋېكتورى بىلەن سېلىشتۇرۇلۇشىنى توسىدۇ. لېكىن ئۆلچەم پەقەت بىرىنچى قاتلامنى ئاچىدۇ. كېلەر قېتىم باشقا بىر 4096 ئۆلچەملىك مودېلغا ئالماشتۇرساق، ياكى ئوخشاش Qwen نى ئىشلىتىپ پەقەت سۈرۈشتۈرۈش تەرىپىدىكى ۋەزىپە كۆرسەتمىسىنى ئۆزگەرتسەكمۇ، كونا ۋېكتورنى بىۋاسىتە قايتا ئىشلىتىش مۇمكىن بولماسلىقى بار.</p>
+
+<p style="margin:8px 0;">ۋېكتور بىر فۇنكسىيەنىڭ چىقىرىشى؛ فۇنكسىيەنى ھەقىقىي بەلگىلەيدىغىنى مودېل مەھسۇلى، كىرگۈزۈش ئۆزگەرتىشى ۋە ئىجرا كېلىشىمىنىڭ بىرلەشمىسى. ئىككى خەرىتە ھەر ئىككىسى 4096 كاتەك قىلىپ بېسىلسىمۇ، ئوخشاش كوئوردېناتا سىستېمىسى بار دېگەنلىك ئەمەس؛ <strong style="color:var(--article-accent, #3f8fd4);">ئۆلچەمنىڭ ئوخشاش بولۇشى ئوخشاش ئوخشاشلىق ھېسابىغا قاتنىشىشنىڭ ئالدىنقى شەرتىلا، مودېل بىلەن كىرگۈزۈش ئۆزگەرتىشىمۇ ماس كېلىشى كېرەك</strong>。</p>
+
+<p style="margin:8px 0;">Qwen رەسمىي تەمىنلىگەن تەڭسىز ئىزدەش ئۇسۇلى بۇنىڭ تىپىك مىسالى: ھۆججەت بىۋاسىتە كودلىنىدۇ، سۈرۈشتۈرۈش تەرىپىدە ئەسلى سوئال ئالدىغا ۋەزىپە كۆرسەتمىسى قوشۇلىدۇ.<span style="font-size:11px;vertical-align:super;color:var(--article-secondary, #5f7b9c);">［3］</span>HexClaw رەسمىي قېلىپقا ئاساسەن ئۆزىنىڭ ۋەزىپە چۈشەندۈرۈشىنى مۇقىملىغان؛ تۆۋەندىكى ئالدى قوشۇمچىنىڭ <code dir="ltr" style="background:var(--article-panel, #edf7ff);padding:1px 5px;border-radius:3px;font-size:13px;color:var(--article-accent, #3f8fd4);overflow-wrap:anywhere;">Query:</code> دىن كېيىن قوشۇمچە بوشلۇق قوشۇلمايدۇ، ئەسلى سۈرۈشتۈرۈش بىۋاسىتە ئۇلىنىدۇ:</p>
+
+<section dir="ltr" style="margin:14px 0;padding:14px 16px;overflow-x:auto;background:#102a3d;color:#d9edf7;border-radius:8px;font-size:12px;line-height:1.7;font-family:SFMono-Regular,Menlo,Monaco,Consolas,'Courier New',monospace;box-sizing:border-box;">
+<span style="display:block;white-space:pre;min-height:1.7em;">Instruct: Given a search query, retrieve relevant passages that answer the query</span>
+<span style="display:block;white-space:pre;min-height:1.7em;">Query:&lt;ئەسلى سۈرۈشتۈرۈش&gt;</span>
+</section>
+
+<p style="margin:8px 0;">ھۆججەت ئالدى قوشۇمچىسى قۇرۇق قالىدۇ. كۆرسەتمە پەقەت سۈرۈشتۈرۈش تەرىپىگە قوشۇلىدۇ، پەقەت Embedding غا قاتنىشىدۇ؛ دەرسلىك ئەسلى تېكىستى ۋە FTS5 نى ئۆزگەرتمەيدۇ. سۈرۈشتۈرۈش بىلەن ھۆججەتكە ئوخشاش كۆرسەتمىنى قوشۇش «قولايلاشتۇرۇپ بىرلىككە كەلتۈرۈش»تەك كۆرۈنسىمۇ، ئەمەلىيەتتە ھۆججەتنىڭ Embedding غا كىرىدىغان تېكىستىنى ئۆزگەرتىدۇ.</p>
+
+<p style="margin:8px 0;"><a href="https://mp.weixin.qq.com/s/ZJ9ehZtG_jUhtTMUnPCDxA" style="color:var(--article-accent, #3f8fd4);text-decoration:none;">«HexClaw AI نىڭ Prompt Engineering ى»</a> مودېلغا يېزىلغان تېكىستنى كۆرۈنمە يۈز كېلىشىمى دەپ مۇنازىرە قىلىدۇ. بۇ يەردىكى سۈرۈشتۈرۈش كۆرسەتمىسىمۇ كېلىشىمنىڭ بىر قىسمى؛ ئۆزگىرىدىغىنى جاۋاب ئاھاڭى ئەمەس، ۋېكتور ھاسىل قىلىشقا قاتنىشىدىغان كىرگۈزۈش.</p>
+
+<p style="margin:8px 0;">ئاشكارا مودېل نامى <code dir="ltr" style="font-size:13px;">Qwen/Qwen3-Embedding-8B</code>، Ollama دا ئىشلىتىلىدىغان ئېنىق مودېل ID سى <code dir="ltr" style="font-size:13px;">qwen3-embedding:8b</code>. رەسمىي مودېل 32～4096 ئۆلچەملىك Matryoshka ئىپادىسىنى قوللايدۇ.<span style="font-size:11px;vertical-align:super;color:var(--article-secondary, #5f7b9c);">［3］［6］</span>HexClaw ھازىر ئىجرا سەپلىمىسىدە (Profile) 4096 ئۆلچەمنى مۇقىملىغان. ئۆلچەمنى ئۆزگەرتىش ئۈچۈن كېيىنكى ئەۋلاد ئىندېكس (revision) قۇرۇلىدۇ، ئوخشاش ئەۋلادتا پەرقلىق ئۇزۇنلۇقتىكى ۋېكتور ئارىلاشتۇرۇلمايدۇ.</p>
+
+<p style="margin:8px 0;">ئىجرا كېلىشىمى پەقەت HexClaw غىلا خاس مەسىلە ئەمەس. تەمىنلىگۈچىلەرنىڭ ۋېكتور ھاسىل قىلىش ۋە ماسلىشىش تەلىپىنى بىللە كۆرەيلى<span style="font-size:11px;vertical-align:super;color:var(--article-secondary, #5f7b9c);">［7］［8］</span>：</p>
+
+<p style="margin:6px 0;color:var(--article-muted, #7b8fa3);font-size:12px;">جەدۋەلنى سول-ئوڭغا سىيرىپ بارلىق ستونلارنى كۆرگىلى بولىدۇ.</p>
+<div style="max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;">
+<table style="width:100%;min-width:700px;border-collapse:collapse;margin:16px 0;font-size:13px;line-height:1.8;">
+  <tr style="background:var(--article-panel, #f4fbff);">
+    <th style="background:var(--article-panel, #f4fbff);color:var(--article-ink, #12324c);padding:8px 12px;text-align:left;font-weight:600;font-size:12px;border-bottom:2px solid #5fb3ea;">كېلىشىم قەيەردە يوشۇرۇنغان</th>
+    <th style="background:var(--article-panel, #f4fbff);color:var(--article-ink, #12324c);padding:8px 12px;text-align:left;font-weight:600;font-size:12px;border-bottom:2px solid #5fb3ea;">رەسمىي كېلىشىم مىسالى</th>
+    <th style="background:var(--article-panel, #f4fbff);color:var(--article-ink, #12324c);padding:8px 12px;text-align:left;font-weight:600;font-size:12px;border-bottom:2px solid #5fb3ea;">سىستېما نېمىنى ئەستە تۇتۇشى كېرەك</th>
+  </tr>
+  <tr>
+    <td style="padding:9px 8px;border:1px solid var(--article-border, #e0ecf5);">كىرگۈزۈش رولى</td>
+    <td style="padding:9px 8px;border:1px solid var(--article-border, #e0ecf5);">Qwen سۈرۈشتۈرۈش كۆرسەتمىسى؛ E5 سۈرۈشتۈرۈش/ھۆججەت ئالدى قوشۇمچىسى؛ Cohere input_type؛ Jina v3 Task LoRA</td>
+    <td style="padding:9px 8px;border:1px solid var(--article-border, #e0ecf5);">سۈرۈشتۈرۈش بىلەن ھۆججەتنىڭ ھەقىقىي كىرگۈزۈش بايتلىرى ۋە ۋەزىپە كىملىكى</td>
+  </tr>
+  <tr>
+    <td style="padding:9px 8px;border:1px solid var(--article-border, #e0ecf5);">ئىپادىلەش شەكلى</td>
+    <td style="padding:9px 8px;border:1px solid var(--article-border, #e0ecf5);">BGE-M3: dense / sparse / multi-vector دىن ئىبارەت ئۈچ ئىپادە</td>
+    <td style="padding:9px 8px;border:1px solid var(--article-border, #e0ecf5);">چىقىرىش ھالىتى، نومۇر مەنىسى ۋە ئىزدەش ئالگورىزىمى</td>
+  </tr>
+  <tr>
+    <td style="padding:9px 8px;border:1px solid var(--article-border, #e0ecf5);">چىقىرىش ۋە سان قائىدىسى</td>
+    <td style="padding:9px 8px;border:1px solid var(--article-border, #e0ecf5);">OpenAI / Qwen / Jina / Cohere نىڭ بەزى مودېللىرى ئۆلچەم قىسقارتىش ياكى چىقىرىش ئۆلچىمىنى تاللاشنى قوللايدۇ، كونكرېت قائىدىلىرى پەرقلىق</td>
+    <td style="padding:9px 8px;border:1px solid var(--article-border, #e0ecf5);">ئۆلچەم، dtype، نورماللاشتۇرۇش، ئۆلچەم كېسىش تەرتىپى ۋە ئەمەلىيلەشتۈرۈش نەشرى</td>
+  </tr>
+  <tr>
+    <td style="padding:9px 8px;border:1px solid var(--article-border, #e0ecf5);">ئەۋلادلار ئارا ماسلىشىش</td>
+    <td style="padding:9px 8px;border:1px solid var(--article-border, #e0ecf5);">Gemini 001 → 2 تولۇق قايتا ھېسابلىنىدۇ؛ Voyage 4 يۈرۈشلۈكى ئىچىدە بوشلۇق ئورتاق</td>
+    <td style="padding:9px 8px;border:1px solid var(--article-border, #e0ecf5);">كېلىشىمدە ماسلىشىش ئېنىق ۋەدە قىلىنمىسا، سۈكۈتتە ماس كەلمەيدۇ</td>
+  </tr>
+</table>
+</div>
+
+<p style="margin:8px 0;">ئوخشاش مودېلمۇ ئەمەلىيلەشتۈرۈش نەشرى ئۆزگەرگەندە باشقا ئۇسۇلدا ۋېكتور ھاسىل قىلىشى مۇمكىن. Weaviate نىڭ خاسلىق تەرتىپى، مەيدان ئۇلاش ۋە چوڭ-كىچىك ھەرپ بىر تەرەپ قىلىشى مودېل كىرگۈزۈشىنى ئۆزگەرتىدۇ؛ Jina v3 مۇ نورماللاشتۇرۇش بىلەن ئۆلچەم كېسىشنىڭ ئىجرا تەرتىپىنى تۈزەتكەن. كونا نەتىجىگە ماس كېلىش ئۈچۈن، رەسمىي تەرەپ تارىخىي كود نەشرىنى مۇقىملاشنى تەلەپ قىلغان.<span style="font-size:11px;vertical-align:super;color:var(--article-secondary, #5f7b9c);">［7］［12］</span>مودېل نامى ئۆزگەرمىدى، لېكىن ۋېكتور ھاسىل قىلىش شەرتى ئۆزگەردى.</p>
+
+<h3 style="font-size:16px;font-weight:700;color:var(--article-ink, #12324c);margin:24px 0 10px;">HexClaw بۇ كېلىشىمنى قانداق خاتىرىلەيدۇ: 12 مەيدان، بىر بارماق ئىزى</h3>
+
+<p style="margin:8px 0;">HexClaw ھەر بىر Embedding ئىجرا سەپلىمىسىنى كىملىك مەخپىي ئۇچۇرى يوق كېلىشىم قىلىپ خاتىرىلەيدۇ (<code dir="ltr" style="background:var(--article-panel, #edf7ff);padding:1px 5px;border-radius:3px;font-size:13px;color:var(--article-accent, #3f8fd4);overflow-wrap:anywhere;">cmd/hexclaw/semantic_index_runtime.go</code>）：</p>
+
+<section dir="ltr" style="margin:14px 0;padding:14px 16px;overflow-x:auto;background:#102a3d;color:#d9edf7;border-radius:8px;font-size:12px;line-height:1.7;font-family:SFMono-Regular,Menlo,Monaco,Consolas,'Courier New',monospace;box-sizing:border-box;">
+<span style="display:block;white-space:pre;min-height:1.7em;">type knowledgeEmbeddingExecutorContract struct {</span>
+<span style="display:block;white-space:pre;min-height:1.7em;">    ContractVersion    string</span>
+<span style="display:block;white-space:pre;min-height:1.7em;">    Dimension          int</span>
+<span style="display:block;white-space:pre;min-height:1.7em;">    DocumentPrefix     string</span>
+<span style="display:block;white-space:pre;min-height:1.7em;">    EndpointIdentity   string</span>
+<span style="display:block;white-space:pre;min-height:1.7em;">    ExactModelID       string</span>
+<span style="display:block;white-space:pre;min-height:1.7em;">    MaxInputRunes      int</span>
+<span style="display:block;white-space:pre;min-height:1.7em;">    Normalization      string</span>
+<span style="display:block;white-space:pre;min-height:1.7em;">    Protocol           string</span>
+<span style="display:block;white-space:pre;min-height:1.7em;">    ProviderInstanceID string</span>
+<span style="display:block;white-space:pre;min-height:1.7em;">    ProviderLocation   string</span>
+<span style="display:block;white-space:pre;min-height:1.7em;">    QueryPrefix        string</span>
+<span style="display:block;white-space:pre;min-height:1.7em;">    TransformEpoch     string</span>
+<span style="display:block;white-space:pre;min-height:1.7em;">}</span>
+</section>
+
+<p style="margin:8px 0;">بۇ 12 مەيدان ئۆلچەملىك JSON غا ئايلاندۇرۇلۇپ، SHA-256 قىلىنىدۇ؛ نەتىجە <code dir="ltr" style="background:var(--article-panel, #edf7ff);padding:1px 5px;border-radius:3px;font-size:13px;color:var(--article-accent, #3f8fd4);overflow-wrap:anywhere;">profile_config_hash</code>。<code dir="ltr" style="background:var(--article-panel, #edf7ff);padding:1px 5px;border-radius:3px;font-size:13px;color:var(--article-accent, #3f8fd4);overflow-wrap:anywhere;">profile_id</code> «قايسى تەمىنلىگۈچىدىكى قايسى مودېل» دېگەن سوئالغا جاۋاب بېرىدۇ، <strong style="color:var(--article-accent, #3f8fd4);">سەپلىمە بارماق ئىزى بولسا قايسى ئىجرا سەپلىمىسى ئىشلىتىلىۋاتقانلىقىنى ئايرىيدۇ</strong>. Endpoint، ئۆلچەم ياكى كىرگۈزۈش ئۆزگەرتىشى ئالماشسا، بىرىنچىسى ئۆزگەرمەسلىكى مۇمكىن، ئىككىنچىسى چوقۇم ئۆزگىرىشى كېرەك.</p>
+
+<p style="margin:8px 0;">سۈرۈشتۈرۈشتە سەپلىمە بارماق ئىزى بويىچە نۆۋەتتە تىزىملانغان ئىجرا قىلغۇچ ماسلاشتۇرۇلىدۇ. ئوخشاش كېلىشىمدىكى ئىجرا قىلغۇچ تېپىلمىسا، ۋېكتور يولى ئېتىلىدۇ؛ <strong style="color:var(--article-accent, #3f8fd4);">بۈگۈنكى سۈكۈتتىكى مودېل بىلەن تۈنۈگۈنكى ۋېكتور چۈشەندۈرۈلمەيدۇ</strong>. بۇ بارماق ئىزى سەپلىمىنى بەلگىلەيدۇ، كونا مودېل ياكى تارىخىي ئىجرا مۇھىتىنى ئەسلىگە كەلتۈرۈپ بەرمەيدۇ.</p>
+
+<p style="margin:8px 0;">بۇ ئۇسۇل ئېھتىياتچان: پەقەت سۈرۈشتۈرۈش كۆرسەتمىسى ئۆزگەرسە، ياكى ئوخشاش مودېلنىڭ endpoint ى ئالماشسا، ھۆججەت ۋېكتورىنى ماتېماتىكىلىق جەھەتتە قايتا ھېسابلاش شەرت بولماسلىقى مۇمكىن. لېكىن HexClaw بۇ ئۆزگىرىشلەرنى سەپلىمە بارماق ئىزىغا كىرگۈزۈپ، يېڭى سىياسەتنى قوللانغاندا يېڭى ئەۋلاد ئىندېكس قايتا قۇرۇش جەريانىدىن ئۆتكۈزىدۇ. بەدىلى بىر قېتىم ئارتۇق ھېسابلاش بولۇشى مۇمكىن، پايدىسى ئىجرا سەپلىمىسى بىلەن ئىندېكس ئەۋلادىنىڭ ماسلىقى ئېنىق.</p>
+
+<p style="margin:8px 0;">تېخى تولۇق مۇقىملانمىغان بىر قىسمى بار: بۇ 12 مەيدان مودېل مەھسۇلىنىڭ digest ى، quantization دەرىجىسى ۋە inference ماتورى نەشرىنى ئايرىم خاتىرىلىمەيدۇ. ئوخشاش نامدىكى tag ئارقىسىدىكى مەھسۇلات ئۆزگەرسە، سەپلىمە بارماق ئىزى چوقۇم ئۆزگىرىدۇ دېگىلى بولمايدۇ.</p>
+
+<h3 style="font-size:16px;font-weight:700;color:var(--article-ink, #12324c);margin:24px 0 10px;">ھەر بىر ئۆزگىرىش تولۇق قايتا قۇرۇشقا ئەرزىمەيدۇ</h3>
+
+<p style="margin:8px 0;">ۋېكتور ھاسىل قىلىش شەرتى، ھېسابلاشنى جەدۋەللەش خامچوتى، نەتىجە سۈزۈش قائىدىسى ئايرىم باشقۇرۇلۇشى كېرەك:</p>
+
+<table style="width:100%;border-collapse:collapse;margin:16px 0;font-size:13px;line-height:1.8;">
+  <tr>
+    <th style="background:var(--article-panel, #f4fbff);color:var(--article-ink, #12324c);padding:8px 12px;text-align:left;font-weight:600;font-size:12px;border-bottom:2px solid #5fb3ea;">قاتلام</th>
+    <th style="background:var(--article-panel, #f4fbff);color:var(--article-ink, #12324c);padding:8px 12px;text-align:left;font-weight:600;font-size:12px;border-bottom:2px solid #5fb3ea;">تىپىك مەيدانلار</th>
+    <th style="background:var(--article-panel, #f4fbff);color:var(--article-ink, #12324c);padding:8px 12px;text-align:left;font-weight:600;font-size:12px;border-bottom:2px solid #5fb3ea;">ئۆزگەرگەندىن كېيىنكى ھەرىكەت</th>
+  </tr>
+  <tr>
+    <td style="padding:9px 8px;border-bottom:1px solid var(--article-border, #e0ecf5);">ئىجرا كېلىشىمى</td>
+    <td style="padding:9px 8px;border-bottom:1px solid var(--article-border, #e0ecf5);">ئېنىق مودېل ID سى، ئۆلچەم، سۈرۈشتۈرۈش/ھۆججەت كىرگۈزۈش ئۆزگەرتىشى، نورماللاشتۇرۇش باياناتى</td>
+    <td style="padding:9px 8px;border-bottom:1px solid var(--article-border, #e0ecf5);">ھازىرقى ئېھتىياتچان سىياسەت: يېڭى hash، يېڭى revision، قايتا قۇرۇش</td>
+  </tr>
+  <tr>
+    <td style="padding:9px 8px;border-bottom:1px solid var(--article-border, #e0ecf5);">ئىجرا خامچوتى</td>
+    <td style="padding:9px 8px;border-bottom:1px solid var(--article-border, #e0ecf5);">ھەر توپلام دانە سانى، ئومۇمىي rune، چاقىرىش ۋاقىت چېكى</td>
+    <td style="padding:9px 8px;border-bottom:1px solid var(--article-border, #e0ecf5);">جەدۋەللەشنى تەڭشەش، تاپشۇرۇلغان ۋېكتورنى قايتا ھېسابلىماسلىق</td>
+  </tr>
+  <tr>
+    <td style="padding:9px 8px;border-bottom:1px solid var(--article-border, #e0ecf5);">ئىزدەش سىياسىتى</td>
+    <td style="padding:9px 8px;border-bottom:1px solid var(--article-border, #e0ecf5);">Top-K، مۇناسىۋەتلىكلىك چېكى، ئاپتوماتىك قوشۇش-قوشماسلىق</td>
+    <td style="padding:9px 8px;border-bottom:1px solid var(--article-border, #e0ecf5);">قايتا باھالاش، ۋېكتور بوشلۇقىنى ئۆزگەرتمەسلىك</td>
+  </tr>
+</table>
+
+<p style="margin:8px 0;"><strong style="color:var(--article-accent, #3f8fd4);">بەلگىلىك كىرگۈزۈش كېسىش ياكى ئالدى قوشۇمچە، مودېلغا بېرىلىدىغان تېكىستنى ئۆزگەرتىدۇ؛ شۇڭا ئىجرا كېلىشىمىگە تەۋە</strong>. ئوخشاش كىرگۈزۈشنى تەلەپكە قانداق قاچىلاش، ئۇنىڭغا قانچىلىك ۋاقىت بېرىش بولسا ئىجرا خامچوتىغا تەۋە. بۇ ئۈچ خىل ئۆزگىرىش ئايرىلمىسا، قايتا قۇرۇش كېرەك چاغدا قىلماسلىق، ياكى پەقەت timeout نى ئۆزگەرتىپلا پۈتۈن ئامبارنى قايتا ھېسابلاش ئاسان يۈز بېرىدۇ.</p>
+
+<p style="margin:8px 0;">يەنە بىر قەدەم ئىلگىرىلىسەك، مودېل نامى ئۆزگەرمىسىمۇ، ئىندېكس ئەسلى پېتى قالالماسلىقى مۇمكىن. Anthropic نىڭ 2024-يىلى 9-ئايدا تونۇشتۇرغان Contextual Retrieval ئۇسۇلى ھەر بىر پارچىغا ئەسلى تېكىستتىكى مەزمۇن مۇھىتىنى تولۇقلاپ، ئاندىن ۋېكتور ۋە BM25 ئىندېكسى قۇرىدۇ.<span style="font-size:11px;vertical-align:super;color:var(--article-secondary, #5f7b9c);">［2］</span><strong style="color:var(--article-accent, #3f8fd4);">مودېل ئوخشاش، لېكىن ئۇنىڭغا بېرىلگەن تېكىست ئۆزگەرگەن.</strong>HexClaw كېيىن بۇ خىل بىر تەرەپ قىلىشنى قوشسا، قوشۇلغان مەزمۇن مۇھىتى ۋە ھاسىل قىلىش قائىدىسىنىمۇ ئېنىق خاتىرىلىشى كېرەك؛ بولمىسا يېڭى-كونا ئىندېكسنىڭ قايسى شەرتتە ھاسىل بولغانلىقى يەنىلا ماس كەلمەيدۇ.</p>
+
+<hr style="border:none;border-top:1px solid var(--article-border, #e0ecf5);margin:28px 0;"/>
+
+<h2 style="font-size:18px;font-weight:700;color:var(--article-ink, #12324c);margin:36px 0 10px;padding-bottom:6px;border-bottom:2px solid #5fb3ea;">64 دانىلىق توپلامنىڭ ۋاقتى ئېشىپ كەتسە، خامچوت قانداق تەڭشىلىدۇ؟</h2>
+
+<p style="margin:8px 0;">7-ئايدا بۇ زەنجىر تۇنجى ئۇلانغاندا، Ollama 0.32.5، qwen3-embedding:8b Q4_K_M ۋە CPU يولى ئىشلىتىلگەن. تەلەپ HTTP 200 قايتۇردى؛ ئۈچ كىرگۈزۈش ئۈچ گۇرۇپپا 4096 ئۆلچەملىك ۋېكتور بەردى، پاراڭ مودېلى چاقىرىلمىدى.<strong style="color:var(--article-accent, #3f8fd4);">زەنجىرنىڭ ئىجرا بولۇشى پۈتۈن دەرسلىكنى بىرلا قېتىمدا پۈتتۈرەلەيدۇ دېگەنلىك ئەمەس</strong>。</p>
+
+<p style="margin:8px 0;">دەرسلىك توپلاملىرىنى داۋاملىق بىر تەرەپ قىلغاندا، بۇرۇنقى «64 دانە بىر توپلام، 60 سېكۇنت خامچوت»نىڭ ۋاقتى ئېشىپ كەتتى. بۇ سەپلىمە ئەسلىدە يېنىك Embedding ئۈچۈن ئىدى؛ بۇ قېتىمقى CPU ئىجرا شەرتىدە بىۋاسىتە كۆچۈرۈپ ئىشلىتىشكە ماس كەلمىدى.</p>
+
+<p style="margin:8px 0;">شۇنىڭدىن كېيىن دانە سانى بىلەن rune سانىنى بىرلا ۋاقىتتا چەكلىدۇق. rune، Go دىكى Unicode كود نۇقتىسى؛ بۇ يەردە كىرگۈزۈش كۆلىمىنى ئۆلچەيدۇ، مودېل token ىغا تەڭ ئەمەس. تۆۋەندىكىسى شۇ چاغدا خاتىرىلەنگەن بىر نەچچە يەككە قېتىملىق ۋاقىت:</p>
+
+<table style="width:100%;border-collapse:collapse;margin:16px 0;font-size:13px;line-height:1.8;">
+  <tr>
+    <th style="background:var(--article-panel, #f4fbff);color:var(--article-ink, #12324c);padding:8px 12px;text-align:left;font-weight:600;font-size:12px;border-bottom:2px solid #5fb3ea;">تارىخىي يەككە قېتىملىق كۆزىتىش</th>
+    <th style="background:var(--article-panel, #f4fbff);color:var(--article-ink, #12324c);padding:8px 12px;text-align:right;font-weight:600;font-size:12px;border-bottom:2px solid #5fb3ea;">سەرپ بولغان ۋاقىت</th>
+  </tr>
+  <tr><td style="padding:8px;border-bottom:1px solid var(--article-border, #e0ecf5);">سوغۇق قوزغىلىش query · ئەسلى كىرگۈزۈش</td><td style="padding:8px;text-align:right;border-bottom:1px solid var(--article-border, #e0ecf5);">36.290s</td></tr>
+  <tr><td style="padding:8px;border-bottom:1px solid var(--article-border, #e0ecf5);">ھەر توپلام 1 دانە</td><td style="padding:8px;text-align:right;border-bottom:1px solid var(--article-border, #e0ecf5);">71.989s</td></tr>
+  <tr><td style="padding:8px;border-bottom:1px solid var(--article-border, #e0ecf5);">ھەر توپلام 2 دانە</td><td style="padding:8px;text-align:right;border-bottom:1px solid var(--article-border, #e0ecf5);">48.602s</td></tr>
+  <tr><td style="padding:8px;border-bottom:1px solid var(--article-border, #e0ecf5);">ھەر توپلام 4 دانە</td><td style="padding:8px;text-align:right;border-bottom:1px solid var(--article-border, #e0ecf5);">200.853s</td></tr>
+  <tr><td style="padding:8px;border-bottom:1px solid var(--article-border, #e0ecf5);">ھەر توپلام 8 دانە</td><td style="padding:8px;text-align:right;border-bottom:1px solid var(--article-border, #e0ecf5);">302.655s</td></tr>
+</table>
+
+<p style="margin:6px 0;font-size:12px;color:var(--article-secondary, #5f7b9c);">جەدۋەل 2026-07-28 كۈنى ساقلانغان يەككە قېتىملىق كۆزىتىشلەردىن تۈزۈلگەن. ئەسلى ھەر قېتىملىق خاتىرە، تولۇق قاتتىق دېتال، ئىجرا پارامېتىرلىرى، سوغۇق-قىزىق تەرتىپى تولۇق ساقلانمىغان. پەقەت شۇ چاغدىكى تەڭشەش جەريانىنى چۈشەندۈرىدۇ؛ توپلاملارنىڭ ياخشى-يامانلىقىنى سېلىشتۇرۇش، throughput ياكى پۈتۈن دەرسلىكنى قايتا قۇرۇش ۋاقتىنى ھېسابلاشقا ئىشلىتىلمەيدۇ.</p>
+
+<p style="margin:8px 0;">بۇ خاتىرىدە batch 1، batch 2 دىن ئاستا بولغان؛ لېكىن بۇنىڭدىن batch 2 ئادەتتە تېزرەك دېگىلى بولمايدۇ. سوغۇق قوزغىلىش، جەدۋەللەش، كىرگۈزۈش ئۇزۇنلۇقى ۋە ئىچكى ساقلىغۇچ ھالىتى ۋاقىتقا تەسىر قىلىدۇ. Qwen Profile ئاخىرى كىرگۈزۈش كۆلىمى بىلەن ئىجرا ۋاقتىنى تەڭ چەكلىدى:</p>
+
+<section dir="ltr" style="margin:14px 0;padding:14px 16px;overflow-x:auto;background:#102a3d;color:#d9edf7;border-radius:8px;font-size:12px;line-height:1.7;font-family:SFMono-Regular,Menlo,Monaco,Consolas,'Courier New',monospace;box-sizing:border-box;">
+<span style="display:block;white-space:pre;min-height:1.7em;">item_count      &lt;= 2</span>
+<span style="display:block;white-space:pre;min-height:1.7em;">total_runes     &lt;= 800</span>
+<span style="display:block;white-space:pre;min-height:1.7em;">max_input_runes &lt;= 400</span>
+<span style="display:block;white-space:pre;min-height:1.7em;">batch_timeout    = 120s</span>
+<span style="display:block;white-space:pre;min-height:1.7em;">query_timeout    = 60s</span>
+</section>
+
+<p style="margin:8px 0;">Worker ئالدى بىلەن دانە سانىنى چەكلەيدۇ، ئىجرا قىلغۇچنىڭ ئورالما قاتلىمى بولسا دانە سانى ۋە ئومۇمىي rune سانى بويىچە ئاچكۆزلۈك ئۇسۇلىدا قاچىلايدۇ: كېيىنكىسى چەكتىن ئاشسا، ھازىرقى توپلامنى ئالدى بىلەن ئەۋەتىدۇ.</p>
+
+<p style="margin:8px 0;">سۈرۈشتۈرۈش تەرىپىدىكى 60 سېكۇنتنى پۈتۈن ۋېكتور ئىزدەش باسقۇچى ئورتاق ئىشلىتىدۇ؛ كېڭەيتىلگەن query نىڭ بايلىق كۈتۈشى ۋە مودېل چاقىرىشى مۇشۇنىڭدىن كېمەيتىلىدۇ. يۇقىرىقى context بۇرۇنراق توشسا، بالدۇر ئاخىرلىشىدۇ. بۇ ھەر بىر كېڭەيتىلگەن query نىڭ مۇستەقىل نورمىسى ئەمەس، ئۇنىڭدىن بۇرۇنقى query كېڭەيتىش ۋە كېيىنكى قايتا تەرتىپلەشنىمۇ ئۆز ئىچىگە ئالمايدۇ.</p>
+
+<p style="margin:8px 0;"><strong style="color:var(--article-accent, #3f8fd4);">بۇ پارامېتىرلار پەقەت ئېنىق ماس كەلگەن Qwen Profile غىلا تەۋە</strong>. Nomic نىڭ ئالدى قوشۇمچىسى، چېكى ۋە خامچوتى ئۆزگەرمەيدۇ؛ باشقا مودېللارنىڭ كىرگۈزۈش تەلىپى ۋە خامچوتىنى ئايرىم تەكشۈرۈش كېرەك.</p>
+
+<p style="margin:8px 0;">ھازىر 400 rune دىن ئاشقان كىرگۈزۈش كېسىلىدۇ، كۆپ تارماق chunk قا قايتا بۆلۈنمەيدۇ. ئەسلى تېكىست ۋە FTS تولۇق ساقلىنىدۇ، لېكىن ۋېكتور پۈتۈن پارچىنى كودلىغان بولماسلىقى مۇمكىن. سۈرۈشتۈرۈش تېكىستىگە ئالدى بىلەن كۆرسەتمە ئۇلىنىپ، ئاندىن كېسىلىدۇ؛ شۇڭا ئالدى قوشۇمچىمۇ بۇ 400 rune نىڭ ئىچىگە كىرىدۇ.</p>
+
+<p style="margin:8px 0;">مودېل 32K كونتېكىستنى قوللىسىمۇ، بۇنىڭدىن بىر تەلەپنىڭ قانچە سېكۇنتتا تاماملىنىدىغانلىقىنى بەلگىلىگىلى بولمايدۇ. <strong style="color:var(--article-accent, #3f8fd4);">«سىغىش» بىلەن «ھېسابلاپ پۈتتۈرۈش» ئىككى باشقا ھېساب</strong>. قاتتىق دېتال، مودېل مەھسۇلى ياكى تەمىنلىگۈچى ئالماشسا، خامچوتنى قايتا تەكشۈرۈش كېرەك.</p>
+
+<hr style="border:none;border-top:1px solid var(--article-border, #e0ecf5);margin:28px 0;"/>
+
+<h2 style="font-size:18px;font-weight:700;color:var(--article-ink, #12324c);margin:36px 0 10px;padding-bottom:6px;border-bottom:2px solid #5fb3ea;">بىر BLOB ستونى ئىككى ئەۋلاد ئىندېكسنى قانداق باشقۇرىدۇ؟</h2>
+
+<p style="margin:8px 0;">HexClaw نىڭ دەسلەپكى يەرلىك بىلىم ئامبىرى ئاددىي يول تاللىغان: ئەسلى تېكىست بىلەن chunk، SQLite دا؛ ئاچقۇچلۇق سۆز ئىزدەش FTS5 ئارقىلىق؛ ۋېكتور chunk جەدۋىلىنىڭ بىر BLOB ستونىدا ساقلىنىپ، Go ھەر بىر ۋېكتورنىڭ cosine similarity سىنى ھېسابلايدۇ. يەككە مودېل، يەككە كومپيۇتېر بىلىم ئامبىرى ئۈچۈن بۇ لايىھە ئاددىي، ئېنىق، قوشۇمچە ۋېكتور مۇلازىمىتىنى ئاسراش لازىم ئەمەس.</p>
+
+<p style="margin:8px 0;">توردا ئالماشتۇرۇشقا كەلگەندە، ئوخشاش chunk ۋاقىتلىق ئىككى توپ ۋېكتور ساقلىشى كېرەك: Nomic A داۋاملىق ئىزدەش تەمىنلەيدۇ، Qwen B يېنىدا قايتا قۇرۇلىدۇ. كونا جەدۋەلگە پەقەت بىر <code dir="ltr" style="background:var(--article-panel, #edf7ff);padding:1px 5px;border-radius:3px;font-size:13px;color:var(--article-accent, #3f8fd4);">model_name</code> مەيدانى قوشۇش يېتەرلىك ئەمەس؛ ئوخشاش chunk يەنىلا بىر ئەۋلاد ۋېكتورلا ساقلىيالايدۇ. قۇرمۇقۇر ئۈستىدىن يېزىش تېخىمۇ ناچار: قايتا قۇرۇش 63% بولغاندا، ئوقۇش يولى قايتالمىغان، تېخى تاماملانمىغان بىر ئىندېكسقا دۇچ كېلىدۇ.</p>
+
+<p style="margin:8px 0;">ساندان كۆچۈرۈش نەشرى v23، پاكىت مەنبەسى بىلەن تۇغۇندى ئىندېكسنى ئايرىدى. ئالدى بىلەن تۆت كىملىكنى پەرقلەيلى: revision پۈتۈن مەنىلىك ئىندېكسنىڭ ئەۋلادى، document generation يەككە ھۆججەت مەزمۇنىنىڭ ئەۋلادى؛ content version ماتېرىيال ئۆزگىرىشىنى، policy version ئىشلەتكۈچى سىياسىتىنىڭ ئۆزگىرىشىنى خاتىرىلەيدۇ. مودېل ئالماشتۇرۇش، دەرسلىك ئالماشتۇرۇش ۋە نىشاننى قايتا تاللاشقا بىرلا مۈجمەل «نەشر نومۇرى» ئىشلىتىشكە بولمايدۇ. مۇھىم مەيدانلار:</p>
+
+<section dir="ltr" style="margin:14px 0;padding:14px 16px;overflow-x:auto;background:#102a3d;color:#d9edf7;border-radius:8px;font-size:12px;line-height:1.7;font-family:SFMono-Regular,Menlo,Monaco,Consolas,'Courier New',monospace;box-sizing:border-box;">
+<span style="display:block;white-space:pre;min-height:1.7em;">kb_semantic_corpora.active_revision_id  -&gt; A</span>
+<span style="display:block;white-space:pre;min-height:1.7em;">kb_embedding_policies.desired_revision_id -&gt; B</span>
+<span style="display:block;white-space:pre;min-height:1.7em;"><br/></span>
+<span style="display:block;white-space:pre;min-height:1.7em;">kb_index_revisions</span>
+<span style="display:block;white-space:pre;min-height:1.7em;">  (revision_id, profile_snapshot_id, publish_state,</span>
+<span style="display:block;white-space:pre;min-height:1.7em;">   base_content_version, indexed_through_version, ...)</span>
+<span style="display:block;white-space:pre;min-height:1.7em;"><br/></span>
+<span style="display:block;white-space:pre;min-height:1.7em;">kb_revision_vectors</span>
+<span style="display:block;white-space:pre;min-height:1.7em;">  (revision_id, document_id, content_generation, chunk_id,</span>
+<span style="display:block;white-space:pre;min-height:1.7em;">   profile_config_hash, model_name, dimension, embedding)</span>
+<span style="display:block;white-space:pre;min-height:1.7em;"><br/></span>
+<span style="display:block;white-space:pre;min-height:1.7em;">CHECK(length(embedding) = dimension * 4)</span>
+</section>
+
+<p style="margin:8px 0;">ماتېرىيالنىڭ نۆۋەتتىكى <code dir="ltr" style="font-size:13px;">content_version</code> قىممىتى <code dir="ltr" style="font-size:13px;">kb_semantic_corpora</code> دا؛ revision قۇرۇلغان چاغدىكى <code dir="ltr" style="font-size:13px;">base_content_version</code> ۋە قوغلاپ يېتىلگەن <code dir="ltr" style="font-size:13px;">indexed_through_version</code> قىممىتىنى ساقلايدۇ. بۇلار ئايرىم ھالدا «قەيەردىن باشلىدى؟» ۋە «قەيەرگە يېتىپ كەلدى؟» دېگەن سوئاللارغا جاۋاب بېرىدۇ.</p>
+
+<p style="margin:8px 0;">كونا <code dir="ltr" style="background:var(--article-panel, #edf7ff);padding:1px 5px;border-radius:3px;font-size:13px;color:var(--article-accent, #3f8fd4);">kb_chunks.embedding</code> يەنىلا قالدۇق ستون سۈپىتىدە ساقلىنىدۇ، يېڭى زەنجىر ئۇنى يېڭىلىمايدۇ. كونا پروگراممىغا قايتىش، بۇ ستون ئارقىلىق كۆچۈرۈش مەزگىلىدە قوشۇلغان مەزمۇننىڭ تولۇق مەنىلىك ئىندېكسىنى ئالالايدۇ دېگەنلىك ئەمەس.</p>
+
+<p style="margin:8px 0;">ھەر بىر يېڭى ۋېكتور قۇرىدا revision، سەپلىمە بارماق ئىزى، مودېل، ئۆلچەم ۋە document generation بار. بىرىكمە سىرتقى ئاچقۇچ خاتىرىنىڭ ئەۋلادى ۋە سەپلىمە تەۋەلىكىنى چەكلەيدۇ، BLOB ئۇزۇنلۇق تەكشۈرۈشى ۋېكتور شەكلىنى چەكلەيدۇ. لېكىن بۇ تەكشۈرۈشلەر تەمىنلىگۈچىنىڭ توغرا مودېل مەھسۇلىنى ئىشلەتكەنلىكىنى ياكى ئىزدەش نەتىجىسىنىڭ يېتەرلىك مۇناسىۋەتلىكلىكىنى ئىسپاتلىمايدۇ.</p>
+
+<p style="margin:8px 0;">دەرسلىك ئەسلى تېكىستى بىلەن chunk پاكىت مەنبەسىدە ساقلىنىدۇ، <strong style="color:var(--article-accent, #3f8fd4);">Embedding قايتا ھېسابلىغىلى بولىدىغان تۇغۇندى سانلىق مەلۇمات</strong>. كۆچۈرۈشتە ئەسلى تېكىست ئۈستىدىن يېزىلمايدۇ؛ يېڭى-كونا ئىككى ئەۋلاد ئىندېكس ئۆز ھالىتىنى ئايرىم خاتىرىلەيدۇ.</p>
+
+<p style="margin:8px 0;">Cloudflare تەمىنلىگەن BGE-M3 نى مىسال قىلساق، OpenAI غا ماس كۆرۈنمە يۈز تەلەپ كېلىشىمىنى قايتا ئىشلىتىشكە يول قويىدۇ؛ ۋېكتور بوشلۇقى، خامچوت ۋە چېكلەرنى يەنىلا مودېل بويىچە ئايرىم تەكشۈرۈش كېرەك. BGE-M3 نىڭ ئۆزى زىچ (dense)، شالاڭ (sparse) ۋە كۆپ ۋېكتورلۇق (multi-vector) ئىپادىلەرنى قوللايدۇ.<span style="font-size:11px;vertical-align:super;color:var(--article-secondary, #5f7b9c);">［8］［9］</span>HexClaw نىڭ ھازىرقى ئىزدەش زەنجىرى زىچ ۋېكتور ئەسلەشنى ئىشلىتىپ، FTS/BM25 نەتىجىسى بىلەن بىرلەشتۈرىدۇ؛ بۇ مودېلنىڭ شالاڭ ۋە كۆپ ۋېكتورلۇق ئىزدەشى تېخى ئۇلانمىغان.</p>
+
+<p style="margin:8px 0;">كونا ئىندېكسنى ساقلاپ، يېڭى ئىندېكسنىڭ ئۆتكۈزۈۋېلىشىنى كۈتۈش پەقەت HexClaw غىلا خاس ئەمەس. Qdrant رەسمىي كۆچۈرۈش ھۆججىتىمۇ ئەسلى تېكىستكە قايتىپ Embedding نى قايتا قىلىشنى تەلەپ قىلىدۇ: كونا ۋېكتور ئەسلى تېكىستنىڭ تەتۈر ئايلاندۇرغىلى بولىدىغان كودى ئەمەس، يېڭى مودېل ۋېكتورىغا بىۋاسىتە ئايلاندۇرغىلى بولمايدۇ. ھۆججەت يەنە blue-green تولدۇرۇشتا تەڭ ۋاقىتتىكى ئۆچۈرۈشكە يولۇقسا، ئارقا سۇپىدىكى scroll كونا نۇقتىنى «قايتا تىرىلدۈرۈشى» مۇمكىنلىكىنى ئەسكەرتىدۇ. Elasticsearch بولسا بىر alias swap بىلەن ئوقۇش كىرىش نۇقتىسىنى ئاتوملۇق ئالماشتۇرىدۇ.<span style="font-size:11px;vertical-align:super;color:var(--article-secondary, #5f7b9c);">［12］</span>HexClaw ئوخشاش ئوقۇش كىرىش نۇقتىسىنى ئالماشتۇرۇش پىكرىنى قوللىنىدۇ. دەرسلىك مەزمۇن ئەۋلادى، Worker ئىجارىسى ۋە مودېل چاقىرىش نەتىجىسىنى ئەپ ئۆزى باشقۇرىدۇ؛ ۋېكتور ساقلىغۇچى ئالماشتى دەپ بۇلارنى تاشلىۋېتىشكە بولمايدۇ.</p>
+
+<p style="margin:8px 0;">Desktop دا ئىككى ئىشنى ئايرىش كېرەك: مودېل نېمە قىلالايدۇ، ئىندېكس ھازىر قايسى ھالەتتە. Qwen3-Embedding-8B پەقەت Embedding ئىقتىدارى دەپ تونۇلىدۇ، پاراڭ، Quick Chat ياكى سۈكۈتتىكى سۆھبەت مودېل نامزاتلىرىغا كىرمەيدۇ. ئىندېكس كارتىسى بولسا ئارقا تەرەپ قايتۇرغان <code dir="ltr" style="background:var(--article-panel, #edf7ff);padding:1px 5px;border-radius:3px;font-size:13px;color:var(--article-accent, #3f8fd4);">policy_version + active_revision + desired_revision + indexing_activity</code> نى ئاساس قىلىدۇ. سىياسەت قوللانغاندا ئوقۇلغان نەشر قوشۇلىدۇ؛ 409 بولسا ئارقا تەرەپنىڭ ئەڭ يېڭى ھالىتى قايتا ئېلىنىدۇ، ۋاقتى ئۆتكەن بولۇشى مۇمكىن يېزىش مەشغۇلاتى ئۆزلۈكىدىن قايتا ئوينىتىلمايدۇ.</p>
+
+<h3 style="font-size:16px;font-weight:700;color:var(--article-ink, #12324c);margin:24px 0 10px;">سۈكۈتتىكى مودېل ئۆزگىرىشى ئاپتوماتىك كۆچۈرۈش دېگەنلىك ئەمەس</h3>
+
+<p style="margin:8px 0;">ئىچكى سۈكۈتتىكى مودېل Qwen غا ئالماشسىمۇ، مەۋجۇت بىلىم ئامبىرى قايتا قوزغالغاندىن كېيىن ئاپتوماتىك كۆچمەيدۇ. يەرلىك Ollama مودېل تاللىشىدا ئاشكارا سەپلىمە ئالدىنقى ئورۇندا؛ ئېنىق تاللاش بولمىسا قاچىلانغان مودېللار تەكشۈرۈلىدۇ، ئاخىرىدا ئىچكى سۈكۈتتىكى قىممەت زاپاس بولىدۇ. مەۋجۇت بىلىم ئامبىرى ئۆز سىياسىتىنى داۋاملاشتۇرىدۇ؛ يېڭى مودېلنى بايقاش پەقەت تاللاشنى كۆپەيتىدۇ. ئىشلەتكۈچى يېڭى تاللاشنى قوللانغاندىلا، سىستېما نىشان ئىندېكسنى قۇرىدۇ.<strong style="color:var(--article-accent, #3f8fd4);">چۈشۈرۈش تاماملىنىش، سىياسەت تاللاش، سۈرۈشتۈرۈشنى رەسمىي ئۆتكۈزۈۋېلىش — ئۈچ مۇستەقىل ھالەت</strong>。</p>
+
+<hr style="border:none;border-top:1px solid var(--article-border, #e0ecf5);margin:28px 0;"/>
+
+<h2 style="font-size:18px;font-weight:700;color:var(--article-ink, #12324c);margin:36px 0 10px;padding-bottom:6px;border-bottom:2px solid #5fb3ea;">كونا A داۋاملىق مۇلازىمەت قىلىدۇ، يېڭى B يېنىدا قايتا قۇرۇلىدۇ</h2>
+
+<p style="margin:8px 0;">كۆچۈرۈش باشلانغاندىن كېيىن، Nomic revision A يەنىلا بىردىنبىر مەنىلىك ئىندېكس ئوقۇش كىرىش نۇقتىسى؛ Qwen revision B بولسا desired / staged ھالىتىدە، پەقەت ئارقا سۇپا قۇرۇلۇشىغا مەسئۇل.<strong style="color:var(--article-accent, #3f8fd4);">B، 1%، 63% ياكى 99% تاماملىسىمۇ، ئالدىن سۈرۈشتۈرۈشكە قاتناشمايدۇ</strong>。</p>
+
+<p style="margin:8px 0;">سۈرۈشتۈرۈش ئالدى بىلەن active snapshot نى يۈكلەپ، ئوخشاش revision، سەپلىمە بارماق ئىزى، dimension ۋە document generation بويىچە ۋېكتورنى سۈزىدۇ. كونا ئىجرا قىلغۇچ يەنىلا ئىشلىسە، A ئۆزگەرمىگەن ۋە generation ى كۈچكە ئىگە ھۆججەتلەرگە مەنىلىك ئىزدەش تەمىنلەيدۇ. كونا مودېل ئۆچۈرۈلگەن بولسا، ۋېكتور يولى توختايدۇ. بۇ چاغدا ئوچۇق بىلىم ئامبىرى ئىزدەشى يەنىلا FTS5 / LIKE نەتىجىسى قايتۇرالايدۇ؛ پاراڭدىكى ئاپتوماتىك RAG قوشۇش بولسا قۇرۇق قايتۇرىدۇ، ساپ ئاچقۇچلۇق سۆز ماسلىشىشىنى «ۋېكتور ئەسلەش مۇۋەپپەقىيىتى» دەپ كۆرسەتمەيدۇ.</p>
+
+<p style="margin:16px 0;text-align:center;"><img width="1200" height="2200" loading="lazy" decoding="async" src="../../assets/blog/embedding-schema-migration/索引换代主流程.png" alt="يەرلىك Nomic تىن Qwen غا ئۆتۈش مىسالى: active كۈچكە ئىگە كونا مەزمۇنغا مۇلازىمەت قىلىدۇ، desired تېكىستتىن قايتا قۇرۇلۇپ CAS ئارقىلىق ئۆتكۈزۈۋالىدۇ" style="display:block;width:100%;max-width:600px;height:auto;margin:0 auto;border-radius:8px;"/></p>
+<p style="margin:6px 0;font-size:12px;color:var(--article-secondary, #5f7b9c);text-align:center;">1-سۈرەت | يەرلىك Nomic → Qwen مىسالى: كونا ئىندېكس كۈچكە ئىگە كونا مەزمۇنغا مۇلازىمەت قىلىدۇ، يېڭى ئىندېكس ئارقا سۇپىدا قايتا قۇرۇلۇپ CAS ئارقىلىق ئۆتكۈزۈۋالىدۇ.</p>
+
+<h3 style="font-size:16px;font-weight:700;color:var(--article-ink, #12324c);margin:24px 0 10px;">قايتا قۇرۇش ئۈزۈلسە، قانداق داۋاملاشتۇرۇلىدۇ؟</h3>
+
+<p style="margin:8px 0;">كومپيۇتېر قاپقىقى يېپىلىپ ئۇخلايدۇ، ئۈستەل يۈزى ئەپى تاقىلىدۇ، يەرلىك مودېلمۇ ئۇزاق ۋاقىت باشقا ئىش بىلەن ئالدىراش بولۇشى مۇمكىن. شۇڭا يېڭى ئىندېكس قايتا قۇرۇشنى داۋاملىق ساقلىنىپ ئەسلىگە كەلتۈرگىلى بولىدىغان ۋەزىپە (durable Job) ئۈستىگە ئالىدۇ.</p>
+
+<p style="margin:8px 0;">Worker ۋەزىپىنى ئالغاندىن كېيىن، ئىجارە (Lease) ئارقىلىق بىر مەزگىللىك ئىجرا ھوقۇقىغا ئېرىشىدۇ؛ سۈكۈتتىكى ئىجارە مۇددىتى 5 مىنۇت.<strong style="color:var(--article-accent, #3f8fd4);">بۇ 5 مىنۇت «خىزمەت كارتىسىنىڭ ئىناۋەتلىك مۇددىتى»، پۈتۈن دەرسلىكنى «تاپشۇرۇشقىچە قالغان ۋاقىت» ئەمەس</strong>: ھەر توپلام باشلىنىشتىن بۇرۇن، مودېل قايتقاندىن كېيىن تاپشۇرۇشتىن بۇرۇن Worker ئىجارىنى ئۇزارتىدۇ. lease epoch ئىجرا ھوقۇقىنىڭ ئەۋلادىنى خاتىرىلەپ، نۆۋەتتىكى Worker بىلەن كېچىكىپ كەلگەن كونا Worker نى ئايرىيدۇ.</p>
+
+<p style="margin:8px 0;">قايتا سىنىغىلى بولىدىغان مەغلۇبىيەتنىڭ چېكىنىش ئارىلىقى 30 سېكۇنتتىن باشلىنىپ، ئېكسپونېنتسىيال ئاشىدۇ، يۇقىرى چېكى 15 مىنۇت. سۈكۈتتە ئۇدا ئىلگىرىلەش بولمىغان سىناش ئەڭ كۆپ 8 قېتىم؛ ئىلگىرىلەش بولسا قايتا سانىلىدۇ. بۇ پۈتۈن دەرسلىك پەقەت 8 توپلاملا ئىجرا بولىدۇ دېگەنلىك ئەمەس.</p>
+
+<p style="margin:8px 0;">ھەر مودېل تەلىپى يەنىلا Qwen Profile بويىچە كىچىك توپلامغا بۆلۈنىدۇ: ئەڭ كۆپ 2 دانە، جەمئىي 800 rune دىن ئاشمايدۇ.</p>
+
+<p style="margin:8px 0;">ھەر توپلامنى چاقىرىشتىن ئىلگىرى، Worker بىر داۋاملىق ساقلىنىدىغان تىزىملىك (Manifest) يېزىپ، بۇ توپلام تەلىپىنىڭ كىملىكى ۋە بىر تەرەپ قىلىش ھالىتىنى خاتىرىلەيدۇ. تىزىملىكتە revision، سەپلىمە بارماق ئىزى، chunk تەرتىپى، مەزمۇن خۇلاسىسى، مۇقىم تەلەپ ئاچقۇچى ۋە lease epoch بار.</p>
+
+<p style="margin:8px 0;">مودېل قايتقاندىن كېيىن، ۋېكتور سانى، 4096 ئۆلچەم، ھەر تەركىبنىڭ چەكلىك سان بولۇشى، مەزمۇن ئەۋلادى ۋە Lease تەكشۈرۈلىدۇ. ئۆتكەندىن كېيىن، <strong style="color:var(--article-accent, #3f8fd4);">ۋېكتور، Manifest نىڭ succeeded ھالىتى ۋە ۋەزىپە ئىلگىرىلىشى ئوخشاش ترانزاكسىيەدە تاپشۇرۇلىدۇ</strong>。</p>
+
+<p style="margin:8px 0;">سىكانېرلاش ئورنى cursor پەقەت شۇ نۆۋەتتىكى ئىچكى ساقلىغۇچتا بولىدۇ. جەريان قايتا قوزغالسا قايتا سىكانېرلاپ، سانداندىكى مەۋجۇت ماس ۋېكتورلار ئارقىلىق تاماملانغان قىسمىنى ئاتلايدۇ؛ يولدىكى نەتىجىسى نامەلۇم توپلاملار ئايرىم بىر تەرەپ قىلىنىدۇ.</p>
+
+<p style="margin:8px 0;">Anthropic نىڭ 2026-يىلى 4-ئاينىڭ 8-كۈنىدىكى Managed Agents قۇرۇلۇش ماقالىسىمۇ سۆھبەت خاتىرىسىنى ئىجرا رامكىسى (harness) نىڭ سىرتىغا قويۇپ، ئىجرا جەريانى بۇزۇلغاندىن كېيىن ئەسلىگە كەلتۈرۈشكە يول قويغان.<span style="font-size:11px;vertical-align:super;color:var(--article-secondary, #5f7b9c);">［10］</span>بۇ يەردە بىر تەرەپ قىلىنىدىغىنى Agent سۆھبىتى ئەمەس، ئىندېكس Job ى؛ ئورتاق نۇقتا <strong style="color:var(--article-accent, #3f8fd4);">داۋاملىق ساقلىنىدىغان ھالەت مەلۇم بىر جەريان بىلەن «بىللە تۇغۇلۇپ، بىللە ئۆلۈشى» شەرت ئەمەس</strong>。</p>
+
+<h3 style="font-size:16px;font-weight:700;color:var(--article-ink, #12324c);margin:24px 0 10px;">ۋاقتى ئېشىپ كەتتى، يەنە بىر قېتىم ئەۋەتىۋەتسەكمۇ؟</h3>
+
+<p style="margin:8px 0;">ئالدىرىماڭ. تەلەپ تەمىنلىگۈچى تەرەپتە ئىجرا بولغان، لېكىن جاۋاب ۋاقىت ئېشىش ياكى ئۇلىنىش ئۈزۈلۈشتە يوقالغان بولۇشى مۇمكىن. سىستېما بۇنى <code dir="ltr" style="font-size:13px;">outcome_unknown</code> دەپ خاتىرىلەيدۇ، ئاپتوماتىك قارىغۇلارچە قايتا سىنىمايدۇ. مۇقىم Idempotency-Key تەلەپنى بەلگىلىيەلەيدۇ؛ لېكىن تەمىنلىگۈچىنىڭ شۇ بويىچە تەكرارسىزلاشتۇرۇشى ئۇنىڭ ئۆزىنىڭ قوللىشىغا باغلىق، exactly-once نى كاپالەتلەندۈرەلمەيدۇ.</p>
+
+<p style="margin:8px 0;">ھازىر unknown بۇ Job نى مەغلۇپ قىلىدۇ، ئادەتتىكى چېكىنىش جەريانىغا كىرمەيدۇ، ئومۇمىي ئاپتوماتىك سېلىشتۇرۇپ ماسلاشتۇرغۇچمۇ يوق. قايتا ھېسابلاش ئادەتتە يىراق تەرەپ سودا سانلىق مەلۇماتىنى ئۆزگەرتمەيدۇ، لېكىن يەرلىك مودېلنى قايتا ئىگىلىشى ياكى بۇلۇت ھەققى پەيدا قىلىشى مۇمكىن.</p>
+
+<p style="margin:8px 0;">ئىشلەتكۈچى قولدا «قايتا سىناش»نى چەكسىچۇ؟ Profile ئېنىق تاللانغان، Desktop قايتا سىناشنى قوللايدىغان مەغلۇپ ۋەزىپە ئۈچۈن، سىستېما سىياسەتنى قايتا قوللىنىپ، يېڭى staged revision ۋە Job قۇرىدۇ. كىملىكى ۋە مەزمۇنى ماس، مۇۋەپپەقىيىتى مەلۇم ۋېكتورلار قايتا ئىشلىتىلىدۇ؛ كونا unknown قايتۇرما خاتىرىسى بۇنىڭ بىلەن مۇۋەپپەقىيەتكە ئايلىنىپ قالمايدۇ، نامەلۇم قىسمى يەنىلا قايتا ھېسابلىنىشى مۇمكىن.</p>
+
+<p style="margin:8px 0;"><a href="https://mp.weixin.qq.com/s/kDi-LSWB4UHtS_6jbTfvow" style="color:var(--article-accent, #3f8fd4);text-decoration:none;">«HexClaw AI نىڭ Harness Engineering ى»</a> خاتالىق تۈرلىشىنى مۇنازىرە قىلغان. ئىندېكس قايتا قۇرۇشتا «چاقىرىش ئېنىق مەغلۇپ بولدى» بىلەن «چاقىرىش نەتىجىسى نامەلۇم»نىمۇ ئايرىش كېرەك؛ <strong style="color:var(--article-accent, #3f8fd4);">ئىككىسىگە ئوخشاش قايتا سىناش سىياسىتى ئىشلىتىشكە بولمايدۇ</strong>。</p>
+
+<h3 style="font-size:16px;font-weight:700;color:var(--article-ink, #12324c);margin:24px 0 10px;">قايتا قۇرۇش مەزگىلىدە ئىشلەتكۈچى ماتېرىيالنى داۋاملىق ئۆزگەرتىدۇ</h3>
+
+<p style="margin:8px 0;">بىز قايتا قۇرۇۋاتىمىز دەپ ئىشلەتكۈچى قولىنى توختاتمايدۇ. قوشۇش، ئۆچۈرۈش قاتارلىق ماتېرىيال ئۆزگىرىشلىرى يەنىلا بىر تەرەپ قىلىنىدۇ؛ لېكىن ئوخشاش مەنبەلىك دەرسلىكنى قايتا يېشىش بىلەن ئىندېكس كۆچۈرۈش تەڭ ۋاقىتتا ئېلىپ بېرىلمايدۇ. HexClaw ھەر ئۆزگىرىش ئۈچۈن A، B ئىككى ۋېكتورنى تەڭ ھېسابلىمايدۇ. بۇ بىر ۋېكتور ھېسابىنى تېجەيدۇ، لېكىن يېڭى مەزمۇننىڭ مەنىلىك ئىزدەشتە تېپىلىشىمۇ سەل كېچىكىدۇ.</p>
+
+<p style="margin:8px 0;">نىشان ئىندېكس B نورمال ئىشلىگەندە، ئەڭ يېڭى ھۆججەت ئەۋلادىنى بىر تەرەپ قىلىپ، ماتېرىيال نەشرىگە (content version) داۋاملىق يېتىشىدۇ. A پەقەت ئۆزگەرمىگەن، ئەۋلادى كۈچكە ئىگە كونا مەزمۇننى ئوقۇغىلى بولىدىغان قىلىپ تۇرىدۇ؛ دەرسلىك ئالماشسا، كونا generation ۋېكتورلىرى سۈزۈلىدۇ. ئوچۇق تېكىست ئىزدەش يېڭى مەزمۇننى ئالدى بىلەن كۆرىدۇ، يېڭى مەزمۇننىڭ مەنىلىك ئىزدەشى B ئۆتكۈزۈۋالغاندىن كېيىن بولىدۇ.</p>
+
+<h3 style="font-size:16px;font-weight:700;color:var(--article-ink, #12324c);margin:24px 0 10px;">بىكار قىلىش، ئۆچۈرۈش ۋە كەينىگە قايتۇرۇش</h3>
+
+<p style="margin:8px 0;">كۆچۈرۈش بىكار قىلىنغاندا، ئوخشاش ترانزاكسىيە B نى بىكار قىلىپ، staged revision دىن ۋاز كېچىدۇ ۋە A ئۈچۈن ئۆتۈش مەزگىلىدە كەم قالغان incremental Job نى تولۇق قۇرىدۇ.</p>
+
+<p style="margin:8px 0;">ھۆججەت ئۆچۈرۈلگەندە، ئالدى بىلەن soft-delete ۋە tombstone قىلىنىپ، ئاندىن generation ئىلگىرىلىتىلىدۇ؛ بۇ يولدىكى Job نىڭ كونا ئىجرا ھوقۇقىنى كۈچتىن قالدۇرىدۇ. ئاخىرىدا داۋاملىق ساقلىنىدىغان تازىلاش ۋەزىپىسى (durable GC) تۇغۇندى سانلىق مەلۇماتنى تازىلايدۇ. كونا Worker قانچە جاپالىق ھېسابلىسىمۇ، <strong style="color:var(--article-accent, #3f8fd4);">ۋاقتى ئۆتكەن «خىزمەت كارتىسى» بىلەن نەتىجە تاپشۇرالمايدۇ</strong>: ساندان پەقەت نۆۋەتتە كۈچكە ئىگە ئىجرا ھوقۇقىنى ئېتىراپ قىلىدۇ.</p>
+
+<p style="margin:8px 0;">تېخى ئۆتكۈزۈۋالمىغان B نى بىكار قىلىپ، A غا يېڭى ئۆزگىرىشلەرنى تولۇقلاش، ئۆتكۈزۈۋالغاندىن كېيىن نۆل تەننەرختە كەينىگە قايتۇرغىلى بولىدۇ دېگەنلىك ئەمەس. B، active بولغاندىن كېيىن، superseded A يېڭى يېزىشلارغا ئەگەشمەيدۇ؛ <strong style="color:var(--article-accent, #3f8fd4);">كونا revision نى ساقلاش زىيانسىز قايتىشنى كاپالەتلەندۈرمەيدۇ، يەنىلا ئۆتۈش مەزگىلىدىكى سانلىق مەلۇمات ۋە ماسلىشىشنى بىر تەرەپ قىلىش كېرەك</strong>。</p>
+
+<hr style="border:none;border-top:1px solid var(--article-border, #e0ecf5);margin:28px 0;"/>
+
+<h2 style="font-size:18px;font-weight:700;color:var(--article-ink, #12324c);margin:36px 0 10px;padding-bottom:6px;border-bottom:2px solid #5fb3ea;">100% ئىلگىرىلەش ئۆتكۈزۈۋېلىش شەرتى ئەمەس</h2>
+
+<p style="margin:8px 0;">B بارلىق ۋېكتورنى ھېسابلاپ بولسا، پەقەت Worker نىڭ قاتار ئاخىرىغا كەلگەنلىكىنى ئىسپاتلايدۇ. ئاخىرقى توپلام قايتىشتىن ئىلگىرىلا، ئارقا تەرەپ نىشان سىياسىتى B دىن C غا ئۆزگەرگەن، دەرسلىك يېڭى generation غا ئالماشقىنى، ياكى Lease نى يېڭى Worker ئالغان بولۇشى مۇمكىن. كېچىكىپ كەلگەن 100% كە بىۋاسىتە ئوقۇش كىرىش نۇقتىسىنى ئۆزگەرتىشكە يول قويۇلسا، ساندانمۇ ۋاقتى ئۆتكەن ئىندېكسقا ئاتوملۇق ئالماشتۇرۇۋېتىشى مۇمكىن.<strong style="color:var(--article-accent, #3f8fd4);">ئاتوملۇق يا ھەممىسىنىڭ مۇۋەپپەقىيەتلىك، يا ھەممىسىنىڭ مەغلۇپ بولۇشىنى كاپالەتلەندۈرىدۇ؛ بىز ئۈچۈن توغرا نىشان تاللاپ بەرمەيدۇ</strong>. بۇ يەردە ئارقا تەرەپ قوغدىنىشى كېرەك بولغان تەڭ ۋاقىتتىكى ھالەت تەسۋىرلىنىۋاتىدۇ؛ ھازىرقى Desktop دا desired مەۋجۇت بولسا، بۇ كارتىنىڭ مودېل تاللىشى چەكلىنىدۇ.</p>
+
+<p style="margin:8px 0;">ئۆتكۈزۈۋېلىش بىر CAS (سېلىشتۇرۇپ ئالماشتۇرۇش) ترانزاكسىيەسىدە بولىدۇ. شەرت تەكشۈرۈش بىلەن تاپشۇرۇش ئوخشاش SQLite ساندانىدا تاماملىنىدۇ؛ سىرتقى مودېل چاقىرىشى بۇ ترانزاكسىيە ئىچىدە ئەمەس.</p>
+
+<p style="margin:8px 0;">ئۆتكۈزۈۋېلىش ترانزاكسىيەسى ئالدى بىلەن سىياسەت ۋە مەزمۇن نەشرى، كۈتۈلگەن نۆۋەتتىكى ئىندېكس ۋە نىشان ئىندېكسنى تەكشۈرۈپ، ئېلان قىلىنىدىغان نىشاننىڭ ئۆزگەرمىگەنلىكىنى جەزملەيدۇ. Job ھالىتى، owner، lease epoch ۋە ئىجارە ئىناۋەتلىك مۇددىتى ئىجرا ھوقۇقىنى جەزملەيدۇ؛ B نىڭ staged ھالىتى، يېتىشىپ بولغان مەزمۇن نەشرى، كۈتۈلگەن ئومۇمىي سان، تاماملانغان سان ۋە مەغلۇپ سان قۇرۇلۇش ھالىتىنى جەزملەيدۇ.</p>
+
+<p style="margin:8px 0;">شەرتلەرنىڭ ھەممىسى تولۇق ماس كەلگەندىلا، A، superseded، B، active قىلىپ بەلگىلىنىپ، desired بوشىتىلىدۇ. بىرەرى ماس كەلمىسە، پۈتۈن ئۆتكۈزۈۋېلىش كەينىگە قايتۇرۇلىدۇ.</p>
+
+<section dir="ltr" style="margin:14px 0;padding:14px 16px;overflow-x:auto;background:#102a3d;color:#d9edf7;border-radius:8px;font-size:12px;line-height:1.7;font-family:SFMono-Regular,Menlo,Monaco,Consolas,'Courier New',monospace;box-sizing:border-box;">
+<span style="display:block;white-space:pre;min-height:1.7em;">// 简化伪代码；省略 Job、租约有效期、watermark 和完整性校验</span>
+<span style="display:block;white-space:pre;min-height:1.7em;">if policyVersion  != expectedPolicyVersion ||</span>
+<span style="display:block;white-space:pre;min-height:1.7em;">   contentVersion != expectedContentVersion ||</span>
+<span style="display:block;white-space:pre;min-height:1.7em;">   activeRevision != revisionA ||</span>
+<span style="display:block;white-space:pre;min-height:1.7em;">   desiredRevision != revisionB ||</span>
+<span style="display:block;white-space:pre;min-height:1.7em;">   leaseEpoch     != expectedLeaseEpoch {</span>
+<span style="display:block;white-space:pre;min-height:1.7em;">    return ErrPublishConflict</span>
+<span style="display:block;white-space:pre;min-height:1.7em;">}</span>
+</section>
+
+<p style="margin:8px 0;">ئوقۇش كىرىش نۇقتىسى ئالماشتى، يولدا كېتىۋاتقان سۈرۈشتۈرۈشلەرچۇ؟ HexClaw ئۇلارنى ئوتتۇرىدا باشقا ئەۋلاد ئىندېكسقا ئالماشتۇرمايدۇ. بىر ئىزدەش باشلانغاندا، ئۆزىنىڭ revision ىنى توڭلىتىدۇ، بارلىق كېڭەيتىلگەن query ئوخشاش پىلاننى ئورتاق ئىشلىتىدۇ.</p>
+
+<p style="margin:8px 0;">كۆپ يوللۇق ئەسلەش ئاخىرلاشقاندىن كېيىن، بىرلەشتۈرۈشتىن بۇرۇن، <code dir="ltr" style="font-size:13px;">content_version</code> قايتا تەكشۈرۈلىدۇ. پەقەت A→B ئۆتكۈزۈۋېلىش يولدىكى تەلەپنى ئەۋلاد ئالماشتۇرۇشقا مەجبۇر قىلمايدۇ؛ توڭلىتىلغان A، superseded بولسىمۇ داۋاملىق ئىشلىتىلىدۇ. بۇ چاغدا ماتېرىيال نەشرىنىڭ ئۆزگەرگەنلىكى بايقالسا، شۇ نۆۋەتتىكى يېڭى-كونا مەزمۇننى بىر نەتىجىگە ئارىلاشتۇرماي، دەلىل توقۇنۇشى قايتۇرۇلىدۇ.</p>
+
+<p style="margin:16px 0;text-align:center;"><img width="1200" height="2260" loading="lazy" decoding="async" src="../../assets/blog/embedding-schema-migration/索引切换与在途查询.png" alt="يولدىكى تەلەپ A نى توڭلىتىدۇ؛ ئارقا سۇپا ئۆتكۈزۈۋالغاندىن كېيىن يېڭى تەلەپ B غا باغلىنىدۇ. كونا تەلەپ بىرلەشتۈرۈشتىن بۇرۇن مەزمۇن نەشرىنى تەكشۈرىدۇ، ئۆزگەرگەن بولسا دەلىل توقۇنۇشى قايتۇرىدۇ." style="display:block;width:100%;max-width:600px;height:auto;margin:0 auto;border-radius:8px;"/></p>
+<p style="margin:6px 0;font-size:12px;color:var(--article-secondary, #5f7b9c);text-align:center;">2-سۈرەت | ئىندېكس ئالماشتۇرۇش يولدىكى تەلەپنى ئەۋلاد ئالماشتۇرۇشقا مەجبۇر قىلمايدۇ؛ مەزمۇن نەشرى كۆپ يوللۇق ئەسلەشتىن كېيىن، بىرلەشتۈرۈشتىن بۇرۇن تەكشۈرۈلىدۇ. بۇ پۈتۈن جاۋاب جەريانىنىڭ ئومۇمىي بىردەكلىكىنى بىلدۈرمەيدۇ.</p>
+
+<p style="margin:8px 0;font-size:12px;color:var(--article-secondary, #5f7b9c);">ماس ئەمەلىيلەشتۈرۈش: <code dir="ltr" style="font-size:12px;">FreezeRetrievalPlan</code>、<code dir="ltr" style="font-size:12px;">ValidateRetrievalPlan</code>، <code dir="ltr" style="font-size:12px;overflow-wrap:anywhere;">knowledge/knowledge.go</code> ۋە <code dir="ltr" style="font-size:12px;overflow-wrap:anywhere;">knowledge/semantic_revision_search.go</code>。</p>
+
+<p style="margin:8px 0;">بۇ يەرگىچە ئىندېكس تولۇق قۇرۇلدىمۇ، ئۆتكۈزۈۋېلىشتىكى تەڭ ۋاقىت ھالىتى يەنىلا كۈچكە ئىگىمۇ دېگەن مەسىلە ھەل بولدى. يېڭى مودېل ئېنىق ئىزدەمدۇ دېگەن سوئالغا CAS نومۇر بەرمەيدۇ؛ مۇناسىۋەتلىكلىك چېكىنى ئايرىم تەڭشەش كېرەك.</p>
+
+<hr style="border:none;border-top:1px solid var(--article-border, #e0ecf5);margin:28px 0;"/>
+
+<h2 style="font-size:18px;font-weight:700;color:var(--article-ink, #12324c);margin:36px 0 10px;padding-bottom:6px;border-bottom:2px solid #5fb3ea;">0.85 نى Nomic تىن Qwen غا بىۋاسىتە كۆچۈرگىلى بولمايدۇ</h2>
+
+<p style="margin:8px 0;">ئالدىنقى Nomic نىڭ ئاپتوماتىك قوشۇش چېكى 0.85 بولۇپ، شۇ چاغدىكى خەنزۇچە ھەقىقىي كومپيۇتېر ئەۋرىشكىسىدىن كەلگەن. Qwen نىڭ cosine تارقىلىشى پەرقلىق: ھەتتا ھەر ئىككىسى <code dir="ltr" style="background:var(--article-panel, #edf7ff);padding:1px 5px;border-radius:3px;font-size:13px;color:var(--article-accent, #3f8fd4);">(cosine + 1) / 2</code> ئارقىلىق 0～1 گە خەرىتىلەنسىمۇ، <strong style="color:var(--article-accent, #3f8fd4);">پەرقلىق مودېلنىڭ ئوخشاش نومۇرى ئوخشاش مۇناسىۋەتلىكلىك دەرىجىسىنى بىلدۈرمەيدۇ</strong>. شۇڭا Qwen نىڭ ئاپتوماتىك قوشۇش چېكى قايتا تەڭشىلىشى كېرەك.</p>
+
+<p style="margin:8px 0;">سىناق توپلىمىنى باشقا LLM بىلەن بەلگىلىمىدۇق؛ توڭلىتىلغان K12 دەرسلىكى ۋە ئامبار ئەۋرىشكىسىگە ئاساسەن «قايسى مەنبە چىقىشى كېرەك»نى ئالدىن مۇقىملاپ، ھەقىقىي Ollama چاقىرىش زەنجىرىنى ئىجرا قىلدۇق. تۆۋەندىكىسى 2026-07-28 كۈنى قالدۇرۇلغان كىچىك ئەۋرىشكە تەڭشىكى: 7 مۇناسىۋەتلىك سۈرۈشتۈرۈش، 5 نىشانسىز سۈرۈشتۈرۈش. ھەر بىرىنىڭ ئەسلى خاتىرىسى تولۇق ساقلانمىغان؛ بۇ نەتىجە شۇ چاغدىكى پارامېتىر تەڭشەشكە ئىشلىتىلگەن، مۇستەقىل دەلىللەش توپلىمى ئەمەس، ئومۇمىي ئەسلەش نىسبىتى دەپمۇ قاراشقا بولمايدۇ:</p>
+
+<p style="margin:8px 0;">مۇناسىۋەتلىك سۈرۈشتۈرۈشلەرنىڭ Top-1 ۋە Top-3 تېپىش نەتىجىسى ھەر ئىككىسى 7/7؛ Top-1 نىڭ ئەڭ تۆۋەن نورماللاشتۇرۇلغان نومۇرى 0.6940. نىشانسىز سۈرۈشتۈرۈشلەرنىڭ Top-1 ئەڭ يۇقىرى نورماللاشتۇرۇلغان نومۇرى 0.6132.</p>
+
+<p style="margin:8px 0;">بۇ ئەۋرىشكىدە 0.65 ئىككى گۇرۇپپا نومۇرى ئارىسىدا ئىدى، شۇ چاغدىكى Qwen Profile ئاپتوماتىك قوشۇش چېكىنى شۇ بويىچە بەلگىلىدى. بۇ سان پەقەت شۇ چاغدىكى مودېل ۋە كىرگۈزۈش ئۆزگەرتىشىگە ماس، ئومۇمىي <code dir="ltr" style="background:var(--article-panel, #edf7ff);padding:1px 5px;border-radius:3px;font-size:13px;color:var(--article-accent, #3f8fd4);">MinScore</code>。</p>
+
+<h3 style="font-size:16px;font-weight:700;color:var(--article-ink, #12324c);margin:24px 0 10px;">بىر خاتا ئەسلەش: چەك 0.65 تىن 0.68 گە ئۆستۈرۈلدى</h3>
+
+<p style="margin:8px 0;">تۆۋەندىكى نىشانلىق ئەۋرىشكىلەر دەرسلىكلەر ئارا ئىزدەشنىڭ مۇناسىۋەتلىكلىك چېگرىسىنى تەكشۈرۈشكە ئىشلىتىلگەن؛ كىرىشتىكى تۆتىنچى بۆلەك يېتەكچىلىكى بىلەنلا چەكلەنمەيدۇ.</p>
+
+<p style="margin:8px 0;">كېيىنكى نىشانلىق تەكشۈرۈشتە «ھاياتنىڭ مەنىسى نېمە؟» دېگەن سوئال تەخمىنەن 0.66225 نومۇر بىلەن تىل-ئەدەبىيات دەرسلىكىدىكى «ئالەم ھاياتىنىڭ سىرى»نى خاتا ئەسلىگەنلىكى بايقالدى. شۇڭا Qwen نىڭ ئاپتوماتىك قوشۇش چېكى ھازىرقى 0.68 گە تەڭشەلدى. 9-ئاينىڭ 21-كۈنىدىكى ئىككى ھەقىقىي ئەپ تەلىپى بۇنى جەزملەيدۇ: بۇ سوئالنىڭ بىلىم ماسلىشىشى 0 بولدى؛ «18 نىڭ بۆلگۈچىلىرى قايسىلار؟» يەنىلا ماتېماتىكا دەرسلىكى PDF نىڭ 11-بېتىنى نەقىل كەلتۈرۈپ توغرا جاۋاب بەردى. بۇ قېتىم ئىزدەش سىياسىتىلا ئۆزگەردى؛ ۋېكتور قايتا ھېسابلانمىدى، سەپلىمە بارماق ئىزىمۇ ئۆزگەرمىدى؛ <strong style="color:var(--article-accent, #3f8fd4);">بۇ پەقەت مۇشۇ نىشانلىق ئەۋرىشكىلەرنى ئىسپاتلايدۇ، ئومۇمىي سۈپەت كاپالىتى ئەمەس</strong>。</p>
+
+<p style="margin:8px 0;">Qwen ھازىر ئەڭ كۆپ 1 نەتىجە قوشىدۇ. بۇ بىرلەشتۈرۈش، مۇناسىۋەتلىكلىك چېكى بىلەن سۈزۈش، قايتا تەرتىپلەش/MMR دىن كېيىنكى ئاخىرقى سان چېكى؛ ئالدىنلا cosine بىرىنچىسىنىلا قالدۇرۇش دېگەنلىك ئەمەس. 0.68 بىلەن بۇ بىر دانە چەك يەرلىك Qwen نىڭ مەخسۇس سىياسىتى؛ باشقا مودېل ياكى تەمىنلىگۈچىنىڭ ئومۇمىي سۈپەت چېكى دەپ بىۋاسىتە قاراشقا بولمايدۇ.</p>
+
+<p style="margin:8px 0;">7-ئايدىكى تەڭشەش خاتىرىسىگە قايتا قارىساق، مۇناسىۋەتلىك ئىنگلىزچە ئەۋرىشكىدە بىرىنچى ۋە ئىككىنچى ئورۇننىڭ نومۇر پەرقى (margin) ئەڭ ئاز 0.0072؛ نىشانسىز ئەۋرىشكىدە بولسا 0.0288 گە يېتىدۇ. ھېچ بولمىغاندا بۇ ئەۋرىشكىلەردە، پەرق چوڭ بولۇش تېخىمۇ مۇناسىۋەتلىك دېگەنلىك ئەمەس؛ <strong style="color:var(--article-accent, #3f8fd4);">بۇ كۆزىتىشلەر بىرلىككە كەلگەن margin چېكىنى قوللاشقا يېتەرلىك ئەمەس</strong>، شۇڭا شۇ چاغدا ئۇ سۈزۈش شەرتى قىلىنمىدى. نامزات سۈپىتىنى ياخشىلاش ئۈچۈن corpus / subject scope دائىرىسى، BM25 ئەسلەش، RRF بىرلەشتۈرۈش ۋە rerank نى ئايرىم ياخشى قىلىش كېرەك؛ «تېخىمۇ كۆپ ئەسلىگەندەك كۆرۈنسۇن» دەپ مۇناسىۋەتلىكلىك چېكىنى ۋاقتىنچە چۈشۈرۈشكە بولمايدۇ.</p>
+
+<p style="margin:8px 0;"><a href="https://mp.weixin.qq.com/s/H6BoZUcQfBBqh-ScXQyTWw" style="color:var(--article-accent, #5fb3ea);text-decoration:none;">«HexClaw AI نىڭ Context Engineering ى»</a> دىكى شاۋقۇن سۈزۈش تۇرۇبا يولى يەنە بىر يۇقىرىقى شەرتكە تايىنىدۇ: بىرلەشتۈرۈش، چەك بويىچە سۈزۈش ۋە قايتا تەرتىپلەش نامزاتنى سۈزەلەيدۇ؛ لېكىن ئالدى بىلەن ۋېكتور ئىزدەش ھەقىقىي ئىجرا بولۇپ، سۈرۈشتۈرۈش بىلەن ھۆججەت ماس ئىجرا كېلىشىمىنى ئىشلىتىشى كېرەك.</p>
+
+<p style="margin:8px 0;">ھازىر CAS قۇرۇلمىنىڭ تولۇقلۇقى بىلەن تەڭ ۋاقىتتىكى ھالەتنى تەكشۈرىدۇ، Qwen نىڭ مۇناسىۋەتلىكلىك چېكى نىشانلىق ئەۋرىشكىلەر ئارقىلىق تەڭشىلىدۇ. كېيىنكى قەدەم سايە سۈرۈشتۈرۈش (shadow query) ۋە مۇقىم باھالاش توپلىمى (golden set) نى ئېلان قىلىش جەريانىغا ئۇلاپ، سۈپەت نەتىجىسىنىمۇ ئۆتكۈزۈۋېلىش ھۆكمىگە قاتناشتۇرۇش.</p>
+
+<hr style="border:none;border-top:1px solid var(--article-border, #e0ecf5);margin:28px 0;"/>
+
+<h2 style="font-size:18px;font-weight:700;color:var(--article-ink, #12324c);margin:36px 0 10px;padding-bottom:6px;border-bottom:2px solid #5fb3ea;">4096 ئۆلچەمنىڭ ھېسابى: بىر ۋېكتورنىڭ ساقلاش مىقدارى بۇرۇنقىنىڭ 5.33 ھەسسىسى</h2>
+
+<p style="margin:8px 0;">ئۆتكۈزۈۋالغاندىن كېيىن، كونا ئەۋلاد ئىندېكسنىڭ بىر نەچچە ھېسابى قالىدۇ: قانچىلىك ساقلىنىدۇ، قاچان تازىلىنىدۇ، كەينىگە قايتىشتا قايسى سانلىق مەلۇمات تولۇقلىنىدۇ. ئاپتوماتىك ساقلاش ۋە تازىلاشمۇ تېخى تولۇقلىنىشى كېرەك.</p>
+
+<p style="margin:8px 0;">ئۆلچەم 768 دىن 4096 غا ئاشسا، دىسكا بىلەن ئىچكى ساقلىغۇچمۇ بىللە «كېڭىيىدۇ». Nomic نىڭ 768 ئۆلچەملىك float32 ئەسلى ۋېكتورى 3072 bytes، يەنى 3 KiB؛ Qwen نىڭ 4096 ئۆلچىمى 16 KiB. بىر ئەۋلاد ساقلاش مىقدارى ۋە ئۆلچەممۇئۆلچەم cosine ھېسابى تەخمىنەن 5.33 ھەسسىگە چوڭىيىدۇ. كۆچۈرۈش مەزگىلىدە ئىككى ئەۋلاد تەڭ ساقلانغاندا، ھەر chunk نىڭ پەقەت ۋېكتور يۈكىلا 19 KiB بولىدۇ.</p>
+
+<table style="width:100%;border-collapse:collapse;margin:16px 0;font-size:13px;line-height:1.8;">
+  <tr>
+    <th style="background:var(--article-panel, #f4fbff);color:var(--article-ink, #12324c);padding:8px 12px;text-align:left;font-weight:600;font-size:12px;border-bottom:2px solid #5fb3ea;">كۆلەم</th>
+    <th style="background:var(--article-panel, #f4fbff);color:var(--article-ink, #12324c);padding:8px 12px;text-align:right;font-weight:600;font-size:12px;border-bottom:2px solid #5fb3ea;">Nomic 768</th>
+    <th style="background:var(--article-panel, #f4fbff);color:var(--article-ink, #12324c);padding:8px 12px;text-align:right;font-weight:600;font-size:12px;border-bottom:2px solid #5fb3ea;">Qwen 4096</th>
+    <th style="background:var(--article-panel, #f4fbff);color:var(--article-ink, #12324c);padding:8px 12px;text-align:right;font-weight:600;font-size:12px;border-bottom:2px solid #5fb3ea;">ئىككى ئەۋلاد تەڭ ساقلىنىدىغان مەزگىل</th>
+  </tr>
+  <tr>
+    <td style="padding:8px;border-bottom:1px solid var(--article-border, #e0ecf5);">ھەر chunk</td>
+    <td style="padding:8px;text-align:right;border-bottom:1px solid var(--article-border, #e0ecf5);">3 KiB</td>
+    <td style="padding:8px;text-align:right;border-bottom:1px solid var(--article-border, #e0ecf5);">16 KiB</td>
+    <td style="padding:8px;text-align:right;border-bottom:1px solid var(--article-border, #e0ecf5);">19 KiB</td>
+  </tr>
+  <tr>
+    <td style="padding:8px;border-bottom:1px solid var(--article-border, #e0ecf5);">100 مىڭ chunk</td>
+    <td style="padding:8px;text-align:right;border-bottom:1px solid var(--article-border, #e0ecf5);">تەخمىنەن 293 MiB</td>
+    <td style="padding:8px;text-align:right;border-bottom:1px solid var(--article-border, #e0ecf5);">تەخمىنەن 1.53 GiB</td>
+    <td style="padding:8px;text-align:right;border-bottom:1px solid var(--article-border, #e0ecf5);">تەخمىنەن 1.81 GiB</td>
+  </tr>
+  <tr>
+    <td style="padding:8px;border-bottom:1px solid var(--article-border, #e0ecf5);">1 مىليون chunk</td>
+    <td style="padding:8px;text-align:right;border-bottom:1px solid var(--article-border, #e0ecf5);">تەخمىنەن 2.86 GiB</td>
+    <td style="padding:8px;text-align:right;border-bottom:1px solid var(--article-border, #e0ecf5);">تەخمىنەن 15.26 GiB</td>
+    <td style="padding:8px;text-align:right;border-bottom:1px solid var(--article-border, #e0ecf5);">تەخمىنەن 18.12 GiB</td>
+  </tr>
+</table>
+
+<p style="margin:8px 0;"><strong style="color:var(--article-accent, #3f8fd4);">بۇ سانلار پەقەت float32 ۋېكتور يۈكىنى ھېسابلايدۇ</strong>؛ SQLite قۇرلىرى، ئىندېكس، Manifest، WAL، تېكىست، قالدۇق ستون ۋە قوشۇمچە ساقلانغان كونا revision كىرگۈزۈلمىگەن، شۇڭا ئىككى ئەۋلاد مەزگىلى پەقەت سىغىم تۆۋەن چېكى. 64 دانە Qwen ۋېكتورى float32 سانلار گۇرۇپپىسىغا يېشىلگەندە 1 MiB؛ JSON جاۋابىدا سان كودلاش ۋە قۇرۇلما خىراجىتىمۇ بار. بۇنى ھەقىقىي HTTP جاۋاب گەۋدىسىنىڭ چوڭلۇقى دەپ قاراشقا بولمايدۇ.</p>
+
+<h3 style="font-size:16px;font-weight:700;color:var(--article-ink, #12324c);margin:24px 0 10px;">ھازىرقى ئىزدەش قاتلىمى: تولۇق سىكانېرلاش، ANN ئەمەس</h3>
+
+<p style="margin:8px 0;">ھازىرقى ۋېكتور ئىزدەش تەخمىنىي ئەڭ يېقىن قوشنا ئىندېكسى (ANN) ئىشلەتمەيدۇ. SQLite ئالدى بىلەن شۇ ئىزدەش پىلانىغا باغلانغان revision ئاستىدىكى، دائىرە ئىچىدىكى بارلىق لاياقەتلىك ۋېكتورنى ئوقۇيدۇ؛ Go ھەربىرىنى يېشىپ cosine ھېسابلايدۇ، ئاندىن تولۇق مۇقىم تەرتىپلەپ topK نى ئالىدۇ. ۋاقىت مۇرەككەپلىكى تەخمىنەن O(N·D + N log N)؛ N نامزات ۋېكتور سانى، D ئۆلچەم.</p>
+
+<p style="margin:8px 0;">نامزاتلاردىكى يېشىلگەن ۋېكتور ۋە تېكىست ئىچكى ساقلىغۇچتا قالىدۇ. ۋېكتور يۈكى O(N·D) ئىچكى ساقلىغۇچ ئىگىلەيدۇ؛ ئۇنىڭدىن باشقا نامزات تېكىستىمۇ ساقلىنىدۇ، پەقەت O(N) دانە نومۇرلا ئەمەس.</p>
+
+<p style="margin:8px 0;">SQLite نى داۋاملىق ئىشلىتىشتىكى مەقسەت، تېكىست، ئىندېكس مېتا ئۇچۇرى ۋە ئېلان ھالىتىنى ئوخشاش سانداندا ماسلاشتۇرۇش؛ قوشۇمچە ۋېكتور مۇلازىمىتىنى ئاسراشنىڭ ھاجىتى يوق. بەدىلى، نامزات كۆپەيگەندە سىكانېرلاش ۋە ئىچكى ساقلىغۇچ تەننەرخىمۇ ئاشىدۇ. يۇقىرىدىكى سىغىم مۆلچەرى بىر مىليون chunk بولغاندا سۈرۈشتۈرۈش كېچىكىشىنى كۆرسەتمەيدۇ، ئىزدەش سۈپىتىنىمۇ ئىسپاتلىمايدۇ.</p>
+
+<p style="margin:8px 0;">كەلگۈسىدە Qdrant، Elasticsearch، pgvector ياكى Faiss غا ئۇلاش فىزىكىلىق ئىزدەش قاتلىمىنى يېڭىلىيالايدۇ؛ لېكىن Profile، desired revision، داۋاملىق ساقلىنىدىغان Job، مەزمۇنغا يېتىشىش ۋە CAS نى يەنىلا ئەپ كونترول قىلىدۇ. ساقلىغۇچى ئالماشسىمۇ، <strong style="color:var(--article-accent, #3f8fd4);">بۇ قۇرۇلۇش ھېسابلىرى ئۆزلىكىدىن يوقاپ كەتمەيدۇ</strong>。</p>
+
+<hr style="border:none;border-top:1px solid var(--article-border, #e0ecf5);margin:28px 0;"/>
+
+<h2 style="font-size:18px;font-weight:700;color:var(--article-ink, #12324c);margin:36px 0 10px;padding-bottom:6px;border-bottom:2px solid #5fb3ea;">كاشىلا چىقسا قانداق ئەسلىگە كەلتۈرۈلىدۇ؟</h2>
+
+<p style="margin:8px 0;">بۇ زەنجىردە كۆرۈلۈشى مۇمكىن كاشىلىلار ۋە ئۇلارغا ماس ئەسلىگە كەلتۈرۈش ياكى رەت قىلىش ھەرىكىتى:</p>
+
+<p style="margin:6px 0;color:var(--article-muted, #7b8fa3);font-size:12px;">جەدۋەلنى سول-ئوڭغا سىيرىپ بارلىق ستونلارنى كۆرگىلى بولىدۇ.</p>
+<div style="max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;">
+<table style="width:100%;min-width:720px;border-collapse:collapse;margin:16px 0;font-size:13px;line-height:1.8;">
+  <tr style="background:var(--article-panel, #f4fbff);">
+    <th style="background:var(--article-panel, #f4fbff);color:var(--article-ink, #12324c);padding:8px 12px;text-align:left;font-weight:600;font-size:12px;border-bottom:2px solid #5fb3ea;">كاشىلا پەيتى</th>
+    <th style="background:var(--article-panel, #f4fbff);color:var(--article-ink, #12324c);padding:8px 12px;text-align:left;font-weight:600;font-size:12px;border-bottom:2px solid #5fb3ea;">داۋاملىق ساقلانغان ھالەت</th>
+    <th style="background:var(--article-panel, #f4fbff);color:var(--article-ink, #12324c);padding:8px 12px;text-align:left;font-weight:600;font-size:12px;border-bottom:2px solid #5fb3ea;">ئەسلىگە كەلتۈرۈش / رەت قىلىش ھەرىكىتى</th>
+  </tr>
+  <tr><td style="padding:8px;border:1px solid var(--article-border, #e0ecf5);">Worker بىر تەرەپ قىلىش ئوتتۇرىسىدا چىقىپ كېتىدۇ</td><td style="padding:8px;border:1px solid var(--article-border, #e0ecf5);">تاپشۇرۇلغان Manifest ۋە ۋېكتور</td><td style="padding:8px;border:1px solid var(--article-border, #e0ecf5);">ۋەزىپىنى قايتا ئېلىپ، يېڭى ئىجرا ئەۋلادى ئىشلىتىلىدۇ؛ تاپشۇرۇلغان قىسمى ئاتلىنىدۇ، يولدىكى نامەلۇم قىسمى ئايرىم بىر تەرەپ قىلىنىدۇ</td></tr>
+  <tr><td style="padding:8px;border:1px solid var(--article-border, #e0ecf5);">كونا Worker كېچىكىپ قايتىدۇ</td><td style="padding:8px;border:1px solid var(--article-border, #e0ecf5);">نۆۋەتتىكى lease owner / epoch</td><td style="padding:8px;border:1px solid var(--article-border, #e0ecf5);">ErrJobFenced، كونا Worker نىڭ تاپشۇرۇشى رەت قىلىنىدۇ</td></tr>
+  <tr><td style="padding:8px;border:1px solid var(--article-border, #e0ecf5);">مودېل چاقىرىش نەتىجىسى نامەلۇم</td><td style="padding:8px;border:1px solid var(--article-border, #e0ecf5);">Manifest = outcome_unknown</td><td style="padding:8px;border:1px solid var(--article-border, #e0ecf5);">بۇ Job مەغلۇپ؛ ئاپتوماتىك قارىغۇلارچە قايتا ئەۋەتىلمەيدۇ، ئاپتوماتىك ماسلاشتۇرۇش قىلىنمايدۇ</td></tr>
+  <tr><td style="padding:8px;border:1px solid var(--article-border, #e0ecf5);">تېكىست مۇۋەپپەقىيەتلىك، Embedding مەغلۇپ</td><td style="padding:8px;border:1px solid var(--article-border, #e0ecf5);">Document / Chunks / FTS تەييار</td><td style="padding:8px;border:1px solid var(--article-border, #e0ecf5);">پەقەت ۋېكتور Job ئەسلىگە كەلتۈرۈلىدۇ، PDF قايتا بىر تەرەپ قىلىنمايدۇ</td></tr>
+  <tr><td style="padding:8px;border:1px solid var(--article-border, #e0ecf5);">B قۇرۇلۇۋاتقاندا دەرسلىك ئالماشتى</td><td style="padding:8px;border:1px solid var(--article-border, #e0ecf5);">يېڭى generation / content version</td><td style="padding:8px;border:1px solid var(--article-border, #e0ecf5);">B يېتىشىدۇ؛ كونا snapshot نىڭ CAS ى مەغلۇپ</td></tr>
+  <tr><td style="padding:8px;border:1px solid var(--article-border, #e0ecf5);">كونا active executor ئىشلىمەيدۇ</td><td style="padding:8px;border:1px solid var(--article-border, #e0ecf5);">تېكىست پاكىتلىرى ۋە كونا revision كىملىكى</td><td style="padding:8px;border:1px solid var(--article-border, #e0ecf5);">ئوچۇق FTS ئىشلىتىلىدۇ؛ ئاپتوماتىك RAG قۇرۇق قايتۇرىدۇ</td></tr>
+</table>
+</div>
+
+<hr style="border:none;border-top:1px solid var(--article-border, #e0ecf5);margin:28px 0;"/>
+<h2 style="font-size:18px;font-weight:700;color:var(--article-ink, #12324c);margin:36px 0 10px;padding-bottom:6px;border-bottom:2px solid #5fb3ea;">راستىنى يازايلى: بۇ نەشرنىڭ چېگرىلىرى</h2>
+<p style="margin:8px 0;">يۈرۈشلۈك ئادىتى بويىچە، ئەمەلىيلەشكەن مېخانىزملار بىلەن يەنىلا بار چېگرىلارنى ئايرىم كۆرسىتەيلى:</p>
+<ul style="padding-left:22px;margin:8px 0;">
+<li style="margin:6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">مودېل مەھسۇلى كىملىكى تېخى سەپلىمە بارماق ئىزىغا كىرمىگەن</strong> — 12 مەيداندا مودېل digest ى، quantization دەرىجىسى ۋە inference ماتورى نەشرى يوق؛ ئوخشاش نامدىكى tag ئارقىسىدىكى مەھسۇلات ئۆزگەرسە، سەپلىمە بارماق ئىزى چوقۇم ئۆزگىرىدۇ دېگىلى بولمايدۇ.</li>
+<li style="margin:6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">سۈپەت دەرۋازىسى تېخى ئېلان قىلىش جەريانىغا ئۇلانمىغان</strong> — CAS پەقەت قۇرۇلما تولۇقلۇقى ۋە تەڭ ۋاقىتتىكى ھالەتنى تەكشۈرىدۇ، يېڭى مودېل ئىزدەش سۈپىتىگە ھۆكۈم قىلمايدۇ؛ shadow query بىلەن golden set كېيىنكى قەدەم.</li>
+<li style="margin:6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">بۇ ئەۋرىشكە تەڭشەش ئۈچۈن، مۇستەقىل دەلىللەش توپلىمى ئەمەس</strong> — 7 مۇناسىۋەتلىك سۈرۈشتۈرۈش، 5 نىشانسىز سۈرۈشتۈرۈش؛ ھەر بىرىنىڭ ئەسلى خاتىرىسى تولۇق ساقلانمىغان. Qwen ئاپتوماتىك قوشۇش چېكى ئالدى بىلەن 0.65 بولۇپ، كېيىن نىشانلىق تەكشۈرۈش ئارقىلىق 0.68 گە ئۆستۈرۈلدى. ئىككى چەك پەرقلىق باسقۇچتىكى Qwen Profile غا ماس؛ بۇ ئەۋرىشكىلەرنىڭ تېپىش نەتىجىسىنى ئومۇمىي ئەسلەش نىسبىتى دەپ قاراشقا، چەكنى باشقا مودېلغا بىۋاسىتە قوللىنىشقا بولمايدۇ.</li>
+<li style="margin:6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">كېچىكىش سانلىق مەلۇماتى پەقەت تارىخىي يەككە قېتىملىق كۆزىتىش</strong> — 2026-07-28 كۈنى ساقلانغان؛ ھەر قېتىملىق ئەسلى خاتىرە، تولۇق قاتتىق دېتال، ئىجرا پارامېتىرلىرى ۋە سوغۇق-قىزىق تەرتىپى تولۇق ساقلانمىغان. شۇڭا توپلاملارنىڭ ياخشى-يامانلىقىنى سېلىشتۇرۇش، throughput ياكى پۈتۈن دەرسلىكنى قايتا قۇرۇش ۋاقتىنى ھېسابلاشقا بولمايدۇ.</li>
+<li style="margin:6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">ھازىرقى Qwen Profile دا 400 rune دىن ئاشقان كىرگۈزۈش كېسىلىدۇ</strong> — ئەسلى تېكىست ۋە FTS تولۇق ساقلىنىدۇ، لېكىن ۋېكتور پۈتۈن پارچىنى كودلىغان بولماسلىقى مۇمكىن؛ سۈرۈشتۈرۈش كۆرسەتمە ئالدى قوشۇمچىسىمۇ بۇ 400 rune نى ئىگىلەيدۇ.</li>
+<li style="margin:6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">outcome_unknown نىڭ ھازىر ئاپتوماتىك ماسلاشتۇرۇشى يوق</strong> — ئۇ بۇ Job نى مەغلۇپ قىلىدۇ، ئادەتتىكى چېكىنىشكە كىرمەيدۇ؛ قايتا ھېسابلاش ئادەتتە يىراق تەرەپ سودا سانلىق مەلۇماتىنى ئۆزگەرتمەيدۇ، لېكىن يەرلىك مودېلنى قايتا ئىگىلىشى ياكى بۇلۇت ھەققى پەيدا قىلىشى مۇمكىن.</li>
+<li style="margin:6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">ئۆتكۈزۈۋالغاندىن كېيىن نۆل تەننەرخلىق كەينىگە قايتىش يوق</strong> — B، active بولغاندىن كېيىن، superseded A يېڭى يېزىشلارغا ئەگەشمەيدۇ؛ كونا ئەۋلاد ئىندېكسنى ئاپتوماتىك ساقلاش ۋە تازىلاشمۇ تېخى تولۇقلىنىشى كېرەك.</li>
+<li style="margin:6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">يېڭى مەزمۇننىڭ مەنىلىك ئىزدەشى B ئۆتكۈزۈۋالغاندىن كېيىن بولىدۇ</strong> — قايتا قۇرۇش مەزگىلىدە قوشۇلغان ياكى ئالماشقان ماتېرىيالنى ئالدى بىلەن ئوچۇق تېكىست ئىزدەش كۆرىدۇ؛ ئوخشاش مەنبەلىك دەرسلىكنى قايتا يېشىش بىلەن ئىندېكس كۆچۈرۈش ھازىر تەڭ ۋاقىتتا ئېلىپ بېرىلمايدۇ.</li>
+<li style="margin:6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">ئىزدەش قاتلىمى تولۇق سىكانېرلاش، ANN ئەمەس</strong> — يۇقىرىدىكى سىغىم مۆلچەرى پەقەت ۋېكتور يۈكىنىڭ تۆۋەن چېكى؛ بىر مىليون chunk بولغاندا سۈرۈشتۈرۈش كېچىكىشىنى كۆرسەتمەيدۇ، ئىزدەش سۈپىتىنىمۇ ئىسپاتلىمايدۇ. ANN ياكى مۇستەقىل ۋېكتور ساقلىغۇچقا ئۆتۈش-ئۆتمەسلىك، ھەقىقىي ماتېرىيال كۆلىمى ۋە سۈرۈشتۈرۈش خىراجىتى تولۇق سىكانېرلاشنى توسالغۇغا ئايلاندۇردىمۇ دېگەنگە باغلىق.</li>
+</ul>
+<p style="margin:8px 0;">كېيىنكى تەرتىپ: ئالدى بىلەن مودېل مەھسۇلى كىملىكى ۋە سۈپەت ئەۋرىشكىلىرىنىڭ ئىزلىگىلى بولۇشچانلىقىنى تولۇقلاش، ئاندىن unknown ئەسلىگە كەلتۈرۈش، كونا revision ساقلاش ۋە كەينىگە قايتۇرۇشنى بىر تەرەپ قىلىش. بۇ ئىشلارنىڭ ھەممىسى تېخى تاماملانمىغان.</p>
+
+<hr style="border:none;border-top:1px solid var(--article-border, #e0ecf5);margin:28px 0;"/>
+<h2 style="font-size:18px;font-weight:700;color:var(--article-ink, #12324c);margin:36px 0 10px;padding-bottom:6px;border-bottom:2px solid #5fb3ea;">بۇ دەرسلىككە قايتايلى: ئەسلى تېكىست ساقلىنىدۇ، ۋېكتور يېڭى كېلىشىم بويىچە قايتا قۇرۇلىدۇ</h2>
+<p style="margin:8px 0;">768 دىن 4096 ئۆلچەمگە ئۆتكەندە، <strong style="color:var(--article-accent, #3f8fd4);">ئەسلى تېكىست ساقلىنىدۇ، تۇغۇندى ۋېكتور يېڭى ئىجرا كېلىشىمى بويىچە قايتا قۇرۇلىدۇ</strong>. HexClaw نەشرلەنگەن ئىندېكس بىلەن نۆۋەتتىكى ۋە نىشان بوشلۇقنى ئايرىم باشقۇرىدۇ، داۋاملىق ساقلىنىدىغان ۋەزىپە بىلەن مەلۇم ئىلگىرىلەشنى ساقلايدۇ، ئاندىن CAS ترانزاكسىيەسى شەرتنى تەكشۈرۈپ ئوقۇش كىرىش نۇقتىسىنى ئالماشتۇرىدۇ. ئىزدەش نەتىجىسى يېتەرلىك مۇناسىۋەتلىكمۇ دېگەن سوئالنى <strong style="color:var(--article-accent, #3f8fd4);">يەنىلا ھەقىقىي سوئال بىلەن دەلىللەش كېرەك</strong>。</p>
+<p style="margin:24px 0 16px;color:var(--article-secondary, #5f7b9c);font-size:14.5px;line-height:2;text-align:center;font-style:italic;padding:8px 16px;">ئىككى قۇر سەپلىمە ئۆزگەرتىش، مودېل ئالماشتۇرۇشنىڭ پەقەت باشلىنىشى.<br/>ھاسىل قىلىش شەرتىنى كېلىشىمگە، ھېسابلاش چەكلىمىسىنى خامچوتقا يېزىڭ، مۇناسىۋەتلىكلىكنى ھەقىقىي سوئالغا تايىنىپ دەلىللەڭ —<br/>شۇندىلا مودېل ئالماشتۇرۇشنىڭ ئەسلىگە كەلتۈرگىلى، تەكشۈرگىلى بولىدىغان ئىندېكس جەريانى بولىدۇ.</p>
+
+<hr style="border:none;border-top:1px solid var(--article-border, #e0ecf5);margin:28px 0 16px;"/>
+
+<h3 style="font-size:15px;font-weight:600;color:var(--article-accent, #3f8fd4);margin:24px 0 8px;">بۇرۇنقى ماقالىلەر · HexClaw AI يۈرۈشلۈكى</h3>
+
+<p style="margin:4px 0;font-size:14px;line-height:2;color:var(--article-secondary, #5f7b9c);">
+▸ <a href="https://mp.weixin.qq.com/s/8xUoFrig10zxpxni1rgm9Q" style="color:var(--article-accent, #3f8fd4);text-decoration:none;">HexClaw AI ئاتا-بالىنىڭ خوشاللىقىغا ياردەم بېرىدۇ: K12 قۇرۇلۇش ئەمەلىيىتى</a><br/>
+　<span style="color:var(--article-secondary, #5f7b9c);">يېتەكچىلىك سىنارىيەسىدىن ھېساب تەكشۈرۈش دەلىلى ۋە سۇپا چېگرىسىنى كۆرۈش (بۇ ماقالە كىرىشىدىكى دەرسلىك سىنارىيەسىگە ماس)</span><br/>
+▸ <a href="https://mp.weixin.qq.com/s/ZJ9ehZtG_jUhtTMUnPCDxA" style="color:var(--article-accent, #3f8fd4);text-decoration:none;">HexClaw AI نىڭ Prompt Engineering ى</a><br/>
+　<span style="color:var(--article-secondary, #5f7b9c);">مودېل كۆرسەتمىسىنى كۆرۈنمە يۈز كېلىشىمى دەپ قاراش (بۇ ماقالىدىكى سۈرۈشتۈرۈش كۆرسەتمىسىگە ماس)</span><br/>
+▸ <a href="https://mp.weixin.qq.com/s/kDi-LSWB4UHtS_6jbTfvow" style="color:var(--article-accent, #3f8fd4);text-decoration:none;">HexClaw AI نىڭ Harness Engineering ى</a><br/>
+　<span style="color:var(--article-secondary, #5f7b9c);">ئىجرا خامچوتى، كونتروللۇق مەغلۇبىيەت ۋە نەتىجىنى قايتا تەكشۈرۈش (بۇ ماقالىدىكى خامچوت ۋە «نەتىجە نامەلۇم»غا ماس)</span><br/>
+▸ <a href="https://mp.weixin.qq.com/s/H6BoZUcQfBBqh-ScXQyTWw" style="color:var(--article-accent, #3f8fd4);text-decoration:none;">HexClaw AI نىڭ Context Engineering ى</a><br/>
+　<span style="color:var(--article-secondary, #5f7b9c);">نامزات ئەسلەشتىن «جاۋابقا ئوخشايدىغان شاۋقۇن»نى سۈزگۈچە (ئىندېكس تەييار بولغاندىن كېيىنكى بىرلەشتۈرۈش، سۈزۈش ۋە قايتا تەرتىپلەشكە ماس)</span>
+</p>
+
+<h3 style="font-size:15px;font-weight:600;color:var(--article-accent, #3f8fd4);margin:24px 0 8px;">پايدىلانغان مەنبەلەر</h3>
+
+<ul style="padding-left:22px;margin:8px 0;font-size:13px;color:var(--article-muted, #7b8fa3);line-height:1.9;">
+<li style="margin:8px 0;">［1］OpenAI · File Search / Retrieval (باشقۇرۇلىدىغان ئىزدەش، ئاپتوماتىك پارچىلاش ۋە ئىندېكس، ئاسىنخرون ھۆججەت مەشغۇلاتى؛ 2026-10-13 كۈنى تەكشۈرۈلگەن)<br/><span style="color:var(--article-muted, #a5bdd3);font-size:12px;word-break:break-all;">developers.openai.com/api/docs/guides/tools-file-search<br/>developers.openai.com/api/docs/guides/retrieval</span></li>
+<li style="margin:8px 0;">［2］Anthropic · Contextual Retrieval (2024-09-19 ئېلان قىلىنغان؛ پارچە مەزمۇن مۇھىتى تولۇقلانغاندىن كېيىن Embedding / BM25 ئىندېكسى قۇرۇلىدۇ؛ 2026-10-13 كۈنى تەكشۈرۈلگەن)<br/><span style="color:var(--article-muted, #a5bdd3);font-size:12px;word-break:break-all;">anthropic.com/engineering/contextual-retrieval</span></li>
+<li style="margin:8px 0;">［3］Qwen · Qwen3-Embedding-8B رەسمىي مودېل كارتىسى (4096 ئۆلچەم، MRL، سۈرۈشتۈرۈش كۆرسەتمىسى)<br/><span style="color:var(--article-muted, #a5bdd3);font-size:12px;word-break:break-all;">huggingface.co/Qwen/Qwen3-Embedding-8B</span></li>
+<li style="margin:8px 0;">［4］QwenLM · Qwen3-Embedding رەسمىي ئامبىرى ۋە تېخنىكىلىق دوكلاتى<br/><span style="color:var(--article-muted, #a5bdd3);font-size:12px;word-break:break-all;">github.com/QwenLM/Qwen3-Embedding<br/>arxiv.org/abs/2506.05176</span></li>
+<li style="margin:8px 0;">［5］Qwen · Qwen3 Embedding and Reranker رەسمىي بىلوگى<br/><span style="color:var(--article-muted, #a5bdd3);font-size:12px;word-break:break-all;">qwenlm.github.io/blog/qwen3-embedding/</span></li>
+<li style="margin:8px 0;">［6］Ollama · qwen3-embedding رەسمىي مودېل بېتى ۋە tags<br/><span style="color:var(--article-muted, #a5bdd3);font-size:12px;word-break:break-all;">ollama.com/library/qwen3-embedding<br/>ollama.com/library/qwen3-embedding/tags</span></li>
+<li style="margin:8px 0;">［7］Embedding تەمىنلىگۈچىلىرىنىڭ مودېل كېلىشىمى: E5، Jina v3، OpenAI، Cohere، Gemini، Voyage 4<br/><span style="color:var(--article-muted, #a5bdd3);font-size:12px;word-break:break-all;">huggingface.co/intfloat/multilingual-e5-large<br/>huggingface.co/jinaai/jina-embeddings-v3<br/>openai.com/index/new-embedding-models-and-api-updates/<br/>docs.cohere.com/docs/cohere-embed<br/>ai.google.dev/gemini-api/docs/embeddings<br/>blog.voyageai.com/2026/01/15/new-models-and-expanded-availability/</span></li>
+<li style="margin:8px 0;">［8］MTEB · ۋەزىپە ۋە باھالاش ئۇسۇلى؛ BGE-M3 · Dense / Sparse / Multi-vector كېلىشىمى<br/><span style="color:var(--article-muted, #a5bdd3);font-size:12px;word-break:break-all;">docs.mteb.org/overview/<br/>bge-model.com/bge/bge_m3.html</span></li>
+<li style="margin:8px 0;">［9］Cloudflare Workers AI · BGE-M3 ۋە OpenAI غا ماس Embedding كۆرۈنمە يۈزى<br/><span style="color:var(--article-muted, #a5bdd3);font-size:12px;word-break:break-all;">developers.cloudflare.com/workers-ai/models/bge-m3/<br/>developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/</span></li>
+<li style="margin:8px 0;">［10］Anthropic · Scaling Managed Agents: Decoupling the brain from the hands (2026-04-08؛ سۆھبەت خاتىرىسى بىلەن ئىجرا جەريانىنى ئايرىش؛ 2026-10-12 كۈنى تەكشۈرۈلگەن)<br/><span style="color:var(--article-muted, #a5bdd3);font-size:12px;word-break:break-all;">anthropic.com/engineering/managed-agents</span></li>
+<li style="margin:8px 0;">［11］RFC 8785 · JSON Canonicalization Scheme<br/><span style="color:var(--article-muted, #a5bdd3);font-size:12px;word-break:break-all;">rfc-editor.org/rfc/rfc8785</span></li>
+<li style="margin:8px 0;">［12］ۋېكتور كۆچۈرۈش ئەمەلىيىتى: Qdrant model migration، Elastic aliases، Weaviate vectorization<br/><span style="color:var(--article-muted, #a5bdd3);font-size:12px;word-break:break-all;">qdrant.tech/documentation/tutorials-operations/embedding-model-migration/<br/>elastic.co/docs/manage-data/data-store/aliases<br/>docs.weaviate.io/weaviate/model-providers/openai/embeddings</span></li>
+<li style="margin:8px 0;">［13］HexClaw / HexClaw Desktop · Embedding ئىجرا سەپلىمىسى، ئىندېكس ھايات دەۋرى ۋە ئۈستەل يۈزى سىياسەت كىرىش نۇقتىسى<br/><span style="color:var(--article-muted, #a5bdd3);font-size:12px;word-break:break-all;">github.com/hexagon-codes/hexclaw<br/>github.com/hexagon-codes/hexclaw-desktop</span></li>
+</ul>
+
+<p style="margin:8px 0;font-size:12px;color:var(--article-muted, #a5bdd3);">بۇ ماقالە HexClaw بىلەن HexClaw Desktop نىڭ كود ئەمەلىيلەشتۈرۈشىنى ئاساس قىلغان. كود ۋە ئەسلىدىكى سىرتقى ماتېرىياللارنى تەكشۈرۈش 2026-يىلى 10-ئاينىڭ 12-كۈنىگىچە؛ يېڭى قوشۇلغان OpenAI ئىزدەش ۋە Anthropic Contextual Retrieval ماتېرىيالى 2026-يىلى 10-ئاينىڭ 13-كۈنى تەكشۈرۈلگەن.</p>
+
+<hr style="border:none;border-top:1px solid var(--article-border, #e0ecf5);margin:28px 0;"/>
+
+<p style="margin:8px 0 18px;font-size:13px;color:var(--article-secondary, #5f7b9c);">ئارقا تەرەپ يەرلىك ياكى بۇلۇتتا ئورۇنلاشسۇن، بۇلۇت Embedding تاللانسىلا، كودلىنىدىغان ھۆججەت پارچىلىرى ۋە سۈرۈشتۈرۈش تېكىستى تاللانغان تەمىنلىگۈچىگە ئەۋەتىلىدۇ. بىلىم ئامبىرىنى ئۆزى ئورۇنلاشتۇرۇش، بارلىق ئىجرا ھالىتى پۈتۈنلەي تورسىز دېگەنلىك ئەمەس.</p>
+
+<p class="blog-brand-footer" data-blog-brand-footer="ug" data-blog-brand-overrides="{}" style="text-align: center; color: var(--article-muted, #7b8fa3); font-size: 13px; margin: 16px 0 0; line-height: 2;">
+<strong style="color: var(--article-ink, #12324c); font-size: 14px;">HexClaw ھېشى AI</strong><br/>
+يەرلىكتە ياكى بۇلۇتتا ئورۇنلاشتۇرۇش · سانلىق مەلۇماتنى ئۆزىڭىز باشقۇرۇش · ئوچۇق كودلۇق ۋە ھەقسىز يۇمشاق دېتال<br/>
+<a href="https://hexclaw.net" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">تور بېكەت: <bdi dir="ltr">hexclaw.net</bdi></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://github.com/hexagon-codes" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">GitHub: <bdi dir="ltr">hexagon-codes</bdi></a><br/>
+<a href="https://weibo.com/u/4097207240" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">Weibo: <bdi dir="ltr">@HexClaw</bdi></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">X: <bdi dir="ltr">@hexclawapp</bdi></a><br/>
+<a href="mailto:ai@hexclaw.net" style="color: var(--article-muted, #999); text-decoration: none;">ئېلخەت: <bdi dir="ltr">ai@hexclaw.net</bdi></a>
+</p>
+
+
+</article>
+
+
+
+    <nav class="blog-series-nav" aria-label="مۇناسىۋەتلىك ماقالىلەر">
+      <a href="/ug/blog/" class="blog-nav-card prev"><span class="blog-nav-label">&larr; تىزىملىككە قايتىش</span><span class="blog-nav-title">تېخنىكا بىلوگى مۇندەرىجىسى</span></a>
+      <a href="/ug/blog/context-engineering" class="blog-nav-card next"><span class="blog-nav-label">داۋاملىق ئوقۇش &rarr;</span><span class="blog-nav-title">Context Engineering: ئىزدەش شاۋقۇنىنى سۈزۈش تۇرۇبا يولى</span></a>
+    </nav>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-main">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-col-title">مەھسۇلات</div>
+        <a href="/ug/#download">ئۈستەلئۈستى نۇسخىسىنى چۈشۈرۈش</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="/ug/changelog">يېڭىلىنىش خاتىرىسى</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">ئىجادكار</div>
+        <a href="/ug/docs/">ھۆججەتلەر مەركىزى</a>
+        <a href="/ug/blog/">تېخنىكا بىلوگى</a>
+        <a href="/ug/docs/getting-started">تېز باشلاش</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">Apache-2.0</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">جامائەت</div>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/issues" target="_blank" rel="noopener noreferrer">Issues</a>
+        <a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer">Twitter / X</a>
+        <a href="mailto:ai@hexclaw.net">بىز بىلەن ئالاقىلىشىش</a>
+        <a href="mailto:support@hexclaw.net">سوئال-پىكىر</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">ھەققىدە</div>
+        <a href="/ug/about">بىز ھەققىدە</a>
+        <a href="/ug/privacy">شەخسىيەت سىياسىتى</a>
+        <a href="/ug/terms">ئىشلىتىش شەرتلىرى</a>
+        <a href="/ug/third-party-ai-services">ئۈچىنچى تەرەپ AI مۇلازىمىتى</a>
+      </div>
+    </div>
+    <div class="footer-wechat">
+      <img width="430" height="430" loading="lazy" decoding="async" src="../../assets/brand/wechat-qr.jpg" alt="HexClaw ۋېيشىن رەسمىي ھېسابات QR كودى">
+      <span class="footer-wechat-label">ۋېيشىن رەسمىي ھېساباتى</span>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">&copy; 2025&ndash;2026 hexagon-codes</span>
+  </div>
+</footer>
+<script src="../../assets/js/theme.js?v=2e4a1828feef"></script>
+<script src="../../assets/js/docs-nav.js?v=5a103861aec2"></script>
+<button type="button" class="back-to-top" id="backToTop" aria-label="بەت بېشىغا قايتىش" title="بەت بېشىغا قايتىش">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg>
+  <span>ئۈستىگە</span>
+</button>
+
+<script src="../../assets/js/blog.js?v=c72e1db5a6ec"></script>
+</body>
+</html>

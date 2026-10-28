@@ -363,6 +363,31 @@
   white-space: nowrap;
 }
 
+@media (max-width: 640px) {
+  .blog-article-title .u-nobr {
+    white-space: normal;
+  }
+}
+
+/* 维语正文沿用右至左阅读，代码和技术标识单独隔离。 */
+[dir="rtl"] .blog-content :is(pre, code) {
+  direction: ltr;
+  unicode-bidi: isolate;
+}
+
+[dir="rtl"] .blog-content pre {
+  text-align: left;
+}
+
+[dir="rtl"] .blog-content :is(ul, ol) {
+  margin-inline: 1.5em 0;
+  padding-inline: 0.5em 0;
+}
+
+[dir="rtl"] .blog-content :is(th, td) {
+  text-align: start;
+}
+
 .blog-article-subtitle {
   font-size: 15.5px;
   line-height: 1.8;
@@ -457,6 +482,21 @@
   font-size: 17px;
   line-height: 1.85;
   color: var(--text-primary);
+  overflow-wrap: anywhere;
+}
+
+[data-theme="dark"] .blog-page {
+  background: var(--bg);
+}
+
+/* 仅供公众号正文的内联色值使用，浅色继续取原稿中的回退值。 */
+[data-theme="dark"] .blog-content {
+  --article-ink: var(--text-primary);
+  --article-secondary: var(--text-secondary);
+  --article-muted: var(--text-muted);
+  --article-accent: var(--blue-light);
+  --article-panel: var(--bg-subtle);
+  --article-border: var(--border-strong);
 }
 
 .blog-content p {
@@ -515,9 +555,12 @@
   line-height: 1.6;
   margin: 1.6em 0;
   border: 1px solid rgba(255, 255, 255, 0.08);
+  max-width: 100%;
+  overflow-wrap: normal;
 }
 
-.blog-content code:not(pre code) {
+/* 公众号原稿以 display:block 标记整块程序，不能套用行内代码底色。 */
+.blog-content code:not(pre code):not([style*="display:block"]):not([style*="display: block"]) {
   font-family: var(--mono);
   font-size: 0.88em;
   padding: 2px 6px;
@@ -527,7 +570,7 @@
   border: 1px solid var(--border-soft);
 }
 
-[data-theme="dark"] .blog-content code:not(pre code) {
+[data-theme="dark"] .blog-content code:not(pre code):not([style*="display:block"]):not([style*="display: block"]) {
   background: rgba(255, 255, 255, 0.08);
   color: var(--blue-light);
 }

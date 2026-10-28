@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/favicon-32.png">
+<title>Prompt Engineering in HexClaw AI: Declared Dead, It Became the Agent's Lowest-Level Protocol | HexClaw Technical Blog</title>
+<meta name="description" content="You can change an agent&#x27;s personality, but not its operating discipline. SOUL × operating manual × Skills × tool schemas: write protocols, not incantations. The four-paradigm series concludes by tracing how a system prompt is assembled layer by layer, with real source code and constants showing which constraints cannot rely on prompting alone.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:site_name" content="HexClaw">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Prompt Engineering in HexClaw AI: Declared Dead, It Became the Agent&#x27;s Lowest-Level Protocol | HexClaw Technical Blog">
+<meta property="og:description" content="You can change an agent&#x27;s personality, but not its operating discipline. SOUL × operating manual × Skills × tool schemas: write protocols, not incantations. The four-paradigm series concludes by tracing how a system prompt is assembled layer by layer, with real source code and constants showing which constraints cannot rely on prompting alone.">
+<meta property="og:url" content="https://hexclaw.net/en/blog/prompt-engineering">
+<meta property="og:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta property="og:image:alt" content="HexClaw logo">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Prompt Engineering in HexClaw AI: Declared Dead, It Became the Agent&#x27;s Lowest-Level Protocol | HexClaw Technical Blog">
+<meta name="twitter:description" content="You can change an agent&#x27;s personality, but not its operating discipline. SOUL × operating manual × Skills × tool schemas: write protocols, not incantations. The four-paradigm series concludes by tracing how a system prompt is assembled layer by layer, with real source code and constants showing which constraints cannot rely on prompting alone.">
+<meta name="twitter:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta name="twitter:image:alt" content="HexClaw logo">
+<link rel="canonical" href="https://hexclaw.net/en/blog/prompt-engineering">
+<link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/prompt-engineering">
+<link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/prompt-engineering">
+<link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/prompt-engineering">
+<link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/prompt-engineering">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Prompt Engineering in HexClaw AI: Declared Dead, It Became the Agent's Lowest-Level Protocol",
+  "description": "You can change an agent's personality, but not its operating discipline. SOUL × operating manual × Skills × tool schemas: write protocols, not incantations. The four-paradigm series concludes by tracing how a system prompt is assembled layer by layer, with real source code and constants showing which constraints cannot rely on prompting alone.",
+  "url": "https://hexclaw.net/en/blog/prompt-engineering",
+  "inLanguage": "en",
+  "datePublished": "2026-07-06",
+  "image": "https://hexclaw.net/assets/brand/hexclaw-logo.png",
+  "publisher": {
+    "@type": "Organization",
+    "name": "hexagon-codes",
+    "url": "https://hexclaw.net/",
+    "@id": "https://hexclaw.net/#organization"
+  },
+  "@id": "https://hexclaw.net/en/blog/prompt-engineering#article"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "HexClaw",
+      "item": "https://hexclaw.net/en/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Technical Blog",
+      "item": "https://hexclaw.net/en/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Prompt Engineering in HexClaw AI: Declared Dead, It Became the Agent's Lowest-Level Protocol",
+      "item": "https://hexclaw.net/en/blog/prompt-engineering"
+    }
+  ],
+  "@id": "https://hexclaw.net/en/blog/prompt-engineering#breadcrumb"
+}
+</script>
+<link rel="stylesheet" href="../../assets/css/docs-eb2895dd79c5.css">
+<link rel="stylesheet" href="../../assets/css/blog-a8e5008ac3d1.css">
+</head>
+<body class="blog-page blog-article-page">
+<a href="#main" class="skip-link">Skip to main content</a>
+<nav class="tn topnav" id="nav">
+  <a href="/en/" class="tn-b topnav-brand"><img width="72" height="72" src="../../assets/brand/hexclaw-icon-72.png" class="tn-l topnav-logo" alt="HexClaw"><span class="tn-n topnav-name">HexClaw</span></a>
+  <button type="button" class="tn-burger topnav-burger" aria-label="Menu" aria-expanded="false" aria-controls="primary-navigation"><span></span><span></span><span></span></button><div class="tn-r topnav-links" id="primary-navigation"><a href="/en/">Home</a><a href="/en/#cases">Scenarios</a><a href="/en/#features">Features</a><a href="/en/#quickstart">Quickstart</a><a href="/en/#ecosystem">Ecosystem</a><a href="/en/blog/" class="is-active">Tech Blog</a><a href="/en/docs/">Docs Center</a><div class="lang-menu" data-lang-menu><button type="button" class="lang-trigger" aria-haspopup="menu" aria-expanded="false" aria-label="Switch language"><svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 0 20"></path><path d="M12 2a15.3 15.3 0 0 0 0 20"></path></svg><span class="lang-current">English</span><svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="lang-menu-list" role="menu"><a href="/zh/blog/prompt-engineering" role="menuitem">中文</a><a href="/en/blog/prompt-engineering" role="menuitem" class="is-active" aria-current="true">English</a><a href="/ug/blog/prompt-engineering" role="menuitem" lang="zh-CN" dir="ltr">维吾尔语</a></div></div><button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"><svg class="ti-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="ti-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="nav-cta">GitHub <span class="nav-star-badge" id="gh-stars">&#9733;</span></a></div>
+</nav>
+
+<main id="main" class="blog-main">
+  <div class="blog-article-container">
+    <nav class="blog-breadcrumb" aria-label="Breadcrumb navigation">
+      <a href="/en/">Home</a>
+      <span class="blog-breadcrumb-sep">/</span>
+      <a href="/en/blog/">Technical Blog</a>
+      <span class="blog-breadcrumb-sep">/</span>
+      <span aria-current="page">Four Agent Paradigms</span>
+    </nav>
+
+    <header class="blog-header">
+      <div class="blog-header-tags">
+        <span class="blog-badge-series">Four Paradigms · Finale</span>
+      </div>
+      <h1 class="blog-article-title">Prompt Engineering in HexClaw AI: Declared Dead, It Became the Agent's Lowest-Level Protocol</h1>
+      <p class="blog-article-subtitle">You can change an agent's personality, but not its operating discipline. SOUL × operating manual × Skills × tool schemas: write protocols, not incantations. The four-paradigm series concludes by tracing how a system prompt is assembled layer by layer, with real source code and constants showing which constraints cannot rely on prompting alone.</p>
+      <div class="article-provenance-banner">
+        <div class="provenance-left">
+          <span class="provenance-origin-badge">First published on WeChat</span>
+          <span class="provenance-text">Originally published in the official technical column of the WeChat account <strong>「hexclaw」</strong> (ID: hexclaw) · Published on  <strong>July 6, 2026</strong>  · Estimated reading time: 14 minutes</span>
+        </div>
+        <a href="https://mp.weixin.qq.com/s/ZJ9ehZtG_jUhtTMUnPCDxA" target="_blank" rel="noopener noreferrer" class="provenance-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          Read the WeChat original ↗
+        </a>
+      </div>
+    </header>
+
+    <article class="blog-content">
+
+
+<p style="margin: 16px 0;">“Now I'll give you the most straightforward, most direct, least roundabout, most decisive, least long-winded, least verbose... conclusion.” If an AI has ever made you laugh with exasperation, you have probably seen the same symptoms: the more it should simply say “I don't know,” the more it adopts the posture of “I'll give you the most direct conclusion right away.” An AI stacks more than a dozen superlatives together, <strong style="color:var(--article-accent, #3f8fd4);">spending an entire paragraph promising not to waste words</strong>. After laughing, the real question is not “Why is it so slick?” but: why does it behave this way?</p>
+
+<p style="margin: 8px 0;">A more accurate explanation is not that “AI wants to deceive you,” but that training objectives and evaluation objectives have pushed it down a narrow path. During pretraining, the model learns a language distribution; many systems do develop their capabilities by predicting the next token from preceding text. During post-training, it is then shaped into an assistant that tries to be helpful and to answer whenever possible. The 2025 analysis Why Language Models Hallucinate makes the issue sharper: when mainstream evaluations rank models by awarding points for correct answers and none for abstaining, guessing becomes more rewarding than admitting ignorance. Add a common flaw in human preferences—complete, fluent answers that support your position are more likely to receive positive feedback—and the model learns to fill gaps in evidence with a narrative. It has not truly understood the facts; it has mistaken “looks like an answer” for “a good answer.”</p>
+
+<p style="margin: 8px 0;">This behavior has an identifiable engineering form. In late June, HexClaw fixed bug#7, a severe version of the same problem: some small models with no more than 10B parameters, when given agent-derived system instructions, simply <strong style="color:var(--article-accent, #3f8fd4);">recited them word for word</strong> to the user. Ask “What can you do?” and the model reads out its internal role definition, like an actor handing the script straight to the audience. The fix changed no application logic. It appended one sentence to the system prompt, roughly: “The above is your role definition; respond naturally based on it and describe your capabilities in your own words.” One sentence, the bug closed, and regression tests locked the behavior in place.</p>
+
+<p style="margin: 8px 0;">I wanted to open with this condition and its remedy because they capture the whole argument: <strong style="color:var(--article-accent, #3f8fd4);">the cause was a piece of text, the cure was another piece of text, and the cure was treated as code</strong>: it had an issue number, a date, and tests. Yet it was just a sentence in Chinese. Meanwhile, publishing this craft's obituary has become an industry tradition, continuing since 2023. English-language communities still repeatedly produce headlines such as “Prompt Engineering Is Dead,” and Chinese communities have also turned the same question into a headline template. Three years of obituaries are half right: prompts as “magic wording” really have faded. Role-playing spells and magic prefixes were either absorbed by model post-training or stopped by safety classifiers. But prompting did not disappear.</p>
+
+<p style="margin: 8px 0;">The mainstream rebuttal says Context Engineering replaced it. That explains only the visible half. In the fourth installment of this series, I want to offer the answer beneath the surface: <strong style="color:var(--article-accent, #3f8fd4);">Context's filtering rules, Harness's adjudication criteria, and Loop's acceptance standards all ultimately become text written for a model. Prompting was not replaced; it sank beneath the things said to replace it and started holding them up</strong>. Where did it sink to? The lowest protocol layer. After following the four paradigms all the way to Loop, looking back at the first one reveals its present position.</p>
+
+<p style="margin: 8px 0;">This is not just my reinterpretation. OpenAI's Model Spec gives instructions an explicit priority stack, officially called the Chain of Command, with further distinctions such as non-overridable root/system rules. Root/system outranks developer instructions; developer instructions outrank user instructions; the higher level wins a conflict. That is prompt governance as a protocol, including rules about who may write each layer. Anthropic publishes Claude's system prompts for inspection, much as it publishes API documentation. An earlier remark by OpenAI founding member and former Tesla AI director Andrej Karpathy reads even more accurately today:</p>
+
+<blockquote style="border-left: 3px solid #3f8fd4; padding: 12px 18px; margin: 16px 0; background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); font-size: 14px; border-radius: 0 8px 8px 0; line-height: 1.8;">
+"The hottest new programming language is English."<br/>
+<span style="color:var(--article-muted, #7b8fa3); font-size: 13px;">(If it is a programming language, it should have modules, interfaces, priorities, and regression tests.)</span>
+</blockquote>
+
+<p style="margin: 8px 0;">So this article is organized around <strong style="color:var(--article-accent, #3f8fd4);">write authority</strong>, rather than a list of tips. The several-thousand-character system prompt HexClaw sends to the model each round is written in layers by several parties: the product, the user, files, and code acting dynamically at runtime. Who writes which layer, how the layers combine, and who wins a conflict: those rules are what Prompt means as a protocol layer.</p>
+
+<section style="margin: 20px 0; padding: 12px 16px 14px; background:var(--article-panel, #f7fafd); border: 1px solid #d5e6f3; border-radius: 8px; text-align: center; font-size: 13px; line-height: 2.2; color:var(--article-muted, #7b8fa3);">
+<span style="font-size: 12px; color:var(--article-muted, #9db2c4); letter-spacing: 1px;">This Series · Four Agent Paradigms · Finale</span><br/>
+<span style="display: inline-block; padding: 0 12px; background: #3f8fd4; color: #ffffff; border-radius: 12px; font-weight: 700;">Prompt ▸ This Article</span><span style="color: #b8cbdc;">&nbsp;→&nbsp;</span><a href="https://mp.weixin.qq.com/s/H6BoZUcQfBBqh-ScXQyTWw" style="color:var(--article-accent, #3f8fd4); text-decoration: none;">Context</a><span style="color: #b8cbdc;">&nbsp;→&nbsp;</span><a href="https://mp.weixin.qq.com/s/kDi-LSWB4UHtS_6jbTfvow" style="color:var(--article-accent, #3f8fd4); text-decoration: none;">Harness</a><span style="color: #b8cbdc;">&nbsp;→&nbsp;</span><a href="https://mp.weixin.qq.com/s/h60ymjjj3eF9hQyhl0jVcQ" style="color:var(--article-accent, #3f8fd4); text-decoration: none;">Loop<span style="font-size: 12px;"> (Overview)</span></a><br/>
+<span style="font-size: 12px; color:var(--article-muted, #9db2c4);">All four pieces are in place · For Context's memory side, see  <a href="https://mp.weixin.qq.com/s/YvGGPBZX0V7R6-09unnrcQ" style="color: #5fa5d8; text-decoration: none;">Agent Memory That “Dreams”</a></span>
+</section>
+
+<p style="margin: 8px 0; text-align: center; color:var(--article-muted, #7b8fa3); font-size: 13px;">(The instruction protocol stack. The left shows who writes each layer and what they write; the right shows conflict priorities, following the same idea as the instruction hierarchy in OpenAI's Model Spec.)</p>
+
+<figure><img src="../../assets/blog/河蟹AI-Prompt指令协议栈图.png" alt="HexClaw AI prompt instruction protocol stack (Chinese diagram)" width="2120" height="2420" loading="lazy" decoding="async"><figcaption>HexClaw AI prompt instruction protocol stack (Chinese diagram)</figcaption></figure>
+
+<h2 style="font-size: 19px; font-weight: 700; color:var(--article-ink, #12324c); margin: 32px 0 12px; padding-left: 10px; border-left: 4px solid #5fb3ea;">Written by the Product: Separating Persona and Manual</h2>
+
+<p style="margin: 8px 0;">HexClaw's default system prompt used to be one solid block. A split made in late June recorded its design intent in a source comment that reads like an ADR:</p>
+
+<blockquote style="border-left: 3px solid #3f8fd4; padding: 12px 18px; margin: 16px 0; background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); font-size: 14px; border-radius: 0 8px 8px 0; line-height: 1.8;">
+“Persona = role/voice (short, readable and editable by the user under ‘Edit Persona’); operating manual = tool discipline (fixed; users need not read it).”<br/>
+<span style="color:var(--article-muted, #7b8fa3); font-size: 13px;">— The splitting comment in react.go. As in the previous installment, the memorable lines quoted here all come from code comments.</span>
+</blockquote>
+
+<p style="margin: 8px 0;">The extracted persona is called SOUL. The default is “Little Crab”: a “private AI companion living on your computer and working alongside you,” with traits such as “warm without being cloying,” “direct,” and “discreet.” Its creed is <strong style="color:var(--article-accent, #3f8fd4);">“Keep a claw on the work, keep the data locked down, keep growing capable”</strong>. My favorite line is hidden in a subheading: “My temperament (where my voice grows from: <strong style="color:var(--article-accent, #3f8fd4);">act on it, don't recite it</strong>).” Notice who this addresses: it is a meta-instruction for the <strong style="color:var(--article-accent, #3f8fd4);">model</strong>, teaching it how to use the persona, rather than prose for the user.</p>
+
+<p style="margin: 8px 0;">Why write that sentence explicitly? Here is the answer to the question planted at the start. The pathology behind the “most, most, most” introduction is at this layer: the persona says “be direct, don't ramble,” and the model performs the instruction itself. The less certain it is, the harder it performs. Many users recognize a more painful pattern: that introduction is often followed by confident guesses. <strong style="color:var(--article-accent, #3f8fd4);">“Decisiveness” becomes the preamble to a hallucination</strong>. That is the real cost of recitation: <strong style="color:var(--article-accent, #3f8fd4);">personality shows up in dialogue instead of behavior, especially when there is no evidence</strong>.</p>
+
+<p style="margin: 8px 0;">Interestingly, Little Crab's persona includes the same sort of instruction: “Direct: hand over the conclusion first, then explain why; don't beat around the bush.” But two lines below it is another: “Discreet: ... <strong style="color:var(--article-accent, #3f8fd4);">if uncertain, say so; never make things up for you</strong>.” Directness governs style; discretion governs boundaries. <strong style="color:var(--article-accent, #3f8fd4);">These two instructions must be written as a pair</strong>. Write only the first and you build a guessing machine fond of saying “no beating around the bush.” Add the “act on it, don't recite it” meta-instruction and the gap is filled. That is how the remedy at the beginning works. At this level, writing a prompt is already writing runtime configuration.</p>
+
+<p style="margin: 8px 0;">Incidentally, English-speaking users receive a <strong style="color:var(--article-accent, #3f8fd4);">natively written English version</strong> that reproduces the crab puns and three-part creed, rather than a machine translation of this persona. The persona is a product asset, and assets deserve more than machine translation.</p>
+
+<h2 style="font-size: 19px; font-weight: 700; color:var(--article-ink, #12324c); margin: 32px 0 12px; padding-left: 10px; border-left: 4px solid #5fb3ea;">Written by the User: Personality Can Change, Discipline Cannot</h2>
+
+<p style="margin: 8px 0;">The split particularly benefits users who want customization. Place your own persona in  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">~/.hexclaw/SOUL.md</code>  to replace Little Crab completely. But the assembly code makes the limits clear:</p>
+
+<section style="margin: 18px 0; padding: 18px 20px; background: #272822; border-radius: 8px; overflow-x: auto; text-align: left; letter-spacing: 0; font-size: 13px; line-height: 1.8; font-family: 'SF Mono', SFMono-Regular, Menlo, Monaco, Consolas, 'Courier New', monospace; color: #F8F8F2; box-shadow: 0 1px 10px rgba(0,0,0,0.12);"><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">1</span><span style="color: #75715E; font-style: italic;">// 自定义 SOUL.md 也要附加固定运行手册——</span></span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">2</span><span style="color: #75715E; font-style: italic;">// 否则改了人设的用户会丢工具纪律</span></span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">3</span><span style="color: #F92672;">else if</span> soul := config.ReadSoul(); soul != <span style="color: #E6DB74;">""</span> {</span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">4</span>    sysContent = decorateSystemPrompt(<span style="color: #66D9EF;">soulWithManual</span>(soul), metadata)</span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">5</span>}</span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">6</span>...</span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">7</span>sysContent += agentAntiRecitationGuard  <span style="color: #75715E; font-style: italic;">// bug#7 的那句</span></span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">8</span>sysContent += e.buildCapabilityContext(ctx, metadata)</span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">9</span>sysContent += e.buildMountedSkillsPrompt(names)</span></section>
+
+<p style="margin: 8px 0;"><code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">soulWithManual</code> The function name states the protocol: whether the persona comes from the product or the user, <strong style="color:var(--article-accent, #3f8fd4);">the operating manual (tool discipline) is always appended</strong>. Both are treated equally. In plain language: <strong style="color:var(--article-accent, #3f8fd4);">you can change its personality, but not its discipline.</strong>This is the local open-source counterpart of the instruction hierarchy in OpenAI's Model Spec: user freedom cannot override product-level constraints. And it is more than a verbal rule. A 119-line regression test for the split locks in the mandatory manual; if someone breaks it, CI will say so.</p>
+<h2 style="font-size: 19px; font-weight: 700; color:var(--article-ink, #12324c); margin: 32px 0 12px; padding-left: 10px; border-left: 4px solid #5fb3ea;">Written in Files: A Skill Is a Packaged Prompt with a Retrieval Budget</h2>
+
+<p style="margin: 8px 0;">The next layer is the part users and the community write into the protocol stack as <strong style="color:var(--article-accent, #3f8fd4);">files</strong>: Skills. First, distinguish two easily confused forms. In HexClaw, built-in skills written in Go, such as retrieval and code execution, are <strong style="color:var(--article-accent, #3f8fd4);">tools</strong>. The model calls them, they have side effects, and they fall under the harness discussed in the previous article. Here we mean the other form: a Markdown Skill that the model <strong style="color:var(--article-accent, #3f8fd4);">reads</strong> rather than calls. A Markdown file with frontmatter describes how to work in a particular domain and is injected into the system prompt when mounted. <strong style="color:var(--article-accent, #3f8fd4);">Tools occupy tool slots; these files occupy token space</strong>. They are the same material as SOUL and the operating manual, packaged as files. Readers of this series have seen this before in <a href="https://mp.weixin.qq.com/s/2tHlfZYHxQdQwvVZQEoLRg" style="color:var(--article-accent, #3f8fd4); text-decoration: none; border-bottom: 1px dashed #3f8fd4;">Distilling My Former Leader into a Skill</a> . The industry has also taken the same path: Claude Code's CLAUDE.md and Agent Skills' SKILL.md are different spellings of “put prompts into files.”</p>
+
+<p style="margin: 8px 0;">Files introduce a new problem: they accumulate, and injecting all of them is disastrous. HexClaw's Skill selector uses two stages. Its source comment states the purpose of the first explicitly: “Progressive loading / Top-K: <strong style="color:var(--article-accent, #3f8fd4);">avoid stuffing 100 Skills into the LLM context</strong>.” The second is conditional activation: frontmatter can declare when / not_when conditions for mode, subject, and scenario, and mismatches are filtered out automatically. Familiar? It is the attention budget discussed <a href="https://mp.weixin.qq.com/s/H6BoZUcQfBBqh-ScXQyTWw" style="color:var(--article-accent, #3f8fd4); text-decoration: none; border-bottom: 1px dashed #3f8fd4;">two installments ago</a> applied to the prompt layer: <strong style="color:var(--article-accent, #3f8fd4);">instructions are context, and instructions need filtering too.</strong>The selector scores only keyword inclusion and description substring matches. Its comment calls the approach “explainable, zero dependencies,” followed by typical HexClaw candor: “Could later switch to BM25 / vector retrieval, but at the current scale (&lt;10K Skills), it is unnecessary.”</p>
+
+<p style="margin: 8px 0;">Distribution is the logical destination of putting prompts in files. HexClaw provides an <strong style="color:var(--article-accent, #3f8fd4);">online Skill marketplace</strong>. It fetches the catalog from the official hub repository, supports search, browsing, installation, and removal, and embeds a local offline fallback catalog. MCP uses the same marketplace mechanism. Consider what that means: <strong style="color:var(--article-accent, #3f8fd4);">the protocol layer has grown its own package manager</strong>. Prompts are retracing the path code already took: files, modularity, and package management.</p>
+
+<h2 style="font-size: 19px; font-weight: 700; color:var(--article-ink, #12324c); margin: 32px 0 12px; padding-left: 10px; border-left: 4px solid #5fb3ea;">Written by Code: The Tactical Layer Injected Each Round</h2>
+
+<p style="margin: 8px 0;">The top of the protocol stack is written at runtime by code, not by a person. The anti-recitation guard at the start is one example: it is appended only in agent-derived scenarios because that is where the problem occurred. A fuller example is scheduled-task intent guidance. If a user writes something like “do something for me every day,” suggesting a schedule but missing details, the frontend classifier and structured parser are the first two defenses. If both miss it, a third fallback activates: a zero-cost keyword scan recognizes the intent and injects guidance into the system prompt asking the model to request missing information. At the same time, it narrows the available tools as far as possible: if cron_task exists, only that tool remains; otherwise the tool list is <strong style="color:var(--article-accent, #3f8fd4);">cleared</strong>. This prevents a known HTTP 400 error in the tool-call chain at the protocol level. The comments call it a belt-and-suspenders design. Notice the combination: half prompt (guidance to ask), half hard constraint (a narrowed tool set, or even Tools=nil). <strong style="color:var(--article-accent, #3f8fd4);">The soft and hard layers each do their job in the same fix</strong>. This is how the protocol layer should work with the hard gates from the previous article.</p>
+
+<p style="margin: 8px 0;">This layer also contains two decisions that “write no words”: they change none of the text but are still part of the protocol. First, the <strong style="color:var(--article-accent, #3f8fd4);">outermost layer</strong> of the several-thousand-character system prompt is not the fixed persona, but a runtime “mode hat.” In auto mode, the engine first reads the <strong style="color:var(--article-accent, #3f8fd4);">top-ranked Skill</strong>  retrieved for this round and its frontmatter's  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">preferred_mode</code> to set the tone of the entire prompt. In other words, the top of the instruction stack is <strong style="color:var(--article-accent, #3f8fd4);">selected dynamically</strong> each round, depending on which Skill the context matches. The selector that chose only Top-K Skills now gives the top one the power to set the tone of the whole protocol stack. Second, consider <strong style="color:var(--article-accent, #3f8fd4);">where each layer sits in the message array</strong>. Knowledge retrieval, recalled memories, and current time change every round, so they are <em>deliberately</em> moved out of the system prompt and into the current user message after history. Changing system content causes the entire subsequent history to miss the prefix cache; moving variable content downward lets <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">system + history</code>  remain a stable, cacheable prefix. That saves tokens and latency; the comment calls this arrangement a frozen snapshot. <strong style="color:var(--article-accent, #3f8fd4);">What you write is protocol; where and when you write it are protocol too.</strong></p>
+
+<p style="margin: 8px 0;">Another easily overlooked “prompt” layer is the tool schema. Each tool's description and parameter explanations are effectively a man page for the model. The problem-solving tool has a Boolean parameter named  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">method_diversity</code>. Its description is written directly for the model: “solve with TWO deliberately different methods and cross-check them.” The next phrase, “catches systematic method errors,” explains its purpose: catch systematic mistakes caused by pursuing one method all the way down, with disagreements resolved by a code verifier. Whether a model uses a tool well depends heavily on whether this text is clear. Writing tool descriptions as API documentation and reviewing them as interface contracts is one of the most concrete engineering consequences of prompting becoming infrastructure. The other half of the contract is the <strong style="color:var(--article-accent, #3f8fd4);">output format</strong>. The risk judge in the previous article, whose prompt says “Reply with EXACTLY one word,” is a minimal structured-output protocol. Define schemas for both input and output, and a prompt becomes an interface rather than merely a conversation.</p>
+
+<h2 style="font-size: 19px; font-weight: 700; color:var(--article-ink, #12324c); margin: 32px 0 12px; padding-left: 10px; border-left: 4px solid #5fb3ea;">What the Protocol Layer Cannot Do, and What Remains Missing</h2>
+
+<p style="margin: 8px 0;">Raising prompts to the protocol layer does not make them omnipotent. Defining layers makes boundaries clearer too. An operating manual may say “do not do X,” and the model will probably comply, but “probably” counts for little in a safety context. The actual backstop is the family of permission gates and judges in <a href="https://mp.weixin.qq.com/s/kDi-LSWB4UHtS_6jbTfvow" style="color:var(--article-accent, #3f8fd4); text-decoration: none; border-bottom: 1px dashed #3f8fd4;">the previous article</a>. An approval dialog does not care how polite the model is, and the C1 guard does not accept the model's spoken report. Similarly, the request to “say so honestly when the sources are insufficient” at the end of <a href="https://mp.weixin.qq.com/s/H6BoZUcQfBBqh-ScXQyTWw" style="color:var(--article-accent, #3f8fd4); text-decoration: none; border-bottom: 1px dashed #3f8fd4;">the retrieval article</a> is a soft constraint; the real guardrail is the evaluation release gate. Another risk targets the protocol stack itself: external text can smuggle instructions into it through prompt injection. The engine therefore adds a fast, code-based check for clearly malicious user input and retrieved text. Notice the form of this defense: a code gate, not a plea in the prompt to “ignore bad instructions.” <strong style="color:var(--article-accent, #3f8fd4);">For injection attacks, the protocol layer itself is the attack surface; the rescue must come from outside that layer</strong>. Taken together, the three articles describe a division of labor: <strong style="color:var(--article-accent, #3f8fd4);">soft constraints define expectations, and hard gates contain failures. Prompts keep the system doing the right thing most of the time; Harness keeps the cost manageable when it does the wrong thing.</strong>Soft constraints alone leave it exposed; hard gates alone make it expensive and foolish.</p>
+
+<p style="margin: 8px 0;">As usual, the remaining gaps are explicit. The split itself has regression tests, but <strong style="color:var(--article-accent, #3f8fd4);">there is no evaluation of how persona wording affects behavior</strong>. Change one line under “My temperament,” and there is no golden set showing which model behaviors changed. SOUL.md also lacks version governance: users have no product-managed diff history to roll back if an edit breaks things. Managing the file in Git yourself is an option, but the product does not manage it for you. Prompting receives half the treatment of code: tests, bug tracking, a package manager in the Skill marketplace, and a dedicated desktop Prompt page for common instructions. Evaluation and versioning are still missing. <strong style="color:var(--article-accent, #3f8fd4);">The package manager exists; semver and CI have yet to catch up</strong>. There are industry precedents: frameworks such as DSPy already treat prompts as compilable programs. Closing this remaining half-step is the next direction for the layer.</p>
+
+<h2 style="font-size: 19px; font-weight: 700; color:var(--article-ink, #12324c); margin: 32px 0 12px; padding-left: 10px; border-left: 4px solid #5fb3ea;">Finale: After Three Layers of Expansion, the Last Mile Is Still Text</h2>
+
+<p style="margin: 8px 0;">The overview article established a theme: the four paradigms push the control plane outward, from wording to information selection, then process control, then initiation and acceptance authority. Each outward step delegates another decision to the system. Looking back after four articles, there is an irony at the end of this line: <strong style="color:var(--article-accent, #3f8fd4);">however far the control plane expands, the last mile of every layer's constraints is still text written for a model.</strong>The supervisor's decision criteria are prompts; the judge's scoring rubric is a prompt; retrieval's “say so honestly” is a prompt; even “act on it, don't recite it” is a prompt. The first paradigm was not replaced by the next three. It became their foundation.</p>
+
+<p style="margin: 8px 0;">So the annually reissued obituaries are not entirely wrong. They merely <strong style="color:var(--article-accent, #3f8fd4);">mistook “sinking to the foundation” for “dying”</strong>. Sometimes a craft stops being discussed separately because it has become foundational. Nobody praises the foundations every day, but every floor stands on them.</p>
+
+<p style="margin: 8px 0;">Together, the four articles finally complete the equation: <strong style="color:var(--article-accent, #3f8fd4);">Agent = Prompt × Context × Harness × Loop</strong>. Protocols define expectations, evidence feeds judgment, the harness governs action, and the loop delivers the goal. Real code for every layer is visible in this open-source repository; the four articles also mark what each layer does and does not yet achieve. The series ends here. The digital workhorses keep working, and we keep building the harness.</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<p style="margin: 16px 0 8px; font-size: 14px; color:var(--article-secondary, #5f7b9c);"><strong>Four Paradigms Series · Complete Collection</strong></p>
+<p style="margin: 4px 0; font-size: 14px; line-height: 2.1;">
+▸ <span style="display: inline-block; font-size: 12px; padding: 0 8px; background:var(--article-panel, #edf7ff); color:var(--article-accent, #3f8fd4); border-radius: 10px; font-weight: 700;">Loop · Overview</span>&nbsp;<a href="https://mp.weixin.qq.com/s/h60ymjjj3eF9hQyhl0jVcQ" style="color:var(--article-accent, #3f8fd4); text-decoration: none;">Inside an Open-Source Agent: Tracing the Four Paradigms from Prompt to Loop</a><br/>
+▸ <span style="display: inline-block; font-size: 12px; padding: 0 8px; background:var(--article-panel, #edf7ff); color:var(--article-accent, #3f8fd4); border-radius: 10px; font-weight: 700;">Context · Documents</span>&nbsp;<a href="https://mp.weixin.qq.com/s/H6BoZUcQfBBqh-ScXQyTWw" style="color:var(--article-accent, #3f8fd4); text-decoration: none;">The Hard Part of RAG Is Keeping “Answer-Like Noise” Outside the Loop</a><br/>
+▸ <span style="display: inline-block; font-size: 12px; padding: 0 8px; background:var(--article-panel, #edf7ff); color:var(--article-accent, #3f8fd4); border-radius: 10px; font-weight: 700;">Context · Memory</span>&nbsp;<a href="https://mp.weixin.qq.com/s/YvGGPBZX0V7R6-09unnrcQ" style="color:var(--article-accent, #3f8fd4); text-decoration: none;">Agent Memory That “Dreams”: HexClaw's Dreams Stay on Your Machine</a><br/>
+▸ <span style="display: inline-block; font-size: 12px; padding: 0 8px; background:var(--article-panel, #edf7ff); color:var(--article-accent, #3f8fd4); border-radius: 10px; font-weight: 700;">Harness · The Harness</span>&nbsp;<a href="https://mp.weixin.qq.com/s/kDi-LSWB4UHtS_6jbTfvow" style="color:var(--article-accent, #3f8fd4); text-decoration: none;">The Model Makes the Digital Workhorse Clever; the Harness Makes It Trustworthy Enough to Work</a><br/>
+▸ <span style="display: inline-block; font-size: 12px; padding: 0 8px; background: #3f8fd4; color: #ffffff; border-radius: 10px; font-weight: 700;">Prompt · Finale</span>&nbsp;<span style="color:var(--article-ink, #12324c);">This Article</span>
+</p>
+
+<p style="margin: 14px 0 8px; font-size: 14px; color:var(--article-secondary, #5f7b9c);"><strong>Earlier Articles</strong></p>
+<p style="margin: 4px 0; font-size: 14px; line-height: 2;">
+▸ <a href="https://mp.weixin.qq.com/s/2tHlfZYHxQdQwvVZQEoLRg" style="color:var(--article-accent, #3f8fd4); text-decoration: none;">I Distilled My Former Leader into a HexClaw AI Skill (with a Skill Distillation Tutorial)</a><br/>
+▸ <a href="https://mp.weixin.qq.com/s/EvQT0VqH9ep6LXo89ZM-fw" style="color:var(--article-accent, #3f8fd4); text-decoration: none;">Raising HexClaw AI's Digital Workhorse: Compiling a Sentence into a Self-Healing Sandbox Script</a>
+</p>
+
+<p style="margin: 16px 0 8px; font-size: 14px; color:var(--article-secondary, #5f7b9c);"><strong>References</strong></p>
+<p style="margin: 4px 0; font-size: 13px; color:var(--article-muted, #7b8fa3); line-height: 2;">
+· OpenAI, <a href="https://model-spec.openai.com" style="color:var(--article-muted, #7b8fa3);">Model Spec</a> — instruction priority stack / Chain of Command (Root &gt; System &gt; Developer &gt; User &gt; Guideline)<br/>
+· Kalai et al., Why Language Models Hallucinate (2025) — pretraining statistical errors, and mainstream evaluations that reward guessing and penalize uncertainty<br/>
+· OpenAI, Sycophancy in GPT-4o (2025) — excessive weight on short-term feedback can push models toward overly supportive but insincere answers<br/>
+· Anthropic et al., Towards Understanding Sycophancy in Language Models (2023) — human preferences and preference models can reward sycophantic answers in some scenarios<br/>
+· Anthropic, Claude system prompts and official prompt-engineering documentation<br/>
+· Andrej Karpathy, X (2023-01), "The hottest new programming language is English"<br/>
+· The “Prompt Engineering Is Dead” discussion continuing since 2023<br/>
+· Anthropic Claude Code, CLAUDE.md and Agent Skills (SKILL.md) — industry practice for storing prompts as files<br/>
+· DSPy — frameworks that treat prompts as compilable programs<br/>
+· The article's wording and links were reviewed before publication on July 5, 2026; HexClaw mechanisms were checked against the repositories' main-branch source code on July 4, 2026
+</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0 16px;"/>
+
+<p class="blog-brand-footer" data-blog-brand-footer="en" data-blog-brand-overrides="{}" style="text-align: center; color: var(--article-muted, #7b8fa3); font-size: 13px; margin: 16px 0 0; line-height: 2;">
+<strong style="color: var(--article-ink, #12324c); font-size: 14px;">HexClaw</strong><br/>
+Deploy locally or in the cloud · Control your data · Free and open-source software<br/>
+<a href="https://hexclaw.net" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">Website: <bdi dir="ltr">hexclaw.net</bdi></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://github.com/hexagon-codes" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">GitHub: <bdi dir="ltr">hexagon-codes</bdi></a><br/>
+<a href="https://weibo.com/u/4097207240" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">Weibo: <bdi dir="ltr">@HexClaw</bdi></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">X: <bdi dir="ltr">@hexclawapp</bdi></a><br/>
+<a href="mailto:ai@hexclaw.net" style="color: var(--article-muted, #999); text-decoration: none;">Email: <bdi dir="ltr">ai@hexclaw.net</bdi></a>
+</p>
+    </article>
+
+
+
+    <nav class="blog-series-nav" aria-label="Previous and next articles">
+      <a href="/en/blog/" class="blog-nav-card prev">
+  <span class="blog-nav-label">&larr; Back to the List</span>
+  <span class="blog-nav-title">Technical Blog Index</span>
+</a>
+      <a href="/en/blog/harness-engineering" class="blog-nav-card next">
+  <span class="blog-nav-label">Next &rarr;</span>
+  <span class="blog-nav-title">Harness Engineering in HexClaw AI: The Model Gives the Digital Workhorse Its Intelligence; the Harness Gives Us the Confidence to Let It Work</span>
+</a>
+    </nav>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-main">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-col-title">Product</div>
+        <a href="/en/#download">Download</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="/en/changelog">Changelog</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Developers</div>
+        <a href="/en/docs/">Documentation</a>
+        <a href="/en/blog/">Technical Blog</a>
+        <a href="/en/docs/getting-started">Getting Started</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">Apache-2.0</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Community</div>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/issues" target="_blank" rel="noopener noreferrer">Issues</a>
+        <a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer">Twitter / X</a>
+        <a href="mailto:ai@hexclaw.net">Contact Us</a>
+        <a href="mailto:support@hexclaw.net">Feedback</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">About</div>
+        <a href="/en/about">About Us</a>
+        <a href="/en/privacy">Privacy Policy</a>
+        <a href="/en/terms">Terms of Service</a>
+        <a href="/en/third-party-ai-services">Third-Party AI Services</a>
+      </div>
+    </div>
+    <div class="footer-wechat">
+      <img width="430" height="430" loading="lazy" decoding="async" src="../../assets/brand/wechat-qr.jpg" alt="HexClaw WeChat QR Code">
+      <span class="footer-wechat-label">WeChat Official Account</span>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">&copy; 2025&ndash;2026 hexagon-codes</span>
+  </div>
+</footer>
+<script src="../../assets/js/theme.js?v=2e4a1828feef"></script>
+<script src="../../assets/js/docs-nav.js?v=5a103861aec2"></script>
+<button type="button" class="back-to-top" id="backToTop" aria-label="Back to top" title="Back to top">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg>
+  <span>Top</span>
+</button>
+
+<script src="../../assets/js/blog.js?v=c72e1db5a6ec"></script>
+</body>
+</html>

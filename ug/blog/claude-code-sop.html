@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="ug" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/favicon-32.png">
+<title>HexClaw ئارقىسىدىكى Claude Code SOP: لايىھە يېتەكچىلىكى × سىناقنى تاماملاش × كۆپ Agent ھەمكارلىقى｜HexClaw تېخنىكا بىلوگى</title>
+<meta name="description" content="بىر ئادەم، ئىشتىن سىرتقى ۋاقىت، 6 يادرولۇق ئامبار، 680 مىڭ قۇر كود. يادرولۇق مەسىلە «AI غا كود يازدۇرۇش» ئەمەس؛ لايىھە، سىناق ۋە كۆپ Agent ھەمكارلىقىنى ئۆزلۈكىدىن تاماملىنىدىغان ئېچىش SOP سىغا ئايلاندۇرۇش.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:site_name" content="HexClaw">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HexClaw ئارقىسىدىكى Claude Code SOP: لايىھە يېتەكچىلىكى × سىناقنى تاماملاش × كۆپ Agent ھەمكارلىقى｜HexClaw تېخنىكا بىلوگى">
+<meta property="og:description" content="بىر ئادەم، ئىشتىن سىرتقى ۋاقىت، 6 يادرولۇق ئامبار، 680 مىڭ قۇر كود. يادرولۇق مەسىلە «AI غا كود يازدۇرۇش» ئەمەس؛ لايىھە، سىناق ۋە كۆپ Agent ھەمكارلىقىنى ئۆزلۈكىدىن تاماملىنىدىغان ئېچىش SOP سىغا ئايلاندۇرۇش.">
+<meta property="og:url" content="https://hexclaw.net/ug/blog/claude-code-sop">
+<meta property="og:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta property="og:image:alt" content="HexClaw بەلگىسى">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta property="og:locale" content="ug_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="HexClaw ئارقىسىدىكى Claude Code SOP: لايىھە يېتەكچىلىكى × سىناقنى تاماملاش × كۆپ Agent ھەمكارلىقى｜HexClaw تېخنىكا بىلوگى">
+<meta name="twitter:description" content="بىر ئادەم، ئىشتىن سىرتقى ۋاقىت، 6 يادرولۇق ئامبار، 680 مىڭ قۇر كود. يادرولۇق مەسىلە «AI غا كود يازدۇرۇش» ئەمەس؛ لايىھە، سىناق ۋە كۆپ Agent ھەمكارلىقىنى ئۆزلۈكىدىن تاماملىنىدىغان ئېچىش SOP سىغا ئايلاندۇرۇش.">
+<meta name="twitter:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta name="twitter:image:alt" content="HexClaw بەلگىسى">
+<link rel="canonical" href="https://hexclaw.net/ug/blog/claude-code-sop">
+<link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/claude-code-sop">
+<link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/claude-code-sop">
+<link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/claude-code-sop">
+<link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/claude-code-sop">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "HexClaw ئارقىسىدىكى Claude Code SOP: لايىھە يېتەكچىلىكى × سىناقنى تاماملاش × كۆپ Agent ھەمكارلىقى",
+  "description": "بىر ئادەم، ئىشتىن سىرتقى ۋاقىت، 6 يادرولۇق ئامبار، 680 مىڭ قۇر كود. يادرولۇق مەسىلە «AI غا كود يازدۇرۇش» ئەمەس؛ لايىھە، سىناق ۋە كۆپ Agent ھەمكارلىقىنى ئۆزلۈكىدىن تاماملىنىدىغان ئېچىش SOP سىغا ئايلاندۇرۇش.",
+  "url": "https://hexclaw.net/ug/blog/claude-code-sop",
+  "inLanguage": "ug",
+  "datePublished": "2026-04-18",
+  "image": "https://hexclaw.net/assets/brand/hexclaw-logo.png",
+  "publisher": {
+    "@type": "Organization",
+    "name": "hexagon-codes",
+    "url": "https://hexclaw.net/",
+    "@id": "https://hexclaw.net/#organization"
+  },
+  "@id": "https://hexclaw.net/ug/blog/claude-code-sop#article"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "HexClaw", "item": "https://hexclaw.net/ug/"},
+    {"@type": "ListItem", "position": 2, "name": "تېخنىكا بىلوگى", "item": "https://hexclaw.net/ug/blog/"},
+    {"@type": "ListItem", "position": 3, "name": "HexClaw ئارقىسىدىكى Claude Code SOP: لايىھە يېتەكچىلىكى × سىناقنى تاماملاش × كۆپ Agent ھەمكارلىقى", "item": "https://hexclaw.net/ug/blog/claude-code-sop"}
+  ],
+  "@id": "https://hexclaw.net/ug/blog/claude-code-sop#breadcrumb"
+}
+</script>
+<link rel="stylesheet" href="../../assets/css/docs-eb2895dd79c5.css">
+<link rel="stylesheet" href="../../assets/css/blog-a8e5008ac3d1.css">
+</head>
+<body class="blog-page blog-article-page">
+<a href="#main" class="skip-link">ئاساسلىق مەزمۇنغا ئاتلاش</a>
+<nav class="tn topnav" id="nav">
+  <a href="/ug/" class="tn-b topnav-brand"><img width="72" height="72" src="../../assets/brand/hexclaw-icon-72.png" class="tn-l topnav-logo" alt="ھېشى AI"><span class="tn-n topnav-name">ھېشى AI</span></a>
+  <button type="button" class="tn-burger topnav-burger" aria-label="تىزىملىك" aria-expanded="false" aria-controls="primary-navigation"><span></span><span></span><span></span></button><div class="tn-r topnav-links" id="primary-navigation"><a href="/ug/">باش بەت</a><a href="/ug/#cases">ئىشلىتىش كۆرۈنۈشلىرى</a><a href="/ug/#features">ئىقتىدارلار</a><a href="/ug/#quickstart">باشلاش</a><a href="/ug/#ecosystem">ئوچۇق ئېكولوگىيە</a><a href="/ug/blog/" class="is-active">تېخنىكا بىلوگى</a><a href="/ug/docs/">ھۆججەتلەر مەركىزى</a><div class="lang-menu" data-lang-menu><button type="button" class="lang-trigger" aria-haspopup="menu" aria-expanded="false" aria-label="تىل ئالماشتۇرۇش"><svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 0 20"></path><path d="M12 2a15.3 15.3 0 0 0 0 20"></path></svg><span class="lang-current" lang="zh-CN" dir="ltr">维吾尔语</span><svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="lang-menu-list" role="menu"><a href="/zh/blog/claude-code-sop" role="menuitem">中文</a><a href="/en/blog/claude-code-sop" role="menuitem">English</a><a href="/ug/blog/claude-code-sop" role="menuitem" class="is-active" aria-current="true" lang="zh-CN" dir="ltr">维吾尔语</a></div></div><button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="ئۇسلۇب ئالماشتۇرۇش"><svg class="ti-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="ti-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="nav-cta">GitHub <span class="nav-star-badge" id="gh-stars">&#9733;</span></a></div>
+</nav>
+
+<main id="main" class="blog-main">
+  <div class="blog-article-container">
+    <nav class="blog-breadcrumb" aria-label="面包屑导航">
+      <a href="/ug/">باش بەت</a>
+      <span class="blog-breadcrumb-sep">/</span>
+      <a href="/ug/blog/">تېخنىكا بىلوگى</a>
+      <span class="blog-breadcrumb-sep">/</span>
+      <span aria-current="page">قۇرۇلما ۋە ئىنژېنېرلىق</span>
+    </nav>
+
+    <header class="blog-header">
+      <div class="blog-header-tags">
+        <span class="blog-badge-series">تەتقىق قىلىپ ئېچىش SOP سى</span>
+      </div>
+      <h1 class="blog-article-title">HexClaw ئارقىسىدىكى Claude Code SOP: لايىھە يېتەكچىلىكى × سىناقنى تاماملاش × كۆپ Agent ھەمكارلىقى</h1>
+      <p class="blog-article-subtitle">بىر ئادەم، ئىشتىن سىرتقى ۋاقىت، 6 يادرولۇق ئامبار، 680 مىڭ قۇر كود. يادرولۇق مەسىلە «AI غا كود يازدۇرۇش» ئەمەس؛ لايىھە، سىناق ۋە كۆپ Agent ھەمكارلىقىنى ئۆزلۈكىدىن تاماملىنىدىغان ئېچىش SOP سىغا ئايلاندۇرۇش.</p>
+      <div class="article-provenance-banner">
+        <div class="provenance-left">
+          <span class="provenance-origin-badge">تۇنجى قېتىم WeChat رەسمىي ھېساباتىدا ئېلان قىلىنغان</span>
+          <span class="provenance-text">بۇ ماقالە ئالدى بىلەن WeChat رەسمىي ھېساباتى<strong>「hexclaw」</strong>(ID: hexclaw) نىڭ رەسمىي تېخنىكا سەھىپىسىدە ئېلان قىلىنغان · ئېلان ۋاقتى: <strong>2026-يىلى 4-ئاينىڭ 18-كۈنى</strong> · ئوقۇشقا تەخمىنەن 11 مىنۇت</span>
+        </div>
+        <a href="https://mp.weixin.qq.com/s/1rza-Ye3NF89KNAJp_PttA" target="_blank" rel="noopener noreferrer" class="provenance-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          WeChat دىكى ئەسلى ماقالە ↗
+        </a>
+      </div>
+    </header>
+
+    <article class="blog-content">
+      <hr style="border: none; border-top: 1px solid var(--article-border, #d8e6f0); margin: 28px 0;">
+
+<h2 style="font-size: 20px; font-weight: 700; color:var(--article-ink, #12324c); margin: 32px 0 12px; padding-bottom: 8px; border-bottom: 2px solid #5fb3ea;">باشلىنىشى: بىر دوستۇم AI ئېچىش تەجرىبىسىنى ئورتاقلىشىشنى سورىدى</h2>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">بىر نەچچە كۈن ئىلگىرى بېيجىڭدىكى كونا دوستۇم ئالاقىلەشتى. ئۇ تېخنىكا مەسئۇلى، گۇرۇپپىسىغا AI ئاپتوماتىك خىزمەت ئېقىمى قۇرماقچى بولۇپ، ئىككى كونكرېت سوئال سورىدى:<strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">AI نىڭ توقۇشىنى قانداق بېسىمىز؟ خىزمەت ئېقىمىنى قانداق قۇرىمىز؟</strong>تۆۋەندىكى ئۈچ ئاساسىي يول مۇشۇ ئىككى سوئالنىڭ جاۋابى.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">بۇ مەزگىلدىكى تەجرىبىلىرىم تۈردە ئىشلىۋاتاتتى، ئايرىم تونۇشتۇرۇش ماتېرىيالى قىلماپتىمەن. Claude قا پارچىلارنى بىر يۈرۈش ھۆججەتكە يىغدۇردۇم (ماقالە ئاخىرىدا ئوچۇق مەنبە قىلىنغان شۇ يۈرۈشلۈك)، خاس Skill ۋە command لار بىلەن بوغچىلاپ ئەۋەتتىم. ئۇچرىشىش بىر قېتىملىق «سۆزلەپ بېرىش» ئەمەس ئىدى: دوستۇم WeChat توپى قۇرۇپ تېخنىكا ئالماشتۇرۇش قىلدى؛ سوئال كەلسە جاۋاب بەردۇق، ھەممە كۆرۈپ، ئەمەلىي ئىشلىتىپ، سوراپ تۇردى. كەيپىيات ئازادە، ھەر سوئالغا پۇختا جاۋاب بېرىشكە ۋاقىت بار ئىدى. ھەقىقىي E2E تېخنىكا ئالماشتۇرۇش دېگەن مۇشۇ: ھۆججەت، ئەمەلىي مەشغۇلات، سوئال ۋە جاۋاب بىر ئايلىنىشتا ئۆتىدۇ.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">ئۇ يەنە مەھسۇلات باشقۇرغۇچى دوستىنى مەھسۇلات تەرەپ Skill سىستېمىسىنى سۆزلەشكە چاقىردى. ئۇ دوستنىڭ PRD سى ناھايىتى سىستېمىلىق ۋە ئىنچىكە. ئۇنىڭ Skill ى بىلەن كىرىش مودۇلىنى ئىجرا قىلىپ كۆردۈم، بىۋاسىتە بىر سىناق دېلوسى ۋە بىر دوكلات چىقاردى —<strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">PRD قانچە ئىنچىكە بولسا ھاسىل قىلىش شۇنچە ياخشى</strong>. مەھسۇلات تەرەپ سىستېمىسى ئۇ كەسىپدىشىمنىڭ كەسپى؛ مەن پەقەت قولايلىق ئىشلەتتىم، ئۆزۈمنى بىلىملىكتەك كۆرسەتمەيمەن. تولۇق چۈشەندۈرۈش ئۈچۈن ئۇ دوست ئۆزى سۆزلىشى كېرەك.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">يىغىپ بولغاندىن كېيىن ئۆزۈممۇ بايقىدىم: «Claude Code بىلەن ئىجرا بولىدىغان مەھسۇلات ياساش» ئۇسۇلىنى بۇرۇن سىستېمىلىق يېزىپ باقماپتىمەن. ئىقتىدار تىزىملىكىنى ھەممە تىزالايدۇ، «قانداق ئىشلىتىش» باشقا ئىش.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">يادرولۇق ئۈچ يول:<strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">لايىھە + ئىجرا، سىناقنى تاماملاش، كۆپ Agent ھەمكارلىقى</strong>— تۆۋەندە رەت بويىچە ئاچىمىز.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">بۇ ماقالە شۇ ھۆججەتنىڭ قىسقارتىلغان نۇسخىسى. «Claude Code نىڭ 26 تېز كۇنۇپكىسى»نى ئەمەس، تېخىمۇ ئەمەلىي بىر ئىشنى سۆزلەيدۇ: ئىجرا بولىدىغان، سىنىغىلى بولىدىغان، تەرەققىي قىلدۇرغىلى بولىدىغان مەھسۇلاتنى ھەقىقىي ياسىغاندا قانداق خىزمەت ئېقىمى كېرەك؟</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #d8e6f0); margin: 28px 0;">
+
+<h2 style="font-size: 20px; font-weight: 700; color:var(--article-ink, #12324c); margin: 32px 0 12px; padding-bottom: 8px; border-bottom: 2px solid #5fb3ea;">ئالدى بىلەن سانلار، بولمىسا كېيىنكىسى قۇرۇق گەپ</h2>
+
+<ul style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">تەخمىنەن 680 مىڭ قۇر كود</strong>: Go / TypeScript / Vue / Rust تۆت ئاساسلىق تىلغا تارقالغان (ئالتە ئامباردىكى ھازىرقى Git ئىز قوغلىغان ھۆججەتلەردىن قوپال سانالغان)</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">6 يادرولۇق ئامبار</strong>: toolkit → ai-core → hexagon → hexclaw → hexclaw-desktop / hexagon-ui (تولۇق تايىنىش زەنجىرى ئۈچۈن<a href="https://mp.weixin.qq.com/s/wIRiJsWLRPWBiTEQtlVQkg">قۇرۇلما ماقالىسىگە قاراڭ</a>）</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">بىر ئادەم · ئىشتىن سىرتقى ۋاقىت</strong>: كۈندۈزى نورمال خىزمەت، بۇ ئېكولوگىيەنىڭ ھەممىسى ئىشتىن كېيىن، ھەپتە ئاخىرى ۋە دەم ئېلىش كۈنلىرى يېزىلغان</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Claude Code بىلەن جۈپ ئېچىش</strong>: ھەر كۈنى ئون نەچچىدىن يۈز نەچچىگىچە جۈپ سۆھبەت؛ كۆپىنچە كودنى Claude Code ھاسىل قىلىدۇ، مەن ئېھتىياج، ھەل قىلىش چارىسى تاللىشى، تەكشۈرۈش ۋە ئاخىرقى قوبۇل قىلىشقا مەسئۇل</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">مودېل</strong>: يۇقىرىقى ئىشلارنى Claude Opus 4.5 / 4.6 قىلدى؛ بىر نەچچە ئايدىلا ئۆتمۈش بولدى. يېڭى ئېلان قىلىنغان 4.7 بولسۇن، كېيىنكى نۇسخىلار بولسۇن، ئېقىم تۇراقلىق، يۇقىرى چەك مودېل بىلەن ئۆسىدۇ</li>
+</ul>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">بۇ سانلار ماختىنىش ئۈچۈن ئەمەس. ئۆزۈممۇ قايتا قارىسام سەل غەلىتە ھېس قىلىمەن.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">ھەقىقىي كۈتۈلمىگىنى:<strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">چىققان نەرسىنىڭ سۈپىتى ئۆز مۆلچەرىمدىن ئېشىپ كەتتى</strong>— سىناق قاپلىشى تولۇق، ھەر مۇھىم قارارنىڭ ADR ى (قۇرۇلما قارار خاتىرىسى) بار، كود تەكشۈرۈش قاتتىقلىقى مەن قاتناشقان نۇرغۇن تۈردىن يۇقىرى؛ ئامبار تايىنىش قەۋىتى ئېنىق، ئايلانما تايىنىش يوق.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">بۇ Claude Code نىڭ 2026-يىلى تۇيۇقسىز كۈچەيگەنلىكىدىن ئەمەس. ئۆتكەن يىلىمۇ نۇرغۇن مۇستەقىل ئاچقۇچى ئىشلىتەتتى، مەھسۇلات سۈپىتى قاتمۇقات پەرق قىلاتتى. پەرق قورالدا ئەمەس، ئىشلىتىش ئۇسۇلىدا.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">بىر ساھە كۆزىتىشىمۇ بار: Claude Code، Codex، Cursor ۋە دۆلەت ئىچىدىكى كود ياردەمچىلىرىنىڭ تېز يېڭىلىنىشى، مۇشتەرىلىك پىلانلىرىنىڭ رىقابىتىدىن قارىغاندا،<strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">AI بىلەن كود يېزىش يېڭىلىق سىناشتىن كۈندىلىك قورال زەنجىرىگە كىردى</strong>. Zhihu ۋە تېخنىكا توپلىرىدىكى يېقىنقى چاقچاق ھەتتا مۇنداق دەيدۇ:<strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">«قەدىمىي ئۇسۇلدا قولدا كود يېزىش يېقىندا مەدەنىي مىراسقا ئىلتىماس قىلىدۇ؛ ئالدىرىمىسا مۇزېيغا كىرىپ كېتىدۇ.»</strong></p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">چاقچاق ئۆز يولىغا، رېئاللىق ئۇنچە چېكىدىن ئاشمىغان. Stack Overflow 2025 ئاچقۇچىلار تەكشۈرۈشىدە،<strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">84% ئاچقۇچى AI قورالى ئىشلىتىدۇ ياكى ئىشلىتىشنى پىلانلايدۇ، ئەمما 46% AI چىقىرىلمىسىنىڭ توغرىلىقىغا ئىشەنمەيدۇ</strong>— ئومۇملىشىش پاكىت، «ئىشەنسەك بولامدۇ» يەنىلا يادرولۇق سوئال. ھەقىقىي ئورتاق قاراش شۇنىڭغا يېقىن: پۈتۈنلەي قولدا يېزىش سۈكۈتتىكى ھەرىكەتتىن ئاز سانلىق مۇھىم ئەھۋالدىكى نازۇك ئىشقا ئايلىنىۋاتىدۇ؛ AI كودى ئىشەنچلىك بولسۇن دېسەك لايىھە، سىناق ۋە تەكشۈرۈش ئايلىنىشى كېرەك.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">2026-يىلى سوئال «AI نى ئىشلىتەمدۇق» ئەمەس، «ياخشى ئىشلىتەمدۇق». قورال ئومۇملىشىشى ≠ مەھسۇلات سۈپىتى. ئوخشاش Claude Code بىلەن بەزىلەر ھەقىقىي مەھسۇلات ياسىدى، بەزىلەر بىر نەچچە demo لا يازدى.</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #d8e6f0); margin: 28px 0;">
+
+<h2 style="font-size: 20px; font-weight: 700; color:var(--article-ink, #12324c); margin: 32px 0 12px; padding-bottom: 8px; border-bottom: 2px solid #5fb3ea;">ئۈچ ئاساسىي يول</h2>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">ئاتالغۇنىمۇ توغرىلايلى: 2026-يىلى ئەتراپىدا ساھە <strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Agentic Engineering</strong> دېگەننى تېخىمۇ ئەركىن Vibe coding تىن ئايرىشقا باشلىدى؛ ئىككى يولنىڭ پەرقى روشەنلىشىۋاتىدۇ.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">Vibe coding (Karpathy ئوتتۇرىغا قويغان) «ھېسقا تايىنىپ AI غا يازدۇرۇش، ئىجرا بولسىلا بولدى»؛ ئويۇنچۇق تۈر ۋە تېز ئەندىزىگە ماس. Agentic Engineering نىڭ تەكىتلىگىنى «كودنىڭ ھەممىسىنى AI غا بېرىش» ئەمەس، بەلكى<strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">ئادەمنىڭ agent لارنى ئورۇنلاشتۇرۇشى، سۈپەت دەرۋازىسى قويۇشى، چىقىرىلمىنى دەلىللىشى</strong>، AI ھاسىل قىلغان كودنى ئىنژېنېرلىق ئايلىنىشىغا كىرگۈزۈش. تۈپ مەنىسى:<strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">AI كود يازالايدۇ، ئەمما ئىنژېنېرلىق مەسئۇلىيىتىڭىزنى كۆتۈرەلمەيدۇ</strong>。</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">بۇ ماقالە مېنىڭ Agentic Engineering ئىجرايىمنى سۆزلەيدۇ. كونكرېت:</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">① <strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">لايىھە + ئىجرا</strong>: كودتىن بۇرۇن Claude قا ھەل قىلىش چارىلىرىنى سېلىشتۇردۇرۇش، تاللىغاندىن كېيىن كىچىك باسقۇچقا بۆلۈپ، ھەر باسقۇچتا TDD قىزىل-يېشىل-قايتا قۇرۇش.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">② <strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">سىناقنى تاماملاش</strong>: «should pass»، «probably OK» دېگەن بوشلۇق قالدۇرماسلىق. سىناق ئىجرا بولغان، ئىسپات ئېلىنغاندىلا تامام. يۇقىرى قاپلاش سىنىقى ئۈنۈملۈك دېگەنلىك ئەمەس.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">③ <strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">كۆپ Agent ھەمكارلىقى</strong>: Claude كود يازىدۇ، Codex تەكشۈرىدۇ، ئادەم قارار قىلىدۇ. ئىككى ئوخشىمىغان مودېل ئۆزئارا تەكشۈرۈپ، بىر مودېلنىڭ كۆرەلمىگەن نۇقتىسىنىڭ خاتالىققا يىغىلىشىنى توسىدۇ.</p>
+
+<div style="margin: 20px 0;">
+  <div style="background:var(--article-panel, #f4fbff); border: 1px solid var(--article-border, #d8e6f0); border-top: 3px solid #5fb3ea; border-radius: 8px; padding: 14px 16px; margin: 0 0 12px;">
+    <div style="font-size: 15px; font-weight: 700; color:var(--article-ink, #12324c); margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1px dashed #c9dce9;">✏️ ① لايىھە + ئىجرا</div>
+    <ul style="margin: 0; padding-left: 18px; font-size: 13px; color:var(--article-secondary, #3f5f7b); line-height: 1.8;">
+      <li style="margin: 3px 0;">كۆپ چارە سېلىشتۇرۇش + ADR خاتىرىسى</li>
+      <li style="margin: 3px 0;">كىچىك باسقۇچ، بىر قېتىمدا بىرلا ئىش</li>
+      <li style="margin: 3px 0;">TDD قىزىل → يېشىل → قايتا قۇرۇش</li>
+      <li style="margin: 3px 0;">سىناق قوغدىغان قايتا قۇرۇش</li>
+    </ul>
+  </div>
+  <div style="background:var(--article-panel, #f4fbff); border: 1px solid var(--article-border, #d8e6f0); border-top: 3px solid #5fb3ea; border-radius: 8px; padding: 14px 16px; margin: 0 0 12px;">
+    <div style="font-size: 15px; font-weight: 700; color:var(--article-ink, #12324c); margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1px dashed #c9dce9;">✅ ② سىناقنى تاماملاش</div>
+    <ul style="margin: 0; padding-left: 18px; font-size: 13px; color:var(--article-secondary, #3f5f7b); line-height: 1.8;">
+      <li style="margin: 3px 0;">دەلىللەش يېتەكچىلىكى (should pass قوبۇل قىلىنمايدۇ)</li>
+      <li style="margin: 3px 0;">ئۆزگىرىش تۈرى → سىناق دەرىجىسى خەرىتىسى</li>
+      <li style="margin: 3px 0;">grep بىلەن تاماملىقنى تەكشۈرۈش</li>
+      <li style="margin: 3px 0;">DevTestOps ئېقىم Skill ى</li>
+    </ul>
+  </div>
+  <div style="background:var(--article-panel, #f4fbff); border: 1px solid var(--article-border, #d8e6f0); border-top: 3px solid #5fb3ea; border-radius: 8px; padding: 14px 16px; margin: 0;">
+    <div style="font-size: 15px; font-weight: 700; color:var(--article-ink, #12324c); margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1px dashed #c9dce9;">🤖 ③ كۆپ Agent ھەمكارلىقى</div>
+    <ul style="margin: 0; padding-left: 18px; font-size: 13px; color:var(--article-secondary, #3f5f7b); line-height: 1.8;">
+      <li style="margin: 3px 0;">Claude يازىدۇ / Codex تەكشۈرىدۇ / ئادەم قارار قىلىدۇ</li>
+      <li style="margin: 3px 0;">ئۆزئارا Code Review</li>
+      <li style="margin: 3px 0;">لايىھەگە سېلىشتۇرۇپ ئىقتىدار تاماملىقىنى تەكشۈرۈش</li>
+      <li style="margin: 3px 0;">ئىلگىرىكى خاتالىق ساۋاقلىرىنى تەكشۈرۈش تۈرىگە ئايلاندۇرۇش</li>
+    </ul>
+  </div>
+</div>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">تۆۋەندە رەت بويىچە ئاچىمىز؛ ھەر يولغا ھەقىقىي ئۇسۇل، ئۇچرىغان مەسىلە، ھەل قىلىش ۋە ماس prompt / bash بۇيرۇقى بېرىلىدۇ.</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #d8e6f0); margin: 28px 0;">
+
+<h2 style="font-size: 20px; font-weight: 700; color:var(--article-ink, #12324c); margin: 32px 0 12px; padding-bottom: 8px; border-bottom: 2px solid #5fb3ea;">بىرىنچى يول: لايىھە + ئىجرا</h2>
+
+<h3 style="font-size: 17px; font-weight: 600; color:var(--article-ink, #12324c); margin: 24px 0 8px;">ئالدى بىلەن لايىھەسىز ئىشنىڭ مەسىلىسى</h3>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">5 ئاي بۇرۇن Claude Code نى يېڭى باشلىغاندا تۇنجى ئويۇم كۆپچىلىككە ئوخشاش: «XXX ئىقتىدارىنى قىلاي، ئىجرا قىلىپ بەر». Claude دەرھال 200 قۇر چىقىرىدۇ، ئىجرا قىلسىمۇ ئىشلىيدۇ.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">ئەمما بىر مەزگىلدىن كېيىن AI غا بىۋاسىتە كود يازدۇرۇشنىڭ ئۈچ كونكرېت مەسىلىسىنى بايقىدىم:</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">1. قۇرۇلما جىمجىت ناچارلىشىدۇ</strong>. Claude ھەر سۆھبەتتە «كونتېكىستتا يېقىندا كۆرگەن ئەندىزە»نى ئىشلىتىدۇ. مودۇل كۆپەيگەندە ھەر خىل ئۇسلۇبنى ئارىلاشتۇرىدۇ. قايتا قارىسىڭىز كود ئامبىرىنى ئادىتى باشقا 5 ئادەم يازغاندەك؛ چۈنكى ھەر سۆھبەتتىكى Claude بىر «يېڭى كەلگەن»، تۈنۈگۈنكى قائىدىنى ئەسلىيەلمەيدۇ.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">2. چارە تاللاش پاسسىپ بولىدۇ</strong>. Claude سۈكۈتتە «ئىجرا بولىدىغان بىر چارە» بېرىدۇ، سېلىشتۇرما بەرمەيدۇ. ئەمما تېخنىكا تاللاشنىڭ قىممىتى سېلىشتۇرۇشتا: goroutine مۇ channel مۇ، REST مۇ WebSocket مۇ؛ سېلىشتۇرمىسا قارار قىلغانلىق ئەمەس.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">3. ئۆزگىرىش دائىرىسى كونترولسىز</strong>. «يېڭى ئىقتىدار ئىجرا قىل» دېسىڭىز، Claude باشقا بىر نەچچە ھۆججەتنىمۇ قوشۇمچە ئۆزگەرتىشى مۇمكىن. توغرىمۇ يوق بىلمەيسىز، diff نى بىرمۇبىر ئوقۇش كېرەك.</p>
+
+<h3 style="font-size: 17px; font-weight: 600; color:var(--article-ink, #12324c); margin: 24px 0 8px;">توغرا ئۇسۇل: لايىھەنىڭ ئۈچ قەدىمى</h3>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">كېيىن قاتتىق بىر قائىدە بېكىتتىم:</p>
+
+<blockquote style="border-left: 3px solid #5fb3ea; padding: 10px 16px; margin: 16px 0; background:var(--article-panel, #f4fbff); color:var(--article-secondary, #3f5f7b); font-size: 14px; border-radius: 0 8px 8px 0;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">كود يېزىشتىن بۇرۇن تولۇق لايىھە باسقۇچىدىن ئۆتۈش شەرت.</strong></blockquote>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">پۈتۈن لايىھە باسقۇچىدا سۈكۈتتە <strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Plan ھالىتىگە</strong>（<code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;" dir="ltr">Shift+Tab</code>) ئۆتىمىز؛ Claude پەقەت ئوقۇيدۇ، ئۆزگەرتمەيدۇ، تەھلىل ۋە چارە بىلەنلا شۇغۇللىنىدۇ، كودىڭىزغا قوشۇمچە تەگمەيدۇ.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">ئۈچ قەدەم:</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Step 1: نېمە قىلماقچى بولغانلىقىڭىزنى ئېنىق ئېيتىڭ</strong></p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">بىر جۈملە «XXX نى قىل» بىلەنلا تۈگىتىۋەتمەڭ؛ كونتېكىست كەم بولسا چارىمۇ توغرا بولمايدۇ. مېنىڭ ئۆلچەملىك قېلىپىم:</p>
+
+<section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;" dir="ltr"><span style="display: block; white-space: pre; min-height: 1.4em;">مەن XXX ئىقتىدارىنى قىلاي. كونتېكىست:</span><span style="display: block; white-space: pre; min-height: 1.4em;">- ھازىرقى سىستېما X (تېخنىكا stack ى / قۇرۇلما / مۇھىم چەكلىمە)</span><span style="display: block; white-space: pre; min-height: 1.4em;">- ئالاقىدار كود Y دە</span><span style="display: block; white-space: pre; min-height: 1.4em;">- كۈتۈلگەن ھەرىكەت Z</span><span style="display: block; white-space: pre; min-height: 1.4em;">- ئىقتىدارسىز تەلەپ: ئۈنۈم / ماسلىشىش / پاراللېللىق كۆلىمى</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;">چارە چىقىرىشقا ئالدىرىما. ئالدى بىلەن يەنە نېمە تولدۇرۇش لازىملىقىنى مەندىن سورا،</span><span style="display: block; white-space: pre; min-height: 1.4em;">كونتېكىست جەزملەشكەندىن كېيىن لايىھەنى باشلا.</span></code></section>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">«چارە چىقىرىشقا ئالدىرىما» مۇھىم؛ Claude سۈكۈتتە تەلەپنى ئېلىپلا ئالغا چاپىدۇ. بۇ جۈملە ئۇنى مۈجمەل نۇقتىلارنى ئاۋۋال تىزىپ جەزملەشتۈرىدىغان قىلىدۇ، كېيىنكى چارە ئېنىق بولىدۇ.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Step 2: Claude تىن 2–3 چارە سېلىشتۇرمىسى سوراڭ</strong></p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">كونتېكىست تولغاندىن كېيىنلا چارە سوراڭ. ھەر چارەنى سېلىشتۇرۇپ كۆرگىلى بولسۇن:</p>
+
+<section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;" dir="ltr"><span style="display: block; white-space: pre; min-height: 1.4em;">يۇقىرىدا تولدۇرۇلغان كونتېكىستقا ئاساسەن 2–3 چارە چىقار. ھەر بىرىدە:</span><span style="display: block; white-space: pre; min-height: 1.4em;">- يادرولۇق ئوي (بىر جۈملە)</span><span style="display: block; white-space: pre; min-height: 1.4em;">- مۇرەككەپلىك بىلەن كېڭەيتىلىشچانلىق ئارىسىدىكى تاللاش</span><span style="display: block; white-space: pre; min-height: 1.4em;">- قايسى مودۇل ئۆزگىرىدۇ / قوشۇلىدۇ</span><span style="display: block; white-space: pre; min-height: 1.4em;">- خەتەر نۇقتىسى</span><span style="display: block; white-space: pre; min-height: 1.4em;">- قايسى ئەھۋالغا ماس ئەمەس</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;">ھېچقايسىسىنى تەۋسىيە قىلما، ئۆزۈم تاللايمەن.</span></code></section>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">ئاخىرقى جۈملە —<strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Claude بىرنى تەۋسىيە قىلىپ سىزنى ئەگىشىشكە ئەمەس، تاللاشلارنى قويۇپ سىزنى تاللاشقا چاقىرىدۇ</strong>. Claude سۈكۈتتە «ئەڭ مۇقىم كۆرۈنگەن»نى تەۋسىيە قىلىدۇ؛ بۇ جۈملە شۇ مايىللىقنى توسىدۇ.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Step 3: چارەنى تاللاپ ADR يېزىڭ</strong></p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">تاللىغاندىن كېيىن Claude قا قارارنى ADR (Architecture Decision Record) قىلىپ يازدۇرۇڭ:</p>
+
+<section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;" dir="ltr"><span style="display: block; white-space: pre; min-height: 1.4em;"># ADR-XXX: [قارار ماۋزۇسى]</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;">## ئارقا كۆرۈنۈش</span><span style="display: block; white-space: pre; min-height: 1.4em;">[نېمىشقا بۇ قارار كېرەك، كونتېكىست نېمە]</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;">## قارار</span><span style="display: block; white-space: pre; min-height: 1.4em;">[قايسى چارە تاللاندى]</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;">## باشقا تاللاشلار</span><span style="display: block; white-space: pre; min-height: 1.4em;">[قايسىلار ئويلاشتى، نېمىشقا تاللانمىدى]</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;">## تەسىر</span><span style="display: block; white-space: pre; min-height: 1.4em;">[كود / قۇرۇلما / گۇرۇپپىغا تەسىرى]</span></code></section>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">ئۈچ ئايدىن كېيىن ئۆزىڭىز ياكى ئۆتكۈزۈۋالغۇچى قايتا قاراپ، «نېمىشقا شۇنداق قىلغان»نى دەرھال چۈشىنىدۇ. تېخىمۇ مۇھىمى باھالانغان باشقا چارىلەر ساقلىنىدۇ، ئالماشتۇرغاندا باشتىن تەتقىق قىلىش ھاجەتسىز.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">بۇ ئۈچ قەدەم ئەمەلىيەتتە ساھەدىكى <strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Spec-Driven Development（SDD）</strong>نىڭ ئاددىي نۇسخىسى؛ GitHub دىكى ئوچۇق مەنبە <a href="https://github.com/github/spec-kit">Spec Kit（github.com/github/spec-kit）</a> پىلاننى تېخىمۇ ئىنچىكە، كۆرۈپ چىققىلى بولىدىغان كۆپ باسقۇچقا بۆلىدۇ. مەھسۇلات ياسىغاندا ئۇنچە مۇراسىم كېرەك ئەمەس، بۇ ئۈچ قەدەم يېتىدۇ.</p>
+
+<h3 style="font-size: 17px; font-weight: 600; color:var(--article-ink, #12324c); margin: 24px 0 8px;">ئىجرا باسقۇچى: ADR دىن كودقا</h3>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">لايىھە پۈتسىلا Claude قا پۈتۈن چارەنى بىراقلا ئىجرا قىلدۇرمايمىز. ئۈچ ئۇسۇل بار:</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">ئۇسۇل 1: كىچىك باسقۇچقا بۆلۈپ، بىر قېتىمدا بىرلا ئىش</strong></p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">ADR تاللىغان چارەنى «ئايرىم تورغا چىقارغىلى بولىدىغان كىچىك باسقۇچ»قا بۆلۈڭ: كود مىقدارى كونترولدا، ئايرىم سىناققا بەرسە بولىدۇ، خاتالىقتا قايتۇرۇش ئەرزان. پۈتۈن چارەنى بىراقلا قىلىشنىڭ ئاقىۋىتى: diff چوڭ بولۇپ ھېچكىم تەكشۈرەلمەيدۇ، مەسىلە چىقسا قەيەرگە قايتىش نامەلۇم، دەسلەپكى پەرەز خاتا بولسا كېيىنكىسى بىكار.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">ئالدى بىلەن Claude قا بۆلۈشنى تىزغۇزۇڭ، سىز جەزملەشتۈرگەندىن كېيىن بىرمۇبىر قىلىڭ:</p>
+
+<section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;" dir="ltr"><span style="display: block; white-space: pre; min-height: 1.4em;">ADR-023 نىڭ تاللانغان چارىسىنى ئايرىم ئېلان قىلىنىدىغان باسقۇچلارغا بۆل:</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;">تەلەپ:</span><span style="display: block; white-space: pre; min-height: 1.4em;">1. ھەر باسقۇچ ئايرىم سىناققا بېرىلىشى كېرەك (پۈتمىگەن باسقۇچقا تايانماسۇن)</span><span style="display: block; white-space: pre; min-height: 1.4em;">2. ھەر باسقۇچنىڭ ئېنىق قوبۇل قىلىش ئۆلچىمى بولسۇن</span><span style="display: block; white-space: pre; min-height: 1.4em;">3. ئىجرا رەت تەرتىپىنى بەلگىلە (ئالدىنلىقى يۇقىرىنى ئاۋۋال قىل)</span><span style="display: block; white-space: pre; min-height: 1.4em;">4. ھەر باسقۇچنىڭ خەتەر نۇقتىسىنى بەلگىلە</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;">ئالدى بىلەن بۆلۈش نەتىجىسىنى تىز، جەزملەشتۈرۈشىمنى كۈتۈپ ئاندىن بىرىنچى باسقۇچنى باشلا.</span></code></section>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">ئۇسۇل 2: TDD قىزىل → يېشىل → قايتا قۇرۇش</strong></p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">كونكرېت ۋەزىپە TDD غا ماس بولسا بۇ prompt نى ئىشلىتىڭ:</p>
+
+<section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;" dir="ltr"><span style="display: block; white-space: pre; min-height: 1.4em;">TDD بىلەن مۇلازىمەت ئۈزگۈچى لوگىكىسىنى ئىجرا قىل:</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;">بىرىنچى قەدەم (قىزىل): ئالدى بىلەن سىناق ياز، بۇ ئەھۋاللارنى قاپلا:</span><span style="display: block; white-space: pre; min-height: 1.4em;">  - ئۇدا 3 مەغلۇبىيەتتە ئۈزۈش</span><span style="display: block; white-space: pre; min-height: 1.4em;">  - ئۈزۈلگەن ۋاقىتتا بارلىق تەلەپلەرنى بىۋاسىتە رەت قىلىش</span><span style="display: block; white-space: pre; min-height: 1.4em;">  - 60s دىن كېيىن يېرىم ئوچۇق ھالەتكە ئۆتۈش</span><span style="display: block; white-space: pre; min-height: 1.4em;">  - يېرىم ئوچۇقتا 1 مۇۋەپپەقىيەت بىلەن ئەسلىگە كېلىش / مەغلۇبىيەتتە قايتا ئۈزۈش</span><span style="display: block; white-space: pre; min-height: 1.4em;">  - پاراللېل ئىجرا بىخەتەرلىكى</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;">ئىككىنچى قەدەم (يېشىل): بارلىق سىناق ئۆتىدىغان ئەڭ ئاز كودنى ياز</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;">ئۈچىنچى قەدەم (قايتا قۇرۇش): كود قۇرۇلمىسىنى ياخشىلا، ھەممە سىناق يېشىل قالسۇن</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;">ھەر قەدەمدە ھەقىقىي سىناق ئىجرا قىلىپ نەتىجىنى كۆرسەت.</span></code></section>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">ئەمما TDD <strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">ھەممىگە شىپا ئەمەس</strong>— ئەھۋالغا قاراش كېرەك:</p>
+
+<ul style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">TDD غا ماس</strong>: يادرولۇق ساپ لوگىكا / ھالەت ماشىنىسى / ئالگورىزىم / bug تۈزىتىش / كۆرۈنمە يۈز كېلىشىمى</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">TDD غا ماس ئەمەس</strong>: ئىزدىنىشچان ئېچىش (تەلەپ ئېنىق ئەمەس) / ئالدى يۈز ئۆزئارا تەسىرى (ھەرىكەتنى unit test بىلەن تەسۋىرلەش تەس) / ئۈچىنچى تەرەپ بىرلەشتۈرۈشى (سىرتقى ھەرىكەتكە تايىنىدۇ) / بىر قېتىملىق script</li>
+</ul>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">ماس بولمىسا ئالدى بىلەن spike (تېز ئەندىزە) بىلەن يۈرگۈزۈپ، ئاندىن سىناق تولدۇرۇڭ؛ مەجبۇرلىماڭ.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">ئۇسۇل 3: سىناق قوغدىغان قايتا قۇرۇش</strong></p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">بار كودنى ئۆزگەرتكەندە (يېڭى كود ئەمەس) ئېقىم قاتتىق:</p>
+
+<section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;" dir="ltr"><span style="display: block; white-space: pre; min-height: 1.4em;">adaptor_factory.go دىكى چوڭ switch-case نى (30+ case) قايتا قۇرماقچىمەن.</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;">بۇ قەدەملەر بويىچە ماڭ:</span><span style="display: block; white-space: pre; min-height: 1.4em;">1. ئالدى بىلەن بار سىناقلارنى ئىجرا قىلىپ ھەممىسى يېشىللىقىنى جەزملەشتۈر (baseline)</span><span style="display: block; white-space: pre; min-height: 1.4em;">2. switch ئەندىزىسىنى تەھلىل قىلىپ ئورتاق ھەرىكەتنى ئايرى</span><span style="display: block; white-space: pre; min-height: 1.4em;">3. ئىستراتېگىيە / تىزىملاش ئەندىزىسى بىلەن ئورۇن باسار لايىھە تۈز</span><span style="display: block; white-space: pre; min-height: 1.4em;">4. تەدرىجىي ئالماشتۇر؛ ھەر ئۆزگىرىشتىن كېيىن سىناق ئىجرا قىل</span><span style="display: block; white-space: pre; min-height: 1.4em;">5. ئاخىرىدا بارلىق سىناق يېشىل ۋە ھەرىكەت ئۆزگەرمىگەنلىكىنى جەزملەشتۈر</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;">چەك: سىرتقى API ھەرىكىتى ئۆزگەرمىسۇن. ھەر قەدەمدە سىناق يېشىل بولمىسا شۇ قەدەمنى دەرھال قايتۇر.</span></code></section>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">ئاچقۇچ «ھەر قەدەم ئۆزگەرگەندىن كېيىن سىناق» —<strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">ھەممىنى ئۆزگەرتىپ بولۇپ ئاندىن ئىجرا قىلىش ئەمەس</strong>. ھەممىنى بىراقلا قىلىپ قىزىل چىقسا، قايسى قەدەم خاتا بولغانلىقىنى بىلمەيسىز.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">«ئۈچ قەدەم لايىھە + ئۈچ ئىجرا ئۇسۇلى» ۋاقىت ئالىدىغاندەك كۆرۈنىدۇ، ئەمما سېلىشتۇرساق لايىھەگە قوشۇمچە 1 سائەت كېيىنكى ئىجرا ۋە تەرەققىياتتا 10 ھەسسە تېجەيدۇ. چارىلەر سېلىشتۇرۇلغان، قارار ADR دا، باشقا تاللاشلار ساقلانغان، ئالماشتۇرۇش ئەرزان. بۇنى ئاتلاشنىڭ بەدىلى ھەر ئۆزگىرىشنىڭ دائىرىسى كونترولسىز بولۇپ، مەسىلىدە قايتا تەتقىق قىلىش.</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #d8e6f0); margin: 28px 0;">
+
+<h2 style="font-size: 20px; font-weight: 700; color:var(--article-ink, #12324c); margin: 32px 0 12px; padding-bottom: 8px; border-bottom: 2px solid #5fb3ea;">ئىككىنچى يول: سىناقنى تاماملاش</h2>
+
+<h3 style="font-size: 17px; font-weight: 600; color:var(--article-ink, #12324c); margin: 24px 0 8px;">ئالدى بىلەن Claude يازغان سىناقنىڭ ئورىكى</h3>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">«XXX فۇنكسىيەگە unit test ياز» دېسىڭىز Claude 30 سېكۇنتتا بىر يۈرۈش بېرىدۇ. ئەمما ئەجەللىك مەسىلىسى:<strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">«ھەرىكەتنى دەلىللەش» ئۈچۈن ئەمەس، «كودنى قاپلاش» ئۈچۈن يازىدۇ</strong>。</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">تىپىك ساختا مۇسبەت:</p>
+
+<section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;" dir="ltr"><span style="display: block; white-space: pre; min-height: 1.4em;">func TestCalculateDiscount(t *testing.T) {</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;&nbsp;&nbsp;&nbsp;result := CalculateDiscount(100, 0.1)</span><span style="display: block; white-space: pre; min-height: 1.4em;">    // assert يوق، پەقەت فۇنكسىيەنى چاقىرغان</span><span style="display: block; white-space: pre; min-height: 1.4em;">}</span></code></section>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">ياكى:</p>
+
+<section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;" dir="ltr"><span style="display: block; white-space: pre; min-height: 1.4em;">func TestParseConfig(t *testing.T) {</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;&nbsp;&nbsp;&nbsp;_, err := ParseConfig("valid.yaml")</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;&nbsp;&nbsp;&nbsp;assert.NoError(t, err)</span><span style="display: block; white-space: pre; min-height: 1.4em;">    // پەقەت happy path، ھېچقانداق بىنورمال ئەھۋال سىنالمىغان</span><span style="display: block; white-space: pre; min-height: 1.4em;">}</span></code></section>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">بۇ سىناقنىڭ قاپلاش نىسبىتى يۇقىرى بولسىمۇ، ھەقىقىي bug نى تاپالمايدۇ. ئۆزۈم زىيان تارتقان: بىر قېتىم قاپلاش 90%+ ئىدى، ئەمما مۇھىم يولنىڭ چېگرا شارائىتى سىنالمىغان، تورغا چىققاندىن كېيىن بىۋاسىتە ئۆرۈلدى.</p>
+
+<h3 style="font-size: 17px; font-weight: 600; color:var(--article-ink, #12324c); margin: 24px 0 8px;">توغرا ئۇسۇل: دەلىللەش يېتەكچىلىكى + تاماملىقنى تەكشۈرۈش</h3>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">قاتتىق قائىدە 1: دەلىللەش يېتەكچىلىكى</strong>（Anthropic <a href="https://code.claude.com/docs/en/best-practices">رەسمىي ئەڭ ياخشى ئەمەلىيەتتە (code.claude.com/docs/en/best-practices)</a>قايتا تەكىتلەنگەن بىر نۇقتا)</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">Claude قا دەلىللەش ۋاسىتىسى بېرىش يۇقىرى ئۈنۈملۈك ئۇسۇل —<strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Claude ئۆزى دەلىللىيەلەيدىغاندا چىقىرىلما سۈپىتى زور ياخشىلىنىدۇ</strong>。</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">دەلىللەش بېرىشنىڭ تۆت ئۇسۇلى:</p>
+
+<section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;" dir="ltr"><span style="display: block; white-space: pre; min-height: 1.4em;">auth ئوتتۇرا قەۋىتىنى JWT غا قايتا قۇر. ئۆزگەرتكەندىن كېيىن بار سىناق يۈرۈشلۈكىنى ئىجرا قىل،</span><span style="display: block; white-space: pre; min-height: 1.4em;">بارلىق مەغلۇپ دېلولارنى تۈزىتىپ ئاندىن تۈگەت.</span></code></section>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">(سىناقنى دەلىل قىلىش)</p>
+
+<section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;" dir="ltr"><span style="display: block; white-space: pre; min-height: 1.4em;">كىرىش بېتىنىڭ ئورۇنلاشتۇرۇشىنى ئۆزگەرت. تۈگىگەندە ئېكران سۈرىتىنى كۆرسىتىپ UI چېكىنىشى يوقلۇقىنى جەزملەشتۈر.</span></code></section>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">(ئېكران سۈرىتىنى دەلىل قىلىش)</p>
+
+<section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;" dir="ltr"><span style="display: block; white-space: pre; min-height: 1.4em;">ئىشلەيدۇ دەپ پەرەز قىلماي، ھەقىقىي ئىجرا قىلىپ دەلىللە.</span></code></section>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">(«ئىجرا بولىدۇ دەپ قارايمەن»نى رەت قىلىش)</p>
+
+<section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;" dir="ltr"><span style="display: block; white-space: pre; min-height: 1.4em;">ئۆزگىرىشلەرنى ئەستايىدىل تەكشۈر، قالدۇرما يوقلۇقىنى جەزملەشتۈرۈپ ئاندىن commit قىل.</span></code></section>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">(ئۆزىنى تەكشۈرۈش)</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">ئاچقۇچ<strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">«should pass» بىلەن «probably OK»نى قوبۇل قىلماسلىق</strong>— سىناق يۈرۈپ، ئىسپات ئېلىنغاندىلا ھېساب.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">قاتتىق قائىدە 2: ئۆزگىرىش تۈرى → سىناق دەرىجىسى خەرىتىسى</strong></p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">ئوخشىمىغان ئۆزگىرىشكە ئوخشىمىغان سىناق چوڭقۇرلۇقى:</p>
+
+<table style="width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13px;">
+<thead>
+<tr><th style="background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); padding: 8px 12px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;">ئۆزگىرىش تۈرى</th><th style="background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); padding: 8px 12px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;">تاماملىنىشى شەرت</th><th style="background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); padding: 8px 12px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;">قوشۇمچە تەۋسىيە</th></tr>
+</thead>
+<tbody>
+<tr><td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);">ساپ لوگىكا ئۆزگىرىشى</td><td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);">unit + مودۇل + قايتىش سىنىقى</td><td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);">چېگرا قىممىتى + بىنورمال يول</td></tr>
+<tr><td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c); background:var(--article-panel, #fafcfe);">كۆرۈنمە يۈز ئۆزگىرىشى</td><td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c); background:var(--article-panel, #fafcfe);">+ API سىنىقى + ماسلىشىش تەكشۈرۈشى</td><td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c); background:var(--article-panel, #fafcfe);">خاتالىق كودى + ھوقۇق دەلىللەش</td></tr>
+<tr><td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);">مودۇل ئارا ئۆزگىرىش</td><td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);">+ بىرلەشتۈرۈش سىنىقى + سانلىق مەلۇمات بىردەكلىكى</td><td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);">ۋاقىتتىن ئېشىش ۋە قايتا سىناش</td></tr>
+<tr><td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c); background:var(--article-panel, #fafcfe);">يادرولۇق زەنجىر ئۆزگىرىشى</td><td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c); background:var(--article-panel, #fafcfe);">+ E2E + مەخسۇس سىناق</td><td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c); background:var(--article-panel, #fafcfe);">تورغا چىقىرىش دەلىللەش تىزىملىكى</td></tr>
+<tr><td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);">يۇقىرى خەتەرلىك ئۆزگىرىش</td><td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);">+ ئۈنۈم ئاساس سىزىقى + قايتۇرۇش مەشىقى</td><td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);">بىنورمال ئەھۋال مەشىقى</td></tr>
+</tbody>
+</table>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">بۇ جەدۋەلنى تۈرنىڭ <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;" dir="ltr">CLAUDE.md</code> ھۆججىتىگە چاپلاڭ، Claude ھەر سىناق يازغاندا ئاپتوماتىك سېلىشتۇرىدۇ.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">قاتتىق قائىدە 3: تاماملىقنى تەكشۈرۈش</strong></p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">«XXX تۈزىتىلدى» دېگەندىن كېيىن grep ئىجرا قىلىپ قالدۇق يوقلۇقىنى جەزملەشتۈرۈش شەرت.</p>
+
+<section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;" dir="ltr"><span style="display: block; white-space: pre; min-height: 1.4em;"># «ctx ئۈزۈلۈشى تۈزىتىلدى» دېگەندىن كېيىن بۇنى ئىجرا قىلىش شەرت</span><span style="display: block; white-space: pre; min-height: 1.4em;">grep -c 'context.Background()' &lt;بارلىق ئالاقىدار ھۆججەتلەر&gt;</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;"># نەتىجە 0 ياكى ھەممىسى قانۇنلۇق ئىشلىتىش بولسۇن، قالدۇرما بولمىسۇن</span></code></section>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">«تۈگىدى دەپ قارايمەن» ئىسپات ئەمەس،<code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;" dir="ltr">grep -c</code> نەتىجىسى ئىسپات.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">تاماملىقنى تەكشۈرۈشنىڭ ماھىيىتى —<strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">AI نىڭ «تۈزىتىپ بولغاندەك» ھېسىنى ئىسپاتنىڭ ئورنىغا قويماسلىق</strong>. ھەر تۈرنىڭ قاپلاش نىسبىتى، قالغان case سانى باشقا؛ ئەمما «تامام دەۋاسى → grep بىلەن قالدۇق ئىزدەش → قالدۇرما تېپىلسا تولدۇرۇش» ئايلىنىشى بولۇشى شەرت.</p>
+
+<h3 style="font-size: 17px; font-weight: 600; color:var(--article-ink, #12324c); margin: 24px 0 8px;">يەنە بىر قەۋەت: Hooks بىلەن تەكشۈرۈشنى ئاپتوماتلاشتۇرۇش</h3>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">ھەر قېتىم قولدا grep ئىجرا قىلىشنى ئەسلەشكە تايانسىڭىز، ئاخىرى قالدۇرما چىقىدۇ. Claude Code نىڭ <strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Hooks مېخانىزمى</strong>بۇ تەكشۈرۈشلەرنى shell script قىلىپ، بەلگىلىك ھادىسىدە ئاپتوماتىك قوزغىتىدۇ؛ AI نىڭ سىز ئۈچۈن ئىشلىشىدە خاتالىقتىن ساقلىنىشنىڭ ئاچقۇچى شۇ.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">ئەڭ ئەمەلىي ئىككىسى:</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Pre-commit hook</strong>— Claude commit قىلىشتىن بۇرۇن توسۇپ، مەخپىي ھۆججەت ئاشكارىلىنىشىنى توسىدۇ:</p>
+
+<section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;" dir="ltr"><span style="display: block; white-space: pre; min-height: 1.4em;"># ~/.claude/hooks/pre-commit.sh</span><span style="display: block; white-space: pre; min-height: 1.4em;">if git diff --cached --name-only | grep -E '\.(env|pem|key|secret)$'; then</span><span style="display: block; white-space: pre; min-height: 1.4em;">  echo "❌ توسۇلدى: مەخپىي ھۆججەت بايقالدى"</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;&nbsp;exit 1</span><span style="display: block; white-space: pre; min-height: 1.4em;">fi</span></code></section>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Post-edit hook</strong>— Claude ھۆججەت ئۆزگەرتكەندىن كېيىن ئاپتوماتىك lint / compile / test ئىجرا قىلىدۇ:</p>
+
+<section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;" dir="ltr"><span style="display: block; white-space: pre; min-height: 1.4em;"># ~/.claude/hooks/post-edit.sh</span><span style="display: block; white-space: pre; min-height: 1.4em;">for f in "$@"; do</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;&nbsp;case "$f" in</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;&nbsp;&nbsp;&nbsp;*.go)   go vet "$f" || exit 1 ;;</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;&nbsp;&nbsp;&nbsp;*.ts)   npx tsc --noEmit "$f" || exit 1 ;;</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;&nbsp;&nbsp;&nbsp;*.py)   ruff check "$f" || exit 1 ;;</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;&nbsp;esac</span><span style="display: block; white-space: pre; min-height: 1.4em;">done</span></code></section>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">«تەكشۈرۈشنى ئەسلەش»تىن «ئاپتوماتىك تەكشۈرۈش»كە ئۆتۈش —<strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Claude Code نىڭ unattended ئىجرا بولۇشىنىڭ يادرولۇق نۇقتىسى</strong>. كۈندىلىك ئېچىش مۇھىتىمدا 6–7 hook بار؛ مەخپىي ھۆججەت، lint، compile ۋە مۇھىم سىناقلارنى قاپلايدۇ. Claude بۇلاردىن ئۆتەلمىسە ئۆزگىرىش ئامبارغا كىرەلمەيدۇ.</p>
+
+<h3 style="font-size: 17px; font-weight: 600; color:var(--article-ink, #12324c); margin: 24px 0 8px;">كېڭەيتىش: تولۇق DevTestOps ئېقىم Skill ى</h3>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">يۇقىرىدىكى ئۈچ قائىدە «سىناقنى تاماملاش»نىڭ ئەڭ كۆپ ئىشلىتىلىدىغان قىسمىلا. تولۇق نۇسخىسىنى بىر Skill قىلىپ، نامىنى <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;" dir="ltr">devtestops</code>دەپ قويدۇم؛ Claude Code نىڭ <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;" dir="ltr">~/.claude/skills/</code>مۇندەرىجىسىگە ئورنىتىلسا پۈتۈن pipeline ئاپتوماتىك قوزغىلىدۇ.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">ئىچىدە:</p>
+
+<ul style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">7 باسقۇچلۇق يەتكۈزۈش ئېقىمى</strong>: تەلەپنى ئېنىقلاش → چارە ۋە case تەييارلاش → ئاساسىي سۈپەت دەلىللەش → ئاساسلىق زەنجىر دەلىللەش → مەخسۇس ۋە ئۈنۈم سىنىقى → سىناققا بېرىش ۋە قايتىش → تورغا چىقىرىش ۋە كۆزىتىش</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">8 تۈرلۈك مەخسۇس سىناق قوزغىتىش قائىدىسى</strong>: E2E / API / ئىجازەت بىخەتەرلىكى / پاراللېللىق ۋە تەكرارسىزلىق / سانلىق مەلۇمات بىردەكلىكى / ئاسىنخرون ۋەزىپە ئۆچرەتلىرى / تەڭشەك ماسلىشىشى / قايتۇرۇش ۋە كۆزىتىشچانلىق</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">سىناققا كىرىش ئاساس سىزىقى</strong>: ئۆزگىرىش تۈرىگە ئاساسەن ھېسابلانغان ئەڭ تۆۋەن سۈپەت دەرۋازىسى</li>
+</ul>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">يۇقىرىدىكى «ئۆزگىرىش تۈرى → سىناق دەرىجىسى» جەدۋىلىگە سېلىشتۇرغاندا، بۇ Skill Claude نىڭ ھەر ئۆزگىرىشتە قايسى مەخسۇس تەكشۈرۈشنى قوزغىتىشىنى ئاپتوماتىك تونۇشىغا يول قويىدۇ، ھەر قېتىم ئەسكەرتىش ھاجەتسىز.</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #d8e6f0); margin: 28px 0;">
+
+<h2 style="font-size: 20px; font-weight: 700; color:var(--article-ink, #12324c); margin: 32px 0 12px; padding-bottom: 8px; border-bottom: 2px solid #5fb3ea;">ئۈچىنچى يول: كۆپ Agent ھەمكارلىقى</h2>
+
+<h3 style="font-size: 17px; font-weight: 600; color:var(--article-ink, #12324c); margin: 24px 0 8px;">خاتا مىسال: بىر AI غا ھەممە ئىشنى بېرىش</h3>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">«Claude كۈچلۈك، لايىھە / كود / تەكشۈرۈش / سىناقنىڭ ھەممىسىنى ئۆزى قىلسۇن».</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">ئاڭلىماققا ئۈنۈملۈك.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">ئەمەلىيەتتە قارشى ئەندىزە.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">ئۈچ سەۋەب:</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">1. بىر مودېلنىڭ سىستېمىلىق كۆرەلمەيدىغان يېرى بار.</strong></p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">Claude بىلەن Codex نىڭ مودېل سىستېمىسى، تەربىيەلەش سانلىق مەلۇماتى، تەپەككۇر مايىللىقى باشقا.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">Claude ئۆزى يازغان كودنى تەكشۈرسە —<strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">ئۆز ئۇسلۇبىدىكى مەسىلىنى ئۆتكۈزۈۋېتىدۇ</strong>。</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">ئادەمدىمۇ شۇنداق؛ ئۆز كودىنى تەكشۈرۈش ئۈنۈمى ئەڭ تۆۋەن.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">2. سوئال-جاۋاب شەكلى تەكشۈرۈشكە ماس ئەمەس.</strong></p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">تەكشۈرۈش «قارشى تەرەپچە ئويلاش»نى تەلەپ قىلىدۇ، يازغۇچىنىڭ ئويىنى ئەگەشمەي مەسىلە ئىزدەش كېرەك.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">ئەمما Claude شۇ سۆھبەتتە سىز بىلەن «كېلىشىپ بولغان»، تەكشۈرۈش ھالىتىگە ئۆتكەندىمۇ شۇ كېلىشىمنى ساقلاشقا مايىل.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">3. يەككە مودېلدا ئۆزئارا دەلىللەش يوق.</strong></p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">ياخشى تەكشۈرۈش «ئىككى مۇستەقىل نۇقتىنىڭ سوقۇلۇپ يوشۇرۇن مەسىلە تېپىشى»دۇر.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">بىر مودېلنىڭ ئىككى سۆھبىتى<strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">مۇستەقىل نۇقتا ئەمەس</strong>。</p>
+
+<h3 style="font-size: 17px; font-weight: 600; color:var(--article-ink, #12324c); margin: 24px 0 8px;">توغرا ئۇسۇل: Claude + Codex + ئادەم، ئۈچ بۇلۇڭلۇق ئىش تەقسىماتى</h3>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">ئېنىق ئىش تەقسىماتى:</p>
+
+<table style="width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13px;">
+<thead>
+<tr><th style="background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); padding: 8px 12px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;">رول</th><th style="background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); padding: 8px 12px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;">مەسئۇلىيەت</th><th style="background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); padding: 8px 12px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;">مەنبە</th></tr>
+</thead>
+<tbody>
+<tr><td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Claude</strong></td><td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);">چارە لايىھەسى، قۇرۇلما تەھلىلى، كود ئىجراسى، TDD</td><td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);">Claude Code ئاساسلىق سۆھبىتى</td></tr>
+<tr><td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c); background:var(--article-panel, #fafcfe);"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Codex</strong></td><td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c); background:var(--article-panel, #fafcfe);">Code Review، سىناقنىڭ قالغان نۇقتىلىرى، لايىھە ھۆججىتى تەكشۈرۈشى</td><td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c); background:var(--article-panel, #fafcfe);">Claude Code ئىچىدىكى Codex قىستۇرمىسى</td></tr>
+<tr><td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">ئادەم</strong></td><td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);">تەلەپ كىرگۈزۈش، چارە تاللاش، ئاخىرقى جەزملەشتۈرۈش</td><td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);">سىز</td></tr>
+</tbody>
+</table>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">ئىككى تېرمىنال ئېچىش ھاجەتسىز. OpenAI GitHub تا <a href="https://github.com/openai/codex-plugin-cc"><code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;" dir="ltr">codex-plugin-cc</code></a>（<code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;" dir="ltr">github.com/openai/codex-plugin-cc</code>) قىستۇرمىسىنى تەمىنلەيدۇ؛ Claude Code غا ئورنىتىپلا ئاساسلىق سۆھبەتتە Codex ئىشلەتكىلى بولىدۇ.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">بىر قېتىم ئورنىتىش</strong>：</p>
+
+<section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;" dir="ltr"><span style="display: block; white-space: pre; min-height: 1.4em;">/plugin marketplace add openai/codex-plugin-cc</span><span style="display: block; white-space: pre; min-height: 1.4em;">/plugin install codex@openai-codex</span><span style="display: block; white-space: pre; min-height: 1.4em;">/reload-plugins</span><span style="display: block; white-space: pre; min-height: 1.4em;">/codex:setup</span></code></section>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">ئورنىتىلغاندىن كېيىن پۈتۈن ھەمكارلىق ئېقىمى تۆت slash بۇيرۇقى بىلەن ماڭىدۇ. ئالدىنقى شەرت: Node.js 18.18+، ChatGPT مۇشتەرىلىكىگە كىرگەن ياكى Codex API key تەڭشىگەن بولۇش.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">A قەدەم: Claude يېزىپ بولسا → <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;" dir="ltr">/codex:review</code> Codex تەكشۈرسۇن</strong></p>
+
+<section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;" dir="ltr"><span style="display: block; white-space: pre; min-height: 1.4em;"># Claude Code ئاساسلىق سۆھبىتىدە، كود يېزىپ بولغاندىن كېيىن بىۋاسىتە:</span><span style="display: block; white-space: pre; min-height: 1.4em;">/codex:review --base main</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;"># تېخىمۇ قاتتىق قارشى تەكشۈرۈش ئۈچۈن (Codex قۇرۇلما ۋە ئىجرا تاللىشىنى سوراققا تارتىدۇ):</span><span style="display: block; white-space: pre; min-height: 1.4em;">/codex:adversarial-review --base main challenge whether this is the right design</span></code></section>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">Codex تەكشۈرۈشنى مۇستەقىل ئىجرا قىلىدۇ، Claude نىڭ كونتېكىستىنى ئىشلەتمەيدۇ؛ ئىككى مودېل diff نى نۆلدىن ئوقۇپ ھەقىقىي «مۇستەقىل تەكشۈرۈش» قىلىدۇ.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">B قەدەم: تەكشۈرۈش پىكرىنى Claude قا بېرىپ بىرمۇبىر جاۋاب ئالدۇرۇش</strong></p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">Codex دوكلاتى چىققاندىن كېيىن شۇ Claude Code سۆھبىتىدە:</p>
+
+<section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;" dir="ltr"><span style="display: block; white-space: pre; min-height: 1.4em;">تۆۋەندىكىسى Codex پىكرى. بىرمۇبىر جاۋاب بەر:</span><span style="display: block; white-space: pre; min-height: 1.4em;">قوبۇل قىلىپ تۈزىتىش / تېخنىكىلىق ئىسپات بىلەن رەت قىلىش / مۇنازىرىگە قالدۇرۇش.</span><span style="display: block; white-space: pre; min-height: 1.4em;">كۆز بويامچىلىق بىلەن قوشۇلما؛ reviewer خاتا بولسا تېخنىكىلىق ئىسپات بىلەن سەۋەبىنى چۈشەندۈر.</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;">bug / لوگىكىلىق خاتالىق پىكرىنى تۈزەتكەندە ئالدى بىلەن سىناق يېزىپ قايتا كۆرسەت (قىزىل)،</span><span style="display: block; white-space: pre; min-height: 1.4em;">تۈزەتكەندىن كېيىن ئۆتكۈز (يېشىل). «تۈزەتتىم»نىڭ ئورنىغا «ئالدىدا مەغلۇپ / كېيىن ئۆتتى» ئىسپاتىنى بەر.</span><span style="display: block; white-space: pre; min-height: 1.4em;">قۇرۇلما تەۋسىيەسى / ناملاش / ئوقۇشچانلىق ئۈچۈن مەجبۇر سىناق يازما.</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;">[تەكشۈرۈش پىكرى كونتېكىستقا ئاپتوماتىك كىرىدۇ، كۆچۈرۈپ چاپلاش ھاجەتسىز]</span></code></section>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">ئاچقۇچ ئاخىرقى جۈملە —<strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">«كۆز بويامچىلىق بىلەن قوشۇلما»</strong>. Claude سۈكۈتتە ئەدەپلىك، بۇ جۈملە بولمىسا Codex نىڭ كۆپ پىكرىگە قوشۇلىدۇ، قارشى تەكشۈرۈش ئۈنۈمسىز قالىدۇ.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">C قەدەم: Codex سىناقنىڭ قالغان نۇقتىلىرىنى تولدۇرسۇن</strong></p>
+
+<section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;" dir="ltr"><span style="display: block; white-space: pre; min-height: 1.4em;"># Claude Code ئاساسلىق سۆھبىتىدە Codex قا سىناقنىڭ قالغان نۇقتىسىنى تولدۇرغۇزۇش</span><span style="display: block; white-space: pre; min-height: 1.4em;">@codex src/xxx.go ۋە بار سىناقلارنى ئوقۇپ، قالغان نۇقتىلارنى تاپ:</span><span style="display: block; white-space: pre; min-height: 1.4em;">- قايسى چېگرا ئەھۋال قاپلانمىغان؟</span><span style="display: block; white-space: pre; min-height: 1.4em;">- قايسى پاراللېل ئەھۋال سىنالمىغان؟</span><span style="display: block; white-space: pre; min-height: 1.4em;">- قايسى خاتالىق يولى دەلىللەنمىگەن؟</span></code></section>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">بۇ قەدەم Claude ئويلىمىغان سىناق ئەھۋالىنى كۆپ تۇتىدۇ، بولۇپمۇ پاراللېل بەيگە ۋە خاتالىق يوللىرىنى.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">D قەدەم: ئاخىرىدا لايىھە ھۆججىتى بويىچە ئىقتىدار تاماملىقىنى تەكشۈرۈش</strong></p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">كود ئىجرا بولۇشى ≠ ھەممە تەلەپنىڭ ئىجرا بولۇشى. بۇ پۈتۈن ھەمكارلىقنىڭ ئاخىرقى مۇداپىئەسى: «تېخنىكىلىق كود توغرا، مەھسۇلات تەلىپى پۈتمىگەن»نى توسىدۇ.</p>
+
+<section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;" dir="ltr"><span style="display: block; white-space: pre; min-height: 1.4em;"># Claude Code ئاساسلىق سۆھبىتىدە</span><span style="display: block; white-space: pre; min-height: 1.4em;">لايىھە ھۆججىتى ۋە git diff نى سېلىشتۇرۇپ بىرمۇبىر تەكشۈر:</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;">## A. تەلەپ قاپلىشى</span><span style="display: block; white-space: pre; min-height: 1.4em;">ھەر ئىقتىدار تەلىپىنى بەلگىلە:</span><span style="display: block; white-space: pre; min-height: 1.4em;">- ✅ ئىجرا قىلىنغان (كود ئورنىنى كۆرسەت)</span><span style="display: block; white-space: pre; min-height: 1.4em;">- ❌ ئىجرا قىلىنمىغان (قالدۇرما)</span><span style="display: block; white-space: pre; min-height: 1.4em;">- ⚠️ قىسمەن ئىجرا قىلىنغان (نېمە كەملىكىنى ئېيت)</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;">## B. ئېقىم تاماملىقى</span><span style="display: block; white-space: pre; min-height: 1.4em;">ھەر سودا ئېقىمىنىڭ تولۇق زەنجىرىنى ئىزلا:</span><span style="display: block; white-space: pre; min-height: 1.4em;">كىرىش → بىر تەرەپ قىلىش → ساقلاش → جاۋاب → ئالدى يۈز كۆرسىتىشى</span><span style="display: block; white-space: pre; min-height: 1.4em;">«كود بار، ئېقىم ئۈزۈك»نى تەكشۈر: سانلىق مەلۇمات يېزىلغان، ئوقۇغۇچى يوق / ھالەت ئۆزگەرگەن، خەۋەر يوق / API بار، ئالدى يۈز چاقىرمىغان.</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;">## C. بىنورمال ئەھۋال قاپلىشى</span><span style="display: block; white-space: pre; min-height: 1.4em;">ۋاقىتتىن ئېشىش / پاراللېللىق / تەكرار / قىسمەن مەغلۇبىيەتنىڭ ھەر بىرىگە ماس كود بولسۇن.</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;">## D. ئىقتىدارسىز تەلەپلەر</span><span style="display: block; white-space: pre; min-height: 1.4em;">ئۈنۈم يېتەمدۇ؟ بىخەتەرلىك چەكلىمىسى ئەمەلىيلەشتىمۇ؟ كۆزىتىش كۆرسەتكۈچى قوشۇلدىمۇ؟</span></code></section>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">ئاندىن Codex قا شۇ تەكشۈرۈشنى مۇستەقىل قىلدۇر.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">ئىككى دوكلاتنى سېلىشتۇر:</p>
+<ul style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 4px 0;">ئىككىسىمۇ تاپسا → يۇقىرى ئالدىنلىق بىلەن تۈزىتىش</li>
+<li style="margin: 4px 0;">بىرىلا تاپسا → ھەقىقەتەن بار-يوقلۇقىنى دەلىللەش</li>
+<li style="margin: 4px 0;">خۇلاسە زىت بولسا → تالاش نۇقتىسىنى تىزىپ ئادەم قارار قىلىش</li>
+</ul>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">«يۇقىرى ئالدىنلىق تۈزىتىش»تە B قەدەمنىڭ ئېقىمىنى بىۋاسىتە قوللان: bug پىكرىدە ئالدى بىلەن قايتا كۆرسىتىدىغان سىناق (قىزىل)، تۈزەتكەندىن كېيىن دەلىللەش (يېشىل)؛ bug ئەمەسلىرىنى (تەلەپ قالدۇرما / ئېقىم ئۈزۈلۈشى / ئىقتىدارسىز كەمچىلىك) لايىھە ھۆججىتىنىڭ ئەسلى مەقسىتى بويىچە تولدۇر.<strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">«تاماملىق تەكشۈرۈشى»نى «تولدۇرۇپ قوياي» دېگەن سۆزگىلا چۈشۈرۈپ قويماڭ</strong>— بايقالغان ھەر ئىشنىڭ دەلىللىگىلى بولىدىغان ئىسپاتى بولۇشى شەرت.</p>
+
+<h3 style="font-size: 17px; font-weight: 600; color:var(--article-ink, #12324c); margin: 24px 0 8px;">تولۇق ئېقىم دىئاگراممىسى</h3>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">ئۈچ يول بىرلەشكەن تولۇق ئايلىنىش:</p>
+
+
+<div style="background:var(--article-panel, #fafcfe); border: 1px solid var(--article-border, #d8e6f0); border-radius: 10px; padding: 18px 10px; margin: 20px 0;">
+
+<table style="width: 100%; border-collapse: separate; border-spacing: 3px; margin: 0;">
+<tr>
+<td style="background:var(--article-panel, #e9f5ec); border: 1px solid #9cc8a0; border-radius: 8px; padding: 9px 4px; text-align: center; width: 22%;">
+<div style="font-size: 10px; color: #5f7b97; font-weight: 500; margin-bottom: 3px;">ئادەم</div>
+<div style="font-size: 12px; font-weight: 600; color:var(--article-ink, #12324c);">تەلەپ +<br/>كونتېكىست</div>
+</td>
+<td style="text-align: center; color:var(--article-accent, #5fb3ea); font-weight: 700; font-size: 16px; width: 4%;">→</td>
+<td style="background:var(--article-panel, #e6f2fb); border: 1px solid #5fb3ea; border-radius: 8px; padding: 9px 4px; text-align: center; width: 22%;">
+<div style="font-size: 10px; color: #5f7b97; font-weight: 500; margin-bottom: 3px;">Claude</div>
+<div style="font-size: 12px; font-weight: 600; color:var(--article-ink, #12324c);">چارە سېلىشتۇرۇش<br/>+ ADR</div>
+</td>
+<td style="text-align: center; color:var(--article-accent, #5fb3ea); font-weight: 700; font-size: 16px; width: 4%;">→</td>
+<td style="background:var(--article-panel, #e6f2fb); border: 1px solid #5fb3ea; border-radius: 8px; padding: 9px 4px; text-align: center; width: 22%;">
+<div style="font-size: 10px; color: #5f7b97; font-weight: 500; margin-bottom: 3px;">Claude</div>
+<div style="font-size: 12px; font-weight: 600; color:var(--article-ink, #12324c);">TDD<br/>ئىجرا</div>
+</td>
+<td style="text-align: center; color:var(--article-accent, #5fb3ea); font-weight: 700; font-size: 16px; width: 4%;">→</td>
+<td style="background:var(--article-panel, #fff1e0); border: 1px solid #f2b06a; border-radius: 8px; padding: 9px 4px; text-align: center; width: 22%;">
+<div style="font-size: 10px; color: #5f7b97; font-weight: 500; margin-bottom: 3px;">Codex</div>
+<div style="font-size: 12px; font-weight: 600; color:var(--article-ink, #12324c);">Code<br/>Review</div>
+</td>
+</tr>
+</table>
+
+<p style="text-align: center; color:var(--article-accent, #5fb3ea); font-size: 12px; font-weight: 600; letter-spacing: 1px; margin: 10px 0;">↓ مەسىلە بولسا قايتۇرۇش، بىر يۆنىلىشلىك ئېقىم ئەمەس ↓</p>
+
+<table style="width: 100%; border-collapse: separate; border-spacing: 3px; margin: 0;">
+<tr>
+<td style="background:var(--article-panel, #e9f5ec); border: 1px solid #9cc8a0; border-radius: 8px; padding: 9px 4px; text-align: center; width: 22%;">
+<div style="font-size: 10px; color: #5f7b97; font-weight: 500; margin-bottom: 3px;">ئادەم</div>
+<div style="font-size: 12px; font-weight: 600; color:var(--article-ink, #12324c);">جەزملەشتۈرۈش<br/>تورغا چىقىرىش</div>
+</td>
+<td style="text-align: center; color:var(--article-accent, #5fb3ea); font-weight: 700; font-size: 16px; width: 4%;">←</td>
+<td style="background:var(--article-panel, #f0e7f5); border: 1px solid #b18dcf; border-radius: 8px; padding: 9px 4px; text-align: center; width: 22%;">
+<div style="font-size: 10px; color: #5f7b97; font-weight: 500; margin-bottom: 3px;">Claude + Codex</div>
+<div style="font-size: 12px; font-weight: 600; color:var(--article-ink, #12324c);">تاماملىق<br/>تەكشۈرۈشى</div>
+</td>
+<td style="text-align: center; color:var(--article-accent, #5fb3ea); font-weight: 700; font-size: 16px; width: 4%;">←</td>
+<td style="background:var(--article-panel, #e6f2fb); border: 1px solid #5fb3ea; border-radius: 8px; padding: 9px 4px; text-align: center; width: 22%;">
+<div style="font-size: 10px; color: #5f7b97; font-weight: 500; margin-bottom: 3px;">Claude</div>
+<div style="font-size: 12px; font-weight: 600; color:var(--article-ink, #12324c);">تۈزىتىش<br/>bug</div>
+</td>
+<td style="text-align: center; color:var(--article-accent, #5fb3ea); font-weight: 700; font-size: 16px; width: 4%;">←</td>
+<td style="background:var(--article-panel, #fff1e0); border: 1px solid #f2b06a; border-radius: 8px; padding: 9px 4px; text-align: center; width: 22%;">
+<div style="font-size: 10px; color: #5f7b97; font-weight: 500; margin-bottom: 3px;">Codex</div>
+<div style="font-size: 12px; font-weight: 600; color:var(--article-ink, #12324c);">سىناقنىڭ قالغان<br/>نۇقتىسىنى تولدۇرۇش</div>
+</td>
+</tr>
+</table>
+
+</div>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">ئالدى بىلەن بىر قېتىم يۈرگۈزۈڭ:<strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">ئادەم تەلەپ ۋە كونتېكىست بېرىدۇ → Claude چارە سېلىشتۇرمىسى + ADR چىقىرىدۇ → Claude TDD بىلەن ئىجرا قىلىدۇ → Codex مۇستەقىل تەكشۈرىدۇ</strong>. مەسىلە بولسا تۆۋەنكى يېرىم ئايلىنىش:<strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Codex سىناق قالدۇقىنى تولدۇرىدۇ → Claude bug تۈزىتىدۇ → Claude + Codex تاماملىق تەكشۈرىدۇ → ئادەم تورغا چىقىرىشنى جەزملەشتۈرىدۇ</strong>。</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">ئاچقۇچ ئىككى قۇر ئارىسىدىكى قايتىش يولى؛ ھەر قەدەم مەسىلىدە ئالدىنقىسىغا قايتالايدۇ، بىر سىزىقلىق ئېقىم ئەمەس. مەسىلەن Codex رېكۇرسىيە بىلەن تۈزىتىلمىگەن دەرىجە تۆۋەنلىتىش شېخىنى تاپسا، TDD غا قايتىپ سىناق تولدۇرۇپ قايتا تۈزىتىمىز.</p>
+
+<h3 style="font-size: 17px; font-weight: 600; color:var(--article-ink, #12324c); margin: 24px 0 8px;">ئەمەلىيەت: SOP نى slash بۇيرۇقىغا ئوراش</h3>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">يۇقىرىدىكى pipeline نى خاس بۇيرۇققا ئورىدىم.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">بىر slash بىلەن قوزغىلىدۇ.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">ئىككى يادرولۇق بۇيرۇق:</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;"><code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;" dir="ltr">/review-go</code>: Go ئارقا تەرەپ چوڭقۇر تەكشۈرۈشى</strong></p>
+
+<section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;" dir="ltr"><span style="display: block; white-space: pre; min-height: 1.4em;">ھازىرقى تارماقنىڭ main غا سېلىشتۇرغان بارلىق ئۆزگىرىشىنى چوڭقۇر تەكشۈر:</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;">1. مېخانىكىلىق ئىزدەش (ئالدىنقى شەرت، ئاتلاشقا بولمايدۇ):</span><span style="display: block; white-space: pre; min-height: 1.4em;">   - context.Background قالدۇقى</span><span style="display: block; white-space: pre; min-height: 1.4em;">   - http.NewRequest قا ctx بېرىلمىگەن</span><span style="display: block; white-space: pre; min-height: 1.4em;">   - io.ReadAll دا LimitReader يوق</span><span style="display: block; white-space: pre; min-height: 1.4em;">   - ھەر چاقىرىشتا Transport/Client قۇرۇش</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;">2. رېكۇرسىيەلىك تەكشۈرۈش:</span><span style="display: block; white-space: pre; min-height: 1.4em;">   - يوپۇرماق تۈگۈنگىچە (HTTP / DB / ھۆججەت IO)</span><span style="display: block; white-space: pre; min-height: 1.4em;">   - ھەر شاخنى قاپلاش (مۇۋەپپەقىيەت / مەغلۇبىيەت / تۆۋەنلىتىش / قايتا سىناش)</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;">3. تاماملىقنى تەكشۈرۈش:</span><span style="display: block; white-space: pre; min-height: 1.4em;">   - grep بىلەن تۈزىتىشتە قالدۇق يوقلۇقى</span><span style="display: block; white-space: pre; min-height: 1.4em;">   - go build بىلەن كۆرۈنمە يۈز ماسلىشىشى</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;">4. تارىخىي خاتالىق ساۋاقلىرىنى تەكشۈرۈش (قارشى ئەندىزە تىزىملىكىدىن)</span></code></section>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;"><code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;" dir="ltr">/review-fullstack</code>: تولۇق stack تەكشۈرۈشى</strong></p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">بۇنىڭدا <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;" dir="ltr">/review-go</code> ئاساسىغا ئالدى-ئارقا تەرەپ كېلىشىمى، ئىقتىدار تاماملىقى، ئامبار ئارا ئېكولوگىيە زەنجىرى تەسىرى قوشۇلىدۇ.</p>
+
+<h3 style="font-size: 17px; font-weight: 600; color:var(--article-ink, #12324c); margin: 24px 0 8px;">ئەڭ قىممەتلىك قىسمى: تارىخىي خاتالىق ساۋاقلىرى</h3>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">پۈتۈن SOP نىڭ ئەڭ قىممەتلىك يېرى بۇيرۇق قېلىپلىرى ئەمەس.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">ھەر خاتالىقتىن كېيىن توپلانغان<strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">«تارىخىي خاتالىق ساۋاقلىرى»</strong>— Pipeline نىڭ مەجبۇرىي تەكشۈرۈش تۈرىگە ئايلانغانلىرى.</p>
+
+<blockquote style="border-left: 3px solid #5fb3ea; padding: 10px 16px; margin: 16px 0; background:var(--article-panel, #f4fbff); color:var(--article-secondary, #3f5f7b); font-size: 14px; border-radius: 0 8px 8px 0;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">AI تەكشۈرۈشى تاپالمىغان ھەر bug نى «قارشى ئەندىزە» قىلىپ Pipeline غا قوشىمەن.</strong></blockquote>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">ھەقىقىي بىر مىسال: بىر قېتىم <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;" dir="ltr">ctx</code> ئۈزۈلۈشىنى تۈزەتكەندە، Claude قا سىرتقى فۇنكسىيەنىڭ <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;" dir="ltr">context.Background()</code> نى ئۆتكۈزۈلۈپ كەلگەن <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;" dir="ltr">ctx</code>غا ئالماشتۇر دېدىم؛ ئۆزگەرتتى، سىناق ئىجرا قىلدى، تامام دېدى.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">ئاندىن <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;" dir="ltr">/codex:review</code> بىلەن تەكشۈرسەم Codex قايتۇردى: سىرتقى <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;" dir="ltr">ctx</code> تۈزىتىلگەن، ئەمما<strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">شۇ ھۆججەتتىكى <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;" dir="ltr">if err != nil</code> نىڭ تۆۋەنلىتىش شېخى يەنىلا <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;" dir="ltr">Background</code></strong>چاقىرىۋاتىدۇ؛ شۇ مودۇلدىكى يەنە ئىككى helper مۇ جىمجىت <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;" dir="ltr">context.Background()</code> بىلەن يېڭى ctx قۇرۇۋاتىدۇ.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">قايتا قارىسام ھەقىقەتەن شۇنداق. Claude نىڭ «تامام»ى پەقەت ئۆزگىرىش دائىرىسىدىكى بىر كىرىشنى قاپلىغان، پۈتۈن چاقىرىش زەنجىرىگە رېكۇرسىيە قىلمىغان.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">تۈزىتىپ بولغاندىن كېيىن «<strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">پەقەت مۇۋەپپەقىيەت يولىنى ئىزلاپ، تۆۋەنلىتىش شېخىنى ئىزلىمەسلىك</strong>»نى ئايرىپ <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;" dir="ltr">/review-go</code> دىكى grep تەكشۈرۈش تۈرىگە قوشتىم. شۇنىڭدىن كېيىن ئوخشاش bug قايتا قاچمىدى.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">«تارىخىي ساۋاق» مېخانىزمىنىڭ قىممىتى شۇ: بىر قېتىملىق كاشىلا قورقۇنچلۇق ئەمەس، ئوخشاش كاشىلىنىڭ تەكرارلىنىشى قورقۇنچلۇق. ھەر قېتىملىق خاتالىقنى Pipeline دا مەجبۇرىي تەكشۈرۈش قىلسىڭىز، كېلەر قېتىم Claude ياكى Codex ئاپتوماتىك تەكشۈرىدۇ.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">بۇ 5 ئايدا ھەقىقىي قوشقانلىرىمدىن بىر نەچچىسى:</p>
+
+<ol style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">پەقەت ئۆزگەرگەن فۇنكسىيەنى تەكشۈرۈپ، تارماق فۇنكسىيەگە رېكۇرسىيە قىلماسلىق</strong> — سىرتقى ctx تۈزىتىلگەن، چاقىرغان helper يەنىلا <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;" dir="ltr">context.Background()</code></li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">پەقەت مۇۋەپپەقىيەت يولى، تۆۋەنلىتىش شېخى يوق</strong> — نورمال يولدىكى ctx تۈزىتىلگەن، ئەمما <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;" dir="ltr">if err != nil</code> دىن كېيىنكى تۆۋەنلىتىش يولىدا يەنىلا Background</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">كۆرۈنمە يۈز ئىمزاسى ئۆزگەرگەن، بارلىق ئىجراچىلار تەكشۈرۈلمىگەن</strong> — dev دا main دا يوق ئىجرا ھۆججىتى بار، بىرلەشتۈرگەندىن كېيىن compile مەغلۇپ</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">تۈزىتىلدى دېگەن، grep بىلەن قالدۇق دەلىللەنمىگەن</strong> — «ctx ئۈزۈلۈشى تۈزىتىلدى»، ئەمما شۇ ھۆججەتتىكى كۆپ helper دا Background بار</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">قوشنا فۇنكسىيەدىكى ئوخشاش مەسىلە ئىزدەلمىگەن</strong> — بىر فۇنكسىيەنىڭ per-call Transport ى تۈزىتىلگەن، شۇ ھۆججەتتىكى باشقىلىرى ھەر چاقىرىشتا ياسايدۇ</li>
+</ol>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">تىزىملىك ئىشلەتكەنسېرى ئۇزىرايدۇ؛ ھەر بىر تۈر قوشۇلغاندا ئوخشاش bug نى ئۆتكۈزۈش نىسبىتى تۆۋەنلەيدۇ. بۇ Pipeline نىڭ توپلىنىدىغان پايدىسى: ھەر خاتالىق كېلەر قېتىملىق مەجبۇرىي تەكشۈرۈشكە ئايلىنىدۇ.</p>
+
+<h3 style="font-size: 17px; font-weight: 600; color:var(--article-ink, #12324c); margin: 24px 0 8px;">بىر ئاتالغۇ ئېنىقلىمىسى</h3>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">Claude Code مۇھىتىدا كۆپ ئادەم «multi-agent» دېگەندە ئالدى بىلەن ئىچىگە قۇرۇلغان <strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">subagent</strong> مېخانىزمىنى ئويلايدۇ؛ بىر مودېلنىڭ كۆپ نۇسخىسى پاراللېل تەتقىق قىلىدۇ. كەڭ مەنىدە بولسا كۆپ مودېل، كۆپ قورال زەنجىرى، كۆپ context كۆزنىكى ئارىسىدىكى ھەمكارلىقمۇ كىرىدۇ. كۆپ نەقىل قىلىنىدىغان بىر سان Anthropic رەسمىي بىلوگىدىن<a href="https://www.anthropic.com/engineering/built-multi-agent-research-system">《How we built our multi-agent research system》</a>(anthropic.com/engineering/built-multi-agent-research-system): 2025-يىلى Opus 4 lead + Sonnet 4 subagent بىرلەشمىسى ئىچكى research باھالىشىدا يەككە Opus 4 تىن 90.2% يۇقىرى (دىققەت: بۇ research eval، كود تەكشۈرۈش eval ى ئەمەس، يۇمشاق دېتال ئېچىشقا بىۋاسىتە كېڭەيتكىلى بولمايدۇ).</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">بۇ ماقالىدىكى «كۆپ Agent ھەمكارلىقى» بولسا <strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">مودېل ئارا</strong>(Claude × Codex) تۈرى؛ ئاساسلىق مەقسەت يەككە مودېلنىڭ كۆرەلمەيدىغان نۇقتىلىرىنى ئازايتىش.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">ئىككىسى توقۇنۇشمايدۇ؛ مۇھىم ئىقتىداردا ئىككىسىنىمۇ ئىشلىتىمەن:<strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Claude subagent لىرى پاراللېل كود ئوقۇپ تەتقىق قىلىدۇ → Claude چارە ۋە ئىجرا چىقىرىدۇ → Codex ئۆزئارا تەكشۈرىدۇ</strong>. ئىچىگە قۇرۇلغان subagent نىڭ كونكرېت ئىشلىتىشىنى كېيىنكى ماقالىدە ئايرىم سۆزلەيمىز.</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #d8e6f0); margin: 28px 0;">
+
+<h2 style="font-size: 20px; font-weight: 700; color:var(--article-ink, #12324c); margin: 32px 0 12px; padding-bottom: 8px; border-bottom: 2px solid #5fb3ea;">AI نېمە قىلالمايدۇ؟</h2>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">ئۈچ يولدىن كېيىن چېگرانى قوشاي. بۇ مەزگىلدە ئېنىق بىلدىم: AI قانچە كۈچلۈك بولسىمۇ ئۈچ ئىشنى قىلالمايدۇ.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">1. قۇرۇلما قارارى.</strong></p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">Claude چارە تىزالايدۇ، ئەمما<strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">قايسىسىنى تاللاشنى ئادەم بەلگىلىشى شەرت</strong>。</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">چۈنكى قۇرۇلما قارارى «سودىنىڭ كەلگۈسى يۆنىلىشى» ھەققىدىكى تۇيغۇنى تەلەپ قىلىدۇ؛ AI دا بۇ سانلىق مەلۇمات يوق.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">2. سىستېما ئارا بىردەكلىكنى باھالاش.</strong></p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">بىر ئامبار ئىچىدە Claude ياخشى ئىشلەيدۇ.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">ئەمما «بۇ 3 ئامبار ئارا كۆرۈنمە يۈز كېلىشىمى مۇۋاپىقمۇ»، «بۇ ئۆزگىرىش ئېكولوگىيەنىڭ باشقا ئامبىرىغا قانداق تەسىر قىلىدۇ» —</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">AI نىڭ context كۆزنىكى بۇلارنى سىغدۇرالمايدۇ.</strong></p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">ئومۇمىي خەرىتىنى ئادەم كاللىسىدا قۇرۇشى كېرەك.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">3. مەھسۇلات تەجرىبە تۇيغۇسى.</strong></p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">«بۇ ئۆزئارا تەسىر ئىشلەتكۈچىگە ياقامدۇ»، «بۇ خاتالىق ئۇچۇرى قورقۇتامدۇ»، «ئىقتىدار سۈكۈتتە ئېچىلسۇنمۇ» —</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">AI دا ھەقىقىي ئىشلەتكۈچى ئىنكاسى يوق، پەقەت «ئادەتتىكى ئۇسۇل»نى بېرەلەيدۇ.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">AI سىزدىكى باھالاش كۈچىنى چوڭايتىدۇ؛ باھالاش كۈچىنىڭ ئۆزى سىزدە بولۇشى كېرەك.</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #d8e6f0); margin: 28px 0;">
+
+<h2 style="font-size: 20px; font-weight: 700; color:var(--article-ink, #12324c); margin: 32px 0 12px; padding-bottom: 8px; border-bottom: 2px solid #5fb3ea;">Opus 4.7 ھەققىدە: SOP ئۆزگىرىشى كېرەكمۇ؟</h2>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><a href="https://www.anthropic.com/news/claude-opus-4-7">Claude Opus 4.7（anthropic.com/news/claude-opus-4-7）</a> ئەمدىلا ئېلان قىلىندى؛ رەسمىي تەرەپ كود، ئۇزۇن ۋەزىپە ۋە يوليورۇققا ئەگىشىشتە ئالدىنقى نۇسخىدىن ياخشىلاندى دەيدۇ. ئەڭ كۆپ سورالغىنى: 4.7 دە بۇ SOP ئۆزگەرمەمدۇ؟</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">جاۋاب:<strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">ئاساسىي گەۋدىنى قايتا قۇرۇش ھاجەتسىز، ئەمما prompt، تەكشۈرۈش دەرۋازىسى ۋە سىناق harness ىنى قايتا قايتىش سىنىقىدىن ئۆتكۈزۈش كېرەك</strong>。</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">سەۋەب: مودېلنىڭ يېڭىلىنىشى «لايىھە قىلامدۇق، سىناق ئىجرا قىلامدۇق، ئۆزئارا تەكشۈرەمدۇق» دېگەننى ئىناۋەتسىز قىلمايدۇ. بۇ ئۈچى ئېقىم دەرىجىسىدىكى قارار، مودېل كۈچىگە باغلىق ئەمەس. ئەمما مودېل كۈچەيگەندە شۇ prompt ۋە كونا دەلىللەش دەرۋازىسى ماس كەلمەسلىكى مۇمكىن:</p>
+
+<ul style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">prompt ئىبارىسى</strong>: كونا نۇسخا كەڭچىلىك قىلغان مۈجمەل يوليورۇقنى 4.7 تېخىمۇ سۆزمۇسۆز ئىجرا قىلىشى مۇمكىن؛ دائىرە ۋە چىقىرىش شەكلى تېخىمۇ ئېنىق بولسۇن</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">تەكشۈرۈش دەرۋازىسى</strong>: ئىلگىرى <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;" dir="ltr">/review-go</code> قاتتىقلىقىنى 4.6 ھەرىكىتىگە قاراپ تەڭشىگەن بولسىڭىز، 4.7 غا ئالماشتۇرغاندا قايسى noise، قايسى ھەقىقىي مەسىلە ئىكەنلىكىنى قايتا ئۆلچەش كېرەك</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">سىناق harness نىڭ كۈتۈلگەن قىممىتى</strong>: «ئادەتتە مەغلۇپ، شۇڭا كەڭچىلىك» دېگەن case 4.7 دە مۇقىم ئۆتۈشى مۇمكىن؛ چىڭىتىشقا تېگىشلىكى چىڭىتىلسۇن</li>
+</ul>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">مەن ھازىر 4.7 بىلەن پۈتۈن SOP نى قايتا يۈرگۈزۈپ قايتىش دەلىللەش قىلىۋاتىمەن؛ Plan ھالىتىدىكى قۇرۇلما تەھلىلى، ئۇزۇن context تا پۈتۈن ئامبارنى بىراقلا ئوقۇش، ئۆزئارا تەكشۈرۈشنىڭ قارشىچانلىقىغا قارايۋاتىمەن. سان ۋە case ئېلىنغاندىن كېيىن كېيىنكى ماقالىدە يازىمەن.</p>
+
+<p style="font-size: 13px; color: #5f7b97; margin: 8px 0;">(بۇ بۆلەك 2026-04 ھالىتىگە ئاساسەن يېزىلغان؛ كېيىنكى نۇسخىلار بىلەن كونكرېت ھۆكۈملەر يېڭىلىنىدۇ.)</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #d8e6f0); margin: 28px 0;">
+
+<h2 style="font-size: 20px; font-weight: 700; color:var(--article-ink, #12324c); margin: 32px 0 12px; padding-bottom: 8px; border-bottom: 2px solid #5fb3ea;">SOP قەيەردە: بىۋاسىتە ئىشلەتمەكچى بولسىڭىز</h2>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">بۇ SOP نىڭ ئۆزى HexClaw AI نى ياساشنىڭ قوشۇمچە مەھسۇلى، باشقىلار ئۈچۈن ئايرىم يېزىلمىغان.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">ئەمما يىغىلغان ئىكەن، تولۇق مەزمۇننى GitHub قا قويدۇم. بىر ماقالىنىڭ قوشۇمچىسى ئەمەس، تۈرگە سېلىپ بىۋاسىتە سىناپ ئىجرا قىلغىلى بولىدىغان خىزمەت ئېقىمى بوغچىسى:</p>
+
+<ul style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">4 ئەمەلىي قوللانما</strong>: ئىشلىتىش قوللانمىسى / prompt توپلىمى / كېڭەيتىش تىزىملىكى / لايىھە يېتەكچىلىكى · سىناق تاماملىقى · كۆپ Agent ھەمكارلىقى</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">بىۋاسىتە كۆچۈرگىلى بولىدىغان 7 Claude Code command قېلىپى + ماس سانلىق مەلۇمات قېلىپى</strong>：<code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;" dir="ltr">/review-go</code>、<code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;" dir="ltr">/review-fullstack</code>、<code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;" dir="ltr">/apple-design</code>、<code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;" dir="ltr">/test-dev</code>、<code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;" dir="ltr">/adr-new</code> قاتارلىقلار، يەنە <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;" dir="ltr">data/api-test-cases.md</code> دەك بۇيرۇق ئىجراسىدا پايدىلىنىلىدىغان سانلىق مەلۇماتلار</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">2 CLAUDE.md قېلىپى</strong>: ئىشلەتكۈچى ئومۇمىي مايىللىقى (<code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;" dir="ltr">~/.claude/CLAUDE.md</code>) + تۈر دەرىجىلىك تولۇقلاش (تۈر يىلتىزىدىكى <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;" dir="ltr">CLAUDE.md</code>）</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Hooks توپلىمى</strong>: ئىشقا تەييار 3 script (مەخپىي ھۆججەت توسۇش / ئۆزگەرتكەندىن كېيىن ئاپتوماتىك lint / ئاخىرلىشىشتىن بۇرۇن سىناق) + <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;" dir="ltr">settings.json</code> تەڭشەك مىسالى</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">DevTestOps تولۇق ئېقىم Skill ى</strong>: 7 باسقۇچ يەتكۈزۈش قائىدىسى + 8 تۈرلۈك مەخسۇس سىناق قوزغىتىش قائىدىسى (<code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;" dir="ltr">~/.claude/skills/devtestops/</code>）</li>
+</ul>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">ھەممىسى <strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">hexclaw-desktop</strong>(HexClaw ئۈستەل يۈزى ئامبىرى) نىڭ <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;" dir="ltr">docs/claude-code-practices/</code> مۇندەرىجىسىدە:</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">GitHub</strong>：<code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;" dir="ltr">github.com/hexagon-codes/hexclaw-desktop</code></p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">clone قىلىپ بىۋاسىتە ئىشلىتىڭ. تېخىمۇ تەۋسىيە قىلىدىغىنىم، ئالدى بىلەن ھەقىقىي بىر تۈردە <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;" dir="ltr">/review-go</code> ياكى <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;" dir="ltr">/review-fullstack</code>نى ئىجرا قىلىپ، تۇنجى تۈركۈم مەسىلىنى چىقارسۇن؛ ئاندىن بۇ SOP نى گۇرۇپپا ئېقىمىدا ئۇزۇن ساقلاش-ساقلىماسلىقنى قارار قىلىڭ.</p>
+
+<section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;" dir="ltr"><span style="display: block; white-space: pre; min-height: 1.4em;">git clone https://github.com/hexagon-codes/hexclaw-desktop</span><span style="display: block; white-space: pre; min-height: 1.4em;">cd hexclaw-desktop</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;"># بارلىق نىشان مۇندەرىجىنى بىر قېتىمدا قۇرۇش</span><span style="display: block; white-space: pre; min-height: 1.4em;">mkdir -p ~/.claude/commands ~/.claude/data ~/.claude/skills ~/.claude/hooks</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;"># 1. Command قېلىپى (/review-go، /review-fullstack، /adr-new قاتارلىقلار)</span><span style="display: block; white-space: pre; min-height: 1.4em;">cp docs/claude-code-practices/command/*.md ~/.claude/commands/</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;"># 2. بۇيرۇق ئىجراسى پايدىلىنىدىغان سانلىق مەلۇمات قېلىپى (/test-dev نىڭ API سىناق دېلوسى قاتارلىقلار)</span><span style="display: block; white-space: pre; min-height: 1.4em;">cp docs/claude-code-practices/data/*.md ~/.claude/data/</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;"># 3. DevTestOps Skill (تولۇق سىناق ئېقىمىنى ئاپتوماتىك قوزغىتىش)</span><span style="display: block; white-space: pre; min-height: 1.4em;">cp -r docs/claude-code-practices/skill/devtestops ~/.claude/skills/</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;"># 4. CLAUDE.md مايىللىق قېلىپى (ئىشلەتكۈچى ئومۇمىي)</span><span style="display: block; white-space: pre; min-height: 1.4em;">cp docs/claude-code-practices/templates/USER-CLAUDE.md.template ~/.claude/CLAUDE.md</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;"># 5. Hooks (ئۆزگەرتكەندىن كېيىن lint / ئاخىرلىشىشتىن بۇرۇن سىناق / مەخپىي ھۆججەت توسۇش)</span><span style="display: block; white-space: pre; min-height: 1.4em;">cp docs/claude-code-practices/hooks/*.sh ~/.claude/hooks/</span><span style="display: block; white-space: pre; min-height: 1.4em;">chmod +x ~/.claude/hooks/*.sh</span><span style="display: block; white-space: pre; min-height: 1.4em;"># ئاخىرى hooks/README.md دىكى settings.json پارچىسىنى ~/.claude/settings.json غا بىرلەشتۈرۈڭ</span></code></section>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">ئامباردا بۇ SOP بىلەن ياسالغان مەھسۇلاتنىڭ ئۆزىمۇ بار —</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">HexClaw AI</strong>، يەرلىكتە ئىجرا بولىدىغان ئوچۇق مەنبە AI Agent ئۈستەل يۈزى ئەپى؛ بارلىق سانلىق مەلۇمات ماشىنىدىن چىقمايدۇ (<a href="https://mp.weixin.qq.com/s/PdJRKkH4qiBS-IZBifbuag">5 مىنۇتلۇق باشلاش قوللانمىسى</a>）。</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">بۇ ماقالە پايدىلىق بولسا <a href="https://github.com/hexagon-codes">github.com/hexagon-codes</a> گە بېرىپ 6 يادرولۇق ئامبارغا (toolkit / ai-core / hexagon / hexclaw / hexclaw-desktop / hexagon-ui) star بېرىڭ. پۈتۈن ئېكولوگىيە زەنجىرى ئوچۇق مەنبە، قىزىققان قەۋىتىڭىزنى كۆرۈڭ. كېيىن بۇ SOP نىڭ command، Skill، Hooks ۋە ھەقىقىي خاتالىق تىزىملىكى <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;" dir="ltr">hexclaw-desktop/docs/claude-code-practices/</code> ئىچىدە داۋاملىق يېڭىلىنىدۇ. تېخىمۇ كۈچلۈك تەكشۈرۈش تۈرى بولسا issue / PR قارشى ئېلىنىدۇ.</p>
+
+
+
+
+<p class="blog-brand-footer" data-blog-brand-footer="ug" data-blog-brand-overrides="{}" style="text-align: center; color: var(--article-muted, #7b8fa3); font-size: 13px; margin: 16px 0 0; line-height: 2;">
+<strong style="color: var(--article-ink, #12324c); font-size: 14px;">HexClaw ھېشى AI</strong><br/>
+يەرلىكتە ياكى بۇلۇتتا ئورۇنلاشتۇرۇش · سانلىق مەلۇماتنى ئۆزىڭىز باشقۇرۇش · ئوچۇق كودلۇق ۋە ھەقسىز يۇمشاق دېتال<br/>
+<a href="https://hexclaw.net" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">تور بېكەت: <bdi dir="ltr">hexclaw.net</bdi></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://github.com/hexagon-codes" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">GitHub: <bdi dir="ltr">hexagon-codes</bdi></a><br/>
+<a href="https://weibo.com/u/4097207240" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">Weibo: <bdi dir="ltr">@HexClaw</bdi></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">X: <bdi dir="ltr">@hexclawapp</bdi></a><br/>
+<a href="mailto:ai@hexclaw.net" style="color: var(--article-muted, #999); text-decoration: none;">ئېلخەت: <bdi dir="ltr">ai@hexclaw.net</bdi></a>
+</p>
+    </article>
+
+
+
+    <nav class="blog-series-nav" aria-label="上一篇与下一篇">
+      <a href="/ug/blog/vs-openclaw-hermes" class="blog-nav-card prev">
+  <span class="blog-nav-label">← ئالدىنقى ماقالە</span>
+  <span class="blog-nav-title">HexClaw vs OpenClaw / Hermes: 2026-يىلى يەرلىك AI Agent نىڭ ئۈچ يولى</span>
+</a>
+      <a href="/ug/blog/hexclaw-user-guide" class="blog-nav-card next">
+  <span class="blog-nav-label">كېيىنكى ماقالە →</span>
+  <span class="blog-nav-title">HexClaw AI تولۇق قوللانمىسى: 5 مىنۇتتا نۆلدىن سىزگە ئىش قىلىدىغان يەرلىك AI Agent قا (مودېل تاللاش تەۋسىيەسى بىلەن)</span>
+</a>
+    </nav>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-main">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-col-title">مەھسۇلات</div>
+        <a href="/ug/#download">ئۈستەلئۈستى نۇسخىسىنى چۈشۈرۈش</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="/ug/changelog">يېڭىلىنىش خاتىرىسى</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">ئىجادكار</div>
+        <a href="/ug/docs/">ھۆججەتلەر مەركىزى</a>
+        <a href="/ug/blog/">تېخنىكا بىلوگى</a>
+        <a href="/ug/docs/getting-started">تېز باشلاش</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">Apache-2.0</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">جامائەت</div>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/issues" target="_blank" rel="noopener noreferrer">Issues</a>
+        <a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer">Twitter / X</a>
+        <a href="mailto:ai@hexclaw.net">بىز بىلەن ئالاقىلىشىش</a>
+        <a href="mailto:support@hexclaw.net">سوئال-پىكىر</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">ھەققىدە</div>
+        <a href="/ug/about">بىز ھەققىدە</a>
+        <a href="/ug/privacy">شەخسىيەت سىياسىتى</a>
+        <a href="/ug/terms">ئىشلىتىش شەرتلىرى</a>
+        <a href="/ug/third-party-ai-services">ئۈچىنچى تەرەپ AI مۇلازىمىتى</a>
+      </div>
+    </div>
+    <div class="footer-wechat">
+      <img width="430" height="430" loading="lazy" decoding="async" src="../../assets/brand/wechat-qr.jpg" alt="HexClaw ۋېيشىن رەسمىي ھېسابات QR كودى">
+      <span class="footer-wechat-label">ۋېيشىن رەسمىي ھېساباتى</span>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">&copy; 2025&ndash;2026 hexagon-codes</span>
+  </div>
+</footer>
+<script src="../../assets/js/theme.js?v=2e4a1828feef"></script>
+<script src="../../assets/js/docs-nav.js?v=5a103861aec2"></script>
+<button type="button" class="back-to-top" id="backToTop" aria-label="بەت بېشىغا قايتىش" title="بەت بېشىغا قايتىش">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg>
+  <span>باشقا</span>
+</button>
+
+<script src="../../assets/js/blog.js?v=c72e1db5a6ec"></script>
+</body>
+</html>

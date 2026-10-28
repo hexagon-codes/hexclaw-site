@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="ug" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/favicon-32.png">
+<title> HexClaw نىڭ تەپەككۇر جەريانى: Qwen 3.5/Gemma 4/DeepSeek-R1 يەرلىك پىكىر يۈرگۈزۈش مودېللىرىنىڭ ئاخىرقى بىر چاقىرىمىنى تۇتاشتۇرۇش｜HexClaw تېخنىكا بىلوگى </title>
+<meta name="description" content="بۇ يىل يەرلىك پىكىر يۈرگۈزۈش مودېللىرى ھەقىقەتەن ئۆزگەردى. مەسىلە كۆپىنچە مودېلنىڭ ئۆزىدە ئەمەس، بەلكى خېرىدارنىڭ بۇ «ئاخىرقى بىر چاقىرىم»نى قانداق تۇتاشتۇرىدىغانلىقىدا: ئېقىملىق تەپەككۇرنى تەھلىل قىلىش، قاتلاپ كۆرسىتىش ۋە پىكىر يۈرگۈزۈش خامچوتىنى كونترول قىلىش.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:site_name" content="HexClaw">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HexClaw نىڭ تەپەككۇر جەريانى: Qwen 3.5/Gemma 4/DeepSeek-R1 يەرلىك پىكىر يۈرگۈزۈش مودېللىرىنىڭ ئاخىرقى بىر چاقىرىمىنى تۇتاشتۇرۇش｜HexClaw تېخنىكا بىلوگى">
+<meta property="og:description" content="بۇ يىل يەرلىك پىكىر يۈرگۈزۈش مودېللىرى ھەقىقەتەن ئۆزگەردى. مەسىلە كۆپىنچە مودېلنىڭ ئۆزىدە ئەمەس، بەلكى خېرىدارنىڭ بۇ «ئاخىرقى بىر چاقىرىم»نى قانداق تۇتاشتۇرىدىغانلىقىدا: ئېقىملىق تەپەككۇرنى تەھلىل قىلىش، قاتلاپ كۆرسىتىش ۋە پىكىر يۈرگۈزۈش خامچوتىنى كونترول قىلىش.">
+<meta property="og:url" content="https://hexclaw.net/ug/blog/thinking-chain-local-models">
+<meta property="og:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta property="og:image:alt" content="HexClaw بەلگىسى">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta property="og:locale" content="ug_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="HexClaw نىڭ تەپەككۇر جەريانى: Qwen 3.5/Gemma 4/DeepSeek-R1 يەرلىك پىكىر يۈرگۈزۈش مودېللىرىنىڭ ئاخىرقى بىر چاقىرىمىنى تۇتاشتۇرۇش｜HexClaw تېخنىكا بىلوگى">
+<meta name="twitter:description" content="بۇ يىل يەرلىك پىكىر يۈرگۈزۈش مودېللىرى ھەقىقەتەن ئۆزگەردى. مەسىلە كۆپىنچە مودېلنىڭ ئۆزىدە ئەمەس، بەلكى خېرىدارنىڭ بۇ «ئاخىرقى بىر چاقىرىم»نى قانداق تۇتاشتۇرىدىغانلىقىدا: ئېقىملىق تەپەككۇرنى تەھلىل قىلىش، قاتلاپ كۆرسىتىش ۋە پىكىر يۈرگۈزۈش خامچوتىنى كونترول قىلىش.">
+<meta name="twitter:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta name="twitter:image:alt" content="HexClaw بەلگىسى">
+<link rel="canonical" href="https://hexclaw.net/ug/blog/thinking-chain-local-models">
+<link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/thinking-chain-local-models">
+<link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/thinking-chain-local-models">
+<link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/thinking-chain-local-models">
+<link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/thinking-chain-local-models">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "HexClaw نىڭ تەپەككۇر جەريانى: Qwen 3.5/Gemma 4/DeepSeek-R1 يەرلىك پىكىر يۈرگۈزۈش مودېللىرىنىڭ ئاخىرقى بىر چاقىرىمىنى تۇتاشتۇرۇش",
+  "description": "بۇ يىل يەرلىك پىكىر يۈرگۈزۈش مودېللىرى ھەقىقەتەن ئۆزگەردى. مەسىلە كۆپىنچە مودېلنىڭ ئۆزىدە ئەمەس، بەلكى خېرىدارنىڭ بۇ «ئاخىرقى بىر چاقىرىم»نى قانداق تۇتاشتۇرىدىغانلىقىدا: ئېقىملىق تەپەككۇرنى تەھلىل قىلىش، قاتلاپ كۆرسىتىش ۋە پىكىر يۈرگۈزۈش خامچوتىنى كونترول قىلىش.",
+  "url": "https://hexclaw.net/ug/blog/thinking-chain-local-models",
+  "inLanguage": "ug",
+  "datePublished": "2026-04-13",
+  "image": "https://hexclaw.net/assets/brand/hexclaw-logo.png",
+  "publisher": {
+    "@type": "Organization",
+    "name": "hexagon-codes",
+    "url": "https://hexclaw.net/",
+    "@id": "https://hexclaw.net/#organization"
+  },
+  "@id": "https://hexclaw.net/ug/blog/thinking-chain-local-models#article"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "HexClaw",
+      "item": "https://hexclaw.net/ug/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "تېخنىكا بىلوگى",
+      "item": "https://hexclaw.net/ug/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "HexClaw نىڭ تەپەككۇر جەريانى: Qwen 3.5/Gemma 4/DeepSeek-R1 يەرلىك پىكىر يۈرگۈزۈش مودېللىرىنىڭ ئاخىرقى بىر چاقىرىمىنى تۇتاشتۇرۇش",
+      "item": "https://hexclaw.net/ug/blog/thinking-chain-local-models"
+    }
+  ],
+  "@id": "https://hexclaw.net/ug/blog/thinking-chain-local-models#breadcrumb"
+}
+</script>
+<link rel="stylesheet" href="../../assets/css/docs-eb2895dd79c5.css">
+<link rel="stylesheet" href="../../assets/css/blog-a8e5008ac3d1.css">
+</head>
+<body class="blog-page blog-article-page">
+<a href="#main" class="skip-link">ئاساسلىق مەزمۇنغا ئاتلاش</a>
+<nav class="tn topnav" id="nav">
+  <a href="/ug/" class="tn-b topnav-brand"><img width="72" height="72" src="../../assets/brand/hexclaw-icon-72.png" class="tn-l topnav-logo" alt="ھېشى AI"><span class="tn-n topnav-name">ھېشى AI</span></a>
+  <button type="button" class="tn-burger topnav-burger" aria-label="تىزىملىك" aria-expanded="false" aria-controls="primary-navigation"><span></span><span></span><span></span></button><div class="tn-r topnav-links" id="primary-navigation"><a href="/ug/">باش بەت</a><a href="/ug/#cases">ئىشلىتىش كۆرۈنۈشلىرى</a><a href="/ug/#features">ئىقتىدارلار</a><a href="/ug/#quickstart">باشلاش</a><a href="/ug/#ecosystem">ئوچۇق ئېكولوگىيە</a><a href="/ug/blog/" class="is-active">تېخنىكا بىلوگى</a><a href="/ug/docs/">ھۆججەتلەر مەركىزى</a><div class="lang-menu" data-lang-menu><button type="button" class="lang-trigger" aria-haspopup="menu" aria-expanded="false" aria-label="تىل ئالماشتۇرۇش"><svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 0 20"></path><path d="M12 2a15.3 15.3 0 0 0 0 20"></path></svg><span class="lang-current" lang="zh-CN" dir="ltr">维吾尔语</span><svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="lang-menu-list" role="menu"><a href="/zh/blog/thinking-chain-local-models" role="menuitem">中文</a><a href="/en/blog/thinking-chain-local-models" role="menuitem">English</a><a href="/ug/blog/thinking-chain-local-models" role="menuitem" class="is-active" aria-current="true" lang="zh-CN" dir="ltr">维吾尔语</a></div></div><button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="ئۇسلۇب ئالماشتۇرۇش"><svg class="ti-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="ti-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="nav-cta">GitHub <span class="nav-star-badge" id="gh-stars">&#9733;</span></a></div>
+</nav>
+
+<main id="main" class="blog-main">
+  <div class="blog-article-container">
+    <nav class="blog-breadcrumb" aria-label="بەت يولى كۆرسەتمىسى">
+      <a href="/ug/"> باش بەت </a>
+      <span class="blog-breadcrumb-sep">/</span>
+      <a href="/ug/blog/"> تېخنىكا بىلوگى </a>
+      <span class="blog-breadcrumb-sep">/</span>
+      <span aria-current="page"> يادرولۇق سىستېمىلارنى چوڭقۇر تەھلىل قىلىش </span>
+    </nav>
+
+    <header class="blog-header">
+      <div class="blog-header-tags">
+        <span class="blog-badge-series"> ئۈسكۈنە تەرەپتىكى پىكىر يۈرگۈزۈش </span>
+      </div>
+      <h1 class="blog-article-title"> HexClaw نىڭ تەپەككۇر جەريانى: Qwen 3.5/Gemma 4/DeepSeek-R1 يەرلىك پىكىر يۈرگۈزۈش مودېللىرىنىڭ ئاخىرقى بىر چاقىرىمىنى تۇتاشتۇرۇش </h1>
+      <p class="blog-article-subtitle"> بۇ يىل يەرلىك پىكىر يۈرگۈزۈش مودېللىرى ھەقىقەتەن ئۆزگەردى. مەسىلە كۆپىنچە مودېلنىڭ ئۆزىدە ئەمەس، بەلكى خېرىدارنىڭ بۇ «ئاخىرقى بىر چاقىرىم»نى قانداق تۇتاشتۇرىدىغانلىقىدا: ئېقىملىق تەپەككۇرنى تەھلىل قىلىش، قاتلاپ كۆرسىتىش ۋە پىكىر يۈرگۈزۈش خامچوتىنى كونترول قىلىش. </p>
+      <div class="article-provenance-banner">
+        <div class="provenance-left">
+          <span class="provenance-origin-badge"> ئالدى بىلەن WeChat رەسمىي ھېساباتىدا ئېلان قىلىنغان </span>
+          <span class="provenance-text"> بۇ ماقالە ئالدى بىلەن WeChat رەسمىي ھېساباتى <strong>「hexclaw」</strong> （ID: hexclaw）نىڭ رەسمىي تېخنىكا سەھىپىسىدە ئېلان قىلىنغان · ئېلان قىلىنغان ۋاقتى:  <strong> 2026-يىلى 4-ئاينىڭ 13-كۈنى </strong>  · ئوقۇشقا تەخمىنەن 10 مىنۇت </span>
+        </div>
+        <a href="https://mp.weixin.qq.com/s/RX-2QOSV2cBEmddwAUj5cg" target="_blank" rel="noopener noreferrer" class="provenance-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+           WeChat تىكى ئەسلى ماقالە ↗
+        </a>
+      </div>
+    </header>
+
+    <article class="blog-content">
+      <p style="margin: 16px 0;"> ئالدىنقى بىرنەچچە ماقالىدە HexClaw نىڭ ئاساسلىق تېمىلىرىنى دېگۈدەك چۈشەندۈردۈم: قانداق ئورنىتىش، ئىشلىتىش، قۇرۇلمىسىنى قۇرۇش ۋە Skill بىلەن قانداق ئويناش. </p>
+
+<p style="margin: 8px 0;"> ئەمما ئاسان نەزەردىن ساقىت بولىدىغان، شۇنداقلا تەجرىبىنىڭ يۇقىرى چېكىنى بەلگىلەيدىغان بىر ئۇلىنىشنى تېخى ئايرىم ئېچىپ باقمىغانىدىم: <strong style="color:var(--article-accent, #3f8fd4);"> يەرلىك پىكىر يۈرگۈزۈش مودېلىنىڭ تەپەككۇر جەريانىنى تولۇق ساقلاپ، ھەقىقىي خىزمەتكە يارىتالامدۇق؟ </strong>。</p>
+
+<p style="margin: 16px 0;"> ئۆتكەن يىلى يەرلىك پىكىر يۈرگۈزۈش مودېلى بىلەن ئوتتۇراھال قىيىنلىقتىكى بىر ماتېماتىكا مەسىلىسىنى يېشىپ باقتىم. ئۇ  <code dir="ltr" style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">&lt;think&gt;</code>  ئىچىدە ئۇزاق ئويلىنىپ، ئۇزۇن بىر پىكىر زەنجىرى چىقاردى، ئەمما ئاخىرقى جاۋاب يەنىلا خاتا ئىدى. </p>
+
+<p style="margin: 8px 0;"> شۇ چاغدىكى خۇلاسىم ئاددىي ئىدى: <strong style="color:var(--article-accent, #3f8fd4);"> يەرلىك پىكىر يۈرگۈزۈش مودېللىرىنىڭ يولى تېخى ئۇزۇن </strong>。</p>
+
+<p style="margin: 8px 0;"> 2026-يىلغا كەلگەندە بۇ گەپ ئانچە توغرا كەلمەيدىغان بولدى. بۇ بىر يىلدا ئوچۇق مەنبەلىك پىكىر يۈرگۈزۈش مودېللىرى تېز ئىلگىرىلىدى؛ كىچىك مودېللار پەقەت سىناق ئويۇنچۇقى بولمايدىغان، MoE ئۈنۈمنى ئۆستۈرگەن، ئايرىپ ئۆگىتىلگەن مودېللارمۇ ھەقىقىي ۋەزىپىلەردە ئىشلىگىلى بولىدىغان بولدى. </p>
+
+<p style="margin: 8px 0;"> ھازىرقى مەسىلە پەقەت <strong style="color:var(--article-accent, #3f8fd4);"> مودېل ئىجرا بولالامدۇ؟ </strong> دېگەنلىك ئەمەس، بەلكى <strong style="color:var(--article-accent, #3f8fd4);"> ئۇنىڭ ئىقتىدارىنى تولۇق ئىشلىتەلەيدىغان قورالىڭىز بارمۇ؟ </strong>。</p>
+
+<p style="margin: 8px 0;"> نۇرغۇن يەرلىك خېرىدارلارنىڭ مەسىلىسى دەل مۇشۇ يەردە: مودېل ئەستايىدىل پىكىر يۈرگۈزۈۋاتقان بولسىمۇ، ئاخىرىدا ئاددىي سۆھبەت كۆپۈكى بولۇپلا كۆرسىتىلىدۇ؛ تەپەككۇر يا يۇتۇۋېتىلىدۇ، يا كېسىلىدۇ، ياكى يېرىم يولدا قېتىپ قالىدۇ. </p>
+
+<p style="border-left: 3px solid #f5a623; padding: 10px 16px; margin: 16px 0; background:var(--article-panel, #fffbe6); color: #8a6d3b; font-size: 14px; border-radius: 0 6px 6px 0;"><strong> ۋاقتىڭىز قىس بولسا، ئالدى بىلەن خۇلاسىنى كۆرۈڭ: </strong><br/>
+ قولىڭىزدا پەقەت 16GB لىق Mac ياكى 8GB دەرىجىلىك گرافىك كارتالىق PC بولسا، ئالدى بىلەن  <strong style="color:var(--article-accent, #3f8fd4);">Qwen 3.5</strong>  تىن باشلاڭ؛ سۈرئەت ۋە ئىنگلىزچە ۋەزىپىلەرگە بەكرەك ئەھمىيەت بەرسىڭىز،  <strong style="color:var(--article-accent, #3f8fd4);">Gemma 4</strong> نى كۆرۈڭ؛ ئەڭ تولۇق، تەتقىقات قىممىتى بار پىكىر زەنجىرىنى كۆرمەكچى بولسىڭىز،  <strong style="color:var(--article-accent, #3f8fd4);">DeepSeek-R1</strong> نى تاللاڭ. لېكىن تەجرىبىنى بەلگىلەيدىغىنى مودېل نومۇرىلا ئەمەس، خېرىدارنىڭ  <strong style="color:var(--article-accent, #3f8fd4);"> تەپەككۇرنى كۆرسىتىش، تەپەككۇرنى ئېچىش-تاقاش، ۋاقىتتىن ئېشىشتىن ئەسلىگە كېلىش، كونتېكستنى قىسقارتىش ۋە قوراللارنى ئۇلاش </strong>  زەنجىرىنى تولۇق ئىشلىتىشىدۇر. HexClaw نىڭ v0.3.x دە قىلغىنى دەل مۇشۇ. </p>
+
+<p style="margin: 8px 0;"> تۆۋەندە تەپسىلىي سۆزلەيمىز. </p>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;"> نېمىشقا 2026-يىلى يەرلىك پىكىر يۈرگۈزۈشكە قايتا قاراشقا ئەرزىيدۇ؟ </h2>
+
+<p style="margin: 8px 0;"> بۇرۇن نۇرغۇن كىشىنىڭ يەرلىك مودېلغا بولغان تەسىراتى: ئاستا، ئەقىلسىز، خاتا گەپنىمۇ سالماقلىق بىلەن سۆزلەيدۇ. بۇ تەسىراتنىڭ ئاساسى بار؛ ئۆتكەن يىلى ھەقىقەتەن شۇنداق ئىدى. </p>
+
+<p style="margin: 8px 0;"> ئەمما ئۆتكەن بىر يىلدىكى ئۆزگىرىش «پارامېتىر يەنە ئىككى ھەسسە بولدى» دېگەنلا گەپ ئەمەس؛ <strong style="color:var(--article-accent, #3f8fd4);"> پارامېتىر ئۈنۈمى، پىكىر يۈرگۈزۈش ئىستراتېگىيەسى، كۋانتلاشتۇرۇش ئۈنۈمى ۋە ئىنژېنېرلىق جەھەتتىن ئىشلىتىشچانلىق </strong> بىرلىكتە ئىلگىرىلىدى. </p>
+
+<p style="margin: 8px 0;"> ئەڭ روشەن ئۈچ ئۆزگىرىش بار: </p>
+
+<ol style="padding-left: 20px; margin: 6px 0;">
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> كىچىك مودېللار پەقەت سىناق نۇسخىسى بولۇپ قالمىدى. </strong> 8B دەرىجىلىك مودېللار خەنزۇچە سوئال-جاۋاب، كود چۈشەندۈرۈش، ئاددىي كاشىلا تەكشۈرۈش ۋە ھۆججەت رەتلەش قاتارلىق كۆپ ئىشلىتىلىدىغان ۋەزىپىلەرنى مۇقىم ئىجرا قىلالايدۇ. </li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> پىكىر يۈرگۈزۈش جەريانى ئىنژېنېرلىق قىممىتىگە ئىگە بولۇشقا باشلىدى. </strong> ئۇ پەقەت قىزىق تاماشا ئەمەس؛ خاتالىق تېپىش، پەرەزنى تەكشۈرۈش ۋە قورال چاقىرىش قارارىنى چۈشىنىشكە ياردەم بېرىدۇ. </li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> يەرلىك ئورۇنلاشتۇرۇشنىڭ بوسۇغىسى تۆۋەنلىدى. </strong> 16GB لىق Mac ۋە 8GB دەرىجىلىك گرافىك كارتالىق PC بىلەنمۇ تۈزۈك يەرلىك AI خىزمەت ئېقىمىنى ئىجرا قىلغىلى بولىدۇ. </li>
+</ol>
+
+<p style="margin: 8px 0;"> شۇڭا بۇ ماقالىنىڭ ئاساسلىق قارىشى «يەرلىك مودېل بۇلۇتنىڭ ھەممە ئىشىنى ئالماشتۇرامدۇ؟» دېگەنلىك ئەمەس، بەلكى: <strong style="color:var(--article-accent, #3f8fd4);"> كۆپ تەكرارلىنىدىغان، مەخپىي ۋە كونترول قىلىش تەلەپ قىلىنىدىغان بىر قىسىم ۋەزىپىلەردە، يەرلىك پىكىر يۈرگۈزۈش زاپاس تاللاشتىن ئاساسلىق تاللاشقا ئايلاندى </strong>。</p>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;"> ئالدى بىلەن تاللاش: قايسى مودېلنى ئىشلىتىشىڭىز كېرەك؟ </h2>
+
+<p style="margin: 8px 0;"> ھەر خىل رەت تەرتىپ ۋە باھالاشلار بېشىڭىزنى قېتىرغان بولسا، ئەڭ چوڭ مودېلنى قوغلىشىشقا ئالدىرىماڭ. كۆپىنچە كىشىگە نىسبەتەن پارامېتىرنى قارىغۇلارچە كۆپەيتىشتىن كۆرە، يەرلىك پىكىر يۈرگۈزۈش زەنجىرىنى ئالدى بىلەن ئىشلىتىش مۇھىم. </p>
+
+<table style="width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13px;">
+<thead>
+<tr>
+<th style="background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); padding: 8px 12px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;"> سىزنىڭ ئەھۋالىڭىز </th>
+<th style="background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); padding: 8px 12px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;"> تەۋسىيە قىلىنغان مودېل </th>
+<th style="background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); padding: 8px 12px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;"> سەۋەبى </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);"> 16GB Mac / 8GB گرافىك كارتا، ئاساسەن خەنزۇچە </td>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);"><strong style="color:var(--article-accent, #3f8fd4);">qwen3.5:9b</strong></td>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);"> گرافىك ئىچكى ساقلىغۇچ تەلىپى تۆۋەن، خەنزۇچىسى مۇقىم؛ كۆڭۈلدىكى يەرلىك ئىش قورالىغا ماس </td>
+</tr>
+<tr>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe); color:var(--article-ink, #12324c);"> 18GB+ گرافىك ئىچكى ساقلىغۇچ، سۈرئەت ۋە ئىنگلىزچە ۋەزىپىلەر مۇھىمراق </td>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe); color:var(--article-ink, #12324c);"><strong style="color:var(--article-accent, #3f8fd4);">Gemma4:26b</strong></td>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe); color:var(--article-ink, #12324c);"> MoE قۇرۇلمىسى ھېس قىلىنىدىغان سۈرئەتنى تېزلىتىدۇ؛ كود ۋە ئىنگلىزچە پىكىر يۈرگۈزۈشتە قولاي </td>
+</tr>
+<tr>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);"> تولۇق پىكىر زەنجىرىنى كۆزىتىش ۋە مۇرەككەپ كاشىلا تەكشۈرۈش </td>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);"><strong style="color:var(--article-accent, #3f8fd4);">deepseek-r1:14b / 32b</strong></td>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);"> پىكىر زەنجىرى ئەڭ تەپسىلىي؛ «قانداق ئويلايدىغانلىقىنى كۆرۈش»كە ماس، ئەمما ۋاقىت ۋە ئىچكى ساقلىغۇچنى كۆپرەك تەلەپ قىلىدۇ </td>
+</tr>
+<tr>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe); color:var(--article-ink, #12324c);"> 32GB+ ئىچكى ساقلىغۇچ، ئومۇمىي ئىقتىدار كۈچلۈكرەك بولۇشى كېرەك </td>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe); color:var(--article-ink, #12324c);"><strong style="color:var(--article-accent, #3f8fd4);">qwen3.5:27b</strong></td>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe); color:var(--article-ink, #12324c);"> ئومۇمىي ئىقتىدارى تېخىمۇ كۈچلۈك، خەنزۇچە كود ۋە ھۆججەت خىزمەت ئېقىمى مۇقىمراق </td>
+</tr>
+</tbody>
+</table>
+
+<p style="border-left: 3px solid #5fb3ea; padding: 10px 16px; margin: 16px 0; background:var(--article-panel, #f4fbff); color:var(--article-secondary, #3f5f7b); font-size: 14px; border-radius: 0 6px 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> ئاددىي قىلىپ ئېيتقاندا: </strong> كۆپىنچە كىشى ئالدى بىلەن  <code dir="ltr" style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">qwen3.5:9b</code>  دىن باشلىسا كۇپايە. دەسلەپتىلا ئەڭ چوڭ مودېلنى قوغلاشماڭ؛ خىزمەت ئېقىمىنى ئالدى بىلەن ئىشلىتىش ھەممىدىن مۇھىم. </p>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;"> ئۈچ چوڭ پىكىر يۈرگۈزۈش مودېلىنىڭ قايسىسى يەرلىك خىزمەتكە ماسراق؟ </h2>
+
+<p style="margin: 8px 0;"> 2026-يىلى 4-ئاينىڭ 13-كۈنىگىچە، Ollama دا كۆپ ئۇچرايدىغان ۋە يەرلىك پىكىر يۈرگۈزۈش ئېقىمىغا ماس كېلىدىغان ئۈچ ئائىلە يەنىلا Qwen 3.5، Gemma 4 ۋە DeepSeek-R1. ئۇلارنىڭ خاراكتېرى ئوخشاش ئەمەس. </p>
+
+<table style="width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13px;">
+<thead>
+<tr>
+<th style="background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); padding: 8px 12px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;"></th>
+<th style="background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); padding: 8px 12px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;">Qwen 3.5<br/><span style="font-weight: 400; font-size: 11px; color: #667085;">（Alibaba）</span></th>
+<th style="background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); padding: 8px 12px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;">Gemma 4<br/><span style="font-weight: 400; font-size: 11px; color: #667085;">（Google）</span></th>
+<th style="background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); padding: 8px 12px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;">DeepSeek-R1<br/><span style="font-weight: 400; font-size: 11px; color: #667085;">（DeepSeek）</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe); color:var(--article-ink, #12324c);"><strong style="color:var(--article-accent, #3f8fd4);"> كۆپ ئۇچرايدىغان يەرلىك ئۆلچەملەر </strong></td>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe); color:var(--article-ink, #12324c);">9B / 27B</td>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe); color:var(--article-ink, #12324c);">e4b / 26B / 31B</td>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe); color:var(--article-ink, #12324c);">14B / 32B</td>
+</tr>
+<tr>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe); color:var(--article-ink, #12324c);"><strong style="color:var(--article-accent, #3f8fd4);"> Ollama دىكى كۆپ ئۇچرايدىغان چوڭلۇق </strong></td>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe); color:var(--article-ink, #12324c);">6.6GB / 17GB</td>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe); color:var(--article-ink, #12324c);">9.6GB / 18GB / 20GB</td>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe); color:var(--article-ink, #12324c);">9.0GB / 20GB</td>
+</tr>
+<tr>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);"><strong style="color:var(--article-accent, #3f8fd4);"> كۆپ ئۇچرايدىغان كونتېكست </strong></td>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);">256K / 256K</td>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);">128K / 256K / 256K</td>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);">128K / 128K</td>
+</tr>
+<tr>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe); color:var(--article-ink, #12324c);"><strong style="color:var(--article-accent, #3f8fd4);"> ئاساسلىق ئارتۇقچىلىق </strong></td>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe); color:var(--article-ink, #12324c);"> خەنزۇچىسى مۇقىم، بوسۇغىسى تۆۋەن، كۆڭۈلدىكى بىرىنچى تاللاش </td>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe); color:var(--article-ink, #12324c);"> تېز ئىنكاس، ئىنگلىزچە ۋە كودقا ماس </td>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe); color:var(--article-ink, #12324c);"> پىكىر زەنجىرى ئەڭ تەپسىلىي، مۇرەككەپ كاشىلا تەكشۈرۈشكە ماس </td>
+</tr>
+</tbody>
+</table>
+
+<h3 style="font-size: 16px; font-weight: 600; color:var(--article-ink, #12324c); margin: 24px 0 8px;"> Qwen 3.5: ھەر كۈنى ئېچىشىڭىز مۇمكىن بولغان مودېل </h3>
+
+<p style="margin: 8px 0;"> Qwen 3.5 نىڭ مېنى قايىل قىلغان يېرى يەككە رەت تەرتىپتىكى نەتىجىسى ئەمەس، بەلكى <strong style="color:var(--article-accent, #3f8fd4);"> ئۇنى كۈندىلىك خىزمەت ئېقىمىغا ھەقىقەتەن قوشالايسىز </strong> . مەسىلەن،  <code dir="ltr" style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">qwen3.5:9b</code>  ئۈچۈن ماشىنا تەلىپى زىيادە يۇقىرى ئەمەس؛ خەنزۇچە سوئال-جاۋاب، كود چۈشەندۈرۈش، ھۆججەت رەتلەش ۋە ئاددىي كاشىلا تەكشۈرۈشنى ئۆز ئىچىگە ئالىدۇ. </p>
+
+<p style="margin: 8px 0;"> ماشىنىڭىز 16GB لىق M يۈرۈشلۈك Mac ياكى 8GB دەرىجىلىك گرافىك كارتالىق PC بولسا، بۇ ئادەتتە ئەڭ مۇقىم باشلىنىش. ئۇ «تەپەككۇرنى نامايان قىلىش»تا ئەڭ ئۇستا بولماسلىقى مۇمكىن، لېكىن <strong style="color:var(--article-accent, #3f8fd4);"> سىز ھەر كۈنى ھەقىقەتەن ئېچىپ ئىشلىتىدىغان مودېل بولۇشى مۇمكىن </strong>。</p>
+
+<h3 style="font-size: 16px; font-weight: 600; color:var(--article-ink, #12324c); margin: 24px 0 8px;"> Gemma 4: ئىنژېنېرلىق نۇقتىسىدىن يېقىملىق سۈرئەت تاللىشى </h3>
+
+<p style="margin: 8px 0;"> Gemma 4 نىڭ ئارتۇقچىلىقى ئىنژېنېرلىققا ناھايىتى يېقىن: <strong style="color:var(--article-accent, #3f8fd4);"> ھېس قىلىنىدىغان سۈرئىتى تېز </strong> . 26B ئۆلچىمى كىچىك بولمىسىمۇ، MoE قۇرۇلمىسى ئۇنى تېخىمۇ يېنىك ۋە چاققان ھېس قىلدۇرىدۇ. </p>
+
+<p style="margin: 8px 0;"> ئىنگلىزچە كود، ماتېماتىكىلىق پىكىر يۈرگۈزۈش ۋە ئىنگلىزچە تېخنىكا ھۆججەتلىرىنى بىر تەرەپ قىلسىڭىز، Gemma 4 رىقابەت كۈچىگە ئىگە. چەكلىمىسىمۇ ئېنىق: خەنزۇچە ۋەزىپىلەردە ئومۇمىي جەھەتتىن Qwen دەكلە قولاي ئەمەس. </p>
+
+<h3 style="font-size: 16px; font-weight: 600; color:var(--article-ink, #12324c); margin: 24px 0 8px;"> DeepSeek-R1: پىكىر يولىنى ئالدىڭىزغا يېيىپ بەرگەندەك </h3>
+
+<p style="margin: 8px 0;"> DeepSeek-R1 نىڭ قىممىتى تېخىمۇ كۆپرەك <strong style="color:var(--article-accent, #3f8fd4);"> كۆزىتىشچانلىق </strong> تا. ئۇ پەرەز تىزىش، يوللارنى تەكشۈرۈش ۋە ئۆز-ئۆزىنى تەكشۈرۈشنى ئەستايىدىل قىلىدۇ؛ كۆپ چاغدا جاۋابنىلا ئېلىپ قالماي، بىر پىكىر يۈرگۈزۈش جەريانىنىمۇ كۆرىسىز. </p>
+
+<p style="margin: 8px 0;"> بۇ خىل «ئاستىلىق» ۋە «ئۇزۇنلۇق» ئادەتتىكى پاراڭدا ياقماسلىقى مۇمكىن، ئەمما كود كاشىلىسىنى تەكشۈرۈش، مۇرەككەپ ۋەزىپىنى پارچىلاش ۋە مودېلنىڭ قورال چاقىرىش يولىنى ئۆزى پىلانلىشىدا پايدىلىق. DeepSeek رەسمىي ئېلان قىلغان Distill-Qwen-32B سانلىق مەلۇماتلىرىدىكى <strong style="color:var(--article-accent, #3f8fd4);">MATH-500 94.3、LiveCodeBench 57.2</strong> ئۇنىڭ پەقەت «ئۇزۇن ئويلايدىغان»لا ئەمەس، بەلكى ھەقىقىي كۈچى بارلىقىنى كۆرسىتىدۇ. </p>
+
+<p style="border-left: 3px solid #5fb3ea; padding: 10px 16px; margin: 16px 0; background:var(--article-panel, #f4fbff); color:var(--article-secondary, #3f5f7b); font-size: 14px; border-radius: 0 6px 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> يەككە رەت تەرتىپكە چوقۇنماڭ. </strong> يەرلىك مودېلنىڭ ھەقىقىي تەجرىبىسى = مودېل ئىقتىدارى × كۋانتلاشتۇرۇش ئۈنۈمى × خېرىدارنىڭ ئىنژېنېرلىق سۈپىتى × قاتتىق دېتال شارائىتىڭىز. ئالدىنقى ئىككىسىدە ھەممە ئادەم كۈچىشىۋاتىدۇ؛ كۆپىنچە كىشى كېيىنكى ئىككىسىدە پۇتلىشىدۇ. </p>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;"> نېمىشقا «تەپەككۇرنى كۆرۈش» قىممەتلىك؟ </h2>
+
+<p style="margin: 8px 0;"> نۇرغۇن كىشى پىكىر زەنجىرىنى تۇنجى كۆرگەندە: بۇ مودېلنىڭ ئۆز-ئۆزىگە سۆزلىشىشى ئەمەسمۇ؟ ئۇنى نېمىشقا كۆرىمىز، دەيدۇ. </p>
+
+<p style="margin: 8px 0;"> پەقەت ھاۋارايى سوراش، تەرجىمە قىلىش ياكى بىر جۈملىنى سىلىقلاش بولسا، بۇ ھەقىقەتەن مۇھىم ئەمەس. ئەمما ۋەزىپە سەللا مۇرەككەپلەشسە، قىممىتى كۆرۈنىدۇ. </p>
+
+<table style="width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13px;">
+<thead>
+<tr>
+<th style="background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); padding: 8px 12px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;"> قوللىنىش ئەھۋالى </th>
+<th style="background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); padding: 8px 12px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;"> تەپەككۇر جەريانىنى كۆرۈش نېمە بېرىدۇ؟ </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);"> كود كاشىلىسىنى تەكشۈرۈش </td>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);"> ئالدى بىلەن نېمىدىن گۇمانلانغانلىقى ۋە قايسى يوللارنى چىقىرىۋەتكەنلىكىنى كۆرۈپ، يولدىن چىققان-چىقمىغانلىقىنى تېز بىلەلەيسىز </td>
+</tr>
+<tr>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe); color:var(--article-ink, #12324c);"> قورال چاقىرىش </td>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe); color:var(--article-ink, #12324c);"> ھۆججەتنى نېمىشقا ئالدى بىلەن ئىزدەپ، ئاندىن ئوقۇپ، ئاندىن ئۆزگەرتكەنلىكىنى كۆرىسىز؛ يېپىق قۇتىدا قالايمىقان سىناش بولمايدۇ </td>
+</tr>
+<tr>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);"> مۇرەككەپ سوئال-جاۋاب </td>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);"> ئالدىنقى شەرتنى ئالماشتۇرۇۋەتكەنمۇ، سىزنىڭ چەكلىمىڭىزنى ئۇنتۇغانمۇ، كۆرىسىز </td>
+</tr>
+</tbody>
+</table>
+
+<p style="margin: 8px 0;"> تېخىمۇ مۇھىمى، <strong style="color:var(--article-accent, #3f8fd4);"> تەپەككۇرنى كۆرەلەشنىڭ ئۆزى بىر بىخەتەرلىك مېخانىزمى </strong> . ھېچ بولمىغاندا مودېل يولدىن چىقىشقا باشلىغاندا ۋاقتىدا سېزەلەيسىز؛ پەقەت ناھايىتى ئىشەنچلىك كۆرۈنىدىغان ئاخىرقى جاۋابنىلا كۆرمەيسىز. </p>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;"> مەسىلە مودېلدا ئەمەس، «ئاخىرقى بىر چاقىرىم»دىكى خېرىدار ئىنژېنېرلىقىدا </h2>
+
+<p style="margin: 8px 0;"> ئۆتكەن يىلى بىر قاتار يەرلىك خېرىدارلارنى سىناپ چىققاندىن كېيىنكى تەسىراتىم ئوخشاش بولدى: <strong style="color:var(--article-accent, #3f8fd4);"> نۇرغۇن مەھسۇلات «مودېل API سىنى چاقىرىش»نى ياخشى قىلغان بولسىمۇ، «پىكىر يۈرگۈزۈش مودېلى»غا مۇستەقىل بىر تۈر سۈپىتىدە ئەستايىدىل مۇئامىلە قىلمىغان </strong>。</p>
+
+<p style="margin: 8px 0;"> كۆپ ئۇچرايدىغان مەسىلىلەر مۇشۇلار: </p>
+
+<ul style="padding-left: 18px; margin: 8px 0;">
+<li style="margin: 4px 0;"> مودېل چىقىرىشىنى سۆھبەت كۆپۈكى قىلىپلا كۆرسىتىدۇ، <strong style="color:var(--article-accent, #3f8fd4);"> تەپەككۇر جەريانىنى ئەستايىدىل بىر تەرەپ قىلمايدۇ </strong></li>
+<li style="margin: 4px 0;"> تەپەككۇرنى كۆرسەتسىمۇ كونترول قىلغىلى بولمايدۇ؛ مودېل بەك ئۇزاق ئويلىسا، <strong style="color:var(--article-accent, #3f8fd4);"> ئىشلەتكۈچى پەقەت كۈتىدۇ </strong></li>
+<li style="margin: 4px 0;"> ئۇزۇن سۆھبەتتە قىسقارتىش ئىستراتېگىيەسى يوق؛ پىكىر زەنجىرى ئۇزىراپ كونتېكستنى تولدۇرىدۇ، <strong style="color:var(--article-accent, #3f8fd4);"> بىرنەچچە نۆۋەتتىن كېيىنلا ئۇنتۇپ قالىدۇ </strong></li>
+<li style="margin: 4px 0;"> تەپەككۇر بىلەن قورال چاقىرىش ئىككى ئۈزۈك سىزىق، <strong style="color:var(--article-accent, #3f8fd4);"> كېيىنكى قارارنى نېمىشقا چىقارغانلىقىنى كۆرەلمەيسىز </strong></li>
+</ul>
+
+<p style="margin: 8px 0;"> HexClaw نى ياسىغاندا مېنىڭ ئېنىق قارىشىم مۇنداق ئىدى: <strong style="color:var(--article-accent, #3f8fd4);"> تەپەككۇر جەريانى قوشۇمچە مەھسۇلات ئەمەس؛ ئۇ پىكىر يۈرگۈزۈش مودېلىنىڭ ئەڭ قىممەتلىك چىقىرىشلىرىنىڭ بىرى </strong> . ئۇنى بېزەك قاتارىدا بىر تەرەپ قىلىشقا بولمايدۇ. </p>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;"> HexClaw پىكىر زەنجىرىنى قانداق تولۇق ئىشلىتىدۇ: تۆت قەۋەت مۇداپىئە </h2>
+
+<p style="margin: 8px 0;"> v0.3.x دە مەن «think بەلگىسىنى كۆرسىتەلەيدىغان» سۆھبەت قېپى ياسىمىدىم؛ يەرلىك پىكىر يۈرگۈزۈش زەنجىرىنى چوقۇم تۇتاشتۇرۇش كېرەك بولغان تۆت قەۋەتكە ئايرىدىم: <strong style="color:var(--article-accent, #3f8fd4);"> ئايرىپ ئېلىش، كونترول قىلىش، ئەسلىگە كەلتۈرۈش ۋە قىسقارتىش </strong>。</p>
+
+<h3 style="font-size: 16px; font-weight: 600; color:var(--article-ink, #12324c); margin: 24px 0 8px;"> بىرىنچى قەۋەت: كۆپ خىل تەپەككۇر بەلگىسىنى ئايرىپ ئېلىش </h3>
+
+<p style="margin: 8px 0;"> HexClaw ماتور قەۋىتىدە <strong style="color:var(--article-accent, #3f8fd4);"> ئىككى يوللۇق ئايرىپ ئېلىش </strong> قىلىدۇ. ئېقىم باسقۇچىدا بىر قېتىم تۇتۇپ، ئاخىرقى چىقىرىشتا يەنە بىر قېتىم سىكانىرلاپ،  <code dir="ltr" style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">&lt;think&gt;</code>、<code dir="ltr" style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">&lt;thinking&gt;</code>、<code dir="ltr" style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">&lt;|think|&gt;</code>  قاتارلىق كۆپ خىل فورماتنى بىردەك ئايرىپ ئالىدۇ. </p>
+
+<p style="margin: 8px 0;"> بۇ قەدەمنىڭ مەنىسى: <strong style="color:var(--article-accent, #3f8fd4);"> مودېل ئالماشتۇرغاندا چۈشىنىش ئۇسۇلى ئالماشمايدۇ </strong> . بەلگە فورماتى ئوخشىمىغانلىقى ئۈچۈن، ئىشلەتكۈچى بۇ قېتىم نېمىشقا كۆرسەتمىگەنلىكىنى پەرەز قىلىپ ئولتۇرمايدۇ. </p>
+
+<p style="margin: 8px 0;"> ئايرىۋېلىنغان تەپەككۇر مەزمۇنى ئۇچۇر مېتامەلۇماتىغا داۋاملىق ساقلىنىدۇ. بۇ سۆھبەتنى كېيىن قايتا ئاچسىڭىزمۇ تەپەككۇر جەريانى شۇ يەردە؛ بەتنى يېڭىلىغاندا يوقاپ كەتمەيدۇ. </p>
+
+<h3 style="font-size: 16px; font-weight: 600; color:var(--article-ink, #12324c); margin: 24px 0 8px;"> ئىككىنچى قەۋەت: تەپەككۇر ھالىتىنى بىر چېكىشتە ئېچىش-تاقاش </h3>
+
+<p style="margin: 8px 0;"> ھەممە سوئال چوڭقۇر ئويلىنىشقا ئەرزىمەيدۇ. «بۈگۈن ھەپتىنىڭ قايسى كۈنى؟» بىلەن «بۇ كود نېمىشقا ئۆلۈك قۇلۇپقا چۈشتى؟» ئوخشاش قىيىنلىقتا ئەمەس. </p>
+
+<p style="margin: 8px 0;"> شۇڭا HexClaw كىرگۈزۈش رامكىسىنىڭ ئاستىغا <strong style="color:var(--article-accent, #3f8fd4);"> چوڭقۇر تەپەككۇر ئالماشتۇرغۇچى </strong> قويدى. ئۇ بېزەك ئەمەس؛ مودېلنىڭ چىقىرىش ئىستراتېگىيەسىگە بىۋاسىتە تەسىر قىلىدۇ: </p>
+
+<ol style="padding-left: 20px; margin: 6px 0;">
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> تاقاش </strong> : قوشۇلىدىغىنى  <code dir="ltr" style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">/no_think</code> ، ئۇزۇن پىكىر زەنجىرىنى بېسىپ، تېز جاۋابنى ئالدىنقى ئورۇنغا قويىدۇ </li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> ئېچىش </strong> : پىكىر زەنجىرىنى تولۇق ساقلاپ، «قانداق ئويلىغانلىقىنى» ئېقىم شەكلىدە كۆرسىتىدۇ </li>
+</ol>
+
+<p style="margin: 8px 0;"> ئىشلەتكۈچى ئۈچۈن بۇ بىر مودېلنىڭ ئىككى خىل خىزمەت ھالىتىدۇر. <strong style="color:var(--article-accent, #3f8fd4);"> ھەر قېتىم مودېل ئالماشتۇرۇش ئەمەس، ۋەزىپىگە قاراپ تەپەككۇر چوڭقۇرلۇقىنى ئالماشتۇرۇش </strong>。</p>
+
+
+<h3 style="font-size: 16px; font-weight: 600; color:var(--article-ink, #12324c); margin: 24px 0 8px;"> ئۈچىنچى قەۋەت: 90 سېكۇنتلۇق تەپەككۇر ۋاقىت چېكىدىن كېيىن ئاپتوماتىك ئەسلىگە كېلىش </h3>
+
+<p style="margin: 8px 0;"> پىكىر يۈرگۈزۈش مودېلىنىڭ ئەڭ چوڭ ئىنژېنېرلىق مەسىلىسى خاتا جاۋاب ئەمەس، بەلكى <strong style="color:var(--article-accent, #3f8fd4);"> بەك ئۇزاق ئويلاش </strong> . بولۇپمۇ يەرلىك كىچىك مودېل مۇرەككەپ ۋەزىپىگە دۇچ كەلگەندە، پىكىر زەنجىرىدە قايتا-قايتا ئۆزىنى تۈزىتىپ، ئاخىرقى جاۋابنىمۇ چىقىرالماي قالىدۇ. </p>
+
+<p style="margin: 8px 0;"> HexClaw ئەمەلىي بىر زاپاس چارە قىلدى: <strong style="color:var(--article-accent, #3f8fd4);"> 90 سېكۇنتلۇق تەپەككۇر ۋاقىت چېكىدىن كېيىن ئاپتوماتىك ئەسلىگە كېلىش </strong>。</p>
+
+<ol style="padding-left: 20px; margin: 6px 0;">
+<li style="margin: 4px 0;"> 90 سېكۇنتتىن كېيىنمۇ ئاخىرقى جاۋاب چىقمىسا، ئاپتوماتىك ئۈزىدۇ </li>
+<li style="margin: 4px 0;"> ئاپتوماتىك قوشۇلىدىغىنى  <code dir="ltr" style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">/no_think</code>  قايتا تەلەپ قىلىدۇ </li>
+<li style="margin: 4px 0;"> پەقەت reasoning چىقىپ، final answer چىقمىسا، ئۇنىمۇ ئاپتوماتىك تونۇپ قايتا سىنايدۇ </li>
+</ol>
+
+<p style="margin: 8px 0;"> بۇ كۆرۈنۈش ئۈچۈن ئەمەس؛ يەرلىك پىكىر يۈرگۈزۈشنى «بەزىدە ئىشلەيدۇ» دىن «كۆپىنچە چاغدا ئىشەنچلىك»كە ئايلاندۇرۇش ئۈچۈن. </p>
+
+<h3 style="font-size: 16px; font-weight: 600; color:var(--article-ink, #12324c); margin: 24px 0 8px;"> تۆتىنچى قەۋەت: كونتېكستنى ئاپتوماتىك قىسقارتىش </h3>
+
+<p style="margin: 8px 0;"> يەرلىك پىكىر يۈرگۈزۈش مودېلىنىڭ يەنە بىر قاتتىق چەكلىمىسى، <strong style="color:var(--article-accent, #3f8fd4);"> كونتېكست كۆزنىكى چەكلىك </strong> . پىكىر زەنجىرىنىڭ ئۆزى token نى كۆپ يەيدۇ؛ ئۈستىگە قورال چاقىرىشنىڭ كىرگۈزۈش-چىقىرىشى قوشۇلسا، بىرنەچچە مۇرەككەپ ۋەزىپىدىن كېيىن كونتېكست چېكىگە يېقىنلىشىدۇ. </p>
+
+<p style="margin: 8px 0;"> نۇرغۇن خېرىدار ئەڭ بۇرۇنقى ئۇچۇرنى بىۋاسىتە كېسىۋېتىدۇ. بۇ ئاددىي كۆرۈنسىمۇ، ئەمەلىيەتتە خەتەرلىك؛ چۈنكى ئەڭ بۇرۇنقى ئۇچۇرلاردا ئىشلەتكۈچىنىڭ ھەقىقىي چەكلىمىلىرى بار بولىدۇ. </p>
+
+<p style="margin: 8px 0;"> HexClaw نىڭ ئۇسۇلى: <strong style="color:var(--article-accent, #3f8fd4);"> system prompt + يېقىنقى ئۇچۇرلارنى ساقلاش </strong> ، ئوتتۇرىدىكى تارىخنى قۇرۇلمىلىق خۇلاسىلەش؛ خۇلاسىلەش مەغلۇپ بولسا، قائىدىگە تايانغان ئايرىپ ئېلىشقا قايتىش. نەتىجە «تارىخنى ئۇنتۇش» ئەمەس، «تارىخنى قىسقارتىش». </p>
+
+<p style="background: #1a2332; color: #d6e4f0; padding: 16px; border-radius: 8px; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, monospace; margin: 14px 0; overflow-x: auto; white-space: pre-wrap;"><span style="color: #6a9955;"> // كونتېكستنى قىسقارتىش ئىستراتېگىيەسى </span>
+
+ ئۇچۇر ئومۇمىي مىقدارى چەككە يېقىنلاشقاندا ئاپتوماتىك قوزغىلىدۇ
+  ↓
+ساقلىنىدىغىنى  <span style="color: #5fb3ea;">system prompt</span>
+ ساقلىنىدىغىنى  <span style="color: #5fb3ea;"> يېقىنقى ئۇچۇرلار </span>
+   ↓
+ئوتتۇرىدىكى تارىخىي ئۇچۇرلاردىن ھاسىل بولىدىغىنى  <span style="color: #5fb3ea;"> قۇرۇلمىلىق خۇلاسە </span>
+   ↓
+قىستۇرۇلىدىغىنى  <span style="color: #f5a623;">[Prior tool interactions summary]</span>
+   ↓
+كېيىنكى نۆۋەت داۋاملىشىدۇ، كونتېكست تولۇپ كەتمەيدۇ </p>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;"> قاچان چوڭقۇر تەپەككۇرنى ئېچىش، قاچان تاقاش كېرەك؟ </h2>
+
+<p style="margin: 8px 0;"> بۇ ناھايىتى ئەمەلىي سوئال. نۇرغۇن كىشى پىكىر يۈرگۈزۈش مودېلىنى ئىشلەتكەندە سادىر قىلىدىغان ئەڭ چوڭ خاتالىق: <strong style="color:var(--article-accent, #3f8fd4);"> «ئويلىيالايدۇ»نى «ھەر ۋاقىت ئويلىشى كېرەك» دەپ چۈشىنىش </strong>。</p>
+
+<table style="width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13px;">
+<thead>
+<tr>
+<th style="background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); padding: 8px 12px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;"> ۋەزىپە تۈرى </th>
+<th style="background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); padding: 8px 12px; text-align: center; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;"> تەۋسىيە </th>
+<th style="background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); padding: 8px 12px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;"> سەۋەبى </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);"> كود كاشىلىسىنى تەكشۈرۈش / قۇرۇلما تەھلىلى </td>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c); text-align: center;"><strong style="color:var(--article-accent, #3f8fd4);"> ئېچىڭ </strong></td>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);"> قايسى يوللارنى چىقىرىۋەتكەنلىكىنى كۆرۈپ، يولدىن چىقىشنى ۋاقتىدا بايقايسىز </td>
+</tr>
+<tr>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe); color:var(--article-ink, #12324c);"> كۆپ باسقۇچلۇق قورال چاقىرىش / TODO رەتلەش </td>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe); color:var(--article-ink, #12324c); text-align: center;"><strong style="color:var(--article-accent, #3f8fd4);"> ئېچىڭ </strong></td>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe); color:var(--article-ink, #12324c);"> بۇ قورالنى نېمىشقا چاقىرغانلىقى، تەرتىپنى نېمىشقا شۇنداق تىزغانلىقىنى كۆرىسىز </td>
+</tr>
+<tr>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);"> كۈندىلىك سوئال-جاۋاب / تېكىست تۈزىتىش / تەرجىمە </td>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c); text-align: center;"><strong style="color:var(--article-muted, #999);"> تاقاڭ </strong></td>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);"> تېزراق، token ئازراق كېتىدۇ، ئىشلىتىش چاققانراق </td>
+</tr>
+<tr>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe); color:var(--article-ink, #12324c);"> مودېل ئېنىقلا تەكرار گەپ دەۋرىگە كىرىپ قالغاندا </td>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe); color:var(--article-ink, #12324c); text-align: center;"><strong style="color: #cf1322;"> تاقاڭ </strong></td>
+<td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe); color:var(--article-ink, #12324c);"> ئالدى بىلەن نەتىجىنى ئېلىڭ؛ كونتېكست ۋە ۋاقىتنى كۆيدۈرۈپ تۈگىتىشكە قويماڭ </td>
+</tr>
+</tbody>
+</table>
+
+<p style="margin: 8px 0;"> مېنىڭ ئادىتىم: <strong style="color:var(--article-accent, #3f8fd4);"> كۆڭۈلدىكى ھالەتتە تاقاق، مۇرەككەپ مەسىلىدە ئېچىش </strong> . بۇنداقتا يەرلىك مودېل توختىماي ئۆز-ئۆزىگە كۈچەپ ئولتۇرىدىغان تەپەككۇر ماشىنىسىدىن كۆرە، ئىشەنچلىك قورالغا ئوخشايدۇ. </p>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;"> ئەمەلىي سىناق: ئوخشاش سوئالدا ئۈچ مودېلنىڭ تەپەككۇر ئۇسلۇبى قانداق پەرقلىنىدۇ؟ </h2>
+
+<p style=”margin: 8px 0;”> پەقەت benchmark قا قاراش بىلەن ھېس قىلغىلى بولمايدۇ. مەن بىر  <strong style=”color: #3f8fd4;”>M1 MacBook Pro 16GB</strong> بىلەن HexClaw دا ئۈچ مودېلنى ئىجرا قىلدىم؛ ئوخشاش بىر خەنزۇچە بىلىم تۇزىقى سوئالىدا چوڭقۇر تەپەككۇرنى ئېچىپ، ھەر بىرىنىڭ قانداق ئويلىغانلىقىنى كۆردۈم. </p>
+
+<p style=”border-left: 3px solid #5fb3ea; padding: 10px 16px; margin: 16px 0; background: #f4fbff; color: #3f5f7b; font-size: 14px; border-radius: 0 6px 6px 0;”><strong style=”color: #3f8fd4;”> سوئال: </strong> لىن دەييۈنىڭ مەجنۇنتالنى يىلتىزىدىن قومۇرۇش ھېكايىسى قايسى كىتابتىن ئېلىنغان؟ </p>
+
+<p style=”margin: 8px 0;”> بۇ سوئالنىڭ توغرا جاۋابى «قىزىل راۋاقتىكى چۈش»مۇ، «سۇ بويىدا»مۇ ئەمەس، بەلكى <strong style=”color: #3f8fd4;”> بۇ ۋەقەنىڭ ئەسلا مەۋجۇت ئەمەسلىكىنى كۆرسىتىش </strong> — مەجنۇنتالنى يىلتىزىدىن قومۇرۇش «سۇ بويىدا» دىكى لۇ جىشېننىڭ ۋەقەسى؛ لىن دەييۈ «قىزىل راۋاقتىكى چۈش»تىكى پېرسوناژ، ئىككىسىنىڭ ئالاقىسى يوق. بۇ تۇزاقنى تونۇش-تونۇماسلىق مودېلنىڭ ئويدۇرۇشقا قارشى تۇرۇش ئىقتىدارىنى بىۋاسىتە كۆرسىتىدۇ. </p>
+
+<p style=”margin: 8px 0;”><strong style=”color: #3f8fd4;”> qwen3.5:9b（توغرا جاۋاب بەردى）: </strong> پىكىر زەنجىرى قىسقا، «بۇ ئىش يوق»لۇقىنى تېز تونۇدى، يەنە ئىككى پېرسوناژنىڭ مەنبەسىنى جەدۋەل قىلىپ ئايرىدى. گويا بىر <strong style=”color: #3f8fd4;”> سوئالنى ئەستايىدىل ئوقۇيدىغان مۇنەۋۋەر ئوقۇغۇچى </strong> — ئالدى بىلەن سوئالنىڭ ئۆزىدە مەسىلە بار-يوقلۇقىنى جەزملەپ، ئاندىن جاۋاب بەردى. </p>
+
+<p style=”margin: 8px 0;”><strong style=”color: #3f8fd4;”> Gemma4:e4b（خاتا جاۋاب بەردى）: </strong> پىكىر زەنجىرىدە تۆتىنچى قەدەمدىن باشلاپ يولدىن چىققانلىقى كۆرۈندى؛ ھېكايىنى بىۋاسىتە «قىزىل راۋاقتىكى چۈش»كە باغلاپ، «بۇ ئىش راستىنلا بارمۇ؟» دەپ سورىمىدى، ئاخىرىدا <strong style=”color: #3f8fd4;”> ناھايىتى ئىشەنچلىك كۆرۈنىدىغان خاتا جاۋاب </strong> بەردى. بۇ دەل بىر ئىشنى چۈشەندۈرىدۇ: <strong style=”color: #3f8fd4;”> تەپەككۇر جەريانىنى كۆرەلمىسىڭىز، ئۇنىڭ ئويدۇرۇۋاتقانلىقىنى بىلمەيسىز </strong> . پىكىر زەنجىرىنى ئاچقاندىن كېيىن، قايسى قەدەمدە خاتالاشقانلىقى ئېنىق كۆرۈنىدۇ. </p>
+
+<p style=”margin: 8px 0;”><strong style=”color: #3f8fd4;”> deepseek-r1:14b（توغرا جاۋاب بەردى）: </strong> پىكىر زەنجىرى ئەڭ ئۇزۇن؛ ئالدى بىلەن ئىككى ئەسەرنىڭ ۋەقەلىرىنى ئەسلەپ، «مەجنۇنتالنى قومۇرۇش»نىڭ نەدىن كەلگەنلىكىنى قەدەممۇ-قەدەم تەكشۈردى، ئاندىن لىن دەييۈنىڭ بۇ ئىشنى قىلالمايدىغانلىقىنى جەزملەشتۈردى. ئەڭ ئوخشايدىغىنى <strong style=”color: #3f8fd4;”> پۈتۈن پىكىر يولىنى ئالدىڭىزغا يېيىپ بېرىش </strong> — سەل ئاستا، ئەمما پىكىر يولى ئەڭ تولۇق، خۇلاسىسىمۇ ئەڭ ئىشەنچلىك. </p>
+
+<p style=”margin: 8px 0;”> بۇ گۇرۇپپا سىناقنىڭ ئەڭ قىممەتلىك يېرى «ئىككىسى توغرا، بىرى خاتا» دېگەن نەتىجە ئەمەس، بەلكى: <strong style=”color: #3f8fd4;”> تەپەككۇرنى كۆرەلەيدىغاندا، توغرىمۇ خاتامۇ چۈشەندۈرگىلى بولىدۇ </strong> . توغرا جاۋابنىڭ نېمىشقا توغرىلىقىنى، خاتا جاۋابنىڭ قايسى قەدەمدىن ئېغىغانلىقىنى بىلىسىز. پىكىر زەنجىرى يۇتۇۋېتىلسە، پەقەت ئۈچ ئىشەنچلىك كۆرۈنىدىغان ئاخىرقى جاۋابنى كۆرىسىز؛ بىرى خاتا، ئەمما پەرقلەندۈرەلمەيسىز. </p>
+
+<figure><img src="../../assets/blog/thinking-chain-local-models-wechat-image/001.png" alt="" width="2880" height="1800" loading="lazy" decoding="async"></figure>
+<p style=”margin-top: 4px; padding: 0 6px; color: #667085; font-size: 13px; line-height: 1.6;”> Qwen 3.5-9B: تۇزاقنى تونۇپ، ئىككى پېرسوناژنىڭ مەنبەسىنى جەدۋەلدە ئايرىدى </p>
+
+<figure><img src="../../assets/blog/thinking-chain-local-models-wechat-image/002.png" alt="" width="2880" height="1800" loading="lazy" decoding="async"></figure>
+<p style=”margin-top: 4px; padding: 0 6px; color: #667085; font-size: 13px; line-height: 1.6;”> Gemma 4 E4B: تۆتىنچى قەدەمدىن يولدىن چىققانلىقى پىكىر زەنجىرىدە كۆرۈندى، ئاخىرىدا خاتا جاۋاب بەردى </p>
+
+<figure><img src="../../assets/blog/thinking-chain-local-models-wechat-image/003.png" alt="" width="2880" height="1800" loading="lazy" decoding="async"></figure>
+<p style=”margin-top: 4px; padding: 0 6px; color: #667085; font-size: 13px; line-height: 1.6;”> DeepSeek-R1-14B: پىكىر زەنجىرى ئەڭ ئۇزۇن؛ ئىككى ئەسەرنى قەدەممۇ-قەدەم تەكشۈرۈپ، «بۇ ئىش يوق»لۇقىنى جەزملەشتۈردى </p>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;"> باشقا يەرلىك خېرىدارلارغا سېلىشتۇرغاندا، HexClaw قانداق قوشۇمچە ئىش قىلدى؟ </h2>
+
+<p style="margin: 8px 0;"> ئالدى بىلەن بىر خاتا چۈشەنچىنى ئايدىڭلاشتۇرايلى: <strong style="color:var(--article-accent, #3f8fd4);"> ھازىر «يەرلىك مودېلنى قوللاش»نىڭ ئۆزى كەم ئۇچرايدىغان ئىقتىدار ئەمەس </strong>。</p>
+
+<p style="margin: 8px 0;"> OpenClaw، Ollama ۋە LM Studio نى قوللايدۇ؛ يەرلىك مودېل، قورال چاقىرىش ۋە كونتېكست قىسقارتىشنى ئىجرا قىلالايدۇ. Open WebUI reasoning كۆرسىتىش ۋە web ئورۇنلاشتۇرۇشتا پىشقان؛ Cherry Studio نىڭ كۆپ مودېلنى توپلاپ ئىشلىتىش تەجرىبىسىمۇ ياخشى. ھېچقايسىسى «يەرلىك مودېلنى ئىجرا قىلالمايدىغان» ئەمەس. </p>
+
+<p style="margin: 8px 0;"> ھەقىقىي پەرق <strong style="color:var(--article-accent, #3f8fd4);"> مەھسۇلاتنىڭ مۇھىم نۇقتىسى </strong> دا: </p>
+
+<ul style="padding-left: 18px; margin: 8px 0;">
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">OpenClaw</strong>  تېرمىنال Agent ۋە ئۇزۇن كونتېكستلىق خىزمەت ئېقىمىغا مايىل </li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">Open WebUI</strong>  Web ئورۇنلاشتۇرۇش ۋە ئومۇمىي سۆھبەت كىرىش ئېغىزىغا مايىل </li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">Cherry Studio</strong>  كۆپ مودېلغا ئۇلاش ۋە بىردەك ئىشلىتىش تەجرىبىسىگە مايىل </li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">HexClaw</strong>  ئۈستەل يۈزى، يەرلىك پىكىر يۈرگۈزۈش ئېقىمى ۋە «تەپەككۇر جەريانى + قورال زەنجىرى + بىخەتەرلىك قوغدىغۇچىسى»نىڭ تولۇق ئۆزئارا تەسىرىگە مايىل </li>
+</ul>
+
+<p style="margin: 8px 0;"> شۇڭا بۇ ماقالە «باشقىلار قىلالمايدۇ، پەقەت HexClaw قىلالايدۇ» دېمەيدۇ؛ دېمەكچى بولغىنى: <strong style="color:var(--article-accent, #3f8fd4);"> يەرلىك پىكىر يۈرگۈزۈش ئېقىمىنىڭ تولۇقلۇقىغا ئەھمىيەت بەرسىڭىز، HexClaw بۇنى چوڭقۇرراق قىلغان </strong>。</p>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;"> يەرلىك پىكىر يۈرگۈزۈش مودېللىرىدىكى تۆت چۇقۇرنى ئالدى بىلەن بېسىپ باقتىم </h2>
+
+<p style="margin: 8px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> 1-چۇقۇر: پىكىر يۈرگۈزۈش دەۋرىدىن چىقالماسلىق. </strong> مودېل قايتا-قايتا «توختا، قايتا ئويلاپ باقاي» دەپ، ئاخىرىدا ھېچقانداق ئاخىرقى جاۋاب بەرمەيدۇ. شۇڭا ۋاقىتتىن ئېشىشنى ئۈزۈش ۋە ئاپتوماتىك تۆۋەنلىتىش كېرەك. </p>
+
+<p style="margin: 8px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> 2-چۇقۇر: بەلگە فورماتلىرىنىڭ پارچە-پارچىلىقى. </strong> سىز  <code dir="ltr" style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">&lt;think&gt;</code>  نى قوللىساملا بولدى دەپ ئويلايسىز، ئەمما مودېل، قېلىپ ۋە پىكىر يۈرگۈزۈش ھالىتى ئوخشىمىسا، چىقىرىش فورماتىمۇ بىردەك بولمايدۇ. </p>
+
+<p style="margin: 8px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> 3-چۇقۇر: كونتېكست سىز ئويلىغاندىن تېز تولىدۇ. </strong> پىكىر زەنجىرى + قورال كىرگۈزۈش-چىقىرىشى بىرنەچچە مۇرەككەپ سۆھبەتتىلا كونتېكستنى تولدۇرىدۇ. قىسقارتىش ئىستراتېگىيەسى بولمىسا، يەرلىك مودېل تېزلا «ئۇنتۇپ قالىدۇ». </p>
+
+<p style="margin: 8px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> 4-چۇقۇر: سوغۇق قوزغىلىش كېچىكىشى تۇنجى تەسىراتنى بۇزىدۇ. </strong> چوڭ مودېلنىڭ ئىچكى ساقلىغۇچقا تۇنجى يۈكلىنىشىدە ئون نەچچە سېكۇنت كۈتۈش نورمال. HexClaw كۆڭۈلدىكى مودېلنى ئالدىن قىزىتىپ، ئىشلەتكۈچىنىڭ تۇنجى ئۇچۇردا ئەپ قېتىپ قالدىمۇ دەپ ئويلىماسلىقىنى كۆزلەيدۇ. </p>
+
+<p style="border-left: 3px solid #5fb3ea; padding: 10px 16px; margin: 16px 0; background:var(--article-panel, #f4fbff); color:var(--article-secondary, #3f5f7b); font-size: 14px; border-radius: 0 6px 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> «يەرلىك مودېل قولاي ئەمەس» دېگەن نۇرغۇن شىكايەتنىڭ ئاخىرقى سەۋەبى مودېل ئەمەس، ئىنژېنېرلىق تەپسىلاتلىرىنىڭ تولۇق بولمىغانلىقى. </strong></p>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;"> پىكىر يۈرگۈزۈش + قورال: يەرلىك مودېلنىڭ ھەقىقەتەن Agent قا ئوخشاش پەيتى </h2>
+
+<p style="margin: 8px 0;"> تەپەككۇر جەريانىنىڭ ھەقىقىي قىممىتى «قانچە token كۆرسەتتى» دە ئەمەس، بەلكى <strong style="color:var(--article-accent, #3f8fd4);"> كېيىنكى ھەرىكەتكە يېتەكچىلىك قىلالامدۇ؟ </strong>。</p>
+
+<p style="margin: 8px 0;"> HexClaw ماتورى كۆپ باسقۇچلۇق قورال دەۋرىنى قوللايدۇ. مودېل ئالدى بىلەن ئىزدەپ، ئوقۇپ، تەھلىل قىلىپ، ئۆزگەرتىپ، ئاندىن تەكشۈرۈپ، ۋەزىپىنى قەدەممۇ-قەدەم تاماملىيالايدۇ؛ بىر قورالنى چاقىرىپلا ئالدىراپ ئاخىرلاشتۇرمايدۇ. </p>
+
+<p style="margin: 8px 0;"> مەسىلەن، مۇنداق دەيسىز: <strong style="color:var(--article-accent, #3f8fd4);"> «تۈر ئىچىدىكى بارلىق TODO لارنى تېپىپ، مۇھىملىق دەرىجىسى بويىچە ئىش تىزىملىكى قىلىپ بەر». </strong></p>
+
+<ol style="padding-left: 20px; margin: 6px 0;">
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> تەپەككۇر: </strong> ئالدى بىلەن TODO / FIXME / HACK ئىزدەش </li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> قورال چاقىرىش: </strong> ھۆججەت مەزمۇنىنى ئىزدەش </li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> تەپەككۇر: </strong> كونتېكستقا قاراپ قايسىسى بىخەتەرلىك خەۋپى، قايسىسى ئىقتىدار كەمچىلىكى، قايسىسى پەقەت كود ياخشىلاش ئىكەنلىكىنى ئايرىش </li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> قورال چاقىرىش: </strong> مۇھىم ھۆججەت بۆلەكلىرىنى ئوقۇش </li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> چىقىرىش: </strong> دەرىجىلەنگەن ئىش تىزىملىكى، ھۆججەت ئورنى ۋە تەكلىپلەر </li>
+</ol>
+
+<p style="margin: 8px 0;"> پۈتۈن جەرياندا ھەر قەدەمنى نېمىشقا شۇنداق قىلغانلىقىنى كۆرەلەيسىز. پىكىر يۈرگۈزۈش مودېلى بىلەن ئاددىي سۆھبەت مودېلىنىڭ ئەڭ چوڭ تەجرىبە پەرقى: <strong style="color:var(--article-accent, #3f8fd4);"> ئۇ سىزگە جاۋاب بېرىپلا قالماي، قارار يولىنىمۇ كۆرسىتىدۇ </strong>。</p>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;"> يەرلىك پىكىر يۈرگۈزۈشنىڭ بىخەتەرلىك ئاستى چېكى: ئويلىيالايدۇ، ئىشلىيەلەيدۇ، ئەمما قالايمىقان ئىش قىلالمايدۇ </h2>
+
+<p style="margin: 8px 0;"> پىكىر يۈرگۈزۈش مودېلى «ئويلايدۇ»، قورال چاقىرىش «ئىشلەيدۇ». ئىككىسى قوشۇلغاندا ئىقتىدار كۈچەيگەن بىلەن خەۋپمۇ چوڭىيىدۇ. </p>
+
+<p style="margin: 8px 0;"> يەرلىك كىچىك مودېللارنىڭ كۆرسەتمىگە ئەگىشىش ئىقتىدارى ئەڭ كۈچلۈك بۇلۇت مودېللىرىدىن ئاجىزراق. پىكىر يۈرگۈزۈشتە يولدىن چىقسا، قوغدىغۇچى بولمىغاندا ھەقىقەتەن خاتا ئىش قىلالايدۇ. </p>
+
+<p style="margin: 8px 0;"> HexClaw نىڭ ئۇسۇلى ئېنىق: </p>
+
+<ul style="padding-left: 18px; margin: 8px 0;">
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> قورال تەستىقى </strong> : خەۋپ دەرىجىسىگە ئايرىلىدۇ، سەزگۈر ۋە خەتەرلىك مەشغۇلات تەستىقتىن ئۆتۈشى كېرەك </li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> خامچوت زاپاس قوغدىشى </strong> : Token، ۋاقىت ۋە تەننەرختىن ئىبارەت ئۈچ مۇداپىئە پىكىر زەنجىرىنىڭ چەكسىز كېڭىيىشىنى توسىدۇ </li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> قۇم ساندۇقىدا ئىجرا قىلىش </strong> : كود ئايرىلغان مۇھىتتا ئىجرا بولىدۇ، ھوقۇقتىن ھالقىش ۋە خاتا مەشغۇلات خەۋپىنى ئازايتىدۇ </li>
+</ul>
+
+<p style="border-left: 3px solid #5fb3ea; padding: 10px 16px; margin: 16px 0; background:var(--article-panel, #f4fbff); color:var(--article-secondary, #3f5f7b); font-size: 14px; border-radius: 0 6px 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> بىر جۈملە بىلەن: </strong> يەرلىك مودېلنىڭ ئاجىز بولۇشى قورقۇنچلۇق ئەمەس، قوغدىغۇچىسى يوقلۇقى قورقۇنچلۇق. HexClaw ئىشەنچ بىلەن قول قويۇپ بېرىش، ئەمما كونترولنى يوقاتماسلىقنى كۆزلەيدۇ. </p>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;"> ھەقسىز ۋە مەخپىي بولۇش شوئارلا ئەمەس، ئىنژېنېرلىق پايدىسى </h2>
+
+<p style="margin: 8px 0;"> مۇرەككەپ ۋەزىپىلەر ئۈچۈن داۋاملىق بۇلۇت پىكىر يۈرگۈزۈش مودېلى ئىشلەتسىڭىز، «تەپەككۇر token لىرى قىممەت» دېگەننى ھېس قىلغان بولۇشىڭىز كېرەك. </p>
+
+<p style="margin: 8px 0;"> يەرلىك مودېل ئەڭ كۈچلۈك بۇلۇت مودېلىدەك ئەقىللىق ئەمەس، ئەمما بۇلۇت ئالماشتۇرالمايدىغان ئىككى ئارتۇقچىلىقى بار: </p>
+
+<ul style="padding-left: 18px; margin: 8px 0;">
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> سانلىق مەلۇماتىڭىز كومپيۇتېردىن چىقمايدۇ. </strong> كود، توختام، خاتىرە ۋە خېرىدار ماتېرىيالى ئۈچۈن «سىرتقا ئەۋەتسەم قائىدىگە ئۇيغۇنمۇ؟» دەپ ئويلاش ھاجەت ئەمەس. </li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> تەننەرخ ئاساسەن توك ھەققىلا. </strong> ھەر قەدەمدە ھېسابلاپ ئولتۇرماي، كۆپرەك سىناش ۋە بىرنەچچە نۆۋەت ئويلاشقا يول قويسىڭىز بولىدۇ. </li>
+</ul>
+
+<p style="margin: 8px 0;"> شۇڭا خىزمەت ئېقىمىنىڭ بىر قىسمىنى يەرلىك مودېلغا تېخىمۇ خۇشاللىق بىلەن تاپشۇرىدىغان بولدۇم؛ ئۇ مۇتلەق ئەڭ كۈچلۈك بولغانلىقى ئۈچۈن ئەمەس، بەلكى <strong style="color:var(--article-accent, #3f8fd4);"> ئاخىرى يېتەرلىك كۈچلۈك، شۇنىڭ بىلەن بىللە ئەرزان، مەخپىي ۋە كونترول قىلغىلى بولىدىغان بولغانلىقى ئۈچۈن </strong>。</p>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;"> باشلىماقچى بولسىڭىز، بۇ يۈرۈشلۈكنى مۇنداق ئوقۇڭ </h2>
+
+<p style="margin: 8px 0;"> HexClaw يۈرۈشلۈك ماقالىلىرىنى تۇنجى كۆرگەن بولسىڭىز، بۇ ماقالىدىن باشلاپلا قىينىلىشنىڭ ھاجىتى يوق. تۆۋەندىكى تەرتىپنى تەۋسىيە قىلىمەن: </p>
+
+<ol style="padding-left: 20px; margin: 6px 0;">
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> ئالدى بىلەن باشلاش ماقالىسى: </strong> ئەپنى ئورنىتىپ، Ollama نى ئىجرا قىلىپ، تۇنجى ئۇچۇرنى ئەۋەتىش </li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> ئاندىن قۇرۇلما ماقالىسى: </strong> ئۇنىڭ ئاددىي سۆھبەت قېپى ئەمەس، تولۇق Agent سىستېمىسى ئىكەنلىكىنى چۈشىنىش </li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> ئاندىن Skill ماقالىسى: </strong> قوللىنىش چېگراسى ۋە كېڭەيتىش ئۇسۇلىنى چۈشىنىش </li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> ئاخىرى بۇ ماقالىگە قايتىش: </strong> يەرلىك پىكىر يۈرگۈزۈش زەنجىرىنى تولۇقلاش </li>
+</ol>
+
+<p style="margin: 16px 0; padding: 16px; border-radius: 8px; background:var(--article-panel, #f4fbff); border: 1px solid var(--article-border, #edf7ff);">
+<strong style="color:var(--article-accent, #3f8fd4);"> تولۇق دەرسلىك + قاتتىق دېتال تاللاش + مودېل تەۋسىيەسى: </strong><a href="https://mp.weixin.qq.com/s/PdJRKkH4qiBS-IZBifbuag" style="color:var(--article-accent, #5fb3ea); text-decoration: none;"> «HexClaw تولۇق قوللانمىسى: 5 مىنۇتتا نۆلدىن ئىش قىلىدىغان يەرلىك AI Agent غا» </a>
+</p>
+
+<p style="margin: 8px 0;"> ئورناتقاندىن كېيىن بىر پىكىر يۈرگۈزۈش مودېلىنى تاللاپ، بىۋاسىتە پاراڭلاشسىڭىز بولىدۇ. ئەگەر <strong style="color:var(--article-accent, #3f8fd4);"> تولۇق پىكىر زەنجىرىنى كۆرمەكچى بولسىڭىز </strong> ، كىرگۈزۈش رامكىسىنىڭ ئاستىدىكى چوڭقۇر تەپەككۇر ئالماشتۇرغۇچىنى ئېچىڭ؛ مودېلنىڭ ئالدى بىلەن تەپەككۇرنى ئېچىپ، قەدەممۇ-قەدەم پىكىر يۈرگۈزۈپ، ئاندىن ئاخىرقى جاۋابنى بەرگەنلىكىنى كۆرىسىز. </p>
+
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;"> بۇ چارە كىمگە ماس؟ </h2>
+
+<p style="margin: 8px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> سىزگە ماس، ئەگەر: </strong> 16GB+ Mac ياكى 8GB+ گرافىك ئىچكى ساقلىغۇچلۇق PC بولسا، سەزگۈر سانلىق مەلۇماتنى بۇلۇتقا ئەۋەتىشكە قولاي بولمىسا، AI نىڭ پاراڭلىشىپلا قالماي ھۆججەت ئىزدەپ، كود ئۆزگەرتىپ، قوليازما ئىجرا قىلىشىنى خالىسىڭىز ياكى Ollama ئىشلىتىۋاتقان بولسىڭىزمۇ ھازىرقى خېرىدارغا قانائەتلەنمىسىڭىز. </p>
+
+<p style="margin: 8px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> ئانچە ماس ئەمەس، ئەگەر: </strong> پەقەت يېنىك سۆھبەت قورالى لازىم بولسا، تەننەرخكە قارىماي ئەڭ ئالدىنقى پىكىر يۈرگۈزۈش سۈپىتىنى قوغلاشسىڭىز（GPT-5.4 ياكى Claude Opus 4.6 نى بىۋاسىتە ئىشلىتىڭ）ياكى ئۈسكۈنىنىڭ ئىچكى ساقلىغۇچى 8GB دىن تۆۋەن بولسا. </p>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;"> ئاخىرقى سۆز: يەرلىك پىكىر يۈرگۈزۈش «ئىجرا بولۇش»تىن «ئىشلىتىشكە ياراش»قا يەتتى </h2>
+
+<p style="margin: 8px 0;"> بىر يىل بۇرۇن يەرلىك پىكىر يۈرگۈزۈش مودېللىرىنى ئويۇنچۇققا ئوخشىتاتتىم. ھازىر ئۇنى ھەقىقىي خىزمەت ئېقىمىغا قويىدىغان بولدۇم. </p>
+
+<p style="margin: 8px 0;"> بۇ ئۇنىڭ بۇلۇتتىن ھەممە جەھەتتە ئېشىپ كەتكەنلىكىدىن ئەمەس؛ نۇرغۇن ۋەزىپىگە ئەڭ كۈچلۈك مودېلنىڭ ھاجىتى يوق، ئۇلارغا لازىمى: <strong style="color:var(--article-accent, #3f8fd4);"> يېتەرلىك ئەقىللىق، ھەر ۋاقىت ئىشلىگىلى بولىدىغان، سانلىق مەلۇمات كومپيۇتېردىن چىقمايدىغان، تەننەرخى قوبۇل قىلغىلى بولىدىغان ۋە جەريانى كۆرۈنىدىغان بولۇش </strong>。</p>
+
+<p style="margin: 8px 0;"> Qwen 3.5، Gemma 4 ۋە DeepSeek-R1 «مودېل تەرەپ»تىكى مەسىلىنى زور قەدەم ئىلگىرى سۈردى. HexClaw تولۇقلىماقچى بولغىنى قالغان يېرىمى: <strong style="color:var(--article-accent, #3f8fd4);"> يەرلىك پىكىر يۈرگۈزۈشنىڭ ئىنژېنېرلىق زەنجىرىنى تولۇقلاش </strong> ، شۇنىڭ بىلەن سىز پەقەت «ئامال قىلىپ ئىجرا قىلغان» ئەمەس، «ھەقىقەتەن ئىشقا سالغان» بولىسىز. </p>
+
+<p style="margin: 8px 0;"> Ollama نى ئىشلىتىۋاتقان بولسىڭىز، بىر قېتىم سىناپ بېقىڭ: ئاخىرقى جاۋابنىلا كۆرمەي، <strong style="color:var(--article-accent, #3f8fd4);"> تەپەككۇر جەريانىنى ئېچىپ كۆرۈڭ </strong> . مودېلنىڭ ھەقىقەتەن پىكىر يۈرگۈزۈۋاتقانلىقى ياكى پەقەت بىلىدىغاندەك كۆرسىتىشكە ئۇستا بولغانلىقىنى تېخىمۇ ئاسان باھالايسىز. </p>
+
+
+
+<p class="blog-brand-footer" data-blog-brand-footer="ug" data-blog-brand-overrides="{}" style="text-align: center; color: var(--article-muted, #7b8fa3); font-size: 13px; margin: 16px 0 0; line-height: 2;">
+<strong style="color: var(--article-ink, #12324c); font-size: 14px;">HexClaw ھېشى AI</strong><br/>
+يەرلىكتە ياكى بۇلۇتتا ئورۇنلاشتۇرۇش · سانلىق مەلۇماتنى ئۆزىڭىز باشقۇرۇش · ئوچۇق كودلۇق ۋە ھەقسىز يۇمشاق دېتال<br/>
+<a href="https://hexclaw.net" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">تور بېكەت: <bdi dir="ltr">hexclaw.net</bdi></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://github.com/hexagon-codes" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">GitHub: <bdi dir="ltr">hexagon-codes</bdi></a><br/>
+<a href="https://weibo.com/u/4097207240" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">Weibo: <bdi dir="ltr">@HexClaw</bdi></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">X: <bdi dir="ltr">@hexclawapp</bdi></a><br/>
+<a href="mailto:ai@hexclaw.net" style="color: var(--article-muted, #999); text-decoration: none;">ئېلخەت: <bdi dir="ltr">ai@hexclaw.net</bdi></a>
+</p>
+    </article>
+
+
+
+    <nav class="blog-series-nav" aria-label="ئالدىنقى ۋە كېيىنكى ماقالە">
+      <a href="/ug/blog/cyber-niuma-cron-sandbox" class="blog-nav-card prev">
+  <span class="blog-nav-label">&larr;  ئالدىنقى ماقالە </span>
+  <span class="blog-nav-title"> HexClaw نىڭ &quot; سىبېر ئىش ماشىنىسى &quot; بولۇش ھېكايىسى: بىر جۈملىنى ئۆزىنى ئەسلىگە كەلتۈرىدىغان قۇم ساندۇقى قوليازمىسىغا ئايلاندۇرۇپ، 7×24 سىز ئۈچۈن ئىشلىتىش </span>
+</a>
+      <a href="/ug/blog/uyghur-localization" class="blog-nav-card next">
+  <span class="blog-nav-label"> كېيىنكى ماقالە  &rarr;</span>
+  <span class="blog-nav-title"> AI Agent نى ئۇيغۇرچە سۆزلىتىش: HexClaw v0.4.0 نىڭ يەرلىكلەشتۈرۈش ئەمەلىيىتى </span>
+</a>
+    </nav>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-main">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-col-title">مەھسۇلات</div>
+        <a href="/ug/#download">ئۈستەلئۈستى نۇسخىسىنى چۈشۈرۈش</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="/ug/changelog">يېڭىلىنىش خاتىرىسى</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">ئىجادكار</div>
+        <a href="/ug/docs/">ھۆججەتلەر مەركىزى</a>
+        <a href="/ug/blog/">تېخنىكا بىلوگى</a>
+        <a href="/ug/docs/getting-started">تېز باشلاش</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">Apache-2.0</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">جامائەت</div>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/issues" target="_blank" rel="noopener noreferrer">Issues</a>
+        <a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer">Twitter / X</a>
+        <a href="mailto:ai@hexclaw.net">بىز بىلەن ئالاقىلىشىش</a>
+        <a href="mailto:support@hexclaw.net">سوئال-پىكىر</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">ھەققىدە</div>
+        <a href="/ug/about">بىز ھەققىدە</a>
+        <a href="/ug/privacy">شەخسىيەت سىياسىتى</a>
+        <a href="/ug/terms">ئىشلىتىش شەرتلىرى</a>
+        <a href="/ug/third-party-ai-services">ئۈچىنچى تەرەپ AI مۇلازىمىتى</a>
+      </div>
+    </div>
+    <div class="footer-wechat">
+      <img width="430" height="430" loading="lazy" decoding="async" src="../../assets/brand/wechat-qr.jpg" alt="HexClaw ۋېيشىن رەسمىي ھېسابات QR كودى">
+      <span class="footer-wechat-label">ۋېيشىن رەسمىي ھېساباتى</span>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">&copy; 2025&ndash;2026 hexagon-codes</span>
+  </div>
+</footer>
+<script src="../../assets/js/theme.js?v=2e4a1828feef"></script>
+<script src="../../assets/js/docs-nav.js?v=5a103861aec2"></script>
+<button type="button" class="back-to-top" id="backToTop" aria-label="ئۈستىگە قايتىش" title="ئۈستىگە قايتىش">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg>
+  <span>ئۈستىگە</span>
+</button>
+
+<script src="../../assets/js/blog.js?v=c72e1db5a6ec"></script>
+</body>
+</html>

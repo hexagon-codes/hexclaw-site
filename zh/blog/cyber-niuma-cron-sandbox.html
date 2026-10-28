@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/favicon-32.png">
 <title>河蟹 AI 的&quot;赛博牛马&quot;养成记：把一句话编译成会自愈的沙箱脚本，7×24 替你干活｜HexClaw 技术博客</title>
-<meta name="description" content="为什么“编译一次”好过“每次推理”——结构化沙箱 × 任务分流 × 失败自愈的一份工程笔记。把重复的活交出去，连出错都不用你管。">
+<meta name="description" content="把一句自然语言编译成一段会自愈的沙箱脚本，并自动判定这件事该被脚本跑、还是被 Agent 跑。">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="theme-color" content="#ffffff">
 <meta property="og:site_name" content="河蟹 AI">
 <meta property="og:type" content="article">
 <meta property="og:title" content="河蟹 AI 的&quot;赛博牛马&quot;养成记：把一句话编译成会自愈的沙箱脚本，7×24 替你干活｜HexClaw 技术博客">
-<meta property="og:description" content="为什么“编译一次”好过“每次推理”——结构化沙箱 × 任务分流 × 失败自愈的一份工程笔记。把重复的活交出去，连出错都不用你管。">
+<meta property="og:description" content="把一句自然语言编译成一段会自愈的沙箱脚本，并自动判定这件事该被脚本跑、还是被 Agent 跑。">
 <meta property="og:url" content="https://hexclaw.net/zh/blog/cyber-niuma-cron-sandbox">
 <meta property="og:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
 <meta property="og:image:alt" content="河蟹 AI 标志">
@@ -20,16 +20,20 @@
 <meta property="og:locale" content="zh_CN">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="河蟹 AI 的&quot;赛博牛马&quot;养成记：把一句话编译成会自愈的沙箱脚本，7×24 替你干活｜HexClaw 技术博客">
-<meta name="twitter:description" content="为什么“编译一次”好过“每次推理”——结构化沙箱 × 任务分流 × 失败自愈的一份工程笔记。把重复的活交出去，连出错都不用你管。">
+<meta name="twitter:description" content="把一句自然语言编译成一段会自愈的沙箱脚本，并自动判定这件事该被脚本跑、还是被 Agent 跑。">
 <meta name="twitter:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
 <meta name="twitter:image:alt" content="河蟹 AI 标志">
 <link rel="canonical" href="https://hexclaw.net/zh/blog/cyber-niuma-cron-sandbox">
+<link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/cyber-niuma-cron-sandbox">
+<link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/cyber-niuma-cron-sandbox">
+<link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/cyber-niuma-cron-sandbox">
+<link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/cyber-niuma-cron-sandbox">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "TechArticle",
-  "headline": "河蟹 AI 的&quot;赛博牛马&quot;养成记：把一句话编译成会自愈的沙箱脚本，7×24 替你干活",
-  "description": "为什么“编译一次”好过“每次推理”——结构化沙箱 × 任务分流 × 失败自愈的一份工程笔记。把重复的活交出去，连出错都不用你管。",
+  "headline": "河蟹 AI 的\"赛博牛马\"养成记：把一句话编译成会自愈的沙箱脚本，7×24 替你干活",
+  "description": "把一句自然语言编译成一段会自愈的沙箱脚本，并自动判定这件事该被脚本跑、还是被 Agent 跑。",
   "url": "https://hexclaw.net/zh/blog/cyber-niuma-cron-sandbox",
   "inLanguage": "zh-CN",
   "datePublished": "2026-06-24",
@@ -50,19 +54,19 @@
   "itemListElement": [
     {"@type": "ListItem", "position": 1, "name": "河蟹 AI", "item": "https://hexclaw.net/zh/"},
     {"@type": "ListItem", "position": 2, "name": "技术博客", "item": "https://hexclaw.net/zh/blog/"},
-    {"@type": "ListItem", "position": 3, "name": "河蟹 AI 的&quot;赛博牛马&quot;养成记：把一句话编译成会自愈的沙箱脚本，7×24 替你干活", "item": "https://hexclaw.net/zh/blog/cyber-niuma-cron-sandbox"}
+    {"@type": "ListItem", "position": 3, "name": "河蟹 AI 的\"赛博牛马\"养成记：把一句话编译成会自愈的沙箱脚本，7×24 替你干活", "item": "https://hexclaw.net/zh/blog/cyber-niuma-cron-sandbox"}
   ],
   "@id": "https://hexclaw.net/zh/blog/cyber-niuma-cron-sandbox#breadcrumb"
 }
 </script>
-<link rel="stylesheet" href="../../assets/css/docs-c647c829bf22.css">
-<link rel="stylesheet" href="../../assets/css/blog.css">
+<link rel="stylesheet" href="../../assets/css/docs-eb2895dd79c5.css">
+<link rel="stylesheet" href="../../assets/css/blog-a8e5008ac3d1.css">
 </head>
 <body class="blog-page blog-article-page">
 <a href="#main" class="skip-link">跳转到主要内容</a>
 <nav class="tn topnav" id="nav">
   <a href="/zh/" class="tn-b topnav-brand"><img width="72" height="72" src="../../assets/brand/hexclaw-icon-72.png" class="tn-l topnav-logo" alt="河蟹 AI"><span class="tn-n topnav-name">河蟹 AI</span></a>
-  <button type="button" class="tn-burger topnav-burger" aria-label="菜单" aria-expanded="false" aria-controls="primary-navigation"><span></span><span></span><span></span></button><div class="tn-r topnav-links" id="primary-navigation"><a href="/zh/">首页</a><a href="/zh/#cases">使用场景</a><a href="/zh/#features">产品能力</a><a href="/zh/#quickstart">开始使用</a><a href="/zh/#ecosystem">开源生态</a><a href="/zh/blog/" class="is-active">技术博客</a><a href="/zh/docs/">文档中心</a><div class="lang-menu" data-lang-menu><button type="button" class="lang-trigger" aria-haspopup="menu" aria-expanded="false" aria-label="切换语言"><svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 0 20"></path><path d="M12 2a15.3 15.3 0 0 0 0 20"></path></svg><span class="lang-current">中文</span><svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="lang-menu-list" role="menu"><a href="/zh/blog/cyber-niuma-cron-sandbox" role="menuitem" class="is-active" aria-current="true">中文</a><a href="/en/" role="menuitem">English</a><a href="/ug/" role="menuitem" lang="zh-CN" dir="ltr">维吾尔语</a></div></div><button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="切换主题"><svg class="ti-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="ti-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="nav-cta">GitHub <span class="nav-star-badge" id="gh-stars">&#9733;</span></a></div>
+  <button type="button" class="tn-burger topnav-burger" aria-label="菜单" aria-expanded="false" aria-controls="primary-navigation"><span></span><span></span><span></span></button><div class="tn-r topnav-links" id="primary-navigation"><a href="/zh/">首页</a><a href="/zh/#cases">使用场景</a><a href="/zh/#features">产品能力</a><a href="/zh/#quickstart">开始使用</a><a href="/zh/#ecosystem">开源生态</a><a href="/zh/blog/" class="is-active">技术博客</a><a href="/zh/docs/">文档中心</a><div class="lang-menu" data-lang-menu><button type="button" class="lang-trigger" aria-haspopup="menu" aria-expanded="false" aria-label="切换语言"><svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 0 20"></path><path d="M12 2a15.3 15.3 0 0 0 0 20"></path></svg><span class="lang-current">中文</span><svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="lang-menu-list" role="menu"><a href="/zh/blog/cyber-niuma-cron-sandbox" role="menuitem" class="is-active" aria-current="true">中文</a><a href="/en/blog/cyber-niuma-cron-sandbox" role="menuitem">English</a><a href="/ug/blog/cyber-niuma-cron-sandbox" role="menuitem" lang="zh-CN" dir="ltr">维吾尔语</a></div></div><button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="切换主题"><svg class="ti-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="ti-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="nav-cta">GitHub <span class="nav-star-badge" id="gh-stars">&#9733;</span></a></div>
 </nav>
 
 <main id="main" class="blog-main">
@@ -80,7 +84,6 @@
         <span class="blog-badge-series">自动化引擎</span>
       </div>
       <h1 class="blog-article-title">河蟹 AI 的&quot;赛博牛马&quot;养成记：把一句话编译成会自愈的沙箱脚本，7×24 替你干活</h1>
-      <p class="blog-article-subtitle">为什么“编译一次”好过“每次推理”——结构化沙箱 × 任务分流 × 失败自愈的一份工程笔记。把重复的活交出去，连出错都不用你管。</p>
       <div class="article-provenance-banner">
         <div class="provenance-left">
           <span class="provenance-origin-badge">微信公众号首发</span>
@@ -98,363 +101,361 @@
 
 <p style="margin: 16px 0;">"每天盯竞品动态、只把上次之后新增的整理好推到飞书""把几个信息源的新内容抓下来、收进知识库""把本地这堆文档归一遍、汇总成周报"——这些重复、机械、按点发生的活，过去散落在 cron 脚本、Zapier / IFTTT、和一堆没人愿意维护的胶水里。</p>
 
-<p style="margin: 8px 0;">AI Agent 出现之后，这类活的入口理应坍缩成一句话：<strong style="color: #3f8fd4;">你把意图说给它，剩下的拆解、执行、收尾它自己来</strong>。结果<strong style="color: #3f8fd4;">你说怎么处理就怎么处理</strong>——推给你、发到群里、存成文件都行；而其中最值钱的一种，是<strong style="color: #3f8fd4;">写回 Agent 自己的知识库和记忆</strong>，让它给自己喂数据、越跑越新、越用越懂你。说得糙一点，就是给自己养一个 7×24 不喊累、还会自己长本事的"赛博牛马"。</p>
+<p style="margin: 8px 0;">AI Agent 出现之后，这类活的入口理应坍缩成一句话：<strong style="color:var(--article-accent, #3f8fd4);">你把意图说给它，剩下的拆解、执行、收尾它自己来</strong>。结果<strong style="color:var(--article-accent, #3f8fd4);">你说怎么处理就怎么处理</strong>——推给你、发到群里、存成文件都行；而其中最值钱的一种，是<strong style="color:var(--article-accent, #3f8fd4);">写回 Agent 自己的知识库和记忆</strong>，让它给自己喂数据、越跑越新、越用越懂你。说得糙一点，就是给自己养一个 7×24 不喊累、还会自己长本事的"赛博牛马"。</p>
 
-<p style="margin: 8px 0;">从"说一句话"到"它常年靠谱地办成"，中间隔着一连串并不轻松的工程问题——这套引擎要做的，是<strong style="color: #3f8fd4;">把一句自然语言编译成一段会自愈的沙箱脚本，并自动判定这件事该被脚本跑、还是被 Agent 跑</strong>。</p>
+<p style="margin: 8px 0;">从"说一句话"到"它常年靠谱地办成"，中间隔着一连串并不轻松的工程问题——这套引擎要做的，是<strong style="color:var(--article-accent, #3f8fd4);">把一句自然语言编译成一段会自愈的沙箱脚本，并自动判定这件事该被脚本跑、还是被 Agent 跑</strong>。</p>
 
-<p style="margin: 8px 0;">这篇不讲"AI 能帮你做自动化"这种正确的废话，<strong style="color: #3f8fd4;">只拆一件事：要让 Agent 真正接管"定时干活"，工程上到底要解决什么</strong>。</p>
+<p style="margin: 8px 0;">这篇不讲"AI 能帮你做自动化"这种正确的废话，<strong style="color:var(--article-accent, #3f8fd4);">只拆一件事：要让 Agent 真正接管"定时干活"，工程上到底要解决什么</strong>。</p>
 
-<hr style="border: none; border-top: 1px solid #e0ecf5; margin: 28px 0;"/>
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
 
-<blockquote style="border-left: 3px solid #3f8fd4; padding: 14px 18px; margin: 20px 0; background: #f4fbff; color: #12324c; font-size: 14px; border-radius: 0 8px 8px 0; line-height: 1.85;">
-<strong style="color: #3f8fd4;">本文核心判断</strong><br/>
-让 Agent 接管定时任务，第一个、也是最关键的设计决策是：<strong style="color: #3f8fd4;">每次到点触发，到底要不要调一次大模型？</strong><br/>
-河蟹 AI 的答案是<strong style="color: #3f8fd4;">不要</strong>——创建任务时调一次 LLM，把你的话<strong style="color: #3f8fd4;">编译成一段脚本</strong>；之后每次执行，跑的是这段确定性的代码，运行期一次模型都不碰。<br/>
+<blockquote style="border-left: 3px solid #3f8fd4; padding: 14px 18px; margin: 20px 0; background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); font-size: 14px; border-radius: 0 8px 8px 0; line-height: 1.85;">
+<strong style="color:var(--article-accent, #3f8fd4);">本文核心判断</strong><br/>
+让 Agent 接管定时任务，第一个、也是最关键的设计决策是：<strong style="color:var(--article-accent, #3f8fd4);">每次到点触发，到底要不要调一次大模型？</strong><br/>
+河蟹 AI 的答案是<strong style="color:var(--article-accent, #3f8fd4);">不要</strong>——创建任务时调一次 LLM，把你的话<strong style="color:var(--article-accent, #3f8fd4);">编译成一段脚本</strong>；之后每次执行，跑的是这段确定性的代码，运行期一次模型都不碰。<br/>
 这一个决定，往下逼出了四个必须回答的问题。这篇文章就是这四个答案。
 </blockquote>
 
-<hr style="border: none; border-top: 1px solid #e0ecf5; margin: 28px 0;"/>
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
 
-<h2 style="font-size: 18px; font-weight: 700; color: #12324c; margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">先定一件事：编译一次，而不是每次推理</h2>
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">先定一件事：编译一次，而不是每次推理</h2>
 
-<p style="margin: 8px 0;">一个定时任务最朴素的 AI 实现是：<strong style="color: #3f8fd4;">每次到点，就把任务描述丢给大模型，让它现想现做</strong>。这条路能跑，但代价大得离谱——每次执行都是一轮完整的 LLM 调用：要花钱、要联网、慢，而且<strong style="color: #3f8fd4;">不确定</strong>。同一句"抓榜单"，今天抓对了，明天模型状态飘一点可能就抓歪了。一个每小时跑一次的任务，一个月就是 720 轮对话——而它干的不过是同一件死板的事。粗算一笔账：一轮按几千 token、主流云模型的价位，<strong style="color: #3f8fd4;">单这一个任务每月就是几块到几十块的"心跳开销"</strong>；多养几条、或者换成更高频的，账单线性往上涨。编译方案把这块<strong style="color: #3f8fd4;">直接归零</strong>——只剩创建时那一次。（这是数量级估算，不是实测；真实数字随模型与 token 量浮动。）</p>
+<p style="margin: 8px 0;">一个定时任务最朴素的 AI 实现是：<strong style="color:var(--article-accent, #3f8fd4);">每次到点，就把任务描述丢给大模型，让它现想现做</strong>。这条路能跑，但代价大得离谱——每次执行都是一轮完整的 LLM 调用：要花钱、要联网、慢，而且<strong style="color:var(--article-accent, #3f8fd4);">不确定</strong>。同一句"抓榜单"，今天抓对了，明天模型状态飘一点可能就抓歪了。一个每小时跑一次的任务，一个月就是 720 轮对话——而它干的不过是同一件死板的事。粗算一笔账：一轮按几千 token、主流云模型的价位，<strong style="color:var(--article-accent, #3f8fd4);">单这一个任务每月就是几块到几十块的"心跳开销"</strong>；多养几条、或者换成更高频的，账单线性往上涨。编译方案把这块<strong style="color:var(--article-accent, #3f8fd4);">直接归零</strong>——只剩创建时那一次。（这是数量级估算，不是实测；真实数字随模型与 token 量浮动。）</p>
 
-<p style="margin: 8px 0;">河蟹 AI 把这件事在<strong style="color: #3f8fd4;">时间轴</strong>上切成两段：创建期，和运行期。编译器的契约写得很直白（<code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">cron/compiler.go</code>）：</p>
+<p style="margin: 8px 0;">河蟹 AI 把这件事在<strong style="color:var(--article-accent, #3f8fd4);">时间轴</strong>上切成两段：创建期，和运行期。编译器的契约写得很直白（<code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">cron/compiler.go</code>）：</p>
 
 <section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;"><span style="display: block; white-space: pre; min-height: 1.4em;">// JobSpecCompiler 把用户的自然语言任务需求编译成可执行 JobSpec（一次性 LLM 调用）。</span><span style="display: block; white-space: pre; min-height: 1.4em;">// 实现要求：</span><span style="display: block; white-space: pre; min-height: 1.4em;">//   - 创建期一次性消耗 LLM tokens；运行时不再调用 LLM</span><span style="display: block; white-space: pre; min-height: 1.4em;">//   - 失败必须返回错误（拒绝入库），避免空 Spec 进入运行时</span><span style="display: block; white-space: pre; min-height: 1.4em;">//   - 输出脚本须通过 validators.go 中的安全校验</span></code></section>
 
 <p style="margin: 8px 0;">就这三行，把整套引擎的性格定死了：</p>
 
 <ul style="padding-left: 22px; margin: 8px 0;">
-<li style="margin: 4px 0;"><strong style="color: #3f8fd4;">成本</strong>——创建时烧一次 token，之后跑一万次都是零。高频任务的边际成本是 0，而不是线性增长。（要厘清的是：省的是<strong style="color: #3f8fd4;">运行期</strong>的 token；编译那一次的算力——云模型在远端、本地模型吃你自己机器的 CPU/GPU——仍要花，只是从"每次"变成"一次"。）</li>
-<li style="margin: 4px 0;"><strong style="color: #3f8fd4;">离线</strong>——脚本只用沙箱内建能力，运行期不依赖模型在不在线。云断了、API key 过期了，已编译的任务照跑。</li>
-<li style="margin: 4px 0;"><strong style="color: #3f8fd4;">确定性</strong>——同一段脚本今天明天跑出来逻辑一模一样，不会因为模型抽风而漂移。</li>
-<li style="margin: 4px 0;"><strong style="color: #3f8fd4;">可审计</strong>——产物是一段你能看见、能读、能改的代码，不是黑盒。对一个跑在你自己机器上、还没人盯着的自动化系统，这点尤其重要。</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">成本</strong>——创建时烧一次 token，之后跑一万次都是零。高频任务的边际成本是 0，而不是线性增长。（要厘清的是：省的是<strong style="color:var(--article-accent, #3f8fd4);">运行期</strong>的 token；编译那一次的算力——云模型在远端、本地模型吃你自己机器的 CPU/GPU——仍要花，只是从"每次"变成"一次"。）</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">离线</strong>——脚本只用沙箱内建能力，运行期不依赖模型在不在线。云断了、API key 过期了，已编译的任务照跑。</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">确定性</strong>——同一段脚本今天明天跑出来逻辑一模一样，不会因为模型抽风而漂移。</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">可审计</strong>——产物是一段你能看见、能读、能改的代码，不是黑盒。对一个跑在你自己机器上、还没人盯着的自动化系统，这点尤其重要。</li>
 </ul>
 
-<blockquote style="border-left: 3px solid #3f8fd4; padding: 14px 18px; margin: 20px 0; background: #f4fbff; color: #12324c; font-size: 14px; border-radius: 0 8px 8px 0; line-height: 1.85;">
-把"理解意图"和"执行任务"在时间上拆开——<strong style="color: #3f8fd4;">编译期烧一次 token，运行期一次都不烧</strong>。这是这套引擎所有好处的共同源头。
+<blockquote style="border-left: 3px solid #3f8fd4; padding: 14px 18px; margin: 20px 0; background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); font-size: 14px; border-radius: 0 8px 8px 0; line-height: 1.85;">
+把"理解意图"和"执行任务"在时间上拆开——<strong style="color:var(--article-accent, #3f8fd4);">编译期烧一次 token，运行期一次都不烧</strong>。这是这套引擎所有好处的共同源头。
 </blockquote>
 
-<h3 style="font-size: 16px; font-weight: 700; color: #12324c; margin: 24px 0 10px;">编译那一刻，它具体做了什么</h3>
+<h3 style="font-size: 16px; font-weight: 700; color:var(--article-ink, #12324c); margin: 24px 0 10px;">编译那一刻，它具体做了什么</h3>
 
-<p style="margin: 8px 0;">编译用 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">temperature = 0</code>（要稳定、不要创意），让模型把意图转成一段纯 JSON：runtime + script + 超时。两个工程细节值得点出：</p>
+<p style="margin: 8px 0;">编译用 <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">temperature = 0</code>（要稳定、不要创意），让模型把意图转成一段纯 JSON：runtime + script + 超时。两个工程细节值得点出：</p>
 
 <ul style="padding-left: 22px; margin: 8px 0;">
-<li style="margin: 4px 0;"><strong style="color: #3f8fd4;">编译用哪个模型，跟着你走</strong>——不在启动时固化，每次编译动态解析"你当前的默认模型"。你在界面把模型从云端切到本地 Ollama，下一次编译立刻跟着切，不用重启。</li>
-<li style="margin: 4px 0;"><strong style="color: #3f8fd4;">编译失败一律拒绝入库</strong>——绝不让半成品脚本溜进运行时，宁可创建时当面报错，也不留个哑炮到半夜。（编译调用本身遇 5xx / 超时 / 限流会自动指数退避重试，最多 3 次，不打扰你。）</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">编译用哪个模型，跟着你走</strong>——不在启动时固化，每次编译动态解析"你当前的默认模型"。你在界面把模型从云端切到本地 Ollama，下一次编译立刻跟着切，不用重启。</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">编译失败一律拒绝入库</strong>——绝不让半成品脚本溜进运行时，宁可创建时当面报错，也不留个哑炮到半夜。（编译调用本身遇 5xx / 超时 / 限流会自动指数退避重试，最多 3 次，不打扰你。）</li>
 </ul>
 
 <p style="margin: 8px 0;">system prompt 里钉了几条硬规则，都是踩出来的，直接决定采集脚本扛不扛得住网页小改版：</p>
 
 <ul style="padding-left: 22px; margin: 8px 0;">
-<li style="margin: 4px 0;"><strong style="color: #3f8fd4;">每次 HTTP 后必须检查状态码</strong>，非 2xx 一律判失败——禁止"发了就当成功"。</li>
-<li style="margin: 4px 0;"><strong style="color: #3f8fd4;">URL 逐字使用</strong>，不许模型臆造改写。</li>
-<li style="margin: 4px 0;"><strong style="color: #3f8fd4;">优先解析页面内嵌的结构化 JSON</strong>，而不是易变的 CSS class——后者一改版就碎。</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">每次 HTTP 后必须检查状态码</strong>，非 2xx 一律判失败——禁止"发了就当成功"。</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">URL 逐字使用</strong>，不许模型臆造改写。</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">优先解析页面内嵌的结构化 JSON</strong>，而不是易变的 CSS class——后者一改版就碎。</li>
 </ul>
 
-<p style="margin: 8px 0;">光靠 prompt 约束模型还不够，引擎自己再兜一层：每个 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">http_get / http_post</code> <strong style="color: #3f8fd4;">默认带上浏览器 User-Agent</strong>。这条也是踩出来的——有的站点（真实踩过的坑：百度热搜）对 Go 默认的 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">Go-http-client/1.1</code> 直接返一坨反爬 HTML，脚本 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">json_decode</code> 一上来就崩在开头那个 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">&lt;</code> 上。脚本仍可经 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">headers</code> 覆盖 UA，但默认值先保证它"不至于因为长得像爬虫就被请出门"。</p>
+<p style="margin: 8px 0;">光靠 prompt 约束模型还不够，引擎自己再兜一层：每个 <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">http_get / http_post</code> <strong style="color:var(--article-accent, #3f8fd4);">默认带上浏览器 User-Agent</strong>。这条也是踩出来的——有的站点（真实踩过的坑：百度热搜）对 Go 默认的 <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">Go-http-client/1.1</code> 直接返一坨反爬 HTML，脚本 <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">json_decode</code> 一上来就崩在开头那个 <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">&lt;</code> 上。脚本仍可经 <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">headers</code> 覆盖 UA，但默认值先保证它"不至于因为长得像爬虫就被请出门"。</p>
 
-<p style="margin: 8px 0;">编译出来的脚本长这样，注意它<strong style="color: #3f8fd4;">一行 import 都没有</strong>（能力全靠注入）：</p>
+<p style="margin: 8px 0;">编译出来的脚本长这样，注意它<strong style="color:var(--article-accent, #3f8fd4);">一行 import 都没有</strong>（能力全靠注入）：</p>
 
 <section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;"><span style="display: block; white-space: pre; min-height: 1.4em;">def run():</span><span style="display: block; white-space: pre; min-height: 1.4em;">    resp = http_get("https://example.com/board", headers = {"User-Agent": "Mozilla/5.0"})</span><span style="display: block; white-space: pre; min-height: 1.4em;">    if resp["status"] &lt; 200 or resp["status"] &gt;= 300:</span><span style="display: block; white-space: pre; min-height: 1.4em;">        return {"status": "error", "error": "fetch non-2xx: %d" % resp["status"]}</span><span style="display: block; white-space: pre; min-height: 1.4em;">    blocks = re_findall("(?s)&lt;!--data:(.*?)--&gt;", resp["body"])</span><span style="display: block; white-space: pre; min-height: 1.4em;">    data = json_decode(blocks[0])</span><span style="display: block; white-space: pre; min-height: 1.4em;">    titles = [it["title"].strip() for it in data.get("list", [])]</span><span style="display: block; white-space: pre; min-height: 1.4em;">    return {"status": "success", "data": {"title": "榜单 " + now()["date"], "content": "\n".join(titles)}}</span><span style="display: block; white-space: pre; min-height: 1.4em;">emit(run())</span></code></section>
 
 <p style="margin: 8px 0;">但一个决定不会只带来好处。"编译成死脚本"这件事，立刻往下砸出四个绕不开的问题——这篇剩下的篇幅，就是逐个回答它们：</p>
 
 <ul style="padding-left: 22px; margin: 8px 0;">
-<li style="margin: 4px 0;"><strong style="color: #3f8fd4;">问题一</strong>：这段 AI 现写的代码，凭什么敢在你自己的机器上跑？</li>
-<li style="margin: 4px 0;"><strong style="color: #3f8fd4;">问题二</strong>：万一这件事根本不该被编译成一段死脚本？</li>
-<li style="margin: 4px 0;"><strong style="color: #3f8fd4;">问题三</strong>：脚本是死的、世界是活的，网页一改版脚本失效了怎么办？</li>
-<li style="margin: 4px 0;"><strong style="color: #3f8fd4;">问题四</strong>：用户手里是连规整 JSON 都输不利索的本地小模型，怎么办？</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">问题一</strong>：这段 AI 现写的代码，凭什么敢在你自己的机器上跑？</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">问题二</strong>：万一这件事根本不该被编译成一段死脚本？</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">问题三</strong>：脚本是死的、世界是活的，网页一改版脚本失效了怎么办？</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">问题四</strong>：用户手里是连规整 JSON 都输不利索的本地小模型，怎么办？</li>
 </ul>
 
-<hr style="border: none; border-top: 1px solid #e0ecf5; margin: 28px 0;"/>
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
 
-<h2 style="font-size: 18px; font-weight: 700; color: #12324c; margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">问题一：AI 写的代码，凭什么敢在你机器上跑</h2>
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">问题一：AI 写的代码，凭什么敢在你机器上跑</h2>
 
-<p style="margin: 8px 0;">"让模型生成代码然后执行"，最大的恐惧就是安全：这段代码要在用户机器上跑，万一它（或者诱导它的人）写了 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">os.system("rm -rf ~")</code> 怎么办？</p>
+<p style="margin: 8px 0;">"让模型生成代码然后执行"，最大的恐惧就是安全：这段代码要在用户机器上跑，万一它（或者诱导它的人）写了 <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">os.system("rm -rf ~")</code> 怎么办？</p>
 
-<p style="margin: 8px 0;">所以安全姿态只有一条总纲：<strong style="color: #3f8fd4;">把 LLM 吐出来的每一段代码，都当成不可信、甚至对抗性的输入</strong>——和防 prompt injection 是同一种警惕。它可能被诱导、可能幻觉、也可能只是写错了；沙箱的职责不是"相信它写得对"，而是<strong style="color: #3f8fd4;">"假设它写得坏，也跑不出乱子"</strong>。下面的每一道防线，都是从这个前提推出来的。</p>
+<p style="margin: 8px 0;">所以安全姿态只有一条总纲：<strong style="color:var(--article-accent, #3f8fd4);">把 LLM 吐出来的每一段代码，都当成不可信、甚至对抗性的输入</strong>——和防 prompt injection 是同一种警惕。它可能被诱导、可能幻觉、也可能只是写错了；沙箱的职责不是"相信它写得对"，而是<strong style="color:var(--article-accent, #3f8fd4);">"假设它写得坏，也跑不出乱子"</strong>。下面的每一道防线，都是从这个前提推出来的。</p>
 
-<p style="margin: 8px 0;">业界常见的做法是<strong style="color: #3f8fd4;">黑名单</strong>：解析脚本 AST，禁掉 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">import os</code>、禁掉 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">eval</code>、禁掉 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">__import__</code>……这条路有个根本毛病：<strong style="color: #3f8fd4;">你永远在追逃逸</strong>。默认所有能力都开放，你一个个去堵，攻击者只要找到一个你没想到的口子就赢了。Python 沙箱被绕过的历史，基本就是一部黑名单失守史。</p>
+<p style="margin: 8px 0;">业界常见的做法是<strong style="color:var(--article-accent, #3f8fd4);">黑名单</strong>：解析脚本 AST，禁掉 <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">import os</code>、禁掉 <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">eval</code>、禁掉 <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">__import__</code>……这条路有个根本毛病：<strong style="color:var(--article-accent, #3f8fd4);">你永远在追逃逸</strong>。默认所有能力都开放，你一个个去堵，攻击者只要找到一个你没想到的口子就赢了。Python 沙箱被绕过的历史，基本就是一部黑名单失守史。</p>
 
-<p style="margin: 8px 0;">河蟹 AI 走的是反过来的路——业界叫它<strong style="color: #3f8fd4;">能力安全模型（capability-based security）</strong>：默认零权限，能力靠显式授予。默认引擎用的是 <strong style="color: #3f8fd4;">Starlark</strong>——Google 为 Bazel 设计的 Python 方言，纯 Go 实现，本就是为"确定性、可重复构建"而生：<strong style="color: #3f8fd4;">它没有 import、没有 eval、没有 exec、没有文件、没有网络</strong>。一个 Starlark 脚本，默认什么都干不了。</p>
+<p style="margin: 8px 0;">河蟹 AI 走的是反过来的路——业界叫它<strong style="color:var(--article-accent, #3f8fd4);">能力安全模型（capability-based security）</strong>：默认零权限，能力靠显式授予。默认引擎用的是 <strong style="color:var(--article-accent, #3f8fd4);">Starlark</strong>——Google 为 Bazel 设计的 Python 方言，纯 Go 实现，本就是为"确定性、可重复构建"而生：<strong style="color:var(--article-accent, #3f8fd4);">它没有 import、没有 eval、没有 exec、没有文件、没有网络</strong>。一个 Starlark 脚本，默认什么都干不了。</p>
 
-<p style="margin: 8px 0;">脚本能做的每一件事，都是宿主<strong style="color: #3f8fd4;">显式注入</strong>的内建函数（<code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">cron/engine_starlark.go</code>）：</p>
+<p style="margin: 8px 0;">脚本能做的每一件事，都是宿主<strong style="color:var(--article-accent, #3f8fd4);">显式注入</strong>的内建函数（<code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">cron/engine_starlark.go</code>）：</p>
 
 <section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;"><span style="display: block; white-space: pre; min-height: 1.4em;">predeclared := starlark.StringDict{</span><span style="display: block; white-space: pre; min-height: 1.4em;">    "http_get":    ...,   // GET，返回 {"status", "body"}</span><span style="display: block; white-space: pre; min-height: 1.4em;">    "http_post":   ...,</span><span style="display: block; white-space: pre; min-height: 1.4em;">    "json_decode": ..., "json_encode": ...,</span><span style="display: block; white-space: pre; min-height: 1.4em;">    "re_findall":  ..., "re_sub": ..., "html_unescape": ...,</span><span style="display: block; white-space: pre; min-height: 1.4em;">    "url_encode":  ..., "sha256": ..., "now": ...,</span><span style="display: block; white-space: pre; min-height: 1.4em;">    "kb_ingest":   ...,   // 写入本地知识库（in-process）</span><span style="display: block; white-space: pre; min-height: 1.4em;">    "state_get":   ..., "state_set": ...,  // 跨运行持久化状态（增量采集 / 去重）</span><span style="display: block; white-space: pre; min-height: 1.4em;">    "wake_agent":  ...,   // "有料"才升级成完整 Agent（见问题二）</span><span style="display: block; white-space: pre; min-height: 1.4em;">    "emit":        ...,   // 提交最终结果（脚本必须调一次）</span><span style="display: block; white-space: pre; min-height: 1.4em;">}</span></code></section>
 
-<blockquote style="border-left: 3px solid #3f8fd4; padding: 14px 18px; margin: 20px 0; background: #f4fbff; color: #12324c; font-size: 14px; border-radius: 0 8px 8px 0; line-height: 1.85;">
-<strong style="color: #3f8fd4;">AST 黑名单：默认全能力，逐个禁——你永远在追逃逸。<br/>结构化沙箱：默认零能力，逐个给——逃逸无从谈起，因为压根没有"外面"。</strong>
+<blockquote style="border-left: 3px solid #3f8fd4; padding: 14px 18px; margin: 20px 0; background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); font-size: 14px; border-radius: 0 8px 8px 0; line-height: 1.85;">
+<strong style="color:var(--article-accent, #3f8fd4);">AST 黑名单：默认全能力，逐个禁——你永远在追逃逸。<br/>结构化沙箱：默认零能力，逐个给——逃逸无从谈起，因为压根没有"外面"。</strong>
 </blockquote>
 
-<p style="margin: 8px 0;">于是脚本的整个安全校验面，小到只剩三件事（<code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">validateStarlarkSource</code>）：</p>
+<p style="margin: 8px 0;">于是脚本的整个安全校验面，小到只剩三件事（<code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">validateStarlarkSource</code>）：</p>
 
 <section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;"><span style="display: block; white-space: pre; min-height: 1.4em;">func validateStarlarkSource(script string) error {</span><span style="display: block; white-space: pre; min-height: 1.4em;">    f, err := opts.Parse("job.star", script, 0)    // 1. 能不能解析</span><span style="display: block; white-space: pre; min-height: 1.4em;">    if err != nil { return ... }</span><span style="display: block; white-space: pre; min-height: 1.4em;">    for _, stmt := range f.Stmts {</span><span style="display: block; white-space: pre; min-height: 1.4em;">        if _, ok := stmt.(*syntax.LoadStmt); ok {   // 2. 禁 load() 加载外部模块</span><span style="display: block; white-space: pre; min-height: 1.4em;">            return fmt.Errorf("load() is not allowed in cron scripts")</span><span style="display: block; white-space: pre; min-height: 1.4em;">        }</span><span style="display: block; white-space: pre; min-height: 1.4em;">    }</span><span style="display: block; white-space: pre; min-height: 1.4em;">    if !strings.Contains(script, "emit(") &amp;&amp;        // 3. 必须产出结果（emit</span><span style="display: block; white-space: pre; min-height: 1.4em;">        !strings.Contains(script, "wake_agent(") {  //    或 wake_agent，门任务可只 wake）</span><span style="display: block; white-space: pre; min-height: 1.4em;">        return fmt.Errorf("must call emit({...}) or wake_agent(...)")</span><span style="display: block; white-space: pre; min-height: 1.4em;">    }</span><span style="display: block; white-space: pre; min-height: 1.4em;">    return nil</span><span style="display: block; white-space: pre; min-height: 1.4em;">}</span></code></section>
 
-<p style="margin: 8px 0;">解析通过 + 不许 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">load()</code> + 必须产出结果（<code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">emit()</code>，或门任务的 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">wake_agent()</code>）。没有一长串"禁止函数名"清单，因为不需要——能力面本身就是封闭的。</p>
+<p style="margin: 8px 0;">解析通过 + 不许 <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">load()</code> + 必须产出结果（<code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">emit()</code>，或门任务的 <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">wake_agent()</code>）。没有一长串"禁止函数名"清单，因为不需要——能力面本身就是封闭的。</p>
 
-<h3 style="font-size: 16px; font-weight: 700; color: #12324c; margin: 24px 0 10px;">两道护栏，外加一条反直觉的网络取舍</h3>
+<h3 style="font-size: 16px; font-weight: 700; color:var(--article-ink, #12324c); margin: 24px 0 10px;">两道护栏，外加一条反直觉的网络取舍</h3>
 
 <p style="margin: 8px 0;">结构化沙箱管住了"能调什么"，剩下两件事得拦死，外加一处网络上的取舍要交代：</p>
 
 <ul style="padding-left: 22px; margin: 8px 0;">
-<li style="margin: 4px 0;"><strong style="color: #3f8fd4;">撑爆内存</strong>——单个 HTTP 响应体上限 8 MiB，一个失控的大页面拖不垮进程。</li>
-<li style="margin: 4px 0;"><strong style="color: #3f8fd4;">死循环</strong>——单次执行的 Starlark 步数上限 1 亿步，<code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">while True</code> 会被步数直接掐掉，而不是干等到超时。再叠一层执行超时（按脚本声明的 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">timeout_s</code>，缺省回退 300s）+ 协作式取消兜底。</li>
-<li style="margin: 4px 0;"><strong style="color: #3f8fd4;">网络</strong>——<code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">http_get / http_post</code> 是脚本唯一伸到进程外的手。要不要替它把网络也圈起来？我们试过，最后<strong style="color: #3f8fd4;">刻意没圈</strong>——这条单说。</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">撑爆内存</strong>——单个 HTTP 响应体上限 8 MiB，一个失控的大页面拖不垮进程。</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">死循环</strong>——单次执行的 Starlark 步数上限 1 亿步，<code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">while True</code> 会被步数直接掐掉，而不是干等到超时。再叠一层执行超时（按脚本声明的 <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">timeout_s</code>，缺省回退 300s）+ 协作式取消兜底。</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">网络</strong>——<code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">http_get / http_post</code> 是脚本唯一伸到进程外的手。要不要替它把网络也圈起来？我们试过，最后<strong style="color:var(--article-accent, #3f8fd4);">刻意没圈</strong>——这条单说。</li>
 </ul>
 
-<p style="margin: 8px 0;">教科书答案会让你上一道 <strong style="color: #3f8fd4;">SSRF 守卫</strong>：在拨号层按"解析后的真实 IP"拦黑名单——loopback、私有网段、链路本地、云厂商元数据地址（<code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">169.254.169.254</code>，Capital One 2019 偷云凭证那次 SSRF 的入口）全禁掉，顺带把 DNS rebinding 也防了。我们一开始正是这么写的。</p>
+<p style="margin: 8px 0;">教科书答案会让你上一道 <strong style="color:var(--article-accent, #3f8fd4);">SSRF 守卫</strong>：在拨号层按"解析后的真实 IP"拦黑名单——loopback、私有网段、链路本地、云厂商元数据地址（<code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">169.254.169.254</code>，Capital One 2019 偷云凭证那次 SSRF 的入口）全禁掉，顺带把 DNS rebinding 也防了。我们一开始正是这么写的。</p>
 
-<p style="margin: 8px 0;">后来把它拆了，理由很具体：不少用户本机挂着 <strong style="color: #3f8fd4;">fake-ip 模式的透明代理</strong>（Clash / Surge 这一类），它会把公网域名先映射成一段保留地址、再在代理内部转发出去。守卫一看目标 IP 落在私有段，二话不说拦死——结果一批<strong style="color: #3f8fd4;">正常的公网抓取，被自家守卫误杀了</strong>。</p>
+<p style="margin: 8px 0;">后来把它拆了，理由很具体：不少用户本机挂着 <strong style="color:var(--article-accent, #3f8fd4);">fake-ip 模式的透明代理</strong>（Clash / Surge 这一类），它会把公网域名先映射成一段保留地址、再在代理内部转发出去。守卫一看目标 IP 落在私有段，二话不说拦死——结果一批<strong style="color:var(--article-accent, #3f8fd4);">正常的公网抓取，被自家守卫误杀了</strong>。</p>
 
-<p style="margin: 8px 0;">这恰好戳中了定位：<strong style="color: #3f8fd4;">这是个跑在你自己机器上的桌面应用，它本就该共享你的网络上下文</strong>——你的代理、你的 hosts、你的局域网。一个本地工具能访问 localhost、能顺着你的代理出网，本就稀松平常（你的 IDE、Docker、dev server 天天这么干，没人当它是漏洞）；硬替用户把内网拦掉，挡的是正经活，未必挡得住真实威胁。</p>
+<p style="margin: 8px 0;">这恰好戳中了定位：<strong style="color:var(--article-accent, #3f8fd4);">这是个跑在你自己机器上的桌面应用，它本就该共享你的网络上下文</strong>——你的代理、你的 hosts、你的局域网。一个本地工具能访问 localhost、能顺着你的代理出网，本就稀松平常（你的 IDE、Docker、dev server 天天这么干，没人当它是漏洞）；硬替用户把内网拦掉，挡的是正经活，未必挡得住真实威胁。</p>
 
-<p style="margin: 8px 0;">更根本的一层是：<strong style="color: #3f8fd4;">脚本能不能干坏事，从来不取决于它能连哪个 IP，而取决于它手里被注入了哪些能力</strong>——而能力面早被结构化沙箱收死在那十来个内建里了。它没有文件、没有 shell、没有任意 socket，能伸出进程的只有 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">http_get / http_post</code>。在这个前提下，"能连到哪个 IP"是一层正交的事：与其去猜哪个网段该拦、还连累正常流量，不如<strong style="color: #3f8fd4;">把网络按宿主机语义放开，把守卫的全部力气压在守住能力面上</strong>。</p>
+<p style="margin: 8px 0;">更根本的一层是：<strong style="color:var(--article-accent, #3f8fd4);">脚本能不能干坏事，从来不取决于它能连哪个 IP，而取决于它手里被注入了哪些能力</strong>——而能力面早被结构化沙箱收死在那十来个内建里了。它没有文件、没有 shell、没有任意 socket，能伸出进程的只有 <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">http_get / http_post</code>。在这个前提下，"能连到哪个 IP"是一层正交的事：与其去猜哪个网段该拦、还连累正常流量，不如<strong style="color:var(--article-accent, #3f8fd4);">把网络按宿主机语义放开，把守卫的全部力气压在守住能力面上</strong>。</p>
 
-<blockquote style="border-left: 3px solid #5fb3ea; padding: 10px 16px; margin: 16px 0; background: #f4fbff; color: #3f5f7b; font-size: 14px; border-radius: 0 8px 8px 0;">
-真正的安全边界是<strong style="color: #3f8fd4;">能力面，不是 IP 黑名单</strong>。沙箱把"能调什么"收死，网络就能放心交还给宿主机——一个跑在你自己机器上的工具，本该和你的浏览器、你的终端共享同一张网。
+<blockquote style="border-left: 3px solid #5fb3ea; padding: 10px 16px; margin: 16px 0; background:var(--article-panel, #f4fbff); color:var(--article-secondary, #3f5f7b); font-size: 14px; border-radius: 0 8px 8px 0;">
+真正的安全边界是<strong style="color:var(--article-accent, #3f8fd4);">能力面，不是 IP 黑名单</strong>。沙箱把"能调什么"收死，网络就能放心交还给宿主机——一个跑在你自己机器上的工具，本该和你的浏览器、你的终端共享同一张网。
 </blockquote>
 
-<p style="margin: 8px 0;">补一句：Starlark 是默认，但不是唯一。引擎做了接口抽象，调度器按 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">Runtime</code> 路由——还留了一个<strong style="color: #3f8fd4;">可选的 python3 引擎</strong>给少数需要更强表达力的存量任务。但它要 shell 出去调系统解释器，所以默认不用：河蟹 AI 的一条硬约束是<strong style="color: #3f8fd4;">单二进制、零外部依赖</strong>，纯 Go 的 Starlark 在三大平台上行为一致、用户什么都不用装，这才配当默认。</p>
+<p style="margin: 8px 0;">补一句：Starlark 是默认，但不是唯一。引擎做了接口抽象，调度器按 <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">Runtime</code> 路由——还留了一个<strong style="color:var(--article-accent, #3f8fd4);">可选的 python3 引擎</strong>给少数需要更强表达力的存量任务。但它要 shell 出去调系统解释器，所以默认不用：河蟹 AI 的一条硬约束是<strong style="color:var(--article-accent, #3f8fd4);">单二进制、零外部依赖</strong>，纯 Go 的 Starlark 在三大平台上行为一致、用户什么都不用装，这才配当默认。</p>
 
-<hr style="border: none; border-top: 1px solid #e0ecf5; margin: 28px 0;"/>
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
 
-<h2 style="font-size: 18px; font-weight: 700; color: #12324c; margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">问题二：万一这事根本不该编译成脚本</h2>
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">问题二：万一这事根本不该编译成脚本</h2>
 
-<p style="margin: 8px 0;">"编译成脚本"对"抓取—清洗—存储"这种机械活很对路。但有一类任务，编译成死脚本就废了——比如"<strong style="color: #3f8fd4;">每天总结昨天的新闻并点评</strong>"。"总结""点评"是认知活，每天内容都不一样，它的价值恰恰在于每次都现场推理。把它冻成一段固定脚本，等于把它最值钱的部分抽掉了。</p>
+<p style="margin: 8px 0;">"编译成脚本"对"抓取—清洗—存储"这种机械活很对路。但有一类任务，编译成死脚本就废了——比如"<strong style="color:var(--article-accent, #3f8fd4);">每天总结昨天的新闻并点评</strong>"。"总结""点评"是认知活，每天内容都不一样，它的价值恰恰在于每次都现场推理。把它冻成一段固定脚本，等于把它最值钱的部分抽掉了。</p>
 
-<p style="margin: 8px 0;">所以引擎在编译之前先做一次分类（<code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">cron/agent_mode.go</code>）：</p>
+<p style="margin: 8px 0;">所以引擎在编译之前先做一次分类（<code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">cron/agent_mode.go</code>）：</p>
 
 <section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;"><span style="display: block; white-space: pre; min-height: 1.4em;">// 命中"认知动词" → 每次都要 Agent 现场推理 → agent 模式</span><span style="display: block; white-space: pre; min-height: 1.4em;">var reasoningVerbs = []string{</span><span style="display: block; white-space: pre; min-height: 1.4em;">    "总结", "分析", "判断", "评估", "筛选出最", "点评",</span><span style="display: block; white-space: pre; min-height: 1.4em;">    "撰写", "起草", "解读", "建议", "诊断", ...</span><span style="display: block; white-space: pre; min-height: 1.4em;">}</span><span style="display: block; white-space: pre; min-height: 1.4em;">// 采集 / 下载 / 保存 / 同步 等机械动词，刻意不在表里 → 编译成脚本</span><span style="display: block; white-space: pre; min-height: 1.4em;"></span><span style="display: block; white-space: pre; min-height: 1.4em;">func ClassifyTaskMode(prompt string) string {</span><span style="display: block; white-space: pre; min-height: 1.4em;">    lower := strings.ToLower(prompt)</span><span style="display: block; white-space: pre; min-height: 1.4em;">    for _, v := range reasoningVerbs {</span><span style="display: block; white-space: pre; min-height: 1.4em;">        if strings.Contains(lower, v) { return RuntimeAgent }</span><span style="display: block; white-space: pre; min-height: 1.4em;">    }</span><span style="display: block; white-space: pre; min-height: 1.4em;">    return ""   // 默认：脚本模式（零 LLM 执行）</span><span style="display: block; white-space: pre; min-height: 1.4em;">}</span></code></section>
 
-<p style="margin: 8px 0;">机械 I/O 任务编译成脚本（零 LLM 执行）；认知任务标成 <strong style="color: #3f8fd4;">agent 模式</strong>，每次触发跑一轮完整的 Agent。这里用的是确定性关键词分类，不是再调一次 LLM——零成本、可测试。</p>
+<p style="margin: 8px 0;">机械 I/O 任务编译成脚本（零 LLM 执行）；认知任务标成 <strong style="color:var(--article-accent, #3f8fd4);">agent 模式</strong>，每次触发跑一轮完整的 Agent。这里用的是确定性关键词分类，不是再调一次 LLM——零成本、可测试。</p>
 
 <p style="margin: 8px 0;">这条分流线，顺手把"定时任务"的能力面撑成了两类活：</p>
 
 <ul style="padding-left: 22px; margin: 8px 0;">
-<li style="margin: 6px 0;"><strong style="color: #3f8fd4;">脚本模式（机械、零 token）</strong>——定时采集网页 / 抓 API、监控页面变化（<code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">sha256</code> + 跨运行 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">state_get/set</code> 去重，只要"上次之后的新内容"）、清洗结构化数据，产物直接 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">kb_ingest</code> 写进知识库。</li>
-<li style="margin: 6px 0;"><strong style="color: #3f8fd4;">agent 模式（认知、每轮一次推理、挂全套工具链）</strong>——整理本地文档、把一周工作汇总成周报、对采集来的内容做总结 / 分析 / 点评。它走的是和聊天同一个 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">eng.Process</code>，所以文件工具、知识库、Skill、MCP 全都在手——读得了本地文件，也调得动外部工具。</li>
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">脚本模式（机械、零 token）</strong>——定时采集网页 / 抓 API、监控页面变化（<code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">sha256</code> + 跨运行 <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">state_get/set</code> 去重，只要"上次之后的新内容"）、清洗结构化数据，产物直接 <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">kb_ingest</code> 写进知识库。</li>
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">agent 模式（认知、每轮一次推理、挂全套工具链）</strong>——整理本地文档、把一周工作汇总成周报、对采集来的内容做总结 / 分析 / 点评。它走的是和聊天同一个 <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">eng.Process</code>，所以文件工具、知识库、Skill、MCP 全都在手——读得了本地文件，也调得动外部工具。</li>
 </ul>
 
-<p style="margin: 8px 0;">这条边界还带个利落的副作用：Starlark 沙箱<strong style="color: #3f8fd4;">没有文件系统访问</strong>，所以"整理本地文档"这类天然落到 agent 模式。<strong style="color: #3f8fd4;">分流不只是为了省 token，它同时是一条能力边界的天然分界</strong>——机械活交给零权限沙箱，认知活才解锁完整工具链。</p>
+<p style="margin: 8px 0;">这条边界还带个利落的副作用：Starlark 沙箱<strong style="color:var(--article-accent, #3f8fd4);">没有文件系统访问</strong>，所以"整理本地文档"这类天然落到 agent 模式。<strong style="color:var(--article-accent, #3f8fd4);">分流不只是为了省 token，它同时是一条能力边界的天然分界</strong>——机械活交给零权限沙箱，认知活才解锁完整工具链。</p>
 
-<p style="margin: 8px 0;">更进一步，这条线现在不是静态的二选一了。脚本还能当一个<strong style="color: #3f8fd4;">廉价的"门"</strong>：每 tick 零 token 跑，只有"真有料"时才调一个内建 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">wake_agent(context)</code>，把这一轮临时升级成完整 Agent（花 token，且最多每小时升一次）。<strong style="color: #3f8fd4;">这头牛马平时卧着省草料、有重活才起身——值得动脑时才把大脑叫醒</strong>——这套"条件升级门"借鉴了 Hermes 的 wakeAgent。门脚本可以只 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">wake_agent</code> 不 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">emit</code>，算合法输出。</p>
+<p style="margin: 8px 0;">更进一步，这条线现在不是静态的二选一了。脚本还能当一个<strong style="color:var(--article-accent, #3f8fd4);">廉价的"门"</strong>：每 tick 零 token 跑，只有"真有料"时才调一个内建 <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">wake_agent(context)</code>，把这一轮临时升级成完整 Agent（花 token，且最多每小时升一次）。<strong style="color:var(--article-accent, #3f8fd4);">这头牛马平时卧着省草料、有重活才起身——值得动脑时才把大脑叫醒</strong>——这套"条件升级门"借鉴了 Hermes 的 wakeAgent。门脚本可以只 <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">wake_agent</code> 不 <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">emit</code>，算合法输出。</p>
 
-<p style="margin: 8px 0;">为什么敢用这么"土"的关键词分类？因为<strong style="color: #3f8fd4;">两种误判的代价是不对称的</strong>，代码注释里写得明白：把认知任务误判成脚本，编译出来跑不通——但下一节的"自愈"会兜底；把机械任务误判成 agent，无非每次多烧点 token。<strong style="color: #3f8fd4;">既然错向一边代价小、另一边有兜底，动词表就保持保守</strong>，宁可少标几个认知词，也不轻易把任务推去烧 token。</p>
+<p style="margin: 8px 0;">为什么敢用这么"土"的关键词分类？因为<strong style="color:var(--article-accent, #3f8fd4);">两种误判的代价是不对称的</strong>，代码注释里写得明白：把认知任务误判成脚本，编译出来跑不通——但下一节的"自愈"会兜底；把机械任务误判成 agent，无非每次多烧点 token。<strong style="color:var(--article-accent, #3f8fd4);">既然错向一边代价小、另一边有兜底，动词表就保持保守</strong>，宁可少标几个认知词，也不轻易把任务推去烧 token。</p>
 
 <p style="margin: 8px 0;">agent 模式还有两道闸，都是被现实逼出来的：</p>
 
 <ul style="padding-left: 22px; margin: 8px 0;">
-<li style="margin: 4px 0;"><strong style="color: #3f8fd4;">频率守卫</strong>——agent 任务每次执行烧一整轮对话，强制最小间隔 1 小时。你建一个"每分钟分析一次"的 agent 任务会被当场拦下，提示改成 @hourly / @daily。</li>
-<li style="margin: 4px 0;"><strong style="color: #3f8fd4;">幻觉守卫</strong>——一个任务说要"入库"，那它必须真的调了 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">knowledge_ingest</code> 工具。如果 Agent 回了句"已完成入库"、却一个入库工具都没调，引擎判它<strong style="color: #3f8fd4;">失败</strong>而不是成功——没存的东西就是没存，"说完成了"是幻觉，不是结果。</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">频率守卫</strong>——agent 任务每次执行烧一整轮对话，强制最小间隔 1 小时。你建一个"每分钟分析一次"的 agent 任务会被当场拦下，提示改成 @hourly / @daily。</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">幻觉守卫</strong>——一个任务说要"入库"，那它必须真的调了 <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">knowledge_ingest</code> 工具。如果 Agent 回了句"已完成入库"、却一个入库工具都没调，引擎判它<strong style="color:var(--article-accent, #3f8fd4);">失败</strong>而不是成功——没存的东西就是没存，"说完成了"是幻觉，不是结果。</li>
 </ul>
 
-<hr style="border: none; border-top: 1px solid #e0ecf5; margin: 28px 0;"/>
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
 
-<h2 style="font-size: 18px; font-weight: 700; color: #12324c; margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">问题三：死代码遇上活世界</h2>
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">问题三：死代码遇上活世界</h2>
 
-<p style="margin: 8px 0;">编译出来的脚本，是基于"创建那一刻的网页结构"生成的。但网页会改版。今天能跑的采集脚本，下个月可能因为对方把页面里那段 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">&lt;!--data:--&gt;</code> 注释换了个格式，就抓空了。</p>
+<p style="margin: 8px 0;">编译出来的脚本，是基于"创建那一刻的网页结构"生成的。但网页会改版。今天能跑的采集脚本，下个月可能因为对方把页面里那段 <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">&lt;!--data:--&gt;</code> 注释换了个格式，就抓空了。</p>
 
-<p style="margin: 8px 0;">"编译一次、运行期零 token"的代价就在这——<strong style="color: #3f8fd4;">脚本是死的，世界是活的</strong>。这是整个设计里最容易被忽略、却最决定"能不能托管给它不管"的一环。</p>
+<p style="margin: 8px 0;">"编译一次、运行期零 token"的代价就在这——<strong style="color:var(--article-accent, #3f8fd4);">脚本是死的，世界是活的</strong>。这是整个设计里最容易被忽略、却最决定"能不能托管给它不管"的一环。</p>
 
-<p style="margin: 8px 0;">河蟹 AI 的答案是<strong style="color: #3f8fd4;">自愈</strong>：脚本连续失败到阈值，引擎带着失败上下文，把它重新编译一次（<code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">maybeSelfHeal</code>）：</p>
+<p style="margin: 8px 0;">河蟹 AI 的答案是<strong style="color:var(--article-accent, #3f8fd4);">自愈</strong>：脚本连续失败到阈值，引擎带着失败上下文，把它重新编译一次（<code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">maybeSelfHeal</code>）：</p>
 
 <section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;"><span style="display: block; white-space: pre; min-height: 1.4em;">const selfHealThreshold    = 3              // 连续失败 3 次才触发</span><span style="display: block; white-space: pre; min-height: 1.4em;">const selfHealMaxPerWindow = 2              // 24h 内最多自愈 2 次</span><span style="display: block; white-space: pre; min-height: 1.4em;">const selfHealWindow       = 24 * time.Hour</span><span style="display: block; white-space: pre; min-height: 1.4em;"></span><span style="display: block; white-space: pre; min-height: 1.4em;">// 把失败原因拼进 prompt，让模型针对性地改</span><span style="display: block; white-space: pre; min-height: 1.4em;">enriched := fmt.Sprintf(</span><span style="display: block; white-space: pre; min-height: 1.4em;">  "%s\n\n[自愈上下文] 该任务此前编译的脚本已连续失败 %d 次，最近错误：\n%s\n"+</span><span style="display: block; white-space: pre; min-height: 1.4em;">  "请根据错误原因生成修正后的脚本。",</span><span style="display: block; white-space: pre; min-height: 1.4em;">  job.SourcePrompt, selfHealThreshold, failCtx)</span></code></section>
 
-<p style="margin: 8px 0;">这套机制在代码注释里有一个特别贴切的类比——它<strong style="color: #3f8fd4;">同构于 JIT 编译器的"去优化"（deoptimization）</strong>：</p>
+<p style="margin: 8px 0;">这套机制在代码注释里有一个特别贴切的类比——它<strong style="color:var(--article-accent, #3f8fd4);">同构于 JIT 编译器的"去优化"（deoptimization）</strong>：</p>
 
-<blockquote style="border-left: 3px solid #3f8fd4; padding: 14px 18px; margin: 20px 0; background: #f4fbff; color: #12324c; font-size: 14px; border-radius: 0 8px 8px 0; line-height: 1.85;">
-JIT 先假设热点代码走快路径（编译好的机器码）；一旦运行时发现假设不成立（类型变了），就<strong style="color: #3f8fd4;">回退到慢路径（解释器）重新优化</strong>。<br/>
+<blockquote style="border-left: 3px solid #3f8fd4; padding: 14px 18px; margin: 20px 0; background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); font-size: 14px; border-radius: 0 8px 8px 0; line-height: 1.85;">
+JIT 先假设热点代码走快路径（编译好的机器码）；一旦运行时发现假设不成立（类型变了），就<strong style="color:var(--article-accent, #3f8fd4);">回退到慢路径（解释器）重新优化</strong>。<br/>
 这里一模一样：平时走快路径（零 token 的脚本）；脚本"网页长这样"的假设破裂了，就回退到慢路径（调一次 LLM 重编译），再优化出一段新脚本。
 </blockquote>
 
-<p style="margin: 8px 0;">具体长什么样？举个会真实发生的场景：你那条抓榜单的脚本，靠解析页面里 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">&lt;!--data:...--&gt;</code> 这段内嵌 JSON。某天对方改版，把标记换成了 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">&lt;!--board:...--&gt;</code>——脚本 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">re_findall</code> 抓了个空、<code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">emit</code> 出 error。连着三拍都失败，引擎不声不响地把"最近错误：data block missing"连同你最初那句需求一起喂回模型，重编译出一段改抓 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">&lt;!--board:--&gt;</code> 的新脚本，下一拍这条任务自己就好了——你可能压根没察觉它病过一场。</p>
+<p style="margin: 8px 0;">具体长什么样？举个会真实发生的场景：你那条抓榜单的脚本，靠解析页面里 <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">&lt;!--data:...--&gt;</code> 这段内嵌 JSON。某天对方改版，把标记换成了 <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">&lt;!--board:...--&gt;</code>——脚本 <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">re_findall</code> 抓了个空、<code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">emit</code> 出 error。连着三拍都失败，引擎不声不响地把"最近错误：data block missing"连同你最初那句需求一起喂回模型，重编译出一段改抓 <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">&lt;!--board:--&gt;</code> 的新脚本，下一拍这条任务自己就好了——你可能压根没察觉它病过一场。</p>
 
-<p style="margin: 8px 0;">关键在于，这套自愈是<strong style="color: #3f8fd4;">有上限的，不是出错就疯狂重试</strong>：</p>
+<p style="margin: 8px 0;">关键在于，这套自愈是<strong style="color:var(--article-accent, #3f8fd4);">有上限的，不是出错就疯狂重试</strong>：</p>
 
 <ul style="padding-left: 22px; margin: 8px 0;">
-<li style="margin: 4px 0;"><strong style="color: #3f8fd4;">24h 内最多 2 次</strong>——一个永久坏掉的上游（对方网站直接下线了），不会让你的任务无限重编译、无限烧 token。配额用完，引擎转而发一条"持续失败，请人工看看"的告警，而且这条告警本身也限流（一个冷却窗口最多一条），不会半夜连环轰炸你。</li>
-<li style="margin: 4px 0;"><strong style="color: #3f8fd4;">只数最近一次成功修复之后的失败</strong>——修好之后，之前那串旧失败不会再次满足阈值、触发"过早重愈"。判定用按插入顺序排的行号，避开了 datetime 字符串比较的坑。</li>
-<li style="margin: 4px 0;"><strong style="color: #3f8fd4;">agent 任务不参与自愈</strong>——它没有编译好的脚本可改，走的是另一条路：连续失败到阈值就发告警、让人介入，而不是默默地永远失败下去。</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">24h 内最多 2 次</strong>——一个永久坏掉的上游（对方网站直接下线了），不会让你的任务无限重编译、无限烧 token。配额用完，引擎转而发一条"持续失败，请人工看看"的告警，而且这条告警本身也限流（一个冷却窗口最多一条），不会半夜连环轰炸你。</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">只数最近一次成功修复之后的失败</strong>——修好之后，之前那串旧失败不会再次满足阈值、触发"过早重愈"。判定用按插入顺序排的行号，避开了 datetime 字符串比较的坑。</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">agent 任务不参与自愈</strong>——它没有编译好的脚本可改，走的是另一条路：连续失败到阈值就发告警、让人介入，而不是默默地永远失败下去。</li>
 </ul>
 
-<blockquote style="border-left: 3px solid #5fb3ea; padding: 10px 16px; margin: 16px 0; background: #f4fbff; color: #3f5f7b; font-size: 14px; border-radius: 0 8px 8px 0;">
-自愈不是"出错就重试到天荒地老"，那只会把 token 烧光、把用户烦死。它是<strong style="color: #3f8fd4;">有阈值（连错 3 次才动）、有配额（24h 最多 2 次）、有终点（修不好就交给人）</strong>的一条退路——这才是能放心托管的样子。<br/>说白了，这头赛博牛马，干活的路被世界改坏了会自己绕条新路；绕够两回还不通，才回头喊你一声。
+<blockquote style="border-left: 3px solid #5fb3ea; padding: 10px 16px; margin: 16px 0; background:var(--article-panel, #f4fbff); color:var(--article-secondary, #3f5f7b); font-size: 14px; border-radius: 0 8px 8px 0;">
+自愈不是"出错就重试到天荒地老"，那只会把 token 烧光、把用户烦死。它是<strong style="color:var(--article-accent, #3f8fd4);">有阈值（连错 3 次才动）、有配额（24h 最多 2 次）、有终点（修不好就交给人）</strong>的一条退路——这才是能放心托管的样子。<br/>说白了，这头赛博牛马，干活的路被世界改坏了会自己绕条新路；绕够两回还不通，才回头喊你一声。
 </blockquote>
 
-<p style="margin: 8px 0;">顺带把这套做法的特别之处说清。定时任务这件事，同类工具大多也能跑"不调 LLM 的脚本"。所以差别从来不在"有没有零 token"，而在<strong style="color: #3f8fd4;">那段脚本是怎么来的、跑在哪、坏了谁管</strong>：</p>
+<p style="margin: 8px 0;">顺带把这套做法的特别之处说清。定时任务这件事，同类工具大多也能跑"不调 LLM 的脚本"。所以差别从来不在"有没有零 token"，而在<strong style="color:var(--article-accent, #3f8fd4);">那段脚本是怎么来的、跑在哪、坏了谁管</strong>：</p>
 
 <ul style="padding-left: 22px; margin: 8px 0;">
-<li style="margin: 6px 0;"><strong style="color: #3f8fd4;">常见做法</strong>——你（或 Agent）自己写好一段 shell / 脚本命令挂上去，跑在你机器的<strong style="color: #3f8fd4;">全权限</strong>环境里、靠权限位约束；坏了，你回去改。</li>
-<li style="margin: 6px 0;"><strong style="color: #3f8fd4;">河蟹</strong>——把你一句自然语言<strong style="color: #3f8fd4;">编译</strong>进一个<strong style="color: #3f8fd4;">零权限结构化沙箱</strong>；坏了，它<strong style="color: #3f8fd4;">带着报错自愈重编译</strong>。</li>
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">常见做法</strong>——你（或 Agent）自己写好一段 shell / 脚本命令挂上去，跑在你机器的<strong style="color:var(--article-accent, #3f8fd4);">全权限</strong>环境里、靠权限位约束；坏了，你回去改。</li>
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">河蟹</strong>——把你一句自然语言<strong style="color:var(--article-accent, #3f8fd4);">编译</strong>进一个<strong style="color:var(--article-accent, #3f8fd4);">零权限结构化沙箱</strong>；坏了，它<strong style="color:var(--article-accent, #3f8fd4);">带着报错自愈重编译</strong>。</li>
 </ul>
 
-<blockquote style="border-left: 3px solid #3f8fd4; padding: 14px 18px; margin: 20px 0; background: #f4fbff; color: #12324c; font-size: 14px; border-radius: 0 8px 8px 0; line-height: 1.85;">
-同样是"定时跑一段代码"，区别就一句话：<strong style="color: #3f8fd4;">常见做法是"你运维它"，河蟹是"它运维自己"。</strong>
+<blockquote style="border-left: 3px solid #3f8fd4; padding: 14px 18px; margin: 20px 0; background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); font-size: 14px; border-radius: 0 8px 8px 0; line-height: 1.85;">
+同样是"定时跑一段代码"，区别就一句话：<strong style="color:var(--article-accent, #3f8fd4);">常见做法是"你运维它"，河蟹是"它运维自己"。</strong>
 </blockquote>
 
-<hr style="border: none; border-top: 1px solid #e0ecf5; margin: 28px 0;"/>
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
 
-<h2 style="font-size: 18px; font-weight: 700; color: #12324c; margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">问题四：用户手里是带不动 JSON 的本地小模型</h2>
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">问题四：用户手里是带不动 JSON 的本地小模型</h2>
 
-<p style="margin: 8px 0;">前面所有设计都默认了一件事：模型能把脚本写好。但河蟹 AI 是本地部署的，<strong style="color: #3f8fd4;">你没法挑用户用什么模型</strong>。很多人跑的是本地的 glm-4-flash、小参数 Qwen——它们写采集逻辑没问题，可一旦你要求"输出一段纯 JSON、里面塞一段多行脚本"，就开始翻车：要么输出一段带 markdown 围栏的 Python，要么 JSON 格式对了但脚本里有个小毛病（正则的反斜杠没转义之类）。</p>
+<p style="margin: 8px 0;">前面所有设计都默认了一件事：模型能把脚本写好。但河蟹 AI 是本地部署的，<strong style="color:var(--article-accent, #3f8fd4);">你没法挑用户用什么模型</strong>。很多人跑的是本地的 glm-4-flash、小参数 Qwen——它们写采集逻辑没问题，可一旦你要求"输出一段纯 JSON、里面塞一段多行脚本"，就开始翻车：要么输出一段带 markdown 围栏的 Python，要么 JSON 格式对了但脚本里有个小毛病（正则的反斜杠没转义之类）。</p>
 
-<p style="margin: 8px 0;">编译器为此叠了<strong style="color: #3f8fd4;">三层自纠</strong>（<code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">cron/llm_compiler.go</code>），层层兜底：</p>
+<p style="margin: 8px 0;">编译器为此叠了<strong style="color:var(--article-accent, #3f8fd4);">三层自纠</strong>（<code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">cron/llm_compiler.go</code>），层层兜底：</p>
 
 <ul style="padding-left: 22px; margin: 8px 0;">
-<li style="margin: 6px 0;"><strong style="color: #3f8fd4;">第一层 · 格式自纠</strong>——解析不出 JSON，就把它原样喂回去，附一句"你上一条不是要求的格式，请只输出纯 JSON、别加围栏"，重来一轮。模型手里已经有脚本了，这一轮很便宜，通常就过了。</li>
-<li style="margin: 6px 0;"><strong style="color: #3f8fd4;">第二层 · 打捞</strong>——重试还给不出合规 JSON，就用正则直接从那段坏输出里把脚本"抠"出来（围栏里的代码块，或没转义好的 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">script</code> 字段），补上固定元数据。模型再怎么不会包 JSON，至少脚本本体还能用。</li>
-<li style="margin: 6px 0;"><strong style="color: #3f8fd4;">第三层 · 校验自纠</strong>——脚本结构对了但没过安全校验，就把<strong style="color: #3f8fd4;">引擎报出的精确错误</strong>反馈给模型，让它"只改这一处"，重来一轮。</li>
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">第一层 · 格式自纠</strong>——解析不出 JSON，就把它原样喂回去，附一句"你上一条不是要求的格式，请只输出纯 JSON、别加围栏"，重来一轮。模型手里已经有脚本了，这一轮很便宜，通常就过了。</li>
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">第二层 · 打捞</strong>——重试还给不出合规 JSON，就用正则直接从那段坏输出里把脚本"抠"出来（围栏里的代码块，或没转义好的 <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">script</code> 字段），补上固定元数据。模型再怎么不会包 JSON，至少脚本本体还能用。</li>
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">第三层 · 校验自纠</strong>——脚本结构对了但没过安全校验，就把<strong style="color:var(--article-accent, #3f8fd4);">引擎报出的精确错误</strong>反馈给模型，让它"只改这一处"，重来一轮。</li>
 </ul>
 
 <section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;"><span style="display: block; white-space: pre; min-height: 1.4em;">// 第三层：把"精确的引擎报错"反馈给模型，让它只修这一处</span><span style="display: block; white-space: pre; min-height: 1.4em;">user("The Starlark script failed validation with this exact error:\n" +</span><span style="display: block; white-space: pre; min-height: 1.4em;">     verr.Error() +</span><span style="display: block; white-space: pre; min-height: 1.4em;">     "\nFix ONLY that error, then re-emit one pure JSON object.")</span></code></section>
 
-<p style="margin: 8px 0;">这第三层有句注释我很喜欢：<strong style="color: #3f8fd4;">"它能救回大多数靠'换个更大的模型'都救不回的小错。"</strong> 因为换大模型解决的是"能力"，而这类错误是"手滑"——把它确切的错误指出来让它改，比换个更聪明的脑子更对症。</p>
+<p style="margin: 8px 0;">这第三层有句注释我很喜欢：<strong style="color:var(--article-accent, #3f8fd4);">"它能救回大多数靠'换个更大的模型'都救不回的小错。"</strong> 因为换大模型解决的是"能力"，而这类错误是"手滑"——把它确切的错误指出来让它改，比换个更聪明的脑子更对症。</p>
 
-<blockquote style="border-left: 3px solid #3f8fd4; padding: 14px 18px; margin: 20px 0; background: #f4fbff; color: #12324c; font-size: 14px; border-radius: 0 8px 8px 0; line-height: 1.85;">
-<strong style="color: #3f8fd4;">不要求模型完美，要求系统容错。</strong>本地部署意味着你挑不了用户的模型，那就让系统能接住模型的不完美——这是"小模型也能跑得动这套自动化"的前提。
+<blockquote style="border-left: 3px solid #3f8fd4; padding: 14px 18px; margin: 20px 0; background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); font-size: 14px; border-radius: 0 8px 8px 0; line-height: 1.85;">
+<strong style="color:var(--article-accent, #3f8fd4);">不要求模型完美，要求系统容错。</strong>本地部署意味着你挑不了用户的模型，那就让系统能接住模型的不完美——这是"小模型也能跑得动这套自动化"的前提。
 </blockquote>
 
-<hr style="border: none; border-top: 1px solid #e0ecf5; margin: 28px 0;"/>
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
 
-<h2 style="font-size: 18px; font-weight: 700; color: #12324c; margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">把四个答案，接成一次"说一句话"</h2>
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">把四个答案，接成一次"说一句话"</h2>
 
 <p style="margin: 8px 0;">上面四个问题解决的是"能不能成"。但用户感知到的，是"说一句话之后发生了什么"。这一层同样有工程。</p>
 
-<p style="margin: 8px 0;">编译要调 LLM，慢时三五十秒。让用户对着转圈等半分钟、不知道卡在哪，体验很差。所以创建过程被切成四个可观察阶段，流式（SSE）推给前端（<code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">cron/compiler.go</code>）：</p>
+<p style="margin: 8px 0;">编译要调 LLM，慢时三五十秒。让用户对着转圈等半分钟、不知道卡在哪，体验很差。所以创建过程被切成四个可观察阶段，流式（SSE）推给前端（<code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">cron/compiler.go</code>）：</p>
 
 <section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;"><span style="display: block; white-space: pre; min-height: 1.4em;">const (</span><span style="display: block; white-space: pre; min-height: 1.4em;">    StageAnalyzing  = "analyzing"    // 解析需求 / 选 provider</span><span style="display: block; white-space: pre; min-height: 1.4em;">    StageCallingLLM = "calling_llm"  // 调 LLM 生成脚本（最长一段）</span><span style="display: block; white-space: pre; min-height: 1.4em;">    StageValidating = "validating"   // AST + 语法 + 输出契约校验</span><span style="display: block; white-space: pre; min-height: 1.4em;">    StagePersisting = "persisting"   // 序列化 + 入库</span><span style="display: block; white-space: pre; min-height: 1.4em;">)</span></code></section>
 
-<p style="margin: 8px 0;">这里有个不起眼但管用的设计：<strong style="color: #3f8fd4;">后端用接口探测决定走不走流式</strong>。编译器实现了带进度的扩展接口就逐段推送；没实现，就把整个编译当成一个阶段——<strong style="color: #3f8fd4;">照样能工作，只是看不到细节</strong>。能力是渐进增强的，不是非此即彼。前面那个"格式自纠"也会作为一条进度（"输出格式异常，自动修正重试中…"）顺着这条流推给你，让你知道它在自我纠错，而不是卡死了。</p>
+<p style="margin: 8px 0;">这里有个不起眼但管用的设计：<strong style="color:var(--article-accent, #3f8fd4);">后端用接口探测决定走不走流式</strong>。编译器实现了带进度的扩展接口就逐段推送；没实现，就把整个编译当成一个阶段——<strong style="color:var(--article-accent, #3f8fd4);">照样能工作，只是看不到细节</strong>。能力是渐进增强的，不是非此即彼。前面那个"格式自纠"也会作为一条进度（"输出格式异常，自动修正重试中…"）顺着这条流推给你，让你知道它在自我纠错，而不是卡死了。</p>
 
-<p style="margin: 8px 0;">编译完，也不是 AI 直接给你把任务建好，而是先弹一张<strong style="color: #3f8fd4;">确认卡</strong>（<code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">CronJobConfirmCard.vue</code>）：</p>
+<p style="margin: 8px 0;">编译完，也不是 AI 直接给你把任务建好，而是先弹一张<strong style="color:var(--article-accent, #3f8fd4);">确认卡</strong>（<code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">CronJobConfirmCard.vue</code>）：</p>
 
 <ul style="padding-left: 22px; margin: 8px 0;">
-<li style="margin: 4px 0;"><strong style="color: #3f8fd4;">来源分层徽章</strong>——这句话怎么被理解的，卡上有 badge 标着：<code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">⌘ Slash</code>（斜杠命令，最高置信）/ <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">⚡ 已识别</code>（规则快路径命中，免 LLM）/ <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">🤖 AI 协助</code> / <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">💬 待补全</code>。能用规则识别的简单意图，根本不惊动大模型。</li>
-<li style="margin: 4px 0;"><strong style="color: #3f8fd4;">cron 表达式中文预览</strong>——<code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">0 8 * * *</code> 旁边直接显示"每天 08:00"，普通人一眼看懂自己建的是什么时间。</li>
-<li style="margin: 4px 0;"><strong style="color: #3f8fd4;">确认前可改 + "AI 帮我改"</strong>——名称、时间、做什么、通知到哪（chat / push / feishu / discord / wechat）都能当场编辑；觉得理解得不对，点"AI 帮我改"重新解析。<strong style="color: #3f8fd4;">有人确认这一关，不会 AI 一拍脑袋就替你建个任务。</strong></li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">来源分层徽章</strong>——这句话怎么被理解的，卡上有 badge 标着：<code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">⌘ Slash</code>（斜杠命令，最高置信）/ <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">⚡ 已识别</code>（规则快路径命中，免 LLM）/ <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">🤖 AI 协助</code> / <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">💬 待补全</code>。能用规则识别的简单意图，根本不惊动大模型。</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">cron 表达式中文预览</strong>——<code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">0 8 * * *</code> 旁边直接显示"每天 08:00"，普通人一眼看懂自己建的是什么时间。</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">确认前可改 + "AI 帮我改"</strong>——名称、时间、做什么、通知到哪（chat / push / feishu / discord / wechat）都能当场编辑；觉得理解得不对，点"AI 帮我改"重新解析。<strong style="color:var(--article-accent, #3f8fd4);">有人确认这一关，不会 AI 一拍脑袋就替你建个任务。</strong></li>
 </ul>
 
 <p style="margin: 8px 0;">接起来，一次完整链路长这样：</p>
 
 <figure style="margin: 18px 0; text-align: center;">
-<figure><img src="../../assets/blog/河蟹AI-cron架构图.png" alt="河蟹 AI 定时任务引擎架构图" width="1800" height="1800" loading="lazy" decoding="async"><figcaption>河蟹 AI 定时任务引擎架构图</figcaption></figure>
-<figcaption style="color: #5f7b9c; font-size: 13px; margin-top: 8px; line-height: 1.6;">一次完整链路：① 创建期编译（四阶段 + 三层自纠）→ 落 SQLite → ② 运行期零 LLM（脚本沙箱 / 完整 Agent 双引擎）→ 结果入知识库·记忆（闭环⭐，可选投递飞书 / 微信 / 邮件等渠道）→ ③ 失败自愈回路（连错 3 次重编译，24h ≤ 2 次）。</figcaption>
+<img src="../../assets/blog/河蟹AI-cron架构图.png" alt="河蟹 AI 定时任务引擎架构图" width="1800" height="1800" loading="lazy" decoding="async">
+<figcaption style="color:var(--article-secondary, #5f7b9c); font-size: 13px; margin-top: 8px; line-height: 1.6;">一次完整链路：① 创建期编译（四阶段 + 三层自纠）→ 落 SQLite → ② 运行期零 LLM（脚本沙箱 / 完整 Agent 双引擎）→ 结果入知识库·记忆（闭环⭐，可选投递飞书 / 微信 / 邮件等渠道）→ ③ 失败自愈回路（连错 3 次重编译，24h ≤ 2 次）。</figcaption>
 </figure>
 
 <p style="margin: 8px 0;">这套"采集 → 写回知识库"的闭环，真实跑完一轮长这样：</p>
 
 <figure style="margin: 18px 0; text-align: center;">
-<figure><img src="../../assets/blog/河蟹AI-本地Zapier-cron编译自愈-wechat-image/demo-0-automation.png" alt="自动化页：两个真实定时任务在跑" width="2000" height="1241" loading="lazy" decoding="async"><figcaption>自动化页：两个真实定时任务在跑</figcaption></figure>
-<figure><img src="../../assets/blog/河蟹AI-本地Zapier-cron编译自愈-wechat-image/demo-1-source.png" alt="数据源：百度热搜实时榜单" width="2850" height="1468" loading="lazy" decoding="async"><figcaption>数据源：百度热搜实时榜单</figcaption></figure>
-<figure><img src="../../assets/blog/河蟹AI-本地Zapier-cron编译自愈-wechat-image/demo-2-kb.png" alt="结果：自动写回知识库的百度热搜 TOP20 文档" width="2000" height="1241" loading="lazy" decoding="async"><figcaption>结果：自动写回知识库的百度热搜 TOP20 文档</figcaption></figure>
-<figure><img src="../../assets/blog/河蟹AI-本地Zapier-cron编译自愈-wechat-image/demo-3-kb-list.png" alt="知识库里 cron 持续攒下的文档时间序列" width="2000" height="1241" loading="lazy" decoding="async"><figcaption>知识库里 cron 持续攒下的文档时间序列</figcaption></figure>
-<figcaption style="color: #5f7b9c; font-size: 13px; margin-top: 8px; line-height: 1.6;">从上到下：① 自动化页里两个真实在跑的定时任务——<strong style="color: #3f8fd4;">一句自然语言建的、"纯 Go 引擎零依赖"、执行记录全是 1s 级成功（运行期零 LLM）、可随时"查看脚本"</strong>；② 其中一个任务抓的数据源（百度热搜榜单）；③ 整理后写回知识库的「TOP20」文档（已索引、8 chunks、带采集时间）；④ 知识库里攒下的时间序列——来源都标着 <strong style="color: #3f8fd4;">cron-gh-stars / cron-baidu-hotsearch</strong>，每天一条、已 21 篇。这就是"闭环"：Agent 给自己持续喂数据，<strong style="color: #3f8fd4;">第二大脑越攒越大</strong>，下次你问它，它早知道了。</figcaption>
+<img src="../../assets/blog/河蟹AI-本地Zapier-cron编译自愈-wechat-image/demo-0-automation.png" alt="自动化页：两个真实定时任务在跑" width="2000" height="1241" loading="lazy" decoding="async">
+<img src="../../assets/blog/河蟹AI-本地Zapier-cron编译自愈-wechat-image/demo-1-source.png" alt="数据源：百度热搜实时榜单" width="2850" height="1468" loading="lazy" decoding="async">
+<img src="../../assets/blog/河蟹AI-本地Zapier-cron编译自愈-wechat-image/demo-2-kb.png" alt="结果：自动写回知识库的百度热搜 TOP20 文档" width="2000" height="1241" loading="lazy" decoding="async">
+<img src="../../assets/blog/河蟹AI-本地Zapier-cron编译自愈-wechat-image/demo-3-kb-list.png" alt="知识库里 cron 持续攒下的文档时间序列" width="2000" height="1241" loading="lazy" decoding="async">
+<figcaption style="color:var(--article-secondary, #5f7b9c); font-size: 13px; margin-top: 8px; line-height: 1.6;">从上到下：① 自动化页里两个真实在跑的定时任务——<strong style="color:var(--article-accent, #3f8fd4);">一句自然语言建的、"纯 Go 引擎零依赖"、执行记录全是 1s 级成功（运行期零 LLM）、可随时"查看脚本"</strong>；② 其中一个任务抓的数据源（百度热搜榜单）；③ 整理后写回知识库的「TOP20」文档（已索引、8 chunks、带采集时间）；④ 知识库里攒下的时间序列——来源都标着 <strong style="color:var(--article-accent, #3f8fd4);">cron-gh-stars / cron-baidu-hotsearch</strong>，每天一条、已 21 篇。这就是"闭环"：Agent 给自己持续喂数据，<strong style="color:var(--article-accent, #3f8fd4);">第二大脑越攒越大</strong>，下次你问它，它早知道了。</figcaption>
 </figure>
 
-<p style="margin: 8px 0;">底层还垫了几层稳妥：创建走统一入口（<code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">POST /api/v1/cronjob</code>），带幂等键（5 分钟内同一请求不重复建）、每用户活跃任务配额（30 个）、更新任务用"先删后建的原子替换、失败自动回滚原任务"；进程重启时从 SQLite 把活跃任务整批捞回来（<strong style="color: #3f8fd4;">重启不丢任务</strong>），运行历史按任务写时裁剪到最新 200 条（防无界膨胀拖慢启动）；失败可配独立投递目标（没配则回落到节流告警），且"执行失败"与"投递失败"两类错误分开记录、各自成功清零——不会因为一次推送没成功就把整条任务误判成挂了。调度本身是一个 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">runLoop</code> 协程按下次执行时间派发、每个到期任务起一个独立协程跑，互不阻塞；连 cron 语义里的暗坑也趟平了——<code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">@hourly</code> 落在哪个时区、月内日（DoM）与星期（DoW）同时给时取并集还是交集，想当然就会让任务在错的点触发。这些都是为了让一个跑在你机器上、没人值守的系统，别因为一次手抖、一次重启或一次网络抖动就把任务搞乱。</p>
+<p style="margin: 8px 0;">底层还垫了几层稳妥：创建走统一入口（<code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">POST /api/v1/cronjob</code>），带幂等键（5 分钟内同一请求不重复建）、每用户活跃任务配额（30 个）、更新任务用"先删后建的原子替换、失败自动回滚原任务"；进程重启时从 SQLite 把活跃任务整批捞回来（<strong style="color:var(--article-accent, #3f8fd4);">重启不丢任务</strong>），运行历史按任务写时裁剪到最新 200 条（防无界膨胀拖慢启动）；失败可配独立投递目标（没配则回落到节流告警），且"执行失败"与"投递失败"两类错误分开记录、各自成功清零——不会因为一次推送没成功就把整条任务误判成挂了。调度本身是一个 <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">runLoop</code> 协程按下次执行时间派发、每个到期任务起一个独立协程跑，互不阻塞；连 cron 语义里的暗坑也趟平了——<code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">@hourly</code> 落在哪个时区、月内日（DoM）与星期（DoW）同时给时取并集还是交集，想当然就会让任务在错的点触发。这些都是为了让一个跑在你机器上、没人值守的系统，别因为一次手抖、一次重启或一次网络抖动就把任务搞乱。</p>
 
-<p style="margin: 8px 0;">还有两块定时任务绕不开的硬骨头（这两段偏底层，只想用的普通读者可略过），这套也啃了：<strong style="color: #3f8fd4;">错过的触发（misfire）</strong>——机器休眠 / 重启时错过了点，若已错过超过半个周期（夹在 120s~2h），就快进到下一个未来点、<strong style="color: #3f8fd4;">只跳过、不补一串积压</strong>（免得开机一瞬被一堆迟到任务淹没）；没超宽限才正常补跑一次；一次性提醒例外，迟到也要响。<strong style="color: #3f8fd4;">重叠执行</strong>——同一个任务上一轮还没跑完、下一拍又到点，用一个进程内 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">running</code> 标记直接跳过这一拍，不让它自己踩自己。出了问题也看得见：执行失败记 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">LastError</code>、投递失败记 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">LastDeliveryError</code>，加上每任务的运行历史，自动化页面一眼能看出哪条不对劲。</p>
+<p style="margin: 8px 0;">还有两块定时任务绕不开的硬骨头（这两段偏底层，只想用的普通读者可略过），这套也啃了：<strong style="color:var(--article-accent, #3f8fd4);">错过的触发（misfire）</strong>——机器休眠 / 重启时错过了点，若已错过超过半个周期（夹在 120s~2h），就快进到下一个未来点、<strong style="color:var(--article-accent, #3f8fd4);">只跳过、不补一串积压</strong>（免得开机一瞬被一堆迟到任务淹没）；没超宽限才正常补跑一次；一次性提醒例外，迟到也要响。<strong style="color:var(--article-accent, #3f8fd4);">重叠执行</strong>——同一个任务上一轮还没跑完、下一拍又到点，用一个进程内 <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">running</code> 标记直接跳过这一拍，不让它自己踩自己。出了问题也看得见：执行失败记 <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">LastError</code>、投递失败记 <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">LastDeliveryError</code>，加上每任务的运行历史，自动化页面一眼能看出哪条不对劲。</p>
 
-<hr style="border: none; border-top: 1px solid #e0ecf5; margin: 28px 0;"/>
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
 
-<h2 style="font-size: 18px; font-weight: 700; color: #12324c; margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">诚实写一下：它干不了什么</h2>
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">诚实写一下：它干不了什么</h2>
 
 <p style="margin: 8px 0;">写工程笔记不写边界，是装。这套引擎有几条很实的局限，建任务前最好知道：</p>
 
 <ul style="padding-left: 22px; margin: 8px 0;">
-<li style="margin: 6px 0;"><strong style="color: #3f8fd4;">Starlark 不是完整 Python</strong>。没有 import、没有第三方库，能用的只有注入的那十几个内建。要 numpy / pandas / 复杂解析库的任务，默认引擎做不了——要么退到可选的 python3 引擎（得自己装了 python3），要么别用脚本模式。<strong style="color: #3f8fd4;">它擅长的是"抓取 → 清洗 → 存储/推送"这条 I/O 流水线，不是通用计算。</strong></li>
-<li style="margin: 6px 0;"><strong style="color: #3f8fd4;">自愈不是万能</strong>。它能修"网页小改版导致抓空"这类——把新错误喂回去让模型适配。但对方网站直接下线、加了登录墙、封了 IP，重编译也救不回来。这时 24h 配额用尽，引擎停手并告警，把判断交还给你——这是设计如此，不是 bug。</li>
-<li style="margin: 6px 0;"><strong style="color: #3f8fd4;">自愈窗口在内存里</strong>。"24h 最多 2 次"的计数是进程内的，sidecar 重启会重置。对桌面应用这是可接受的取舍——重启本就少见，最坏不过多自愈几次，永远不会在一个进程生命周期里失控。要严格持久化的话，这是已知简化。</li>
-<li style="margin: 6px 0;"><strong style="color: #3f8fd4;">这是桌面单机引擎，不是服务端</strong>。并发≈1，"容量"看的是任务条数（默认 30/用户）和单次执行的资源上界（响应体 ≤ 8 MiB、步数 ≤ 1 亿、超时缺省 300s），不是 QPS。真要做成多租户服务，沙箱得升到进程/容器级隔离、单机的 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">runLoop</code> 调度得换成分布式延时队列，而且现在的重入防护是进程内 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: #3f8fd4;">running</code> 标记、只防单机重叠——多副本部署时同一到期刻度会被多个副本各触发一次，得另加外部锁 / 去重。那是另一套工程，不在这一篇的边界里。</li>
-<li style="margin: 6px 0;"><strong style="color: #3f8fd4;">任务分类是关键词、不是 LLM 判的</strong>。边界句子可能误判（一句话里同时有采集和分析）。好在前面说过，误判有自愈兜底、有人工确认这一关，代价被控制住——但它确实不是"理解得多深"的分类。</li>
-<li style="margin: 6px 0;"><strong style="color: #3f8fd4;">agent 模式每次烧一轮对话</strong>。所以它被强制 ≥ 1 小时间隔，只适合"每天总结""每周报告"这种低频认知任务。又高频又智能，物理上不成立。</li>
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">Starlark 不是完整 Python</strong>。没有 import、没有第三方库，能用的只有注入的那十几个内建。要 numpy / pandas / 复杂解析库的任务，默认引擎做不了——要么退到可选的 python3 引擎（得自己装了 python3），要么别用脚本模式。<strong style="color:var(--article-accent, #3f8fd4);">它擅长的是"抓取 → 清洗 → 存储/推送"这条 I/O 流水线，不是通用计算。</strong></li>
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">自愈不是万能</strong>。它能修"网页小改版导致抓空"这类——把新错误喂回去让模型适配。但对方网站直接下线、加了登录墙、封了 IP，重编译也救不回来。这时 24h 配额用尽，引擎停手并告警，把判断交还给你——这是设计如此，不是 bug。</li>
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">自愈窗口在内存里</strong>。"24h 最多 2 次"的计数是进程内的，sidecar 重启会重置。对桌面应用这是可接受的取舍——重启本就少见，最坏不过多自愈几次，永远不会在一个进程生命周期里失控。要严格持久化的话，这是已知简化。</li>
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">这是桌面单机引擎，不是服务端</strong>。并发≈1，"容量"看的是任务条数（默认 30/用户）和单次执行的资源上界（响应体 ≤ 8 MiB、步数 ≤ 1 亿、超时缺省 300s），不是 QPS。真要做成多租户服务，沙箱得升到进程/容器级隔离、单机的 <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">runLoop</code> 调度得换成分布式延时队列，而且现在的重入防护是进程内 <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">running</code> 标记、只防单机重叠——多副本部署时同一到期刻度会被多个副本各触发一次，得另加外部锁 / 去重。那是另一套工程，不在这一篇的边界里。</li>
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">任务分类是关键词、不是 LLM 判的</strong>。边界句子可能误判（一句话里同时有采集和分析）。好在前面说过，误判有自愈兜底、有人工确认这一关，代价被控制住——但它确实不是"理解得多深"的分类。</li>
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">agent 模式每次烧一轮对话</strong>。所以它被强制 ≥ 1 小时间隔，只适合"每天总结""每周报告"这种低频认知任务。又高频又智能，物理上不成立。</li>
 </ul>
 
-<hr style="border: none; border-top: 1px solid #e0ecf5; margin: 28px 0;"/>
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
 
-<h2 style="font-size: 18px; font-weight: 700; color: #12324c; margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">这本来就该是 AI Agent 干的活</h2>
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">这本来就该是 AI Agent 干的活</h2>
 
-<p style="margin: 8px 0;">绕了一圈技术细节，其实只为说清一件事：<strong style="color: #3f8fd4;">定时、重复、机械的任务，本就不该占用人的注意力，也不该每次都惊动一次大模型推理</strong>。AI Agent 把这类活接过来，是它的本分。</p>
+<p style="margin: 8px 0;">绕了一圈技术细节，其实只为说清一件事：<strong style="color:var(--article-accent, #3f8fd4);">定时、重复、机械的任务，本就不该占用人的注意力，也不该每次都惊动一次大模型推理</strong>。AI Agent 把这类活接过来，是它的本分。</p>
 
-<p style="margin: 8px 0;">回头看，这套引擎与其说是"设计"出来的，不如说是被问题一层层逼出来的：<strong style="color: #3f8fd4;">"编译成脚本"</strong>省了钱和不确定性 → 撞上"AI 写的代码敢不敢在你机器上跑"就加了<strong style="color: #3f8fd4;">零权限沙箱</strong>（沙箱要不要连网络一起锁死？锁过，又因为它误杀了走透明代理的正常流量而拆回——边界最终落回"能调什么"、而非"能连哪个 IP"）→ 撞上"有些任务根本不该编译"就加了<strong style="color: #3f8fd4;">机械 / 认知分流</strong> → 撞上"脚本会被变化的世界改坏"就加了<strong style="color: #3f8fd4;">自愈</strong> → 撞上"用户的本地模型带不动 JSON"就加了<strong style="color: #3f8fd4;">三层自纠</strong>。每一层，都是上一层的代价逼出来的。</p>
+<p style="margin: 8px 0;">回头看，这套引擎与其说是"设计"出来的，不如说是被问题一层层逼出来的：<strong style="color:var(--article-accent, #3f8fd4);">"编译成脚本"</strong>省了钱和不确定性 → 撞上"AI 写的代码敢不敢在你机器上跑"就加了<strong style="color:var(--article-accent, #3f8fd4);">零权限沙箱</strong>（沙箱要不要连网络一起锁死？锁过，又因为它误杀了走透明代理的正常流量而拆回——边界最终落回"能调什么"、而非"能连哪个 IP"）→ 撞上"有些任务根本不该编译"就加了<strong style="color:var(--article-accent, #3f8fd4);">机械 / 认知分流</strong> → 撞上"脚本会被变化的世界改坏"就加了<strong style="color:var(--article-accent, #3f8fd4);">自愈</strong> → 撞上"用户的本地模型带不动 JSON"就加了<strong style="color:var(--article-accent, #3f8fd4);">三层自纠</strong>。每一层，都是上一层的代价逼出来的。</p>
 
-<p style="margin: 8px 0;">但"接管"不等于"能跑个 demo"。Demo 谁都能做——让模型现写段代码、跑一次成功，发个截图。真正难的，是把它做成<strong style="color: #3f8fd4;">能托管、能放心忘掉</strong>的基础设施：</p>
+<p style="margin: 8px 0;">但"接管"不等于"能跑个 demo"。Demo 谁都能做——让模型现写段代码、跑一次成功，发个截图。真正难的，是把它做成<strong style="color:var(--article-accent, #3f8fd4);">能托管、能放心忘掉</strong>的基础设施：</p>
 
 <ul style="padding-left: 22px; margin: 8px 0;">
-<li style="margin: 6px 0;"><strong style="color: #3f8fd4;">给 Agent 自己喂数据</strong>——采集与整理的产物写回它的知识库和记忆，于是你下次问它时，它<strong style="color: #3f8fd4;">已经知道了</strong>。哑工具把结果推给你，Agent 把结果喂回自己——这才是闭环，是 RSS、是 Zapier 给不了的那一环。</li>
-<li style="margin: 6px 0;"><strong style="color: #3f8fd4;">低成本</strong>——编译一次、之后零 token，边际成本是 0 而不是线性增长。</li>
-<li style="margin: 6px 0;"><strong style="color: #3f8fd4;">可离线、不出本机</strong>——结构化沙箱里跑确定性代码，数据始终留在你自己机器上。</li>
-<li style="margin: 6px 0;"><strong style="color: #3f8fd4;">敢在你机器上跑</strong>——能力安全模型（默认零权限沙箱，能力靠显式注入逐项授予），而不是追着逃逸打补丁。</li>
-<li style="margin: 6px 0;"><strong style="color: #3f8fd4;">世界变了能自愈</strong>——脚本失效带着报错重编译，修不好才交还给你。</li>
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">给 Agent 自己喂数据</strong>——采集与整理的产物写回它的知识库和记忆，于是你下次问它时，它<strong style="color:var(--article-accent, #3f8fd4);">已经知道了</strong>。哑工具把结果推给你，Agent 把结果喂回自己——这才是闭环，是 RSS、是 Zapier 给不了的那一环。</li>
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">低成本</strong>——编译一次、之后零 token，边际成本是 0 而不是线性增长。</li>
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">可离线、不出本机</strong>——结构化沙箱里跑确定性代码，数据始终留在你自己机器上。</li>
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">敢在你机器上跑</strong>——能力安全模型（默认零权限沙箱，能力靠显式注入逐项授予），而不是追着逃逸打补丁。</li>
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">世界变了能自愈</strong>——脚本失效带着报错重编译，修不好才交还给你。</li>
 </ul>
 
-<p style="margin: 8px 0;">这几件事做齐，"让 Agent 替你定时干活"才从一句口号，落成一个真能托管的东西。<strong style="color: #3f8fd4;">推送通知只是它的一个出口；真正的价值，是它常年替你维护着一个越来越新的"第二大脑"。</strong></p>
+<p style="margin: 8px 0;">这几件事做齐，"让 Agent 替你定时干活"才从一句口号，落成一个真能托管的东西。<strong style="color:var(--article-accent, #3f8fd4);">推送通知只是它的一个出口；真正的价值，是它常年替你维护着一个越来越新的"第二大脑"。</strong></p>
 
-<blockquote style="border-left: 3px solid #3f8fd4; padding: 14px 18px; margin: 20px 0; background: #f4fbff; color: #12324c; font-size: 14px; border-radius: 0 8px 8px 0; line-height: 1.85;">
-把意图编译成代码、放在你自己的机器上跑；用零权限沙箱让它敢跑、用分流让它跑得划算、用自愈让它在世界变化时自己续命——最后把产物喂回 Agent 自己的知识与记忆。<strong style="color: #3f8fd4;">这就是河蟹 AI 对"Agent 接管定时自动化"给出的工程答案：不是替你跑个脚本，是替它自己养一个会持续更新的大脑。</strong>
+<blockquote style="border-left: 3px solid #3f8fd4; padding: 14px 18px; margin: 20px 0; background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); font-size: 14px; border-radius: 0 8px 8px 0; line-height: 1.85;">
+把意图编译成代码、放在你自己的机器上跑；用零权限沙箱让它敢跑、用分流让它跑得划算、用自愈让它在世界变化时自己续命——最后把产物喂回 Agent 自己的知识与记忆。<strong style="color:var(--article-accent, #3f8fd4);">这就是河蟹 AI 对"Agent 接管定时自动化"给出的工程答案：不是替你跑个脚本，是替它自己养一个会持续更新的大脑。</strong>
 </blockquote>
 
-<hr style="border: none; border-top: 1px solid #e0ecf5; margin: 28px 0;"/>
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
 
-<p style="margin: 24px 0 16px; color: #5f7b9c; font-size: 14.5px; line-height: 2; text-align: center; font-style: italic; padding: 8px 16px;">最好的自动化，是你说一句话，<br/>然后就可以忘了它——因为它会自己跑，跑错了还会自己想办法。</p>
+<p style="margin: 24px 0 16px; color:var(--article-secondary, #5f7b9c); font-size: 14.5px; line-height: 2; text-align: center; font-style: italic; padding: 8px 16px;">最好的自动化，是你说一句话，<br/>然后就可以忘了它——因为它会自己跑，跑错了还会自己想办法。</p>
 
-<hr style="border: none; border-top: 1px solid #e0ecf5; margin: 28px 0;"/>
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
 
-<h3 style="font-size: 15px; font-weight: 600; color: #3f8fd4; margin: 24px 0 8px;">番外 · 上一篇发布至今，这套又长出了什么</h3>
+<h3 style="font-size: 15px; font-weight: 600; color:var(--article-accent, #3f8fd4); margin: 24px 0 8px;">番外 · 上一篇发布至今，这套又长出了什么</h3>
 
-<p style="margin: 8px 0; font-size: 14px;">上一篇《让 AI Agent 说维吾尔语》发布到现在，产品又一路加上 / 完善了这些（部分会单独成篇）：</p>
+<p style="margin: 8px 0; font-size: 14px;">上一篇《让 AI Agent 说维吾尔语：河蟹 AI v0.4.0 的本土化实践》发布到现在，如今已迭代到 v0.4.6，产品又一路加上 / 完善了这些（部分会单独成篇）：</p>
 
 <ul style="padding-left: 22px; margin: 8px 0; font-size: 14px;">
-<li style="margin: 4px 0;"><strong style="color: #3f8fd4;">🔌 数据连接器</strong>——GitHub / Notion / 邮箱接入，凭据加密存储</li>
-<li style="margin: 4px 0;"><strong style="color: #3f8fd4;">🧩 工作流</strong>——webhook 触发 + 把多个任务串成一张图</li>
-<li style="margin: 4px 0;"><strong style="color: #3f8fd4;">🪪 统一权限闸 + 无人值守风险顾问</strong>——自动化动手前先评估风险</li>
-<li style="margin: 4px 0;"><strong style="color: #3f8fd4;">🧠 可编辑的助理人设（SOUL）+ 记忆库</strong></li>
-<li style="margin: 4px 0;"><strong style="color: #3f8fd4;">📝 Prompt 管理</strong>——常用提示词成库，存起来随手复用</li>
-<li style="margin: 4px 0;"><strong style="color: #3f8fd4;">🎯 Skill / Prompt 召回</strong>——会话框新增手动检索·按需挂载相关 skill 与 prompt（自动召回此前已具备）</li>
-<li style="margin: 4px 0;"><strong style="color: #3f8fd4;">🧪 eval 框架</strong>——给 Agent 行为做回归测试</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">🔌 数据连接器</strong>——GitHub / 语雀云笔记/飞书文档/ 邮箱接入，凭据加密存储</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">🧩 工作流</strong>——webhook 触发 + 把多个任务串成一张图</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">🪪 统一权限闸 + 无人值守风险顾问</strong>——自动化动手前先评估风险</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">🧠 可编辑的助理人设（SOUL）+ 记忆库</strong></li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">📝 Prompt 管理</strong>——常用提示词成库，存起来随手复用</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">🎯 Skill / Prompt 召回</strong>——会话框新增手动检索·按需挂载相关 skill 与 prompt（自动召回此前已具备）</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">🧪 eval 框架</strong>——给 Agent 行为做回归测试</li>
 </ul>
 
-<p style="margin: 8px 0; font-size: 13px; color: #7b8fa3;">其中"数据连接器 × 定时采集""webhook 工作流"会接着这篇的"闭环"主轴，往下单独写。</p>
+<p style="margin: 8px 0; font-size: 13px; color:var(--article-muted, #7b8fa3);">其中"数据连接器 × 定时采集""webhook 工作流"会接着这篇的"闭环"主轴，往下单独写。</p>
 
-<hr style="border: none; border-top: 1px solid #e0ecf5; margin: 28px 0;"/>
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
 
-<p style="margin: 8px 0; font-size: 14px; color: #7b8fa3;"><strong style="color: #3f8fd4;">延伸阅读</strong>——河蟹系列前作：</p>
+<p style="margin: 8px 0; font-size: 14px; color:var(--article-muted, #7b8fa3);"><strong style="color:var(--article-accent, #3f8fd4);">延伸阅读</strong>——河蟹系列前作：</p>
 
 <ol style="padding-left: 22px; margin: 8px 0; font-size: 14px;">
-<li style="margin: 4px 0;"><a href="https://mp.weixin.qq.com/s/CuVTbUv2kJRePybo_MudYA" style="color: #5fb3ea;">河蟹 AI vs OpenClaw / Hermes</a> — 2026 本地 AI Agent 的三条路径</li>
-<li style="margin: 4px 0;"><a href="https://mp.weixin.qq.com/s/1rza-Ye3NF89KNAJp_PttA" style="color: #5fb3ea;">Claude Code SOP</a> — 设计驱动 × 测试闭环 × 多 Agent 协作</li>
-<li style="margin: 4px 0;"><a href="https://mp.weixin.qq.com/s/wIRiJsWLRPWBiTEQtlVQkg" style="color: #5fb3ea;">架构详解</a> — 一个人 × Claude Code × 5 个月 × 6 仓</li>
-<li style="margin: 4px 0;"><a href="https://mp.weixin.qq.com/s/RX-2QOSV2cBEmddwAUj5cg" style="color: #5fb3ea;">思考过程</a> — 打通 Qwen / Gemma / DeepSeek-R1 的最后一公里</li>
-<li style="margin: 4px 0;"><a href="https://mp.weixin.qq.com/s/PdJRKkH4qiBS-IZBifbuag" style="color: #5fb3ea;">完全指南</a> — 5 分钟从零到一个能干活的本地 AI Agent</li>
-<li style="margin: 4px 0;"><a href="https://mp.weixin.qq.com/s/2tHlfZYHxQdQwvVZQEoLRg" style="color: #5fb3ea;">前 leader Skill</a> — 把 leader 蒸馏成 AI Skill</li>
-<li style="margin: 4px 0;"><a href="https://mp.weixin.qq.com/s/S49q9gsXABAzcJyNOC7FjQ" style="color: #5fb3ea;">从养龙虾到养河蟹</a> — 产品发布 / OpenClaw 开题呼应</li>
+<li style="margin: 4px 0;"><a href="https://mp.weixin.qq.com/s/CuVTbUv2kJRePybo_MudYA" style="color:var(--article-accent, #5fb3ea);">河蟹 AI vs OpenClaw / Hermes</a> — 2026 本地 AI Agent 的三条路径</li>
+<li style="margin: 4px 0;"><a href="https://mp.weixin.qq.com/s/1rza-Ye3NF89KNAJp_PttA" style="color:var(--article-accent, #5fb3ea);">Claude Code SOP</a> — 设计驱动 × 测试闭环 × 多 Agent 协作</li>
+<li style="margin: 4px 0;"><a href="https://mp.weixin.qq.com/s/wIRiJsWLRPWBiTEQtlVQkg" style="color:var(--article-accent, #5fb3ea);">架构详解</a> — 一个人 × Claude Code × 5 个月 × 6 仓</li>
+<li style="margin: 4px 0;"><a href="https://mp.weixin.qq.com/s/RX-2QOSV2cBEmddwAUj5cg" style="color:var(--article-accent, #5fb3ea);">思考过程</a> — 打通 Qwen / Gemma / DeepSeek-R1 的最后一公里</li>
+<li style="margin: 4px 0;"><a href="https://mp.weixin.qq.com/s/PdJRKkH4qiBS-IZBifbuag" style="color:var(--article-accent, #5fb3ea);">完全指南</a> — 5 分钟从零到一个能干活的本地 AI Agent</li>
+<li style="margin: 4px 0;"><a href="https://mp.weixin.qq.com/s/2tHlfZYHxQdQwvVZQEoLRg" style="color:var(--article-accent, #5fb3ea);">前 leader Skill</a> — 把 leader 蒸馏成 AI Skill</li>
+<li style="margin: 4px 0;"><a href="https://mp.weixin.qq.com/s/S49q9gsXABAzcJyNOC7FjQ" style="color:var(--article-accent, #5fb3ea);">从养龙虾到养河蟹</a> — 产品发布 / OpenClaw 开题呼应</li>
 </ol>
 
-<p style="margin: 12px 0 8px; font-size: 13px; color: #7b8fa3;">上一篇《让 AI Agent 说维吾尔语》，和本文是同一阶段的两件事——一个把界面做到母语用户面前，一个把自动化做进本地运行时。</p>
+<h3 style="font-size: 15px; font-weight: 600; color:var(--article-accent, #3f8fd4); margin: 24px 0 8px;">参考资料</h3>
 
-<h3 style="font-size: 15px; font-weight: 600; color: #3f8fd4; margin: 24px 0 8px;">参考资料</h3>
-
-<ul style="padding-left: 22px; margin: 8px 0; font-size: 13px; color: #5f7b9c;">
-<li style="margin: 3px 0;">HexClaw 河蟹 AI 生态仓库：<code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 12px; color: #3f8fd4;">github.com/hexagon-codes</code></li>
-<li style="margin: 3px 0;">Starlark 语言规范（Google，Bazel 用的 Python 方言）：<a href="https://github.com/bazelbuild/starlark" style="color: #5fb3ea;">github.com/bazelbuild/starlark</a></li>
-<li style="margin: 3px 0;">starlark-go（纯 Go 实现）：<a href="https://github.com/google/starlark-go" style="color: #5fb3ea;">github.com/google/starlark-go</a></li>
-<li style="margin: 3px 0;">能力安全模型（capability-based security）：<a href="https://en.wikipedia.org/wiki/Capability-based_security" style="color: #5fb3ea;">en.wikipedia.org/wiki/Capability-based_security</a></li>
-<li style="margin: 3px 0;">OWASP · Server-Side Request Forgery (SSRF)：<a href="https://owasp.org/www-community/attacks/Server_Side_Request_Forgery" style="color: #5fb3ea;">owasp.org/www-community/attacks/Server_Side_Request_Forgery</a></li>
-<li style="margin: 3px 0;">JIT 去优化（deoptimization）背景：<a href="https://en.wikipedia.org/wiki/Deoptimization" style="color: #5fb3ea;">en.wikipedia.org/wiki/Deoptimization</a></li>
+<ul style="padding-left: 22px; margin: 8px 0; font-size: 13px; color:var(--article-secondary, #5f7b9c);">
+<li style="margin: 3px 0;">HexClaw 河蟹 AI 生态仓库：<code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 12px; color:var(--article-accent, #3f8fd4);">github.com/hexagon-codes</code></li>
+<li style="margin: 3px 0;">Starlark 语言规范（Google，Bazel 用的 Python 方言）：<a href="https://github.com/bazelbuild/starlark" style="color:var(--article-accent, #5fb3ea);">github.com/bazelbuild/starlark</a></li>
+<li style="margin: 3px 0;">starlark-go（纯 Go 实现）：<a href="https://github.com/google/starlark-go" style="color:var(--article-accent, #5fb3ea);">github.com/google/starlark-go</a></li>
+<li style="margin: 3px 0;">能力安全模型（capability-based security）：<a href="https://en.wikipedia.org/wiki/Capability-based_security" style="color:var(--article-accent, #5fb3ea);">en.wikipedia.org/wiki/Capability-based_security</a></li>
+<li style="margin: 3px 0;">OWASP · Server-Side Request Forgery (SSRF)：<a href="https://owasp.org/www-community/attacks/Server_Side_Request_Forgery" style="color:var(--article-accent, #5fb3ea);">owasp.org/www-community/attacks/Server_Side_Request_Forgery</a></li>
+<li style="margin: 3px 0;">JIT 去优化（deoptimization）背景：<a href="https://en.wikipedia.org/wiki/Deoptimization" style="color:var(--article-accent, #5fb3ea);">en.wikipedia.org/wiki/Deoptimization</a></li>
 </ul>
 
-<p style="margin: 8px 0; font-size: 12px; color: #a5bdd3;">文中代码与行为以上游仓库为准，核验时间：2026-06-23。</p>
+<p style="margin: 8px 0; font-size: 12px; color:var(--article-muted, #a5bdd3);">文中代码与行为以上游仓库为准，核验时间：2026-06-23。</p>
 
-<hr style="border: none; border-top: 1px solid #e0ecf5; margin: 28px 0;"/>
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
 
-<p style="text-align: center; color: #7b8fa3; font-size: 13px; margin: 16px 0 0; line-height: 2;">
-<strong style="color: #12324c; font-size: 14px;">HexClaw 河蟹 AI</strong><br/>
-本地部署 · 数据私有 · 开源免费<br/>
-<span style="color: #5fb3ea;">官网 hexclaw.net</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span style="color: #5fb3ea;">GitHub github.com/hexagon-codes</span><br/>
-<span style="color: #5fb3ea;">微博 @HexClaw</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span style="color: #5fb3ea;">X @hexclawapp</span><br/>
-<span style="color: #999;">邮箱：ai@hexclaw.net</span>
+<p class="blog-brand-footer" data-blog-brand-footer="zh" data-blog-brand-overrides="{}" style="text-align: center; color: var(--article-muted, #7b8fa3); font-size: 13px; margin: 16px 0 0; line-height: 2;">
+<strong style="color: var(--article-ink, #12324c); font-size: 14px;">HexClaw 河蟹 AI</strong><br/>
+本地云端均可部署 · 数据自主掌控 · 软件开源免费<br/>
+<a href="https://hexclaw.net" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">官网 <bdi dir="ltr">hexclaw.net</bdi></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://github.com/hexagon-codes" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">GitHub <bdi dir="ltr">hexagon-codes</bdi></a><br/>
+<a href="https://weibo.com/u/4097207240" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">微博 <bdi dir="ltr">@HexClaw</bdi></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">X <bdi dir="ltr">@hexclawapp</bdi></a><br/>
+<a href="mailto:ai@hexclaw.net" style="color: var(--article-muted, #999); text-decoration: none;">邮箱：<bdi dir="ltr">ai@hexclaw.net</bdi></a>
 </p>
     </article>
 
@@ -513,33 +514,13 @@ JIT 先假设热点代码走快路径（编译好的机器码）；一旦运行�
     <span class="footer-copy">&copy; 2025&ndash;2026 hexagon-codes</span>
   </div>
 </footer>
-<script src="../../assets/js/home.js"></script>
+<script src="../../assets/js/theme.js?v=2e4a1828feef"></script>
+<script src="../../assets/js/docs-nav.js?v=5a103861aec2"></script>
 <button type="button" class="back-to-top" id="backToTop" aria-label="返回顶部" title="返回顶部">
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg>
   <span>顶部</span>
 </button>
-<script>
-(function() {
-  const btn = document.getElementById('backToTop');
-  if (!btn) return;
-  let ticking = false;
-  window.addEventListener('scroll', function() {
-    if (!ticking) {
-      window.requestAnimationFrame(function() {
-        if (window.scrollY > 320) {
-          btn.classList.add('is-visible');
-        } else {
-          btn.classList.remove('is-visible');
-        }
-        ticking = false;
-      });
-      ticking = true;
-    }
-  }, { passive: true });
-  btn.addEventListener('click', function() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-})();
-</script>
+
+<script src="../../assets/js/blog.js?v=c72e1db5a6ec"></script>
 </body>
 </html>

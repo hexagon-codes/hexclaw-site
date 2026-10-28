@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/favicon-32.png">
+<title>HexClaw Architecture Explained: One Person + Claude + Five Months, Building a Six-Repository Full-Stack Open-Source AI Agent Ecosystem in Go | HexClaw Technical Blog</title>
+<meta name="description" content="One person, Claude, and five months: building a six-repository full-stack open-source AI agent ecosystem in Go. A detailed look at HexClaw&#x27;s layered architecture, core protocols, and communication contracts.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:site_name" content="HexClaw">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HexClaw Architecture Explained: One Person + Claude + Five Months, Building a Six-Repository Full-Stack Open-Source AI Agent Ecosystem in Go | HexClaw Technical Blog">
+<meta property="og:description" content="One person, Claude, and five months: building a six-repository full-stack open-source AI agent ecosystem in Go. A detailed look at HexClaw&#x27;s layered architecture, core protocols, and communication contracts.">
+<meta property="og:url" content="https://hexclaw.net/en/blog/architecture-deep-dive">
+<meta property="og:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta property="og:image:alt" content="HexClaw logo">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="HexClaw Architecture Explained: One Person + Claude + Five Months, Building a Six-Repository Full-Stack Open-Source AI Agent Ecosystem in Go | HexClaw Technical Blog">
+<meta name="twitter:description" content="One person, Claude, and five months: building a six-repository full-stack open-source AI agent ecosystem in Go. A detailed look at HexClaw&#x27;s layered architecture, core protocols, and communication contracts.">
+<meta name="twitter:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta name="twitter:image:alt" content="HexClaw logo">
+<link rel="canonical" href="https://hexclaw.net/en/blog/architecture-deep-dive">
+<link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/architecture-deep-dive">
+<link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/architecture-deep-dive">
+<link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/architecture-deep-dive">
+<link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/architecture-deep-dive">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "HexClaw Architecture Explained: One Person + Claude + Five Months, Building a Six-Repository Full-Stack Open-Source AI Agent Ecosystem in Go",
+  "description": "One person, Claude, and five months: building a six-repository full-stack open-source AI agent ecosystem in Go. A detailed look at HexClaw's layered architecture, core protocols, and communication contracts.",
+  "url": "https://hexclaw.net/en/blog/architecture-deep-dive",
+  "inLanguage": "en",
+  "datePublished": "2026-03-30",
+  "image": "https://hexclaw.net/assets/brand/hexclaw-logo.png",
+  "publisher": {
+    "@type": "Organization",
+    "name": "hexagon-codes",
+    "url": "https://hexclaw.net/",
+    "@id": "https://hexclaw.net/#organization"
+  },
+  "@id": "https://hexclaw.net/en/blog/architecture-deep-dive#article"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "HexClaw",
+      "item": "https://hexclaw.net/en/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Technical Blog",
+      "item": "https://hexclaw.net/en/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "HexClaw Architecture Explained: One Person + Claude + Five Months, Building a Six-Repository Full-Stack Open-Source AI Agent Ecosystem in Go",
+      "item": "https://hexclaw.net/en/blog/architecture-deep-dive"
+    }
+  ],
+  "@id": "https://hexclaw.net/en/blog/architecture-deep-dive#breadcrumb"
+}
+</script>
+<link rel="stylesheet" href="../../assets/css/docs-eb2895dd79c5.css">
+<link rel="stylesheet" href="../../assets/css/blog-a8e5008ac3d1.css">
+</head>
+<body class="blog-page blog-article-page">
+<a href="#main" class="skip-link">Skip to main content</a>
+<nav class="tn topnav" id="nav">
+  <a href="/en/" class="tn-b topnav-brand"><img width="72" height="72" src="../../assets/brand/hexclaw-icon-72.png" class="tn-l topnav-logo" alt="HexClaw"><span class="tn-n topnav-name">HexClaw</span></a>
+  <button type="button" class="tn-burger topnav-burger" aria-label="Menu" aria-expanded="false" aria-controls="primary-navigation"><span></span><span></span><span></span></button><div class="tn-r topnav-links" id="primary-navigation"><a href="/en/">Home</a><a href="/en/#cases">Scenarios</a><a href="/en/#features">Features</a><a href="/en/#quickstart">Quickstart</a><a href="/en/#ecosystem">Ecosystem</a><a href="/en/blog/" class="is-active">Tech Blog</a><a href="/en/docs/">Docs Center</a><div class="lang-menu" data-lang-menu><button type="button" class="lang-trigger" aria-haspopup="menu" aria-expanded="false" aria-label="Switch language"><svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 0 20"></path><path d="M12 2a15.3 15.3 0 0 0 0 20"></path></svg><span class="lang-current">English</span><svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="lang-menu-list" role="menu"><a href="/zh/blog/architecture-deep-dive" role="menuitem">中文</a><a href="/en/blog/architecture-deep-dive" role="menuitem" class="is-active" aria-current="true">English</a><a href="/ug/blog/architecture-deep-dive" role="menuitem" lang="zh-CN" dir="ltr">维吾尔语</a></div></div><button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"><svg class="ti-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="ti-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="nav-cta">GitHub <span class="nav-star-badge" id="gh-stars">&#9733;</span></a></div>
+</nav>
+
+<main id="main" class="blog-main">
+  <div class="blog-article-container">
+    <nav class="blog-breadcrumb" aria-label="Breadcrumb navigation">
+      <a href="/en/">Home</a>
+      <span class="blog-breadcrumb-sep">/</span>
+      <a href="/en/blog/">Technical Blog</a>
+      <span class="blog-breadcrumb-sep">/</span>
+      <span aria-current="page">Architecture & Engineering</span>
+    </nav>
+
+    <header class="blog-header">
+      <div class="blog-header-tags">
+        <span class="blog-badge-series">An Ecosystem Overview</span>
+      </div>
+      <h1 class="blog-article-title">HexClaw Architecture Explained: One Person + Claude + Five Months, Building a Six-Repository Full-Stack Open-Source AI Agent Ecosystem in Go</h1>
+      <p class="blog-article-subtitle">One person, Claude, and five months: building a six-repository full-stack open-source AI agent ecosystem in Go. A detailed look at HexClaw's layered architecture, core protocols, and communication contracts.</p>
+      <div class="article-provenance-banner">
+        <div class="provenance-left">
+          <span class="provenance-origin-badge">First published on WeChat</span>
+          <span class="provenance-text">Originally published in the official technical column of the WeChat account <strong>「hexclaw」</strong> (ID: hexclaw) · Published on  <strong>March 30, 2026</strong>  · Estimated reading time: 13 minutes</span>
+        </div>
+        <a href="https://mp.weixin.qq.com/s/wIRiJsWLRPWBiTEQtlVQkg" target="_blank" rel="noopener noreferrer" class="provenance-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          Read the WeChat original ↗
+        </a>
+      </div>
+    </header>
+
+    <article class="blog-content">
+      <p>Last year, I wanted to deploy an AI agent for myself.</p>
+<p>There were plenty of AI agent products, and major vendors were entering the market, but the same problems kept appearing:</p>
+<ul>
+<li><strong>Open-source products lacked safety</strong>: OpenClaw, the “lobster,” had the broadest feature set and largest community, but essentially no safety protections or cost controls. I did not dare use it in production.</li>
+<li><strong>Safer products were not open source</strong>: commercial products handled compliance well, but were closed-source and cloud-hosted. Cross-border data flows were hard to control, and monthly subscriptions were expensive.</li>
+<li><strong>Usable products did not support Chinese platforms</strong>: overseas products largely omitted Feishu, DingTalk, WeCom, and WeChat Official Accounts.</li>
+</ul>
+<p>What I needed was <strong>the breadth of open-source functionality + commercial-grade safety + full coverage of Chinese platforms</strong>, with self-hosting and single-binary deployment. I could not find it, so I built it myself: one person paired with Claude, six repositories, and a full-stack AI agent. That is
+<strong>HexClaw, the crab</strong>.</p>
+<p>This article lays out the complete architecture: technical decisions, implementation details, and the mistakes along the way.</p>
+<p>Before we start, a few concepts to align on (skip these if you know them already):</p>
+<blockquote>
+<p><strong>LLM</strong>  = a brilliant university student who has read every book: broadly knowledgeable, but with an expiration date on that knowledge and an occasional tendency to make things up (hallucinations).
+<strong>RAG</strong>  = handing that student reference notes so they answer from sources rather than inventing things.
+<strong>MCP</strong>  = a universal USB adapter connecting the brain to tools through plug-and-play interfaces.
+<strong>Agent</strong>  = a versatile worker who can plan independently, call tools, and deliver results.
+<strong>Skills</strong>  = professional skill certificates for that worker, loaded as needed.  <strong>Agent Cluster</strong>  = a team of workers dividing tasks and collaborating.</p>
+</blockquote>
+<p>HexClaw turns these concepts into an engineered, <strong>runnable system</strong>.</p>
+<h3 id="关键数字">Key Numbers</h3>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Repositories</td>
+<td><strong>6</strong> (toolkit → ai-core → hexagon → hexclaw →
+hexclaw-desktop / hexagon-ui)</td>
+</tr>
+<tr>
+<td>Ecosystem codebase</td>
+<td><strong>Approximately 560,000 lines</strong> (hexagon 215k + hexclaw-desktop 177k + toolkit 81k + hexclaw 58k + ai-core 23k + hexagon-ui 3k)</td>
+</tr>
+<tr>
+<td>Foundation-library codebase</td>
+<td><strong>81,000 lines</strong> (toolkit, Go standard library only, zero external dependencies)</td>
+</tr>
+<tr>
+<td>Sandbox codebase</td>
+<td><strong>2,713 lines</strong> (native Go sandbox for three platforms, replacing Docker; startup
+&lt;10ms)</td>
+</tr>
+<tr>
+<td>Agent types</td>
+<td><strong>10</strong> (from ReAct to Supervisor, spanning simple to complex tasks)</td>
+</tr>
+<tr>
+<td>Security gateway</td>
+<td><strong>6 layers</strong>  Fail-closed pipeline (Auth → Rate Limit → Budget → Injection Detection → RBAC → Audit)</td>
+</tr>
+<tr>
+<td>Messaging platforms</td>
+<td><strong>13</strong> (Feishu / DingTalk / WeCom / WeChat / Telegram / Discord / Slack / WhatsApp / LINE / Matrix / Email / Web / API)</td>
+</tr>
+<tr>
+<td>API endpoints</td>
+<td><strong>71</strong> (RESTful + WebSocket)</td>
+</tr>
+<tr>
+<td>Vector stores</td>
+<td><strong>8</strong>  backends (Qdrant / FAISS / PgVector / Redis / Milvus / Chroma / Pinecone / Weaviate)</td>
+</tr>
+<tr>
+<td>Startup time</td>
+<td><strong>&lt;100ms</strong> (single Go binary, <code>hexclaw serve</code>
+ in one command)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="全景六仓库五层架构">Overview: Six Repositories, Five Architectural Layers</h2>
+<figure>
+<p class="architecture-diagram-caption">HexClaw ecosystem dependency diagram</p>
+<figcaption aria-hidden="true">HexClaw ecosystem dependency diagram</figcaption>
+</figure>
+<pre><code>                    hexclaw-desktop (Tauri desktop)
+                    hexagon-ui (observability console)
+                          │
+                    ┌─────▼─────┐
+                    │  hexclaw   │  Application: adapters, gateway, Skills, API
+                    └─────┬─────┘
+                          │
+                    ┌─────▼─────┐
+                    │  hexagon  │  AI agent engine: ReAct, Workflow,
+                    │           │  Plugin, A2A, Graph, Compose
+                    └──┬─────┬──┘
+                       │     │
+                 ┌─────▼──┐  │
+                 │ai-core │  │  AI foundation: LLM providers,
+                 │        │  │  Embedding, Function Calling
+                 └────┬───┘  │
+                      │      │
+                 ┌────▼──────▼┐
+                 │  toolkit   │  Foundation library (bottom layer, used by all Go modules)
+                 └────────────┘</code></pre>
+<p>Dependencies between the six repositories flow strictly upward, with <strong>no reverse dependencies or cross-layer calls</strong>. This is the foundation for reusability, extensibility, and independent evolution:</p>
+<ul>
+<li>Any Go project can use toolkit / ai-core without depending on HexClaw.</li>
+<li>As a general-purpose AI agent engine, hexagon can be used independently of hexclaw to build entirely different agent applications.</li>
+<li>As the AI agent application backend, hexclaw only orchestrates application-level behavior. New capabilities belong in the corresponding lower layer rather than being implemented in place.</li>
+</ul>
+<table>
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 28%" />
+<col style="width: 42%" />
+</colgroup>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Responsibility</th>
+<th>Change Frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>toolkit</strong></td>
+<td>General foundation library (HTTP / caching / cryptography / goroutine pools)</td>
+<td>Very low</td>
+</tr>
+<tr>
+<td><strong>ai-core</strong></td>
+<td>AI foundation (seven LLM providers / embeddings / Smart Router)</td>
+<td>Moderate</td>
+</tr>
+<tr>
+<td><strong>hexagon</strong></td>
+<td>Agent framework engine (10 agents / graph orchestration / RAG / safety / observability)</td>
+<td>Moderate</td>
+</tr>
+<tr>
+<td><strong>hexclaw</strong></td>
+<td>Application layer (13 platform adapters / six-layer gateway / Skills / 71 APIs)</td>
+<td>High</td>
+</tr>
+<tr>
+<td><strong>hexclaw-desktop / hexagon-ui</strong></td>
+<td>Desktop / observability console</td>
+<td>High</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="为什么选-go为什么自研框架">Why Go, and Why Build Our Own Framework?</h2>
+<p>The two questions belong together.</p>
+<p><strong>Language choice</strong>: agent bottlenecks are I/O: waiting for LLM responses, tools, and webhooks from 13 platforms. Goroutines are an order of magnitude more efficient than Python asyncio and have no GIL. For deployment, <code>hexclaw serve</code>
+ runs everything in one command, without managing virtual environments.</p>
+<p><strong>Framework choice</strong>: on the Python side, I evaluated LangChain/LangGraph (the largest ecosystem, but limited by the GIL) and CrewAI (quick to learn, weaker orchestration); on the Go side, Eino (from ByteDance, but missing safety modules). I ultimately built my own because there was no ready-made combination of  <strong>native Go + enterprise-grade safety + complete RAG + production-grade observability</strong>
+ available.</p>
+<p>Hexagon takes its name from the Chinese term for a “well-rounded warrior,” emphasizing balance across six dimensions: ease of use, performance, extensibility, orchestration, observability, and safety.</p>
+<figure>
+<p class="architecture-diagram-caption">Hexagon AI Agent Framework six-layer architecture</p>
+<figcaption aria-hidden="true">Hexagon AI Agent Framework six-layer architecture</figcaption>
+</figure>
+<pre><code>              Hexagon AI Agent Framework Architecture
+              ========================================
+
+  ┌─ Application Layer ────────────────────────────────────────┐
+  │  ChatBot    RAG Agent    Workflow    Multi-Agent    Custom  │
+  ├─ Orchestration Layer ──────────────────────────────────────┤
+  │  Router   Planner   Scheduler   Executor   Graph   State   │
+  ├─ Agent Core Layer ─────────────────────────────────────────┤
+  │  Agent   Role   Team   Network   Handoff   Context   Msg   │
+  ├─ Capability Layer ─────────────────────────────────────────┤
+  │  LLM Provider    RAG Engine    Tool System    Memory    KB │
+  │  (ai-core)                     (ai-core)      (ai-core)   │
+  ├─ Infrastructure Layer ─────────────────────────────────────┤
+  │  Tracer    Logger    Metrics    Config    Security   Plugin │
+  ├─ Foundation Layer ─────────────────────────────────────────┤
+  │  toolkit (lang | crypto | net | cache | util | collection) │
+  └────────────────────────────────────────────────────────────┘</code></pre>
+<p>Start with three lines of code, progress to declarative configuration, and use graph orchestration for complex scenarios:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode go"><code class="sourceCode go"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>response<span class="op">,</span> _ <span class="op">:=</span> hexagon<span class="op">.</span>Chat<span class="op">(</span>ctx<span class="op">,</span> <span class="st">&quot;What is Go?&quot;</span><span class="op">)</span>         <span class="co">// 最简入门</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>agent <span class="op">:=</span> hexagon<span class="op">.</span>QuickStart<span class="op">(</span>                              <span class="co">// 带工具</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    hexagon<span class="op">.</span>WithTools<span class="op">(</span>calculator<span class="op">),</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    hexagon<span class="op">.</span>WithSystemPrompt<span class="op">(</span><span class="st">&quot;你是一个数学助手&quot;</span><span class="op">),</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="op">)</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>team <span class="op">:=</span> hexagon<span class="op">.</span>NewTeam<span class="op">(</span><span class="st">&quot;research-team&quot;</span><span class="op">,</span>                  <span class="co">// 多 Agent 团队</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    hexagon<span class="op">.</span>WithAgents<span class="op">(</span>researcher<span class="op">,</span> writer<span class="op">,</span> reviewer<span class="op">),</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    hexagon<span class="op">.</span>WithMode<span class="op">(</span>hexagon<span class="op">.</span>TeamModeSequential<span class="op">),</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="op">)</span></span></code></pre></div>
+<h3 id="runnableio一个接口统一一切">Runnable[I,O]: One Interface for Everything</h3>
+<p>Python LangChain gives Agent, Tool, Chain, and Retriever different abstractions, requiring glue code to combine them. Hexagon takes a more radical approach: <strong>every component implements the same generic interface</strong>, supporting six execution paradigms (Invoke / Stream / Batch / Collect / Transform / BatchStream).</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode go"><code class="sourceCode go"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>pipeline <span class="op">:=</span> core<span class="op">.</span>Compose<span class="op">(</span>tokenizer<span class="op">,</span> model<span class="op">)</span>    <span class="co">// 自由组合</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>adapted <span class="op">:=</span> core<span class="op">.</span>InvokeToStream<span class="op">(</span>r<span class="op">)</span>              <span class="co">// 自动获得流式能力</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>fastest <span class="op">:=</span> core<span class="op">.</span>Race<span class="op">(</span>future1<span class="op">,</span> future2<span class="op">)</span>         <span class="co">// 竞速取最快</span></span></code></pre></div>
+<p>An agent can serve as another agent's tool, and a RAG pipeline can be embedded in a graph node, because they share the same interface.</p>
+<p><strong>Comparison with mainstream frameworks:</strong></p>
+<table>
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 19%" />
+<col style="width: 23%" />
+<col style="width: 17%" />
+<col style="width: 26%" />
+</colgroup>
+<thead>
+<tr>
+<th>Dimension</th>
+<th>Hexagon</th>
+<th>LangGraph</th>
+<th>CrewAI</th>
+<th>Eino (ByteDance)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Getting started</td>
+<td>Three lines of code</td>
+<td>Requires understanding StateGraph</td>
+<td>Most approachable</td>
+<td>Requires understanding component composition</td>
+</tr>
+<tr>
+<td>Performance ceiling</td>
+<td><strong>100k+ concurrent executions</strong></td>
+<td>GIL &lt;10k</td>
+<td>GIL</td>
+<td><strong>100k+</strong></td>
+</tr>
+<tr>
+<td>Orchestration</td>
+<td>Graph + Chain + Workflow + Process</td>
+<td><strong>Most mature StateGraph</strong></td>
+<td>Basic Team</td>
+<td>Graph + Flow</td>
+</tr>
+<tr>
+<td>Built-in safety</td>
+<td><strong>Six modules</strong></td>
+<td>None</td>
+<td>Basic</td>
+<td><strong>None</strong></td>
+</tr>
+<tr>
+<td>Observability</td>
+<td>OTel + Prometheus + Dev UI</td>
+<td>Requires separately purchased LangSmith</td>
+<td>Basic</td>
+<td>DevOps plugin</td>
+</tr>
+<tr>
+<td>RAG depth</td>
+<td>Seven stages × eight vector backends</td>
+<td>Requires LangChain integration</td>
+<td>Basic</td>
+<td>Basic</td>
+</tr>
+<tr>
+<td>Production validation</td>
+<td>Early stage</td>
+<td>Widespread</td>
+<td>Widespread</td>
+<td><strong>Large-scale use at ByteDance</strong></td>
+</tr>
+</tbody>
+</table>
+<p>The core differentiator is <strong>safety</strong>. Eino has no built-in injection detection, PII redaction, RBAC, or cost control. If you build a user-facing agent with Eino, you need to build those protections yourself. Hexagon provides them as built-in framework capabilities, ready to use.</p>
+<blockquote>
+<p>In one sentence: LangChain's interface ideas + LangGraph's orchestration + an enterprise safety stack, rewritten in Go. Perception (Agent) → Execution (Skills + MCP) → Knowledge (RAG + LLM + Memory): all three layers are built in.</p>
+</blockquote>
+<h3 id="十种-agent-多-agent-协作">Ten Agent Types and Multi-Agent Collaboration</h3>
+<p>Agent development progresses through four stages from simple to complex. Hexagon covers them with 10 agent types and collaboration protocols:</p>
+<table>
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 44%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Hexagon Implementation</th>
+<th>Typical Scenario</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Question answering</strong></td>
+<td>BaseAgent</td>
+<td>FAQs, knowledge queries</td>
+</tr>
+<tr>
+<td><strong>SOP processes</strong></td>
+<td>SequentialAgent / Process</td>
+<td>Approval workflows, office automation</td>
+</tr>
+<tr>
+<td><strong>General autonomy</strong></td>
+<td><strong>ReActAgent</strong> / ReflectionAgent / SelfDiscoveryAgent /
+PlanExecuteAgent</td>
+<td>Personal assistants, open-ended tasks</td>
+</tr>
+<tr>
+<td><strong>Multi-agent collaboration</strong></td>
+<td>ParallelAgent / LoopAgent / DeepAgent / SupervisorAgent</td>
+<td>Software development, research reports</td>
+</tr>
+</tbody>
+</table>
+<p>Nesting works naturally: a Supervisor's worker can be a ReActAgent, and a ReActAgent's tool can trigger a PlanExecuteAgent.</p>
+<p>Collaboration includes Team (four modes), Handoff (Swarm-style transfers), Network (Mesh/Hub/Ring/Tree topologies), Consensus (voting), Registry (service discovery + load balancing), and  <strong>A2A</strong> (Google's Agent-to-Agent protocol, uncommon in the Go ecosystem). Four-layer state management plus Snapshot/Restore.</p>
+<h3 id="图编排引擎">The Graph Orchestration Engine</h3>
+<div class="sourceCode" id="cb5"><pre class="sourceCode go"><code class="sourceCode go"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>g<span class="op">,</span> _ <span class="op">:=</span> graph<span class="op">.</span>NewGraph<span class="op">[</span>MyState<span class="op">](</span><span class="st">&quot;support&quot;</span><span class="op">).</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    AddNode<span class="op">(</span><span class="st">&quot;classify&quot;</span><span class="op">,</span> classifyIntent<span class="op">).</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    AddNode<span class="op">(</span><span class="st">&quot;faq&quot;</span><span class="op">,</span> handleFAQ<span class="op">).</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    AddConditionalEdge<span class="op">(</span><span class="st">&quot;classify&quot;</span><span class="op">,</span> routerFn<span class="op">,</span> routeMap<span class="op">).</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    SetEntryPoint<span class="op">(</span><span class="st">&quot;classify&quot;</span><span class="op">).</span>Build<span class="op">()</span></span></code></pre></div>
+<p>Conditional routing · parallel execution · checkpoint persistence · Human-in-the-Loop · time travel · nested subgraphs · Pregel BSP · loops and barriers. Chain composition, a workflow engine, and deterministic processes (Process, driven by state machines) are also available.</p>
+<figure>
+<p class="architecture-diagram-caption">Hexagon data flow: User → Agent → LLM → Tool → Result</p>
+<figcaption aria-hidden="true">Hexagon data flow: User → Agent → LLM → Tool → Result</figcaption>
+</figure>
+<pre><code>  User ──→ Agent ──→ LLM ──→ Tool ──→ Result
+              │
+              ├──→ Memory (memory access)
+              └──→ RAG (knowledge retrieval)</code></pre>
+<h3 id="rag-管线7-环节可插拔">RAG Pipeline: Seven Pluggable Stages</h3>
+<pre><code>Documents → Loader → Splitter → Embedder → Indexer → Retriever → Reranker → Synthesizer</code></pre>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Highlights</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Loader</td>
+<td>Eight formats (including XLSX / PPTX / DOCX / PDF / OCR)</td>
+</tr>
+<tr>
+<td>Splitter</td>
+<td>Six types (including token and code-semantic splitting)</td>
+</tr>
+<tr>
+<td>Retriever</td>
+<td>Six types (<strong>Hybrid / HyDE / Adaptive / ParentDoc</strong>)</td>
+</tr>
+<tr>
+<td>Reranker</td>
+<td><strong>RRF</strong> / LLM / Cross-Encoder / Cohere</td>
+</tr>
+<tr>
+<td>Synthesizer</td>
+<td>Refine / <strong>TreeSummarize</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Eight vector-storage backends: Qdrant / FAISS / PgVector / Redis / Milvus / Chroma / Pinecone / Weaviate.</p>
+<h3 id="安全体系-可观测性">Safety and Observability</h3>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>Component</th>
+<th>Implementation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Prompt injection</td>
+<td>10 detection patterns + heuristic scoring + Unicode-safe matching</td>
+</tr>
+<tr>
+<td>PII redaction</td>
+<td>Seven types (phone numbers / identity cards / bank cards with Luhn validation / email / IP / credit cards / passports)</td>
+</tr>
+<tr>
+<td>RBAC</td>
+<td>Four roles · role inheritance · nine condition operators · Allow/Deny policy engine</td>
+</tr>
+<tr>
+<td>Cost control</td>
+<td>Multi-vendor pricing tables ·  <strong>microdollar precision</strong> (cost×10⁶ stored as int64)</td>
+</tr>
+<tr>
+<td>Content filtering</td>
+<td><strong>Aho-Corasick O(n)</strong>  multi-pattern matching · nine categories · toxicity detector</td>
+</tr>
+<tr>
+<td>Audit logs</td>
+<td>10 event types · buffered batch writes · query engine and report generation</td>
+</tr>
+<tr>
+<td>Observability</td>
+<td>Five Span types ·  <strong>one-line OTel integration</strong> · Prometheus
+<code>/metrics</code>  · four metric types</td>
+</tr>
+</tbody>
+</table>
+<p>The hook system covers five event categories: Run / Tool / LLM / Retriever / Stream. <strong>Bitmask optimization</strong> avoids empty calls. Hexclaw's budget control, tool approvals, and automatic memory extraction all use hooks without intruding into the framework core.</p>
+<h3 id="性能-更多能力">Performance and More Capabilities</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Hexagon (Go)</th>
+<th>Python Frameworks</th>
+<th>Ratio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Concurrent agents</td>
+<td>100k+</td>
+<td>&lt;10k (GIL)</td>
+<td><strong>10x</strong></td>
+</tr>
+<tr>
+<td>Binary size</td>
+<td>~20MB</td>
+<td>~500MB+</td>
+<td><strong>25x</strong></td>
+</tr>
+<tr>
+<td>Startup time</td>
+<td>&lt;100ms</td>
+<td>2-5s</td>
+<td><strong>20-50x</strong></td>
+</tr>
+<tr>
+<td>Memory per agent</td>
+<td>~1MB</td>
+<td>~10MB</td>
+<td><strong>10x</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Also included: OS-level sandboxing · reactive stream-processing engine · seven memory implementations · MCP client and server · Agentic Document Workflows (ADW) · deterministic processes (Process).</p>
+<blockquote>
+<p><strong>The application orchestrates; the framework implements.</strong>  Hexclaw does not implement agent reasoning: it assembles Hexagon's. It does not write safety checks: it orchestrates the Guard Chain. It does not write RAG: it configures the RAG Engine.</p>
+</blockquote>
+<hr />
+<h2 id="hexclawhexagon-是引擎hexclaw-是整辆车">hexclaw: Hexagon Is the Engine, HexClaw Is the Whole Vehicle</h2>
+<p><strong>[Diagram: HexClaw's six-layer application architecture]</strong></p>
+<pre><code>                    HexClaw Application Architecture
+                    ================================
+
+  ┌─ Platform Adapter ─────────────────────────────────────────────────────────────────┐
+  │ Web  Feishu  Telegram  DingTalk  Discord  Slack  WeCom  WeChat                     │
+  │ WhatsApp  LINE  Matrix  Email  REST API  (13 types)                                │
+  ├─ Security Gateway (6-Layer Pipeline) ──────────────────────────────────────────────┤
+  │ Auth → RateLimit → CostCheck → InputSafety → Permission → Audit                    │
+  ├─ Agent Engine ─────────────────────────────────────────────────────────────────────┤
+  │ ReAct Loop        3D Budget Control     Tool Executor + Hooks                      │
+  │ Session Manager   Context Compaction    Multi-Agent Router                         │
+  │ Two-Pass Stream   Tool Approval Gate    Auto Memory Extract                        │
+  ├─ Capability Layer ─────────────────────────────────────────────────────────────────┤
+  │ Skill System       Knowledge (RAG)        LLM Router                               │
+  │ (Builtin+Mkt+MCP)  (FTS5+Vector+MMR)      (Cost/Quality/Latency)                   │
+  │ Memory (4-Layer)   Semantic Cache (Singleflight+LRU+TTL)                           │
+  ├─ Infrastructure ───────────────────────────────────────────────────────────────────┤
+  │ OS Sandbox          MCP Client          Cron + Webhook                             │
+  │ (Seatbelt/NS/Win)    (stdio/SSE/HTTP)     REST API (71 endpoints)                  │
+  │ Canvas (8 components)   Voice (STT/TTS)   WebSocket streaming                      │
+  ├─ Storage &amp; Config ─────────────────────────────────────────────────────────────────┤
+  │ SQLite (WAL)   FTS5 full-text search   YAML+ENV   Audit JSONL   .md                │
+  └────────────────────────────────────────────────────────────────────────────────────┘
+            Powered by: Hexagon ← ai-core ← toolkit</code></pre>
+<h3 id="核心数据流">Core Data Flow</h3>
+<pre><code>User message (Feishu/Telegram/Discord/WeChat/...)
+  → Platform adapter (Adapter) → Security gateway (6 layers) → Session routing (Router)
+  → Agent engine (ReAct)
+      ├─ Fast path: Skill.Match() → milliseconds, zero LLM usage
+      └─ Main path: ReAct loop → sandbox execution → synchronous/streamed response</code></pre>
+<h3 id="六层安全网关">The Six-Layer Security Gateway</h3>
+<pre><code>Request → [Auth] → [RateLimit] → [CostCheck] → [InputSafety] → [Permission] → [Audit] → Engine</code></pre>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 47%" />
+<col style="width: 31%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: center;">Layer</th>
+<th style="text-align: center;">Failure Policy</th>
+<th>Implementation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">Auth</td>
+<td style="text-align: center;">Deny</td>
+<td>Constant-time comparison · HMAC-SHA256 signatures with a 24-hour window</td>
+</tr>
+<tr>
+<td style="text-align: center;">RateLimit</td>
+<td style="text-align: center;">Deny</td>
+<td>Sliding window · cleanup every 30 seconds · hard cap of 100K windows to prevent OOM</td>
+</tr>
+<tr>
+<td style="text-align: center;">CostCheck</td>
+<td style="text-align: center;"><strong>Fail-closed</strong></td>
+<td>No cached budgets; query in real time and block on failure</td>
+</tr>
+<tr>
+<td style="text-align: center;">InputSafety</td>
+<td style="text-align: center;"><strong>Fail-closed</strong></td>
+<td>Guard Chain combining injection detection, PII redaction, and content filtering</td>
+</tr>
+<tr>
+<td style="text-align: center;">Permission</td>
+<td style="text-align: center;">Deny</td>
+<td>Tool-level denylists take precedence over allowlists</td>
+</tr>
+<tr>
+<td style="text-align: center;">Audit</td>
+<td style="text-align: center;">Allow</td>
+<td>Record only; do not block</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Layers three and four reject requests directly on failure. Better to show “Service temporarily unavailable” than let an uncontrolled ReAct loop drain the API balance.</p>
+</blockquote>
+<h3 id="十三平台适配">Thirteen Platform Adapters</h3>
+<p>A unified message model and a four-method Adapter interface, with each adapter around 150 lines.</p>
+<p>Platform-specific implementations worth examining: -  <strong>WeCom</strong>: AES-256-CBC encryption/decryption and a double-checked locking token cache -  <strong>WeChat</strong>: a five-second passive reply window, automatically switching to asynchronous customer-service delivery on timeout -  <strong>Discord</strong>: Gateway WebSocket heartbeats and streaming message edits -  <strong>Web</strong>: an Origin allowlist permitting only
+<code>localhost</code>  and  <code>tauri://localhost</code></p>
+<h3 id="react-引擎">The ReAct Engine</h3>
+<p>The engine adds application-level orchestration on top of Hexagon ReActAgent (a single 47 KB file):</p>
+<pre><code>LoadContext → InjectContext(RAG+Memory) → InjectTools(Skill+MCP, max 40)
+→ ReAct loop: LLM reasoning → ToolApproval → ToolExecutor → BudgetUpdate
+→ AutoMemory → SaveHistory → Return</code></pre>
+<p><strong>Three-Dimensional Atomic Budgets</strong>: three  <code>atomic.Int64</code>
+ values track tokens, duration, and cost separately. Why not float64 for cost? Go's atomic package has no floating-point atomic operations, while agent tools are called concurrently. The solution multiplies dollar amounts by one million and stores integers at microdollar precision: $0.00004 becomes 40. Integer atomic operations require no locks. Built-in pricing tables cover more than 20 models, with child-agent budget allocation and reclamation.</p>
+<p><strong>Two-Pass Streaming</strong>: intermediate rounds use
+<code>Complete()</code> to detect tool_calls; the final round uses
+<code>Stream()</code> for the typewriter effect. This avoids opening streaming connections for invisible steps. Streaming goroutines use an independent  <code>context.Background()</code>
+ to save messages so closing the page does not lose data.</p>
+<p><strong>Hook Chain</strong>: TruncateHook retains 60% of the beginning and 20% of the end; SanitizeHook cleans only external sources; AuditHook runs even on failure. Tool caching uses SHA256 keys and automatically skips destructive tools.</p>
+<p><strong>The Skill Ecosystem (ClawHub)</strong>: 37 Skills and 38 MCP servers, in Markdown with YAML frontmatter. Sources include 18 original skills, 12 community adaptations, and seven OpenClaw playbook ports. MCP spans 18 categories, including filesystems, GitHub, search, browsers, databases, Slack, Docker, Kubernetes, and AWS.</p>
+<h3 id="go-原生三平台沙箱2713-行替代-docker">Native Go Sandbox on Three Platforms: 2,713 Lines Instead of Docker</h3>
+<p>Most competitors, including OpenClaw, rely on Docker for code execution. HexClaw implements kernel-level isolation with  <strong>2,713 lines of pure Go</strong> :</p>
+<p><strong>macOS Seatbelt</strong> (the same underlying facility as Claude Code / Codex): dynamic SBPL policies, with <code>(deny default)</code>  denying by default. Docker containers, which allow most syscalls by default, do not provide this behavior.</p>
+<p><strong>Five-Layer Defense on Windows</strong>: ① Restricted Token (UNTRUSTED_RID 0x0000) → ② ACL filesystem isolation → ③ Job Object (512 MB / 10 processes) → ④ Low Box Token for kernel-level network denial → ⑤ Alternate Desktop to prevent Shatter Attacks. Startup is about 50 ms / 5 MB, compared with Docker Desktop's 500 ms–2 s.</p>
+<p><strong>Five-Layer Isolation on Linux</strong>: ① Namespace → ② pivot_root → ③ seccomp → ④ process hardening → ⑤ two-stage re-exec. Incompatible systems fall back automatically: CLONE_NEWUSER failure → Landlock → fallback seccomp.</p>
+<p>All three platforms share the  <strong>NetPolicy</strong>  engine: denylist first → port → mode, with no bypass.</p>
+<p><strong>Measured sandbox comparison (Linux):</strong></p>
+<table>
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 20%" />
+<col style="width: 22%" />
+<col style="width: 15%" />
+<col style="width: 27%" />
+</colgroup>
+<thead>
+<tr>
+<th>Dimension</th>
+<th>HexClaw</th>
+<th>OpenClaw</th>
+<th>Codex</th>
+<th>Claude Code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Default state</td>
+<td><strong>ON (zero configuration)</strong></td>
+<td>OFF (manual configuration required)</td>
+<td>ON</td>
+<td>ON</td>
+</tr>
+<tr>
+<td>External dependencies</td>
+<td><strong>Zero</strong></td>
+<td>Docker ~500MB</td>
+<td>Zero</td>
+<td>Zero</td>
+</tr>
+<tr>
+<td>Startup latency</td>
+<td><strong>&lt;10ms</strong></td>
+<td>~200ms (docker exec)</td>
+<td>&lt;10ms</td>
+<td>&lt;10ms</td>
+</tr>
+<tr>
+<td>Memory overhead</td>
+<td><strong>~0</strong></td>
+<td>100-200MB</td>
+<td>~0</td>
+<td>~0</td>
+</tr>
+<tr>
+<td>Implementation</td>
+<td><strong>About 2,700 lines of Go syscalls</strong></td>
+<td>Docker API wrapper</td>
+<td>About 7,000 lines of Rust (bubblewrap)</td>
+<td>Built into the OS (Seatbelt)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="知识库-llm-路由-记忆">Knowledge Base, LLM Routing, and Memory</h3>
+<p><strong>Knowledge base</strong>: Recursive Split → FTS5 + vector embeddings → hybrid scoring (0.7v + 0.3t) → time decay → MMR deduplication (filter from 3×TopK candidates) → TopK=3. Automatically degrades to pure FTS5 when the embedder is unavailable.</p>
+<p><strong>LLM routing</strong>: policy-based routing across providers (cost / quality / latency), with automatic fallback on failure. Semantic caching uses Singleflight against stampedes, ±10% TTL jitter against synchronized expiry, and negative caching against cache penetration.</p>
+<p><strong>Four-layer memory</strong>: conversation context → daily journal → MEMORY.md → semantic vectors. Automatic extraction: keyword prefilter → asynchronous LLM (15-second timeout) → existing memories injected to prevent duplicates. More than 50 entries trigger automatic LLM compression. Markdown is human-readable and can be versioned in Git.</p>
+<h3 id="多-agent-路由-自主行为">Multi-Agent Routing and Autonomous Behavior</h3>
+<p>Four selection mechanisms: direct UI selection ·  <code>@mention</code>  syntax · automatic mode binding · platform routing rules (UserID +100  &gt; ChatID +50 &gt;  Platform +10), with LLM semantic classification as fallback.</p>
+<p><strong>Meeting mode</strong>: two or more agents conduct a multi-round roundtable around a structured topic, suitable for competitor analysis, brainstorming, and expert debate.</p>
+<p>Autonomous behavior: Heartbeat inspections + Cron schedules + webhook events. SQLite WAL by default, with four deployment options: desktop / Docker / systemd / Kubernetes.</p>
+<hr />
+<h2
+id="hexclaw-desktop让-ai-agent-像-docker-desktop-一样双击即用">hexclaw-desktop: Making an AI Agent as Easy to Launch as Docker Desktop</h2>
+<figure>
+<img src="../../assets/blog/012.png" alt="HexClaw Desktop chat (historical interface example)" width="2560" height="1588" loading="lazy" decoding="async">
+<figcaption aria-hidden="true">HexClaw Desktop chat interface screenshot</figcaption>
+</figure>
+<h3 id="tauri-壳管理-go-sidecar">A Tauri Shell Managing a Go Sidecar</h3>
+<p><strong>[Diagram: HexClaw Desktop layered architecture]</strong></p>
+<pre><code>                  HexClaw Desktop Architecture
+                  ============================
+
+  ┌─ Tauri Shell (Rust) ───────────────────────────────────────────────────────────────┐
+  │ Window management   Tray   Global shortcut ⌘⇧H   Single instance   Auto-updates    │
+  │ API proxy (CORS bypass)          Sidecar process lifecycle management              │
+  ├─ Vue 3 Frontend (WebView) ─────────────────────────────────────────────────────────┤
+  │ Overview | Chat | Agent | Knowledge | Automation | Integrations | Logs             │
+  │ Pinia Store       Vue Router       Tauri invoke (IPC)                              │
+  ├─ Tauri Commands (Rust → Go) ───────────────────────────────────────────────────────┤
+  │ proxy_api_request    stream_chat    check_engine_health                            │
+  │ HTTP / WebSocket ←→ localhost:16060                                                │
+  ├─ hexclaw serve (Go Sidecar) ───────────────────────────────────────────────────────┤
+  │ Agent engine · Security gateway · LLM routing · RAG · MCP · Sandbox                │
+  │ Hexagon ← ai-core ← toolkit                                                        │
+  └────────────────────────────────────────────────────────────────────────────────────┘</code></pre>
+<p><strong>Framework selection:</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th style="text-align: center;">Tauri v2</th>
+<th style="text-align: center;">Wails v2</th>
+<th style="text-align: center;">Electron</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Package size</td>
+<td style="text-align: center;"><strong>~8MB</strong></td>
+<td style="text-align: center;">~10MB</td>
+<td style="text-align: center;">~150MB</td>
+</tr>
+<tr>
+<td>Memory</td>
+<td style="text-align: center;"><strong>~25MB</strong></td>
+<td style="text-align: center;">~30MB</td>
+<td style="text-align: center;">~200MB</td>
+</tr>
+<tr>
+<td>Tray / shortcuts / multiple windows / updates</td>
+<td style="text-align: center;">All built in</td>
+<td style="text-align: center;">Partially missing</td>
+<td style="text-align: center;">All built in</td>
+</tr>
+<tr>
+<td>Security sandbox</td>
+<td style="text-align: center;">Permission model</td>
+<td style="text-align: center;">None</td>
+<td style="text-align: center;">None</td>
+</tr>
+<tr>
+<td>Production examples</td>
+<td style="text-align: center;"><strong>1Password 8</strong></td>
+<td style="text-align: center;">None</td>
+<td style="text-align: center;">Docker/Cursor</td>
+</tr>
+</tbody>
+</table>
+<p>Package size: 8 MB versus Electron's 150 MB (<strong>19x</strong>); memory: 25 MB versus 200 MB (<strong>8x</strong>).</p>
+<h3 id="功能模块">Feature Modules</h3>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>Module</th>
+<th>Highlights</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>AI chat</strong></td>
+<td>Multi-model streaming · file parsing (PDF/Word/Excel) · Canvas UI (eight components) · Budget panel</td>
+</tr>
+<tr>
+<td><strong>Agent</strong></td>
+<td>Custom roles · template library · Handoff/Orchestrate/Spawn · agent meetings</td>
+</tr>
+<tr>
+<td><strong>Tool ecosystem</strong></td>
+<td>ClawHub (37 Skills + 38 MCP servers) · SkillWriter · three MCP transports · OAuth PKCE</td>
+</tr>
+<tr>
+<td><strong>Knowledge + memory</strong></td>
+<td>Auto-RAG (score ≥ 0.35) · vector-semantic recall · automatic extraction · cross-conversation persistence</td>
+</tr>
+<tr>
+<td><strong>IM + automation</strong></td>
+<td>Seven IM channels · Cron · DAG workflow canvas · webhook notifications</td>
+</tr>
+<tr>
+<td><strong>Local LLMs</strong></td>
+<td>One-click Ollama linking · recommended:  <code>qwen3.5:9b</code> /
+<code>qwen2.5-coder:7b</code> / <code>deepseek-r1:8b</code></td>
+</tr>
+<tr>
+<td><strong>Safety + approvals</strong></td>
+<td>Real-time WebSocket approvals · three levels (safe/sensitive/dangerous) · session memory</td>
+</tr>
+</tbody>
+</table>
+<h3 id="原生能力">Native Capabilities</h3>
+<p><code>⌘⇧H</code>  global activation · system tray · native notifications · clipboard interaction · drag-and-drop file uploads · three-step onboarding · Tauri Updater. The same codebase supports Desktop and Headless. Installation: <code>curl | bash</code> / Homebrew / DMG / MSI / DEB /
+AppImage.</p>
+<figure>
+<img src="../../assets/blog/从养龙虾到养河蟹-wechat/hexclaw-desktop-user-overview.png" alt="HexClaw Desktop feature overview" width="4600" height="3200" loading="lazy" decoding="async">
+<figcaption aria-hidden="true">HexClaw Desktop feature usage overview</figcaption>
+</figure>
+<hr />
+<h2 id="和竞品比到底强在哪">Where Does It Stand Against Competitors?</h2>
+<p>Since late 2025, vendors have been rapidly releasing AI agent products, mostly closed-source, cloud-hosted, and aimed at enterprises. HexClaw takes a different path: open source, self-hosted, for developers and technical teams. The table compares categories:</p>
+<table>
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 24%" />
+<col style="width: 27%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+</colgroup>
+<thead>
+<tr>
+<th>Dimension</th>
+<th>HexClaw</th>
+<th>OpenClaw</th>
+<th>Dify</th>
+<th>Coze</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Deployment</strong></td>
+<td>Single binary, about 20 MB</td>
+<td>Multiple services, 500 MB+</td>
+<td>Docker Compose</td>
+<td>Cloud-hosted</td>
+</tr>
+<tr>
+<td><strong>Data control</strong></td>
+<td><strong>Entirely local</strong></td>
+<td>Self-hosted, controllable</td>
+<td>Self-hosted, controllable</td>
+<td>Data in the cloud</td>
+</tr>
+<tr>
+<td><strong>Sandbox</strong></td>
+<td><strong>Native Go  &lt;10ms</strong></td>
+<td>Docker ~200ms</td>
+<td>None built in</td>
+<td>Cloud isolation</td>
+</tr>
+<tr>
+<td><strong>Security gateway</strong></td>
+<td><strong>Six fail-closed layers</strong></td>
+<td>Basic</td>
+<td>Basic authentication</td>
+<td>Platform-managed controls</td>
+</tr>
+<tr>
+<td><strong>Budget control</strong></td>
+<td><strong>Three-dimensional atomic budget</strong></td>
+<td>None</td>
+<td>None</td>
+<td>Platform quotas</td>
+</tr>
+<tr>
+<td><strong>Agent types</strong></td>
+<td><strong>10 types + A2A</strong></td>
+<td>Multi-agent</td>
+<td>Basic agents</td>
+<td>No-code agents</td>
+</tr>
+<tr>
+<td><strong>Orchestration engine</strong></td>
+<td>Graph + Chain + Workflow + Process</td>
+<td>Workflows</td>
+<td>Visual workflows</td>
+<td>Visual workflows</td>
+</tr>
+<tr>
+<td><strong>RAG</strong></td>
+<td>Seven stages × eight vector backends</td>
+<td>Community plugins</td>
+<td>Built-in RAG</td>
+<td>Built in</td>
+</tr>
+<tr>
+<td><strong>Local LLMs</strong></td>
+<td>One-click Ollama + 300+</td>
+<td>None</td>
+<td>Supported</td>
+<td>Not supported</td>
+</tr>
+<tr>
+<td><strong>Chinese IM platforms</strong></td>
+<td><strong>Feishu / DingTalk / WeCom / WeChat</strong></td>
+<td>None</td>
+<td>Partial</td>
+<td>Partial</td>
+</tr>
+<tr>
+<td><strong>Desktop client</strong></td>
+<td>Tauri ~25MB</td>
+<td>Electron ~150MB</td>
+<td>None</td>
+<td>None</td>
+</tr>
+<tr>
+<td><strong>Observability</strong></td>
+<td>OTel + Prometheus</td>
+<td>Basic</td>
+<td>Basic logs</td>
+<td>Built into the platform</td>
+</tr>
+<tr>
+<td><strong>Customization depth</strong></td>
+<td>Framework-level (Go)</td>
+<td>Framework-level (TypeScript)</td>
+<td>Configuration-level</td>
+<td>Configuration-level</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="踩过的坑和架构取舍">Mistakes and Architectural Trade-Offs</h2>
+<p><strong>Mistake 1: Docker Sandboxing — “I Need Docker Just to Install a Chat Assistant?”</strong></p>
+<p>Early Skill execution depended on Docker. Typical MacBook configurations worked fine, but Docker Desktop consumed another 2–4 GB of memory on macOS. Making a user install Docker for a weather query was unreasonable.</p>
+<p>Rewriting native sandboxes for three platforms using Go syscalls took one week: 2,713 lines, zero dependencies, and &lt;10 ms startup. Isolation is weaker than a full container, but sufficient for Skill execution scenarios.</p>
+<p><strong>Mistake 2: Wails → Tauri — Recovering from a Bad Framework Choice</strong></p>
+<p>The desktop client initially used Wails, for solid reasons: native Go, zero integration cost. At 60% completion, three critical limitations emerged: no multi-window support (so no Quick Chat floating window), a third-party dependency for the system tray, and no automatic updater.</p>
+<p>I cut the losses and switched to Tauri v2. The Go backend became a sidecar, adding an HTTP layer, but it reused the existing 71 APIs and actually reduced development cost.</p>
+<p><strong>Mistake 3: The Security Gateway Started as an “Optional Setting”</strong></p>
+<p>The first safety layer was middleware, disabled by setting  <code>enabled: false</code>
+ in the configuration. During a code review, we found that disabling CostCheck let an uncontrolled ReAct loop call the LLM indefinitely until the bill exploded: a deterministic disaster, not a theoretical risk.</p>
+<p>That day it was refactored into a six-layer pipeline with no bypass. Rate limits are frequently triggered during development, but that beats an API bill arriving in the middle of the night.</p>
+
+<p><strong>Trade-off summary:</strong></p>
+<table>
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 22%" />
+<col style="width: 29%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Decision</th>
+<th>Chosen</th>
+<th>Rejected</th>
+<th>Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Storage</td>
+<td>SQLite (pure Go)</td>
+<td>PostgreSQL by default</td>
+<td>Users should not operate a database for a chat assistant.</td>
+</tr>
+<tr>
+<td>Sandbox</td>
+<td>OS primitives in 2,713 lines</td>
+<td>Docker</td>
+<td>Users should not install Docker for a Skill.</td>
+</tr>
+<tr>
+<td>Desktop</td>
+<td>Tauri v2</td>
+<td>Wails</td>
+<td>Multiple windows / tray / updates / community</td>
+</tr>
+<tr>
+<td>Safety</td>
+<td>Six layers with no bypass</td>
+<td>Optional middleware</td>
+<td>Fail-closed &gt; Fail-open</td>
+</tr>
+<tr>
+<td>Framework</td>
+<td>More capabilities in hexagon</td>
+<td>Self-contained hexclaw</td>
+<td>Application orchestration; framework implementation</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="接下来做什么">What Comes Next</h2>
+<p>In 2026, AI agents are moving from proof of concept to engineered deployment. The MCP + A2A protocol stack is maturing, and safety and determinism are replacing the “a working demo is enough” mindset. HexClaw is currently on v0.2.x: the core is stable, but important gaps remain before it is production-grade:</p>
+<ul>
+<li><strong>Streaming upgrade</strong>: currently simulated streaming (synchronous intermediate rounds); planned integration with Hexagon Agent's native Stream</li>
+<li><strong>Embedding integration</strong>: the knowledge-base Embedder interface is defined and needs connecting to an LLM provider</li>
+<li><strong>Test coverage  &gt; 80%</strong>: 93 test files, with coverage still needing improvement</li>
+<li><strong>Hub ecosystem expansion</strong>: 37 Skills → 100+, 38 MCP servers → 80+, adding code review, data analysis, and project management</li>
+<li><strong>Cross-platform desktop refinement</strong>: Mac first; Windows MSI and Linux AppImage need more testing</li>
+</ul>
+<p>An open question: <strong>how can agents become more autonomous without sacrificing safety?</strong>  Tool Approval protects safety but limits autonomy. We are exploring adaptive approval policies based on past behavior. This is a central tension for AI agents in 2026: on the path from a working demo to production trust, where is the balance between safety and autonomy?</p>
+<hr />
+<h2 id="技术栈">Technology Stack</h2>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Selection</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Language</td>
+<td>Go 1.25+</td>
+</tr>
+<tr>
+<td>Agent framework</td>
+<td>Hexagon v0.4.0</td>
+</tr>
+<tr>
+<td>AI foundation</td>
+<td>ai-core v0.0.5 (7 LLM Provider)</td>
+</tr>
+<tr>
+<td>Utility library</td>
+<td>toolkit v0.0.4 (81k lines, zero dependencies)</td>
+</tr>
+<tr>
+<td>Storage</td>
+<td>SQLite / PostgreSQL</td>
+</tr>
+<tr>
+<td>Frontend</td>
+<td>Vue 3 · Pinia · Naive UI · Tailwind</td>
+</tr>
+<tr>
+<td>Desktop</td>
+<td>Tauri v2 (Rust + Go sidecar)</td>
+</tr>
+<tr>
+<td>CI/CD</td>
+<td>GitHub Actions (tests on three platforms + builds for six platforms)</td>
+</tr>
+<tr>
+<td>Distribution</td>
+<td>ghcr.io · Homebrew · DMG / MSI / DEB / AppImage</td>
+</tr>
+</tbody>
+</table>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>Repository</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/hexagon-codes/hexclaw">hexclaw</a></td>
+<td>AI agent service</td>
+</tr>
+<tr>
+<td><a href="https://github.com/hexagon-codes/hexagon">hexagon</a></td>
+<td>Agent framework</td>
+</tr>
+<tr>
+<td><a href="https://github.com/hexagon-codes/ai-core">ai-core</a></td>
+<td>LLM abstraction</td>
+</tr>
+<tr>
+<td><a href="https://github.com/hexagon-codes/toolkit">toolkit</a></td>
+<td>General-purpose utility library</td>
+</tr>
+<tr>
+<td><a
+href="https://github.com/hexagon-codes/hexclaw-desktop">hexclaw-desktop</a></td>
+<td>Desktop client</td>
+</tr>
+<tr>
+<td><a
+href="https://github.com/hexagon-codes/hexagon-ui">hexagon-ui</a></td>
+<td>Observability console</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p>This project was developed by one person paired with Claude. The original goal was simple: <strong>an AI agent for myself that was safe, useful, and affordable</strong>. If you want the same thing, search GitHub for
+<strong>hexclaw</strong>  and join in with issues or pull requests.</p>
+<p><strong>One final question: </strong> what bothers you most when using an AI agent: safety and trust, cost control, or platform support? Tell us in the comments. Those real pain points directly affect HexClaw's priorities.</p>
+<p class="blog-brand-footer" data-blog-brand-footer="en" data-blog-brand-overrides="{}" style="text-align: center; color: var(--article-muted, #7b8fa3); font-size: 13px; margin: 16px 0 0; line-height: 2;">
+<strong style="color: var(--article-ink, #12324c); font-size: 14px;">HexClaw</strong><br/>
+Deploy locally or in the cloud · Control your data · Free and open-source software<br/>
+<a href="https://hexclaw.net" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">Website: <bdi dir="ltr">hexclaw.net</bdi></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://github.com/hexagon-codes" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">GitHub: <bdi dir="ltr">hexagon-codes</bdi></a><br/>
+<a href="https://weibo.com/u/4097207240" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">Weibo: <bdi dir="ltr">@HexClaw</bdi></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">X: <bdi dir="ltr">@hexclawapp</bdi></a><br/>
+<a href="mailto:ai@hexclaw.net" style="color: var(--article-muted, #999); text-decoration: none;">Email: <bdi dir="ltr">ai@hexclaw.net</bdi></a>
+</p>
+    </article>
+
+
+
+    <nav class="blog-series-nav" aria-label="Previous and next articles">
+      <a href="/en/blog/from-lobster-to-crab" class="blog-nav-card prev">
+  <span class="blog-nav-label">&larr; Previous</span>
+  <span class="blog-nav-title">HexClaw Open-Source AI: From Raising a Lobster to Raising a Crab</span>
+</a>
+      <a href="/en/blog/vs-openclaw-hermes" class="blog-nav-card next">
+  <span class="blog-nav-label">Next &rarr;</span>
+  <span class="blog-nav-title">HexClaw vs OpenClaw / Hermes: Three Paths for Local AI Agents in 2026</span>
+</a>
+    </nav>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-main">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-col-title">Product</div>
+        <a href="/en/#download">Download</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="/en/changelog">Changelog</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Developers</div>
+        <a href="/en/docs/">Documentation</a>
+        <a href="/en/blog/">Technical Blog</a>
+        <a href="/en/docs/getting-started">Getting Started</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">Apache-2.0</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Community</div>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/issues" target="_blank" rel="noopener noreferrer">Issues</a>
+        <a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer">Twitter / X</a>
+        <a href="mailto:ai@hexclaw.net">Contact Us</a>
+        <a href="mailto:support@hexclaw.net">Feedback</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">About</div>
+        <a href="/en/about">About Us</a>
+        <a href="/en/privacy">Privacy Policy</a>
+        <a href="/en/terms">Terms of Service</a>
+        <a href="/en/third-party-ai-services">Third-Party AI Services</a>
+      </div>
+    </div>
+    <div class="footer-wechat">
+      <img width="430" height="430" loading="lazy" decoding="async" src="../../assets/brand/wechat-qr.jpg" alt="HexClaw WeChat QR Code">
+      <span class="footer-wechat-label">WeChat Official Account</span>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">&copy; 2025&ndash;2026 hexagon-codes</span>
+  </div>
+</footer>
+<script src="../../assets/js/theme.js?v=2e4a1828feef"></script>
+<script src="../../assets/js/docs-nav.js?v=5a103861aec2"></script>
+<button type="button" class="back-to-top" id="backToTop" aria-label="Back to top" title="Back to top">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg>
+  <span>Top</span>
+</button>
+
+<script src="../../assets/js/blog.js?v=c72e1db5a6ec"></script>
+</body>
+</html>

@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/favicon-32.png">
+<title>Loop Engineering in HexClaw: Four Generations, from Prompt to Loop, Through an Open-Source Agent’s Code | HexClaw Technical Blog</title>
+<meta name="description" content="Prompt → Context → Harness → Loop moves the control plane outward: message → session → system → time. Each layer delegates another decision. Real code shows what is complete, what is still developing, and who decides what “done” means.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:site_name" content="HexClaw">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Loop Engineering in HexClaw: Four Generations, from Prompt to Loop, Through an Open-Source Agent’s Code | HexClaw Technical Blog">
+<meta property="og:description" content="Prompt → Context → Harness → Loop moves the control plane outward: message → session → system → time. Each layer delegates another decision. Real code shows what is complete, what is still developing, and who decides what “done” means.">
+<meta property="og:url" content="https://hexclaw.net/en/blog/loop-engineering">
+<meta property="og:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta property="og:image:alt" content="HexClaw logo">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Loop Engineering in HexClaw: Four Generations, from Prompt to Loop, Through an Open-Source Agent’s Code | HexClaw Technical Blog">
+<meta name="twitter:description" content="Prompt → Context → Harness → Loop moves the control plane outward: message → session → system → time. Each layer delegates another decision. Real code shows what is complete, what is still developing, and who decides what “done” means.">
+<meta name="twitter:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta name="twitter:image:alt" content="HexClaw logo">
+<link rel="canonical" href="https://hexclaw.net/en/blog/loop-engineering">
+<link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/loop-engineering">
+<link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/loop-engineering">
+<link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/loop-engineering">
+<link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/loop-engineering">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Loop Engineering in HexClaw: Four Generations, from Prompt to Loop, Through an Open-Source Agent’s Code",
+  "description": "Prompt → Context → Harness → Loop moves the control plane outward: message → session → system → time. Each layer delegates another decision. Real code shows what is complete, what is still developing, and who decides what “done” means.",
+  "url": "https://hexclaw.net/en/blog/loop-engineering",
+  "inLanguage": "en",
+  "datePublished": "2026-06-28",
+  "image": "https://hexclaw.net/assets/brand/hexclaw-logo.png",
+  "publisher": {
+    "@type": "Organization",
+    "name": "hexagon-codes",
+    "url": "https://hexclaw.net/",
+    "@id": "https://hexclaw.net/#organization"
+  },
+  "@id": "https://hexclaw.net/en/blog/loop-engineering#article"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "HexClaw",
+      "item": "https://hexclaw.net/en/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Technical Blog",
+      "item": "https://hexclaw.net/en/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Loop Engineering in HexClaw: Four Generations, from Prompt to Loop, Through an Open-Source Agent’s Code",
+      "item": "https://hexclaw.net/en/blog/loop-engineering"
+    }
+  ],
+  "@id": "https://hexclaw.net/en/blog/loop-engineering#breadcrumb"
+}
+</script>
+<link rel="stylesheet" href="../../assets/css/docs-eb2895dd79c5.css">
+<link rel="stylesheet" href="../../assets/css/blog-a8e5008ac3d1.css">
+</head>
+<body class="blog-page blog-article-page">
+<a href="#main" class="skip-link">Skip to main content</a>
+<nav class="tn topnav" id="nav">
+  <a href="/en/" class="tn-b topnav-brand"><img width="72" height="72" src="../../assets/brand/hexclaw-icon-72.png" class="tn-l topnav-logo" alt="HexClaw"><span class="tn-n topnav-name">HexClaw</span></a>
+  <button type="button" class="tn-burger topnav-burger" aria-label="Menu" aria-expanded="false" aria-controls="primary-navigation"><span></span><span></span><span></span></button><div class="tn-r topnav-links" id="primary-navigation"><a href="/en/">Home</a><a href="/en/#cases">Scenarios</a><a href="/en/#features">Features</a><a href="/en/#quickstart">Quickstart</a><a href="/en/#ecosystem">Ecosystem</a><a href="/en/blog/" class="is-active">Tech Blog</a><a href="/en/docs/">Docs Center</a><div class="lang-menu" data-lang-menu><button type="button" class="lang-trigger" aria-haspopup="menu" aria-expanded="false" aria-label="Switch language"><svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 0 20"></path><path d="M12 2a15.3 15.3 0 0 0 0 20"></path></svg><span class="lang-current">English</span><svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="lang-menu-list" role="menu"><a href="/zh/blog/loop-engineering" role="menuitem">中文</a><a href="/en/blog/loop-engineering" role="menuitem" class="is-active" aria-current="true">English</a><a href="/ug/blog/loop-engineering" role="menuitem" lang="zh-CN" dir="ltr">维吾尔语</a></div></div><button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"><svg class="ti-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="ti-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="nav-cta">GitHub <span class="nav-star-badge" id="gh-stars">&#9733;</span></a></div>
+</nav>
+
+<main id="main" class="blog-main">
+  <div class="blog-article-container">
+    <nav class="blog-breadcrumb" aria-label="Breadcrumb">
+      <a href="/en/">Home</a>
+      <span class="blog-breadcrumb-sep">/</span>
+      <a href="/en/blog/">Technical Blog</a>
+      <span class="blog-breadcrumb-sep">/</span>
+      <span aria-current="page">Four Agent Generations</span>
+    </nav>
+
+    <header class="blog-header">
+      <div class="blog-header-tags">
+        <span class="blog-badge-series">Four Generations · Overview</span>
+      </div>
+      <h1 class="blog-article-title">Loop Engineering in HexClaw: Four Generations, from Prompt to Loop, Through an Open-Source Agent’s Code</h1>
+      <p class="blog-article-subtitle">Prompt → Context → Harness → Loop moves the control plane outward: message → session → system → time. Each layer delegates another decision. Real code shows what is complete, what is still developing, and who decides what “done” means.</p>
+      <div class="article-provenance-banner">
+        <div class="provenance-left">
+          <span class="provenance-origin-badge">First published on WeChat</span>
+          <span class="provenance-text">Originally published in the official technical column of the WeChat account <strong>「hexclaw」</strong> (ID: hexclaw) · Published <strong>2026-06-28</strong> · 15 min read</span>
+        </div>
+        <a href="https://mp.weixin.qq.com/s/h60ymjjj3eF9hQyhl0jVcQ" target="_blank" rel="noopener noreferrer" class="provenance-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          Original on WeChat ↗
+        </a>
+      </div>
+    </header>
+
+    <article class="blog-content">
+
+
+<p style="margin: 16px 0;">AI engineering’s keywords have kept moving outward: Prompt Engineering first, then Context Engineering and Harness Engineering, and now the very recent <strong>Loop Engineering</strong>. They sound like a relay of fashionable terms, but together describe one line extending farther. Each comes with a memorable quotation. Boris Cherny of Anthropic, the creator of Claude Code, put it this way on stage:</p>
+
+<blockquote style="border-left: 3px solid #3f8fd4; padding: 12px 18px; margin: 16px 0; background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); font-size: 14px; border-radius: 0 8px 8px 0; line-height: 1.8;">“I don't prompt Claude anymore. I have loops running. They're the ones prompting Claude and figuring out what to do. <strong>My job is to write loops.</strong>”<br/><span>The loops prompt Claude and choose the next action; the human writes those loops.</span></blockquote>
+
+<p style="margin: 8px 0;">Around the same time, OpenClaw founder Peter Steinberger posted an even shorter, widely shared statement:</p>
+
+<blockquote style="border-left: 3px solid #3f8fd4; padding: 12px 18px; margin: 16px 0; background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); font-size: 14px; border-radius: 0 8px 8px 0; line-height: 1.8;">“you shouldn't be prompting coding agents anymore. <strong>You should be designing loops that prompt your agents.</strong>”<br/><span>Design the loop that issues agent instructions, rather than issuing every instruction yourself.</span></blockquote>
+
+<p style="margin: 8px 0;">Google Cloud AI director Addy Osmani then named the pattern <strong>Loop Engineering</strong>. The three statements appeared within days of one another; the term was still fresh.</p>
+
+<p style="margin: 8px 0;">Its purest form had already appeared in 2025: developer Geoffrey Huntley’s Ralph loop, whose core is one Bash line:</p>
+
+<section style="margin: 18px 0; padding: 18px 20px; background: #272822; border-radius: 8px; overflow-x: auto; text-align: left; letter-spacing: 0; font-size: 13px; line-height: 1.8; font-family: 'SF Mono', SFMono-Regular, Menlo, Monaco, Consolas, 'Courier New', monospace; color: #F8F8F2; box-shadow: 0 1px 10px rgba(0,0,0,0.12);"><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">1</span><span style="color: #F92672;">while</span> :; <span style="color: #F92672;">do</span> <span style="color: #66D9EF;">cat</span> PROMPT.md | claude-code ; <span style="color: #F92672;">done</span></span></section>
+
+<p style="margin: 8px 0;">Each iteration starts with a fresh context window. State travels through the filesystem and git rather than conversation history. The community summarizes it as <strong>“Agents forget; repositories do not.”</strong> For HexClaw, this is more than a slogan: memory, skills, and state are plain text on your machine, inspectable with <code>git diff</code>. That principle reappears in every layer below.</p>
+
+<p style="margin: 8px 0;">The criticism arrived just as quickly, and fairly: <strong>isn’t this reinventing decade-old CI/CD?</strong> Cron or webhooks trigger it, a “worktree sandbox”—in practice a Docker container—isolates it, ESLint/Jest validate it, green results notify and red results return for rewriting. Jenkins-era pipelines already did that, with an AI coating added here. Fair enough. At a deeper level, it belongs to an older family: <strong>feedback loops in control theory</strong>. Observe, compare, act, repeat—the same family as thermostats, PID controllers, and Kubernetes’ <strong>Reconciliation Loop</strong>. That is also true.</p>
+
+<p style="margin: 8px 0;">Arguing whether this is old wine in a new bottle will not settle much. <strong>The useful question is whether a real system actually closes the loop, or merely claims it does.</strong> Anyone can connect arrows in a slide. Code must answer harder questions: who is the independent judge, what makes the loop stop, and who decides “done,” by which standard?</p>
+
+<p style="margin: 8px 0;">This article does not repeat the theory; good conceptual explanations already exist. Instead, it <strong>opens HexClaw’s source and examines all four layers from Prompt to Loop</strong>, using real files, constants, and termination conditions. The result should be a view of how the pieces of a production-grade loop fit together and why their values are what they are. Completed layers are explained; partial ones are marked honestly. The Loop layer contains both a genuine feedback cycle that surprised me and a barrier the wider industry has not crossed.</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<blockquote style="border-left: 3px solid #3f8fd4; padding: 14px 18px; margin: 20px 0; background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); font-size: 14px; border-radius: 0 8px 8px 0; line-height: 1.85;"><strong>Core argument</strong><br/>The four generations <strong>accumulate</strong> rather than replace one another. Their common thread is that <strong>each outward layer delegates another decision</strong>: wording → information selection → process control → initiation and acceptance.<br/>HexClaw has real code in all four layers. The ceiling, however, lies in the fourth layer’s hardest questions: <strong>how to formalize a goal, and how to quantify completion</strong>. Like the rest of the industry, HexClaw is still working on those.</blockquote>
+
+<p style="margin: 8px 0; text-align: center; color:var(--article-muted, #7b8fa3); font-size: 13px;">The diagram maps the outward-moving control plane to HexClaw source: real components and constants in all four layers, the actual convergence feedback path, and the unresolved barrier in the Loop layer.</p>
+
+<figure><img src="../../assets/blog/河蟹AI-四代范式控制面外推图.png" alt="HexClaw four generations: the outward-moving control plane" width="2120" height="3450" loading="lazy" decoding="async"><figcaption>HexClaw’s four generations and the outward-moving control plane</figcaption></figure>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">Layer one · Prompt, the message layer: delegating wording</h2>
+
+<p style="margin: 8px 0;">The initial belief was that <strong>prompting was the most important skill of the AI era</strong>: refine the system prompt, arrange few-shot examples, and elicit reasoning until a single instruction is polished. In computing terms, this is <strong>writing a single statement well</strong>, like deliberating over a line of <code>print</code>. The delegated decision is how a sentence should be expressed.</p>
+
+<p style="margin: 8px 0;">HexClaw has the expected pieces: editable assistant personas through SOUL, system-prompt management, and a reusable prompt library. I will not dwell on this layer because it <strong>soon hits a wall</strong>. Stronger models reduce the marginal benefit of prompt polishing. More fundamentally, <strong>a single-turn instruction cannot sustain work requiring many steps, multiple sessions, and repeated correction</strong>. Elegant wording can produce a good answer without finishing the work. Attention must move outward to the environment around the model.</p>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">Layer two · Context, the session layer: delegating information selection</h2>
+
+<p style="margin: 8px 0;">The next shift is substantial: <strong>the question becomes how to construct the model’s environment, rather than how to persuade it</strong>. Context-window space is scarce. What enters, what stays out, and in what order determine the reasoning path. In computing terms, this resembles <strong>memory management and manual garbage collection</strong>: the window is RAM, and something must decide what to evict or compress. You delegate information selection, defining the scope within which the model works.</p>
+
+<p style="margin: 8px 0;">HexClaw has substantial implementation here, much of it tied to inspectable constants:</p>
+
+<ul style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 4px 0;"><strong>Three-dimensional recall:</strong> memories are ranked by recency, importance—self-corrected through <strong>recall hit count</strong> rather than a static LLM score—and relevance, a hybrid of <strong>0.7 vector + 0.3 BM25</strong>. Without an embedder, it gracefully uses BM25 alone.</li>
+<li style="margin: 4px 0;"><strong>Changed facts expire rather than overwrite:</strong> extraction deduplication uses a <strong>0.65</strong> similarity threshold. Contradictions use <strong>history-preserving supersession</strong> with ValidFrom / ValidTo; recall selects the currently valid version, while older versions remain traceable.</li>
+<li style="margin: 4px 0;"><strong>Structured compression rather than a chronological recap:</strong> long history is summarized into what was done, what was decided, and what remains, then replaced by that structured form, consistent with common practice. Very long logs or external documents can be read in an isolated sub-agent, returning only a summary to the main window and avoiding contamination of the main task.</li>
+<li style="margin: 4px 0;"><strong>Tools define context boundaries:</strong> give an agent <code>grep</code> and <code>browser</code>, and it can retrieve the right context itself. Controlling tools indirectly controls the information it can reach.</li>
+</ul>
+
+<p style="margin: 8px 0;">The previous article examines memory’s three tiers, three-dimensional recall, half-lives, and overnight profile “dreaming” in detail: <a href="https://mp.weixin.qq.com/s/YvGGPBZX0V7R6-09unnrcQ">Agent Memory That Dreams</a>.</p>
+
+<p style="margin: 8px 0;">Even completed context engineering exposes the next problem: <strong>agents still fail on long tasks with sufficient context</strong>. Real work is a sequence of actions with feedback. Across many steps, model weaknesses emerge: repeating the same unsuccessful action and burning tokens, taking unauthorized dangerous actions, or crashing halfway. Information alone is insufficient; execution needs rules and guardrails.</p>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">Layer three · Harness, the system layer: delegating process control</h2>
+
+<p style="margin: 8px 0;">Mitchell Hashimoto’s equation captures Harness well: <strong>Agent = Model + Harness</strong>. The model is the engine; the harness is its surrounding runtime—tool pipeline, I/O, and protective shell. In computing terms, it is the agent’s <strong>interpreter or virtual machine</strong>. Thoughtworks’ Martin Fowler and Birgitta Böckeler divide it cleanly using control theory: <strong>Guides, or feedforward control</strong>, act <em>before</em> execution through standards, skills, and hard constraints; <strong>Sensors, or feedback control</strong>, act <em>afterwards</em> through tests, type checks, and judges, feeding deviations into the next round. You delegate <strong>process control within one run</strong>: which tool to call, which route to take, and when to compress history. You still define the task’s start and its safety boundaries.</p>
+
+<p style="margin: 8px 0;">This guide-before, correct-after structure has a clear research lineage. The repeated “think → use a tool → observe → think” pattern was formalized by <strong>ReAct</strong> (Yao et al., ICLR 2023) as Thought–Action–Observation. HexClaw’s tool loop—always present the tool list, execute requested calls, and continue—is an engineering implementation of ReAct. A harness does not make the model intrinsically smarter; it <strong>reduces its search space</strong>. With T steps and N candidate actions per step, naive paths grow as <code>N<sup>T</sup></code>. Feedforward restrictions eliminate forbidden actions and require certain steps, reducing the branching factor and therefore the exponential base. In information-theory terms, <code>H(action│rules) ≪ H(action)</code>. LangChain demonstrated this with a controlled comparison: keeping <code>gpt-5.2-codex</code> unchanged while improving only the harness raised TerminalBench 2.0 task success from <strong>52.8% to 66.5%</strong> and rank from Top 30 to Top 5. The shell did not raise its IQ; it removed much of the trial-and-error entropy in advance.</p>
+
+<p style="margin: 8px 0;">A few HexClaw harness components with concrete constants:</p>
+
+<ul style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 4px 0;"><strong>Tool loop with a hard round cap:</strong> tools remain available, requested calls execute, and the loop continues until a final answer. Normal mode caps rounds at <strong>25</strong>; budget-controlled mode allows an absolute cap of <strong>50</strong>. Reaching it gracefully returns partial model output with a message that the round limit was reached and the user can say “continue,” rather than reporting an error. This prevents endless token-burning repetition.</li>
+<li style="margin: 4px 0;"><strong>Retry only transient errors:</strong> default tool timeout is <strong>30s</strong>, with <code>browser</code> at 120s and <code>code_exec</code> at 60s. Exponential backoff begins at 1s, doubles, and caps at 8s, but applies <strong>only to clear transient failures</strong> such as rate limiting or upstream instability. Invalid keys and missing models are not blindly retried.</li>
+<li style="margin: 4px 0;"><strong>A hard permission gate, combining feedforward guidance and code constraints:</strong> consequential actions move from soft prompt rules to code-level approval requirements. The unified gate is enabled by default. Noninteractive cron/webhook sessions also remove self-upgrade and self-scheduling tools, preventing a loop from increasing its own authority.</li>
+<li style="margin: 4px 0;"><strong>A structured sandbox:</strong> the cron path compiles a sentence into Starlark and executes it with zero default permissions and explicitly injected capabilities, bounded by 8MiB memory, 100 million steps, and a 300s timeout. The capability-security model is detailed in <a href="https://mp.weixin.qq.com/s/EvQT0VqH9ep6LXo89ZM-fw">Raising a “Cyber Workhorse”</a>.</li>
+</ul>
+
+<p style="margin: 8px 0;">The success criterion for this layer is an agent that can finish a long, multi-tool task without supervision, without overflowing context, becoming trapped, or taking irreversible dangerous actions, and can resume from a recent checkpoint after a crash.</p>
+
+<p style="margin: 8px 0;">A harness has a fundamental limit: <strong>it serves one finite task</strong>. Think of a kitchen: give a cook a recipe and tools, produce one dish, and that process ends. But monitoring public discussion, continually feeding a knowledge base, and clearing a bug list do not end with one dish. These are ongoing functions with <strong>no final endpoint, only the next starting time</strong>. They need a <strong>restaurant</strong>: opening hours, workflow, and a process for complaints, designed to run repeatedly. That requires the fourth layer.</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">Layer four · Loop, the time layer: delegating initiation and acceptance—part complete, part still developing</h2>
+
+<p style="margin: 8px 0;">The nature of the work changes here. In the first three layers, you still hold the start button: state a task, let the agent run, and wait for your next instruction. Loop Engineering asks you to <strong>design a system that decides when to start agents, how many to start, who checks the output, and where the next round resumes</strong>. In computing terms, this is <strong>control flow</strong>: turning a call into iteration, retry, and convergence. You delegate <strong>initiation and acceptance</strong>.</p>
+
+<p style="margin: 8px 0;">This layer is easy to exaggerate and easy to expose. I will separate HexClaw’s implementation into four parts, including what it has and has not accomplished.</p>
+
+<h3 style="font-size: 16px; font-weight: 700; color:var(--article-ink, #12324c); margin: 24px 0 10px;">① First, a distinction: cron is a heartbeat, not the loop</h3>
+
+<p style="margin: 8px 0;">A loop needs a heartbeat: a timer, cron, or webhook that triggers without a person pressing a button. HexClaw cron adds some self-healing: after a script fails <strong>3</strong> consecutive times, it automatically recompiles once with failure context, capped at <strong>2</strong> recompilations within 24h so a permanently broken upstream cannot consume tokens indefinitely.</p>
+
+<p style="margin: 8px 0;">But the cron article made a distinction worth preserving: <strong>cron itself is open-loop</strong>. It runs a predetermined script at a set time. Self-healing is a feedback <em>component</em>, but it does not compare progress with a goal and repeat until completion—a <strong>convergent feedback loop</strong>. A heartbeat is necessary, but does not make a loop by itself. The real feedback cycle lives elsewhere.</p>
+
+<h3 style="font-size: 16px; font-weight: 700; color:var(--article-ink, #12324c); margin: 24px 0 10px;">② Actual convergence feedback: orchestrate and an independent supervisor</h3>
+
+<p style="margin: 8px 0;">Many people picture a loop as <code>goal → agent → done</code>. A real feedback cycle instead looks like this:</p>
+
+<section style="margin: 18px 0; padding: 18px 20px; background: #272822; border-radius: 8px; overflow-x: auto; text-align: left; letter-spacing: 0; font-size: 13px; line-height: 1.8; font-family: 'SF Mono', SFMono-Regular, Menlo, Monaco, Consolas, 'Courier New', monospace; color: #F8F8F2; box-shadow: 0 1px 10px rgba(0,0,0,0.12);"><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">1</span>Goal → Agent → Evaluate → Score → Feedback → Agent → Evaluate → Score → …</span></section>
+
+<p style="margin: 8px 0;">This resembles an <strong>optimization system</strong> and overlaps structurally with reinforcement learning, but only in shape: it has evaluation and feedback, without a reward signal or policy update. More precisely, HexClaw uses <strong>hierarchical decomposition and replanning</strong>, or plan-execute-replan: dispatch subtasks, compare results with the goal, and dispatch work to fill gaps. It does not score competing candidates and has <strong>no backtracking or pruning</strong>, so it is not a Tree of Thoughts (Yao et al., NeurIPS 2023) or MCTS search tree. The feedback skeleton—produce, independently assess, then produce again against gaps—is real. The <code>orchestrate</code> tool in <code>engine/orchestrate.go</code> implements it. Given a total <code>goal</code> and <code>max_rounds &gt; 1</code>, each fan-out to parallel sub-agents is followed by <strong>an independent supervisor checking the results against the overall goal</strong>, then dispatching targeted follow-up work if necessary:</p>
+
+<section style="margin: 18px 0; padding: 18px 20px; background: #272822; border-radius: 8px; overflow-x: auto; text-align: left; letter-spacing: 0; font-size: 13px; line-height: 1.8; font-family: 'SF Mono', SFMono-Regular, Menlo, Monaco, Consolas, 'Courier New', monospace; color: #F8F8F2; box-shadow: 0 1px 10px rgba(0,0,0,0.12);"><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 2.2em; margin-right: 16px; text-align: right; color: #90908A;">1</span><span style="color: #75715E; font-style: italic;">// 每轮 fan-out 后由监工对照总目标评判——未达成则补派针对性子任务进下一轮，</span></span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 2.2em; margin-right: 16px; text-align: right; color: #90908A;">2</span><span style="color: #75715E; font-style: italic;">// 直至达成 / 无后续 / 触顶轮数 / 预算耗尽。</span></span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 2.2em; margin-right: 16px; text-align: right; color: #90908A;">3</span><span style="color: #F92672;">for</span> round := <span style="color: #AE81FF;">1</span>; round &lt;= maxRounds; round++ {</span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 2.2em; margin-right: 16px; text-align: right; color: #90908A;">4</span>    allCollected = <span style="color: #66D9EF;">append</span>(allCollected, o.runRound(...)...)   <span style="color: #75715E; font-style: italic;">// 并行派活、收结果</span></span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 2.2em; margin-right: 16px; text-align: right; color: #90908A;">5</span>    <span style="color: #F92672;">if</span> round == maxRounds || runCtx.Err() != <span style="color: #AE81FF;">nil</span> || goal == <span style="color: #E6DB74;">""</span> {</span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 2.2em; margin-right: 16px; text-align: right; color: #90908A;">6</span>        <span style="color: #F92672;">break</span>                                                 <span style="color: #75715E; font-style: italic;">// 触顶 / 墙钟到点 / 无目标</span></span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 2.2em; margin-right: 16px; text-align: right; color: #90908A;">7</span>    }</span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 2.2em; margin-right: 16px; text-align: right; color: #90908A;">8</span>    dec := o.supervise(runCtx, goal, allCollected)            <span style="color: #75715E; font-style: italic;">// 独立监工评判</span></span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 2.2em; margin-right: 16px; text-align: right; color: #90908A;">9</span>    <span style="color: #F92672;">if</span> dec.Done || <span style="color: #66D9EF;">len</span>(dec.Next) == <span style="color: #AE81FF;">0</span> { <span style="color: #F92672;">break</span> }               <span style="color: #75715E; font-style: italic;">// 监工说够了 / 没新活</span></span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 2.2em; margin-right: 16px; text-align: right; color: #90908A;">10</span>    roundSubtasks = dedupSubtasks(dec.Next, allDispatched)    <span style="color: #75715E; font-style: italic;">// 去重后进下一轮</span></span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 2.2em; margin-right: 16px; text-align: right; color: #90908A;">11</span>}</span></section>
+
+<p style="margin: 8px 0;">The key rule is <strong>maker/checker separation</strong>. The agent doing the work and the agent judging completion cannot be the same role: models are too lenient with themselves. Google DeepMind examined this at ICLR 2024, finding that <strong>LLMs generally cannot self-correct without external feedback</strong>, and can worsen after an attempted correction (Huang et al.). HexClaw’s supervisor, <code>subagent_supervisor.go</code>, is an independent <strong>tool-free judge</strong>, distinct from the workers. It returns JSON: <code>{"done": true}</code> stops, while <code>{"done": false, "next": [...]}</code> dispatches follow-up work. Failed subtasks are <strong>explicitly reported to the supervisor</strong>, preventing it from judging completion using only the successful half.</p>
+
+<p style="margin: 8px 0;">A recurring observation is that agents often deteriorate because they <strong>lack termination conditions</strong>: they keep changing a solved problem until it breaks, or claim success before solving it. HexClaw fixes termination to explicit gates:</p>
+
+<ul style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 4px 0;"><strong>Round gate:</strong> at most <strong>3</strong> supervisor-feedback rounds: the first plus two follow-ups. Small local models are unreliable at structured JSON decisions, so they use 1 round, disabling iteration.</li>
+<li style="margin: 4px 0;"><strong>Wall-clock gate:</strong> the entire orchestrate call, including multiple rounds and synthesis, has a <strong>5-minute</strong> wall-clock limit. At expiry, all in-flight sub-agents are cancelled.</li>
+<li style="margin: 4px 0;"><strong>Count gate:</strong> at most <strong>8</strong> subtasks per decomposition; concurrency is 8 for cloud models and 2 for local models.</li>
+<li style="margin: 4px 0;"><strong>Tree-wide backstop:</strong> a derived tree may create at most <strong>128</strong> sub-agents across depth and rounds. A full tree already contains 8 + 8×8 = 72 children; multiple supervisor rounds can easily produce hundreds of model calls. The 128 cap bounds the nested, multi-round combination, at a scale suited to a single desktop rather than an industry-style thousand-agent fallback.</li>
+<li style="margin: 4px 0;"><strong>Infinite-loop backstop:</strong> if the supervisor output <strong>cannot be parsed, treat it as done</strong>. An unreadable judge must not create endless work. Stopping early is preferable to spinning.</li>
+</ul>
+
+<p style="margin: 8px 0;">The cost is explicit. Every additional round adds a supervisor model call and another batch of worker calls. The cap of 3 trades at most two rework rounds for avoiding an overnight token burn, a sensible trade at desktop scale.</p>
+
+<p style="margin: 8px 0;">There is another side to that cost. Multi-round execution does not simply multiply the single-round bill. Supervisors and workers share an unchanged stable prefix: system prompt, resident Rules, and the overall goal. If the provider enables <strong>prefix caching</strong>—Anthropic prompt caching, for example, or vLLM automatic prefix caching built on its PagedAttention KV-memory foundation (Kwon et al., SOSP 2023)—the prefix’s KV values are computed once and reused. New tokens are full-price; cached tokens receive a <strong>substantial discount</strong>, not free processing: Anthropic cache reads are around 0.1× and writes around 1.25×, paying back after one hit. <strong>Longer stable resident text and higher cache-hit rates move actual cost farther from literal token count multiplied by rounds.</strong> This also explains freezing resident memory into a snapshot at session start: it stabilizes every turn and preserves a byte-for-byte prefix for caching, avoiding repeated prefill cost.</p>
+
+<p style="margin: 8px 0;">HexClaw does have a genuine feedback loop: an independent judge, feedback-driven iterations, and bounded exits. These are executable stopping conditions, not slide arrows. But its scope matters: this converges a <strong>finite task within a session</strong>, where the supervisor decides done and fails open on unreadable output. It is not machine acceptance. The <strong>persistent loop with machine-checkable, fail-closed acceptance</strong> appears in part ④ below.</p>
+
+<h3 style="font-size: 16px; font-weight: 700; color:var(--article-ink, #12324c); margin: 24px 0 10px;">③ “Do not trust the executor”: a family of independent judges</h3>
+
+<p style="margin: 8px 0;">Maker/checker separation has a useful analogy in Kubernetes’ <strong>Admission Controller</strong>: independent review before an action takes effect. The central belief is <strong>do not trust the executor</strong>. HexClaw applies this across a family of judges, placing a non-executing skeptic beside claims of success or correctness:</p>
+
+<ul style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 4px 0;"><strong>Convergence judge:</strong> the supervisor above decides whether the loop should stop.</li>
+<li style="margin: 4px 0;"><strong>Admission judge</strong> (<code>risk_judge.go</code> plus the unattended risk adviser): in a noninteractive automation session, a consequential action requiring approval asks an <strong>independent LLM to classify risk</strong> as low / medium / high. Only low gets a one-time allowance; otherwise the decision <strong>fails closed</strong>. Its budget is deliberately only <strong>16 tokens</strong>: one classification word, cheaply.</li>
+<li style="margin: 4px 0;"><strong>Self-improvement judge</strong> (<code>skill_judge.go</code>, LLM-as-judge): after tool calls, <strong>sample 10%</strong> for a 0–10 score. Scores below <strong>7</strong> create an improvement draft. Its failure posture is deliberately different: unsampled calls or judge timeouts/errors return 10, <strong>failing open</strong> so judge instability does not produce misleading drafts.</li>
+<li style="margin: 4px 0;"><strong>Execution grounding</strong> for solve: K12 problem solving includes a verification sub-agent that <strong>may use only code_exec and recalculates in a fresh context</strong>. Deterministic execution addresses arithmetic hallucination, supplying a hard check around an unreliable judgment function.</li>
+<li style="margin: 4px 0;"><strong>Anti-hallucination fact check</strong> for cron: a scheduled task claiming ingestion fails if it <strong>never actually called <code>knowledge_ingest</code></strong>, however confidently it reports success. Nothing was stored, so “complete” is a hallucination rather than an outcome.</li>
+</ul>
+
+<p style="margin: 8px 0;">The shared judgment is that <strong>an LLM is an articulate executor that can deceive itself</strong>. It may oscillate, stall, or award itself full marks while its code fails. HexClaw therefore attaches independent skeptics wherever self-deception can occur, rather than merely trying to make the model more obedient.</p>
+
+<h3 style="font-size: 16px; font-weight: 700; color:var(--article-ink, #12324c); margin: 24px 0 10px;">④ The hardest ceiling: formalizable goals are supported; the remaining gap is industry-wide</h3>
+
+<p style="margin: 8px 0;">Someone summarized it with a formula I like:</p>
+
+<section style="margin: 18px 0; padding: 18px 20px; background: #272822; border-radius: 8px; overflow-x: auto; text-align: left; letter-spacing: 0; font-size: 13px; line-height: 1.8; font-family: 'SF Mono', SFMono-Regular, Menlo, Monaco, Consolas, 'Courier New', monospace; color: #F8F8F2; box-shadow: 0 1px 10px rgba(0,0,0,0.12);"><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">1</span>Agent capability = Model × Context × Loop × Evaluation</span></section>
+
+<p style="margin: 8px 0;">Many optimize Model, fewer optimize Context, and very few work on Loop. The ceiling is the last factor, <strong>Evaluation</strong>, and the <strong>Goal</strong> above it. HexClaw has real code for the first three. The last two are hardest. I have implemented what can be implemented, but an industry-wide gap remains and deserves an honest account.</p>
+
+<p style="margin: 8px 0;"><strong>The offline half of Evaluation exists.</strong> HexClaw has golden evaluations in <code>eval/runner.go</code>: replay uses <strong>zero tokens and deterministic execution</strong> in CI to catch code regressions in parsing, validation, routing, permission gates, and skill recall. Live mode, <code>EVAL_LIVE=1</code>, injects real models to detect model degradation. Its scoring gates are release gates:</p>
+
+<section style="margin: 18px 0; padding: 18px 20px; background: #272822; border-radius: 8px; overflow-x: auto; text-align: left; letter-spacing: 0; font-size: 13px; line-height: 1.8; font-family: 'SF Mono', SFMono-Regular, Menlo, Monaco, Consolas, 'Courier New', monospace; color: #F8F8F2; box-shadow: 0 1px 10px rgba(0,0,0,0.12);"><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">1</span><span style="color: #75715E; font-style: italic;">// 评分门 = 发版门：风险 high recall = 100%(fail-closed) ·</span></span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">2</span><span style="color: #75715E; font-style: italic;">//          编译器 replay 全过 · 工具 retrieval 100%。</span></span></section>
+
+<p style="margin: 8px 0;">This is HexClaw’s version of the evaluation work Anthropic and OpenAI invest heavily in. Without Evaluation, a loop cannot converge; even a strong model is wandering. Golden checks guard the <strong>release path</strong>. HexClaw uses a different mechanism for <strong>online acceptance each round</strong>, leading to the harder problem.</p>
+
+<p style="margin: 8px 0;"><strong>Formalizing Goal is the hardest part.</strong> An underestimated reason Kubernetes works is that its <strong>desired state is mathematical</strong>, not merely that etcd or controllers are well designed. For <code>replicas: 3</code>, completion means <code>actual == 3</code>, without ambiguity, aesthetics, or “that seems close enough.” That permits <strong>provable convergence</strong> and unattended operation.</p>
+
+<p style="margin: 8px 0;">HexClaw splits goals into <strong>intent</strong>, natural language for the worker, and <strong>acceptance</strong>, machine-decidable assertions: a command exiting 0, a regex match, equal JSON fields, or a rubric score exceeding a threshold. Done therefore means <strong>all acceptance assertions passed</strong>, rather than only <code>done: true</code> from a supervisor. A goal with executable acceptance regains an <code>actual == desired</code>-style machine decision. Machine-decidable completion still does not imply Kubernetes-style provable convergence. Purely subjective goals lacking such assertions fall back to an LLM judge. Where this machinery lives is crucial.</p>
+
+<p style="margin: 8px 0;">The session-local orchestration supervisor in ② and this “structured goal + machine acceptance” mechanism are <strong>two different loops</strong>. Their responsibilities, and even failure postures, deliberately differ:</p>
+
+<ul style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 4px 0;"><strong>The session-local orchestration loop</strong> (<code>orchestrate.go</code> + <code>subagent_supervisor.go</code>) prevents wasted cost. Unreadable supervisor output is done: <strong>fail-open-to-done, preferring an early stop</strong>.</li>
+<li style="margin: 4px 0;"><strong>The goal-driven persistent loop</strong> (<code>goalloop.go</code> + <code>checker.go</code> + <code>acceptance.go</code>, newly written for the original article) prevents false completion. Its checker is <strong>a separate role</strong>, ideally backed by a stronger model, and the strictest judge in the family. It first runs <strong>deterministic acceptance assertions</strong>: command exit 0, regex, or JSON-field equality. Only goals for which <strong>no machine-decidable assertion can be written</strong> fall back to an LLM and <strong>self-consistency majority voting</strong> (Wang et al., ICLR 2023), with confidence defined by voting agreement. Ambiguity or errors <strong>fail closed</strong>.</li>
+</ul>
+
+<p style="margin: 8px 0;">The tradeoffs mirror one another: orchestration prefers stopping early, possibly missing unfinished work, over burning cost; the persistent loop prefers another round over falsely declaring completion. The latter also persists <strong>level-triggered state every round</strong> in <code>goalloop_state.go</code>, resuming after process death or restart, detects <strong>no progress and oscillation</strong>, and distinguishes terminal outcomes as <strong>done / capped / escalated</strong>. A stalled task returns <strong>to a human</strong> with reasons such as no_progress / low_confidence / high_risk, rather than silently truncating.</p>
+
+<blockquote style="border-left: 3px solid #3f8fd4; padding: 14px 18px; margin: 20px 0; background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); font-size: 14px; border-radius: 0 8px 8px 0; line-height: 1.85;">The honest conclusion: <strong>the formalizable part is implemented</strong>. Structured goals, online acceptance gates, independent self-consistency checking, no-progress/oscillation detection, level-triggered resume, and escalation are real working code. An <strong>engineering gap remains</strong>: the controlled object is a probabilistic LLM, a non-idempotent executor that may implement “fix the concurrency issue” differently each day. For <strong>purely subjective goals without executable acceptance</strong>, convergence <strong>cannot yet be proved</strong>. A round cap bounds cost; it is not a convergence proof. The old question remains: <strong>who watches the watchers?</strong> HexClaw does not pretend otherwise. It uses <strong>machine decisions where possible, independent judges plus self-consistency and fail-closed handling where uncertain, then stops and asks a human if uncertainty remains</strong>. The aim is honest recognition of when to call a person.</blockquote>
+
+<p style="margin: 8px 0;">There is one loop I <strong>deliberately leave open</strong>. The self-improvement judge writes a low-score draft to <code>&lt;skills directory&gt;/.drafts/</code>; it becomes active only after your review and manual <code>mv</code>. “Failure → draft → human review → retained skill” produces a <strong>reusable skill draft</strong>, rather than disposable reflection. It resembles <strong>Voyager</strong> (Wang et al., 2023), whose agent grows its own skill library, except the final automatic writeback is replaced with a reviewable draft. AI-managed memory also has a consent gate.</p>
+
+<p style="margin: 8px 0;">I prefer preserving <strong>a point where a human can inspect, edit, and roll back</strong> to letting a loop silently rewrite its own capabilities. Osmani names two costs of casually handing over control: <strong>comprehension debt</strong>, shipping work you never understood, and <strong>cognitive surrender</strong>, reducing the engineer to someone who presses Start. An unattended working loop can also make unattended mistakes.</p>
+
+<p style="margin: 8px 0;">This concern has a concrete example. In July 2025, Replit’s coding agent <strong>deleted SaaStr’s production database</strong>, containing records for 1200+ executives and 1190+ companies, despite an explicit code freeze and prohibition on unapproved changes. It initially claimed rollback was unavailable, until manual recovery disproved that. Replit subsequently added stronger development/production separation, a read-only planning-only mode, and more reliable rollback. Those address the same boundaries HexClaw establishes through admission for dangerous actions, draft-only self-improvement, and removal of self-upgrade from cron. That is why I retain control over validation.</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">Stacking the four layers: what you delegate, and what you retain</h2>
+
+<p style="margin: 8px 0;">Looking back, the clearest pattern is that <strong>each outward layer delegates another decision</strong>. Your daily involvement decreases while the design difficulty and consequences increase:</p>
+
+<ul style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 4px 0;"><strong>Prompt:</strong> wording—how to express the sentence.</li>
+<li style="margin: 4px 0;"><strong>Context:</strong> information selection—what it should see.</li>
+<li style="margin: 4px 0;"><strong>Harness:</strong> process control—how it proceeds and whether an action may cross a boundary.</li>
+<li style="margin: 4px 0;"><strong>Loop:</strong> initiation and acceptance—when it starts, whether a round is sufficient, and when it is complete.</li>
+</ul>
+
+<p style="margin: 8px 0;">Are these terms just conceptual posturing? My view is that <strong>the components are familiar, but their position is new</strong>. Sub-agents, skills, persistent memory, and independent judges already exist in the Harness layer. Loop introduces no new component; it places them in a different <strong>temporal structure</strong>, from producing a dish to running a restaurant. That changes the engineering questions. Progress does not require inventing a new part.</p>
+
+<p style="margin: 8px 0;">One thing remains undelegated across all four layers, and <strong>should remain so</strong>: responsibility. HexClaw leaves an inspectable point in every delegation: memories support <code>git diff</code>; scripts are visible sandbox code; dangerous actions pass admission; self-improvement yields drafts; and convergence has hard termination conditions.</p>
+
+<p style="margin: 8px 0;">Control theory has a plain formulation: <code>Control = Goal − Observed State</code>. Without measurable observed state there is no control; without a clear goal, convergence has no meaning. The real question is the difficult, unglamorous one: <strong>what exactly does “done” mean?</strong> Kubernetes has answered through formalized specifications for almost twenty years. HexClaw’s AI-side answer is that goals with executable acceptance can already receive machine completion decisions. Formalizing purely subjective goals and proving convergence for a probabilistic executor remain industry-wide barriers, made explicit here.</p>
+
+<p style="margin: 24px 0 16px; color:var(--article-secondary, #5f7b9c); font-size: 14.5px; line-height: 2; text-align: center; font-style: italic; padding: 8px 16px;">Future engineers may write loops rather than functions, then goals and validation beyond that. Their work may become less about talking to a model and more about making an unreliable executor reliably approach a well-defined goal through continuous feedback.</p>
+
+<p style="margin: 8px 0;">This is the <strong>overview</strong> connecting all four layers, with deeper articles linked for each. One area still needs its own treatment: the <strong>knowledge-base</strong> RAG path for references, documents, and source code you deliberately provide. It shares local retrieval foundations with memory but creates a different kind of remembering. That is the next article.</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h3 style="font-size: 15px; font-weight: 600; color:var(--article-accent, #3f8fd4); margin: 24px 0 8px;">Earlier articles · HexClaw series</h3>
+
+<ul style="padding-left: 20px; margin: 8px 0; font-size: 14px; color:var(--article-ink, #12324c); line-height: 1.9;">
+<li style="margin: 6px 0;"><a href="https://mp.weixin.qq.com/s/YvGGPBZX0V7R6-09unnrcQ">Agent Memory That Dreams</a>—local two-phase reflection, three-dimensional recall, and temporal history (the Context layer).</li>
+<li style="margin: 6px 0;"><a href="https://mp.weixin.qq.com/s/EvQT0VqH9ep6LXo89ZM-fw">Raising a “Cyber Workhorse”</a>—compile a sentence into a self-healing sandbox script for scheduled work, 24/7 (the Harness layer).</li>
+<li style="margin: 6px 0;"><a href="https://mp.weixin.qq.com/s/CuVTbUv2kJRePybo_MudYA">Comparing Alternative Approaches</a>—three paths for local AI agents in 2026.</li>
+<li style="margin: 6px 0;"><a href="https://mp.weixin.qq.com/s/wIRiJsWLRPWBiTEQtlVQkg">Architecture Deep Dive</a>—one person, Claude, and five months to build six Go repositories from scratch.</li>
+<li style="margin: 6px 0;"><a href="https://mp.weixin.qq.com/s/1rza-Ye3NF89KNAJp_PttA">Claude Code SOP</a>—design-driven development, testing feedback loops, and multi-agent collaboration.</li>
+</ul>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h3 style="font-size: 15px; font-weight: 600; color:var(--article-accent, #3f8fd4); margin: 24px 0 8px;">References</h3>
+
+<ul style="padding-left: 20px; margin: 8px 0; font-size: 13px; color:var(--article-secondary, #5f7b9c); line-height: 1.7;">
+<li style="margin: 8px 0;">Boris Cherny, creator of Claude Code, “My job is to write loops,” reported by The New Stack (2026-06) · <a href="https://thenewstack.io/loop-engineering/">Loop Engineering</a><br/><span>thenewstack.io/loop-engineering</span></li>
+<li style="margin: 8px 0;">Peter Steinberger (@steipete), original post (2026-06-07) · <a href="https://x.com/steipete/status/2063697162748260627">“…You should be designing loops that prompt your agents.”</a><br/><span>x.com/steipete/status/2063697162748260627</span></li>
+<li style="margin: 8px 0;">Addy Osmani · <a href="https://addyosmani.com/blog/loop-engineering/">Loop Engineering</a>—the automations / worktrees / skills / sub-agents + memory combination, comprehension debt, cognitive surrender, and the name of the pattern.<br/><span>addyosmani.com/blog/loop-engineering</span></li>
+<li style="margin: 8px 0;">Martin Fowler &amp; Birgitta Böckeler, Thoughtworks · <a href="https://martinfowler.com/articles/exploring-gen-ai/harness-engineering.html">Harness engineering for coding agent users</a>—Guides/feedforward and Sensors/feedback analysis.<br/><span>martinfowler.com/articles/exploring-gen-ai</span></li>
+<li style="margin: 8px 0;">Anthropic · <a href="https://www.anthropic.com/engineering/harness-design-long-running-apps">Harness design for long-running apps</a>—planning, implementation, and evaluation agents collaborating on long-running work.<br/><span>anthropic.com/engineering/harness-design-long-running-apps</span></li>
+<li style="margin: 8px 0;">Geoffrey Huntley · <a href="https://ghuntley.com/ralph/">Ralph, a minimal one-line Bash loop</a>—“Agents forget; repositories do not.”<br/><span>ghuntley.com/ralph</span></li>
+<li style="margin: 8px 0;">Yao et al. · <a href="https://arxiv.org/abs/2210.03629">ReAct: Synergizing Reasoning and Acting in Language Models</a> (ICLR 2023)—the Thought–Action–Observation cycle behind tool loops.<br/><span>arxiv.org/abs/2210.03629</span></li>
+<li style="margin: 8px 0;">Wang et al. · <a href="https://arxiv.org/abs/2305.16291">Voyager: An Open-Ended Embodied Agent with Large Language Models</a> (2023)—an evolving skill library and a design reference for improvement drafts.<br/><span>arxiv.org/abs/2305.16291</span></li>
+<li style="margin: 8px 0;">Wang et al., Google · <a href="https://arxiv.org/abs/2203.11171">Self-Consistency Improves Chain of Thought Reasoning</a> (ICLR 2023)—multiple sampled paths and majority voting, informing checker self-consistency.<br/><span>arxiv.org/abs/2203.11171</span></li>
+<li style="margin: 8px 0;">Huang et al., Google DeepMind · <a href="https://arxiv.org/abs/2310.01798">Large Language Models Cannot Self-Correct Reasoning Yet</a> (ICLR 2024)—evidence for separating makers and checkers when external feedback is absent.<br/><span>arxiv.org/abs/2310.01798</span></li>
+<li style="margin: 8px 0;">Yao et al. · <a href="https://arxiv.org/abs/2305.10601">Tree of Thoughts: Deliberate Problem Solving with Large Language Models</a> (NeurIPS 2023)—expansion, evaluation, selection, and backtracking in a search tree. Used here as a contrast: orchestrate fills gaps without backtracking or pruning and is deliberately distinguished from such a tree.<br/><span>arxiv.org/abs/2305.10601</span></li>
+<li style="margin: 8px 0;">Kwon et al. · <a href="https://arxiv.org/abs/2309.06180">Efficient Memory Management for Large Language Model Serving with PagedAttention</a> (SOSP 2023, vLLM)—the KV-memory foundation. Automatic prefix caching across requests is a separate feature built on top; discount rates come from Anthropic’s prompt-caching documentation.<br/><span>arxiv.org/abs/2309.06180</span></li>
+<li style="margin: 8px 0;">LangChain · <a href="https://www.langchain.com/blog/improving-deep-agents-with-harness-engineering">Improving Deep Agents with Harness Engineering</a>—with gpt-5.2-codex fixed, harness changes raised TerminalBench 2.0 success from 52.8% to 66.5% and rank from Top 30 to Top 5.<br/><span>langchain.com/blog/improving-deep-agents-with-harness-engineering</span></li>
+<li style="margin: 8px 0;">Replit AI-agent database-deletion incident, SaaStr / Jason Lemkin, 2025-07 · <a href="https://www.theregister.com/2025/07/21/replit_saastr_vibe_coding_incident/">The Register report</a> / AI Incident Database #1152—unauthorized production deletion during a code freeze, followed by a false claim that rollback was unavailable.<br/><span>theregister.com · incidentdatabase.ai/cite/1152</span></li>
+<li style="margin: 8px 0;">Kubernetes · <a href="https://kubernetes.io/docs/concepts/architecture/controller/">Controllers / Reconciliation Loop</a>—the thermostat analogy and level-triggered reconciliation.<br/><span>kubernetes.io/docs/concepts/architecture/controller</span></li>
+<li style="margin: 8px 0;">Zhihu community discussions of four generations, the outward-moving control plane, Loop ≈ Kubernetes reconciliation, and Goal/Evaluation as the ceiling (2026-06). These supplied the CI “old wine” criticism, control-theory/Kubernetes analogy, maker/checker framing, and “capability = Model×Context×Loop×Evaluation.” This article borrows that narrative framework and compares it against real HexClaw source.<br/><span>zhihu.com · question/2048003050531558553</span></li>
+<li style="margin: 8px 0;">HexClaw ecosystem repositories: <code>github.com/hexagon-codes</code></li>
+</ul>
+
+<p style="margin: 8px 0; font-size: 12px; color:var(--article-muted, #a5bdd3);">Code, constants, and behavior follow upstream hexclaw source in the engine / skill / eval / cron subsystems, checked on 2026-06-28. Related systems and design ideas are attributed to the public sources above. This is not a feature comparison with specific competing products. HexClaw’s mechanisms and constants are shown without invented benchmark results.</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<p class="blog-brand-footer" data-blog-brand-footer="en" data-blog-brand-overrides="{}" style="text-align: center; color: var(--article-muted, #7b8fa3); font-size: 13px; margin: 16px 0 0; line-height: 2;">
+<strong style="color: var(--article-ink, #12324c); font-size: 14px;">HexClaw</strong><br/>
+Deploy locally or in the cloud · Control your data · Free and open-source software<br/>
+<a href="https://hexclaw.net" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">Website: <bdi dir="ltr">hexclaw.net</bdi></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://github.com/hexagon-codes" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">GitHub: <bdi dir="ltr">hexagon-codes</bdi></a><br/>
+<a href="https://weibo.com/u/4097207240" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">Weibo: <bdi dir="ltr">@HexClaw</bdi></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">X: <bdi dir="ltr">@hexclawapp</bdi></a><br/>
+<a href="mailto:ai@hexclaw.net" style="color: var(--article-muted, #999); text-decoration: none;">Email: <bdi dir="ltr">ai@hexclaw.net</bdi></a>
+</p>
+    </article>
+
+
+
+    <nav class="blog-series-nav" aria-label="Previous and next articles">
+      <a href="/en/blog/context-engineering" class="blog-nav-card prev">
+  <span class="blog-nav-label">&larr; Previous article</span>
+  <span class="blog-nav-title">Context Engineering in HexClaw: Keeping Answer-Like Noise Out of the Loop</span>
+</a>
+      <a href="/en/blog/memory-dreaming" class="blog-nav-card next">
+  <span class="blog-nav-label">Next article &rarr;</span>
+  <span class="blog-nav-title">Agent Memory That Dreams: HexClaw Dreams on Your Machine</span>
+</a>
+    </nav>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-main">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-col-title">Product</div>
+        <a href="/en/#download">Download</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="/en/changelog">Changelog</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Developers</div>
+        <a href="/en/docs/">Documentation</a>
+        <a href="/en/blog/">Technical Blog</a>
+        <a href="/en/docs/getting-started">Getting Started</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">Apache-2.0</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Community</div>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/issues" target="_blank" rel="noopener noreferrer">Issues</a>
+        <a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer">Twitter / X</a>
+        <a href="mailto:ai@hexclaw.net">Contact Us</a>
+        <a href="mailto:support@hexclaw.net">Feedback</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">About</div>
+        <a href="/en/about">About Us</a>
+        <a href="/en/privacy">Privacy Policy</a>
+        <a href="/en/terms">Terms of Service</a>
+        <a href="/en/third-party-ai-services">Third-Party AI Services</a>
+      </div>
+    </div>
+    <div class="footer-wechat">
+      <img width="430" height="430" loading="lazy" decoding="async" src="../../assets/brand/wechat-qr.jpg" alt="HexClaw WeChat QR Code">
+      <span class="footer-wechat-label">WeChat Official Account</span>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">&copy; 2025&ndash;2026 hexagon-codes</span>
+  </div>
+</footer>
+<script src="../../assets/js/theme.js?v=2e4a1828feef"></script>
+<script src="../../assets/js/docs-nav.js?v=5a103861aec2"></script>
+<button type="button" class="back-to-top" id="backToTop" aria-label="Back to top" title="Back to top">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg>
+  <span>Top</span>
+</button>
+
+<script src="../../assets/js/blog.js?v=c72e1db5a6ec"></script>
+</body>
+</html>

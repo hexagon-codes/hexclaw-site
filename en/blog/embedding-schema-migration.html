@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/favicon-32.png">
+<title>The Hidden Schema of Embeddings in HexClaw: Migrating a Textbook’s Index from 768 to 4096 Dimensions | HexClaw Technical Blog</title>
+<meta name="description" content="From Nomic’s 768 dimensions to Qwen’s 4096: manage execution contracts, budgets, dual index revisions, resumable rebuilds, and CAS cutover separately. The old index serves valid unchanged content while its replacement builds in the background.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:site_name" content="HexClaw">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The Hidden Schema of Embeddings in HexClaw: Migrating a Textbook’s Index from 768 to 4096 Dimensions | HexClaw Technical Blog">
+<meta property="og:description" content="From Nomic’s 768 dimensions to Qwen’s 4096: manage execution contracts, budgets, dual index revisions, resumable rebuilds, and CAS cutover separately. The old index serves valid unchanged content while its replacement builds in the background.">
+<meta property="og:url" content="https://hexclaw.net/en/blog/embedding-schema-migration">
+<meta property="og:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta property="og:image:alt" content="HexClaw logo">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Hidden Schema of Embeddings in HexClaw: Migrating a Textbook’s Index from 768 to 4096 Dimensions | HexClaw Technical Blog">
+<meta name="twitter:description" content="From Nomic’s 768 dimensions to Qwen’s 4096: manage execution contracts, budgets, dual index revisions, resumable rebuilds, and CAS cutover separately. The old index serves valid unchanged content while its replacement builds in the background.">
+<meta name="twitter:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta name="twitter:image:alt" content="HexClaw logo">
+<link rel="canonical" href="https://hexclaw.net/en/blog/embedding-schema-migration">
+<link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/embedding-schema-migration">
+<link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/embedding-schema-migration">
+<link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/embedding-schema-migration">
+<link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/embedding-schema-migration">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "The Hidden Schema of Embeddings in HexClaw: Migrating a Textbook’s Index from 768 to 4096 Dimensions",
+  "description": "From Nomic’s 768 dimensions to Qwen’s 4096: manage execution contracts, budgets, dual index revisions, resumable rebuilds, and CAS cutover separately. The old index serves valid unchanged content while its replacement builds in the background.",
+  "url": "https://hexclaw.net/en/blog/embedding-schema-migration",
+  "inLanguage": "en",
+  "dateModified": "2026-10-29",
+  "image": "https://hexclaw.net/assets/brand/hexclaw-logo.png",
+  "publisher": {
+    "@type": "Organization",
+    "name": "hexagon-codes",
+    "url": "https://hexclaw.net/",
+    "@id": "https://hexclaw.net/#organization"
+  },
+  "@id": "https://hexclaw.net/en/blog/embedding-schema-migration#article"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "HexClaw",
+      "item": "https://hexclaw.net/en/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Technical Blog",
+      "item": "https://hexclaw.net/en/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "The Hidden Schema of Embeddings in HexClaw: Migrating a Textbook’s Index from 768 to 4096 Dimensions",
+      "item": "https://hexclaw.net/en/blog/embedding-schema-migration"
+    }
+  ],
+  "@id": "https://hexclaw.net/en/blog/embedding-schema-migration#breadcrumb"
+}
+</script>
+<link rel="stylesheet" href="../../assets/css/docs-eb2895dd79c5.css">
+<link rel="stylesheet" href="../../assets/css/blog-a8e5008ac3d1.css">
+</head>
+<body class="blog-page blog-article-page">
+<a href="#main" class="skip-link">Skip to main content</a>
+<nav class="tn topnav" id="nav">
+  <a href="/en/" class="tn-b topnav-brand"><img width="72" height="72" src="../../assets/brand/hexclaw-icon-72.png" class="tn-l topnav-logo" alt="HexClaw"><span class="tn-n topnav-name">HexClaw</span></a>
+  <button type="button" class="tn-burger topnav-burger" aria-label="Menu" aria-expanded="false" aria-controls="primary-navigation"><span></span><span></span><span></span></button><div class="tn-r topnav-links" id="primary-navigation"><a href="/en/">Home</a><a href="/en/#cases">Scenarios</a><a href="/en/#features">Features</a><a href="/en/#quickstart">Quickstart</a><a href="/en/#ecosystem">Ecosystem</a><a href="/en/blog/" class="is-active">Tech Blog</a><a href="/en/docs/">Docs Center</a><div class="lang-menu" data-lang-menu><button type="button" class="lang-trigger" aria-haspopup="menu" aria-expanded="false" aria-label="Switch language"><svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 0 20"></path><path d="M12 2a15.3 15.3 0 0 0 0 20"></path></svg><span class="lang-current">English</span><svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="lang-menu-list" role="menu"><a href="/zh/blog/embedding-schema-migration" role="menuitem">中文</a><a href="/en/blog/embedding-schema-migration" role="menuitem" class="is-active" aria-current="true">English</a><a href="/ug/blog/embedding-schema-migration" role="menuitem" lang="zh-CN" dir="ltr">维吾尔语</a></div></div><button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"><svg class="ti-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="ti-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="nav-cta">GitHub <span class="nav-star-badge" id="gh-stars">&#9733;</span></a></div>
+</nav>
+
+<main id="main" class="blog-main">
+  <div class="blog-article-container">
+    <nav class="blog-breadcrumb" aria-label="Breadcrumb">
+      <a href="/en/">Home</a>
+      <span class="blog-breadcrumb-sep">/</span>
+      <a href="/en/blog/">Technical Blog</a>
+      <span class="blog-breadcrumb-sep">/</span>
+      <span aria-current="page">Core Systems</span>
+    </nav>
+
+    <header class="blog-header">
+      <div class="blog-header-tags">
+        <span class="blog-badge-series">Knowledge-Base Engineering</span>
+      </div>
+      <h1 class="blog-article-title">The Hidden Schema of Embeddings in HexClaw: Migrating a Textbook’s Index from 768 to 4096 Dimensions</h1>
+      <p class="blog-article-subtitle">From Nomic’s 768 dimensions to Qwen’s 4096: manage execution contracts, budgets, dual index revisions, resumable rebuilds, and CAS cutover separately. The old index serves valid unchanged content while its replacement builds in the background.</p>
+      <div class="article-provenance-banner">
+        <div class="provenance-left">
+          <span class="provenance-origin-badge">First published on WeChat</span>
+          <span class="provenance-text">Originally published in the official technical column of the WeChat account <strong>「hexclaw」</strong> (ID: hexclaw) · Engineering notes on embedding-index migration</span>
+        </div>
+        <a href="https://mp.weixin.qq.com/s/TNEm03svQW3eUcBPZloMHw" target="_blank" rel="noopener noreferrer" class="provenance-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          Original on WeChat ↗
+        </a>
+      </div>
+    </header>
+
+    <article class="blog-content">
+
+
+<p style="margin:16px 0;">Switching a knowledge base’s embedding model sounds like a configuration change: replace the model name, adjust the dimension, and restart. Once that knowledge base contains a real textbook, however, the change becomes less straightforward.</p>
+
+<p style="margin:16px 0;">While developing <a href="https://mp.weixin.qq.com/s/8xUoFrig10zxpxni1rgm9Q">K12 parent tutoring</a> for HexClaw v0.5.0, the knowledge base became more than a place to upload a few references. A child’s profile links to specific textbooks and passes the current unit and page range into the tutoring pipeline. One is a 131-page PDF, <em>Mathematics, Grade 5, Second Semester</em>, currently scoped to Unit 4, pages 45–62. Generating aligned exercises and supporting tutoring both require evidence from that textbook.</p>
+
+<p style="margin:8px 0;">During the same iteration, we changed the built-in default for local knowledge-index embeddings from <code style="background:var(--article-panel, #edf7ff);padding:1px 5px;border-radius:3px;font-size:13px;color:var(--article-accent, #3f8fd4);">nomic-embed-text</code> to Ollama’s <code style="background:var(--article-panel, #edf7ff);padding:1px 5px;border-radius:3px;font-size:13px;color:var(--article-accent, #3f8fd4);">qwen3-embedding:8b</code>. Both can be downloaded through HexClaw’s Ollama management interface. The existing textbook already had a 768-dimensional Nomic index. The new model produces 4096 dimensions and needs a task instruction on the query side. The textbook must remain searchable after the upgrade. <strong style="color:var(--article-accent, #3f8fd4);">We changed the model; parents should not inherit the homework of uploading their textbooks again.</strong></p>
+
+<p style="margin:8px 0;">Start with this local migration. At first glance, changing the model name and dimension really does look like two lines of configuration:</p>
+
+<section style="margin:14px 0;padding:14px 16px;overflow-x:auto;background:#102a3d;color:#d9edf7;border-radius:8px;font-size:12px;line-height:1.7;font-family:SFMono-Regular,Menlo,Monaco,Consolas,'Courier New',monospace;box-sizing:border-box;">
+<span style="display:block;white-space:pre;min-height:1.7em;">default_model = "qwen3-embedding:8b"</span>
+<span style="display:block;white-space:pre;min-height:1.7em;">dimension     = 4096  # old: 768</span>
+</section>
+
+<p style="margin:8px 0;">After those two lines, the work has only begun. <strong style="color:var(--article-accent, #3f8fd4);">Old vectors do not upgrade their own dimensions.</strong> Existing documents need new embeddings. Batch size and timeout budgets must be reconsidered for an 8B local model. Retrieval-score distributions change too, so relevance thresholds require recalibration with real textbook samples.</p>
+
+<p style="margin:8px 0;">One boundary matters: v0.5.0 also supports cloud deployment, but <strong style="color:var(--article-accent, #3f8fd4);">where the backend is deployed and where the embedding model runs are separate choices</strong>. A locally deployed backend can call a cloud embedding service. User configuration and knowledge-base policy select the model. Wherever it runs, the system must define how to build the new index, when the old index hands over, and which revision an in-flight query reads.</p>
+
+<hr style="border:none;border-top:1px solid var(--article-border, #e0ecf5);margin:28px 0;"/>
+
+<blockquote style="border-left:3px solid #3f8fd4;padding:14px 18px;margin:20px 0;background:var(--article-panel, #f4fbff);color:var(--article-ink, #12324c);font-size:14px;border-radius:0 8px 8px 0;line-height:1.85;">
+<p style="margin:0 0 6px;"><span style="color:var(--article-accent, #3f8fd4);font-weight:700;">Core argument</span></p>
+<p style="margin:0 0 6px;">The textbook’s original text can remain. Changing an embedding model involves three separately managed concerns:</p>
+<p style="margin:0 0 6px;">① <strong style="color:var(--article-accent, #3f8fd4);">How vectors are generated:</strong> the model, dimensions, and input transformations form an execution contract. Under the current conservative policy, changing that contract creates and rebuilds a new index revision.</p>
+<p style="margin:0 0 6px;">② <strong style="color:var(--article-accent, #3f8fd4);">How rebuilding runs:</strong> items per batch, total runes, and timeouts belong to the execution budget. Adjusting them changes scheduling, without recalculating committed vectors.</p>
+<p style="margin:0 0 6px;">③ <strong style="color:var(--article-accent, #3f8fd4);">How relevant a result must be:</strong> relevance thresholds belong to retrieval policy. They require evaluation and calibration, without recalculating vectors.</p>
+<p style="margin:0;">Keeping these concerns separate prevents a timeout adjustment from turning into a full-library recomputation.</p>
+</blockquote>
+
+<blockquote style="border-left:3px solid #5fb3ea;padding:10px 16px;margin:16px 0;background:var(--article-panel, #f4fbff);color:var(--article-secondary, #3f5f7b);font-size:14px;border-radius:0 8px 8px 0;line-height:1.85;">
+<p style="margin:0 0 6px;"><span style="color:var(--article-accent, #3f8fd4);font-weight:700;">30-second version</span></p>
+<p style="margin:0;">A 131-page Grade 5 mathematics textbook illustrates a local index migration from Nomic’s 768 dimensions to Qwen’s 4096. HexClaw retains the original text and separates old and new vectors using versioned indexes. <strong style="color:var(--article-accent, #3f8fd4);">While the old executor remains available, the old index continues serving unchanged content whose generation is still valid</strong>; the new index rebuilds in background batches. Durable jobs and batch manifests recover known progress, without blindly retrying calls whose outcome is unknown. A CAS transaction checks policy, content version, lease, and build state before atomically switching the read entry point. Relevance thresholds are calibrated separately against real samples. A local or cloud backend does not determine where the embedding model runs.</p>
+</blockquote>
+
+<h2 style="font-size:18px;font-weight:700;color:var(--article-ink, #12324c);margin:36px 0 10px;padding-bottom:6px;border-bottom:2px solid #5fb3ea;">“Ingested” is not a single state</h2>
+
+<p style="margin:8px 0;">First, separate what “the textbook has been ingested” means. In code, a parent’s single statement corresponds to three different committed facts.</p>
+
+<p style="margin:6px 0;color:var(--article-muted, #7b8fa3);font-size:12px;">Scroll horizontally to see every table column.</p>
+<div style="max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;">
+<table style="width:100%;min-width:660px;border-collapse:collapse;margin:16px 0;font-size:13px;line-height:1.8;">
+  <tr style="background:var(--article-panel, #f4fbff);">
+    <th style="background:var(--article-panel, #f4fbff);color:var(--article-ink, #12324c);padding:8px 12px;text-align:left;font-weight:600;font-size:12px;border-bottom:2px solid #5fb3ea;">Boundary</th>
+    <th style="background:var(--article-panel, #f4fbff);color:var(--article-ink, #12324c);padding:8px 12px;text-align:left;font-weight:600;font-size:12px;border-bottom:2px solid #5fb3ea;">Committed facts</th>
+    <th style="background:var(--article-panel, #f4fbff);color:var(--article-ink, #12324c);padding:8px 12px;text-align:left;font-weight:600;font-size:12px;border-bottom:2px solid #5fb3ea;">What becomes available</th>
+    <th style="background:var(--article-panel, #f4fbff);color:var(--article-ink, #12324c);padding:8px 12px;text-align:left;font-weight:600;font-size:12px;border-bottom:2px solid #5fb3ea;">Behavior on failure</th>
+  </tr>
+  <tr>
+    <td style="padding:9px 8px;border:1px solid var(--article-border, #e0ecf5);">Acceptance transaction</td>
+    <td style="padding:9px 8px;border:1px solid var(--article-border, #e0ecf5);">Original file, source, document record, background job</td>
+    <td style="padding:9px 8px;border:1px solid var(--article-border, #e0ecf5);">Return 202; progress can be queried</td>
+    <td style="padding:9px 8px;border:1px solid var(--article-border, #e0ecf5);">Not searchable yet</td>
+  </tr>
+  <tr>
+    <td style="padding:9px 8px;border:1px solid var(--article-border, #e0ecf5);">Text publication</td>
+    <td style="padding:9px 8px;border:1px solid var(--article-border, #e0ecf5);">Document, text chunks, full-text index (FTS), content version</td>
+    <td style="padding:9px 8px;border:1px solid var(--article-border, #e0ecf5);">Full-text retrieval and page references</td>
+    <td style="padding:9px 8px;border:1px solid var(--article-border, #e0ecf5);">Job fails or waits for retry; incomplete text-processing output does not enter knowledge-base retrieval</td>
+  </tr>
+  <tr>
+    <td style="padding:9px 8px;border:1px solid var(--article-border, #e0ecf5);">Semantic publication / cutover</td>
+    <td style="padding:9px 8px;border:1px solid var(--article-border, #e0ecf5);">A document becomes ready in an index revision, or a completed revision takes over the read entry point</td>
+    <td style="padding:9px 8px;border:1px solid var(--article-border, #e0ecf5);">A new document enters the active space, or the new space takes over queries</td>
+    <td style="padding:9px 8px;border:1px solid var(--article-border, #e0ecf5);">The active index serves valid old content; explicit search can fall back to text</td>
+  </tr>
+</table>
+</div>
+
+<p style="margin:8px 0;">This is not unique to local knowledge bases. OpenAI File Search combines semantic and keyword retrieval into a hosted tool. When files enter a vector store, the platform handles chunking, embeddings, and indexing. Official documentation still lists some indexing operations as asynchronous, requiring completion waits or status checks.<span style="font-size:11px;vertical-align:super;color:var(--article-secondary, #5f7b9c);">[1]</span> <strong style="color:var(--article-accent, #3f8fd4);">A successful upload and a retrieval-ready index are different things.</strong> A hosted service takes on some of the work, but the state boundary remains.</p>
+
+<p style="margin:8px 0;">In HexClaw’s path, the first two steps handle the original file and text. Vector indexing is the third step, and the subject here.</p>
+
+<p style="margin:8px 0;">PDF parsing retains the original and page-level checkpoints so completed pages can be reused after interruption. The complete text enters knowledge-base retrieval only after completion checks. The rest of this article starts with text, full-text indexing, and page references already available; it does not expand on ingestion.</p>
+
+<hr style="border:none;border-top:1px solid var(--article-border, #e0ecf5);margin:28px 0;"/>
+
+<h2 style="font-size:18px;font-weight:700;color:var(--article-ink, #12324c);margin:36px 0 10px;padding-bottom:6px;border-bottom:2px solid #5fb3ea;">Dimensions are explicit; the execution contract is the hidden schema</h2>
+
+<p style="margin:8px 0;">Physical incompatibility is obvious in a move from 768 to 4096 dimensions: a length check can stop a Qwen query vector from being compared with Nomic document vectors. But dimensions reveal only the first layer. Switching to another 4096-dimensional model, or merely changing the query instruction while keeping Qwen, may still make old vectors unsuitable for direct reuse.</p>
+
+<p style="margin:8px 0;">A vector is a function’s output. The function is determined by the combination of model artifact, input transformation, and execution protocol. Two maps printed on 4096 squares do not necessarily share coordinates. <strong style="color:var(--article-accent, #3f8fd4);">Matching dimensions are a prerequisite for a similarity calculation; the model and input transformations must match too.</strong></p>
+
+<p style="margin:8px 0;">Qwen’s official asymmetric-retrieval recipe is a clear example: encode documents directly, but prepend a task instruction to queries.<span style="font-size:11px;vertical-align:super;color:var(--article-secondary, #5f7b9c);">[3]</span> HexClaw fixes its own task description using that template. In this prefix, the original query follows <code style="background:var(--article-panel, #edf7ff);padding:1px 5px;border-radius:3px;font-size:13px;color:var(--article-accent, #3f8fd4);overflow-wrap:anywhere;">Query:</code> directly, without an added space:</p>
+
+<section style="margin:14px 0;padding:14px 16px;overflow-x:auto;background:#102a3d;color:#d9edf7;border-radius:8px;font-size:12px;line-height:1.7;font-family:SFMono-Regular,Menlo,Monaco,Consolas,'Courier New',monospace;box-sizing:border-box;">
+<span style="display:block;white-space:pre;min-height:1.7em;">Instruct: Given a search query, retrieve relevant passages that answer the query</span>
+<span style="display:block;white-space:pre;min-height:1.7em;">Query:&lt;original query&gt;</span>
+</section>
+
+<p style="margin:8px 0;">The document prefix remains empty. The instruction applies only to query embeddings; it does not change the textbook text or FTS5. Adding the same instruction to both queries and documents may look like harmless consistency, but changes the document-side input that is embedded.</p>
+
+<p style="margin:8px 0;"><a href="https://mp.weixin.qq.com/s/ZJ9ehZtG_jUhtTMUnPCDxA">Prompt Engineering in HexClaw</a> treats instructions to a model as interface contracts. This query instruction is part of such a contract: it changes the input used to generate a vector, rather than the tone of an answer.</p>
+
+<p style="margin:8px 0;">The public model name is <code style="font-size:13px;">Qwen/Qwen3-Embedding-8B</code>; Ollama’s exact model ID is <code style="font-size:13px;">qwen3-embedding:8b</code>. The official model supports Matryoshka representations from 32 to 4096 dimensions.<span style="font-size:11px;vertical-align:super;color:var(--article-secondary, #5f7b9c);">[3][6]</span> HexClaw currently fixes 4096 dimensions in its execution Profile. Changing the dimension creates the next index revision, rather than mixing vector lengths within one revision.</p>
+
+<p style="margin:8px 0;">Execution contracts extend beyond HexClaw. Consider the requirements vendors place on vector generation and compatibility:<span style="font-size:11px;vertical-align:super;color:var(--article-secondary, #5f7b9c);">[7][8]</span></p>
+
+<p style="margin:6px 0;color:var(--article-muted, #7b8fa3);font-size:12px;">Scroll horizontally to see every table column.</p>
+<div style="max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;">
+<table style="width:100%;min-width:700px;border-collapse:collapse;margin:16px 0;font-size:13px;line-height:1.8;">
+  <tr style="background:var(--article-panel, #f4fbff);">
+    <th style="background:var(--article-panel, #f4fbff);color:var(--article-ink, #12324c);padding:8px 12px;text-align:left;font-weight:600;font-size:12px;border-bottom:2px solid #5fb3ea;">Where the contract lives</th>
+    <th style="background:var(--article-panel, #f4fbff);color:var(--article-ink, #12324c);padding:8px 12px;text-align:left;font-weight:600;font-size:12px;border-bottom:2px solid #5fb3ea;">Official examples</th>
+    <th style="background:var(--article-panel, #f4fbff);color:var(--article-ink, #12324c);padding:8px 12px;text-align:left;font-weight:600;font-size:12px;border-bottom:2px solid #5fb3ea;">What the system must retain</th>
+  </tr>
+  <tr>
+    <td style="padding:9px 8px;border:1px solid var(--article-border, #e0ecf5);">Input role</td>
+    <td style="padding:9px 8px;border:1px solid var(--article-border, #e0ecf5);">Qwen query instructions; E5 query/document prefixes; Cohere input_type; Jina v3 Task LoRA</td>
+    <td style="padding:9px 8px;border:1px solid var(--article-border, #e0ecf5);">Actual query/document input bytes and task identity</td>
+  </tr>
+  <tr>
+    <td style="padding:9px 8px;border:1px solid var(--article-border, #e0ecf5);">Representation</td>
+    <td style="padding:9px 8px;border:1px solid var(--article-border, #e0ecf5);">BGE-M3: dense / sparse / multi-vector</td>
+    <td style="padding:9px 8px;border:1px solid var(--article-border, #e0ecf5);">Output mode, score meaning, and retrieval algorithm</td>
+  </tr>
+  <tr>
+    <td style="padding:9px 8px;border:1px solid var(--article-border, #e0ecf5);">Output and numerical conventions</td>
+    <td style="padding:9px 8px;border:1px solid var(--article-border, #e0ecf5);">Some OpenAI / Qwen / Jina / Cohere models support reduced or selectable output dimensions, under differing rules</td>
+    <td style="padding:9px 8px;border:1px solid var(--article-border, #e0ecf5);">Dimensions, dtype, normalization, truncation order, and implementation version</td>
+  </tr>
+  <tr>
+    <td style="padding:9px 8px;border:1px solid var(--article-border, #e0ecf5);">Compatibility across generations</td>
+    <td style="padding:9px 8px;border:1px solid var(--article-border, #e0ecf5);">Gemini 001 → 2 requires full recomputation; the Voyage 4 family shares a space</td>
+    <td style="padding:9px 8px;border:1px solid var(--article-border, #e0ecf5);">Assume incompatibility unless the contract explicitly guarantees it</td>
+  </tr>
+</table>
+</div>
+
+<p style="margin:8px 0;">Even with the same model, implementation changes can alter vector generation. Weaviate’s property ordering, field concatenation, and case handling all affect model input. Jina v3 also corrected the order of normalization and dimensional truncation; its official guidance requires pinning historical code to reproduce older results.<span style="font-size:11px;vertical-align:super;color:var(--article-secondary, #5f7b9c);">[7][12]</span> The model name can stay unchanged while the generation conditions change.</p>
+
+<h3 style="font-size:16px;font-weight:700;color:var(--article-ink, #12324c);margin:24px 0 10px;">How HexClaw records the contract: 12 fields and a fingerprint</h3>
+
+<p style="margin:8px 0;">HexClaw records each embedding execution configuration as a credential-free contract in <code style="background:var(--article-panel, #edf7ff);padding:1px 5px;border-radius:3px;font-size:13px;color:var(--article-accent, #3f8fd4);overflow-wrap:anywhere;">cmd/hexclaw/semantic_index_runtime.go</code>:</p>
+
+<section style="margin:14px 0;padding:14px 16px;overflow-x:auto;background:#102a3d;color:#d9edf7;border-radius:8px;font-size:12px;line-height:1.7;font-family:SFMono-Regular,Menlo,Monaco,Consolas,'Courier New',monospace;box-sizing:border-box;">
+<span style="display:block;white-space:pre;min-height:1.7em;">type knowledgeEmbeddingExecutorContract struct {</span>
+<span style="display:block;white-space:pre;min-height:1.7em;">    ContractVersion    string</span>
+<span style="display:block;white-space:pre;min-height:1.7em;">    Dimension          int</span>
+<span style="display:block;white-space:pre;min-height:1.7em;">    DocumentPrefix     string</span>
+<span style="display:block;white-space:pre;min-height:1.7em;">    EndpointIdentity   string</span>
+<span style="display:block;white-space:pre;min-height:1.7em;">    ExactModelID       string</span>
+<span style="display:block;white-space:pre;min-height:1.7em;">    MaxInputRunes      int</span>
+<span style="display:block;white-space:pre;min-height:1.7em;">    Normalization      string</span>
+<span style="display:block;white-space:pre;min-height:1.7em;">    Protocol           string</span>
+<span style="display:block;white-space:pre;min-height:1.7em;">    ProviderInstanceID string</span>
+<span style="display:block;white-space:pre;min-height:1.7em;">    ProviderLocation   string</span>
+<span style="display:block;white-space:pre;min-height:1.7em;">    QueryPrefix        string</span>
+<span style="display:block;white-space:pre;min-height:1.7em;">    TransformEpoch     string</span>
+<span style="display:block;white-space:pre;min-height:1.7em;">}</span>
+</section>
+
+<p style="margin:8px 0;">The 12 fields are normalized into JSON and hashed with SHA-256 to produce <code style="background:var(--article-panel, #edf7ff);padding:1px 5px;border-radius:3px;font-size:13px;color:var(--article-accent, #3f8fd4);overflow-wrap:anywhere;">profile_config_hash</code>. <code style="background:var(--article-panel, #edf7ff);padding:1px 5px;border-radius:3px;font-size:13px;color:var(--article-accent, #3f8fd4);overflow-wrap:anywhere;">profile_id</code> identifies which model on which provider; <strong style="color:var(--article-accent, #3f8fd4);">the configuration fingerprint distinguishes the execution configuration it uses</strong>. The former may remain unchanged when the endpoint, dimension, or input transformation changes; the latter must change.</p>
+
+<p style="margin:8px 0;">Queries match currently registered executors by configuration fingerprint. If no executor with the same contract is available, the vector route is disabled. <strong style="color:var(--article-accent, #3f8fd4);">Today’s default model must not interpret yesterday’s vectors.</strong> This fingerprint identifies configuration; it does not restore an old model or historical runtime.</p>
+
+<p style="margin:8px 0;">This is conservative. Changing only a query instruction or moving the same model to another endpoint may not mathematically require new document vectors. HexClaw nevertheless includes those changes in the fingerprint and rebuilds a new revision when applying the policy. It may perform extra computation in exchange for a clear mapping between execution configuration and index revision.</p>
+
+<p style="margin:8px 0;">One gap remains: these 12 fields do not separately record a model-artifact digest, quantization level, or inference-engine version. The artifact behind an unchanged tag can change without changing the configuration fingerprint.</p>
+
+<h3 style="font-size:16px;font-weight:700;color:var(--article-ink, #12324c);margin:24px 0 10px;">Not every change warrants a full rebuild</h3>
+
+<p style="margin:8px 0;">Manage the conditions for generating vectors, the budget for scheduling computation, and the rules for filtering results separately:</p>
+
+<table style="width:100%;border-collapse:collapse;margin:16px 0;font-size:13px;line-height:1.8;">
+  <tr>
+    <th style="background:var(--article-panel, #f4fbff);color:var(--article-ink, #12324c);padding:8px 12px;text-align:left;font-weight:600;font-size:12px;border-bottom:2px solid #5fb3ea;">Layer</th>
+    <th style="background:var(--article-panel, #f4fbff);color:var(--article-ink, #12324c);padding:8px 12px;text-align:left;font-weight:600;font-size:12px;border-bottom:2px solid #5fb3ea;">Typical fields</th>
+    <th style="background:var(--article-panel, #f4fbff);color:var(--article-ink, #12324c);padding:8px 12px;text-align:left;font-weight:600;font-size:12px;border-bottom:2px solid #5fb3ea;">Action after a change</th>
+  </tr>
+  <tr>
+    <td style="padding:9px 8px;border-bottom:1px solid var(--article-border, #e0ecf5);">Execution contract</td>
+    <td style="padding:9px 8px;border-bottom:1px solid var(--article-border, #e0ecf5);">Exact model ID, dimensions, query/document input transformations, normalization declaration</td>
+    <td style="padding:9px 8px;border-bottom:1px solid var(--article-border, #e0ecf5);">Current conservative policy: new hash, new revision, rebuild</td>
+  </tr>
+  <tr>
+    <td style="padding:9px 8px;border-bottom:1px solid var(--article-border, #e0ecf5);">Execution budget</td>
+    <td style="padding:9px 8px;border-bottom:1px solid var(--article-border, #e0ecf5);">Items per batch, total runes, call timeout</td>
+    <td style="padding:9px 8px;border-bottom:1px solid var(--article-border, #e0ecf5);">Reschedule without recalculating committed vectors</td>
+  </tr>
+  <tr>
+    <td style="padding:9px 8px;border-bottom:1px solid var(--article-border, #e0ecf5);">Retrieval policy</td>
+    <td style="padding:9px 8px;border-bottom:1px solid var(--article-border, #e0ecf5);">Top-K, relevance threshold, automatic injection enabled or disabled</td>
+    <td style="padding:9px 8px;border-bottom:1px solid var(--article-border, #e0ecf5);">Re-evaluate without changing the vector space</td>
+  </tr>
+</table>
+
+<p style="margin:8px 0;"><strong style="color:var(--article-accent, #3f8fd4);">Deterministic truncation and prefixes change the text sent into the model, so they belong to the execution contract.</strong> How identical inputs are packed into requests and how much time they receive belong to the execution budget. Confusing these categories can omit a necessary rebuild or make a timeout adjustment recompute the entire knowledge base.</p>
+
+<p style="margin:8px 0;">An unchanged model name does not guarantee an unchanged index either. Anthropic’s September 2024 Contextual Retrieval adds a chunk’s original context before building embedding and BM25 indexes.<span style="font-size:11px;vertical-align:super;color:var(--article-secondary, #5f7b9c);">[2]</span> <strong style="color:var(--article-accent, #3f8fd4);">The model is the same, but its input text has changed.</strong> If HexClaw adopts such processing later, the added context and generation rules must also be recorded, or old and new index-generation conditions will be impossible to reconcile.</p>
+
+<hr style="border:none;border-top:1px solid var(--article-border, #e0ecf5);margin:28px 0;"/>
+
+<h2 style="font-size:18px;font-weight:700;color:var(--article-ink, #12324c);margin:36px 0 10px;padding-bottom:6px;border-bottom:2px solid #5fb3ea;">A batch of 64 timed out. How should the budget change?</h2>
+
+<p style="margin:8px 0;">The first successful connection in July used Ollama 0.32.5, qwen3-embedding:8b Q4_K_M, and CPU execution. HTTP 200 returned three 4096-dimensional vectors for three inputs without calling a chat model. <strong style="color:var(--article-accent, #3f8fd4);">A working call does not mean a whole textbook can be processed in one shot.</strong></p>
+
+<p style="margin:8px 0;">When processing textbook batches, the old “64 items, 60 seconds” configuration timed out. Those settings had served lightweight embeddings and could not simply be carried over to this CPU environment.</p>
+
+<p style="margin:8px 0;">We then limited both item count and runes. A rune is a Unicode code point in Go: it measures input scale here, not model tokens. These were some recorded single-call durations:</p>
+
+<table style="width:100%;border-collapse:collapse;margin:16px 0;font-size:13px;line-height:1.8;">
+  <tr>
+    <th style="background:var(--article-panel, #f4fbff);color:var(--article-ink, #12324c);padding:8px 12px;text-align:left;font-weight:600;font-size:12px;border-bottom:2px solid #5fb3ea;">Historical single observation</th>
+    <th style="background:var(--article-panel, #f4fbff);color:var(--article-ink, #12324c);padding:8px 12px;text-align:right;font-weight:600;font-size:12px;border-bottom:2px solid #5fb3ea;">Duration</th>
+  </tr>
+  <tr><td style="padding:8px;border-bottom:1px solid var(--article-border, #e0ecf5);">Cold-start query · original input</td><td style="padding:8px;text-align:right;border-bottom:1px solid var(--article-border, #e0ecf5);">36.290s</td></tr>
+  <tr><td style="padding:8px;border-bottom:1px solid var(--article-border, #e0ecf5);">1 item per batch</td><td style="padding:8px;text-align:right;border-bottom:1px solid var(--article-border, #e0ecf5);">71.989s</td></tr>
+  <tr><td style="padding:8px;border-bottom:1px solid var(--article-border, #e0ecf5);">2 items per batch</td><td style="padding:8px;text-align:right;border-bottom:1px solid var(--article-border, #e0ecf5);">48.602s</td></tr>
+  <tr><td style="padding:8px;border-bottom:1px solid var(--article-border, #e0ecf5);">4 items per batch</td><td style="padding:8px;text-align:right;border-bottom:1px solid var(--article-border, #e0ecf5);">200.853s</td></tr>
+  <tr><td style="padding:8px;border-bottom:1px solid var(--article-border, #e0ecf5);">8 items per batch</td><td style="padding:8px;text-align:right;border-bottom:1px solid var(--article-border, #e0ecf5);">302.655s</td></tr>
+</table>
+
+<p style="margin:6px 0;font-size:12px;color:var(--article-secondary, #5f7b9c);">These are single observations retained from 2026-07-28. The original per-call logs and complete hardware, runtime settings, and cold/warm order were not fully retained. The figures explain the tuning process at that time; they cannot compare batch sizes, establish throughput, or predict a full-textbook rebuild duration.</p>
+
+<p style="margin:8px 0;">In those records, batch 1 was slower than batch 2, but that does not establish that batch 2 is generally faster. Startup, scheduling, input length, and memory state all affect elapsed time. The resulting Qwen Profile limits both input scale and execution time:</p>
+
+<section style="margin:14px 0;padding:14px 16px;overflow-x:auto;background:#102a3d;color:#d9edf7;border-radius:8px;font-size:12px;line-height:1.7;font-family:SFMono-Regular,Menlo,Monaco,Consolas,'Courier New',monospace;box-sizing:border-box;">
+<span style="display:block;white-space:pre;min-height:1.7em;">item_count      &lt;= 2</span>
+<span style="display:block;white-space:pre;min-height:1.7em;">total_runes     &lt;= 800</span>
+<span style="display:block;white-space:pre;min-height:1.7em;">max_input_runes &lt;= 400</span>
+<span style="display:block;white-space:pre;min-height:1.7em;">batch_timeout    = 120s</span>
+<span style="display:block;white-space:pre;min-height:1.7em;">query_timeout    = 60s</span>
+</section>
+
+<p style="margin:8px 0;">The Worker first limits item count. The executor wrapper then greedily packs requests by both item count and total runes: if the next item would exceed a limit, it sends the current batch first.</p>
+
+<p style="margin:8px 0;">The query-side 60 seconds is shared by the entire vector-retrieval stage. Resource waits and model calls for expanded queries all spend that budget. If an upstream context expires sooner, execution ends earlier. It is not a separate allowance for each expanded query, and excludes the preceding query-expansion and subsequent reranking stages.</p>
+
+<p style="margin:8px 0;"><strong style="color:var(--article-accent, #3f8fd4);">These settings apply only to the exactly matching Qwen Profile.</strong> Nomic’s prefixes, threshold, and budgets remain unchanged. Other models require their own input requirements and budgets to be confirmed.</p>
+
+<p style="margin:8px 0;">Inputs exceeding 400 runes are currently truncated, not split into smaller sub-chunks. Original text and FTS remain complete, but a vector may not encode the whole chunk. Query text receives its instruction before truncation, so that prefix also consumes the 400-rune allowance.</p>
+
+<p style="margin:8px 0;">A model’s 32K context support does not establish how many seconds a request will need. <strong style="color:var(--article-accent, #3f8fd4);">Fitting and finishing are separate budgets.</strong> Changes to hardware, model artifact, or provider require the execution budget to be checked again.</p>
+
+<hr style="border:none;border-top:1px solid var(--article-border, #e0ecf5);margin:28px 0;"/>
+
+<h2 style="font-size:18px;font-weight:700;color:var(--article-ink, #12324c);margin:36px 0 10px;padding-bottom:6px;border-bottom:2px solid #5fb3ea;">How can one BLOB column manage two index generations?</h2>
+
+<p style="margin:8px 0;">The early local knowledge base used a simple design: SQLite held original text and chunks, FTS5 handled keyword search, and a BLOB column on the chunk table held embeddings for Go to compare with cosine similarity. For a single-model, single-machine knowledge base, it was simple, transparent, and avoided operating another vector service.</p>
+
+<p style="margin:8px 0;">An online migration temporarily requires two vectors for the same chunk: Nomic A continues retrieval while Qwen B rebuilds beside it. Adding <code style="background:var(--article-panel, #edf7ff);padding:1px 5px;border-radius:3px;font-size:13px;color:var(--article-accent, #3f8fd4);">model_name</code> to the old table is insufficient: each chunk still has room for only one generation. Overwriting rows is worse. At 63% rebuilt, the read path would face an incomplete index that can no longer be restored in place.</p>
+
+<p style="margin:8px 0;">Database migration v23 separates the source of truth from its derived index. Four identities must be distinguished: revision identifies an entire semantic-index generation; document generation identifies a document’s content generation; content version tracks corpus changes; and policy version tracks user-policy changes. Changing the model, replacing a textbook, and selecting a different target cannot share one ambiguous “version.” The key fields are:</p>
+
+<section style="margin:14px 0;padding:14px 16px;overflow-x:auto;background:#102a3d;color:#d9edf7;border-radius:8px;font-size:12px;line-height:1.7;font-family:SFMono-Regular,Menlo,Monaco,Consolas,'Courier New',monospace;box-sizing:border-box;">
+<span style="display:block;white-space:pre;min-height:1.7em;">kb_semantic_corpora.active_revision_id  -&gt; A</span>
+<span style="display:block;white-space:pre;min-height:1.7em;">kb_embedding_policies.desired_revision_id -&gt; B</span>
+<span style="display:block;white-space:pre;min-height:1.7em;"><br/></span>
+<span style="display:block;white-space:pre;min-height:1.7em;">kb_index_revisions</span>
+<span style="display:block;white-space:pre;min-height:1.7em;">  (revision_id, profile_snapshot_id, publish_state,</span>
+<span style="display:block;white-space:pre;min-height:1.7em;">   base_content_version, indexed_through_version, ...)</span>
+<span style="display:block;white-space:pre;min-height:1.7em;"><br/></span>
+<span style="display:block;white-space:pre;min-height:1.7em;">kb_revision_vectors</span>
+<span style="display:block;white-space:pre;min-height:1.7em;">  (revision_id, document_id, content_generation, chunk_id,</span>
+<span style="display:block;white-space:pre;min-height:1.7em;">   profile_config_hash, model_name, dimension, embedding)</span>
+<span style="display:block;white-space:pre;min-height:1.7em;"><br/></span>
+<span style="display:block;white-space:pre;min-height:1.7em;">CHECK(length(embedding) = dimension * 4)</span>
+</section>
+
+<p style="margin:8px 0;">The corpus’s current <code style="font-size:13px;">content_version</code> lives on <code style="font-size:13px;">kb_semantic_corpora</code>. Each revision retains its starting <code style="font-size:13px;">base_content_version</code> and its caught-up <code style="font-size:13px;">indexed_through_version</code>. These identify where it started and how far it has caught up.</p>
+
+<p style="margin:8px 0;">The old <code style="background:var(--article-panel, #edf7ff);padding:1px 5px;border-radius:3px;font-size:13px;color:var(--article-accent, #3f8fd4);">kb_chunks.embedding</code> column remains as a legacy field, but the new path no longer updates it. Reverting to an older program therefore cannot recover a complete semantic index for content added during migration from that column.</p>
+
+<p style="margin:8px 0;">Each new vector row carries its revision, configuration fingerprint, model, dimensions, and document generation. Composite foreign keys constrain revision/configuration ownership, while BLOB-length checks constrain vector shape. They cannot prove that the provider used the right artifact or that retrieval is sufficiently relevant.</p>
+
+<p style="margin:8px 0;">The original textbook and chunks remain in the source of truth. <strong style="color:var(--article-accent, #3f8fd4);">Embeddings are derived data that can be recomputed.</strong> Migration leaves the original text intact while old and new index generations track their own states.</p>
+
+<p style="margin:8px 0;">For Cloudflare’s BGE-M3, for example, an OpenAI-compatible interface permits request-protocol reuse, but vector space, budget, and thresholds still require model-specific confirmation. BGE-M3 itself supports dense, sparse, and multi-vector representations.<span style="font-size:11px;vertical-align:super;color:var(--article-secondary, #5f7b9c);">[8][9]</span> HexClaw’s current retrieval path uses dense-vector recall fused with FTS/BM25 results; it does not yet integrate that model’s sparse or multi-vector retrieval.</p>
+
+<p style="margin:8px 0;">Retaining an old index until its replacement is ready is not unique to HexClaw. Qdrant’s official migration guidance likewise requires re-embedding original text: old vectors are not reversible encodings of that text and cannot be directly converted into a new model’s vectors. It also warns that concurrent deletions during blue-green backfilling can let an old point be “resurrected” by a background scroll. Elasticsearch uses an atomic alias swap to replace the read entry point.<span style="font-size:11px;vertical-align:super;color:var(--article-secondary, #5f7b9c);">[12]</span> HexClaw follows that read-entry-switching approach. Document content generations, Worker leases, and model-call outcomes remain application responsibilities even if the vector store changes.</p>
+
+<p style="margin:8px 0;">In Desktop, separate model capability from current index state. Qwen3-Embedding-8B is recognized as embedding-only and does not appear among chat, Quick Chat, or default conversation model candidates. Index cards use the backend’s <code style="background:var(--article-panel, #edf7ff);padding:1px 5px;border-radius:3px;font-size:13px;color:var(--article-accent, #3f8fd4);">policy_version + active_revision + desired_revision + indexing_activity</code> as authoritative state. Applying a policy includes the version previously read. A 409 triggers a fresh backend read rather than replaying a potentially stale write.</p>
+
+<h3 style="font-size:16px;font-weight:700;color:var(--article-ink, #12324c);margin:24px 0 10px;">A changed default model does not automatically migrate a knowledge base</h3>
+
+<p style="margin:8px 0;">Making Qwen the built-in default does not migrate existing knowledge bases on restart. Local Ollama model selection prioritizes explicit configuration, then probes installed models when none is specified, and uses the built-in default only as a final fallback. Existing knowledge bases retain their own policies. Discovering a new model only adds an option. The system creates a target index only when the user applies a new selection. <strong style="color:var(--article-accent, #3f8fd4);">Downloaded, selected by policy, and actively serving queries are three separate states.</strong></p>
+
+<hr style="border:none;border-top:1px solid var(--article-border, #e0ecf5);margin:28px 0;"/>
+
+<h2 style="font-size:18px;font-weight:700;color:var(--article-ink, #12324c);margin:36px 0 10px;padding-bottom:6px;border-bottom:2px solid #5fb3ea;">Old A keeps serving while new B rebuilds beside it</h2>
+
+<p style="margin:8px 0;">After migration begins, Nomic revision A remains the only semantic-index read entry point. Qwen revision B is desired / staged and builds only in the background. <strong style="color:var(--article-accent, #3f8fd4);">B does not participate in queries at 1%, 63%, or even 99% complete.</strong></p>
+
+<p style="margin:8px 0;">Queries first load the active snapshot, then filter vectors by the same revision, configuration fingerprint, dimension, and document generation. If the old executor is still available, A continues semantic retrieval for unchanged documents whose generations remain valid. If the old model has been deleted, the vector route stops. Explicit knowledge-base searches can still return FTS5 / LIKE results, while automatic RAG injection in chat returns nothing rather than presenting keyword-only hits as successful vector recall.</p>
+
+<p style="margin:16px 0;text-align:center;"><img width="1200" height="2200" loading="lazy" decoding="async" src="../../assets/blog/embedding-schema-migration/索引换代主流程.png" alt="Local Nomic-to-Qwen migration: active serves valid old content while desired rebuilds from text and takes over through CAS" style="display:block;width:100%;max-width:600px;height:auto;margin:0 auto;border-radius:8px;"/></p>
+<p style="margin:6px 0;font-size:12px;color:var(--article-secondary, #5f7b9c);text-align:center;">Figure 1 | Local Nomic → Qwen migration: the old index serves valid old content while the new index rebuilds in the background and takes over through CAS.</p>
+
+<h3 style="font-size:16px;font-weight:700;color:var(--article-ink, #12324c);margin:24px 0 10px;">Resuming an interrupted rebuild</h3>
+
+<p style="margin:8px 0;">Laptops sleep when their lids close, desktop apps exit, and local models can stay busy for extended periods. New-index rebuilding therefore runs as a durably recoverable Job.</p>
+
+<p style="margin:8px 0;">After claiming a job, a Worker receives execution authority through a Lease, valid for 5 minutes by default. <strong style="color:var(--article-accent, #3f8fd4);">Those 5 minutes are the validity period of its badge, not a deadline for completing the textbook.</strong> The Worker renews before each batch and again after the model returns, before committing. A lease epoch identifies the authority generation, distinguishing the current Worker from a late older one.</p>
+
+<p style="margin:8px 0;">Retryable failures back off from 30 seconds exponentially, capped at 15 minutes. The default permits at most 8 consecutive attempts without progress; progress resets the counter. This does not mean an entire textbook is limited to 8 batches.</p>
+
+<p style="margin:8px 0;">Each model request is still split into small Qwen Profile batches: at most 2 items and no more than 800 runes in total.</p>
+
+<p style="margin:8px 0;">Before each call, the Worker writes a durable Manifest recording the batch’s identity and processing state: revision, configuration fingerprint, chunk order, content digest, stable request key, and lease epoch.</p>
+
+<p style="margin:8px 0;">After the model returns, it checks vector count, 4096 dimensions, finite components, content generation, and Lease. If those checks pass, the vectors, Manifest’s succeeded state, and job progress commit in the same transaction.</p>
+
+<p style="margin:8px 0;">The scan cursor exists only in memory for the current round. After restart, scanning begins again, skipping completed work through matching vectors already stored in the database. Batches with unknown in-flight outcomes receive separate handling.</p>
+
+<p style="margin:8px 0;">Anthropic’s Managed Agents engineering article of 2026-04-08 also places session logs outside the execution harness so a crashed process can recover.<span style="font-size:11px;vertical-align:super;color:var(--article-secondary, #5f7b9c);">[10]</span> This article concerns index Jobs rather than agent sessions, but shares the principle: <strong style="color:var(--article-accent, #3f8fd4);">durable state need not live and die with one process.</strong></p>
+
+<h3 style="font-size:16px;font-weight:700;color:var(--article-ink, #12324c);margin:24px 0 10px;">A timeout—why not just send it again?</h3>
+
+<p style="margin:8px 0;">Not so fast. The provider may already have executed the request, with its response lost during a timeout or dropped connection. The system records this as <code style="font-size:13px;">outcome_unknown</code> and does not blindly retry it automatically. A stable Idempotency-Key identifies the request, but actual deduplication depends on provider support. It cannot guarantee exactly-once execution.</p>
+
+<p style="margin:8px 0;">An unknown outcome currently fails that Job. It does not enter ordinary backoff, and there is no general automatic reconciler. Recomputing usually does not modify remote business data, but may occupy the local model again or incur duplicate cloud charges.</p>
+
+<p style="margin:8px 0;">What if the user clicks Retry? For failed jobs with an explicitly selected Profile and Desktop retry support, the system reapplies policy and creates a new staged revision and Job. Known successful vectors can be reused when both identity and content match. An old unknown receipt does not thereby become successful; the unknown portion may still be recomputed.</p>
+
+<p style="margin:8px 0;"><a href="https://mp.weixin.qq.com/s/kDi-LSWB4UHtS_6jbTfvow">Harness Engineering in HexClaw</a> discusses failure classification. Index rebuilding also must distinguish a definitively failed call from a call with an unknown outcome. <strong style="color:var(--article-accent, #3f8fd4);">They cannot share one retry policy.</strong></p>
+
+<h3 style="font-size:16px;font-weight:700;color:var(--article-ink, #12324c);margin:24px 0 10px;">Users keep changing material during a rebuild</h3>
+
+<p style="margin:8px 0;">Users do not stop working while the index rebuilds. Additions, deletions, and other changes still need handling; reparsing the same-source textbook cannot currently run concurrently with index migration. HexClaw does not compute both A and B vectors for every change. That saves one computation, at the cost of delaying semantic access to new content.</p>
+
+<p style="margin:8px 0;">While target B works normally, it processes current document generations and catches up with the corpus content version. A keeps only unchanged old content with valid generations readable. Replacing a textbook filters out vectors from the old generation. Explicit text retrieval can see new content first; semantic retrieval of that content waits until B takes over.</p>
+
+<h3 style="font-size:16px;font-weight:700;color:var(--article-ink, #12324c);margin:24px 0 10px;">Cancellation, deletion, and rollback</h3>
+
+<p style="margin:8px 0;">Cancelling migration cancels B, abandons the staged revision, and creates incremental Jobs to fill A’s migration-window gaps, all in the same transaction.</p>
+
+<p style="margin:8px 0;">Deleting a document first records a soft-delete and tombstone, advances its generation to invalidate old execution authority in in-flight Jobs, and then uses durable garbage collection to clean derived data. However much work an old Worker has done, <strong style="color:var(--article-accent, #3f8fd4);">an expired badge cannot authorize a commit</strong>. The database recognizes only currently valid execution authority.</p>
+
+<p style="margin:8px 0;">Cancelling B before cutover and filling A’s gaps is not cost-free rollback after cutover. Once B becomes active, superseded A no longer tracks new writes. <strong style="color:var(--article-accent, #3f8fd4);">Retaining an old revision does not guarantee a lossless switch back; migration-window data and compatibility still need handling.</strong></p>
+
+<hr style="border:none;border-top:1px solid var(--article-border, #e0ecf5);margin:28px 0;"/>
+
+<h2 style="font-size:18px;font-weight:700;color:var(--article-ink, #12324c);margin:36px 0 10px;padding-bottom:6px;border-bottom:2px solid #5fb3ea;">100% progress is not the cutover condition</h2>
+
+<p style="margin:8px 0;">B finishing all vectors proves only that its Worker reached the end of the queue. Before the last batch returned, the target policy could have changed from B to C, the textbook’s generation could have changed, or another Worker could have taken the Lease. Letting a late “100%” change the read entry point can atomically activate a stale index. <strong style="color:var(--article-accent, #3f8fd4);">Atomicity guarantees all-or-nothing, not that the target is correct.</strong> These are concurrent backend states that must be defended against. Desktop currently disables that card’s model selection while a desired revision exists.</p>
+
+<p style="margin:8px 0;">Cutover occurs in a CAS, compare-and-swap, transaction. Condition checks and commit happen in the same SQLite database. External model calls stay outside that transaction.</p>
+
+<p style="margin:8px 0;">The transaction first checks policy and content versions plus the expected active and desired indexes, confirming the publication target has not changed. Job state, owner, lease epoch, and lease validity confirm execution authority. B’s staged state, caught-up content version, and expected, completed, and failed counts confirm the build state.</p>
+
+<p style="margin:8px 0;">Only matching conditions mark A superseded, mark B active, and clear desired. Any mismatch rolls back the entire cutover.</p>
+
+<section style="margin:14px 0;padding:14px 16px;overflow-x:auto;background:#102a3d;color:#d9edf7;border-radius:8px;font-size:12px;line-height:1.7;font-family:SFMono-Regular,Menlo,Monaco,Consolas,'Courier New',monospace;box-sizing:border-box;">
+<span style="display:block;white-space:pre;min-height:1.7em;">// 简化伪代码；省略 Job、租约有效期、watermark 和完整性校验</span>
+<span style="display:block;white-space:pre;min-height:1.7em;">if policyVersion  != expectedPolicyVersion ||</span>
+<span style="display:block;white-space:pre;min-height:1.7em;">   contentVersion != expectedContentVersion ||</span>
+<span style="display:block;white-space:pre;min-height:1.7em;">   activeRevision != revisionA ||</span>
+<span style="display:block;white-space:pre;min-height:1.7em;">   desiredRevision != revisionB ||</span>
+<span style="display:block;white-space:pre;min-height:1.7em;">   leaseEpoch     != expectedLeaseEpoch {</span>
+<span style="display:block;white-space:pre;min-height:1.7em;">    return ErrPublishConflict</span>
+<span style="display:block;white-space:pre;min-height:1.7em;">}</span>
+</section>
+
+<p style="margin:8px 0;">What happens to queries already in flight when reads switch? HexClaw does not change their index revision mid-query. A retrieval freezes its revision at the start, and all expanded queries share that plan.</p>
+
+<p style="margin:8px 0;">After multi-path retrieval and before fusion, it checks <code style="font-size:13px;">content_version</code> again. A plain A→B cutover does not force an in-flight request to change revisions: its frozen A can continue as superseded. If the corpus version has changed, however, retrieval returns an evidence conflict rather than mixing old and new content into one result.</p>
+
+<p style="margin:16px 0;text-align:center;"><img width="1200" height="2260" loading="lazy" decoding="async" src="../../assets/blog/embedding-schema-migration/索引切换与在途查询.png" alt="In-flight requests freeze A; new requests bind to B after background cutover. Old requests check content version before fusion and return an evidence conflict if it changed." style="display:block;width:100%;max-width:600px;height:auto;margin:0 auto;border-radius:8px;"/></p>
+<p style="margin:6px 0;font-size:12px;color:var(--article-secondary, #5f7b9c);text-align:center;">Figure 2 | Index cutover does not force in-flight requests to change revisions. Content version is checked after multi-path recall and before fusion; this does not guarantee global consistency throughout answer generation.</p>
+
+<p style="margin:8px 0;font-size:12px;color:var(--article-secondary, #5f7b9c);">Implementation: <code style="font-size:12px;">FreezeRetrievalPlan</code> and <code style="font-size:12px;">ValidateRetrievalPlan</code>, in <code style="font-size:12px;overflow-wrap:anywhere;">knowledge/knowledge.go</code> and <code style="font-size:12px;overflow-wrap:anywhere;">knowledge/semantic_revision_search.go</code>.</p>
+
+<p style="margin:8px 0;">So far, these mechanisms establish index completeness and valid concurrent state at cutover. CAS does not score the new model’s retrieval accuracy; relevance thresholds require their own calibration.</p>
+
+<hr style="border:none;border-top:1px solid var(--article-border, #e0ecf5);margin:28px 0;"/>
+
+<h2 style="font-size:18px;font-weight:700;color:var(--article-ink, #12324c);margin:36px 0 10px;padding-bottom:6px;border-bottom:2px solid #5fb3ea;">Nomic’s 0.85 cannot simply be copied to Qwen</h2>
+
+<p style="margin:8px 0;">Nomic’s previous automatic-injection threshold was 0.85, derived from Chinese samples on a real machine at that time. Qwen’s cosine distribution differs. Even if both use <code style="background:var(--article-panel, #edf7ff);padding:1px 5px;border-radius:3px;font-size:13px;color:var(--article-accent, #3f8fd4);">(cosine + 1) / 2</code> to map scores into 0–1, <strong style="color:var(--article-accent, #3f8fd4);">the same score from different models does not imply the same relevance</strong>. Qwen therefore needs its own automatic-injection calibration.</p>
+
+<p style="margin:8px 0;">We did not use another LLM to label the evaluation set. Instead, expected source matches were fixed in advance using frozen K12 textbooks and repository samples, then the real Ollama path was called. A small calibration set retained from 2026-07-28 contained 7 relevant queries and 5 queries with no target. The original per-query records were not fully retained. These results informed tuning at the time; they are neither an independent validation set nor an overall recall measurement:</p>
+
+<p style="margin:8px 0;">Relevant queries had Top-1 and Top-3 hits of 7/7, with a minimum normalized Top-1 score of 0.6940. No-target queries had a maximum normalized Top-1 score of 0.6132.</p>
+
+<p style="margin:8px 0;">For those samples, 0.65 lay between the two score groups, so the Qwen Profile’s automatic-injection threshold was set accordingly. That number belongs to the model and input transformation used then, not the global <code style="background:var(--article-panel, #edf7ff);padding:1px 5px;border-radius:3px;font-size:13px;color:var(--article-accent, #3f8fd4);">MinScore</code>.</p>
+
+<h3 style="font-size:16px;font-weight:700;color:var(--article-ink, #12324c);margin:24px 0 10px;">A false retrieval: raising the threshold from 0.65 to 0.68</h3>
+
+<p style="margin:8px 0;">The following targeted examples checked relevance boundaries across textbooks, beyond the opening Unit 4 tutoring scenario.</p>
+
+<p style="margin:8px 0;">Later investigation found that “What is the meaning of life?” incorrectly retrieved the language-arts textbook passage <em>The Mystery of Life in the Universe</em> at about 0.66225. Qwen’s automatic-injection threshold was therefore raised to its current 0.68. Two real application requests on September 21 confirmed zero knowledge hits for that question, while “What are the factors of 18?” still cited page 11 of the mathematics PDF and answered correctly. This changed retrieval policy, without recomputing vectors or changing the configuration fingerprint. <strong style="color:var(--article-accent, #3f8fd4);">It demonstrates only those targeted examples, not a general quality guarantee.</strong></p>
+
+<p style="margin:8px 0;">Qwen currently injects at most 1 item. This is a final count limit after fusion, relevance filtering, and reranking/MMR, not an early restriction to the highest-cosine candidate. Both 0.68 and the one-item cap are specific local-Qwen policies, not general quality thresholds for other models or providers.</p>
+
+<p style="margin:8px 0;">Looking back at July’s calibration, relevant English samples had a minimum first-to-second margin of just 0.0072, while no-target samples could reach 0.0288. In those examples, a larger margin did not imply stronger relevance. <strong style="color:var(--article-accent, #3f8fd4);">The observations were insufficient to justify a universal margin gate</strong>, so none was added then. Candidate quality should instead be improved through corpus / subject scope, BM25 recall, RRF fusion, and reranking. Do not temporarily lower a relevance threshold just to make recall look larger.</p>
+
+<p style="margin:8px 0;">The noise-control pipeline in <a href="https://mp.weixin.qq.com/s/H6BoZUcQfBBqh-ScXQyTWw">Context Engineering in HexClaw</a> has an upstream prerequisite: fusion, thresholding, and reranking can filter candidates only after vector retrieval actually works, with matching execution contracts on queries and documents.</p>
+
+<p style="margin:8px 0;">CAS currently checks structural completeness and concurrent state; targeted samples calibrate Qwen’s relevance threshold. The next step is connecting shadow queries and a fixed golden set to publication so quality results also participate in cutover decisions.</p>
+
+<hr style="border:none;border-top:1px solid var(--article-border, #e0ecf5);margin:28px 0;"/>
+
+<h2 style="font-size:18px;font-weight:700;color:var(--article-ink, #12324c);margin:36px 0 10px;padding-bottom:6px;border-bottom:2px solid #5fb3ea;">The cost of 4096 dimensions: 5.33 times the raw storage per vector</h2>
+
+<p style="margin:8px 0;">After cutover, old indexes leave more questions: how long to retain them, when to reclaim them, and which data to fill during rollback. Automatic retention and reclamation still need further work.</p>
+
+<p style="margin:8px 0;">Increasing dimensions from 768 to 4096 increases disk and memory requirements too. A raw float32 Nomic 768-dimensional vector is 3072 bytes, or 3 KiB; a Qwen 4096-dimensional vector is 16 KiB. Single-generation storage and per-dimension cosine arithmetic both grow by roughly 5.33 times. During the two-generation migration window, vector payload alone is 19 KiB per chunk.</p>
+
+<table style="width:100%;border-collapse:collapse;margin:16px 0;font-size:13px;line-height:1.8;">
+  <tr>
+    <th style="background:var(--article-panel, #f4fbff);color:var(--article-ink, #12324c);padding:8px 12px;text-align:left;font-weight:600;font-size:12px;border-bottom:2px solid #5fb3ea;">Scale</th>
+    <th style="background:var(--article-panel, #f4fbff);color:var(--article-ink, #12324c);padding:8px 12px;text-align:right;font-weight:600;font-size:12px;border-bottom:2px solid #5fb3ea;">Nomic 768</th>
+    <th style="background:var(--article-panel, #f4fbff);color:var(--article-ink, #12324c);padding:8px 12px;text-align:right;font-weight:600;font-size:12px;border-bottom:2px solid #5fb3ea;">Qwen 4096</th>
+    <th style="background:var(--article-panel, #f4fbff);color:var(--article-ink, #12324c);padding:8px 12px;text-align:right;font-weight:600;font-size:12px;border-bottom:2px solid #5fb3ea;">Dual-generation window</th>
+  </tr>
+  <tr>
+    <td style="padding:8px;border-bottom:1px solid var(--article-border, #e0ecf5);">Per chunk</td>
+    <td style="padding:8px;text-align:right;border-bottom:1px solid var(--article-border, #e0ecf5);">3 KiB</td>
+    <td style="padding:8px;text-align:right;border-bottom:1px solid var(--article-border, #e0ecf5);">16 KiB</td>
+    <td style="padding:8px;text-align:right;border-bottom:1px solid var(--article-border, #e0ecf5);">19 KiB</td>
+  </tr>
+  <tr>
+    <td style="padding:8px;border-bottom:1px solid var(--article-border, #e0ecf5);">100,000 chunks</td>
+    <td style="padding:8px;text-align:right;border-bottom:1px solid var(--article-border, #e0ecf5);">About 293 MiB</td>
+    <td style="padding:8px;text-align:right;border-bottom:1px solid var(--article-border, #e0ecf5);">About 1.53 GiB</td>
+    <td style="padding:8px;text-align:right;border-bottom:1px solid var(--article-border, #e0ecf5);">About 1.81 GiB</td>
+  </tr>
+  <tr>
+    <td style="padding:8px;border-bottom:1px solid var(--article-border, #e0ecf5);">1,000,000 chunks</td>
+    <td style="padding:8px;text-align:right;border-bottom:1px solid var(--article-border, #e0ecf5);">About 2.86 GiB</td>
+    <td style="padding:8px;text-align:right;border-bottom:1px solid var(--article-border, #e0ecf5);">About 15.26 GiB</td>
+    <td style="padding:8px;text-align:right;border-bottom:1px solid var(--article-border, #e0ecf5);">About 18.12 GiB</td>
+  </tr>
+</table>
+
+<p style="margin:8px 0;"><strong style="color:var(--article-accent, #3f8fd4);">These figures count only float32 vector payload.</strong> They exclude SQLite rows, indexes, Manifests, WAL, text, legacy columns, and additionally retained revisions, so the dual-generation window is only a capacity lower bound. Decoding 64 Qwen vectors into float32 arrays uses 1 MiB. A JSON response also includes numeric encoding and structural overhead; that figure is not its actual HTTP body size.</p>
+
+<h3 style="font-size:16px;font-weight:700;color:var(--article-ink, #12324c);margin:24px 0 10px;">The current search layer: a full scan, not ANN</h3>
+
+<p style="margin:8px 0;">Vector search currently has no approximate nearest-neighbor index, ANN. SQLite returns all eligible vectors within the selected scope and the revision bound to the retrieval plan. Go decodes each, calculates cosine similarity, performs a complete stable sort, and takes topK. Time complexity is approximately O(N·D + N log N), where N is candidate-vector count and D is dimension.</p>
+
+<p style="margin:8px 0;">Decoded candidate vectors and text remain in memory. Vector payload requires O(N·D) memory, with candidate text stored in addition; memory is not limited to O(N) scores.</p>
+
+<p style="margin:8px 0;">SQLite keeps text, index metadata, and publication state coordinated in one database without first requiring another vector service. The tradeoff is growing scan and memory cost as candidate count increases. Earlier capacity estimates say nothing about query latency at a million chunks, nor do they establish retrieval quality.</p>
+
+<p style="margin:8px 0;">A future Qdrant, Elasticsearch, pgvector, or Faiss integration could upgrade physical search. The application would still control Profiles, desired revisions, durable Jobs, content catch-up, and CAS. <strong style="color:var(--article-accent, #3f8fd4);">Changing storage does not settle those engineering responsibilities automatically.</strong></p>
+
+<hr style="border:none;border-top:1px solid var(--article-border, #e0ecf5);margin:28px 0;"/>
+
+<h2 style="font-size:18px;font-weight:700;color:var(--article-ink, #12324c);margin:36px 0 10px;padding-bottom:6px;border-bottom:2px solid #5fb3ea;">Recovering from failures</h2>
+
+<p style="margin:8px 0;">The failure windows and their corresponding recovery or rejection actions are:</p>
+
+<p style="margin:6px 0;color:var(--article-muted, #7b8fa3);font-size:12px;">Scroll horizontally to see every table column.</p>
+<div style="max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;">
+<table style="width:100%;min-width:720px;border-collapse:collapse;margin:16px 0;font-size:13px;line-height:1.8;">
+  <tr style="background:var(--article-panel, #f4fbff);">
+    <th style="background:var(--article-panel, #f4fbff);color:var(--article-ink, #12324c);padding:8px 12px;text-align:left;font-weight:600;font-size:12px;border-bottom:2px solid #5fb3ea;">Failure window</th>
+    <th style="background:var(--article-panel, #f4fbff);color:var(--article-ink, #12324c);padding:8px 12px;text-align:left;font-weight:600;font-size:12px;border-bottom:2px solid #5fb3ea;">Durable state</th>
+    <th style="background:var(--article-panel, #f4fbff);color:var(--article-ink, #12324c);padding:8px 12px;text-align:left;font-weight:600;font-size:12px;border-bottom:2px solid #5fb3ea;">Recovery / rejection</th>
+  </tr>
+  <tr><td style="padding:8px;border:1px solid var(--article-border, #e0ecf5);">Worker exits during processing</td><td style="padding:8px;border:1px solid var(--article-border, #e0ecf5);">Committed Manifests and vectors</td><td style="padding:8px;border:1px solid var(--article-border, #e0ecf5);">Reclaim with a new execution epoch; skip committed work and handle unknown in-flight outcomes separately</td></tr>
+  <tr><td style="padding:8px;border:1px solid var(--article-border, #e0ecf5);">An old Worker returns late</td><td style="padding:8px;border:1px solid var(--article-border, #e0ecf5);">Current lease owner / epoch</td><td style="padding:8px;border:1px solid var(--article-border, #e0ecf5);">ErrJobFenced rejects the old Worker’s commit</td></tr>
+  <tr><td style="padding:8px;border:1px solid var(--article-border, #e0ecf5);">Model-call outcome unknown</td><td style="padding:8px;border:1px solid var(--article-border, #e0ecf5);">Manifest = outcome_unknown</td><td style="padding:8px;border:1px solid var(--article-border, #e0ecf5);">Fail this Job; no blind automatic resend or automatic reconciliation</td></tr>
+  <tr><td style="padding:8px;border:1px solid var(--article-border, #e0ecf5);">Text succeeds, embedding fails</td><td style="padding:8px;border:1px solid var(--article-border, #e0ecf5);">Document / Chunks / FTS are ready</td><td style="padding:8px;border:1px solid var(--article-border, #e0ecf5);">Resume only the vector Job; do not rerun PDF processing</td></tr>
+  <tr><td style="padding:8px;border:1px solid var(--article-border, #e0ecf5);">Textbook replaced while B builds</td><td style="padding:8px;border:1px solid var(--article-border, #e0ecf5);">New generation / content version</td><td style="padding:8px;border:1px solid var(--article-border, #e0ecf5);">B catches up; an old-snapshot CAS fails</td></tr>
+  <tr><td style="padding:8px;border:1px solid var(--article-border, #e0ecf5);">Old active executor unavailable</td><td style="padding:8px;border:1px solid var(--article-border, #e0ecf5);">Text facts and old revision identity</td><td style="padding:8px;border:1px solid var(--article-border, #e0ecf5);">Explicit FTS remains available; automatic RAG returns nothing</td></tr>
+</table>
+</div>
+
+<hr style="border:none;border-top:1px solid var(--article-border, #e0ecf5);margin:28px 0;"/>
+<h2 style="font-size:18px;font-weight:700;color:var(--article-ink, #12324c);margin:36px 0 10px;padding-bottom:6px;border-bottom:2px solid #5fb3ea;">An honest account of this version’s boundaries</h2>
+<p style="margin:8px 0;">Following this series’ convention, here are the implemented mechanisms and remaining boundaries:</p>
+<ul style="padding-left:22px;margin:8px 0;">
+<li style="margin:6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">Model-artifact identity is not yet part of the configuration fingerprint.</strong> The 12 fields omit the model digest, quantization level, and inference-engine version. An artifact behind an unchanged tag can change without changing the fingerprint.</li>
+<li style="margin:6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">The quality gate is not yet integrated with publication.</strong> CAS checks structural completeness and concurrent state, not the new model’s retrieval quality. Shadow queries and a fixed golden set are the next step.</li>
+<li style="margin:6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">These samples were for calibration, not independent validation.</strong> There were 7 relevant and 5 no-target queries, without fully retained per-query originals. Qwen’s injection threshold was first 0.65, then 0.68 after targeted investigation. They describe different stages of the Qwen Profile. Sample hits are not an overall recall rate, and the thresholds cannot be directly generalized to other models.</li>
+<li style="margin:6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">Latency figures are historical single observations.</strong> Retained from 2026-07-28 without complete original call logs, hardware, runtime parameters, and cold/warm order, they cannot compare batch sizes or establish throughput or full-textbook rebuild time.</li>
+<li style="margin:6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">The current Qwen Profile truncates inputs beyond 400 runes.</strong> Original text and FTS remain complete, but vectors may not encode whole chunks. Query instruction prefixes also consume that 400-rune allowance.</li>
+<li style="margin:6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">outcome_unknown has no automatic reconciliation yet.</strong> It fails the Job rather than entering normal backoff. Recomputation usually does not change remote business data, but may occupy a local model again or incur cloud charges.</li>
+<li style="margin:6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">There is no cost-free rollback after cutover.</strong> Once B is active, superseded A stops tracking new writes. Automatic retention and reclamation of old indexes also need further work.</li>
+<li style="margin:6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">Semantic retrieval of new content waits for B’s cutover.</strong> Explicit text search sees additions and replacements first during rebuilding. Reparsing a same-source textbook and migrating its index cannot currently run at the same time.</li>
+<li style="margin:6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">Search uses a full scan, not ANN.</strong> The capacity figures are only vector-payload lower bounds. They neither establish latency at a million chunks nor prove retrieval quality. Whether to introduce ANN or a separate vector store depends on whether real corpus size and query cost have made full scans a bottleneck.</li>
+</ul>
+<p style="margin:8px 0;">The next sequence is to strengthen model-artifact identity and quality-sample traceability, then address unknown-outcome recovery, old-revision retention, and rollback. That work is not all complete.</p>
+
+<hr style="border:none;border-top:1px solid var(--article-border, #e0ecf5);margin:28px 0;"/>
+<h2 style="font-size:18px;font-weight:700;color:var(--article-ink, #12324c);margin:36px 0 10px;padding-bottom:6px;border-bottom:2px solid #5fb3ea;">Back to the textbook: keep the text, rebuild vectors under the new contract</h2>
+<p style="margin:8px 0;">From 768 to 4096 dimensions, <strong style="color:var(--article-accent, #3f8fd4);">the original text stays while derived vectors rebuild under a new execution contract</strong>. Versioned indexes separate active and desired spaces, durable Jobs retain known progress, and a CAS transaction checks conditions before switching reads. Whether results are relevant enough <strong style="color:var(--article-accent, #3f8fd4);">still requires real questions</strong>.</p>
+<p style="margin:24px 0 16px;color:var(--article-secondary, #5f7b9c);font-size:14.5px;line-height:2;text-align:center;font-style:italic;padding:8px 16px;">Changing two configuration lines is only the start of a model migration.<br/>Record generation conditions in the contract, compute limits in the budget, and validate relevance with real questions.<br/>Then migration has an index workflow that can be resumed and checked.</p>
+
+<hr style="border:none;border-top:1px solid var(--article-border, #e0ecf5);margin:28px 0 16px;"/>
+
+<h3 style="font-size:15px;font-weight:600;color:var(--article-accent, #3f8fd4);margin:24px 0 8px;">Earlier articles · HexClaw series</h3>
+
+<p style="margin:4px 0;font-size:14px;line-height:2;color:var(--article-secondary, #5f7b9c);">▸ <a href="https://mp.weixin.qq.com/s/8xUoFrig10zxpxni1rgm9Q">K12 Engineering Practice in HexClaw</a><br/><span style="color:var(--article-secondary, #5f7b9c);">Verification evidence and platform boundaries through the tutoring scenario—the textbook context in this article’s opening.</span><br/>▸ <a href="https://mp.weixin.qq.com/s/ZJ9ehZtG_jUhtTMUnPCDxA">Prompt Engineering in HexClaw</a><br/><span style="color:var(--article-secondary, #5f7b9c);">Model instructions as interface contracts—the query instructions discussed here.</span><br/>▸ <a href="https://mp.weixin.qq.com/s/kDi-LSWB4UHtS_6jbTfvow">Harness Engineering in HexClaw</a><br/><span style="color:var(--article-secondary, #5f7b9c);">Execution budgets, controlled failures, and outcome checks—the budget and unknown-outcome concerns here.</span><br/>▸ <a href="https://mp.weixin.qq.com/s/H6BoZUcQfBBqh-ScXQyTWw">Context Engineering in HexClaw</a><br/><span style="color:var(--article-secondary, #5f7b9c);">Filtering answer-like noise from recalled candidates—the fusion, filtering, and reranking after an index is ready.</span></p>
+
+<h3 style="font-size:15px;font-weight:600;color:var(--article-accent, #3f8fd4);margin:24px 0 8px;">References</h3>
+
+<ul style="padding-left:22px;margin:8px 0;font-size:13px;color:var(--article-muted, #7b8fa3);line-height:1.9;">
+<li style="margin:8px 0;">[1] OpenAI · File Search / Retrieval—hosted retrieval, automatic chunking and indexing, and asynchronous file operations; checked 2026-10-13.<br/><span style="color:var(--article-muted, #a5bdd3);font-size:12px;word-break:break-all;">developers.openai.com/api/docs/guides/tools-file-search<br/>developers.openai.com/api/docs/guides/retrieval</span></li>
+<li style="margin:8px 0;">[2] Anthropic · Contextual Retrieval—published 2024-09-19; embedding / BM25 indexing after adding chunk context; checked 2026-10-13.<br/><span style="color:var(--article-muted, #a5bdd3);font-size:12px;word-break:break-all;">anthropic.com/engineering/contextual-retrieval</span></li>
+<li style="margin:8px 0;">[3] Qwen · Official Qwen3-Embedding-8B model card—4096 dimensions, MRL, and query instructions.<br/><span style="color:var(--article-muted, #a5bdd3);font-size:12px;word-break:break-all;">huggingface.co/Qwen/Qwen3-Embedding-8B</span></li>
+<li style="margin:8px 0;">[4] QwenLM · Official Qwen3-Embedding repository and technical report.<br/><span style="color:var(--article-muted, #a5bdd3);font-size:12px;word-break:break-all;">github.com/QwenLM/Qwen3-Embedding<br/>arxiv.org/abs/2506.05176</span></li>
+<li style="margin:8px 0;">[5] Qwen · Official Qwen3 Embedding and Reranker blog post.<br/><span style="color:var(--article-muted, #a5bdd3);font-size:12px;word-break:break-all;">qwenlm.github.io/blog/qwen3-embedding/</span></li>
+<li style="margin:8px 0;">[6] Ollama · Official qwen3-embedding model page and tags.<br/><span style="color:var(--article-muted, #a5bdd3);font-size:12px;word-break:break-all;">ollama.com/library/qwen3-embedding<br/>ollama.com/library/qwen3-embedding/tags</span></li>
+<li style="margin:8px 0;">[7] Embedding vendors’ model contracts: E5, Jina v3, OpenAI, Cohere, Gemini, and Voyage 4.<br/><span style="color:var(--article-muted, #a5bdd3);font-size:12px;word-break:break-all;">huggingface.co/intfloat/multilingual-e5-large<br/>huggingface.co/jinaai/jina-embeddings-v3<br/>openai.com/index/new-embedding-models-and-api-updates/<br/>docs.cohere.com/docs/cohere-embed<br/>ai.google.dev/gemini-api/docs/embeddings<br/>blog.voyageai.com/2026/01/15/new-models-and-expanded-availability/</span></li>
+<li style="margin:8px 0;">[8] MTEB · Tasks and evaluation methodology; BGE-M3 · Dense / Sparse / Multi-vector contracts.<br/><span style="color:var(--article-muted, #a5bdd3);font-size:12px;word-break:break-all;">docs.mteb.org/overview/<br/>bge-model.com/bge/bge_m3.html</span></li>
+<li style="margin:8px 0;">[9] Cloudflare Workers AI · BGE-M3 and the OpenAI-compatible embedding interface.<br/><span style="color:var(--article-muted, #a5bdd3);font-size:12px;word-break:break-all;">developers.cloudflare.com/workers-ai/models/bge-m3/<br/>developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/</span></li>
+<li style="margin:8px 0;">[10] Anthropic · Scaling Managed Agents: Decoupling the brain from the hands—2026-04-08; separating session logs from execution processes; checked 2026-10-12.<br/><span style="color:var(--article-muted, #a5bdd3);font-size:12px;word-break:break-all;">anthropic.com/engineering/managed-agents</span></li>
+<li style="margin:8px 0;">[11] RFC 8785 · JSON Canonicalization Scheme.<br/><span style="color:var(--article-muted, #a5bdd3);font-size:12px;word-break:break-all;">rfc-editor.org/rfc/rfc8785</span></li>
+<li style="margin:8px 0;">[12] Vector-migration practice: Qdrant model migration, Elastic aliases, and Weaviate vectorization.<br/><span style="color:var(--article-muted, #a5bdd3);font-size:12px;word-break:break-all;">qdrant.tech/documentation/tutorials-operations/embedding-model-migration/<br/>elastic.co/docs/manage-data/data-store/aliases<br/>docs.weaviate.io/weaviate/model-providers/openai/embeddings</span></li>
+<li style="margin:8px 0;">[13] HexClaw / HexClaw Desktop · Embedding execution configuration, index lifecycle, and Desktop policy controls.<br/><span style="color:var(--article-muted, #a5bdd3);font-size:12px;word-break:break-all;">github.com/hexagon-codes/hexclaw<br/>github.com/hexagon-codes/hexclaw-desktop</span></li>
+</ul>
+
+<p style="margin:8px 0;font-size:12px;color:var(--article-muted, #a5bdd3);">This article follows HexClaw and HexClaw Desktop source implementations. Source and previously included external materials were checked through 2026-10-12. Added OpenAI retrieval and Anthropic Contextual Retrieval materials were checked on 2026-10-13.</p>
+
+<hr style="border:none;border-top:1px solid var(--article-border, #e0ecf5);margin:28px 0;"/>
+
+<p style="margin:8px 0 18px;font-size:13px;color:var(--article-secondary, #5f7b9c);">Whether the backend is local or in the cloud, selecting cloud embeddings sends document chunks and query text to the selected provider. Hosting your own knowledge base does not make every operating mode fully offline.</p>
+
+<p class="blog-brand-footer" data-blog-brand-footer="en" data-blog-brand-overrides="{}" style="text-align: center; color: var(--article-muted, #7b8fa3); font-size: 13px; margin: 16px 0 0; line-height: 2;">
+<strong style="color: var(--article-ink, #12324c); font-size: 14px;">HexClaw</strong><br/>
+Deploy locally or in the cloud · Control your data · Free and open-source software<br/>
+<a href="https://hexclaw.net" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">Website: <bdi dir="ltr">hexclaw.net</bdi></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://github.com/hexagon-codes" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">GitHub: <bdi dir="ltr">hexagon-codes</bdi></a><br/>
+<a href="https://weibo.com/u/4097207240" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">Weibo: <bdi dir="ltr">@HexClaw</bdi></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">X: <bdi dir="ltr">@hexclawapp</bdi></a><br/>
+<a href="mailto:ai@hexclaw.net" style="color: var(--article-muted, #999); text-decoration: none;">Email: <bdi dir="ltr">ai@hexclaw.net</bdi></a>
+</p>
+
+
+</article>
+
+
+
+    <nav class="blog-series-nav" aria-label="Related articles">
+      <a href="/en/blog/" class="blog-nav-card prev"><span class="blog-nav-label">&larr; 返回列表</span><span class="blog-nav-title">技术博客目录</span></a>
+      <a href="/en/blog/context-engineering" class="blog-nav-card next"><span class="blog-nav-label">延伸阅读 &rarr;</span><span class="blog-nav-title">Context Engineering：检索降噪流水线</span></a>
+    </nav>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-main">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-col-title">Product</div>
+        <a href="/en/#download">Download</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="/en/changelog">Changelog</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Developers</div>
+        <a href="/en/docs/">Documentation</a>
+        <a href="/en/blog/">Technical Blog</a>
+        <a href="/en/docs/getting-started">Getting Started</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">Apache-2.0</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Community</div>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/issues" target="_blank" rel="noopener noreferrer">Issues</a>
+        <a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer">Twitter / X</a>
+        <a href="mailto:ai@hexclaw.net">Contact Us</a>
+        <a href="mailto:support@hexclaw.net">Feedback</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">About</div>
+        <a href="/en/about">About Us</a>
+        <a href="/en/privacy">Privacy Policy</a>
+        <a href="/en/terms">Terms of Service</a>
+        <a href="/en/third-party-ai-services">Third-Party AI Services</a>
+      </div>
+    </div>
+    <div class="footer-wechat">
+      <img width="430" height="430" loading="lazy" decoding="async" src="../../assets/brand/wechat-qr.jpg" alt="HexClaw WeChat QR Code">
+      <span class="footer-wechat-label">WeChat Official Account</span>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">&copy; 2025&ndash;2026 hexagon-codes</span>
+  </div>
+</footer>
+<script src="../../assets/js/theme.js?v=2e4a1828feef"></script>
+<script src="../../assets/js/docs-nav.js?v=5a103861aec2"></script>
+<button type="button" class="back-to-top" id="backToTop" aria-label="Back to top" title="Back to top">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg>
+  <span>Top</span>
+</button>
+
+<script src="../../assets/js/blog.js?v=c72e1db5a6ec"></script>
+</body>
+</html>

@@ -24,6 +24,10 @@
 <meta name="twitter:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
 <meta name="twitter:image:alt" content="河蟹 AI 标志">
 <link rel="canonical" href="https://hexclaw.net/zh/blog/claude-code-sop">
+<link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/claude-code-sop">
+<link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/claude-code-sop">
+<link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/claude-code-sop">
+<link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/claude-code-sop">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -55,14 +59,14 @@
   "@id": "https://hexclaw.net/zh/blog/claude-code-sop#breadcrumb"
 }
 </script>
-<link rel="stylesheet" href="../../assets/css/docs-c647c829bf22.css">
-<link rel="stylesheet" href="../../assets/css/blog.css">
+<link rel="stylesheet" href="../../assets/css/docs-eb2895dd79c5.css">
+<link rel="stylesheet" href="../../assets/css/blog-a8e5008ac3d1.css">
 </head>
 <body class="blog-page blog-article-page">
 <a href="#main" class="skip-link">跳转到主要内容</a>
 <nav class="tn topnav" id="nav">
   <a href="/zh/" class="tn-b topnav-brand"><img width="72" height="72" src="../../assets/brand/hexclaw-icon-72.png" class="tn-l topnav-logo" alt="河蟹 AI"><span class="tn-n topnav-name">河蟹 AI</span></a>
-  <button type="button" class="tn-burger topnav-burger" aria-label="菜单" aria-expanded="false" aria-controls="primary-navigation"><span></span><span></span><span></span></button><div class="tn-r topnav-links" id="primary-navigation"><a href="/zh/">首页</a><a href="/zh/#cases">使用场景</a><a href="/zh/#features">产品能力</a><a href="/zh/#quickstart">开始使用</a><a href="/zh/#ecosystem">开源生态</a><a href="/zh/blog/" class="is-active">技术博客</a><a href="/zh/docs/">文档中心</a><div class="lang-menu" data-lang-menu><button type="button" class="lang-trigger" aria-haspopup="menu" aria-expanded="false" aria-label="切换语言"><svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 0 20"></path><path d="M12 2a15.3 15.3 0 0 0 0 20"></path></svg><span class="lang-current">中文</span><svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="lang-menu-list" role="menu"><a href="/zh/blog/claude-code-sop" role="menuitem" class="is-active" aria-current="true">中文</a><a href="/en/" role="menuitem">English</a><a href="/ug/" role="menuitem" lang="zh-CN" dir="ltr">维吾尔语</a></div></div><button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="切换主题"><svg class="ti-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="ti-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="nav-cta">GitHub <span class="nav-star-badge" id="gh-stars">&#9733;</span></a></div>
+  <button type="button" class="tn-burger topnav-burger" aria-label="菜单" aria-expanded="false" aria-controls="primary-navigation"><span></span><span></span><span></span></button><div class="tn-r topnav-links" id="primary-navigation"><a href="/zh/">首页</a><a href="/zh/#cases">使用场景</a><a href="/zh/#features">产品能力</a><a href="/zh/#quickstart">开始使用</a><a href="/zh/#ecosystem">开源生态</a><a href="/zh/blog/" class="is-active">技术博客</a><a href="/zh/docs/">文档中心</a><div class="lang-menu" data-lang-menu><button type="button" class="lang-trigger" aria-haspopup="menu" aria-expanded="false" aria-label="切换语言"><svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 0 20"></path><path d="M12 2a15.3 15.3 0 0 0 0 20"></path></svg><span class="lang-current">中文</span><svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="lang-menu-list" role="menu"><a href="/zh/blog/claude-code-sop" role="menuitem" class="is-active" aria-current="true">中文</a><a href="/en/blog/claude-code-sop" role="menuitem">English</a><a href="/ug/blog/claude-code-sop" role="menuitem" lang="zh-CN" dir="ltr">维吾尔语</a></div></div><button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="切换主题"><svg class="ti-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="ti-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="nav-cta">GitHub <span class="nav-star-badge" id="gh-stars">&#9733;</span></a></div>
 </nav>
 
 <main id="main" class="blog-main">
@@ -94,84 +98,84 @@
     </header>
 
     <article class="blog-content">
-      <hr style="border: none; border-top: 1px solid #d8e6f0; margin: 28px 0;">
+      <hr style="border: none; border-top: 1px solid var(--article-border, #d8e6f0); margin: 28px 0;">
 
-<h2 style="font-size: 20px; font-weight: 700; color: #12324c; margin: 32px 0 12px; padding-bottom: 8px; border-bottom: 2px solid #5fb3ea;">起因：朋友让我分享点 AI 开发经验</h2>
+<h2 style="font-size: 20px; font-weight: 700; color:var(--article-ink, #12324c); margin: 32px 0 12px; padding-bottom: 8px; border-bottom: 2px solid #5fb3ea;">起因：朋友让我分享点 AI 开发经验</h2>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">前几天一位在北京的老朋友找我——他是技术负责人，想给团队搞 AI 自动工作流，带着两个具体问题：<strong style="color: #3f8fd4; font-weight: 600;">AI 幻觉怎么压？工作流怎么搭？</strong>下面三条主线基本就是对这两个问题的回答。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">前几天一位在北京的老朋友找我——他是技术负责人，想给团队搞 AI 自动工作流，带着两个具体问题：<strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">AI 幻觉怎么压？工作流怎么搭？</strong>下面三条主线基本就是对这两个问题的回答。</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">我这段时间的经验都在项目里跑着，没单独整理成分享材料。让 Claude 把碎片拼成一套文档（也就是文末开源出来的那一套），连同自定义 Skill 和 command 一起打包发过去。那场分享没走"讲一遍"的路子——朋友拉了个微信群做技术交流，问什么答什么，大家边看边实操边问，氛围也轻松，每个问题都有时间答扎实。这其实才是真正的 E2E（端到端）技术交流分享：文档、实操、问题、答疑在一个闭环里走过一遍。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">我这段时间的经验都在项目里跑着，没单独整理成分享材料。让 Claude 把碎片拼成一套文档（也就是文末开源出来的那一套），连同自定义 Skill 和 command 一起打包发过去。那场分享没走"讲一遍"的路子——朋友拉了个微信群做技术交流，问什么答什么，大家边看边实操边问，氛围也轻松，每个问题都有时间答扎实。这其实才是真正的 E2E（端到端）技术交流分享：文档、实操、问题、答疑在一个闭环里走过一遍。</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">他那边还安排了一位做产品经理的朋友讲产品侧的 Skill 体系。那位朋友的 PRD 写得特别体系化、颗粒度很细。我拿他的 Skill 跑了一下登录模块，直接吐出一份测试用例加一份测试报告——<strong style="color: #3f8fd4; font-weight: 600;">PRD 越细，生成效果越好</strong>。产品侧那套体系是人家产品同行的专业，我这边只是拿来用得顺，就不班门弄斧了——真要讲透，得请那位朋友自己出场。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">他那边还安排了一位做产品经理的朋友讲产品侧的 Skill 体系。那位朋友的 PRD 写得特别体系化、颗粒度很细。我拿他的 Skill 跑了一下登录模块，直接吐出一份测试用例加一份测试报告——<strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">PRD 越细，生成效果越好</strong>。产品侧那套体系是人家产品同行的专业，我这边只是拿来用得顺，就不班门弄斧了——真要讲透，得请那位朋友自己出场。</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">整理出来之后回头看，我自己才意识到——这套"怎么用 Claude Code 做出一个能跑的产品"的用法，之前从没系统写下来过。功能列表谁都会列，但"用法"是另一回事。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">整理出来之后回头看，我自己才意识到——这套"怎么用 Claude Code 做出一个能跑的产品"的用法，之前从没系统写下来过。功能列表谁都会列，但"用法"是另一回事。</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">核心就三条主线：<strong style="color: #3f8fd4; font-weight: 600;">设计 + 实现、测试闭环、多 Agent 协作</strong>——下面依次拆。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">核心就三条主线：<strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">设计 + 实现、测试闭环、多 Agent 协作</strong>——下面依次拆。</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">这篇文章就是那份文档的精简版。它不讲"Claude Code 有哪 26 个快捷键"，讲的是另一件更硬的事：当你真的要用 Claude Code 做出一个能跑、能测、能演进的产品时，你需要的那套工作流。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">这篇文章就是那份文档的精简版。它不讲"Claude Code 有哪 26 个快捷键"，讲的是另一件更硬的事：当你真的要用 Claude Code 做出一个能跑、能测、能演进的产品时，你需要的那套工作流。</p>
 
-<hr style="border: none; border-top: 1px solid #d8e6f0; margin: 28px 0;">
+<hr style="border: none; border-top: 1px solid var(--article-border, #d8e6f0); margin: 28px 0;">
 
-<h2 style="font-size: 20px; font-weight: 700; color: #12324c; margin: 32px 0 12px; padding-bottom: 8px; border-bottom: 2px solid #5fb3ea;">先摆数据，不然后面全是废话</h2>
+<h2 style="font-size: 20px; font-weight: 700; color:var(--article-ink, #12324c); margin: 32px 0 12px; padding-bottom: 8px; border-bottom: 2px solid #5fb3ea;">先摆数据，不然后面全是废话</h2>
 
 <ul style="padding-left: 22px; margin: 8px 0;">
-<li style="margin: 4px 0;"><strong style="color: #3f8fd4; font-weight: 600;">约 68 万行代码</strong>：分布 Go / TypeScript / Vue / Rust 四种主语言（按六仓库当前 Git 跟踪文件粗略统计）</li>
-<li style="margin: 4px 0;"><strong style="color: #3f8fd4; font-weight: 600;">6 个核心仓库</strong>：toolkit → ai-core → hexagon → hexclaw → hexclaw-desktop / hexagon-ui（完整依赖链见<a href="https://mp.weixin.qq.com/s/wIRiJsWLRPWBiTEQtlVQkg">架构详解篇</a>）</li>
-<li style="margin: 4px 0;"><strong style="color: #3f8fd4; font-weight: 600;">一个人 · 业余时间</strong>：白天正常上班，这套生态全是下班、周末、节假日写的</li>
-<li style="margin: 4px 0;"><strong style="color: #3f8fd4; font-weight: 600;">Claude Code 结对开发</strong>：每天几十到上百轮结对，大部分代码由 Claude Code 生成，我负责需求输入、方案取舍、审查和最终验收</li>
-<li style="margin: 4px 0;"><strong style="color: #3f8fd4; font-weight: 600;">模型</strong>：前面这些活儿是 Claude Opus 4.5 / 4.6 干的，几个月就成了过去式。但不管是刚发的 4.7，还是之后更新的版本——流程是常量，上限随模型水涨船高</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">约 68 万行代码</strong>：分布 Go / TypeScript / Vue / Rust 四种主语言（按六仓库当前 Git 跟踪文件粗略统计）</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">6 个核心仓库</strong>：toolkit → ai-core → hexagon → hexclaw → hexclaw-desktop / hexagon-ui（完整依赖链见<a href="https://mp.weixin.qq.com/s/wIRiJsWLRPWBiTEQtlVQkg">架构详解篇</a>）</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">一个人 · 业余时间</strong>：白天正常上班，这套生态全是下班、周末、节假日写的</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Claude Code 结对开发</strong>：每天几十到上百轮结对，大部分代码由 Claude Code 生成，我负责需求输入、方案取舍、审查和最终验收</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">模型</strong>：前面这些活儿是 Claude Opus 4.5 / 4.6 干的，几个月就成了过去式。但不管是刚发的 4.7，还是之后更新的版本——流程是常量，上限随模型水涨船高</li>
 </ul>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">数据不是用来炫的。我自己回头看都觉得有点荒谬。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">数据不是用来炫的。我自己回头看都觉得有点荒谬。</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">真正反直觉的是：<strong style="color: #3f8fd4; font-weight: 600;">做出来的东西质量，超出我自己的预期</strong>——测试覆盖齐全，每个关键决策都有 ADR（架构决策记录），代码审查的严格程度比我过去参与过的不少项目都高，各仓库依赖层级清晰，没有循环引用。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">真正反直觉的是：<strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">做出来的东西质量，超出我自己的预期</strong>——测试覆盖齐全，每个关键决策都有 ADR（架构决策记录），代码审查的严格程度比我过去参与过的不少项目都高，各仓库依赖层级清晰，没有循环引用。</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">这不是因为 Claude Code 在 2026 年突然变强了——去年就有很多独立开发者在用它，产出质量差着量级。差距不在工具上，在用法上。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">这不是因为 Claude Code 在 2026 年突然变强了——去年就有很多独立开发者在用它，产出质量差着量级。差距不在工具上，在用法上。</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">顺便一句行业观察——从 Claude Code、Codex、Cursor 和国内代码助手的密集迭代、订阅方案竞争加剧来看，<strong style="color: #3f8fd4; font-weight: 600;">AI 编程已经从尝鲜进入日常工具链</strong>。知乎和技术群里最近的高频梗甚至夸张到了这种程度：<strong style="color: #3f8fd4; font-weight: 600;">"古法编程，手写代码马上要申遗了，再不申就进博物馆了。"</strong></p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">顺便一句行业观察——从 Claude Code、Codex、Cursor 和国内代码助手的密集迭代、订阅方案竞争加剧来看，<strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">AI 编程已经从尝鲜进入日常工具链</strong>。知乎和技术群里最近的高频梗甚至夸张到了这种程度：<strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">"古法编程，手写代码马上要申遗了，再不申就进博物馆了。"</strong></p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">段子归段子，现实并没这么极端。Stack Overflow 2025 开发者调查里，<strong style="color: #3f8fd4; font-weight: 600;">84% 的开发者使用或计划使用 AI 工具，但 46% 不信任 AI 输出的准确性</strong>——普及已成事实，"能不能信"仍然是核心问题。真实共识更接近这个位置：纯手写代码正在从默认动作，变成少数关键场景里的精细活；而要让 AI 写的代码值得信，就得给它设计、测试、审查的闭环。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">段子归段子，现实并没这么极端。Stack Overflow 2025 开发者调查里，<strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">84% 的开发者使用或计划使用 AI 工具，但 46% 不信任 AI 输出的准确性</strong>——普及已成事实，"能不能信"仍然是核心问题。真实共识更接近这个位置：纯手写代码正在从默认动作，变成少数关键场景里的精细活；而要让 AI 写的代码值得信，就得给它设计、测试、审查的闭环。</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">AI 写代码这件事，2026 年已经不是"要不要用"的问题，是"用得好不好"的问题。工具普及 ≠ 产出质量——同样用 Claude Code，一些人做出了能跑的产品，另一些人只写了几个 demo。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">AI 写代码这件事，2026 年已经不是"要不要用"的问题，是"用得好不好"的问题。工具普及 ≠ 产出质量——同样用 Claude Code，一些人做出了能跑的产品，另一些人只写了几个 demo。</p>
 
-<hr style="border: none; border-top: 1px solid #d8e6f0; margin: 28px 0;">
+<hr style="border: none; border-top: 1px solid var(--article-border, #d8e6f0); margin: 28px 0;">
 
-<h2 style="font-size: 20px; font-weight: 700; color: #12324c; margin: 32px 0 12px; padding-bottom: 8px; border-bottom: 2px solid #5fb3ea;">三条主线</h2>
+<h2 style="font-size: 20px; font-weight: 700; color:var(--article-ink, #12324c); margin: 32px 0 12px; padding-bottom: 8px; border-bottom: 2px solid #5fb3ea;">三条主线</h2>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">顺便对下术语：2026 年前后，业内开始用 <strong style="color: #3f8fd4; font-weight: 600;">Agentic Engineering</strong> 来区分更随性的 Vibe coding——两条路径的差异越来越明显。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">顺便对下术语：2026 年前后，业内开始用 <strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Agentic Engineering</strong> 来区分更随性的 Vibe coding——两条路径的差异越来越明显。</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">Vibe coding（Karpathy 提出的说法）是"凭感觉让 AI 写、能跑就行"，适合玩具项目和快速原型；Agentic Engineering 强调的不是"把代码都交给 AI"，而是<strong style="color: #3f8fd4; font-weight: 600;">人类编排 agent、设置质量门禁、验证输出</strong>，把 AI 生成代码纳入工程闭环。说到底：<strong style="color: #3f8fd4; font-weight: 600;">AI 可以写代码，不能替你承担工程责任</strong>。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">Vibe coding（Karpathy 提出的说法）是"凭感觉让 AI 写、能跑就行"，适合玩具项目和快速原型；Agentic Engineering 强调的不是"把代码都交给 AI"，而是<strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">人类编排 agent、设置质量门禁、验证输出</strong>，把 AI 生成代码纳入工程闭环。说到底：<strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">AI 可以写代码，不能替你承担工程责任</strong>。</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">这篇文章讲的就是我这套 Agentic Engineering 的具体做法。具体拆开：</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">这篇文章讲的就是我这套 Agentic Engineering 的具体做法。具体拆开：</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">① <strong style="color: #3f8fd4; font-weight: 600;">设计 + 实现</strong>：编码前先让 Claude 做方案对比，选定后拆小阶段，每阶段按 TDD 红绿重构。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">① <strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">设计 + 实现</strong>：编码前先让 Claude 做方案对比，选定后拆小阶段，每阶段按 TDD 红绿重构。</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">② <strong style="color: #3f8fd4; font-weight: 600;">测试闭环</strong>：不给 "should pass"、"probably OK" 留口子。跑了测试、拿到证据才算完成。覆盖率高不等于测试有效。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">② <strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">测试闭环</strong>：不给 "should pass"、"probably OK" 留口子。跑了测试、拿到证据才算完成。覆盖率高不等于测试有效。</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">③ <strong style="color: #3f8fd4; font-weight: 600;">多 Agent 协作</strong>：Claude 写代码，Codex 审代码，人类做决策。让两个不同模型交叉审查，避免单一模型的盲区累积成故障。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">③ <strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">多 Agent 协作</strong>：Claude 写代码，Codex 审代码，人类做决策。让两个不同模型交叉审查，避免单一模型的盲区累积成故障。</p>
 
 <div style="margin: 20px 0;">
-  <div style="background: #f4fbff; border: 1px solid #d8e6f0; border-top: 3px solid #5fb3ea; border-radius: 8px; padding: 14px 16px; margin: 0 0 12px;">
-    <div style="font-size: 15px; font-weight: 700; color: #12324c; margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1px dashed #c9dce9;">✏️ ① 设计 + 实现</div>
-    <ul style="margin: 0; padding-left: 18px; font-size: 13px; color: #3f5f7b; line-height: 1.8;">
+  <div style="background:var(--article-panel, #f4fbff); border: 1px solid var(--article-border, #d8e6f0); border-top: 3px solid #5fb3ea; border-radius: 8px; padding: 14px 16px; margin: 0 0 12px;">
+    <div style="font-size: 15px; font-weight: 700; color:var(--article-ink, #12324c); margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1px dashed #c9dce9;">✏️ ① 设计 + 实现</div>
+    <ul style="margin: 0; padding-left: 18px; font-size: 13px; color:var(--article-secondary, #3f5f7b); line-height: 1.8;">
       <li style="margin: 3px 0;">多方案对比 + ADR 记录</li>
       <li style="margin: 3px 0;">拆小阶段，一次做一个</li>
       <li style="margin: 3px 0;">TDD 红 → 绿 → 重构</li>
       <li style="margin: 3px 0;">有测试保护的重构</li>
     </ul>
   </div>
-  <div style="background: #f4fbff; border: 1px solid #d8e6f0; border-top: 3px solid #5fb3ea; border-radius: 8px; padding: 14px 16px; margin: 0 0 12px;">
-    <div style="font-size: 15px; font-weight: 700; color: #12324c; margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1px dashed #c9dce9;">✅ ② 测试闭环</div>
-    <ul style="margin: 0; padding-left: 18px; font-size: 13px; color: #3f5f7b; line-height: 1.8;">
+  <div style="background:var(--article-panel, #f4fbff); border: 1px solid var(--article-border, #d8e6f0); border-top: 3px solid #5fb3ea; border-radius: 8px; padding: 14px 16px; margin: 0 0 12px;">
+    <div style="font-size: 15px; font-weight: 700; color:var(--article-ink, #12324c); margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1px dashed #c9dce9;">✅ ② 测试闭环</div>
+    <ul style="margin: 0; padding-left: 18px; font-size: 13px; color:var(--article-secondary, #3f5f7b); line-height: 1.8;">
       <li style="margin: 3px 0;">验证驱动（不接受 should pass）</li>
       <li style="margin: 3px 0;">变更类型 → 测试级别映射</li>
       <li style="margin: 3px 0;">grep 完成度自检</li>
       <li style="margin: 3px 0;">DevTestOps 流程 Skill</li>
     </ul>
   </div>
-  <div style="background: #f4fbff; border: 1px solid #d8e6f0; border-top: 3px solid #5fb3ea; border-radius: 8px; padding: 14px 16px; margin: 0;">
-    <div style="font-size: 15px; font-weight: 700; color: #12324c; margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1px dashed #c9dce9;">🤖 ③ 多 Agent 协作</div>
-    <ul style="margin: 0; padding-left: 18px; font-size: 13px; color: #3f5f7b; line-height: 1.8;">
+  <div style="background:var(--article-panel, #f4fbff); border: 1px solid var(--article-border, #d8e6f0); border-top: 3px solid #5fb3ea; border-radius: 8px; padding: 14px 16px; margin: 0;">
+    <div style="font-size: 15px; font-weight: 700; color:var(--article-ink, #12324c); margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1px dashed #c9dce9;">🤖 ③ 多 Agent 协作</div>
+    <ul style="margin: 0; padding-left: 18px; font-size: 13px; color:var(--article-secondary, #3f5f7b); line-height: 1.8;">
       <li style="margin: 3px 0;">Claude 写 / Codex 审 / 人类决策</li>
       <li style="margin: 3px 0;">交叉 Code Review</li>
       <li style="margin: 3px 0;">功能闭环评审（对照设计）</li>
@@ -180,498 +184,496 @@
   </div>
 </div>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">下面按顺序拆——每条主线配一段真实做法：遇到过什么问题、用什么解决、对应的 prompt / bash 命令。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">下面按顺序拆——每条主线配一段真实做法：遇到过什么问题、用什么解决、对应的 prompt / bash 命令。</p>
 
-<hr style="border: none; border-top: 1px solid #d8e6f0; margin: 28px 0;">
+<hr style="border: none; border-top: 1px solid var(--article-border, #d8e6f0); margin: 28px 0;">
 
-<h2 style="font-size: 20px; font-weight: 700; color: #12324c; margin: 32px 0 12px; padding-bottom: 8px; border-bottom: 2px solid #5fb3ea;">主线一：设计 + 实现</h2>
+<h2 style="font-size: 20px; font-weight: 700; color:var(--article-ink, #12324c); margin: 32px 0 12px; padding-bottom: 8px; border-bottom: 2px solid #5fb3ea;">主线一：设计 + 实现</h2>
 
-<h3 style="font-size: 17px; font-weight: 600; color: #12324c; margin: 24px 0 8px;">先讲不做设计的问题</h3>
+<h3 style="font-size: 17px; font-weight: 600; color:var(--article-ink, #12324c); margin: 24px 0 8px;">先讲不做设计的问题</h3>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">5 个月前我刚上手 Claude Code，第一反应跟大多数人一样："我要做 XXX 功能，你帮我实现。" Claude 秒出 200 行，跑起来也能用。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">5 个月前我刚上手 Claude Code，第一反应跟大多数人一样："我要做 XXX 功能，你帮我实现。" Claude 秒出 200 行，跑起来也能用。</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">但用了一段时间后我发现，直接让 AI 写代码有三个具体问题：</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">但用了一段时间后我发现，直接让 AI 写代码有三个具体问题：</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;"><strong style="color: #3f8fd4; font-weight: 600;">1. 架构会悄悄劣化</strong>。Claude 每次对话用的是"上下文里最近看到的模式"。随着模块变多，它会把不同风格的代码混在一起。回头看，代码库像是 5 个不同习惯的人写的——因为 Claude 每次对话都是一个"新人"，它不记得你昨天定的规矩。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">1. 架构会悄悄劣化</strong>。Claude 每次对话用的是"上下文里最近看到的模式"。随着模块变多，它会把不同风格的代码混在一起。回头看，代码库像是 5 个不同习惯的人写的——因为 Claude 每次对话都是一个"新人"，它不记得你昨天定的规矩。</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;"><strong style="color: #3f8fd4; font-weight: 600;">2. 方案选择被动</strong>。Claude 默认给你"一个能跑的方案"，不给对比。但技术选型的价值本来就在对比里——goroutine 还是 channel、REST 还是 WebSocket，不做对比等于没决定。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">2. 方案选择被动</strong>。Claude 默认给你"一个能跑的方案"，不给对比。但技术选型的价值本来就在对比里——goroutine 还是 channel、REST 还是 WebSocket，不做对比等于没决定。</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;"><strong style="color: #3f8fd4; font-weight: 600;">3. 改动半径不可控</strong>。让 Claude "实现一个新功能"，它可能顺手改了好几个其他文件。改得对不对你也不知道，得一个一个看 diff。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">3. 改动半径不可控</strong>。让 Claude "实现一个新功能"，它可能顺手改了好几个其他文件。改得对不对你也不知道，得一个一个看 diff。</p>
 
-<h3 style="font-size: 17px; font-weight: 600; color: #12324c; margin: 24px 0 8px;">正面做法：设计三步</h3>
+<h3 style="font-size: 17px; font-weight: 600; color:var(--article-ink, #12324c); margin: 24px 0 8px;">正面做法：设计三步</h3>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">我后来定了一条铁律：</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">我后来定了一条铁律：</p>
 
-<blockquote style="border-left: 3px solid #5fb3ea; padding: 10px 16px; margin: 16px 0; background: #f4fbff; color: #3f5f7b; font-size: 14px; border-radius: 0 8px 8px 0;"><strong style="color: #3f8fd4; font-weight: 600;">编码之前，必须先过完整的设计阶段。</strong></blockquote>
+<blockquote style="border-left: 3px solid #5fb3ea; padding: 10px 16px; margin: 16px 0; background:var(--article-panel, #f4fbff); color:var(--article-secondary, #3f5f7b); font-size: 14px; border-radius: 0 8px 8px 0;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">编码之前，必须先过完整的设计阶段。</strong></blockquote>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">整个设计阶段默认切到 <strong style="color: #3f8fd4; font-weight: 600;">Plan 模式</strong>（<code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">Shift+Tab</code>）——Claude 只读不改，专心做分析和方案，不会顺手动你的代码。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">整个设计阶段默认切到 <strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Plan 模式</strong>（<code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">Shift+Tab</code>）——Claude 只读不改，专心做分析和方案，不会顺手动你的代码。</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">三步：</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">三步：</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;"><strong style="color: #3f8fd4; font-weight: 600;">Step 1：把想做什么描述清楚</strong></p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Step 1：把想做什么描述清楚</strong></p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">不要一句话"做个 XXX" 就完事——上下文不够，方案也不会准。我的标准模板：</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">不要一句话"做个 XXX" 就完事——上下文不够，方案也不会准。我的标准模板：</p>
 
 <section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;"><span style="display: block; white-space: pre; min-height: 1.4em;">我要做 XXX 功能。上下文：</span><span style="display: block; white-space: pre; min-height: 1.4em;">- 当前系统是 X（技术栈 / 架构 / 关键约束）</span><span style="display: block; white-space: pre; min-height: 1.4em;">- 已有的相关代码在 Y</span><span style="display: block; white-space: pre; min-height: 1.4em;">- 期望行为是 Z</span><span style="display: block; white-space: pre; min-height: 1.4em;">- 非功能要求：性能 / 兼容性 / 并发规模</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;">不要急着出方案。先问我还有什么需要补充的，</span><span style="display: block; white-space: pre; min-height: 1.4em;">确认完上下文再开始设计。</span></code></section>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">"不要急着出方案" 这句关键——默认 Claude 拿到需求就往前冲，加这句它会先把模糊点列出来让你确认。后面的方案才精确。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">"不要急着出方案" 这句关键——默认 Claude 拿到需求就往前冲，加这句它会先把模糊点列出来让你确认。后面的方案才精确。</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;"><strong style="color: #3f8fd4; font-weight: 600;">Step 2：让 Claude 出 2-3 个方案对比</strong></p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Step 2：让 Claude 出 2-3 个方案对比</strong></p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">上下文补齐之后才让它出方案。每个方案要能对照着看：</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">上下文补齐之后才让它出方案。每个方案要能对照着看：</p>
 
 <section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;"><span style="display: block; white-space: pre; min-height: 1.4em;">基于上面补全的上下文，出 2-3 个方案。每个方案说清楚：</span><span style="display: block; white-space: pre; min-height: 1.4em;">- 核心思路（一句话）</span><span style="display: block; white-space: pre; min-height: 1.4em;">- 复杂度 vs 扩展性的权衡</span><span style="display: block; white-space: pre; min-height: 1.4em;">- 需要改 / 加哪些模块</span><span style="display: block; white-space: pre; min-height: 1.4em;">- 风险点</span><span style="display: block; white-space: pre; min-height: 1.4em;">- 这个方案不适合什么场景</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;">不要推荐其中任何一个。我自己选。</span></code></section>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">最后那句——<strong style="color: #3f8fd4; font-weight: 600;">不是让 Claude 推荐一个你照做，是让 Claude 把选项摆出来，你选</strong>。默认 Claude 会倾向推荐一个"看起来最稳"的，加这句堵住这个倾向。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">最后那句——<strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">不是让 Claude 推荐一个你照做，是让 Claude 把选项摆出来，你选</strong>。默认 Claude 会倾向推荐一个"看起来最稳"的，加这句堵住这个倾向。</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;"><strong style="color: #3f8fd4; font-weight: 600;">Step 3：选定方案 + 写 ADR</strong></p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Step 3：选定方案 + 写 ADR</strong></p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">选定后让 Claude 帮你把决策写成 ADR（Architecture Decision Record）：</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">选定后让 Claude 帮你把决策写成 ADR（Architecture Decision Record）：</p>
 
 <section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;"><span style="display: block; white-space: pre; min-height: 1.4em;"># ADR-XXX: [决策标题]</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;">## 背景</span><span style="display: block; white-space: pre; min-height: 1.4em;">[为什么需要这个决策，上下文是什么]</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;">## 决策</span><span style="display: block; white-space: pre; min-height: 1.4em;">[选了什么方案]</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;">## 备选</span><span style="display: block; white-space: pre; min-height: 1.4em;">[考虑过哪些其他方案，为什么没选]</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;">## 影响</span><span style="display: block; white-space: pre; min-height: 1.4em;">[对代码/架构/团队的影响]</span></code></section>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">三个月后你自己或接手的人回头看，能立刻明白"当初为什么这么做"——更重要的是，当初评估过的备选方案还在，切换时不用从头调研。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">三个月后你自己或接手的人回头看，能立刻明白"当初为什么这么做"——更重要的是，当初评估过的备选方案还在，切换时不用从头调研。</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">这套三步本质上是业界 <strong style="color: #3f8fd4; font-weight: 600;">Spec-Driven Development（SDD）</strong>的精简版——GitHub 开源的 <a href="https://github.com/github/spec-kit">Spec Kit（github.com/github/spec-kit）</a> 会把规划拆得更细，分成多个可审阅阶段。我做产品没那么多仪式，用这三步够了。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">这套三步本质上是业界 <strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Spec-Driven Development（SDD）</strong>的精简版——GitHub 开源的 <a href="https://github.com/github/spec-kit">Spec Kit（github.com/github/spec-kit）</a> 会把规划拆得更细，分成多个可审阅阶段。我做产品没那么多仪式，用这三步够了。</p>
 
-<h3 style="font-size: 17px; font-weight: 600; color: #12324c; margin: 24px 0 8px;">实现阶段：从 ADR 到代码</h3>
+<h3 style="font-size: 17px; font-weight: 600; color:var(--article-ink, #12324c); margin: 24px 0 8px;">实现阶段：从 ADR 到代码</h3>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">设计完不是直接"一把梭"让 Claude 把整个方案实现出来。三个做法：</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">设计完不是直接"一把梭"让 Claude 把整个方案实现出来。三个做法：</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;"><strong style="color: #3f8fd4; font-weight: 600;">做法 1：拆小阶段，一次只做一个</strong></p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">做法 1：拆小阶段，一次只做一个</strong></p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">ADR 选定的方案拆成"能独立上线的小阶段"——每个阶段代码量可控、可独立提测、有问题回滚成本低。一次实现整个方案的后果是：diff 太大没人能审、出问题不知道退到哪、前期假设错了后面全白写。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">ADR 选定的方案拆成"能独立上线的小阶段"——每个阶段代码量可控、可独立提测、有问题回滚成本低。一次实现整个方案的后果是：diff 太大没人能审、出问题不知道退到哪、前期假设错了后面全白写。</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">让 Claude 先把拆分方案列出来，你确认后一个一个做：</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">让 Claude 先把拆分方案列出来，你确认后一个一个做：</p>
 
 <section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;"><span style="display: block; white-space: pre; min-height: 1.4em;">基于 ADR-023 的选定方案，把实现拆成可独立上线的阶段：</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;">要求：</span><span style="display: block; white-space: pre; min-height: 1.4em;">1. 每个阶段独立可提测（不依赖未完成的阶段）</span><span style="display: block; white-space: pre; min-height: 1.4em;">2. 每个阶段有明确验收标准</span><span style="display: block; white-space: pre; min-height: 1.4em;">3. 排出执行顺序（优先级最高的先做）</span><span style="display: block; white-space: pre; min-height: 1.4em;">4. 标注每个阶段的风险点</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;">先列出拆分结果，等我确认后再开始第一个阶段。</span></code></section>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;"><strong style="color: #3f8fd4; font-weight: 600;">做法 2：TDD 红 → 绿 → 重构</strong></p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">做法 2：TDD 红 → 绿 → 重构</strong></p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">具体任务适合 TDD 的，用下面这个提示词：</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">具体任务适合 TDD 的，用下面这个提示词：</p>
 
 <section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;"><span style="display: block; white-space: pre; min-height: 1.4em;">用 TDD 方式实现服务熔断逻辑：</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;">第一步（红）：先写测试，覆盖以下场景</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;&nbsp;- 连续 3 次失败触发熔断</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;&nbsp;- 熔断期间所有请求直接拒绝</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;&nbsp;- 熔断 60s 后进入半开状态</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;&nbsp;- 半开成功 1 次恢复 / 失败则重新熔断</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;&nbsp;- 并发安全</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;">第二步（绿）：写最少代码让所有测试通过</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;">第三步（重构）：优化代码结构，确保测试仍然全绿</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;">每一步都要实际运行测试并展示结果。</span></code></section>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">但 TDD <strong style="color: #3f8fd4; font-weight: 600;">不是银弹</strong>——得看场景：</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">但 TDD <strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">不是银弹</strong>——得看场景：</p>
 
 <ul style="padding-left: 22px; margin: 8px 0;">
-<li style="margin: 4px 0;"><strong style="color: #3f8fd4; font-weight: 600;">适合 TDD</strong>：核心纯逻辑 / 状态机 / 算法 / Bug 修复 / 接口契约</li>
-<li style="margin: 4px 0;"><strong style="color: #3f8fd4; font-weight: 600;">不适合 TDD</strong>：探索性开发（需求不明）/ 前端交互（行为难用单元测试描述）/ 第三方集成（依赖外部行为）/ 一次性脚本</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">适合 TDD</strong>：核心纯逻辑 / 状态机 / 算法 / Bug 修复 / 接口契约</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">不适合 TDD</strong>：探索性开发（需求不明）/ 前端交互（行为难用单元测试描述）/ 第三方集成（依赖外部行为）/ 一次性脚本</li>
 </ul>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">不适合 TDD 的，先 spike（快速原型）跑通再补测试，别硬上。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">不适合 TDD 的，先 spike（快速原型）跑通再补测试，别硬上。</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;"><strong style="color: #3f8fd4; font-weight: 600;">做法 3：有测试保护的重构</strong></p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">做法 3：有测试保护的重构</strong></p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">改已有代码（不是写新代码）时，流程严格：</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">改已有代码（不是写新代码）时，流程严格：</p>
 
 <section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;"><span style="display: block; white-space: pre; min-height: 1.4em;">我要重构 adaptor_factory.go 里的大 switch-case（30+ case）。</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;">按以下步骤执行：</span><span style="display: block; white-space: pre; min-height: 1.4em;">1. 先跑现有测试，确认全绿（这是 baseline）</span><span style="display: block; white-space: pre; min-height: 1.4em;">2. 分析 switch 的模式，提取公共行为</span><span style="display: block; white-space: pre; min-height: 1.4em;">3. 设计策略模式/注册表模式的替代</span><span style="display: block; white-space: pre; min-height: 1.4em;">4. 逐步替换——每步改完跑一次测试</span><span style="display: block; white-space: pre; min-height: 1.4em;">5. 最终确认测试全绿 + 行为不变</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;">约束：不改变外部 API 行为。任何一步测试不绿，立即回滚那一步。</span></code></section>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">关键是"每步改完跑一次测试"——<strong style="color: #3f8fd4; font-weight: 600;">不是一次改完再跑</strong>。一次改完跑出来红的，你根本不知道是哪一步改错的。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">关键是"每步改完跑一次测试"——<strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">不是一次改完再跑</strong>。一次改完跑出来红的，你根本不知道是哪一步改错的。</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">这套"三步设计 + 三个实现做法"跑下来看起来花时间——实际对比就知道：设计阶段多花的 1 小时，后续实现和演进阶段能省下 10 倍。方案对比过、决策有 ADR 记着，备选永远在，切换成本低；跳过这步的代价是：每次改动半径不可控，遇到问题只能重新调研。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">这套"三步设计 + 三个实现做法"跑下来看起来花时间——实际对比就知道：设计阶段多花的 1 小时，后续实现和演进阶段能省下 10 倍。方案对比过、决策有 ADR 记着，备选永远在，切换成本低；跳过这步的代价是：每次改动半径不可控，遇到问题只能重新调研。</p>
 
-<hr style="border: none; border-top: 1px solid #d8e6f0; margin: 28px 0;">
+<hr style="border: none; border-top: 1px solid var(--article-border, #d8e6f0); margin: 28px 0;">
 
-<h2 style="font-size: 20px; font-weight: 700; color: #12324c; margin: 32px 0 12px; padding-bottom: 8px; border-bottom: 2px solid #5fb3ea;">主线二：测试闭环</h2>
+<h2 style="font-size: 20px; font-weight: 700; color:var(--article-ink, #12324c); margin: 32px 0 12px; padding-bottom: 8px; border-bottom: 2px solid #5fb3ea;">主线二：测试闭环</h2>
 
-<h3 style="font-size: 17px; font-weight: 600; color: #12324c; margin: 24px 0 8px;">先讲 Claude 写测试的坑</h3>
+<h3 style="font-size: 17px; font-weight: 600; color:var(--article-ink, #12324c); margin: 24px 0 8px;">先讲 Claude 写测试的坑</h3>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">你说"给 XXX 函数写单元测试"，Claude 30 秒给你一套。但它有个致命问题：<strong style="color: #3f8fd4; font-weight: 600;">会为了"覆盖到代码"而写，不是为了"验证行为"而写</strong>。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">你说"给 XXX 函数写单元测试"，Claude 30 秒给你一套。但它有个致命问题：<strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">会为了"覆盖到代码"而写，不是为了"验证行为"而写</strong>。</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">典型假阳性：</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">典型假阳性：</p>
 
 <section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;"><span style="display: block; white-space: pre; min-height: 1.4em;">func TestCalculateDiscount(t *testing.T) {</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;&nbsp;&nbsp;&nbsp;result := CalculateDiscount(100, 0.1)</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;&nbsp;&nbsp;&nbsp;// 没有 assert，只是调用了函数</span><span style="display: block; white-space: pre; min-height: 1.4em;">}</span></code></section>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">或者：</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">或者：</p>
 
 <section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;"><span style="display: block; white-space: pre; min-height: 1.4em;">func TestParseConfig(t *testing.T) {</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;&nbsp;&nbsp;&nbsp;_, err := ParseConfig("valid.yaml")</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;&nbsp;&nbsp;&nbsp;assert.NoError(t, err)</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;&nbsp;&nbsp;&nbsp;// 只测了 happy path，没测任何异常</span><span style="display: block; white-space: pre; min-height: 1.4em;">}</span></code></section>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">这种测试覆盖率会很高，但真有 bug 根本测不出来。我自己吃过亏——某次覆盖率 90%+，但某个关键路径的边界条件没测到，上线后线上直接崩。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">这种测试覆盖率会很高，但真有 bug 根本测不出来。我自己吃过亏——某次覆盖率 90%+，但某个关键路径的边界条件没测到，上线后线上直接崩。</p>
 
-<h3 style="font-size: 17px; font-weight: 600; color: #12324c; margin: 24px 0 8px;">正面做法：验证驱动 + 完成度自检</h3>
+<h3 style="font-size: 17px; font-weight: 600; color:var(--article-ink, #12324c); margin: 24px 0 8px;">正面做法：验证驱动 + 完成度自检</h3>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;"><strong style="color: #3f8fd4; font-weight: 600;">铁律 1：验证驱动</strong>（Anthropic <a href="https://code.claude.com/docs/en/best-practices">官方最佳实践（code.claude.com/docs/en/best-practices）</a>里反复强调的一条）</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">铁律 1：验证驱动</strong>（Anthropic <a href="https://code.claude.com/docs/en/best-practices">官方最佳实践（code.claude.com/docs/en/best-practices）</a>里反复强调的一条）</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">给 Claude 验证手段是高杠杆率做法——<strong style="color: #3f8fd4; font-weight: 600;">Claude 能自我验证时，输出质量会大幅提升</strong>。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">给 Claude 验证手段是高杠杆率做法——<strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Claude 能自我验证时，输出质量会大幅提升</strong>。</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">四种给验证的方式：</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">四种给验证的方式：</p>
 
 <section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;"><span style="display: block; white-space: pre; min-height: 1.4em;">重构 auth 中间件，改成 JWT。改完后运行现有测试套件，</span><span style="display: block; white-space: pre; min-height: 1.4em;">修复所有失败用例后再结束。</span></code></section>
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">（测试作为验证）</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">（测试作为验证）</p>
 
 <section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;"><span style="display: block; white-space: pre; min-height: 1.4em;">修改登录页布局。改完后截图给我，确认没有 UI 回归。</span></code></section>
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">（截图作为验证）</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">（截图作为验证）</p>
 
 <section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;"><span style="display: block; white-space: pre; min-height: 1.4em;">请实际运行验证，而不是假设它能工作。</span></code></section>
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">（拒绝"我认为能运行"）</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">（拒绝"我认为能运行"）</p>
 
 <section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;"><span style="display: block; white-space: pre; min-height: 1.4em;">仔细审查这些改动，确认没有遗漏后再提交。</span></code></section>
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">（自我审查）</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">（自我审查）</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">关键是<strong style="color: #3f8fd4; font-weight: 600;">不接受 "should pass" 和 "probably OK"</strong>——跑了测试、拿到证据才算。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">关键是<strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">不接受 "should pass" 和 "probably OK"</strong>——跑了测试、拿到证据才算。</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;"><strong style="color: #3f8fd4; font-weight: 600;">铁律 2：变更类型 → 测试级别映射</strong></p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">铁律 2：变更类型 → 测试级别映射</strong></p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">不同变更，对应不同测试覆盖深度：</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">不同变更，对应不同测试覆盖深度：</p>
 
 <table style="width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13px;">
 <thead>
-<tr><th style="background: #f4fbff; color: #12324c; padding: 8px 12px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;">变更类型</th><th style="background: #f4fbff; color: #12324c; padding: 8px 12px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;">必须完成</th><th style="background: #f4fbff; color: #12324c; padding: 8px 12px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;">建议补充</th></tr>
+<tr><th style="background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); padding: 8px 12px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;">变更类型</th><th style="background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); padding: 8px 12px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;">必须完成</th><th style="background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); padding: 8px 12px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;">建议补充</th></tr>
 </thead>
 <tbody>
-<tr><td style="padding: 7px 12px; border-bottom: 1px solid #edf7ff; color: #12324c;">纯逻辑调整</td><td style="padding: 7px 12px; border-bottom: 1px solid #edf7ff; color: #12324c;">单元 + 模块 + 回归</td><td style="padding: 7px 12px; border-bottom: 1px solid #edf7ff; color: #12324c;">边界值 + 异常路径</td></tr>
-<tr><td style="padding: 7px 12px; border-bottom: 1px solid #edf7ff; color: #12324c; background: #fafcfe;">接口改动</td><td style="padding: 7px 12px; border-bottom: 1px solid #edf7ff; color: #12324c; background: #fafcfe;">+ API 测试 + 兼容性检查</td><td style="padding: 7px 12px; border-bottom: 1px solid #edf7ff; color: #12324c; background: #fafcfe;">错误码 + 鉴权</td></tr>
-<tr><td style="padding: 7px 12px; border-bottom: 1px solid #edf7ff; color: #12324c;">跨模块改动</td><td style="padding: 7px 12px; border-bottom: 1px solid #edf7ff; color: #12324c;">+ 集成测试 + 数据一致性</td><td style="padding: 7px 12px; border-bottom: 1px solid #edf7ff; color: #12324c;">超时重试</td></tr>
-<tr><td style="padding: 7px 12px; border-bottom: 1px solid #edf7ff; color: #12324c; background: #fafcfe;">核心链路改动</td><td style="padding: 7px 12px; border-bottom: 1px solid #edf7ff; color: #12324c; background: #fafcfe;">+ E2E + 专项测试</td><td style="padding: 7px 12px; border-bottom: 1px solid #edf7ff; color: #12324c; background: #fafcfe;">上线验证清单</td></tr>
-<tr><td style="padding: 7px 12px; border-bottom: 1px solid #edf7ff; color: #12324c;">高风险改动</td><td style="padding: 7px 12px; border-bottom: 1px solid #edf7ff; color: #12324c;">+ 性能基准 + 回滚演练</td><td style="padding: 7px 12px; border-bottom: 1px solid #edf7ff; color: #12324c;">异常场景演练</td></tr>
+<tr><td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);">纯逻辑调整</td><td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);">单元 + 模块 + 回归</td><td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);">边界值 + 异常路径</td></tr>
+<tr><td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c); background:var(--article-panel, #fafcfe);">接口改动</td><td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c); background:var(--article-panel, #fafcfe);">+ API 测试 + 兼容性检查</td><td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c); background:var(--article-panel, #fafcfe);">错误码 + 鉴权</td></tr>
+<tr><td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);">跨模块改动</td><td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);">+ 集成测试 + 数据一致性</td><td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);">超时重试</td></tr>
+<tr><td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c); background:var(--article-panel, #fafcfe);">核心链路改动</td><td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c); background:var(--article-panel, #fafcfe);">+ E2E + 专项测试</td><td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c); background:var(--article-panel, #fafcfe);">上线验证清单</td></tr>
+<tr><td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);">高风险改动</td><td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);">+ 性能基准 + 回滚演练</td><td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);">异常场景演练</td></tr>
 </tbody>
 </table>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">把这个表贴在项目的 <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">CLAUDE.md</code> 里——Claude 每次写测试都会自动对照。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">把这个表贴在项目的 <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">CLAUDE.md</code> 里——Claude 每次写测试都会自动对照。</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;"><strong style="color: #3f8fd4; font-weight: 600;">铁律 3：完成度自检</strong></p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">铁律 3：完成度自检</strong></p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">声称"XXX 已修复"之后，必须运行 grep 确认没有残留。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">声称"XXX 已修复"之后，必须运行 grep 确认没有残留。</p>
 
 <section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;"><span style="display: block; white-space: pre; min-height: 1.4em;"># 声称"ctx 断层已修"之后，必须跑</span><span style="display: block; white-space: pre; min-height: 1.4em;">grep -c 'context.Background()' &lt;所有相关文件&gt;</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;"># 结果必须为 0，或全是合法用法，不能有漏网的</span></code></section>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">"我觉得改完了"不算证据，<code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">grep -c</code> 的结果才算。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">"我觉得改完了"不算证据，<code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">grep -c</code> 的结果才算。</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">完成度自检的本质——<strong style="color: #3f8fd4; font-weight: 600;">不让 AI 的"感觉已经修完了"代替证据</strong>。具体每个项目什么覆盖率、漏几个 case 每次不一样；但"声明完成 → grep 扫残留 → 发现遗漏就补"这个回路必须有。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">完成度自检的本质——<strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">不让 AI 的"感觉已经修完了"代替证据</strong>。具体每个项目什么覆盖率、漏几个 case 每次不一样；但"声明完成 → grep 扫残留 → 发现遗漏就补"这个回路必须有。</p>
 
-<h3 style="font-size: 17px; font-weight: 600; color: #12324c; margin: 24px 0 8px;">再加一层：用 Hooks 把检查自动化</h3>
+<h3 style="font-size: 17px; font-weight: 600; color:var(--article-ink, #12324c); margin: 24px 0 8px;">再加一层：用 Hooks 把检查自动化</h3>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">完成度自检靠你每次手动想起来跑 grep，总会漏。Claude Code 的 <strong style="color: #3f8fd4; font-weight: 600;">Hooks 机制</strong>能把这些检查写成 shell 脚本，在特定事件自动触发——这是让 AI 代你跑也不翻车的关键。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">完成度自检靠你每次手动想起来跑 grep，总会漏。Claude Code 的 <strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Hooks 机制</strong>能把这些检查写成 shell 脚本，在特定事件自动触发——这是让 AI 代你跑也不翻车的关键。</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">最实用的两个：</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">最实用的两个：</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;"><strong style="color: #3f8fd4; font-weight: 600;">Pre-commit hook</strong>——Claude 要提交前拦截，防敏感文件 leak：</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Pre-commit hook</strong>——Claude 要提交前拦截，防敏感文件 leak：</p>
 
 <section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;"><span style="display: block; white-space: pre; min-height: 1.4em;"># ~/.claude/hooks/pre-commit.sh</span><span style="display: block; white-space: pre; min-height: 1.4em;">if git diff --cached --name-only | grep -E '\.(env|pem|key|secret)$'; then</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;&nbsp;echo "❌ 阻止：检测到敏感文件"</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;&nbsp;exit 1</span><span style="display: block; white-space: pre; min-height: 1.4em;">fi</span></code></section>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;"><strong style="color: #3f8fd4; font-weight: 600;">Post-edit hook</strong>——Claude 改完文件后自动跑 lint / 编译 / 测试：</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Post-edit hook</strong>——Claude 改完文件后自动跑 lint / 编译 / 测试：</p>
 
 <section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;"><span style="display: block; white-space: pre; min-height: 1.4em;"># ~/.claude/hooks/post-edit.sh</span><span style="display: block; white-space: pre; min-height: 1.4em;">for f in "$@"; do</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;&nbsp;case "$f" in</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;&nbsp;&nbsp;&nbsp;*.go)   go vet "$f" || exit 1 ;;</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;&nbsp;&nbsp;&nbsp;*.ts)   npx tsc --noEmit "$f" || exit 1 ;;</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;&nbsp;&nbsp;&nbsp;*.py)   ruff check "$f" || exit 1 ;;</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;&nbsp;esac</span><span style="display: block; white-space: pre; min-height: 1.4em;">done</span></code></section>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">把"检查"从"我要记得做"变成"自动做"——<strong style="color: #3f8fd4; font-weight: 600;">这是让 Claude Code 能 unattended 运行的核心</strong>。我日常开发环境挂了 6-7 个 hook，覆盖敏感文件、lint、编译、关键测试。Claude 没跑通这些钩子，改动根本进不了仓库。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">把"检查"从"我要记得做"变成"自动做"——<strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">这是让 Claude Code 能 unattended 运行的核心</strong>。我日常开发环境挂了 6-7 个 hook，覆盖敏感文件、lint、编译、关键测试。Claude 没跑通这些钩子，改动根本进不了仓库。</p>
 
-<h3 style="font-size: 17px; font-weight: 600; color: #12324c; margin: 24px 0 8px;">延伸：完整的 DevTestOps 流程 Skill</h3>
+<h3 style="font-size: 17px; font-weight: 600; color:var(--article-ink, #12324c); margin: 24px 0 8px;">延伸：完整的 DevTestOps 流程 Skill</h3>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">上面讲的三条铁律，只是"测试闭环"里最常用的部分。完整版本我做成了一个 Skill，名字就叫 <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">devtestops</code>——装进 Claude Code 的 <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">~/.claude/skills/</code>，整个 pipeline 能自动触发。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">上面讲的三条铁律，只是"测试闭环"里最常用的部分。完整版本我做成了一个 Skill，名字就叫 <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">devtestops</code>——装进 Claude Code 的 <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">~/.claude/skills/</code>，整个 pipeline 能自动触发。</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">里面包含：</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">里面包含：</p>
 
 <ul style="padding-left: 22px; margin: 8px 0;">
-<li style="margin: 4px 0;"><strong style="color: #3f8fd4; font-weight: 600;">7 阶段交付流程</strong>：需求澄清 → 方案与用例准备 → 基础质量验证 → 主链路验证 → 专项与性能 → 提测与回归 → 上线与观察</li>
-<li style="margin: 4px 0;"><strong style="color: #3f8fd4; font-weight: 600;">8 类专项测试触发规则</strong>：E2E / 接口 API / 权限安全 / 并发幂等 / 数据一致性 / 异步任务队列 / 配置兼容性 / 回滚可观测</li>
-<li style="margin: 4px 0;"><strong style="color: #3f8fd4; font-weight: 600;">提测准入基线</strong>：按变更类型算出的最低质量门槛</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">7 阶段交付流程</strong>：需求澄清 → 方案与用例准备 → 基础质量验证 → 主链路验证 → 专项与性能 → 提测与回归 → 上线与观察</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">8 类专项测试触发规则</strong>：E2E / 接口 API / 权限安全 / 并发幂等 / 数据一致性 / 异步任务队列 / 配置兼容性 / 回滚可观测</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">提测准入基线</strong>：按变更类型算出的最低质量门槛</li>
 </ul>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">相比上面那张"变更类型 → 测试级别"表，这套 Skill 能让 Claude 在跑任何改动时自动识别该触发哪些专项检查，不用你每次提醒。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">相比上面那张"变更类型 → 测试级别"表，这套 Skill 能让 Claude 在跑任何改动时自动识别该触发哪些专项检查，不用你每次提醒。</p>
 
-<hr style="border: none; border-top: 1px solid #d8e6f0; margin: 28px 0;">
+<hr style="border: none; border-top: 1px solid var(--article-border, #d8e6f0); margin: 28px 0;">
 
-<h2 style="font-size: 20px; font-weight: 700; color: #12324c; margin: 32px 0 12px; padding-bottom: 8px; border-bottom: 2px solid #5fb3ea;">主线三：多 Agent 协作</h2>
+<h2 style="font-size: 20px; font-weight: 700; color:var(--article-ink, #12324c); margin: 32px 0 12px; padding-bottom: 8px; border-bottom: 2px solid #5fb3ea;">主线三：多 Agent 协作</h2>
 
-<h3 style="font-size: 17px; font-weight: 600; color: #12324c; margin: 24px 0 8px;">反面教材：让一个 AI 干所有事</h3>
+<h3 style="font-size: 17px; font-weight: 600; color:var(--article-ink, #12324c); margin: 24px 0 8px;">反面教材：让一个 AI 干所有事</h3>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">"Claude 很强，让它一个人把设计 / 编码 / 审查 / 测试都干了。"</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">"Claude 很强，让它一个人把设计 / 编码 / 审查 / 测试都干了。"</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">听起来很高效。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">听起来很高效。</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">实际上是反模式。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">实际上是反模式。</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">原因有三：</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">原因有三：</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;"><strong style="color: #3f8fd4; font-weight: 600;">1. 同一个模型有系统性盲区。</strong></p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">1. 同一个模型有系统性盲区。</strong></p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">Claude 和 Codex 背后的模型体系、训练数据、推理偏好不同。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">Claude 和 Codex 背后的模型体系、训练数据、推理偏好不同。</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">让 Claude 审查自己写的代码——<strong style="color: #3f8fd4; font-weight: 600;">它会漏掉自己风格里的问题</strong>。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">让 Claude 审查自己写的代码——<strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">它会漏掉自己风格里的问题</strong>。</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">人也有这毛病，审自己代码效率最低。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">人也有这毛病，审自己代码效率最低。</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;"><strong style="color: #3f8fd4; font-weight: 600;">2. 一问一答模式不适合审查。</strong></p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">2. 一问一答模式不适合审查。</strong></p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">审查需要"对抗性思维"——主动找问题，不是顺着写的思路走。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">审查需要"对抗性思维"——主动找问题，不是顺着写的思路走。</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">但 Claude 在同一段对话里已经跟你"达成了共识"，切审查模式会倾向于维持共识。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">但 Claude 在同一段对话里已经跟你"达成了共识"，切审查模式会倾向于维持共识。</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;"><strong style="color: #3f8fd4; font-weight: 600;">3. 单模型没有交叉验证。</strong></p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">3. 单模型没有交叉验证。</strong></p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">好的审查是"两个独立角度撞出盲区"。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">好的审查是"两个独立角度撞出盲区"。</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">一个模型的两轮对话，<strong style="color: #3f8fd4; font-weight: 600;">不是独立角度</strong>。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">一个模型的两轮对话，<strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">不是独立角度</strong>。</p>
 
-<h3 style="font-size: 17px; font-weight: 600; color: #12324c; margin: 24px 0 8px;">正面做法：Claude + Codex + 人类，三角分工</h3>
+<h3 style="font-size: 17px; font-weight: 600; color:var(--article-ink, #12324c); margin: 24px 0 8px;">正面做法：Claude + Codex + 人类，三角分工</h3>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">明确分工：</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">明确分工：</p>
 
 <table style="width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13px;">
 <thead>
-<tr><th style="background: #f4fbff; color: #12324c; padding: 8px 12px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;">角色</th><th style="background: #f4fbff; color: #12324c; padding: 8px 12px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;">负责</th><th style="background: #f4fbff; color: #12324c; padding: 8px 12px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;">来源</th></tr>
+<tr><th style="background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); padding: 8px 12px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;">角色</th><th style="background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); padding: 8px 12px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;">负责</th><th style="background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); padding: 8px 12px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;">来源</th></tr>
 </thead>
 <tbody>
-<tr><td style="padding: 7px 12px; border-bottom: 1px solid #edf7ff; color: #12324c;"><strong style="color: #3f8fd4; font-weight: 600;">Claude</strong></td><td style="padding: 7px 12px; border-bottom: 1px solid #edf7ff; color: #12324c;">方案设计、架构分析、编码实现、TDD</td><td style="padding: 7px 12px; border-bottom: 1px solid #edf7ff; color: #12324c;">Claude Code 主会话</td></tr>
-<tr><td style="padding: 7px 12px; border-bottom: 1px solid #edf7ff; color: #12324c; background: #fafcfe;"><strong style="color: #3f8fd4; font-weight: 600;">Codex</strong></td><td style="padding: 7px 12px; border-bottom: 1px solid #edf7ff; color: #12324c; background: #fafcfe;">Code Review、测试盲区补充、设计文档评审</td><td style="padding: 7px 12px; border-bottom: 1px solid #edf7ff; color: #12324c; background: #fafcfe;">Claude Code 里的 Codex 插件</td></tr>
-<tr><td style="padding: 7px 12px; border-bottom: 1px solid #edf7ff; color: #12324c;"><strong style="color: #3f8fd4; font-weight: 600;">人类</strong></td><td style="padding: 7px 12px; border-bottom: 1px solid #edf7ff; color: #12324c;">需求输入、方案决策、最终确认</td><td style="padding: 7px 12px; border-bottom: 1px solid #edf7ff; color: #12324c;">你</td></tr>
+<tr><td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Claude</strong></td><td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);">方案设计、架构分析、编码实现、TDD</td><td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);">Claude Code 主会话</td></tr>
+<tr><td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c); background:var(--article-panel, #fafcfe);"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Codex</strong></td><td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c); background:var(--article-panel, #fafcfe);">Code Review、测试盲区补充、设计文档评审</td><td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c); background:var(--article-panel, #fafcfe);">Claude Code 里的 Codex 插件</td></tr>
+<tr><td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">人类</strong></td><td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);">需求输入、方案决策、最终确认</td><td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);">你</td></tr>
 </tbody>
 </table>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">不用开两个终端。OpenAI 在 GitHub 上提供了 <a href="https://github.com/openai/codex-plugin-cc"><code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">codex-plugin-cc</code></a>（<code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">github.com/openai/codex-plugin-cc</code>）插件，直接装进 Claude Code 就能在主会话里用 Codex。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">不用开两个终端。OpenAI 在 GitHub 上提供了 <a href="https://github.com/openai/codex-plugin-cc"><code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">codex-plugin-cc</code></a>（<code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">github.com/openai/codex-plugin-cc</code>）插件，直接装进 Claude Code 就能在主会话里用 Codex。</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;"><strong style="color: #3f8fd4; font-weight: 600;">安装一次</strong>：</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">安装一次</strong>：</p>
 
 <section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;"><span style="display: block; white-space: pre; min-height: 1.4em;">/plugin marketplace add openai/codex-plugin-cc</span><span style="display: block; white-space: pre; min-height: 1.4em;">/plugin install codex@openai-codex</span><span style="display: block; white-space: pre; min-height: 1.4em;">/reload-plugins</span><span style="display: block; white-space: pre; min-height: 1.4em;">/codex:setup</span></code></section>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">装完整个协作流程就是四个斜杠命令。前提：Node.js 18.18+、已登录 ChatGPT 订阅或配好 Codex API key。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">装完整个协作流程就是四个斜杠命令。前提：Node.js 18.18+、已登录 ChatGPT 订阅或配好 Codex API key。</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;"><strong style="color: #3f8fd4; font-weight: 600;">步骤 A：Claude 写完 → <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">/codex:review</code> 让 Codex 审</strong></p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">步骤 A：Claude 写完 → <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">/codex:review</code> 让 Codex 审</strong></p>
 
 <section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;"><span style="display: block; white-space: pre; min-height: 1.4em;"># 在 Claude Code 主会话里，写完代码后直接：</span><span style="display: block; white-space: pre; min-height: 1.4em;">/codex:review --base main</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;"># 如果要更狠的对抗性审查（Codex 会质疑架构和实现选择）：</span><span style="display: block; white-space: pre; min-height: 1.4em;">/codex:adversarial-review --base main challenge whether this is the right design</span></code></section>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">Codex 独立跑审查，不走 Claude 的上下文——两个模型从零开始看 diff，真正做到"独立审查"。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">Codex 独立跑审查，不走 Claude 的上下文——两个模型从零开始看 diff，真正做到"独立审查"。</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;"><strong style="color: #3f8fd4; font-weight: 600;">步骤 B：审查意见喂回 Claude 逐条回应</strong></p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">步骤 B：审查意见喂回 Claude 逐条回应</strong></p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">Codex 审查报告出来后，在同一个 Claude Code 会话里：</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">Codex 审查报告出来后，在同一个 Claude Code 会话里：</p>
 
 <section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;"><span style="display: block; white-space: pre; min-height: 1.4em;">以下是 Codex 的审查意见。请逐条回应：</span><span style="display: block; white-space: pre; min-height: 1.4em;">接受并修复 / 用技术证据反驳 / 标记为待讨论。</span><span style="display: block; white-space: pre; min-height: 1.4em;">不要表演性认同——如果 reviewer 错了要用技术证据说明为什么。</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;">对属于 bug / 逻辑错误类的意见，修复时先写测试复现问题（红），</span><span style="display: block; white-space: pre; min-height: 1.4em;">修完让测试通过（绿）——用"修复前失败 / 修复后通过"的证据替代"我改完了"。</span><span style="display: block; white-space: pre; min-height: 1.4em;">架构建议 / 命名风格 / 可读性类不用强行写测试。</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;">[审查意见自动在上下文里，不用复制粘贴]</span></code></section>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">关键是最后那句——<strong style="color: #3f8fd4; font-weight: 600;">"不要表演性认同"</strong>。Claude 默认客气，不加这句它会把 Codex 说的大部分都认下来，对抗审查就失效了。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">关键是最后那句——<strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">"不要表演性认同"</strong>。Claude 默认客气，不加这句它会把 Codex 说的大部分都认下来，对抗审查就失效了。</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;"><strong style="color: #3f8fd4; font-weight: 600;">步骤 C：让 Codex 补测试盲区</strong></p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">步骤 C：让 Codex 补测试盲区</strong></p>
 
 <section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;"><span style="display: block; white-space: pre; min-height: 1.4em;"># 在 Claude Code 主会话里，让 Codex 补测试盲区</span><span style="display: block; white-space: pre; min-height: 1.4em;">@codex 请阅读 src/xxx.go 和已有测试，找测试盲区：</span><span style="display: block; white-space: pre; min-height: 1.4em;">- 哪些边界情况没覆盖？</span><span style="display: block; white-space: pre; min-height: 1.4em;">- 哪些并发场景没测？</span><span style="display: block; white-space: pre; min-height: 1.4em;">- 哪些错误路径没验证？</span></code></section>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">这一步常抓到 Claude 自己没想到的测试场景——尤其是并发竞态和错误路径。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">这一步常抓到 Claude 自己没想到的测试场景——尤其是并发竞态和错误路径。</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;"><strong style="color: #3f8fd4; font-weight: 600;">步骤 D：最后一步——对照设计文档做功能闭环评审</strong></p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">步骤 D：最后一步——对照设计文档做功能闭环评审</strong></p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">代码能跑 ≠ 需求都实现了。这是整套协作的最后一道防线，防的是"技术代码都对，但产品需求根本没做完"。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">代码能跑 ≠ 需求都实现了。这是整套协作的最后一道防线，防的是"技术代码都对，但产品需求根本没做完"。</p>
 
 <section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;"><span style="display: block; white-space: pre; min-height: 1.4em;"># 在 Claude Code 主会话里</span><span style="display: block; white-space: pre; min-height: 1.4em;">对照设计文档和 git diff，逐条检查：</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;">## A. 需求覆盖率</span><span style="display: block; white-space: pre; min-height: 1.4em;">每条功能需求标注：</span><span style="display: block; white-space: pre; min-height: 1.4em;">- ✅ 已实现（给出代码位置）</span><span style="display: block; white-space: pre; min-height: 1.4em;">- ❌ 未实现（遗漏）</span><span style="display: block; white-space: pre; min-height: 1.4em;">- ⚠️ 部分实现（说明缺什么）</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;">## B. 流程闭环</span><span style="display: block; white-space: pre; min-height: 1.4em;">每条业务流程追踪完整链路：</span><span style="display: block; white-space: pre; min-height: 1.4em;">入口 → 处理 → 存储 → 响应 → 前端展示</span><span style="display: block; white-space: pre; min-height: 1.4em;">检查"代码存在但流程断裂"：写了数据但没人读 / 状态变了但没通知 / 接口有了但前端没调。</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;">## C. 异常场景覆盖</span><span style="display: block; white-space: pre; min-height: 1.4em;">超时 / 并发 / 重复 / 部分失败，每个都要有对应代码。</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;">## D. 非功能需求</span><span style="display: block; white-space: pre; min-height: 1.4em;">性能是否满足？安全约束是否落地？监控指标是否埋点？</span></code></section>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">然后让 Codex 独立做一遍同样检查。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">然后让 Codex 独立做一遍同样检查。</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">两份报告对比：</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">两份报告对比：</p>
 <ul style="padding-left: 22px; margin: 8px 0;">
 <li style="margin: 4px 0;">两者都发现 → 高优先级修复</li>
 <li style="margin: 4px 0;">只有一方发现 → 验证是否真实存在</li>
 <li style="margin: 4px 0;">两者结论矛盾 → 列出争议点，人类决策</li>
 </ul>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">"高优先级修复" 时直接套用步骤 B 的流程——bug 类意见先写测试复现（红），修完验证通过（绿）；非 bug 类（需求遗漏 / 流程断裂 / 非功能欠缺）按设计文档原意补齐。<strong style="color: #3f8fd4; font-weight: 600;">不要让"闭环评审"退化成口头说"我补一下"就过</strong>——评审发现的事项必须留可验证的证据。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">"高优先级修复" 时直接套用步骤 B 的流程——bug 类意见先写测试复现（红），修完验证通过（绿）；非 bug 类（需求遗漏 / 流程断裂 / 非功能欠缺）按设计文档原意补齐。<strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">不要让"闭环评审"退化成口头说"我补一下"就过</strong>——评审发现的事项必须留可验证的证据。</p>
 
-<h3 style="font-size: 17px; font-weight: 600; color: #12324c; margin: 24px 0 8px;">完整流程图</h3>
+<h3 style="font-size: 17px; font-weight: 600; color:var(--article-ink, #12324c); margin: 24px 0 8px;">完整流程图</h3>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">三条主线合起来的一个完整循环：</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">三条主线合起来的一个完整循环：</p>
 
 
-<div style="background: #fafcfe; border: 1px solid #d8e6f0; border-radius: 10px; padding: 18px 10px; margin: 20px 0;">
+<div style="background:var(--article-panel, #fafcfe); border: 1px solid var(--article-border, #d8e6f0); border-radius: 10px; padding: 18px 10px; margin: 20px 0;">
 
 <table style="width: 100%; border-collapse: separate; border-spacing: 3px; margin: 0;">
 <tr>
-<td style="background: #e9f5ec; border: 1px solid #9cc8a0; border-radius: 8px; padding: 9px 4px; text-align: center; width: 22%;">
+<td style="background:var(--article-panel, #e9f5ec); border: 1px solid #9cc8a0; border-radius: 8px; padding: 9px 4px; text-align: center; width: 22%;">
 <div style="font-size: 10px; color: #5f7b97; font-weight: 500; margin-bottom: 3px;">人类</div>
-<div style="font-size: 12px; font-weight: 600; color: #12324c;">需求 +<br/>上下文</div>
+<div style="font-size: 12px; font-weight: 600; color:var(--article-ink, #12324c);">需求 +<br/>上下文</div>
 </td>
-<td style="text-align: center; color: #5fb3ea; font-weight: 700; font-size: 16px; width: 4%;">→</td>
-<td style="background: #e6f2fb; border: 1px solid #5fb3ea; border-radius: 8px; padding: 9px 4px; text-align: center; width: 22%;">
+<td style="text-align: center; color:var(--article-accent, #5fb3ea); font-weight: 700; font-size: 16px; width: 4%;">→</td>
+<td style="background:var(--article-panel, #e6f2fb); border: 1px solid #5fb3ea; border-radius: 8px; padding: 9px 4px; text-align: center; width: 22%;">
 <div style="font-size: 10px; color: #5f7b97; font-weight: 500; margin-bottom: 3px;">Claude</div>
-<div style="font-size: 12px; font-weight: 600; color: #12324c;">方案对比<br/>+ ADR</div>
+<div style="font-size: 12px; font-weight: 600; color:var(--article-ink, #12324c);">方案对比<br/>+ ADR</div>
 </td>
-<td style="text-align: center; color: #5fb3ea; font-weight: 700; font-size: 16px; width: 4%;">→</td>
-<td style="background: #e6f2fb; border: 1px solid #5fb3ea; border-radius: 8px; padding: 9px 4px; text-align: center; width: 22%;">
+<td style="text-align: center; color:var(--article-accent, #5fb3ea); font-weight: 700; font-size: 16px; width: 4%;">→</td>
+<td style="background:var(--article-panel, #e6f2fb); border: 1px solid #5fb3ea; border-radius: 8px; padding: 9px 4px; text-align: center; width: 22%;">
 <div style="font-size: 10px; color: #5f7b97; font-weight: 500; margin-bottom: 3px;">Claude</div>
-<div style="font-size: 12px; font-weight: 600; color: #12324c;">TDD<br/>实现</div>
+<div style="font-size: 12px; font-weight: 600; color:var(--article-ink, #12324c);">TDD<br/>实现</div>
 </td>
-<td style="text-align: center; color: #5fb3ea; font-weight: 700; font-size: 16px; width: 4%;">→</td>
-<td style="background: #fff1e0; border: 1px solid #f2b06a; border-radius: 8px; padding: 9px 4px; text-align: center; width: 22%;">
+<td style="text-align: center; color:var(--article-accent, #5fb3ea); font-weight: 700; font-size: 16px; width: 4%;">→</td>
+<td style="background:var(--article-panel, #fff1e0); border: 1px solid #f2b06a; border-radius: 8px; padding: 9px 4px; text-align: center; width: 22%;">
 <div style="font-size: 10px; color: #5f7b97; font-weight: 500; margin-bottom: 3px;">Codex</div>
-<div style="font-size: 12px; font-weight: 600; color: #12324c;">Code<br/>Review</div>
+<div style="font-size: 12px; font-weight: 600; color:var(--article-ink, #12324c);">Code<br/>Review</div>
 </td>
 </tr>
 </table>
 
-<p style="text-align: center; color: #5fb3ea; font-size: 12px; font-weight: 600; letter-spacing: 1px; margin: 10px 0;">↓ 出问题就回退，不是单向流水线 ↓</p>
+<p style="text-align: center; color:var(--article-accent, #5fb3ea); font-size: 12px; font-weight: 600; letter-spacing: 1px; margin: 10px 0;">↓ 出问题就回退，不是单向流水线 ↓</p>
 
 <table style="width: 100%; border-collapse: separate; border-spacing: 3px; margin: 0;">
 <tr>
-<td style="background: #e9f5ec; border: 1px solid #9cc8a0; border-radius: 8px; padding: 9px 4px; text-align: center; width: 22%;">
+<td style="background:var(--article-panel, #e9f5ec); border: 1px solid #9cc8a0; border-radius: 8px; padding: 9px 4px; text-align: center; width: 22%;">
 <div style="font-size: 10px; color: #5f7b97; font-weight: 500; margin-bottom: 3px;">人类</div>
-<div style="font-size: 12px; font-weight: 600; color: #12324c;">确认<br/>上线</div>
+<div style="font-size: 12px; font-weight: 600; color:var(--article-ink, #12324c);">确认<br/>上线</div>
 </td>
-<td style="text-align: center; color: #5fb3ea; font-weight: 700; font-size: 16px; width: 4%;">←</td>
-<td style="background: #f0e7f5; border: 1px solid #b18dcf; border-radius: 8px; padding: 9px 4px; text-align: center; width: 22%;">
+<td style="text-align: center; color:var(--article-accent, #5fb3ea); font-weight: 700; font-size: 16px; width: 4%;">←</td>
+<td style="background:var(--article-panel, #f0e7f5); border: 1px solid #b18dcf; border-radius: 8px; padding: 9px 4px; text-align: center; width: 22%;">
 <div style="font-size: 10px; color: #5f7b97; font-weight: 500; margin-bottom: 3px;">Claude + Codex</div>
-<div style="font-size: 12px; font-weight: 600; color: #12324c;">闭环<br/>评审</div>
+<div style="font-size: 12px; font-weight: 600; color:var(--article-ink, #12324c);">闭环<br/>评审</div>
 </td>
-<td style="text-align: center; color: #5fb3ea; font-weight: 700; font-size: 16px; width: 4%;">←</td>
-<td style="background: #e6f2fb; border: 1px solid #5fb3ea; border-radius: 8px; padding: 9px 4px; text-align: center; width: 22%;">
+<td style="text-align: center; color:var(--article-accent, #5fb3ea); font-weight: 700; font-size: 16px; width: 4%;">←</td>
+<td style="background:var(--article-panel, #e6f2fb); border: 1px solid #5fb3ea; border-radius: 8px; padding: 9px 4px; text-align: center; width: 22%;">
 <div style="font-size: 10px; color: #5f7b97; font-weight: 500; margin-bottom: 3px;">Claude</div>
-<div style="font-size: 12px; font-weight: 600; color: #12324c;">修<br/>bug</div>
+<div style="font-size: 12px; font-weight: 600; color:var(--article-ink, #12324c);">修<br/>bug</div>
 </td>
-<td style="text-align: center; color: #5fb3ea; font-weight: 700; font-size: 16px; width: 4%;">←</td>
-<td style="background: #fff1e0; border: 1px solid #f2b06a; border-radius: 8px; padding: 9px 4px; text-align: center; width: 22%;">
+<td style="text-align: center; color:var(--article-accent, #5fb3ea); font-weight: 700; font-size: 16px; width: 4%;">←</td>
+<td style="background:var(--article-panel, #fff1e0); border: 1px solid #f2b06a; border-radius: 8px; padding: 9px 4px; text-align: center; width: 22%;">
 <div style="font-size: 10px; color: #5f7b97; font-weight: 500; margin-bottom: 3px;">Codex</div>
-<div style="font-size: 12px; font-weight: 600; color: #12324c;">补测试<br/>盲区</div>
+<div style="font-size: 12px; font-weight: 600; color:var(--article-ink, #12324c);">补测试<br/>盲区</div>
 </td>
 </tr>
 </table>
 
 </div>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">先走一遍：<strong style="color: #3f8fd4; font-weight: 600;">人类给需求上下文 → Claude 出方案对比 + ADR → Claude TDD 实现 → Codex 独立审查</strong>。审查有问题走下半圈：<strong style="color: #3f8fd4; font-weight: 600;">Codex 补测试盲区 → Claude 修 bug → Claude + Codex 做闭环评审 → 人类确认上线</strong>。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">先走一遍：<strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">人类给需求上下文 → Claude 出方案对比 + ADR → Claude TDD 实现 → Codex 独立审查</strong>。审查有问题走下半圈：<strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Codex 补测试盲区 → Claude 修 bug → Claude + Codex 做闭环评审 → 人类确认上线</strong>。</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">关键是两行之间那个回路——任何一步出了问题都能退回上一步重来，不是一条线的流水线。比如 Codex 审出一个递归未修的降级分支，就退回 TDD 环节补测试、再重修。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">关键是两行之间那个回路——任何一步出了问题都能退回上一步重来，不是一条线的流水线。比如 Codex 审出一个递归未修的降级分支，就退回 TDD 环节补测试、再重修。</p>
 
-<h3 style="font-size: 17px; font-weight: 600; color: #12324c; margin: 24px 0 8px;">实战：把 SOP 封装成斜杠命令</h3>
+<h3 style="font-size: 17px; font-weight: 600; color:var(--article-ink, #12324c); margin: 24px 0 8px;">实战：把 SOP 封装成斜杠命令</h3>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">上面这套 pipeline 我封装成了自定义命令。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">上面这套 pipeline 我封装成了自定义命令。</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">一个斜杠即可触发。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">一个斜杠即可触发。</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">两个核心命令：</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">两个核心命令：</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;"><strong style="color: #3f8fd4; font-weight: 600;"><code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">/review-go</code>：Go 后端深度审查</strong></p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;"><code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">/review-go</code>：Go 后端深度审查</strong></p>
 
 <section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;"><span style="display: block; white-space: pre; min-height: 1.4em;">对当前分支相对 main 的全部变更，执行深度审查：</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;">1. 机械扫描（前置，不可跳）：</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;&nbsp;&nbsp;- context.Background 残留</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;&nbsp;&nbsp;- http.NewRequest 未传 ctx</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;&nbsp;&nbsp;- io.ReadAll 无 LimitReader</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;&nbsp;&nbsp;- per-call 创建 Transport/Client</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;">2. 递归审查：</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;&nbsp;&nbsp;- 追到叶子节点（HTTP / DB / 文件 IO）</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;&nbsp;&nbsp;- 覆盖所有分支（成功 / 失败 / 降级 / 重试）</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;">3. 完成度自检：</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;&nbsp;&nbsp;- grep 确认修复无残留</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;&nbsp;&nbsp;- go build 确认接口适配</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;">4. 历史踩坑教训检查（从反模式列表里扫）</span></code></section>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;"><strong style="color: #3f8fd4; font-weight: 600;"><code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">/review-fullstack</code>：全栈审查</strong></p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;"><code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">/review-fullstack</code>：全栈审查</strong></p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">在 <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">/review-go</code> 基础上，增加前后端契约、功能闭环、跨仓库生态链影响的检查。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">在 <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">/review-go</code> 基础上，增加前后端契约、功能闭环、跨仓库生态链影响的检查。</p>
 
-<h3 style="font-size: 17px; font-weight: 600; color: #12324c; margin: 24px 0 8px;">最值钱的部分：历史踩坑教训</h3>
+<h3 style="font-size: 17px; font-weight: 600; color:var(--article-ink, #12324c); margin: 24px 0 8px;">最值钱的部分：历史踩坑教训</h3>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">整套 SOP 最值钱的东西，不是那些命令模板。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">整套 SOP 最值钱的东西，不是那些命令模板。</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">是每次翻车后沉淀下来的<strong style="color: #3f8fd4; font-weight: 600;">"历史踩坑教训"</strong>——作为 Pipeline 的强制检查项。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">是每次翻车后沉淀下来的<strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">"历史踩坑教训"</strong>——作为 Pipeline 的强制检查项。</p>
 
-<blockquote style="border-left: 3px solid #5fb3ea; padding: 10px 16px; margin: 16px 0; background: #f4fbff; color: #3f5f7b; font-size: 14px; border-radius: 0 8px 8px 0;"><strong style="color: #3f8fd4; font-weight: 600;">每次发现一个 AI 审查没抓住的 bug，就把它抽象成"反模式"，加进 Pipeline。</strong></blockquote>
+<blockquote style="border-left: 3px solid #5fb3ea; padding: 10px 16px; margin: 16px 0; background:var(--article-panel, #f4fbff); color:var(--article-secondary, #3f5f7b); font-size: 14px; border-radius: 0 8px 8px 0;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">每次发现一个 AI 审查没抓住的 bug，就把它抽象成"反模式"，加进 Pipeline。</strong></blockquote>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">举个真实案例——某次修 <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">ctx</code> 断层：我让 Claude 把一个外层函数的 <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">context.Background()</code> 改成透传的 <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">ctx</code>，它改完、跑了测试、声明完成。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">举个真实案例——某次修 <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">ctx</code> 断层：我让 Claude 把一个外层函数的 <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">context.Background()</code> 改成透传的 <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">ctx</code>，它改完、跑了测试、声明完成。</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">过 <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">/codex:review</code> 审一遍，Codex 甩回来：外层 <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">ctx</code> 是修好了，但<strong style="color: #3f8fd4; font-weight: 600;">同文件里 <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">if err != nil</code> 的降级分支仍在调 <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">Background</code></strong>；而且同一模块另外两个 helper 也在偷偷 <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">context.Background()</code> 起新的 ctx。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">过 <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">/codex:review</code> 审一遍，Codex 甩回来：外层 <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">ctx</code> 是修好了，但<strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">同文件里 <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">if err != nil</code> 的降级分支仍在调 <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">Background</code></strong>；而且同一模块另外两个 helper 也在偷偷 <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">context.Background()</code> 起新的 ctx。</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">回去一看——确实。Claude 当时的"已完成"只覆盖了改动半径内的那一个入口，没递归到整条调用链。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">回去一看——确实。Claude 当时的"已完成"只覆盖了改动半径内的那一个入口，没递归到整条调用链。</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">修完之后我把"<strong style="color: #3f8fd4; font-weight: 600;">只追成功路径，不追降级分支</strong>"抽成 <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">/review-go</code> 里的 grep 检查项。从那以后，同类 bug 再没漏网过。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">修完之后我把"<strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">只追成功路径，不追降级分支</strong>"抽成 <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">/review-go</code> 里的 grep 检查项。从那以后，同类 bug 再没漏网过。</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">这就是"历史踩坑教训"机制的价值——单次故障不怕，怕的是同类故障重复发生。把每次翻车变成 Pipeline 里的强制检查项，下次 Claude 或 Codex 就会自动扫一遍。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">这就是"历史踩坑教训"机制的价值——单次故障不怕，怕的是同类故障重复发生。把每次翻车变成 Pipeline 里的强制检查项，下次 Claude 或 Codex 就会自动扫一遍。</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">下面是我这 5 个月实际加进去的几条：</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">下面是我这 5 个月实际加进去的几条：</p>
 
 <ol style="padding-left: 22px; margin: 8px 0;">
-<li style="margin: 4px 0;"><strong style="color: #3f8fd4; font-weight: 600;">只审修改的函数，不递归审子函数</strong> — 修了外层 ctx，但它调的 helper 仍用 <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">context.Background()</code></li>
-<li style="margin: 4px 0;"><strong style="color: #3f8fd4; font-weight: 600;">只追成功路径，不追降级分支</strong> — 正常路径 ctx 修好了，但 <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">if err != nil</code> 后的降级路径仍用 Background</li>
-<li style="margin: 4px 0;"><strong style="color: #3f8fd4; font-weight: 600;">接口签名改了但没检查所有实现</strong> — dev 上有 main 没有的实现文件，合并后编译失败</li>
-<li style="margin: 4px 0;"><strong style="color: #3f8fd4; font-weight: 600;">声称修完但没 grep 验证残留</strong> — "ctx 断层已修"，但同文件还有多个 helper 用 Background</li>
-<li style="margin: 4px 0;"><strong style="color: #3f8fd4; font-weight: 600;">邻居函数有相同问题没扫到</strong> — 修了一个函数的 per-call Transport，同文件其他函数也在 per-call 创建</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">只审修改的函数，不递归审子函数</strong> — 修了外层 ctx，但它调的 helper 仍用 <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">context.Background()</code></li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">只追成功路径，不追降级分支</strong> — 正常路径 ctx 修好了，但 <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">if err != nil</code> 后的降级路径仍用 Background</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">接口签名改了但没检查所有实现</strong> — dev 上有 main 没有的实现文件，合并后编译失败</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">声称修完但没 grep 验证残留</strong> — "ctx 断层已修"，但同文件还有多个 helper 用 Background</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">邻居函数有相同问题没扫到</strong> — 修了一个函数的 per-call Transport，同文件其他函数也在 per-call 创建</li>
 </ol>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">这个清单会越用越长——每加一条，后面同类 bug 的漏检率降低一档。这是 Pipeline 的复利：每次翻车都会沉淀成下次的强制检查项。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">这个清单会越用越长——每加一条，后面同类 bug 的漏检率降低一档。这是 Pipeline 的复利：每次翻车都会沉淀成下次的强制检查项。</p>
 
-<h3 style="font-size: 17px; font-weight: 600; color: #12324c; margin: 24px 0 8px;">一个术语澄清</h3>
+<h3 style="font-size: 17px; font-weight: 600; color:var(--article-ink, #12324c); margin: 24px 0 8px;">一个术语澄清</h3>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">在 Claude Code 语境里，很多人说"multi-agent"会先想到内置的 <strong style="color: #3f8fd4; font-weight: 600;">subagent</strong> 机制——同一模型的多个实例并行调研；更广义的 multi-agent 则包括多个模型、多个工具链、多个上下文窗口之间的协作。一个常被引用的数据来自 Anthropic 官方博客<a href="https://www.anthropic.com/engineering/built-multi-agent-research-system">《How we built our multi-agent research system》</a>（anthropic.com/engineering/built-multi-agent-research-system）：2025 年 Opus 4 作 lead + Sonnet 4 作 subagent 的组合，在内部 research 评测上比单 Opus 4 高 90.2%（注意：这是 research eval，不是代码评审 eval，不能直接外推到软件开发场景）。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">在 Claude Code 语境里，很多人说"multi-agent"会先想到内置的 <strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">subagent</strong> 机制——同一模型的多个实例并行调研；更广义的 multi-agent 则包括多个模型、多个工具链、多个上下文窗口之间的协作。一个常被引用的数据来自 Anthropic 官方博客<a href="https://www.anthropic.com/engineering/built-multi-agent-research-system">《How we built our multi-agent research system》</a>（anthropic.com/engineering/built-multi-agent-research-system）：2025 年 Opus 4 作 lead + Sonnet 4 作 subagent 的组合，在内部 research 评测上比单 Opus 4 高 90.2%（注意：这是 research eval，不是代码评审 eval，不能直接外推到软件开发场景）。</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">本文讲的"多 Agent 协作"是 <strong style="color: #3f8fd4; font-weight: 600;">跨模型</strong>（Claude × Codex）这一种，主要为了消除单一模型的盲区。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">本文讲的"多 Agent 协作"是 <strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">跨模型</strong>（Claude × Codex）这一种，主要为了消除单一模型的盲区。</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">两者不冲突，实际做重要功能时我会都用：<strong style="color: #3f8fd4; font-weight: 600;">Claude 的 subagent 并行读代码做调研 → Claude 出方案和实现 → Codex 交叉审</strong>。内置 subagent 的具体用法下一篇单讲。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">两者不冲突，实际做重要功能时我会都用：<strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Claude 的 subagent 并行读代码做调研 → Claude 出方案和实现 → Codex 交叉审</strong>。内置 subagent 的具体用法下一篇单讲。</p>
 
-<hr style="border: none; border-top: 1px solid #d8e6f0; margin: 28px 0;">
+<hr style="border: none; border-top: 1px solid var(--article-border, #d8e6f0); margin: 28px 0;">
 
-<h2 style="font-size: 20px; font-weight: 700; color: #12324c; margin: 32px 0 12px; padding-bottom: 8px; border-bottom: 2px solid #5fb3ea;">AI 做不到什么</h2>
+<h2 style="font-size: 20px; font-weight: 700; color:var(--article-ink, #12324c); margin: 32px 0 12px; padding-bottom: 8px; border-bottom: 2px solid #5fb3ea;">AI 做不到什么</h2>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">讲完三条主线，补一段边界：这段时间下来我很清楚，AI 再强，有 3 件事做不到。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">讲完三条主线，补一段边界：这段时间下来我很清楚，AI 再强，有 3 件事做不到。</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;"><strong style="color: #3f8fd4; font-weight: 600;">1. 架构决策。</strong></p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">1. 架构决策。</strong></p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">Claude 能给你列方案，但<strong style="color: #3f8fd4; font-weight: 600;">选哪个必须人类定</strong>。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">Claude 能给你列方案，但<strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">选哪个必须人类定</strong>。</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">因为架构决策需要对"业务未来方向"的直觉——这件事 AI 没数据。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">因为架构决策需要对"业务未来方向"的直觉——这件事 AI 没数据。</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;"><strong style="color: #3f8fd4; font-weight: 600;">2. 跨系统一致性判断。</strong></p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">2. 跨系统一致性判断。</strong></p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">单仓库内 Claude 跑得很好。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">单仓库内 Claude 跑得很好。</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">但"这 3 个仓库之间的接口约定是否合理"、"这次改动对生态链其他仓库有什么影响"——</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">但"这 3 个仓库之间的接口约定是否合理"、"这次改动对生态链其他仓库有什么影响"——</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;"><strong style="color: #3f8fd4; font-weight: 600;">AI 的上下文窗口装不下这些。</strong></p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">AI 的上下文窗口装不下这些。</strong></p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">必须人类在脑子里建立全局地图。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">必须人类在脑子里建立全局地图。</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;"><strong style="color: #3f8fd4; font-weight: 600;">3. 产品体验直觉。</strong></p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">3. 产品体验直觉。</strong></p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">"这个交互用户会喜欢吗"、"这个错误提示会不会吓到用户"、"这个功能该不该默认开启"——</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">"这个交互用户会喜欢吗"、"这个错误提示会不会吓到用户"、"这个功能该不该默认开启"——</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">这些问题 AI 没有真实用户反馈，只能给你"一般做法"。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">这些问题 AI 没有真实用户反馈，只能给你"一般做法"。</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">所以 AI 放大的是你已经有的判断力。判断力本身还得你自己有。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">所以 AI 放大的是你已经有的判断力。判断力本身还得你自己有。</p>
 
-<hr style="border: none; border-top: 1px solid #d8e6f0; margin: 28px 0;">
+<hr style="border: none; border-top: 1px solid var(--article-border, #d8e6f0); margin: 28px 0;">
 
-<h2 style="font-size: 20px; font-weight: 700; color: #12324c; margin: 32px 0 12px; padding-bottom: 8px; border-bottom: 2px solid #5fb3ea;">关于 Opus 4.7：SOP 要不要改？</h2>
+<h2 style="font-size: 20px; font-weight: 700; color:var(--article-ink, #12324c); margin: 32px 0 12px; padding-bottom: 8px; border-bottom: 2px solid #5fb3ea;">关于 Opus 4.7：SOP 要不要改？</h2>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;"><a href="https://www.anthropic.com/news/claude-opus-4-7">Claude Opus 4.7（anthropic.com/news/claude-opus-4-7）</a> 刚发，官方宣称在编码、长任务、指令遵循这几个维度对前一代有提升，问得最多的一个问题是：这套 SOP 在 4.7 上要不要改？</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><a href="https://www.anthropic.com/news/claude-opus-4-7">Claude Opus 4.7（anthropic.com/news/claude-opus-4-7）</a> 刚发，官方宣称在编码、长任务、指令遵循这几个维度对前一代有提升，问得最多的一个问题是：这套 SOP 在 4.7 上要不要改？</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">答案：<strong style="color: #3f8fd4; font-weight: 600;">主干不用推倒重来，但提示词、评审门禁、测试 harness 要重新跑一遍回归</strong>。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">答案：<strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">主干不用推倒重来，但提示词、评审门禁、测试 harness 要重新跑一遍回归</strong>。</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">原因是：模型升级不会让"要不要做设计、要不要跑测试、要不要交叉审查"这些问题失效——这三条是工作流层面的判断，跟模型能力无关。但模型更强之后，同一段提示词和旧的验证门槛可能不再匹配：</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">原因是：模型升级不会让"要不要做设计、要不要跑测试、要不要交叉审查"这些问题失效——这三条是工作流层面的判断，跟模型能力无关。但模型更强之后，同一段提示词和旧的验证门槛可能不再匹配：</p>
 
 <ul style="padding-left: 22px; margin: 8px 0;">
-<li style="margin: 4px 0;"><strong style="color: #3f8fd4; font-weight: 600;">提示词的措辞</strong>：老版本能容忍的模糊指令，4.7 可能更按字面执行，范围和输出格式都得更精确</li>
-<li style="margin: 4px 0;"><strong style="color: #3f8fd4; font-weight: 600;">评审门禁</strong>：如果你之前的 <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">/review-go</code> 严格度是照 4.6 的行为微调过的，换 4.7 之后得重新标定什么算 noise、什么算真问题</li>
-<li style="margin: 4px 0;"><strong style="color: #3f8fd4; font-weight: 600;">测试 harness 的期望值</strong>：一些"通常会失败所以 tolerant"的 case，在 4.7 上可能变成稳定通过——该收紧的就收紧</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">提示词的措辞</strong>：老版本能容忍的模糊指令，4.7 可能更按字面执行，范围和输出格式都得更精确</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">评审门禁</strong>：如果你之前的 <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">/review-go</code> 严格度是照 4.6 的行为微调过的，换 4.7 之后得重新标定什么算 noise、什么算真问题</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">测试 harness 的期望值</strong>：一些"通常会失败所以 tolerant"的 case，在 4.7 上可能变成稳定通过——该收紧的就收紧</li>
 </ul>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">我正在用 4.7 把整套 SOP 重跑一遍做回归验证，重点盯这几项：Plan 模式的架构分析、长上下文一次吞整个仓库、交叉审查时的对抗性。数据和 case 拿到后下一篇单独写。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">我正在用 4.7 把整套 SOP 重跑一遍做回归验证，重点盯这几项：Plan 模式的架构分析、长上下文一次吞整个仓库、交叉审查时的对抗性。数据和 case 拿到后下一篇单独写。</p>
 
 <p style="font-size: 13px; color: #5f7b97; margin: 8px 0;">（本节基于 2026-04 状态，后续随版本迭代，判断细节会滚动更新。）</p>
 
-<hr style="border: none; border-top: 1px solid #d8e6f0; margin: 28px 0;">
+<hr style="border: none; border-top: 1px solid var(--article-border, #d8e6f0); margin: 28px 0;">
 
-<h2 style="font-size: 20px; font-weight: 700; color: #12324c; margin: 32px 0 12px; padding-bottom: 8px; border-bottom: 2px solid #5fb3ea;">SOP 在哪儿：想直接用的话</h2>
+<h2 style="font-size: 20px; font-weight: 700; color:var(--article-ink, #12324c); margin: 32px 0 12px; padding-bottom: 8px; border-bottom: 2px solid #5fb3ea;">SOP 在哪儿：想直接用的话</h2>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">这套 SOP 本身是做河蟹 AI 的副产品，不是单独写给别人看的。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">这套 SOP 本身是做河蟹 AI 的副产品，不是单独写给别人看的。</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">但既然整理出来了，完整内容我放到了 GitHub。它不是一篇文章的附件，而是一套可以直接放进项目里试跑的工作流包：</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">但既然整理出来了，完整内容我放到了 GitHub。它不是一篇文章的附件，而是一套可以直接放进项目里试跑的工作流包：</p>
 
 <ul style="padding-left: 22px; margin: 8px 0;">
-<li style="margin: 4px 0;"><strong style="color: #3f8fd4; font-weight: 600;">4 份实战手册</strong>：使用手册 / 提示词大全 / 扩展清单 / 设计驱动·测试闭环·多Agent协作</li>
-<li style="margin: 4px 0;"><strong style="color: #3f8fd4; font-weight: 600;">7 个可直接复制的 Claude Code command 模板 + 配套数据模板</strong>：<code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">/review-go</code>、<code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">/review-fullstack</code>、<code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">/apple-design</code>、<code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">/test-dev</code>、<code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">/adr-new</code> 等，外加 <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">data/api-test-cases.md</code> 这类命令运行时引用的数据</li>
-<li style="margin: 4px 0;"><strong style="color: #3f8fd4; font-weight: 600;">2 份 CLAUDE.md 模板</strong>：用户全局偏好（<code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">~/.claude/CLAUDE.md</code>）+ 项目级覆盖（项目根 <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">CLAUDE.md</code>）</li>
-<li style="margin: 4px 0;"><strong style="color: #3f8fd4; font-weight: 600;">Hooks 合集</strong>：3 个开箱即用脚本（敏感文件拦截 / 改完自动 lint / 收尾前跑测试）+ <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">settings.json</code> 配置样本</li>
-<li style="margin: 4px 0;"><strong style="color: #3f8fd4; font-weight: 600;">DevTestOps 完整流程 Skill</strong>：7 阶段交付规范 + 8 类专项测试触发规则（<code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">~/.claude/skills/devtestops/</code>）</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">4 份实战手册</strong>：使用手册 / 提示词大全 / 扩展清单 / 设计驱动·测试闭环·多Agent协作</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">7 个可直接复制的 Claude Code command 模板 + 配套数据模板</strong>：<code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">/review-go</code>、<code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">/review-fullstack</code>、<code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">/apple-design</code>、<code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">/test-dev</code>、<code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">/adr-new</code> 等，外加 <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">data/api-test-cases.md</code> 这类命令运行时引用的数据</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">2 份 CLAUDE.md 模板</strong>：用户全局偏好（<code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">~/.claude/CLAUDE.md</code>）+ 项目级覆盖（项目根 <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">CLAUDE.md</code>）</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Hooks 合集</strong>：3 个开箱即用脚本（敏感文件拦截 / 改完自动 lint / 收尾前跑测试）+ <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">settings.json</code> 配置样本</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">DevTestOps 完整流程 Skill</strong>：7 阶段交付规范 + 8 类专项测试触发规则（<code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">~/.claude/skills/devtestops/</code>）</li>
 </ul>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">都在 <strong style="color: #3f8fd4; font-weight: 600;">hexclaw-desktop</strong>（河蟹 AI 桌面端仓库）的 <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">docs/claude-code-practices/</code> 目录下：</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">都在 <strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">hexclaw-desktop</strong>（河蟹 AI 桌面端仓库）的 <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">docs/claude-code-practices/</code> 目录下：</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;"><strong style="color: #3f8fd4; font-weight: 600;">GitHub</strong>：<code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">github.com/hexagon-codes/hexclaw-desktop</code></p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">GitHub</strong>：<code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">github.com/hexagon-codes/hexclaw-desktop</code></p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">你可以 clone 下来直接用。更建议的方式是：先在一个真实项目里跑一次 <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">/review-go</code> 或 <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">/review-fullstack</code>，让它扫出第一批问题，再决定要不要把这套 SOP 长期放进你的团队流程。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">你可以 clone 下来直接用。更建议的方式是：先在一个真实项目里跑一次 <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">/review-go</code> 或 <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">/review-fullstack</code>，让它扫出第一批问题，再决定要不要把这套 SOP 长期放进你的团队流程。</p>
 
 <section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;"><span style="display: block; white-space: pre; min-height: 1.4em;">git clone https://github.com/hexagon-codes/hexclaw-desktop</span><span style="display: block; white-space: pre; min-height: 1.4em;">cd hexclaw-desktop</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;"># 一次性建好所有目标目录</span><span style="display: block; white-space: pre; min-height: 1.4em;">mkdir -p ~/.claude/commands ~/.claude/data ~/.claude/skills ~/.claude/hooks</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;"># 1. Command 模板（/review-go、/review-fullstack、/adr-new 等）</span><span style="display: block; white-space: pre; min-height: 1.4em;">cp docs/claude-code-practices/command/*.md ~/.claude/commands/</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;"># 2. 命令运行时引用的数据模板（/test-dev 用的 API 测试用例等）</span><span style="display: block; white-space: pre; min-height: 1.4em;">cp docs/claude-code-practices/data/*.md ~/.claude/data/</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;"># 3. DevTestOps Skill（自动触发完整测试流程）</span><span style="display: block; white-space: pre; min-height: 1.4em;">cp -r docs/claude-code-practices/skill/devtestops ~/.claude/skills/</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;"># 4. CLAUDE.md 偏好模板（用户全局）</span><span style="display: block; white-space: pre; min-height: 1.4em;">cp docs/claude-code-practices/templates/USER-CLAUDE.md.template ~/.claude/CLAUDE.md</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;"># 5. Hooks（改完自动 lint / 收尾前跑测试 / 拦截敏感文件）</span><span style="display: block; white-space: pre; min-height: 1.4em;">cp docs/claude-code-practices/hooks/*.sh ~/.claude/hooks/</span><span style="display: block; white-space: pre; min-height: 1.4em;">chmod +x ~/.claude/hooks/*.sh</span><span style="display: block; white-space: pre; min-height: 1.4em;"># 最后把 hooks/README.md 里的 settings.json 片段合并到 ~/.claude/settings.json</span></code></section>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">仓库里还有这套 SOP 做出来的产品本身——</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">仓库里还有这套 SOP 做出来的产品本身——</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;"><strong style="color: #3f8fd4; font-weight: 600;">河蟹 AI</strong>，一个本地跑的开源 AI Agent 桌面应用，所有数据不出本机（<a href="https://mp.weixin.qq.com/s/PdJRKkH4qiBS-IZBifbuag">5 分钟上手指南</a>）。</p>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">河蟹 AI</strong>，一个本地跑的开源 AI Agent 桌面应用，所有数据不出本机（<a href="https://mp.weixin.qq.com/s/PdJRKkH4qiBS-IZBifbuag">5 分钟上手指南</a>）。</p>
 
-<p style="margin: 8px 0; color: #12324c; line-height: 1.85; font-size: 15px;">如果这篇对你有用，欢迎去 <a href="https://github.com/hexagon-codes">github.com/hexagon-codes</a> star 一下 6 个核心仓库（toolkit / ai-core / hexagon / hexclaw / hexclaw-desktop / hexagon-ui）——整条生态链都开源，感兴趣哪层就看哪层。后续这套 SOP 的命令、Skill、Hooks 和真实踩坑清单，都会在 <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">hexclaw-desktop/docs/claude-code-practices/</code> 里继续迭代；有更狠的检查项，也欢迎直接提 issue / PR。</p>
-
-<div style="background: #fafcfe; border-top: 2px solid #5fb3ea; padding: 16px; margin: 32px 0 0; font-size: 13px; color: #3f5f7b; border-radius: 8px;">
-<p style="margin: 4px 0;"><strong style="color: #3f8fd4;">下一篇预告</strong>：河蟹 AI vs OpenClaw / Hermes：2026 本地 AI Agent 的三条路径。</p>
-</div>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">如果这篇对你有用，欢迎去 <a href="https://github.com/hexagon-codes">github.com/hexagon-codes</a> star 一下 6 个核心仓库（toolkit / ai-core / hexagon / hexclaw / hexclaw-desktop / hexagon-ui）——整条生态链都开源，感兴趣哪层就看哪层。后续这套 SOP 的命令、Skill、Hooks 和真实踩坑清单，都会在 <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">hexclaw-desktop/docs/claude-code-practices/</code> 里继续迭代；有更狠的检查项，也欢迎直接提 issue / PR。</p>
 
 
-<p style="text-align: center; color: #7b8fa3; font-size: 13px; margin: 16px 0 0; line-height: 2;">
-<strong style="color: #12324c; font-size: 14px;">HexClaw 河蟹 AI</strong><br/>
-本地部署 · 数据私有 · 开源免费<br/>
-<span style="color: #5fb3ea;">官网 hexclaw.net</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span style="color: #5fb3ea;">GitHub hexagon-codes</span><br/>
-<span style="color: #5fb3ea;">微博 @HexClaw</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span style="color: #5fb3ea;">X @hexclawapp</span><br/>
-<span style="color: #999;">邮箱：ai@hexclaw.net</span>
+
+
+<p class="blog-brand-footer" data-blog-brand-footer="zh" data-blog-brand-overrides="{}" style="text-align: center; color: var(--article-muted, #7b8fa3); font-size: 13px; margin: 16px 0 0; line-height: 2;">
+<strong style="color: var(--article-ink, #12324c); font-size: 14px;">HexClaw 河蟹 AI</strong><br/>
+本地云端均可部署 · 数据自主掌控 · 软件开源免费<br/>
+<a href="https://hexclaw.net" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">官网 <bdi dir="ltr">hexclaw.net</bdi></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://github.com/hexagon-codes" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">GitHub <bdi dir="ltr">hexagon-codes</bdi></a><br/>
+<a href="https://weibo.com/u/4097207240" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">微博 <bdi dir="ltr">@HexClaw</bdi></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">X <bdi dir="ltr">@hexclawapp</bdi></a><br/>
+<a href="mailto:ai@hexclaw.net" style="color: var(--article-muted, #999); text-decoration: none;">邮箱：<bdi dir="ltr">ai@hexclaw.net</bdi></a>
 </p>
     </article>
 
@@ -730,33 +732,13 @@
     <span class="footer-copy">&copy; 2025&ndash;2026 hexagon-codes</span>
   </div>
 </footer>
-<script src="../../assets/js/home.js"></script>
+<script src="../../assets/js/theme.js?v=2e4a1828feef"></script>
+<script src="../../assets/js/docs-nav.js?v=5a103861aec2"></script>
 <button type="button" class="back-to-top" id="backToTop" aria-label="返回顶部" title="返回顶部">
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg>
   <span>顶部</span>
 </button>
-<script>
-(function() {
-  const btn = document.getElementById('backToTop');
-  if (!btn) return;
-  let ticking = false;
-  window.addEventListener('scroll', function() {
-    if (!ticking) {
-      window.requestAnimationFrame(function() {
-        if (window.scrollY > 320) {
-          btn.classList.add('is-visible');
-        } else {
-          btn.classList.remove('is-visible');
-        }
-        ticking = false;
-      });
-      ticking = true;
-    }
-  }, { passive: true });
-  btn.addEventListener('click', function() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-})();
-</script>
+
+<script src="../../assets/js/blog.js?v=c72e1db5a6ec"></script>
 </body>
 </html>

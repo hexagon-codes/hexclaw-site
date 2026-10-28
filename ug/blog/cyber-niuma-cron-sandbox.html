@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="ug" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/favicon-32.png">
+<title>HexClaw نىڭ «رەقەملىك ئىش ھايۋىنى»نى يېتىشتۈرۈش خاتىرىسى: بىر جۈملىنى ئۆزىنى ئوڭشايدىغان قۇم ساندۇقى script ىغا تۈزۈپ، 7×24 ئىش قىلدۇرۇش｜HexClaw تېخنىكا بىلوگى</title>
+<meta name="description" content="بىر جۈملە تەبىئىي تىلنى ئۆزىنى ئوڭشايدىغان قۇم ساندۇقى script ىغا تۈزۈش، ھەمدە بۇ ئىشنى script ياكى Agent ئىجرا قىلىشىنى ئاپتوماتىك بەلگىلەش.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:site_name" content="HexClaw">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HexClaw نىڭ «رەقەملىك ئىش ھايۋىنى»نى يېتىشتۈرۈش خاتىرىسى: بىر جۈملىنى ئۆزىنى ئوڭشايدىغان قۇم ساندۇقى script ىغا تۈزۈپ، 7×24 ئىش قىلدۇرۇش｜HexClaw تېخنىكا بىلوگى">
+<meta property="og:description" content="بىر جۈملە تەبىئىي تىلنى ئۆزىنى ئوڭشايدىغان قۇم ساندۇقى script ىغا تۈزۈش، ھەمدە بۇ ئىشنى script ياكى Agent ئىجرا قىلىشىنى ئاپتوماتىك بەلگىلەش.">
+<meta property="og:url" content="https://hexclaw.net/ug/blog/cyber-niuma-cron-sandbox">
+<meta property="og:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta property="og:image:alt" content="HexClaw بەلگىسى">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta property="og:locale" content="ug_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="HexClaw نىڭ «رەقەملىك ئىش ھايۋىنى»نى يېتىشتۈرۈش خاتىرىسى: بىر جۈملىنى ئۆزىنى ئوڭشايدىغان قۇم ساندۇقى script ىغا تۈزۈپ، 7×24 ئىش قىلدۇرۇش｜HexClaw تېخنىكا بىلوگى">
+<meta name="twitter:description" content="بىر جۈملە تەبىئىي تىلنى ئۆزىنى ئوڭشايدىغان قۇم ساندۇقى script ىغا تۈزۈش، ھەمدە بۇ ئىشنى script ياكى Agent ئىجرا قىلىشىنى ئاپتوماتىك بەلگىلەش.">
+<meta name="twitter:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta name="twitter:image:alt" content="HexClaw بەلگىسى">
+<link rel="canonical" href="https://hexclaw.net/ug/blog/cyber-niuma-cron-sandbox">
+<link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/cyber-niuma-cron-sandbox">
+<link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/cyber-niuma-cron-sandbox">
+<link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/cyber-niuma-cron-sandbox">
+<link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/cyber-niuma-cron-sandbox">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "HexClaw نىڭ «رەقەملىك ئىش ھايۋىنى»نى يېتىشتۈرۈش خاتىرىسى: بىر جۈملىنى ئۆزىنى ئوڭشايدىغان قۇم ساندۇقى script ىغا تۈزۈپ، 7×24 ئىش قىلدۇرۇش",
+  "description": "بىر جۈملە تەبىئىي تىلنى ئۆزىنى ئوڭشايدىغان قۇم ساندۇقى script ىغا تۈزۈش، ھەمدە بۇ ئىشنى script ياكى Agent ئىجرا قىلىشىنى ئاپتوماتىك بەلگىلەش.",
+  "url": "https://hexclaw.net/ug/blog/cyber-niuma-cron-sandbox",
+  "inLanguage": "ug",
+  "datePublished": "2026-06-24",
+  "image": "https://hexclaw.net/assets/brand/hexclaw-logo.png",
+  "publisher": {
+    "@type": "Organization",
+    "name": "hexagon-codes",
+    "url": "https://hexclaw.net/",
+    "@id": "https://hexclaw.net/#organization"
+  },
+  "@id": "https://hexclaw.net/ug/blog/cyber-niuma-cron-sandbox#article"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "HexClaw", "item": "https://hexclaw.net/ug/"},
+    {"@type": "ListItem", "position": 2, "name": "تېخنىكا بىلوگى", "item": "https://hexclaw.net/ug/blog/"},
+    {"@type": "ListItem", "position": 3, "name": "HexClaw نىڭ «رەقەملىك ئىش ھايۋىنى»نى يېتىشتۈرۈش خاتىرىسى: بىر جۈملىنى ئۆزىنى ئوڭشايدىغان قۇم ساندۇقى script ىغا تۈزۈپ، 7×24 ئىش قىلدۇرۇش", "item": "https://hexclaw.net/ug/blog/cyber-niuma-cron-sandbox"}
+  ],
+  "@id": "https://hexclaw.net/ug/blog/cyber-niuma-cron-sandbox#breadcrumb"
+}
+</script>
+<link rel="stylesheet" href="../../assets/css/docs-eb2895dd79c5.css">
+<link rel="stylesheet" href="../../assets/css/blog-a8e5008ac3d1.css">
+</head>
+<body class="blog-page blog-article-page">
+<a href="#main" class="skip-link">ئاساسلىق مەزمۇنغا ئاتلاش</a>
+<nav class="tn topnav" id="nav">
+  <a href="/ug/" class="tn-b topnav-brand"><img width="72" height="72" src="../../assets/brand/hexclaw-icon-72.png" class="tn-l topnav-logo" alt="ھېشى AI"><span class="tn-n topnav-name">ھېشى AI</span></a>
+  <button type="button" class="tn-burger topnav-burger" aria-label="تىزىملىك" aria-expanded="false" aria-controls="primary-navigation"><span></span><span></span><span></span></button><div class="tn-r topnav-links" id="primary-navigation"><a href="/ug/">باش بەت</a><a href="/ug/#cases">ئىشلىتىش كۆرۈنۈشلىرى</a><a href="/ug/#features">ئىقتىدارلار</a><a href="/ug/#quickstart">باشلاش</a><a href="/ug/#ecosystem">ئوچۇق ئېكولوگىيە</a><a href="/ug/blog/" class="is-active">تېخنىكا بىلوگى</a><a href="/ug/docs/">ھۆججەتلەر مەركىزى</a><div class="lang-menu" data-lang-menu><button type="button" class="lang-trigger" aria-haspopup="menu" aria-expanded="false" aria-label="تىل ئالماشتۇرۇش"><svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 0 20"></path><path d="M12 2a15.3 15.3 0 0 0 0 20"></path></svg><span class="lang-current" lang="zh-CN" dir="ltr">维吾尔语</span><svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="lang-menu-list" role="menu"><a href="/zh/blog/cyber-niuma-cron-sandbox" role="menuitem">中文</a><a href="/en/blog/cyber-niuma-cron-sandbox" role="menuitem">English</a><a href="/ug/blog/cyber-niuma-cron-sandbox" role="menuitem" class="is-active" aria-current="true" lang="zh-CN" dir="ltr">维吾尔语</a></div></div><button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="ئۇسلۇب ئالماشتۇرۇش"><svg class="ti-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="ti-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="nav-cta">GitHub <span class="nav-star-badge" id="gh-stars">&#9733;</span></a></div>
+</nav>
+
+<main id="main" class="blog-main">
+  <div class="blog-article-container">
+    <nav class="blog-breadcrumb" aria-label="面包屑导航">
+      <a href="/ug/">باش بەت</a>
+      <span class="blog-breadcrumb-sep">/</span>
+      <a href="/ug/blog/">تېخنىكا بىلوگى</a>
+      <span class="blog-breadcrumb-sep">/</span>
+      <span aria-current="page">يادرولۇق سىستېمىنى چوڭقۇر چۈشىنىش</span>
+    </nav>
+
+    <header class="blog-header">
+      <div class="blog-header-tags">
+        <span class="blog-badge-series">ئاپتوماتلاشتۇرۇش ماتورى</span>
+      </div>
+      <h1 class="blog-article-title">HexClaw نىڭ «رەقەملىك ئىش ھايۋىنى»نى يېتىشتۈرۈش خاتىرىسى: بىر جۈملىنى ئۆزىنى ئوڭشايدىغان قۇم ساندۇقى script ىغا تۈزۈپ، 7×24 ئىش قىلدۇرۇش</h1>
+      <div class="article-provenance-banner">
+        <div class="provenance-left">
+          <span class="provenance-origin-badge">تۇنجى قېتىم WeChat رەسمىي ھېساباتىدا ئېلان قىلىنغان</span>
+          <span class="provenance-text">بۇ ماقالە ئالدى بىلەن WeChat رەسمىي ھېساباتى<strong>「hexclaw」</strong>(ID: hexclaw) نىڭ رەسمىي تېخنىكا سەھىپىسىدە ئېلان قىلىنغان · ئېلان ۋاقتى: <strong>2026-يىلى 6-ئاينىڭ 24-كۈنى</strong> · ئوقۇشقا تەخمىنەن 12 مىنۇت</span>
+        </div>
+        <a href="https://mp.weixin.qq.com/s/EvQT0VqH9ep6LXo89ZM-fw" target="_blank" rel="noopener noreferrer" class="provenance-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          WeChat دىكى ئەسلى ماقالە ↗
+        </a>
+      </div>
+    </header>
+
+    <article class="blog-content">
+
+
+<p style="margin: 16px 0;">«ھەر كۈنى رىقابەتچىنىڭ يېڭىلىقىنى كۆزىتىپ، ئالدىنقى قېتىمدىن كېيىنكىسىنىلا رەتلەپ Feishu غا ئەۋەت»، «بىر نەچچە مەنبەنىڭ يېڭى مەزمۇنىنى ئېلىپ بىلىم ئامبىرىغا سال»، «يەرلىك ھۆججەتلەرنى رەتلەپ ھەپتىلىك دوكلات قىل» — بۇ تەكرار، مېخانىكىلىق، بەلگىلىك ۋاقىتتا بولىدىغان ئىشلار ئىلگىرى cron script، Zapier / IFTTT ۋە ھېچكىم ئاسرىغۇسى كەلمەيدىغان ئۇلىغۇچ كودلارغا تارقالغان.</p>
+
+<p style="margin: 8px 0;">AI Agent چىققاندىن كېيىن بۇ ئىشنىڭ كىرىشى بىر جۈملىگە چۈشۈشى كېرەك:<strong style="color:var(--article-accent, #3f8fd4);">نىيىتىڭىزنى ئېيتىسىز، بۆلۈش، ئىجرا ۋە ئاخىرلاشتۇرۇشنى ئۆزى قىلىدۇ</strong>. نەتىجە<strong style="color:var(--article-accent, #3f8fd4);">سىز دېگەندەك بىر تەرەپ قىلىنىدۇ</strong>— سىزگە، توپقا ئەۋەتىش ياكى ھۆججەت ساقلاش بولسۇن. ئەڭ قىممەتلىك بىر ئۇسۇلى<strong style="color:var(--article-accent, #3f8fd4);">Agent نىڭ ئۆز بىلىم ئامبىرى ۋە ئەستە ساقلىشىغا قايتا يېزىش</strong>، ئۆزىنى سانلىق مەلۇمات بىلەن باقۇپ، ئىجرا قىلغانسېرى يېڭىلىنىپ، سىزنى تېخىمۇ چۈشىنىش. ئاددىي ئېيتساق، 7×24 چارچىمايدىغان، ئۆزى ئىقتىدار توپلايدىغان «رەقەملىك ئىش ھايۋىنى» بېقىش.</p>
+
+<p style="margin: 8px 0;">«بىر جۈملە دېيىش»تىن «يىل بويى ئىشەنچلىك تاماملاش»قىچە بىر قاتار قىيىن ئىنژېنېرلىق مەسىلىسى بار. بۇ ماتورنىڭ قىلىدىغىنى<strong style="color:var(--article-accent, #3f8fd4);">تەبىئىي تىلدىكى بىر جۈملىنى ئۆزىنى ئوڭشايدىغان قۇم ساندۇقى script ىغا تۈزۈش، ھەمدە ئىشنى script ياكى Agent ئىجرا قىلىشىنى ئاپتوماتىك بەلگىلەش</strong>。</p>
+
+<p style="margin: 8px 0;">بۇ ماقالە «AI ئاپتوماتلاشتۇرۇشقا ياردەم بېرىدۇ» دېگەن توغرا، ئەمما قۇرۇق گەپنى ئەمەس،<strong style="color:var(--article-accent, #3f8fd4);">Agent «ۋاقىتلىق ئىش»نى ھەقىقىي ئۈستىگە ئېلىشى ئۈچۈن قايسى ئىنژېنېرلىق مەسىلىسىنى ھەل قىلىش كېرەكلىكىنىلا چۇۋۇيدۇ</strong>。</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<blockquote style="border-left: 3px solid #3f8fd4; padding: 14px 18px; margin: 20px 0; background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); font-size: 14px; border-radius: 0 8px 8px 0; line-height: 1.85;">
+<strong style="color:var(--article-accent, #3f8fd4);">ماقالىنىڭ ئاساسلىق قارىشى</strong><br/>
+Agent ۋاقىتلىق ۋەزىپىنى ئۈستىگە ئالغاندا بىرىنچى، ئەڭ مۇھىم لايىھە قارارى:<strong style="color:var(--article-accent, #3f8fd4);">ھەر قېتىم ۋاقىت كەلگەندە چوڭ مودېلنى بىر قېتىم چاقىرىش كېرەكمۇ؟</strong><br/>
+HexClaw نىڭ جاۋابى<strong style="color:var(--article-accent, #3f8fd4);">ياق</strong>— ۋەزىپە قۇرغاندا LLM نى بىر قېتىم چاقىرىپ، سۆزىڭىزنى<strong style="color:var(--article-accent, #3f8fd4);">script قا تۈزۈيدۇ</strong>؛ كېيىن ھەر ئىجراسىدا بۇ ئېنىق كود يۈرىدۇ، ئىجرا مەزگىلىدە مودېل بىر قېتىممۇ چاقىرىلمايدۇ.<br/>
+بۇ بىر قارار تۆۋەندە جاۋاب بېرىشكە تېگىشلىك تۆت سوئالنى مەجبۇر چىقاردى. ماقالە شۇ تۆت جاۋاب.
+</blockquote>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">ئالدى بىلەن بەلگىلەيلى: ھەر قېتىم تەپەككۇر ئەمەس، بىر قېتىم تۈزۈش</h2>
+
+<p style="margin: 8px 0;">ۋاقىتلىق ۋەزىپىنىڭ ئەڭ ئاددىي AI ئىجراسى:<strong style="color:var(--article-accent, #3f8fd4);">ھەر ۋاقىت كەلگەندە ۋەزىپە تەسۋىرىنى چوڭ مودېلغا بېرىپ، شۇ يەردە ئويلىتىپ قىلدۇرۇش</strong>. بۇ ئىشلەيدۇ، ئەمما بەدىلى بەك چوڭ؛ ھەر ئىجرا تولۇق بىر LLM چاقىرىش: پۇل، تور، ئاستىلىق، يەنە<strong style="color:var(--article-accent, #3f8fd4);">ئېنىقسىزلىق</strong>. ئوخشاش «رەت تەرتىپىنى ئال» بۈگۈن توغرا، ئەتە مودېل تەۋرىسە خاتا بولىدۇ. سائىتىگە بىر قېتىم ۋەزىپە ئايدا 720 سۆھبەت، ئەمما قىلىدىغىنى ئوخشاش مېخانىكىلىق ئىش. قوپال ھېساب: ھەر ئايلانما بىر نەچچە مىڭ token، ئاساسىي بۇلۇت مودېل باھاسىدا،<strong style="color:var(--article-accent, #3f8fd4);">بىر ۋەزىپىنىڭلا ئايلىق «يۈرەك سوقۇش چىقىمى» بىر نەچچە يۈەندىن نەچچە ئون يۈەنگىچە</strong>؛ ۋەزىپە كۆپەيسە ياكى تېخىمۇ تېز بولسا چىقىم سىزىقلىق ئۆسىدۇ. تۈزۈش ئۇسۇلى بۇنى<strong style="color:var(--article-accent, #3f8fd4);">بىۋاسىتە نۆل قىلىدۇ</strong>— پەقەت قۇرغاندا بىر قېتىم قالىدۇ. (بۇ مىقدار دەرىجىسى مۆلچەرى، ھەقىقىي ئۆلچەش ئەمەس؛ سان مودېل ۋە token مىقدارىغا قاراپ ئۆزگىرىدۇ.)</p>
+
+<p style="margin: 8px 0;">HexClaw بۇ ئىشنى<strong style="color:var(--article-accent, #3f8fd4);">ۋاقىت ئوقىدا</strong>ئىككىگە بۆلىدۇ: قۇرۇش مەزگىلى ۋە ئىجرا مەزگىلى. تۈزگۈچ كېلىشىمى بىۋاسىتە يېزىلغان (<code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);" dir="ltr">cron/compiler.go</code>）：</p>
+
+<section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;" dir="ltr"><span style="display: block; white-space: pre; min-height: 1.4em;">// JobSpecCompiler ئىشلەتكۈچىنىڭ تەبىئىي تىلدىكى تەلىپىنى ئىجرا بولىدىغان JobSpec قا تۈزۈيدۇ (بىر قېتىملىق LLM چاقىرىش).</span><span style="display: block; white-space: pre; min-height: 1.4em;">// ئىجرا تەلىپى:</span><span style="display: block; white-space: pre; min-height: 1.4em;">//   - قۇرۇش مەزگىلىدە بىر قېتىم token سەرپ قىلىش، ئىجرا ۋاقتىدا LLM چاقىرماسلىق</span><span style="display: block; white-space: pre; min-height: 1.4em;">//   - مەغلۇبىيەت خاتالىق قايتۇرۇپ ئامبارغا كىرىشنى رەت قىلسۇن، قۇرۇق Spec ئىجرا ۋاقتىغا كىرمىسۇن</span><span style="display: block; white-space: pre; min-height: 1.4em;">//   - چىققان script validators.go بىخەتەرلىك تەكشۈرۈشىدىن ئۆتسۇن</span></code></section>
+
+<p style="margin: 8px 0;">مۇشۇ ئۈچ قۇر پۈتۈن ماتورنىڭ خاراكتېرىنى بەلگىلىدى:</p>
+
+<ul style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">چىقىم</strong>— قۇرغاندا token بىر قېتىم، كېيىن ئون مىڭ قېتىم ئىجرا بولسىمۇ نۆل. يۇقىرى چاستوتىلىق ۋەزىپىنىڭ قوشۇمچە چىقىمى سىزىقلىق ئەمەس، 0. (تېجەلگىنى<strong style="color:var(--article-accent, #3f8fd4);">ئىجرا مەزگىلىدىكى</strong>token؛ تۈزگەن بىر قېتىملىق ھېسابلاش — بۇلۇت مودېلىدا يىراقتا، يەرلىك مودېلدا ئۆز CPU/GPU ڭىزدا — يەنىلا سەرپ بولىدۇ، پەقەت «ھەر قېتىم»دىن «بىر قېتىم»غا ئۆزگىرىدۇ.)</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">تورسىز</strong>— script پەقەت قۇم ساندۇقىنىڭ ئىچىدىكى ئىقتىدارنى ئىشلىتىدۇ، ئىجرا ۋاقتى مودېلنىڭ توردا بولۇشىغا تايانمايدۇ. بۇلۇت ئۈزۈلسە، API key ۋاقتى ئۆتسە، تۈزۈلگەن ۋەزىپە داۋاملىق ئىجرا بولىدۇ.</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">ئېنىقلىق</strong>— ئوخشاش script نىڭ بۈگۈن-ئەتە لوگىكىسى ئوخشاش، مودېل تەۋرىنىشى بىلەن ئۆزگەرمەيدۇ.</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">تەكشۈرگىلى بولۇش</strong>— مەھسۇلات كۆرەلەيدىغان، ئوقۇيالايدىغان، ئۆزگەرتەلەيدىغان كود، قارا قۇتا ئەمەس. ئۆز ماشىنىڭىزدا ئادەمسىز ئىجرا بولىدىغان ئاپتوماتىك سىستېمىغا بۇ ئالاھىدە مۇھىم.</li>
+</ul>
+
+<blockquote style="border-left: 3px solid #3f8fd4; padding: 14px 18px; margin: 20px 0; background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); font-size: 14px; border-radius: 0 8px 8px 0; line-height: 1.85;">
+«نىيەتنى چۈشىنىش» بىلەن «ۋەزىپە ئىجراسى»نى ۋاقىتتا ئايرىش —<strong style="color:var(--article-accent, #3f8fd4);">تۈزۈش مەزگىلىدە token بىر قېتىم، ئىجرا مەزگىلىدە بىر قېتىممۇ يوق</strong>. ماتور پايدىلىرىنىڭ ئورتاق مەنبەسى مۇشۇ.
+</blockquote>
+
+<h3 style="font-size: 16px; font-weight: 700; color:var(--article-ink, #12324c); margin: 24px 0 10px;">تۈزۈلگەن شۇ دەقىقىدە نېمە قىلىدۇ؟</h3>
+
+<p style="margin: 8px 0;">تۈزۈش <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);" dir="ltr">temperature = 0</code>ئىشلىتىدۇ (مۇقىملىق كېرەك، ئىجادىيلىق ئەمەس)، مودېل نىيەتنى ساپ JSON غا ئايلاندۇرىدۇ: runtime + script + ۋاقىت چېكى. ئىككى ئىنژېنېرلىق تەپسىلات:</p>
+
+<ul style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">تۈزۈش مودېلى سىزگە ئەگىشىدۇ</strong>— قوزغالغاندا قاتۇرۇلمايدۇ، ھەر تۈزۈشتە «ھازىرقى سۈكۈت مودېلىڭىز» ھەرىكەتچان يېشىلىدۇ. UI دا بۇلۇتتىن يەرلىك Ollama غا ئۆتسىڭىز، كېيىنكى تۈزۈش دەرھال ئەگىشىدۇ، قايتا قوزغىتىش ھاجەتسىز.</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">تۈزۈش مەغلۇپ بولسا ئامبارغا كىرىش رەت</strong>— يېرىم پۈتكەن script ئىجرا ۋاقتىغا كىرمەيدۇ؛ كېچىدە پارتلىمايدىغان ئوق قالدۇرغاندىن، قۇرغاندا خاتانى كۆرسەتكەن ياخشى. (تۈزۈش چاقىرىشىدا 5xx / ۋاقىتتىن ئېشىش / چەكلىنىش بولسا ئېكسپونېنتلىق چېكىنىپ ئەڭ كۆپ 3 قېتىم ئاپتوماتىك قايتا سىنايدۇ، سىزنى ئاۋارە قىلمايدۇ.)</li>
+</ul>
+
+<p style="margin: 8px 0;">system prompt تا تەجرىبىدىن كەلگەن قاتتىق قائىدىلەر بار، تور بەت ئازراق يېڭىلانغاندا يىغىش script ىنىڭ چىدايدىغانلىقىنى بەلگىلەيدۇ:</p>
+
+<ul style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">ھەر HTTP دىن كېيىن ھالەت كودى تەكشۈرۈلسۇن</strong>، 2xx ئەمەس بولسا مەغلۇپ — «ئەۋەتسە مۇۋەپپەقىيەت» بولمىسۇن.</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">URL ھەرپمۇھەرپ ئىشلىتىلسۇن</strong>، مودېل ئۆزىچە توقۇپ ئۆزگەرتمىسۇن.</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">بەت ئىچىدىكى قۇرۇلمىلىق JSON نى ئالدىن يېشىش</strong>، تېز ئۆزگىرىدىغان CSS class ئەمەس؛ كېيىنكىسى بەت يېڭىلانسىلا بۇزۇلىدۇ.</li>
+</ul>
+
+<p style="margin: 8px 0;">prompt بىلەنلا چەكلەش يېتەرلىك ئەمەس، ماتور يەنە قوغدايدۇ: ھەر <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);" dir="ltr">http_get / http_post</code> <strong style="color:var(--article-accent, #3f8fd4);">سۈكۈتتە تور كۆرگۈچ User-Agent ى بىلەن</strong>. بۇمۇ ھەقىقىي ساۋاق: بەزى تور بېكەتلەر (ئۇچرىغان مىسال: Baidu قىزىق ئىزدەش) Go نىڭ سۈكۈتتىكى <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);" dir="ltr">Go-http-client/1.1</code> گە بىۋاسىتە ئۆمۈچۈككە قارشى HTML قايتۇرىدۇ، script <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);" dir="ltr">json_decode</code> دەسلەپكى <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);" dir="ltr">&lt;</code> دىلا ئۆرۈلىدۇ. script يەنىلا <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);" dir="ltr">headers</code> ئارقىلىق UA نى ئالماشتۇرالايدۇ، ئەمما سۈكۈت قىممىتى «ئۆمۈچۈككە ئوخشاشلىقى ئۈچۈنلا چىقىرىۋېتىلمەسلىك»نى ئالدىن كاپالەتلەيدۇ.</p>
+
+<p style="margin: 8px 0;">تۈزۈلگەن script مۇنداق، دىققەت قىلىڭ:<strong style="color:var(--article-accent, #3f8fd4);">بىر قۇرمۇ import يوق</strong>(بارلىق ئىقتىدار كىرگۈزۈلىدۇ):</p>
+
+<section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;" dir="ltr"><span style="display: block; white-space: pre; min-height: 1.4em;">def run():</span><span style="display: block; white-space: pre; min-height: 1.4em;">    resp = http_get("https://example.com/board", headers = {"User-Agent": "Mozilla/5.0"})</span><span style="display: block; white-space: pre; min-height: 1.4em;">    if resp["status"] &lt; 200 or resp["status"] &gt;= 300:</span><span style="display: block; white-space: pre; min-height: 1.4em;">        return {"status": "error", "error": "fetch non-2xx: %d" % resp["status"]}</span><span style="display: block; white-space: pre; min-height: 1.4em;">    blocks = re_findall("(?s)&lt;!--data:(.*?)--&gt;", resp["body"])</span><span style="display: block; white-space: pre; min-height: 1.4em;">    data = json_decode(blocks[0])</span><span style="display: block; white-space: pre; min-height: 1.4em;">    titles = [it["title"].strip() for it in data.get("list", [])]</span><span style="display: block; white-space: pre; min-height: 1.4em;">    return {"status": "success", "data": {"title": "榜单 " + now()["date"], "content": "\n".join(titles)}}</span><span style="display: block; white-space: pre; min-height: 1.4em;">emit(run())</span></code></section>
+
+<p style="margin: 8px 0;">ئەمما بىر قارار پەقەت پايدا ئېلىپ كەلمەيدۇ. «تۇراقلىق script قا تۈزۈش» دەرھال تۆت قېچىپ قۇتۇلغىلى بولمايدىغان سوئالنى چىقاردى؛ قالغان ماقالە ئۇلارغا بىرمۇبىر جاۋاب:</p>
+
+<ul style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">بىرىنچى سوئال</strong>: AI ھازىر يازغان كودنى نېمىگە تايىنىپ ئۆز ماشىنىڭىزدا ئىجرا قىلىسىز؟</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">ئىككىنچى سوئال</strong>: بۇ ئىش ئەسلىدىن تۇراقلىق script قا تۈزۈلمەسلىكى كېرەك بولسىچۇ؟</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">ئۈچىنچى سوئال</strong>: script تۇراقلىق، دۇنيا ئۆزگىرىدۇ؛ تور بەت يېڭىلىنىپ script بۇزۇلسا قانداق قىلىمىز؟</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">تۆتىنچى سوئال</strong>: قولىدىكى يەرلىك كىچىك مودېل توغرا JSON مۇ چىقىرالمايدىغان ئىشلەتكۈچى قانداق قىلىدۇ؟</li>
+</ul>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">بىرىنچى سوئال: AI كودىنى نېمىگە تايىنىپ ماشىنىڭىزدا ئىجرا قىلىسىز؟</h2>
+
+<p style="margin: 8px 0;">«مودېل كود ھاسىل قىلىپ ئىجرا قىلسۇن» دېگەننىڭ ئەڭ چوڭ قورقۇنچى بىخەتەرلىك. كود ئىشلەتكۈچى ماشىنىسىدا يۈرىدۇ، ئۇ ياكى ئۇنى ئازدۇرغان كىشى <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);" dir="ltr">os.system("rm -rf ~")</code> يازسىچۇ؟</p>
+
+<p style="margin: 8px 0;">شۇڭا بىخەتەرلىكتىكى بىردىنبىر ئومۇمىي قائىدە:<strong style="color:var(--article-accent, #3f8fd4);">LLM چىقارغان ھەر پارچە كودنى ئىشەنچسىز، ھەتتا قارشى تۇرغۇچى كىرگۈزۈش دەپ قاراش</strong>— prompt injection دىن مۇداپىئەگە ئوخشاش ئېھتىيات. ئازدۇرۇلۇشى، توقۇشى ياكى ئاددىي خاتا يېزىشى مۇمكىن. قۇم ساندۇقىنىڭ مەسئۇلىيىتى «توغرا يازغان دەپ ئىشىنىش» ئەمەس،<strong style="color:var(--article-accent, #3f8fd4);">«يامان يازسىمۇ ئاۋارىچىلىك چىقارماسلىق»</strong>. تۆۋەندىكى ھەر مۇداپىئە مۇشۇ ئالدىنقى شەرتتىن كەلگەن.</p>
+
+<p style="margin: 8px 0;">ساھەدىكى كۆپ ئۇسۇل<strong style="color:var(--article-accent, #3f8fd4);">قارا تىزىملىك</strong>: script AST سىنى يېشىپ، <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);" dir="ltr">import os</code>نى، <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);" dir="ltr">eval</code>نى، <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);" dir="ltr">__import__</code>نى چەكلەش… تۈپ مەسىلىسى:<strong style="color:var(--article-accent, #3f8fd4);">ھەر ۋاقىت قېچىش يولىنى قوغلاپ يۈرىسىز</strong>. سۈكۈتتە ھەممە ئىقتىدار ئوچۇق، سىز بىرمۇبىر توسۇسىز؛ ھۇجۇمچى سىز ئويلىمىغان بىر ئېغىزنى تاپسىلا ئۇتىدۇ. Python قۇم ساندۇقىدىن ئايلىنىپ ئۆتۈش تارىخى قارا تىزىملىك مەغلۇبىيىتىنىڭ تارىخىدۇر.</p>
+
+<p style="margin: 8px 0;">HexClaw تەتۈر يولدا، ساھە بۇنى<strong style="color:var(--article-accent, #3f8fd4);">ئىقتىدارغا ئاساسلانغان بىخەتەرلىك مودېلى (capability-based security)</strong>دەيدۇ: سۈكۈتتە نۆل ھوقۇق، ئىقتىدار ئېنىق بېرىلىدۇ. سۈكۈت ماتورى <strong style="color:var(--article-accent, #3f8fd4);">Starlark</strong>— Google نىڭ Bazel ئۈچۈن ياسىغان Python دىئالېكتى، ساپ Go ئىجراسى؛ «ئېنىق، قايتا تەكرارلىنىدىغان قۇرۇش» ئۈچۈن تۇغۇلغان:<strong style="color:var(--article-accent, #3f8fd4);">import، eval، exec، ھۆججەت، تور يوق</strong>. Starlark script ى سۈكۈتتە ھېچ ئىش قىلالمايدۇ.</p>
+
+<p style="margin: 8px 0;">script قىلالايدىغان ھەر ئىش ساھىبنىڭ<strong style="color:var(--article-accent, #3f8fd4);">ئېنىق كىرگۈزگەن</strong>ئىچىگە قۇرۇلغان فۇنكسىيەسى (<code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);" dir="ltr">cron/engine_starlark.go</code>）：</p>
+
+<section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;" dir="ltr"><span style="display: block; white-space: pre; min-height: 1.4em;">predeclared := starlark.StringDict{</span><span style="display: block; white-space: pre; min-height: 1.4em;">    "http_get":    ...,   // GET، {"status", "body"} قايتۇرىدۇ</span><span style="display: block; white-space: pre; min-height: 1.4em;">    "http_post":   ...,</span><span style="display: block; white-space: pre; min-height: 1.4em;">    "json_decode": ..., "json_encode": ...,</span><span style="display: block; white-space: pre; min-height: 1.4em;">    "re_findall":  ..., "re_sub": ..., "html_unescape": ...,</span><span style="display: block; white-space: pre; min-height: 1.4em;">    "url_encode":  ..., "sha256": ..., "now": ...,</span><span style="display: block; white-space: pre; min-height: 1.4em;">    "kb_ingest":   ...,   // يەرلىك بىلىم ئامبىرىغا يېزىش (in-process)</span><span style="display: block; white-space: pre; min-height: 1.4em;">    "state_get":   ..., "state_set": ...,  // ئىجرالار ئارا تۇراقلىق ھالەت (قوشۇلما يىغىش / تەكرارسىزلاشتۇرۇش)</span><span style="display: block; white-space: pre; min-height: 1.4em;">    "wake_agent":  ...,   // «ھەقىقىي ماتېرىيال بولغاندا» تولۇق Agent قا ئۆتۈش (ئىككىنچى سوئال)</span><span style="display: block; white-space: pre; min-height: 1.4em;">    "emit":        ...,   // ئاخىرقى نەتىجە يوللاش (script بىر قېتىم چاقىرىشى شەرت)</span><span style="display: block; white-space: pre; min-height: 1.4em;">}</span></code></section>
+
+<blockquote style="border-left: 3px solid #3f8fd4; padding: 14px 18px; margin: 20px 0; background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); font-size: 14px; border-radius: 0 8px 8px 0; line-height: 1.85;">
+<strong style="color:var(--article-accent, #3f8fd4);">AST قارا تىزىملىكى: سۈكۈتتە تولۇق ئىقتىدار، بىرمۇبىر چەكلەش؛ قېچىش يولىنى داۋاملىق قوغلاش.<br/>قۇرۇلمىلىق قۇم ساندۇقى: سۈكۈتتە نۆل ئىقتىدار، بىرمۇبىر بېرىش؛ «سىرت»نىڭ ئۆزى بولمىغاچ قېچىش دېگەن يوق.</strong>
+</blockquote>
+
+<p style="margin: 8px 0;">شۇڭا script نىڭ پۈتۈن بىخەتەرلىك تەكشۈرۈش يۈزى ئۈچ ئىشقىلا كىچىكلەيدۇ (<code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);" dir="ltr">validateStarlarkSource</code>）：</p>
+
+<section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;" dir="ltr"><span style="display: block; white-space: pre; min-height: 1.4em;">func validateStarlarkSource(script string) error {</span><span style="display: block; white-space: pre; min-height: 1.4em;">    f, err := opts.Parse("job.star", script, 0)    // 1. يېشەلەمدۇ؟</span><span style="display: block; white-space: pre; min-height: 1.4em;">    if err != nil { return ... }</span><span style="display: block; white-space: pre; min-height: 1.4em;">    for _, stmt := range f.Stmts {</span><span style="display: block; white-space: pre; min-height: 1.4em;">        if _, ok := stmt.(*syntax.LoadStmt); ok {   // 2. load() بىلەن سىرتقى مودۇل يۈكلەشنى چەكلەش</span><span style="display: block; white-space: pre; min-height: 1.4em;">            return fmt.Errorf("load() is not allowed in cron scripts")</span><span style="display: block; white-space: pre; min-height: 1.4em;">        }</span><span style="display: block; white-space: pre; min-height: 1.4em;">    }</span><span style="display: block; white-space: pre; min-height: 1.4em;">    if !strings.Contains(script, "emit(") &amp;&amp;        // 3. نەتىجە چىقىشى شەرت (emit</span><span style="display: block; white-space: pre; min-height: 1.4em;">        !strings.Contains(script, "wake_agent(") {  //    ياكى wake_agent، دەرۋازا ۋەزىپە پەقەت wake قىلسا بولىدۇ)</span><span style="display: block; white-space: pre; min-height: 1.4em;">        return fmt.Errorf("must call emit({...}) or wake_agent(...)")</span><span style="display: block; white-space: pre; min-height: 1.4em;">    }</span><span style="display: block; white-space: pre; min-height: 1.4em;">    return nil</span><span style="display: block; white-space: pre; min-height: 1.4em;">}</span></code></section>
+
+<p style="margin: 8px 0;">يېشىلىشى + <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);" dir="ltr">load()</code> چەكلىنىشى + نەتىجە چىقىشى (<code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);" dir="ltr">emit()</code>ياكى دەرۋازا ۋەزىپىنىڭ <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);" dir="ltr">wake_agent()</code>). ئۇزۇن «چەكلەنگەن فۇنكسىيە نامى» تىزىملىكى يوق؛ ھاجەتسىز، ئىقتىدار يۈزىنىڭ ئۆزى يېپىق.</p>
+
+<h3 style="font-size: 16px; font-weight: 700; color:var(--article-ink, #12324c); margin: 24px 0 10px;">ئىككى قوغدىغۇچ ۋە كۈتۈلمىگەن تور تاللىشى</h3>
+
+<p style="margin: 8px 0;">قۇرۇلمىلىق قۇم ساندۇقى «نېمىنى چاقىرىدۇ»نى كونترول قىلدى. قالغان ئىككى ئىشنى قاتتىق توسۇش، يەنە تور تاللىشىنى چۈشەندۈرۈش كېرەك:</p>
+
+<ul style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">ئىچكى ساقلىغۇچنى پارتلىتىش</strong>— يەككە HTTP جاۋاب گەۋدىسى 8 MiB دىن ئاشمايدۇ؛ كونترولسىز چوڭ بەت جەرياننى يىقىتالمايدۇ.</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">ئاخىرلاشماس ئايلىنىش</strong>— بىر Starlark ئىجراسىنىڭ قەدەم چېكى 100 مىليون،<code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);" dir="ltr">while True</code> ۋاقىتتىن ئېشىشنى ساقلىماي قەدەم چېكىدە كېسىلىدۇ. ئۇنىڭغا ئىجرا ۋاقىت چېكى (script ئېلان قىلغان <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);" dir="ltr">timeout_s</code>، بولمىسا 300s) ۋە ھەمكارلىقلىق بىكار قىلىش قوشۇلىدۇ.</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">تور</strong>——<code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);" dir="ltr">http_get / http_post</code> script نىڭ جەريان سىرتىغا سوزۇلغان بىردىنبىر قولى. تورنىمۇ قورشاپ قويايمۇ؟ سىناپ كۆردۇق، ئاخىرى<strong style="color:var(--article-accent, #3f8fd4);">قەستەن قورشالمىدى</strong>— بۇنى ئايرىم سۆزلەيلى.</li>
+</ul>
+
+<p style="margin: 8px 0;">دەرسلىك جاۋابى بىر <strong style="color:var(--article-accent, #3f8fd4);">SSRF قوغدىغۇچىسى</strong>قويۇش دەيدۇ: dial قەۋىتىدە «يېشىلگەن ھەقىقىي IP» بويىچە loopback، شەخسىي تور، link-local، بۇلۇت مېتامەلۇمات ئادرېسىنى (<code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);" dir="ltr">169.254.169.254</code>، Capital One 2019 بۇلۇت كىنىشكىسى ئوغرىلانغان SSRF كىرىشى) قارا تىزىملىك بىلەن توسۇش، DNS rebinding نىمۇ مۇداپىئە قىلىش. بىز دەسلەپ دەل شۇنداق يازغان.</p>
+
+<p style="margin: 8px 0;">كېيىن ئۇنى ئېلىۋەتتۇق، سەۋەبى كونكرېت: نۇرغۇن ئىشلەتكۈچىدە <strong style="color:var(--article-accent, #3f8fd4);">fake-ip ھالىتىدىكى ئاشكارا ۋاكالەتچى</strong>(Clash / Surge تىپىدىكى) بار؛ ئۇ ئاممىۋى تور نامىنى ئالدى بىلەن ساقلاپ قويۇلغان ئادرېسقا خەرىتىلەپ، ئاندىن ۋاكالەتچى ئىچىدە يوللايدۇ. قوغدىغۇچى نىشان IP نى شەخسىي بۆلەك دەپ كۆرۈپ دەرھال توسىدۇ. نەتىجىدە بىر تۈركۈم<strong style="color:var(--article-accent, #3f8fd4);">نورمال ئاممىۋى تور ئېلىشىنى ئۆز قوغدىغۇچىمىز خاتا توستى</strong>。</p>
+
+<p style="margin: 8px 0;">بۇ دەل مەھسۇلات ئورنىغا تېگىدۇ:<strong style="color:var(--article-accent, #3f8fd4);">بۇ ئۆز ماشىنىڭىزدا يۈرىدىغان ئۈستەل يۈزى ئەپى، تور كونتېكىستىڭىزنى ئورتاقلىشىشى كېرەك</strong>— ۋاكالەتچىڭىز، hosts، يەرلىك تورىڭىز. يەرلىك قورالنىڭ localhost قا كىرىشى، ۋاكالەتچىڭىزدىن تورغا چىقىشى نورمال (IDE، Docker، dev server ھەر كۈنى شۇنداق، ھېچكىم يوچۇق دېمەيدۇ). ئىچكى تورنى مەجبۇر توسۇش ھەقىقىي ئىشنى توسۇپ، راست تەھدىتنى توسىماسلىقى مۇمكىن.</p>
+
+<p style="margin: 8px 0;">تېخىمۇ تۈپ قەۋەت:<strong style="color:var(--article-accent, #3f8fd4);">script نىڭ يامان ئىش قىلالىشى قايسى IP غا ئۇلىنىشىغا ئەمەس، قولىغا قايسى ئىقتىدار كىرگۈزۈلگەنلىكىگە باغلىق</strong>— قۇرۇلمىلىق قۇم ساندۇقى ئىقتىدار يۈزىنى شۇ ئون نەچچە ئىچكى فۇنكسىيەدە چەكلىگەن. ھۆججەت، shell، خالىغان socket يوق، جەريان سىرتىغا چىقىدىغىنى پەقەت <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);" dir="ltr">http_get / http_post</code>. بۇ ئالدىنقى شەرتتە «قايسى IP غا ئۇلىنىدۇ» باشقا بىر مەسىلە؛ قايسى تور بۆلىكىنى توسۇشنى پەرەز قىلىپ نورمال ئېقىمنى زىيانغا ئۇچراتقاندىن،<strong style="color:var(--article-accent, #3f8fd4);">تورنى ساھىب ماشىنا مەنىسىدە ئېچىپ، قوغداش كۈچىنى ئىقتىدار يۈزىگە مەركەزلەشتۈرگەن ياخشى</strong>。</p>
+
+<blockquote style="border-left: 3px solid #5fb3ea; padding: 10px 16px; margin: 16px 0; background:var(--article-panel, #f4fbff); color:var(--article-secondary, #3f5f7b); font-size: 14px; border-radius: 0 8px 8px 0;">
+ھەقىقىي بىخەتەرلىك چېكى<strong style="color:var(--article-accent, #3f8fd4);">ئىقتىدار يۈزى، IP قارا تىزىملىكى ئەمەس</strong>. قۇم ساندۇقى «نېمىنى چاقىرىدۇ»نى چەكلىسە، تورنى ساھىبقا قايتۇرغىلى بولىدۇ. ئۆز ماشىنىڭىزدىكى قورال تور كۆرگۈچىڭىز ۋە تېرمىنالىڭىز بىلەن ئوخشاش تورنى ئىشلىتىشى كېرەك.
+</blockquote>
+
+<p style="margin: 8px 0;">قوشۇمچە: Starlark سۈكۈت، ئەمما بىردىنبىر ئەمەس. ماتور كۆرۈنمە يۈز ئابستراكسىيەسى قۇرغان، scheduler <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);" dir="ltr">Runtime</code> بويىچە يوللايدۇ؛ يەنە<strong style="color:var(--article-accent, #3f8fd4);">ئىختىيارىي python3 ماتورى</strong>تېخىمۇ كۈچلۈك ئىپادىلەش كېرەك بولغان ئاز سانلىق كونا ۋەزىپىگە قالدۇرۇلغان. لېكىن ئۇ shell ئارقىلىق سىستېما تەرجىمانىنى چاقىرىدۇ، شۇڭا سۈكۈت ئەمەس. HexClaw نىڭ قاتتىق شەرتى<strong style="color:var(--article-accent, #3f8fd4);">يەككە ئىككىلىك ھۆججەت، سىرتقى تايىنىش نۆل</strong>؛ ساپ Go Starlark ئۈچ چوڭ سۇپىدا ئوخشاش ھەرىكەت قىلىدۇ، ئىشلەتكۈچى ھېچ نەرسە ئورناتمايدۇ، شۇڭا سۈكۈتكە لايىق.</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">ئىككىنچى سوئال: بۇ ئىش script قا تۈزۈلمەسلىكى كېرەك بولسىچۇ؟</h2>
+
+<p style="margin: 8px 0;">«ئېلىش — تازىلاش — ساقلاش» مېخانىكىلىق ئىشقا script بەك ماس. ئەمما بىر تۈرنى تۇراقلىق script قىلسا ۋەيران بولىدۇ؛ مەسىلەن «<strong style="color:var(--article-accent, #3f8fd4);">ھەر كۈنى تۈنۈگۈنكى خەۋەرنى يىغىنچاقلاپ باھا بەر</strong>». يىغىنچاقلاش، باھالاش تونۇش ئىشى؛ مەزمۇن ھەر كۈنى باشقا، قىممىتى دەل ھەر قېتىم نەق مەيداندا تەپەككۇر قىلىشتا. تۇراقلىق script قا توڭلىتىش ئەڭ قىممەتلىك قىسمىنى چىقىرىۋەتكەنگە باراۋەر.</p>
+
+<p style="margin: 8px 0;">شۇڭا ماتور تۈزۈشتىن بۇرۇن بىر قېتىم تۈرلەيدۇ (<code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);" dir="ltr">cron/agent_mode.go</code>）：</p>
+
+<section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;" dir="ltr"><span style="display: block; white-space: pre; min-height: 1.4em;">// «تونۇش پېئىلى» ماس كەلسە → ھەر قېتىم Agent نەق مەيداندا تەپەككۇر قىلىدۇ → agent ھالىتى</span><span style="display: block; white-space: pre; min-height: 1.4em;">var reasoningVerbs = []string{</span><span style="display: block; white-space: pre; min-height: 1.4em;">    "总结", "分析", "判断", "评估", "筛选出最", "点评",</span><span style="display: block; white-space: pre; min-height: 1.4em;">    "撰写", "起草", "解读", "建议", "诊断", ...</span><span style="display: block; white-space: pre; min-height: 1.4em;">}</span><span style="display: block; white-space: pre; min-height: 1.4em;">// يىغىش / چۈشۈرۈش / ساقلاش / ماسقەدەملەش قاتارلىق مېخانىكىلىق پېئىللار قەستەن تىزىملىكتە يوق → script قا تۈزۈش</span><span style="display: block; white-space: pre; min-height: 1.4em;"></span><span style="display: block; white-space: pre; min-height: 1.4em;">func ClassifyTaskMode(prompt string) string {</span><span style="display: block; white-space: pre; min-height: 1.4em;">    lower := strings.ToLower(prompt)</span><span style="display: block; white-space: pre; min-height: 1.4em;">    for _, v := range reasoningVerbs {</span><span style="display: block; white-space: pre; min-height: 1.4em;">        if strings.Contains(lower, v) { return RuntimeAgent }</span><span style="display: block; white-space: pre; min-height: 1.4em;">    }</span><span style="display: block; white-space: pre; min-height: 1.4em;">    return ""   // سۈكۈت: script ھالىتى (ئىجرادا LLM نۆل)</span><span style="display: block; white-space: pre; min-height: 1.4em;">}</span></code></section>
+
+<p style="margin: 8px 0;">مېخانىكىلىق I/O ۋەزىپە script قا تۈزۈلىدۇ (ئىجرادا LLM نۆل)؛ تونۇش ۋەزىپىسى <strong style="color:var(--article-accent, #3f8fd4);">agent ھالىتى</strong>دەپ بەلگىلىنىپ، ھەر قوزغىلىشتا تولۇق بىر Agent ئىجرا بولىدۇ. بۇ ئېنىق ئاچقۇچلۇق سۆز تۈرلىشى، يەنە LLM چاقىرىش ئەمەس؛ چىقىمى نۆل، سىنىغىلى بولىدۇ.</p>
+
+<p style="margin: 8px 0;">بۇ ئايرىش سىزىقى «ۋاقىتلىق ۋەزىپە»نىڭ ئىقتىدار دائىرىسىنى ئىككى خىل ئىشقا كېڭەيتتى:</p>
+
+<ul style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">script ھالىتى (مېخانىكىلىق، token نۆل)</strong>— ۋاقىت بويىچە بەت / API ئېلىش، بەت ئۆزگىرىشىنى كۆزىتىش (<code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);" dir="ltr">sha256</code> + ئىجرالار ئارا <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);" dir="ltr">state_get/set</code> تەكرارسىزلاش، پەقەت «ئالدىنقى قېتىمدىن كېيىنكى يېڭى مەزمۇن»)، قۇرۇلمىلىق سانلىق مەلۇماتنى تازىلاش؛ نەتىجە بىۋاسىتە <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);" dir="ltr">kb_ingest</code> بىلەن بىلىم ئامبىرىغا يېزىلىدۇ.</li>
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">agent ھالىتى (تونۇش، ھەر ئايلانمىدا بىر تەپەككۇر، تولۇق قورال زەنجىرى)</strong>— يەرلىك ھۆججەت رەتلەش، ھەپتىلىك خىزمەت دوكلاتى، يىغىلغان مەزمۇننى يىغىنچاقلاش / تەھلىل / باھالاش. ئۇ پاراڭ بىلەن ئوخشاش <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);" dir="ltr">eng.Process</code>نى ئىشلەتكەچ، ھۆججەت قورالى، بىلىم ئامبىرى، Skill، MCP نىڭ ھەممىسى بار؛ يەرلىك ھۆججەتمۇ ئوقۇيدۇ، سىرتقى قورالمۇ چاقىرىدۇ.</li>
+</ul>
+
+<p style="margin: 8px 0;">بۇ چېگرانىڭ پاكىز قوشۇمچە نەتىجىسى بار: Starlark قۇم ساندۇقىدا<strong style="color:var(--article-accent, #3f8fd4);">ھۆججەت سىستېمىسى زىيارىتى يوق</strong>، شۇڭا «يەرلىك ھۆججەت رەتلەش» تەبىئىي agent ھالىتىگە چۈشىدۇ.<strong style="color:var(--article-accent, #3f8fd4);">ئايرىش پەقەت token تېجەش ئەمەس، تەبىئىي ئىقتىدار چېگرىسىمۇ</strong>— مېخانىكىلىق ئىش نۆل ھوقۇقلۇق قۇم ساندۇقىغا، تونۇش ئىشىدىلا تولۇق قورال زەنجىرى ئېچىلىدۇ.</p>
+
+<p style="margin: 8px 0;">تېخىمۇ ئىلگىرىلەپ، بۇ سىزىق ھازىر تۇراقلىق ئىككىدىن بىرىنى تاللاش ئەمەس. script يەنە<strong style="color:var(--article-accent, #3f8fd4);">ئەرزان «دەرۋازا»</strong>بولالايدۇ: ھەر tick تا token نۆل، پەقەت «ھەقىقىي ماتېرىيال» بولغاندا ئىچكى <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);" dir="ltr">wake_agent(context)</code>نى چاقىرىپ، شۇ ئايلانمىنى ۋاقىتلىق تولۇق Agent قا ئۆستۈرىدۇ (token سەرپ قىلىدۇ، سائىتىگە ئەڭ كۆپ بىر قېتىم).<strong style="color:var(--article-accent, #3f8fd4);">ئىش ھايۋىنى ئادەتتە يېتىپ يەم تېجەيدۇ، ئېغىر ئىش بولغاندىلا تۇرىدۇ؛ ئويلاشقا ئەرزىگەندىلا مېڭىنى ئويغىتىدۇ</strong>— بۇ «شەرتلىك ئۆستۈرۈش دەرۋازىسى» Hermes نىڭ wakeAgent ىدىن ئۆگىنىلگەن. دەرۋازا script ى پەقەت <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);" dir="ltr">wake_agent</code> قىلىپ، <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);" dir="ltr">emit</code>قىلمىسىمۇ قانۇنلۇق چىقىرىلما.</p>
+
+<p style="margin: 8px 0;">نېمىشقا مۇشۇنداق «ئاددىي» ئاچقۇچلۇق سۆز تۈرلىشىگە جۈرئەت قىلىمىز؟ چۈنكى<strong style="color:var(--article-accent, #3f8fd4);">ئىككى خاتا ھۆكۈمنىڭ بەدىلى ئوخشاش ئەمەس</strong>. كود ئىزاھى روشەن: تونۇش ۋەزىپىسى script دەپ خاتا بېكىتىلسە، تۈزۈلگەن نەرسە ئىشلىمەيدۇ، ئەمما كېيىنكى «ئۆزىنى ئوڭشاش» قوغدايدۇ؛ مېخانىكىلىق ئىش agent دەپ خاتا بېكىتىلسە ھەر قېتىم بىر ئاز token ئارتۇق كېتىدۇ.<strong style="color:var(--article-accent, #3f8fd4);">بىر يۆنىلىشتىكى خاتا بەدال كىچىك، يەنە بىرىنىڭ قوغداش يولى بار ئىكەن، پېئىل تىزىملىكى ئېھتىياتچان قالىدۇ</strong>؛ تونۇش سۆزىنى ئاز بەلگىلىسۇن، ۋەزىپىنى ئاسانلا token سەرپ قىلىشقا ئىتتەرمىسۇن.</p>
+
+<p style="margin: 8px 0;">agent ھالىتىدە رېئاللىقتىن كەلگەن يەنە ئىككى دەرۋازا بار:</p>
+
+<ul style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">چاستوتا قوغدىغۇچىسى</strong>— agent ۋەزىپە ھەر قېتىم تولۇق سۆھبەت سەرپ قىلىدۇ، ئەڭ ئاز ئارىلىق 1 سائەت. «ھەر مىنۇتتا تەھلىل» ۋەزىپىسى قۇرغاندا شۇ يەردە توسۇلۇپ، @hourly / @daily غا ئۆزگەرتىش تەلەپ قىلىنىدۇ.</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">توقۇش قوغدىغۇچىسى</strong>— ۋەزىپە «ئامبارغا كىرگۈزۈش» دېسە، ھەقىقىي <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);" dir="ltr">knowledge_ingest</code> قورالىنى چاقىرىشى شەرت. Agent «كىرگۈزۈش تامام» دەپ، ئەمما ھېچ كىرگۈزۈش قورالى چاقىرمىسا، ماتور<strong style="color:var(--article-accent, #3f8fd4);">مەغلۇپ</strong>دەپ بەلگىلەيدۇ، مۇۋەپپەقىيەت ئەمەس. ساقلانمىغان نەرسە ساقلانمىغان؛ «تامام دېيىش» نەتىجە ئەمەس، توقۇش.</li>
+</ul>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">ئۈچىنچى سوئال: تۇراقلىق كود ئۆزگىرىدىغان دۇنياغا يولۇققاندا</h2>
+
+<p style="margin: 8px 0;">تۈزۈلگەن script «قۇرۇلغان دەقىقىدىكى بەت قۇرۇلمىسى»غا ئاساسلانغان. ئەمما بەت يېڭىلىنىدۇ؛ بۈگۈن ئىشلىگەن script كېلەر ئاي تەرەپنىڭ بەتتىكى <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);" dir="ltr">&lt;!--data:--&gt;</code> ئىزاھ شەكلىنى ئۆزگەرتىشى بىلەن قۇرۇق ئېلىشى مۇمكىن.</p>
+
+<p style="margin: 8px 0;">«بىر قېتىم تۈزۈش، ئىجرادا token نۆل»نىڭ بەدىلى شۇ —<strong style="color:var(--article-accent, #3f8fd4);">script تۇراقلىق، دۇنيا ئۆزگىرىدۇ</strong>. بۇ پۈتۈن لايىھەدىكى ئەڭ ئاسان كۆزدىن قاچىدىغان، ئەمما «تاپشۇرۇپ قويۇپ ئارلاشمىسا بولامدۇ»نى ئەڭ بەلگىلەيدىغان قىسىم.</p>
+
+<p style="margin: 8px 0;">HexClaw نىڭ جاۋابى<strong style="color:var(--article-accent, #3f8fd4);">ئۆزىنى ئوڭشاش</strong>: script ئۇدا مەغلۇپ بولۇپ چەككە يەتسە، ماتور مەغلۇبىيەت كونتېكىستى بىلەن قايتا تۈزۈيدۇ (<code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);" dir="ltr">maybeSelfHeal</code>）：</p>
+
+<section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;" dir="ltr"><span style="display: block; white-space: pre; min-height: 1.4em;">const selfHealThreshold    = 3              // ئۇدا 3 مەغلۇبىيەتتىن كېيىن قوزغىلىدۇ</span><span style="display: block; white-space: pre; min-height: 1.4em;">const selfHealMaxPerWindow = 2              // 24h تا ئەڭ كۆپ 2 قېتىم ئوڭشاش</span><span style="display: block; white-space: pre; min-height: 1.4em;">const selfHealWindow       = 24 * time.Hour</span><span style="display: block; white-space: pre; min-height: 1.4em;"></span><span style="display: block; white-space: pre; min-height: 1.4em;">// خاتالىق سەۋەبىنى prompt قا قوشۇپ، نىشانلىق تۈزىتىش</span><span style="display: block; white-space: pre; min-height: 1.4em;">enriched := fmt.Sprintf(</span><span style="display: block; white-space: pre; min-height: 1.4em;">  "%s\n\n[自愈上下文] 该任务此前编译的脚本已连续失败 %d 次，最近错误：\n%s\n"+</span><span style="display: block; white-space: pre; min-height: 1.4em;">  "请根据错误原因生成修正后的脚本。",</span><span style="display: block; white-space: pre; min-height: 1.4em;">  job.SourcePrompt, selfHealThreshold, failCtx)</span></code></section>
+
+<p style="margin: 8px 0;">كود ئىزاھىدا بۇ مېخانىزمغا ماس بىر مىسال بار: ئۇ<strong style="color:var(--article-accent, #3f8fd4);">JIT تۈزگۈچنىڭ «ئەلالاشتۇرۇشتىن قايتىشى» (deoptimization) بىلەن ئوخشاش قۇرۇلمىدا</strong>：</p>
+
+<blockquote style="border-left: 3px solid #3f8fd4; padding: 14px 18px; margin: 20px 0; background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); font-size: 14px; border-radius: 0 8px 8px 0; line-height: 1.85;">
+JIT قىزىق كودنى تېز يولدا (تۈزۈلگەن ماشىنا كودى) دەپ پەرەز قىلىدۇ؛ ئىجرا ۋاقتىدا پەرەز توغرا ئەمەس (تۈر ئۆزگەرگەن) ئىكەنلىكىنى كۆرسە،<strong style="color:var(--article-accent, #3f8fd4);">ئاستا يولغا (تەرجىمان) قايتىپ قايتا ئەلالاشتۇرىدۇ</strong>。<br/>
+بۇ يەردىمۇ ئوخشاش: ئادەتتە تېز يول (token نۆل script)، «بەت مۇنداق» پەرەزى بۇزۇلسا ئاستا يولغا (LLM نى بىر قېتىم چاقىرىپ قايتا تۈزۈش) قايتىپ، يېڭى script چىقىرىدۇ.
+</blockquote>
+
+<p style="margin: 8px 0;">قانداق كۆرۈنىدۇ؟ ھەقىقەتەن يۈز بېرىدىغان ئەھۋالنى ئالايلى: رەت تەرتىپىنى ئالىدىغان script بەت ئىچىدىكى <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);" dir="ltr">&lt;!--data:...--&gt;</code> دېگەن ئىچكى JSON نى يېشىدۇ. بىر كۈنى بەت يېڭىلىنىپ بەلگە <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);" dir="ltr">&lt;!--board:...--&gt;</code>غا ئۆزگىرىدۇ؛ script <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);" dir="ltr">re_findall</code> قۇرۇق نەتىجە ئالىدۇ،<code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);" dir="ltr">emit</code> خاتالىق بېرىدۇ. ئۇدا ئۈچ قېتىم مەغلۇپ بولسا، ماتور جىمجىت «ئەڭ يېڭى خاتالىق: data block missing» بىلەن ئەسلى تەلىپىڭىزنى مودېلغا قايتا بېرىپ، <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);" dir="ltr">&lt;!--board:--&gt;</code> نى ئالىدىغان يېڭى script قا تۈزۈيدۇ. كېيىنكى ۋاقىتتا ۋەزىپە ئۆزى ئوڭشىلىدۇ؛ سىز ھەتتا كېسەل بولغانلىقىنىمۇ سەزمەسلىكىڭىز مۇمكىن.</p>
+
+<p style="margin: 8px 0;">ئاچقۇچ، بۇ ئۆزىنى ئوڭشاش<strong style="color:var(--article-accent, #3f8fd4);">چەكلىك، خاتالىقتا ساراڭدەك قايتا سىناش ئەمەس</strong>：</p>
+
+<ul style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">24h تا ئەڭ كۆپ 2 قېتىم</strong>— مەڭگۈلۈك بۇزۇلغان ئۈستۈنكى مەنبە (تور بېكەت پۈتۈنلەي تاقالغان) ۋەزىپىنى چەكسىز قايتا تۈزۈشكە، token نى چەكسىز سەرپ قىلىشقا ئېلىپ كەلمەيدۇ. نورما تۈگىسە ماتور «داۋاملىق مەغلۇبىيەت، قولدا كۆرۈڭ» ئاگاھلاندۇرۇشى بېرىدۇ. ئاگاھلاندۇرۇشنىڭ ئۆزىمۇ چەكلىك (بىر سوۋۇتۇش كۆزنىكىدە بىرلا)، كېچىدە ئۇدا ئاۋارە قىلمايدۇ.</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">ئەڭ يېڭى مۇۋەپپەقىيەتلىك ئوڭشاشتىن كېيىنكى مەغلۇبىيەتلا سانىلىدۇ</strong>— ئوڭشالغاندىن كېيىن كونا مەغلۇبىيەتلەر قايتا چەككە يېتىپ «ۋاقتىدىن بۇرۇن ئوڭشاش» قوزغاتمايدۇ. قارار كىرگۈزۈش تەرتىپىدىكى قۇر نومۇرىنى ئىشلىتىپ، datetime تىزىقچە سېلىشتۇرۇش ئورىكىدىن ساقلىنىدۇ.</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">agent ۋەزىپىسى ئۆزىنى ئوڭشاشقا قاتناشمايدۇ</strong>— ئۆزگەرتىدىغان تۈزۈلگەن script يوق؛ باشقا يولدا ماڭىدۇ: ئۇدا مەغلۇپ بولۇپ چەككە يەتسە ئاگاھلاندۇرۇپ ئادەم چاقىرىدۇ، جىمجىت مەڭگۈ مەغلۇپ بولۇۋەرمەيدۇ.</li>
+</ul>
+
+<blockquote style="border-left: 3px solid #5fb3ea; padding: 10px 16px; margin: 16px 0; background:var(--article-panel, #f4fbff); color:var(--article-secondary, #3f5f7b); font-size: 14px; border-radius: 0 8px 8px 0;">
+ئۆزىنى ئوڭشاش «مەغلۇپ بولسا مەڭگۈ قايتا سىناش» ئەمەس؛ ئۇ token نى كۆيدۈرۈپ، ئىشلەتكۈچىنى بىزار قىلىدۇ. بۇ<strong style="color:var(--article-accent, #3f8fd4);">چېكى بار (ئۇدا 3 خاتالىق)، نورمىسى بار (24h تا 2)، ئاخىرى بار (ئوڭشالمىسا ئادەمگە بېرىش)</strong>قايتىش يولى؛ ئىشەنچ بىلەن تاپشۇرغىلى بولىدىغان شەكىل شۇ.<br/>ئاددىي ئېيتساق، ئىش ھايۋىنىنىڭ يولىنى دۇنيا بۇزسا ئۆزى يېڭى يول تاپىدۇ؛ ئىككى قېتىم ئايلانسىمۇ بولمىسا سىزنى چاقىرىدۇ.
+</blockquote>
+
+<p style="margin: 8px 0;">بۇ ئۇسۇلنىڭ ئالاھىدىلىكىنىمۇ ئېنىقلايلى: ئوخشاش قوراللارمۇ «LLM چاقىرمايدىغان script» ئىجرا قىلالايدۇ. پەرق «token نۆلمۇ»دا ئەمەس،<strong style="color:var(--article-accent, #3f8fd4);">script قەيەردىن كەلدى، قەيەردە يۈرىدۇ، بۇزۇلسا كىم باشقۇرىدۇ</strong>：</p>
+
+<ul style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">كۆپ ئۇچرايدىغان ئۇسۇل</strong>— سىز ياكى Agent shell / script بۇيرۇقىنى يېزىپ ئېسىپ قويىسىز، ئۆز ماشىنىڭىزنىڭ<strong style="color:var(--article-accent, #3f8fd4);">تولۇق ھوقۇقلۇق</strong>مۇھىتىدا permission bit قا تايىنىپ ئىجرا بولىدۇ؛ بۇزۇلسا ئۆزىڭىز تۈزىتىسىز.</li>
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">HexClaw</strong>— بىر جۈملە تەبىئىي تىلىڭىزنى<strong style="color:var(--article-accent, #3f8fd4);">تۈزۈپ</strong>بىر<strong style="color:var(--article-accent, #3f8fd4);">نۆل ھوقۇقلۇق قۇرۇلمىلىق قۇم ساندۇقىغا</strong>سالالايدۇ؛ بۇزۇلسا<strong style="color:var(--article-accent, #3f8fd4);">خاتالىق بىلەن ئۆزىنى ئوڭشاپ قايتا تۈزۈيدۇ</strong>。</li>
+</ul>
+
+<blockquote style="border-left: 3px solid #3f8fd4; padding: 14px 18px; margin: 20px 0; background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); font-size: 14px; border-radius: 0 8px 8px 0; line-height: 1.85;">
+ئىككىسىمۇ «ۋاقىتلىق كود ئىجراسى»، پەرق بىر جۈملە:<strong style="color:var(--article-accent, #3f8fd4);">ئادەتتىكى ئۇسۇلدا «سىز ئۇنى ئاسرايسىز»، HexClaw دا «ئۇ ئۆزىنى ئاسرايدۇ».</strong>
+</blockquote>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">تۆتىنچى سوئال: يەرلىك كىچىك مودېل JSON نىمۇ كۆتۈرەلمىسە</h2>
+
+<p style="margin: 8px 0;">ئالدىنقى لايىھەنىڭ ھەممىسى مودېل script نى ياخشى يازالايدۇ دەپ پەرەز قىلدى. ئەمما HexClaw يەرلىك ئورۇنلاشتۇرۇلىدۇ،<strong style="color:var(--article-accent, #3f8fd4);">ئىشلەتكۈچىنىڭ قايسى مودېلنى ئىشلىتىشىنى تاللىيالمايسىز</strong>. نۇرغۇن كىشى يەرلىك glm-4-flash، كىچىك پارامېتىرلىق Qwen ئىشلىتىدۇ. يىغىش لوگىكىسىنى يازالايدۇ، ئەمما «ساپ JSON ئىچىگە كۆپ قۇر script سال» دېسىڭىز بۇزۇلىدۇ: markdown قورشۇقىدىكى Python چىقىرىدۇ، ياكى JSON توغرا بولسىمۇ script تا كىچىك خاتا (regex تەتۈر سىزىقى قېچىرىلمىغان) بار.</p>
+
+<p style="margin: 8px 0;">تۈزگۈچ بۇنىڭ ئۈچۈن<strong style="color:var(--article-accent, #3f8fd4);">ئۈچ قەۋەت ئۆزىنى تۈزىتىش</strong>（<code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);" dir="ltr">cron/llm_compiler.go</code>) قوشۇپ، قەۋەتمۇ-قەۋەت قوغدايدۇ:</p>
+
+<ul style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">بىرىنچى قەۋەت · شەكىل تۈزىتىش</strong>— JSON يېشىلمىسا ئەسلىچە قايتۇرۇپ «ئالدىنقى جاۋاب تەلەپتىكى شەكىل ئەمەس، پەقەت ساپ JSON، قورشۇقسىز چىقار» دېگەننى قوشۇپ قايتا بىر ئايلانما. مودېلدا script بار بولغاچ ئەرزان، ئادەتتە ئۆتىدۇ.</li>
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">ئىككىنچى قەۋەت · قۇتقۇزۇش</strong>— قايتا سىناپمۇ توغرا JSON چىقمىسا regex بىلەن بۇزۇق چىقىرىلمىدىن script نى بىۋاسىتە ئېلىۋالىدۇ (قورشۇقتىكى كود ياكى توغرا قېچىرىلمىغان <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);" dir="ltr">script</code> مەيدانى)، تۇراقلىق مېتامەلۇمات تولدۇرىدۇ. مودېل JSON ئوراشنى بىلمىسىمۇ script نىڭ ئۆزى ئىشلىشى مۇمكىن.</li>
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">ئۈچىنچى قەۋەت · تەكشۈرۈش تۈزىتىشى</strong>— script قۇرۇلمىسى توغرا، بىخەتەرلىك تەكشۈرۈشى ئۆتمىسە،<strong style="color:var(--article-accent, #3f8fd4);">ماتور قايتۇرغان ئېنىق خاتالىقنى</strong>مودېلغا بېرىپ، «پەقەت مۇشۇ يەرنى تۈزەت» دەپ يەنە بىر ئايلانما.</li>
+</ul>
+
+<section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;" dir="ltr"><span style="display: block; white-space: pre; min-height: 1.4em;">// ئۈچىنچى قەۋەت: «ئېنىق ماتور خاتالىقى»نى مودېلغا قايتۇرۇپ پەقەت شۇ يەرنى تۈزەتكۈزۈش</span><span style="display: block; white-space: pre; min-height: 1.4em;">user("The Starlark script failed validation with this exact error:\n" +</span><span style="display: block; white-space: pre; min-height: 1.4em;">     verr.Error() +</span><span style="display: block; white-space: pre; min-height: 1.4em;">     "\nFix ONLY that error, then re-emit one pure JSON object.")</span></code></section>
+
+<p style="margin: 8px 0;">بۇ ئۈچىنچى قەۋەتتە مەن ياخشى كۆرىدىغان ئىزاھ بار:<strong style="color:var(--article-accent, #3f8fd4);">«چوڭراق مودېلغا ئالماشتۇرۇشمۇ قۇتقۇزالمايدىغان كۆپ كىچىك خاتالىقنى قۇتقۇزالايدۇ.»</strong> چۈنكى چوڭ مودېل «قابىلىيەت»نى ھەل قىلىدۇ، بۇ خاتالىق «قول تېيىلىش». ئېنىق خاتالىقىنى كۆرسىتىپ تۈزەت دېيىش تېخىمۇ ئەقىللىق مېڭە ئالماشتۇرۇشتىن نىشانلىق.</p>
+
+<blockquote style="border-left: 3px solid #3f8fd4; padding: 14px 18px; margin: 20px 0; background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); font-size: 14px; border-radius: 0 8px 8px 0; line-height: 1.85;">
+<strong style="color:var(--article-accent, #3f8fd4);">مودېل مۇكەممەل بولسۇن ئەمەس، سىستېما خاتالىققا بەرداشلىق بەرسۇن.</strong>يەرلىك ئورۇنلاشتۇرۇشتا مودېلنى تاللىيالمايسىز، شۇڭا سىستېما مودېلنىڭ كەمتۈكلۈكىنى كۆتۈرسۇن. «كىچىك مودېلمۇ بۇ ئاپتوماتلاشتۇرۇشنى يۈرگۈزەلەيدۇ»نىڭ ئالدىنقى شەرتى شۇ.
+</blockquote>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">تۆت جاۋابنى بىر «جۈملە دېيىش»كە ئۇلاش</h2>
+
+<p style="margin: 8px 0;">ئالدىنقى تۆت سوئال «ئىشقا ئاشامدۇ»نى ھەل قىلىدۇ. ئەمما ئىشلەتكۈچى ھېس قىلىدىغىنى «بىر جۈملە دېگەندىن كېيىن نېمە بولدى». بۇ قەۋەتتىمۇ ئىنژېنېرلىق بار.</p>
+
+<p style="margin: 8px 0;">تۈزۈش LLM چاقىرىدۇ، ئاستا بولسا 30–50 سېكۇنت. يېرىم مىنۇت ئايلىنىش بەلگىسىنىلا كۆرسىتىپ، نەگە تىقىلغانلىقىنى بىلدۈرمەسلىك ناچار تەجرىبە. شۇڭا قۇرۇش تۆت كۆزەتكىلى بولىدىغان باسقۇچقا بۆلۈنۈپ، SSE بىلەن ئالدى يۈزگە ئېقىملىق ئەۋەتىلىدۇ (<code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);" dir="ltr">cron/compiler.go</code>）：</p>
+
+<section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;" dir="ltr"><span style="display: block; white-space: pre; min-height: 1.4em;">const (</span><span style="display: block; white-space: pre; min-height: 1.4em;">    StageAnalyzing  = "analyzing"    // تەلەپ يېشىش / provider تاللاش</span><span style="display: block; white-space: pre; min-height: 1.4em;">    StageCallingLLM = "calling_llm"  // LLM بىلەن script ھاسىل قىلىش (ئەڭ ئۇزۇن قىسىم)</span><span style="display: block; white-space: pre; min-height: 1.4em;">    StageValidating = "validating"   // AST + گرامماتىكا + چىقىرىش كېلىشىمىنى تەكشۈرۈش</span><span style="display: block; white-space: pre; min-height: 1.4em;">    StagePersisting = "persisting"   // تەرتىپلەش + ئامبارغا كىرگۈزۈش</span><span style="display: block; white-space: pre; min-height: 1.4em;">)</span></code></section>
+
+<p style="margin: 8px 0;">كۆزگە كۆرۈنمەيدىغان، ئەمما پايدىلىق لايىھە:<strong style="color:var(--article-accent, #3f8fd4);">ئارقا تەرەپ كۆرۈنمە يۈز بايقاش بىلەن ئېقىملىق يولنى بەلگىلەيدۇ</strong>. تۈزگۈچ ئىلگىرىلەشچان كېڭەيتىش كۆرۈنمە يۈزىنى ئىجرا قىلسا بۆلۈپ يوللايدۇ؛ قىلمىسا پۈتۈن تۈزۈشنى بىر باسقۇچ قىلىدۇ —<strong style="color:var(--article-accent, #3f8fd4);">يەنىلا ئىشلەيدۇ، پەقەت تەپسىلات كۆرۈنمەيدۇ</strong>. ئىقتىدار تەدرىجىي كۈچىيىدۇ، ھەممىسى ياكى ھېچنەرسە ئەمەس. يۇقىرىدىكى «شەكىل تۈزىتىش»مۇ «چىقىرىش شەكلى خاتا، ئاپتوماتىك تۈزىتىپ قايتا سىنىلىۋاتىدۇ…» ئىلگىرىلەش ئۇچۇرى سۈپىتىدە شۇ ئېقىمدا كېلىدۇ؛ تىقىلىپ قالمىغانلىقىنى بىلىسىز.</p>
+
+<p style="margin: 8px 0;">تۈزۈلگەندىن كېيىنمۇ AI ۋەزىپىنى بىۋاسىتە قۇرۇپ بەرمەيدۇ، ئالدى بىلەن بىر<strong style="color:var(--article-accent, #3f8fd4);">جەزملەشتۈرۈش كارتىسى</strong>（<code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);" dir="ltr">CronJobConfirmCard.vue</code>）：</p>
+
+<ul style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">مەنبە قەۋەت بەلگىسى</strong>— جۈملە قانداق چۈشىنىلگەنلىكى badge بىلەن بەلگىلىنىدۇ:<code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);" dir="ltr">⌘ Slash</code>(slash بۇيرۇقى، ئەڭ يۇقىرى ئىشەنچ) / <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);" dir="ltr">⚡ تونۇلدى</code>(قائىدىلىك تېز يول، LLM يوق) / <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);" dir="ltr">🤖 AI ياردىمى</code> / <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);" dir="ltr">💬 تولۇقلاش كېرەك</code>. ئاددىي نىيەتنى قائىدە تونۇسا چوڭ مودېلنى چاقىرمايدۇ.</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">cron ئىپادىسىنىڭ خەنزۇچە ئالدىن كۆرۈنۈشى</strong>——<code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);" dir="ltr">0 8 * * *</code> يېنىدا بىۋاسىتە «ھەر كۈنى 08:00» كۆرسىتىلىدۇ؛ ئادەتتىكى ئادەم قايسى ۋاقىتنى قۇرغانلىقىنى دەرھال بىلىدۇ.</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">جەزملەشتۈرۈشتىن بۇرۇن ئۆزگەرتىش + «AI ئۆزگەرتىپ بەرسۇن»</strong>— نام، ۋاقىت، قىلىدىغان ئىش، ئۇقتۇرۇش ئورنى (chat / push / feishu / discord / wechat) شۇ يەردە تەھرىرلىنىدۇ. خاتا چۈشەنگەن بولسا «AI ئۆزگەرتىپ بەرسۇن»نى چېكىپ قايتا يېشىتىڭ.<strong style="color:var(--article-accent, #3f8fd4);">ئادەمنىڭ جەزملەشتۈرۈش دەرۋازىسى بار، AI ئۆز بېشىمچىلىق بىلەن ۋەزىپە قۇرمايدۇ.</strong></li>
+</ul>
+
+<p style="margin: 8px 0;">تولۇق زەنجىرنى ئۇلىساق مۇنداق:</p>
+
+<figure style="margin: 18px 0; text-align: center;">
+<img src="../../assets/blog/河蟹AI-cron架构图.png" alt="HexClaw ۋاقىتلىق ۋەزىپە ماتورى قۇرۇلما دىئاگراممىسى" width="1800" height="1800" loading="lazy" decoding="async">
+<figcaption style="color:var(--article-secondary, #5f7b9c); font-size: 13px; margin-top: 8px; line-height: 1.6;">تولۇق زەنجىر: ① قۇرۇش مەزگىلىدە تۈزۈش (تۆت باسقۇچ + ئۈچ قەۋەت ئۆزىنى تۈزىتىش) → SQLite قا ساقلاش → ② ئىجرا مەزگىلىدە LLM نۆل (script قۇم ساندۇقى / تولۇق Agent قوش ماتور) → نەتىجىنى بىلىم ئامبىرى ۋە ئەستە ساقلاشقا قايتۇرۇش (يېپىق ئايلىنىش ⭐، Feishu / WeChat / ئېلخەت قاتارلىق قاناللارغا ئىختىيارىي يەتكۈزۈش) → ③ مەغلۇبىيەتتە ئۆزىنى ئوڭشاش (ئۇدا 3 خاتالىقتا قايتا تۈزۈش، 24h تا ≤ 2 قېتىم).</figcaption>
+</figure>
+
+<p style="margin: 8px 0;">«يىغىش → بىلىم ئامبىرىغا قايتا يېزىش» ئايلىنىشىنىڭ ھەقىقىي تاماملانغان بىر قېتىملىقى مۇنداق:</p>
+
+<figure style="margin: 18px 0; text-align: center;">
+<img src="../../assets/blog/河蟹AI-本地Zapier-cron编译自愈-wechat-image/demo-0-automation.png" alt="ئاپتوماتلاشتۇرۇش بېتى: ئىجرا بولۇۋاتقان ئىككى ھەقىقىي ۋاقىتلىق ۋەزىپە" width="2000" height="1241" loading="lazy" decoding="async">
+<img src="../../assets/blog/河蟹AI-本地Zapier-cron编译自愈-wechat-image/demo-1-source.png" alt="سانلىق مەلۇمات مەنبەسى: Baidu قىزىق ئىزدەشنىڭ نەق ۋاقىت رەت تەرتىپى" width="2850" height="1468" loading="lazy" decoding="async">
+<img src="../../assets/blog/河蟹AI-本地Zapier-cron编译自愈-wechat-image/demo-2-kb.png" alt="نەتىجە: بىلىم ئامبىرىغا ئاپتوماتىك يېزىلغان Baidu قىزىق ئىزدەش TOP20 ھۆججىتى" width="2000" height="1241" loading="lazy" decoding="async">
+<img src="../../assets/blog/河蟹AI-本地Zapier-cron编译自愈-wechat-image/demo-3-kb-list.png" alt="بىلىم ئامبىرىدا cron داۋاملىق توپلىغان ھۆججەت ۋاقىت قاتارى" width="2000" height="1241" loading="lazy" decoding="async">
+<figcaption style="color:var(--article-secondary, #5f7b9c); font-size: 13px; margin-top: 8px; line-height: 1.6;">يۇقىرىدىن تۆۋەنگە: ① ئاپتوماتلاشتۇرۇش بېتىدىكى ھەقىقىي ئىجرا بولۇۋاتقان ئىككى ۋەزىپە —<strong style="color:var(--article-accent, #3f8fd4);">بىر جۈملە تەبىئىي تىلدا قۇرۇلغان، «ساپ Go ماتورى، تايىنىش نۆل»، ئىجرا خاتىرىسى 1s دەرىجىسىدە مۇۋەپپەقىيەت (ئىجرا مەزگىلىدە LLM نۆل)، خالىغاندا «script نى كۆرۈش» مۇمكىن</strong>؛ ② بىرى ئېلىۋاتقان مەنبە (Baidu قىزىق ئىزدەش رەت تەرتىپى)؛ ③ رەتلىنىپ بىلىم ئامبىرىغا يېزىلغان «TOP20» ھۆججىتى (كۆرسەتكۈچلەنگەن، 8 chunk، يىغىش ۋاقتى بار)؛ ④ بىلىم ئامبىرىدىكى ۋاقىت قاتارى — مەنبە ھەممىسى <strong style="color:var(--article-accent, #3f8fd4);">cron-gh-stars / cron-baidu-hotsearch</strong>دەپ بەلگىلەنگەن، كۈندە بىر، ھازىر 21 پارچە. بۇ «يېپىق ئايلىنىش»: Agent ئۆزىنى داۋاملىق سانلىق مەلۇمات بىلەن باقىدۇ،<strong style="color:var(--article-accent, #3f8fd4);">ئىككىنچى مېڭە بارغانسېرى چوڭىيىدۇ</strong>، كېيىن سورىغاندا ئۇ ئاللىبۇرۇن بىلىدۇ.</figcaption>
+</figure>
+
+<p style="margin: 8px 0;">ئاستىدا يەنە مۇقىملىق قەۋەتلىرى بار: قۇرۇش بىرلىككە كەلگەن كىرىشتىن (<code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);" dir="ltr">POST /api/v1/cronjob</code>)، تەكرارسىزلىق ئاچقۇچى بىلەن (5 مىنۇتتا ئوخشاش تەلەپ ئىككى قۇرۇلمايدۇ)، ھەر ئىشلەتكۈچىنىڭ ئاكتىپ ۋەزىپە نورمىسى 30. يېڭىلاش «ئالدى ئۆچۈرۈپ كېيىن قۇرۇشتىن تۈزۈلگەن ئاتوم ئالماشتۇرۇش، مەغلۇپ بولسا ئەسلىگە قايتۇرۇش»نى ئىشلىتىدۇ. جەريان قايتا قوزغالغاندا SQLite تىن ئاكتىپ ۋەزىپىلەر قايتا يۈكلىنىدۇ (<strong style="color:var(--article-accent, #3f8fd4);">قايتا قوزغىتىشتا ۋەزىپە يوقالمايدۇ</strong>)، ھەر ۋەزىپىنىڭ ئىجرا تارىخى يېزىلغاندا ئەڭ يېڭى 200 گە قىسقارتىلىدۇ (چەكسىز چوڭىيىپ قوزغىلىشنى ئاستىلىتىشتىن ساقلاش). مەغلۇبىيەتكە ئايرىم يەتكۈزۈش نىشانى تەڭشىگىلى بولىدۇ (بولمىسا چەكلىك ئاگاھلاندۇرۇشقا قايتىدۇ). «ئىجرا مەغلۇبىيىتى» بىلەن «يەتكۈزۈش مەغلۇبىيىتى» ئايرىم خاتىرىلىنىپ، ئۆز مۇۋەپپەقىيىتىدە نۆللىنىدۇ؛ بىر قېتىم push بولمىسا پۈتۈن ۋەزىپە بۇزۇلدى دەپ خاتا قارالمايدۇ. ۋاقىت ئورۇنلاشتۇرغۇچى بىر <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);" dir="ltr">runLoop</code> كورۇتىندا كېيىنكى ۋاقىت بويىچە تارقىتىدۇ، ھەر ۋاقتى كەلگەن ۋەزىپە ئايرىم كورۇتىندا يۈرىدۇ، بىر-بىرىنى توسمايدۇ. cron مەنىسىدىكى يوشۇرۇن ئورەكلەرمۇ ھەل قىلىنغان —<code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);" dir="ltr">@hourly</code> قايسى ۋاقىت رايونى، ئايدىكى كۈن (DoM) بىلەن ھەپتە كۈنى (DoW) بىرگە بېرىلسە بىرلەشمە ياكى كېسىشمە ئېلىنامدۇ؛ پەرەز بىلەن ماڭسا خاتا ۋاقىتتا قوزغىلىدۇ. بۇلارنىڭ ھەممىسى ئۆز ماشىنىڭىزدا ئادەمسىز ئىشلەيدىغان سىستېمىنىڭ بىر خاتا چېكىش، قايتا قوزغىتىش ياكى تور تەۋرىنىشى بىلەن ۋەزىپىنى قالايمىقان قىلماسلىقى ئۈچۈن.</p>
+
+<p style="margin: 8px 0;">ۋاقىتلىق ۋەزىپىدىكى يەنە ئىككى قاتتىق مەسىلىمۇ ھەل قىلىندى (تۆۋەندىكىسى ئاستى قەۋەت، پەقەت ئىشلەتمەكچى بولغان ئادەتتىكى ئوقۇرمەن ئاتلىسا بولىدۇ):<strong style="color:var(--article-accent, #3f8fd4);">ئۆتكۈزۈۋېتىلگەن قوزغىلىش (misfire)</strong>— ماشىنا ئۇخلىغان / قايتا قوزغالغاندا ۋاقىت ئۆتۈپ كەتسە، ئۆتكۈزگەن مۇددەت يېرىم دەۋردىن ئاشسا (120s–2h ئارىسىدا چەكلىنىدۇ)، كېيىنكى كەلگۈسى ۋاقىتقا ئىلگىرىلەيدۇ،<strong style="color:var(--article-accent, #3f8fd4);">پەقەت ئاتلايدۇ، يىغىلىپ قالغانلارنى توپلاپ ئىجرا قىلمايدۇ</strong>(قوزغالغان دەقىقىدە كېچىككەن ۋەزىپىلەر بېسىپ كەلمىسۇن). كەڭچىلىك مۇددىتى ئىچىدە بولسا بىر قېتىم تولۇقلايدۇ. بىر قېتىملىق ئەسكەرتىش بۇنىڭ سىرتىدا، كېچىكسىمۇ ئاۋاز بېرىشى كېرەك.<strong style="color:var(--article-accent, #3f8fd4);">قاپلاشقان ئىجرا</strong>— ئوخشاش ۋەزىپىنىڭ ئالدىنقىسى پۈتمەي كېيىنكى ۋاقتى كەلگەندە جەريان ئىچىدىكى بىر <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);" dir="ltr">running</code> بەلگىسى شۇ قېتىمنى بىۋاسىتە ئاتلايدۇ، ئۆزىنى ئۆزى دەسسىمەيدۇ. مەسىلىنىمۇ كۆرگىلى بولىدۇ: ئىجرا مەغلۇبىيىتى <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);" dir="ltr">LastError</code>، يەتكۈزۈش مەغلۇبىيىتى <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);" dir="ltr">LastDeliveryError</code>دەپ خاتىرىلىنىدۇ؛ ھەر ۋەزىپىنىڭ تارىخى بىلەن ئاپتوماتلاشتۇرۇش بېتىدە قايسىسى خاتالىقى دەرھال كۆرۈنىدۇ.</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">راستىنى ئېيتايلى: ئۇ نېمە قىلالمايدۇ؟</h2>
+
+<p style="margin: 8px 0;">ئىنژېنېرلىق خاتىرىسىدە چېگرانى يازماسلىق كۆز بويامچىلىق. ۋەزىپە قۇرۇشتىن بۇرۇن بىلىشكە تېگىشلىك كونكرېت چەكلەر بار:</p>
+
+<ul style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">Starlark تولۇق Python ئەمەس</strong>. import، ئۈچىنچى تەرەپ كۈتۈپخانىسى يوق؛ كىرگۈزۈلگەن ئون نەچچە ئىچكى فۇنكسىيەلا بار. numpy / pandas / مۇرەككەپ يېشىش كۈتۈپخانىسى كېرەك بولسا سۈكۈت ماتورى قىلالمايدۇ. ئىختىيارىي python3 ماتورىغا قايتىڭ (python3 نى ئۆزىڭىز ئورناتقان بولۇشىڭىز كېرەك) ياكى script ھالىتىنى ئىشلەتمەڭ.<strong style="color:var(--article-accent, #3f8fd4);">ئۇنىڭ ماھارىتى «ئېلىش → تازىلاش → ساقلاش/يەتكۈزۈش» I/O ئېقىمى، ئومۇمىي ھېسابلاش ئەمەس.</strong></li>
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">ئۆزىنى ئوڭشاش ھەممىگە قادىر ئەمەس</strong>. «بەت ئازراق يېڭىلىنىپ قۇرۇق ئېلىش»نى يېڭى خاتالىقنى مودېلغا بېرىپ ماسلاشتۇرالايدۇ. ئەمما بېكەت پۈتۈنلەي تاقالسا، كىرىش تېمى قويسا، IP نى توسسا، قايتا تۈزۈشمۇ قۇتقۇزالمايدۇ. 24h نورمىسى تۈگىگەندە ماتور توختاپ ئاگاھلاندۇرىدۇ، قارارنى سىزگە قايتۇرىدۇ؛ بۇ لايىھە، bug ئەمەس.</li>
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">ئۆزىنى ئوڭشاش كۆزنىكى ئىچكى ساقلىغۇچتا</strong>. «24h تا 2 قېتىم» سانى جەريان ئىچىدە، sidecar قايتا قوزغالسا نۆللىنىدۇ. ئۈستەل يۈزى ئەپىدە قوبۇل قىلغىلى بولىدىغان تاللاش؛ قايتا قوزغىلىش ئاز، ئەڭ يامان ئەھۋالدا بىر نەچچە ئارتۇق ئوڭشاش، بىر جەريان ھاياتىدا كونترولدىن چىقمايدۇ. قاتتىق تۇراقلىق ساقلاش تەلەپ قىلىنسا، بۇ مەلۇم ئاددىيلاشتۇرۇش.</li>
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">بۇ ئۈستەل يۈزى يەككە ماشىنا ماتورى، مۇلازىمېتىر ئەمەس</strong>. پاراللېللىق≈1، «سىغىم» ۋەزىپە سانى (سۈكۈت 30/ئىشلەتكۈچى) ۋە بىر ئىجرا مەنبە چېكى (جاۋاب ≤ 8 MiB، قەدەم ≤ 100 مىليون، سۈكۈت ۋاقىت چېكى 300s)، QPS ئەمەس. كۆپ ئىجارەچى مۇلازىمەت قىلساق قۇم ساندۇقى جەريان/كونتېينېر ئايرىمىسىغا، يەككە ماشىنىدىكى <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);" dir="ltr">runLoop</code> ئورۇنلاشتۇرۇش تارقىتىلغان كېچىكتۈرۈش ئۆچرەتىگە ئۆزگىرىشى كېرەك. ھازىرقى قايتا كىرىش قوغدىغۇچىسى جەريان ئىچىدىكى <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);" dir="ltr">running</code> بەلگە، پەقەت بىر ماشىنا قاپلىشىنى توسىدۇ. كۆپ نۇسخىدا ئوخشاش ۋاقىتنى ھەر نۇسخا بىر قېتىم قوزغىتىدۇ، سىرتقى قۇلۇپ / تەكرارسىزلاش كېرەك. ئۇ باشقا بىر ئىنژېنېرلىق، بۇ ماقالە دائىرىسىدە ئەمەس.</li>
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">ۋەزىپە تۈرلىشى ئاچقۇچلۇق سۆز بىلەن، LLM ئەمەس</strong>. چېگرا جۈملىسى خاتا ھۆكۈم قىلىنىشى مۇمكىن (بىر جۈملىدە يىغىش ھەم تەھلىل). تەلىيىگە ئۆزىنى ئوڭشاش ۋە ئادەم جەزملەشتۈرۈش دەرۋازىسى بار، بەدەل كونترولدا؛ ئەمما بۇ ھەقىقەتەن «چوڭقۇر چۈشىنىش» تۈرلىشى ئەمەس.</li>
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">agent ھالىتى ھەر قېتىم بىر سۆھبەت سەرپ قىلىدۇ</strong>. شۇڭا ئارىلىق مەجبۇرىي ≥ 1 سائەت، «كۈندىلىك يىغىنچاق»، «ھەپتىلىك دوكلات»تەك تۆۋەن چاستوتىلىق تونۇش ۋەزىپىسىگىلا ماس. ھەم تېز ھەم ئەقىللىق دېگەن فىزىكىلىق مەنىدە مۇمكىن ئەمەس.</li>
+</ul>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">بۇ ئەسلىدىن AI Agent قىلىدىغان ئىش</h2>
+
+<p style="margin: 8px 0;">بىر ئايلانما تېخنىكا تەپسىلاتى پەقەت بىر نەرسىنى ئېنىقلاش ئۈچۈن:<strong style="color:var(--article-accent, #3f8fd4);">ۋاقىتلىق، تەكرار، مېخانىكىلىق ۋەزىپە ئادەمنىڭ دىققىتىنى ئالماسلىقى، ھەر قېتىم چوڭ مودېل تەپەككۇرىنى چاقىرماسلىقى كېرەك</strong>. AI Agent نىڭ بۇنى ئۈستىگە ئېلىشى ئۆز ۋەزىپىسى.</p>
+
+<p style="margin: 8px 0;">قايتا قارىساق بۇ ماتورنى «لايىھەلەندى» دېگەندىن، مەسىلىلەر قەۋەتمۇ-قەۋەت مەجبۇر چىقاردى دېگەن توغرا:<strong style="color:var(--article-accent, #3f8fd4);">«script قا تۈزۈش»</strong>پۇل ۋە ئېنىقسىزلىقنى تېجىدى → «AI كودىنى ماشىنىڭىزدا ئىجرا قىلغىلى بولامدۇ» دېگەندە<strong style="color:var(--article-accent, #3f8fd4);">نۆل ھوقۇقلۇق قۇم ساندۇقى</strong>قوشۇلدى (تورنىمۇ قۇلۇپلامدۇ؟ قۇلۇپلاپ كۆردۇق، ئاشكارا ۋاكالەتچىدىن ئۆتكەن نورمال ئېقىمنى خاتا توسقاچ ئېلىۋەتتۇق؛ چېگرا ئاخىرى «قايسى IP غا ئۇلىنىدۇ»دا ئەمەس، «نېمىنى چاقىرىدۇ»دا قالدى) → «بەزى ۋەزىپە تۈزۈلمەسلىكى كېرەك» دېگەندە<strong style="color:var(--article-accent, #3f8fd4);">مېخانىكىلىق / تونۇش ئايرىش</strong> قوشۇلدى → «ئۆزگىرىدىغان دۇنيا script نى بۇزىدۇ» دېگەندە<strong style="color:var(--article-accent, #3f8fd4);">ئۆزىنى ئوڭشاش</strong> قوشۇلدى → «ئىشلەتكۈچىنىڭ يەرلىك مودېلى JSON نى كۆتۈرەلمەيدۇ» دېگەندە<strong style="color:var(--article-accent, #3f8fd4);">ئۈچ قەۋەت ئۆزىنى تۈزىتىش</strong>قوشۇلدى. ھەر قەۋەت ئالدىنقى قەۋەتنىڭ بەدىلىدىن كەلگەن.</p>
+
+<p style="margin: 8px 0;">ئەمما «ئۈستىگە ئېلىش» «demo ئىجرا قىلىش» ئەمەس. مودېلغا كود يازدۇرۇپ بىر قېتىم مۇۋەپپەقىيەتلىك ئىجرا قىلىپ سۈرەت چىقىرىشنى ھەممە قىلالايدۇ. ھەقىقىي قىيىنى<strong style="color:var(--article-accent, #3f8fd4);">تاپشۇرۇپ قويۇپ، خاتىرجەم ئۇنتۇغىلى بولىدىغان</strong>ئاساسىي قۇرۇلۇش قىلىش:</p>
+
+<ul style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">Agent نىڭ ئۆزىنى سانلىق مەلۇمات بىلەن بېقىش</strong>— يىغىلغان، رەتلەنگەن نەتىجە بىلىم ئامبىرى ۋە ئەستە ساقلاشقا قايتا يېزىلىدۇ، كېيىن سورىغاندا ئۇ<strong style="color:var(--article-accent, #3f8fd4);">ئاللىبۇرۇن بىلىدۇ</strong>. جانسىز قورال نەتىجىنى سىزگە يوللايدۇ، Agent ئۆزىگە قايتۇرىدۇ؛ RSS ۋە Zapier بېرەلمەيدىغان ئايلىنىش شۇ.</li>
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">تۆۋەن چىقىم</strong>— بىر قېتىم تۈزۈش، كېيىن token نۆل؛ قوشۇمچە چىقىم سىزىقلىق ئەمەس، 0.</li>
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">تورسىز، ماشىنىدىن چىقمايدۇ</strong>— قۇرۇلمىلىق قۇم ساندۇقىدا ئېنىق كود يۈرىدۇ، سانلىق مەلۇمات داۋاملىق ئۆز ماشىنىڭىزدا.</li>
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">ماشىنىڭىزدا ئىجرا قىلىشقا جۈرئەت</strong>— ئىقتىدار بىخەتەرلىك مودېلى (سۈكۈت نۆل ھوقۇقلۇق قۇم ساندۇقى، ئىقتىدار ئېنىق كىرگۈزۈلۈپ بىرمۇبىر بېرىلىدۇ)، قېچىش يولىنى قوغلاپ ياماقلاش ئەمەس.</li>
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">دۇنيا ئۆزگەرسە ئۆزىنى ئوڭشاش</strong>— script بۇزۇلسا خاتالىق بىلەن قايتا تۈزۈيدۇ، ئوڭشالمىغاندىلا سىزگە قايتۇرىدۇ.</li>
+</ul>
+
+<p style="margin: 8px 0;">بۇلار تولۇق بولغاندىلا «Agent سىز ئۈچۈن ۋاقىتلىق ئىش قىلسۇن» شۇئاردىن ھەقىقىي تاپشۇرغىلى بولىدىغان نەرسىگە ئايلىنىدۇ.<strong style="color:var(--article-accent, #3f8fd4);">push ئۇقتۇرۇشى پەقەت بىر چىقىش ئېغىزى؛ ھەقىقىي قىممىتى سىز ئۈچۈن يىل بويى بارغانسېرى يېڭىلىنىدىغان «ئىككىنچى مېڭە»نى ئاسراش.</strong></p>
+
+<blockquote style="border-left: 3px solid #3f8fd4; padding: 14px 18px; margin: 20px 0; background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); font-size: 14px; border-radius: 0 8px 8px 0; line-height: 1.85;">
+نىيەتنى كودقا تۈزۈپ ئۆز ماشىنىڭىزدا ئىجرا قىلىش؛ نۆل ھوقۇقلۇق قۇم ساندۇقى بىلەن جۈرئەتلىك، ئايرىش بىلەن تېجەشلىك، ئۆزىنى ئوڭشاش بىلەن ئۆزگىرىش ئىچىدە داۋاملىق ئىجرا قىلىش؛ ئاخىرى نەتىجىنى Agent نىڭ ئۆز بىلىمى ۋە ئەستە ساقلىشىغا قايتۇرۇش.<strong style="color:var(--article-accent, #3f8fd4);">HexClaw نىڭ «Agent ۋاقىتلىق ئاپتوماتلاشتۇرۇشنى ئۈستىگە ئالسۇن» دېگەن ئىنژېنېرلىق جاۋابى شۇ: سىزگە بىر script ئىجرا قىلىشلا ئەمەس، ئۆزى ئۈچۈن داۋاملىق يېڭىلىنىدىغان مېڭە بېقىش.</strong>
+</blockquote>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<p style="margin: 24px 0 16px; color:var(--article-secondary, #5f7b9c); font-size: 14.5px; line-height: 2; text-align: center; font-style: italic; padding: 8px 16px;">ئەڭ ياخشى ئاپتوماتلاشتۇرۇش — بىر جۈملە دەيسىز،<br/>ئاندىن ئۇنتۇسىڭىز بولىدۇ؛ چۈنكى ئۆزى ئىجرا قىلىدۇ، خاتا بولسىمۇ ئۆزى يول ئىزدەيدۇ.</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h3 style="font-size: 15px; font-weight: 600; color:var(--article-accent, #3f8fd4); margin: 24px 0 8px;">قوشۇمچە · ئالدىنقى ماقالىدىن بۇيان يەنە نېمە قوشۇلدى؟</h3>
+
+<p style="margin: 8px 0; font-size: 14px;">ئالدىنقى «AI Agent كە ئۇيغۇرچە سۆزلەتكۈزۈش: HexClaw AI v0.4.0 نىڭ يەرلىكلەشتۈرۈش ئەمەلىيىتى» ئېلان قىلىنغاندىن بۇيان، مەھسۇلات ھازىر v0.4.6 گىچە يېڭىلاندى، تۆۋەندىكىلەر قوشۇلدى ياكى تولۇقلاندى (بەزىسى ئايرىم ماقالە بولىدۇ):</p>
+
+<ul style="padding-left: 22px; margin: 8px 0; font-size: 14px;">
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">🔌 سانلىق مەلۇمات ئۇلىغۇچلىرى</strong>— GitHub / Yuque بۇلۇت خاتىرىسى / Feishu ھۆججەتلىرى / ئېلخەت ئۇلىنىشى، كىنىشكا شىفىرلىنىپ ساقلىنىدۇ</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">🧩 خىزمەت ئېقىمى</strong>— webhook قوزغىتىش + كۆپ ۋەزىپىنى بىر گرافىكقا ئۇلاش</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">🪪 بىرلىككە كەلگەن ئىجازەت دەرۋازىسى + ئادەمسىز خەتەر مەسلىھەتچىسى</strong>— ئاپتوماتلاشتۇرۇش ھەرىكىتىدىن بۇرۇن خەتەر باھالاش</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">🧠 تەھرىرلىگىلى بولىدىغان ياردەمچى خاراكتېرى (SOUL) + ئەستە ساقلاش ئامبىرى</strong></li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">📝 Prompt باشقۇرۇش</strong>— كۆپ ئىشلىتىلىدىغان prompt لارنى ئامبارغا ساقلاپ قايتا ئىشلىتىش</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">🎯 Skill / Prompt ئىزدەپ قايتۇرۇش</strong>— سۆھبەت كۆزنىكىدە قولدا ئىزدەپ ئېھتىياجغا قاراپ Skill ۋە prompt يۈكلەش قوشۇلدى (ئاپتوماتىك ئىزدەپ قايتۇرۇش بۇرۇن بار)</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">🧪 eval رامكىسى</strong>— Agent ھەرىكىتىگە قايتىش سىنىقى</li>
+</ul>
+
+<p style="margin: 8px 0; font-size: 13px; color:var(--article-muted, #7b8fa3);">«سانلىق مەلۇمات ئۇلىغۇچى × ۋاقىتلىق يىغىش»، «webhook خىزمەت ئېقىمى» بۇ ماقالىنىڭ «يېپىق ئايلىنىش» تېمىسىنى داۋاملاشتۇرۇپ ئايرىم يېزىلىدۇ.</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<p style="margin: 8px 0; font-size: 14px; color:var(--article-muted, #7b8fa3);"><strong style="color:var(--article-accent, #3f8fd4);">كېڭەيتىپ ئوقۇش</strong>— HexClaw يۈرۈشلۈكىنىڭ ئالدىنقى ماقالىلىرى:</p>
+
+<ol style="padding-left: 22px; margin: 8px 0; font-size: 14px;">
+<li style="margin: 4px 0;"><a href="https://mp.weixin.qq.com/s/CuVTbUv2kJRePybo_MudYA" style="color:var(--article-accent, #5fb3ea);">HexClaw AI vs OpenClaw / Hermes</a> — 2026-يىلى يەرلىك AI Agent نىڭ ئۈچ يولى</li>
+<li style="margin: 4px 0;"><a href="https://mp.weixin.qq.com/s/1rza-Ye3NF89KNAJp_PttA" style="color:var(--article-accent, #5fb3ea);">Claude Code SOP</a> — لايىھە يېتەكچىلىكى × سىناقنى تاماملاش × كۆپ Agent ھەمكارلىقى</li>
+<li style="margin: 4px 0;"><a href="https://mp.weixin.qq.com/s/wIRiJsWLRPWBiTEQtlVQkg" style="color:var(--article-accent, #5fb3ea);">قۇرۇلما تەپسىلىي چۈشەندۈرۈشى</a> — بىر ئادەم × Claude Code × 5 ئاي × 6 ئامبار</li>
+<li style="margin: 4px 0;"><a href="https://mp.weixin.qq.com/s/RX-2QOSV2cBEmddwAUj5cg" style="color:var(--article-accent, #5fb3ea);">تەپەككۇر جەريانى</a> — Qwen / Gemma / DeepSeek-R1 نىڭ ئاخىرقى بىر كىلومېتىرىنى ئېچىش</li>
+<li style="margin: 4px 0;"><a href="https://mp.weixin.qq.com/s/PdJRKkH4qiBS-IZBifbuag" style="color:var(--article-accent, #5fb3ea);">تولۇق قوللانما</a> — 5 مىنۇتتا نۆلدىن ئىش قىلالايدىغان يەرلىك AI Agent قا</li>
+<li style="margin: 4px 0;"><a href="https://mp.weixin.qq.com/s/2tHlfZYHxQdQwvVZQEoLRg" style="color:var(--article-accent, #5fb3ea);">ئىلگىرىكى رەھبەر Skill ى</a> — رەھبەرنى AI Skill غا ئايرىپ چىقىرىش</li>
+<li style="margin: 4px 0;"><a href="https://mp.weixin.qq.com/s/S49q9gsXABAzcJyNOC7FjQ" style="color:var(--article-accent, #5fb3ea);">راك بېقىشتىن قىسقۇچپاقا بېقىشقىچە</a> — مەھسۇلات ئېلانى / OpenClaw تېمىسىغا جاۋاب</li>
+</ol>
+
+<h3 style="font-size: 15px; font-weight: 600; color:var(--article-accent, #3f8fd4); margin: 24px 0 8px;">پايدىلانغان ماتېرىياللار</h3>
+
+<ul style="padding-left: 22px; margin: 8px 0; font-size: 13px; color:var(--article-secondary, #5f7b9c);">
+<li style="margin: 3px 0;">HexClaw AI ئېكولوگىيە ئامبارلىرى:<code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 12px; color:var(--article-accent, #3f8fd4);" dir="ltr">github.com/hexagon-codes</code></li>
+<li style="margin: 3px 0;">Starlark تىل ئۆلچىمى (Google، Bazel ئىشلىتىدىغان Python دىئالېكتى):<a href="https://github.com/bazelbuild/starlark" style="color:var(--article-accent, #5fb3ea);">github.com/bazelbuild/starlark</a></li>
+<li style="margin: 3px 0;">starlark-go (ساپ Go ئىجراسى):<a href="https://github.com/google/starlark-go" style="color:var(--article-accent, #5fb3ea);">github.com/google/starlark-go</a></li>
+<li style="margin: 3px 0;">ئىقتىدارغا ئاساسلانغان بىخەتەرلىك مودېلى (capability-based security):<a href="https://en.wikipedia.org/wiki/Capability-based_security" style="color:var(--article-accent, #5fb3ea);">en.wikipedia.org/wiki/Capability-based_security</a></li>
+<li style="margin: 3px 0;">OWASP · Server-Side Request Forgery (SSRF)：<a href="https://owasp.org/www-community/attacks/Server_Side_Request_Forgery" style="color:var(--article-accent, #5fb3ea);">owasp.org/www-community/attacks/Server_Side_Request_Forgery</a></li>
+<li style="margin: 3px 0;">JIT نىڭ deoptimization ئارقا كۆرۈنۈشى:<a href="https://en.wikipedia.org/wiki/Deoptimization" style="color:var(--article-accent, #5fb3ea);">en.wikipedia.org/wiki/Deoptimization</a></li>
+</ul>
+
+<p style="margin: 8px 0; font-size: 12px; color:var(--article-muted, #a5bdd3);">كود ۋە ھەرىكەتتە ئۈستۈنكى ئامبارنى ئاساس قىلىڭ؛ تەكشۈرۈش ۋاقتى: 2026-06-23.</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<p class="blog-brand-footer" data-blog-brand-footer="ug" data-blog-brand-overrides="{}" style="text-align: center; color: var(--article-muted, #7b8fa3); font-size: 13px; margin: 16px 0 0; line-height: 2;">
+<strong style="color: var(--article-ink, #12324c); font-size: 14px;">HexClaw ھېشى AI</strong><br/>
+يەرلىكتە ياكى بۇلۇتتا ئورۇنلاشتۇرۇش · سانلىق مەلۇماتنى ئۆزىڭىز باشقۇرۇش · ئوچۇق كودلۇق ۋە ھەقسىز يۇمشاق دېتال<br/>
+<a href="https://hexclaw.net" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">تور بېكەت: <bdi dir="ltr">hexclaw.net</bdi></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://github.com/hexagon-codes" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">GitHub: <bdi dir="ltr">hexagon-codes</bdi></a><br/>
+<a href="https://weibo.com/u/4097207240" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">Weibo: <bdi dir="ltr">@HexClaw</bdi></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">X: <bdi dir="ltr">@hexclawapp</bdi></a><br/>
+<a href="mailto:ai@hexclaw.net" style="color: var(--article-muted, #999); text-decoration: none;">ئېلخەت: <bdi dir="ltr">ai@hexclaw.net</bdi></a>
+</p>
+    </article>
+
+
+
+    <nav class="blog-series-nav" aria-label="上一篇与下一篇">
+      <a href="/ug/blog/memory-dreaming" class="blog-nav-card prev">
+  <span class="blog-nav-label">← ئالدىنقى ماقالە</span>
+  <span class="blog-nav-title">«چۈش كۆرىدىغان» Agent ئەستە ساقلىشى: Claude ۋە ChatGPT نىڭ چۈشى بۇلۇتتا، HexClaw نىڭ چۈشى ئۆز ماشىنىڭىزدا</span>
+</a>
+      <a href="/ug/blog/thinking-chain-local-models" class="blog-nav-card next">
+  <span class="blog-nav-label">كېيىنكى ماقالە →</span>
+  <span class="blog-nav-title">HexClaw نىڭ تەپەككۇر جەريانى: يەرلىك Qwen 3.5 / Gemma 4 / DeepSeek-R1 نىڭ ئاخىرقى بىر كىلومېتىرىنى ئېچىش</span>
+</a>
+    </nav>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-main">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-col-title">مەھسۇلات</div>
+        <a href="/ug/#download">ئۈستەلئۈستى نۇسخىسىنى چۈشۈرۈش</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="/ug/changelog">يېڭىلىنىش خاتىرىسى</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">ئىجادكار</div>
+        <a href="/ug/docs/">ھۆججەتلەر مەركىزى</a>
+        <a href="/ug/blog/">تېخنىكا بىلوگى</a>
+        <a href="/ug/docs/getting-started">تېز باشلاش</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">Apache-2.0</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">جامائەت</div>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/issues" target="_blank" rel="noopener noreferrer">Issues</a>
+        <a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer">Twitter / X</a>
+        <a href="mailto:ai@hexclaw.net">بىز بىلەن ئالاقىلىشىش</a>
+        <a href="mailto:support@hexclaw.net">سوئال-پىكىر</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">ھەققىدە</div>
+        <a href="/ug/about">بىز ھەققىدە</a>
+        <a href="/ug/privacy">شەخسىيەت سىياسىتى</a>
+        <a href="/ug/terms">ئىشلىتىش شەرتلىرى</a>
+        <a href="/ug/third-party-ai-services">ئۈچىنچى تەرەپ AI مۇلازىمىتى</a>
+      </div>
+    </div>
+    <div class="footer-wechat">
+      <img width="430" height="430" loading="lazy" decoding="async" src="../../assets/brand/wechat-qr.jpg" alt="HexClaw ۋېيشىن رەسمىي ھېسابات QR كودى">
+      <span class="footer-wechat-label">ۋېيشىن رەسمىي ھېساباتى</span>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">&copy; 2025&ndash;2026 hexagon-codes</span>
+  </div>
+</footer>
+<script src="../../assets/js/theme.js?v=2e4a1828feef"></script>
+<script src="../../assets/js/docs-nav.js?v=5a103861aec2"></script>
+<button type="button" class="back-to-top" id="backToTop" aria-label="بەت بېشىغا قايتىش" title="بەت بېشىغا قايتىش">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg>
+  <span>باشقا</span>
+</button>
+
+<script src="../../assets/js/blog.js?v=c72e1db5a6ec"></script>
+</body>
+</html>

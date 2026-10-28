@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ug" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/favicon-32.png">
+<title>HexClaw AI نىڭ Prompt Engineering ى: ھەممە ئۇنى ئۆلدى دەيدۇ، ئەمەلىيەتتە ئۇ تۆۋەنگە چۆكۈپ Agent نىڭ ئەڭ تۆۋەنكى كېلىشىمىگە ئايلاندى｜HexClaw تېخنىكا بىلوگى</title>
+<meta name="description" content="Agent نىڭ مىجەزىنى ئۆزگەرتەلەيسىز، ئىنتىزامىنى ئۆزگەرتەلمەيسىز: SOUL × ئىجرا قوللانمىسى × Skill × قورال schema سى؛ سېھىرلىك سۆز ئەمەس، كېلىشىم يېزىڭ. تۆت ئەۋلاد پارادىگما يۈرۈشلۈكىنىڭ ئاخىرى: بىر system prompt نىڭ قاتلاممۇقاتلام قانداق قۇراشتۇرۇلىدىغانلىقى، قايسى چەكلىمىلەرنىڭ prompt قا تايىنىپلا ئىشقا ئاشمايدىغانلىقى ھەقىقىي كود ۋە تۇراقلىقلار بىلەن كۆرسىتىلىدۇ.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:site_name" content="HexClaw">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HexClaw AI نىڭ Prompt Engineering ى: ھەممە ئۇنى ئۆلدى دەيدۇ، ئەمەلىيەتتە ئۇ تۆۋەنگە چۆكۈپ Agent نىڭ ئەڭ تۆۋەنكى كېلىشىمىگە ئايلاندى｜HexClaw تېخنىكا بىلوگى">
+<meta property="og:description" content="Agent نىڭ مىجەزىنى ئۆزگەرتەلەيسىز، ئىنتىزامىنى ئۆزگەرتەلمەيسىز: SOUL × ئىجرا قوللانمىسى × Skill × قورال schema سى؛ سېھىرلىك سۆز ئەمەس، كېلىشىم يېزىڭ. تۆت ئەۋلاد پارادىگما يۈرۈشلۈكىنىڭ ئاخىرى: بىر system prompt نىڭ قاتلاممۇقاتلام قانداق قۇراشتۇرۇلىدىغانلىقى، قايسى چەكلىمىلەرنىڭ prompt قا تايىنىپلا ئىشقا ئاشمايدىغانلىقى ھەقىقىي كود ۋە تۇراقلىقلار بىلەن كۆرسىتىلىدۇ.">
+<meta property="og:url" content="https://hexclaw.net/ug/blog/prompt-engineering">
+<meta property="og:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta property="og:image:alt" content="HexClaw بەلگىسى">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta property="og:locale" content="ug_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="HexClaw AI نىڭ Prompt Engineering ى: ھەممە ئۇنى ئۆلدى دەيدۇ، ئەمەلىيەتتە ئۇ تۆۋەنگە چۆكۈپ Agent نىڭ ئەڭ تۆۋەنكى كېلىشىمىگە ئايلاندى｜HexClaw تېخنىكا بىلوگى">
+<meta name="twitter:description" content="Agent نىڭ مىجەزىنى ئۆزگەرتەلەيسىز، ئىنتىزامىنى ئۆزگەرتەلمەيسىز: SOUL × ئىجرا قوللانمىسى × Skill × قورال schema سى؛ سېھىرلىك سۆز ئەمەس، كېلىشىم يېزىڭ. تۆت ئەۋلاد پارادىگما يۈرۈشلۈكىنىڭ ئاخىرى: بىر system prompt نىڭ قاتلاممۇقاتلام قانداق قۇراشتۇرۇلىدىغانلىقى، قايسى چەكلىمىلەرنىڭ prompt قا تايىنىپلا ئىشقا ئاشمايدىغانلىقى ھەقىقىي كود ۋە تۇراقلىقلار بىلەن كۆرسىتىلىدۇ.">
+<meta name="twitter:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta name="twitter:image:alt" content="HexClaw بەلگىسى">
+<link rel="canonical" href="https://hexclaw.net/ug/blog/prompt-engineering">
+<link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/prompt-engineering">
+<link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/prompt-engineering">
+<link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/prompt-engineering">
+<link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/prompt-engineering">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "HexClaw AI نىڭ Prompt Engineering ى: ھەممە ئۇنى ئۆلدى دەيدۇ، ئەمەلىيەتتە ئۇ تۆۋەنگە چۆكۈپ Agent نىڭ ئەڭ تۆۋەنكى كېلىشىمىگە ئايلاندى",
+  "description": "Agent نىڭ مىجەزىنى ئۆزگەرتەلەيسىز، ئىنتىزامىنى ئۆزگەرتەلمەيسىز: SOUL × ئىجرا قوللانمىسى × Skill × قورال schema سى؛ سېھىرلىك سۆز ئەمەس، كېلىشىم يېزىڭ. تۆت ئەۋلاد پارادىگما يۈرۈشلۈكىنىڭ ئاخىرى: بىر system prompt نىڭ قاتلاممۇقاتلام قانداق قۇراشتۇرۇلىدىغانلىقى، قايسى چەكلىمىلەرنىڭ prompt قا تايىنىپلا ئىشقا ئاشمايدىغانلىقى ھەقىقىي كود ۋە تۇراقلىقلار بىلەن كۆرسىتىلىدۇ.",
+  "url": "https://hexclaw.net/ug/blog/prompt-engineering",
+  "inLanguage": "ug",
+  "datePublished": "2026-07-06",
+  "image": "https://hexclaw.net/assets/brand/hexclaw-logo.png",
+  "publisher": {
+    "@type": "Organization",
+    "name": "hexagon-codes",
+    "url": "https://hexclaw.net/",
+    "@id": "https://hexclaw.net/#organization"
+  },
+  "@id": "https://hexclaw.net/ug/blog/prompt-engineering#article"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "HexClaw", "item": "https://hexclaw.net/ug/"},
+    {"@type": "ListItem", "position": 2, "name": "تېخنىكا بىلوگى", "item": "https://hexclaw.net/ug/blog/"},
+    {"@type": "ListItem", "position": 3, "name": "HexClaw AI نىڭ Prompt Engineering ى: ھەممە ئۇنى ئۆلدى دەيدۇ، ئەمەلىيەتتە ئۇ تۆۋەنگە چۆكۈپ Agent نىڭ ئەڭ تۆۋەنكى كېلىشىمىگە ئايلاندى", "item": "https://hexclaw.net/ug/blog/prompt-engineering"}
+  ],
+  "@id": "https://hexclaw.net/ug/blog/prompt-engineering#breadcrumb"
+}
+</script>
+<link rel="stylesheet" href="../../assets/css/docs-eb2895dd79c5.css">
+<link rel="stylesheet" href="../../assets/css/blog-a8e5008ac3d1.css">
+</head>
+<body class="blog-page blog-article-page">
+<a href="#main" class="skip-link">ئاساسىي مەزمۇنغا ئۆتۈش</a>
+<nav class="tn topnav" id="nav">
+  <a href="/ug/" class="tn-b topnav-brand"><img width="72" height="72" src="../../assets/brand/hexclaw-icon-72.png" class="tn-l topnav-logo" alt="ھېشى AI"><span class="tn-n topnav-name">ھېشى AI</span></a>
+  <button type="button" class="tn-burger topnav-burger" aria-label="تىزىملىك" aria-expanded="false" aria-controls="primary-navigation"><span></span><span></span><span></span></button><div class="tn-r topnav-links" id="primary-navigation"><a href="/ug/">باش بەت</a><a href="/ug/#cases">ئىشلىتىش كۆرۈنۈشلىرى</a><a href="/ug/#features">ئىقتىدارلار</a><a href="/ug/#quickstart">باشلاش</a><a href="/ug/#ecosystem">ئوچۇق ئېكولوگىيە</a><a href="/ug/blog/" class="is-active">تېخنىكا بىلوگى</a><a href="/ug/docs/">ھۆججەتلەر مەركىزى</a><div class="lang-menu" data-lang-menu><button type="button" class="lang-trigger" aria-haspopup="menu" aria-expanded="false" aria-label="تىل ئالماشتۇرۇش"><svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 0 20"></path><path d="M12 2a15.3 15.3 0 0 0 0 20"></path></svg><span class="lang-current" lang="zh-CN" dir="ltr">维吾尔语</span><svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="lang-menu-list" role="menu"><a href="/zh/blog/prompt-engineering" role="menuitem">中文</a><a href="/en/blog/prompt-engineering" role="menuitem">English</a><a href="/ug/blog/prompt-engineering" role="menuitem" class="is-active" aria-current="true" lang="zh-CN" dir="ltr">维吾尔语</a></div></div><button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="ئۇسلۇب ئالماشتۇرۇش"><svg class="ti-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="ti-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="nav-cta">GitHub <span class="nav-star-badge" id="gh-stars">&#9733;</span></a></div>
+</nav>
+
+<main id="main" class="blog-main">
+  <div class="blog-article-container">
+    <nav class="blog-breadcrumb" aria-label="يول باشلاش">
+      <a href="/ug/">باش بەت</a>
+      <span class="blog-breadcrumb-sep">/</span>
+      <a href="/ug/blog/">تېخنىكا بىلوگى</a>
+      <span class="blog-breadcrumb-sep">/</span>
+      <span aria-current="page">Agent نىڭ تۆت ئەۋلاد پارادىگمىسى</span>
+    </nav>
+
+    <header class="blog-header">
+      <div class="blog-header-tags">
+        <span class="blog-badge-series">تۆت ئەۋلاد پارادىگما · ئاخىرقى ماقالە</span>
+      </div>
+      <h1 class="blog-article-title">HexClaw AI نىڭ Prompt Engineering ى: ھەممە ئۇنى ئۆلدى دەيدۇ، ئەمەلىيەتتە ئۇ تۆۋەنگە چۆكۈپ Agent نىڭ ئەڭ تۆۋەنكى كېلىشىمىگە ئايلاندى</h1>
+      <p class="blog-article-subtitle">Agent نىڭ مىجەزىنى ئۆزگەرتەلەيسىز، ئىنتىزامىنى ئۆزگەرتەلمەيسىز: SOUL × ئىجرا قوللانمىسى × Skill × قورال schema سى؛ سېھىرلىك سۆز ئەمەس، كېلىشىم يېزىڭ. تۆت ئەۋلاد پارادىگما يۈرۈشلۈكىنىڭ ئاخىرى: بىر system prompt نىڭ قاتلاممۇقاتلام قانداق قۇراشتۇرۇلىدىغانلىقى، قايسى چەكلىمىلەرنىڭ prompt قا تايىنىپلا ئىشقا ئاشمايدىغانلىقى ھەقىقىي كود ۋە تۇراقلىقلار بىلەن كۆرسىتىلىدۇ.</p>
+      <div class="article-provenance-banner">
+        <div class="provenance-left">
+          <span class="provenance-origin-badge">تۇنجى نەشرى WeChat تا</span>
+          <span class="provenance-text">بۇ ماقالە تۇنجى قېتىم WeChat ئاممىۋى ھېساباتى <strong>「hexclaw」</strong> (ID: hexclaw) نىڭ رەسمىي تېخنىكا سەھىپىسىدە ئېلان قىلىنغان · ۋاقتى: <strong>2026-يىلى 7-ئاينىڭ 6-كۈنى</strong> · ئوقۇش ۋاقتى تەخمىنەن 14 مىنۇت</span>
+        </div>
+        <a href="https://mp.weixin.qq.com/s/ZJ9ehZtG_jUhtTMUnPCDxA" target="_blank" rel="noopener noreferrer" class="provenance-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>WeChat تىكى ئەسلى ماقالە ↗</a>
+      </div>
+    </header>
+
+    <article class="blog-content">
+
+
+<p style="margin: 16px 0;">«ھازىر مەن سىزگە ئەڭ ئاشكارا، ئەڭ بىۋاسىتە، ئەڭ ئەگىر-توقاي قىلمايدىغان، ئەڭ كەسكىن، ئەڭ سوزمايدىغان، ئەڭ ئارتۇق گەپسىز... خۇلاسىنى بېرىمەن.» ئەگەر AI سىزنى ئاچچىقتىن كۈلدۈرگەن بولسا، بۇنىڭغا ئوخشاش ئالامەتلەرنى بەلكىم كۆرگەنسىز: «مەن بىلمەيمەن» دەپ ئوچۇق ئېيتىشى كېرەك بولغانسېرى، «ھازىرلا سىزگە ئەڭ بىۋاسىتە خۇلاسىنى بېرىمەن» دېگەن قىياپەتكە كىرىدۇ. بىر AI بىر تىنىقتا ئون نەچچە «ئەڭ»نى تىزىپ، <strong style="color:var(--article-accent, #3f8fd4);">بىر ئابزاس ئارتۇق گەپ بىلەن، كېيىن ئارتۇق گەپ قىلمايدىغانلىقىغا ۋەدە بېرىدۇ</strong>. كۈلۈپ بولغاندىن كېيىن سوراشقا تېگىشلىك سوئال «نېمىشقا بۇنچە ياسالما؟» ئەمەس، بەلكى: نېمىشقا بۇنداق بولىدۇ؟</p>
+
+<p style="margin: 8px 0;">تېخىمۇ توغرا چۈشەندۈرۈش «AI سىزنى ئالدىماقچى» دېگەنلىك ئەمەس؛ مەشىق نىشانى بىلەن باھالاش نىشانى ئۇنى تار بىر يولغا باشلاپ قويغان: ئالدىن مەشىق باسقۇچىدا مودېل تىلنىڭ تەقسىماتىنى ئۆگىنىدۇ، نۇرغۇن سىستېمىلار ھەقىقەتەن «ئالدىنقى تېكىستكە ئاساسەن كېيىنكى token نى پەرەز قىلىش» ئارقىلىق ئىقتىدار ھاسىل قىلىدۇ؛ كېيىنكى مەشىقتە بولسا ئىمكانقەدەر پايدىلىق بولۇپ، ئىمكانقەدەر جاۋاب بېرىدىغان ياردەمچىگە تەڭشىلىدۇ. 2025-يىلدىكى <bdi dir="ltr">Why Language Models Hallucinate</bdi> تەھلىلى مەسىلىنى تېخىمۇ كەسكىن كۆرسەتتى: ئاساسىي باھالاشلار «توغرا جاۋابقا نومۇر بار، جاۋاب بەرمىسە نومۇر يوق» دېگەن ئۆلچەم بىلەن رەتكە تۇرغۇزغاندا، پەرەز قىلىش بىلمەيدىغانلىقىنى ئېتىراپ قىلىشتىن پايدىلىق بولىدۇ. بۇنىڭغا ئادەم مايىللىقىدىكى كۆپ ئۇچرايدىغان ئاجىزلىق—تولۇق، راۋان، سىزنى قوللايدىغان جاۋابقا ياخشى باھا بېرىش ئاسانلىقى—قوشۇلغاندا، مودېل دەلىل يوق يەرنى ھېكايە بىلەن تولدۇرۇشنى ئۆگىنىدۇ. ئۇ پاكىتنى ھەقىقىي چۈشەنگەن ئەمەس؛ پەقەت «جاۋابقا ئوخشايدۇ»نى «ياخشى جاۋاب» دەپ قارىغان.</p>
+
+<p style="margin: 8px 0;">بۇ كېسەلنىڭ قۇرۇلۇشتا ئېنىق ئىسمى بار. بۇ يىل 6-ئاينىڭ ئاخىرىدا HexClaw، bug#7 دېگەن مەسىلىنى تۈزەتتى؛ ئۇ دەل مۇشۇ كېسەلنىڭ ئېغىر شەكلى ئىدى: بەزى پارامېتىر سانى 10B دىن ئاشمايدىغان كىچىك مودېللار Agent تىن ھاسىل بولغان سىستېما كۆرسەتمىسىنى تاپشۇرۇۋالغاندىن كېيىن، ئۇنى <strong style="color:var(--article-accent, #3f8fd4);">سۆزمۇسۆز يادلاپ</strong> ئىشلەتكۈچىگە ئوقۇپ بېرەتتى. «نېمە قىلالايسەن؟» دېسىڭىز، ئىچكى رول تەڭشىكىنى ئەسلى پېتى ئوقۇيتتى؛ خۇددى سەھنە سۆز دەپتىرىنى تاماشىبىنغا سۇنغان ئارتىستەك. تۈزىتىشتە بىر قۇر لوگىكا كودىمۇ ئۆزگەرمىدى؛ system prompt ئاخىرىغا «يۇقىرىقىسى سېنىڭ رول تەڭشىكىڭ، شۇنىڭغا ئاساسەن تەبىئىي جاۋاب بەر، ئىقتىدارىڭنى ئۆز سۆزۈڭ بىلەن تونۇشتۇر» دېگەن مەزمۇندا بىر جۈملە قوشۇلدى. بىر جۈملە بىلەن bug تاقالدى، قايتىش سىنىقى ھەرىكەتنى مۇقىملىدى.</p>
+
+<p style="margin: 8px 0;">كىرىشتە مۇشۇ كېسەل ۋە داۋانى ئېلىشنى خالىدىم، چۈنكى ئۇ ماقالىنىڭ بارلىق مەزمۇنىنى يىغىنچاقلايدۇ: <strong style="color:var(--article-accent, #3f8fd4);">كېسەلنىڭ يىلتىزى بىر پارچە تېكىست، داۋاسىمۇ بىر پارچە تېكىست، داۋا بولغان بۇ تېكىست بولسا كودقا ئوخشاش مۇئامىلىگە ئېرىشىدۇ</strong> — نومۇرى، ۋاقتى ۋە سىنىقى بار. لېكىن ئۇنىڭ ئۆزى پەقەت بىر جۈملە خەنزۇچە. بۇ ھۈنەرگە ئۆلۈم خەۋىرى يېزىش بولسا ساھەنىڭ دائىملىق پروگراممىسى: 2023-يىلدىن ھازىرغىچە داۋاملىشىپ كەلدى، ئىنگلىزچە جامائەتچىلىكتە «Prompt Engineering Is Dead» دېگەندەك ماۋزۇلار يەنىلا قايتا-قايتا چىقىدۇ؛ خەنزۇچە جامائەتچىلىكمۇ ئوخشاش سوئالنى ماۋزۇ قېلىپى قىلدى. ئۆلۈم خەۋىرى ئۈچ يىل تارقالدى، يېرىمى توغرا: «سېھىرلىك سۆز ماھارىتى» بولغان prompt ھەقىقەتەن ئاخىرلاشتى؛ رول ئويناش سېھىرلىرى ۋە سېھىرلىك ئالدى قوشۇمچىلار يا مودېلنىڭ كېيىنكى مەشىقىگە سىڭدى، يا بىخەتەرلىك تۈرلىگۈچىسى تەرىپىدىن توسۇلدى. ئەمما ئۇ يوقالغىنى يوق.</p>
+
+<p style="margin: 8px 0;">كۆپىنچە قايتا باھالاش ماقالىلىرى «ئۇنىڭ ئورنىنى Context Engineering ئالدى» دەيدۇ. بۇ پەقەت سەھنە ئالدىدىكى يېرىم جاۋاب. يۈرۈشلۈكنىڭ تۆتىنچى ماقالىسىدە مەن سەھنە ئارقىسىدىكى جاۋابنى بېرىمەن: <strong style="color:var(--article-accent, #3f8fd4);">Context نىڭ سۈزۈش قائىدىسى، Harness نىڭ ھۆكۈم ئۆلچىمى، Loop نىڭ قوبۇل قىلىش تەلىپى ئاخىرىدا ھەممىسى مودېلغا يېزىلغان تېكىستكە چۈشىدۇ. ئۇنىڭ ئورنى ئېلىنمىدى؛ ئۇ تۆۋەنگە چۆكۈپ، ئۆزىنىڭ ئورنىنى ئالغان نەرسىلەرنى كۆتۈرۈپ تۇرىدىغان بولدى</strong>. قەيەرگە چۆكتى؟ ئەڭ تۆۋەنكى كېلىشىم قاتلىمىغا. تۆت ئەۋلاد پارادىگمىنى Loop قىچە چۈشەندۈرۈپ، بىرىنچى ئەۋلادقا قايتا قارىغاندا، ئۇنىڭ ھازىرقى ئورنى ئېنىق كۆرۈندى.</p>
+
+<p style="margin: 8px 0;">بۇ پەقەت مېنىڭلا قايتا باھالىشىم ئەمەس. OpenAI نىڭ Model Spec ى كۆرسەتمىلەرگە ئېنىق ئالدىنلىق قاتلىمى بەلگىلىگەن؛ رەسمىي نامى Chain of Command، يەنى بۇيرۇق زەنجىرى، ئۇنىڭدا root/system قاتارلىق ئۈستىدىن يازغىلى بولمايدىغان قاتتىق قائىدىلەر تېخىمۇ ئايرىلغان. root/system قاتلىمى ئىجادكار قاتلىمىدىن، ئىجادكار قاتلىمى ئىشلەتكۈچى قاتلىمىدىن ئۈستۈن؛ توقۇنۇشتا يۇقىرى قاتلام غەلىبە قىلىدۇ. بۇ prompt نى كېلىشىم دەپ باشقۇرۇشتۇر؛ ھەتتا «كىمنىڭ قايسى قاتلامنى يېزىش ھوقۇقى بار»لىقىمۇ بەلگىلەنگەن. Anthropic بولسا Claude نىڭ سىستېما كۆرسەتمىسىنى ئېچىۋېتىپ، API ھۆججىتى تارقاتقاندەك prompt نى ئېلان قىلدى. OpenAI نىڭ قۇرغۇچى ئەزاسى، Tesla نىڭ سابىق AI دىرېكتورى Andrej Karpathy نىڭ تېخىمۇ بۇرۇنقى سۆزىنى ھازىر ئوقۇساق، شۇ چاغدىكىدىنمۇ توغرا تۇيۇلىدۇ:</p>
+
+<blockquote style="border-left: 3px solid #3f8fd4; padding: 12px 18px; margin: 16px 0; background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); font-size: 14px; border-radius: 0 8px 8px 0; line-height: 1.8;">
+"The hottest new programming language is English."<br/>
+<span style="color:var(--article-muted, #7b8fa3); font-size: 13px;">(ئەڭ مودا يېڭى پروگرامما تىلى ئىنگلىزچىدۇر. پروگرامما تىلى ئىكەن، ئۇنىڭ مودۇلى، كۆرۈنمە يۈزى، ئالدىنلىقى ۋە قايتىش سىنىقىمۇ بولۇشى كېرەك.)</span>
+</blockquote>
+
+<p style="margin: 8px 0;">شۇڭا بۇ ماقالىنى «ماھارەت تىزىملىكى» بويىچە ئەمەس، <strong style="color:var(--article-accent, #3f8fd4);">يېزىش ھوقۇقى</strong> بويىچە ئاچىمىز: HexClaw ھەر قېتىم مودېلغا بېرىدىغان نەچچە مىڭ خەتلىك system prompt نى بىر نەچچە تەرەپ قاتلاملاپ يازىدۇ — مەھسۇلات، ئىشلەتكۈچى، ھۆججەت ۋە شۇ نۆۋەت كودنىڭ ئۆزى. كىم قايسى قاتلامنى يازىدۇ، قاتلاملار قانداق قوشۇلىدۇ، توقۇنۇشسا كىم ئۈستۈن كېلىدۇ؟ Prompt نىڭ كېلىشىم قاتلىمى بولۇشىدىكى بارلىق قائىدە مۇشۇ.</p>
+
+<section style="margin: 20px 0; padding: 12px 16px 14px; background:var(--article-panel, #f7fafd); border: 1px solid #d5e6f3; border-radius: 8px; text-align: center; font-size: 13px; line-height: 2.2; color:var(--article-muted, #7b8fa3);">
+<span style="font-size: 12px; color:var(--article-muted, #9db2c4); letter-spacing: 1px;">بۇ يۈرۈشلۈك · AGENT نىڭ تۆت ئەۋلاد پارادىگمىسى · ئاخىرقى ماقالە</span><br/>
+<span style="display: inline-block; padding: 0 12px; background: #3f8fd4; color: #ffffff; border-radius: 12px; font-weight: 700;">Prompt ▸ بۇ ماقالە</span><span style="color: #b8cbdc;">&nbsp;→&nbsp;</span><a href="https://mp.weixin.qq.com/s/H6BoZUcQfBBqh-ScXQyTWw" style="color:var(--article-accent, #3f8fd4); text-decoration: none;">Context</a><span style="color: #b8cbdc;">&nbsp;→&nbsp;</span><a href="https://mp.weixin.qq.com/s/kDi-LSWB4UHtS_6jbTfvow" style="color:var(--article-accent, #3f8fd4); text-decoration: none;">Harness</a><span style="color: #b8cbdc;">&nbsp;→&nbsp;</span><a href="https://mp.weixin.qq.com/s/h60ymjjj3eF9hQyhl0jVcQ" style="color:var(--article-accent, #3f8fd4); text-decoration: none;">Loop<span style="font-size: 12px;">(ئومۇمىي پروگرامما ماقالىسى)</span></a><br/>
+<span style="font-size: 12px; color:var(--article-muted, #9db2c4);">تۆت بۆلەك تولۇق بولدى · Context نىڭ ئەستە ساقلاش تەرىپى ئۈچۈن <a href="https://mp.weixin.qq.com/s/YvGGPBZX0V7R6-09unnrcQ" style="color: #5fa5d8; text-decoration: none;">«چۈش كۆرىدىغان Agent ئەسلىمىسى»</a></span>
+</section>
+
+<p style="margin: 8px 0; text-align: center; color:var(--article-muted, #7b8fa3); font-size: 13px;">(كۆرسەتمە كېلىشىم قاتلىمى. سولدا ھەر قاتلامنى كىم، نېمە يازىدىغانلىقى؛ ئوڭدا توقۇنۇشتا ئالدىنلىق تەرتىپى — OpenAI Model Spec نىڭ كۆرسەتمە دەرىجىسىگە ئوخشاش پىكىر.)</p>
+
+<figure><img src="../../assets/blog/河蟹AI-Prompt指令协议栈图.png" alt="HexClaw AI Prompt كۆرسەتمە كېلىشىم قاتلىمى سۈرىتى" width="2120" height="2420" loading="lazy" decoding="async"><figcaption>HexClaw AI Prompt كۆرسەتمە كېلىشىم قاتلىمى سۈرىتى</figcaption></figure>
+
+<h2 style="font-size: 19px; font-weight: 700; color:var(--article-ink, #12324c); margin: 32px 0 12px; padding-left: 10px; border-left: 4px solid #5fb3ea;">مەھسۇلات يېزىدىغان قىسمى: رول ۋە قوللانما، چوڭقۇر تەسىر كۆرسەتكەن بىر ئايرىش</h2>
+
+<p style="margin: 8px 0;">HexClaw نىڭ سۈكۈتتىكى system prompt ى ئىلگىرى بىر پۈتۈن پارچە ئىدى. بۇ يىل 6-ئاينىڭ ئاخىرىدا ئايرىلدى؛ كود ئىزاھاتىدىكى لايىھە مۇددىئاسى خۇددى ADR دەك ئېنىق:</p>
+
+<blockquote style="border-left: 3px solid #3f8fd4; padding: 12px 18px; margin: 16px 0; background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); font-size: 14px; border-radius: 0 8px 8px 0; line-height: 1.8;">«رول = كىملىك/ئاۋاز (قىسقا، ئىشلەتكۈچى ‹رولنى تەھرىرلەش›تە ئوقۇپ ئۆزگەرتىدۇ)؛ ئىجرا قوللانمىسى = قورال ئىنتىزامى (مۇقىم، ئىشلەتكۈچى ئوقۇمىسىمۇ بولىدۇ).»<br/>
+<span style="color:var(--article-muted, #7b8fa3); font-size: 13px;"> — react.go دىكى ئايرىش ئىزاھاتى. ئالدىنقى ماقالىگە ئوخشاش، بۇ ماقالىدىكى «ئالتۇن جۈملە»لەرمۇ كود ئىزاھاتىدىن ئېلىنغان.</span>
+</blockquote>
+
+<p style="margin: 8px 0;">ئايرىلغان رول قىسمى SOUL دەپ ئاتىلىدۇ. سۈكۈتتىكىسى «كىچىك قىسقۇچپاقا»: «كومپيۇتېرىڭىزدا ياشايدىغان، سىز بىلەن يانمۇيان ئىش قىلىدىغان شەخسىي AI ھەمراھى». مىجەز تىزىملىكىدە «ئىللىق، لېكىن يېپىشماق ئەمەس»، «بىۋاسىتە»، «ئېغىزى چىڭ» دەپ يېزىلغان. ئېتىقادى: <strong style="color:var(--article-accent, #3f8fd4);">«ئىشنى قىسقۇچتا تۇتۇش، سانلىق مەلۇماتنى قۇلۇپلاش، ئىقتىدارنى ئۆستۈرۈش»</strong>. مەن ئەڭ ياقتۇرغان جۈملە كىچىك ماۋزۇدا يوشۇرۇنغان: «مىجەزىم (ئاۋازىم مۇشۇ يەردىن ئۆسىدۇ، <strong style="color:var(--article-accent, #3f8fd4);">شۇنىڭ بويىچە قىل، شۇنى يادلاپ ئوقۇما</strong>)». بۇ جۈملىنىڭ قوبۇل قىلغۇچىسىغا دىققەت قىلىڭ: ئۇ ئىشلەتكۈچىگە ئەمەس، <strong style="color:var(--article-accent, #3f8fd4);">مودېلغا</strong> يېزىلغان مېتا-كۆرسەتمە؛ مودېلغا بۇ رولنى قانداق ئىشلىتىشنى ئۆگىتىدۇ.</p>
+
+<p style="margin: 8px 0;">نېمىشقا مۇشۇنداق بىر جۈملە مەخسۇس لازىم؟ كىرىشتە قالدۇرغان سوئالغا قايتالايمىز: «ئەڭ، ئەڭ، ئەڭ» دېگەن كىرىشنىڭ كېسەللىك سەۋەبى مۇشۇ قاتلامدا. رولدا «بىۋاسىتە بول، سوزما» دېيىلسە، مودېل كۆرسەتمىنىڭ ئۆزىنى سەھنىدە ئورۇندايدۇ؛ ئىشەنچى قانچە ئاز بولسا، شۇنچە كۈچەپ ئورۇندايدۇ. ئىشلەتكەنلەر تېخىمۇ ئاچچىق بىر تۇيغۇنى بىلىدۇ: بۇ كىرىش چىقسا، كەينىدىن كۆپىنچە ئىشەنچ بىلەن قۇرۇق پەرەز كېلىدۇ؛ <strong style="color:var(--article-accent, #3f8fd4);">«كەسكىنلىك» خام خىياللىق جاۋابنىڭ كىرىش سۆزىگە ئايلىنىدۇ</strong>. «يادلاپ ئوقۇش»نىڭ ھەقىقىي بەدىلى مۇشۇ: <strong style="color:var(--article-accent, #3f8fd4);">مىجەز ھەرىكەتكە ئەمەس، سەھنە سۆزىگە سىڭىدۇ، تېخى دەلىل يوق چاغنى تاللاپ ئوقۇلىدۇ</strong>。</p>
+
+<p style="margin: 8px 0;">قىزىقارلىقى، كىچىك قىسقۇچپاقا رولىدىمۇ ئوخشاش كۆرسەتمە بار: «بىۋاسىتە: ئالدى بىلەن خۇلاسىنى قىسقۇچتا تۇتۇپ بەر، ئاندىن سەۋەبىنى تولۇقلا، ئايلانما». لېكىن ئىككى قۇر تۆۋەندە يەنە بىرى بار: «ئېغىزى چىڭ: ... <strong style="color:var(--article-accent, #3f8fd4);">ئېنىق بولمىسا ئېنىق ئەمەس دېگىن، ھەرگىز توقۇپ بەرمە</strong>». بىۋاسىتە بولۇش ئۇسلۇبنى، ئېغىزى چىڭ بولۇش چېگرانى باشقۇرىدۇ؛ <strong style="color:var(--article-accent, #3f8fd4);">بۇ ئىككىسىنى جۈپ يېزىش كېرەك</strong> — پەقەت بىرىنچىسىنى يازسىڭىز، «ئايلاندۇرمايمەن» دېيىشكە ئامراق بىر پەرەز ماشىنىسى قۇرىسىز. ئۇنىڭ ئۈستىگە «شۇنىڭ بويىچە قىل، شۇنى يادلاپ ئوقۇما» دېگەن مېتا-كۆرسەتمە قوشۇلغاندا، بۇ ئورەك تولىدۇ. كىرىشتىكى كېسەل ۋە داۋانىڭ مېخانىزمى مۇشۇ. Prompt نى بۇ قاتلامغا يازغاندا، ئەمەلىيەتتە ئىجرا ۋاقتىنىڭ سەپلىمىسىنى يېزىۋاتقان بولىسىز.</p>
+
+<p style="margin: 8px 0;">قوشۇمچە قىلىپ قوياي: ئىنگلىزچە ئىشلەتكۈچىگە بۇ رولنىڭ ماشىنا تەرجىمىسى ئەمەس، قىسقۇچپاقا قېپىنىڭ قوش مەنىسى ۋە ئۈچ ئېتىقادنى قايتا ياراتقان <strong style="color:var(--article-accent, #3f8fd4);">ئىنگلىزچە ئەسلى نۇسخا</strong> بېرىلىدۇ. رول مەھسۇلات بايلىقى؛ بايلىقنى ئاددىي ماشىنا تەرجىمىسى قىلمايمىز.</p>
+
+<h2 style="font-size: 19px; font-weight: 700; color:var(--article-ink, #12324c); margin: 32px 0 12px; padding-left: 10px; border-left: 4px solid #5fb3ea;">ئىشلەتكۈچى يېزىدىغان قىسمى: مىجەزىنى ئۆزگەرتەلەيسىز، ئىنتىزامىنى ئۆزگەرتەلمەيسىز</h2>
+
+<p style="margin: 8px 0;">بۇ ئايرىشتىن ئەڭ كۆپ پايدا ئالغانلار خاسلاشتۇرماقچى بولغان ئىشلەتكۈچىلەر. <code dir="ltr" style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">~/.hexclaw/SOUL.md</code> غا ئۆز رولىڭىزنى قويسىڭىز، كىچىك قىسقۇچپاقىنى پۈتۈنلەي ئالماشتۇرالايسىز. لېكىن قۇراشتۇرۇش كودىدا بۇ ئالماشتۇرۇشنىڭ چېگرىسى بار:</p>
+
+<section style="margin: 18px 0; padding: 18px 20px; background: #272822; border-radius: 8px; overflow-x: auto; text-align: left; letter-spacing: 0; font-size: 13px; line-height: 1.8; font-family: 'SF Mono', SFMono-Regular, Menlo, Monaco, Consolas, 'Courier New', monospace; color: #F8F8F2; box-shadow: 0 1px 10px rgba(0,0,0,0.12);"><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">1</span><span style="color: #75715E; font-style: italic;">// 自定义 SOUL.md 也要附加固定运行手册——</span></span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">2</span><span style="color: #75715E; font-style: italic;">// 否则改了人设的用户会丢工具纪律</span></span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">3</span><span style="color: #F92672;">else if</span> soul := config.ReadSoul(); soul != <span style="color: #E6DB74;">""</span> {</span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">4</span>    sysContent = decorateSystemPrompt(<span style="color: #66D9EF;">soulWithManual</span>(soul), metadata)</span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">5</span>}</span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">6</span>...</span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">7</span>sysContent += agentAntiRecitationGuard  <span style="color: #75715E; font-style: italic;">// bug#7 的那句</span></span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">8</span>sysContent += e.buildCapabilityContext(ctx, metadata)</span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">9</span>sysContent += e.buildMountedSkillsPrompt(names)</span></section>
+
+<p style="margin: 8px 0;"><code dir="ltr" style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">soulWithManual</code> دېگەن فۇنكسىيە نامىنىڭ ئۆزى كېلىشىم: رول مەھسۇلاتتىن كەلسۇن ياكى ئىشلەتكۈچىدىن كەلسۇن، <strong style="color:var(--article-accent, #3f8fd4);">ئىجرا قوللانمىسى (قورال ئىنتىزامى) مەجبۇرىي قوشۇلىدۇ</strong>، ئىككىسىگە ئوخشاش مۇئامىلە قىلىنىدۇ. ئاددىي تىلدا ئېيتساق: <strong style="color:var(--article-accent, #3f8fd4);">مىجەزىنى ئۆزگەرتەلەيسىز، ئىنتىزامىنى ئۆزگەرتەلمەيسىز.</strong>بۇ OpenAI Model Spec كۆرسەتمە دەرىجىسىنىڭ يەرلىك ئوچۇق كودلۇق تۈردىكى مۇقابىلى: ئىشلەتكۈچى قاتلىمىدىكى ئەركىنلىك مەھسۇلات قاتلىمىدىكى چەكلىمىنى تېشىپ ئۆتمەيدۇ. بۇ پەقەت سۆز ئەمەس؛ 119 قۇرلۇق ئايرىش قايتىش سىنىقى «قوللانما چوقۇم قوشۇلىدۇ» ھەرىكىتىنى مۇقىملىغان. كىم بۇزسا، CI خەۋەر بېرىدۇ.</p>
+<h2 style="font-size: 19px; font-weight: 700; color:var(--article-ink, #12324c); margin: 32px 0 12px; padding-left: 10px; border-left: 4px solid #5fb3ea;">ھۆججەت يېزىدىغان قىسمى: Skill مەھسۇلاتلاشقان prompt، ئۇنىڭ ئەسلەش خامچوتىمۇ بار</h2>
+
+<p style="margin: 8px 0;">يەنە بىر قاتلام يۇقىرىدا، ئىشلەتكۈچى ۋە جامائەتچىلىك <strong style="color:var(--article-accent, #3f8fd4);">ھۆججەت</strong> شەكلىدە كېلىشىم قاتلىمىغا يازىدىغان Skill بار. ئالدى بىلەن ئاسان ئارىلاشتۇرۇلىدىغان چېگرانى ئايرىيمىز: HexClaw دا Skill نىڭ ئىككى گەۋدىسى بار. Go بىلەن يېزىلغان ئىچكى ماھارەتلەر، مەسىلەن ئىزدەش ۋە كود ئىجرا قىلىش، <strong style="color:var(--article-accent, #3f8fd4);">قورال</strong> بولۇپ، مودېل ئۇلارنى «چاقىرىدۇ»، قوشۇمچە تەسىرى بار، ئالدىنقى Harness ماقالىسىنىڭ دائىرىسىگە كىرىدۇ. بۇ يەردە سۆزلەۋاتقىنىمىز يەنە بىر قىسمى، Markdown شەكىلدىكى Skill. مودېل ئۇنى «<strong style="color:var(--article-accent, #3f8fd4);">ئوقۇيدۇ</strong>»، «چاقىرمايدۇ»: frontmatter بار بىر Markdown ھۆججىتى، بىر ساھەنىڭ ئىش قىلىش ئۇسۇلىنى تېكىستكە يېزىپ، ئۇلانغاندىن كېيىن system prompt قا قوشۇلىدۇ.<strong style="color:var(--article-accent, #3f8fd4);">قورال قورال ئورنىنى، ئۇ بولسا token ئورنىنى ئىگىلەيدۇ</strong>. ئۇ SOUL ۋە ئىجرا قوللانمىسى بىلەن ئوخشاش ماددا، پەقەت ھۆججەتكە بوغچىلانغان. يۈرۈشلۈك ئوقۇرمەنلىرى بۇنى بىلىدۇ: <a href="https://mp.weixin.qq.com/s/2tHlfZYHxQdQwvVZQEoLRg" style="color:var(--article-accent, #3f8fd4); text-decoration: none; border-bottom: 1px dashed #3f8fd4;">بۇرۇنقى رەھبەرنى Skill غا ئايلاندۇرۇش</a> ماقالىسى دەل مۇشۇ ھەقتە ئىدى. ساھەمۇ ئوخشاش يولغا ماڭدى: Claude Code نىڭ CLAUDE.md سى، Agent Skills نىڭ SKILL.md سى، ھەممىسى «prompt نى ھۆججەتلەشتۈرۈش»نىڭ باشقا يېزىلىشى.</p>
+
+<p style="margin: 8px 0;">ھۆججەتلەشتۈرۈش يېڭى مەسىلە ئېلىپ كېلىدۇ: ھۆججەت بارغانسېرى كۆپىيىدۇ، ھەممىسىنى سېلىۋېتىش ئاپەت. HexClaw نىڭ Skill تاللىغۇچىسى شۇڭا ئىككى باسقۇچلۇق مېخانىزم قىلغان. كود ئىزاھاتىدا بىرىنچى باسقۇچنىڭ مەقسىتى ئېنىق: «باسقۇچلۇق يۈكلەش / Top-K: <strong style="color:var(--article-accent, #3f8fd4);">100 Skill نىڭ ھەممىسىنى LLM context قا سېلىۋېتىشتىن ساقلىنىش</strong>». ئىككىنچى باسقۇچ شەرتلىك ئاكتىپلاش؛ Skill frontmatter دا when / not_when (ھالەت، پەن، سىنارىيە) نى ئېلان قىلالايدۇ، ماس كەلمىگىنى ئاپتوماتىك سۈزۈلىدۇ. تونۇش تۇيۇلدىمۇ؟ بۇ <a href="https://mp.weixin.qq.com/s/H6BoZUcQfBBqh-ScXQyTWw" style="color:var(--article-accent, #3f8fd4); text-decoration: none; border-bottom: 1px dashed #3f8fd4;">ئىككى ماقالە ئالدىدا</a> سۆزلەنگەن attention budget نىڭ prompt قاتلىمىغا چۈشۈشى: <strong style="color:var(--article-accent, #3f8fd4);">كۆرسەتمىمۇ context، كۆرسەتمىمۇ سۈزگۈچتىن ئۆتۈشى كېرەك.</strong>تاللىغۇچىنىڭ نومۇرلىشى پەقەت ئاچقۇچلۇق سۆزنىڭ بارلىقى ۋە چۈشەندۈرۈش تارماق تېكىستىنىڭ ماسلىشىشىنى ئىشلىتىدۇ؛ ئىزاھات ئۇنى «چۈشەندۈرگىلى بولىدىغان، تايىنىشچانلىقى نۆل» دەپ باھالايدۇ. كەينىدە HexClaw غا خاس راستچىل بىر جۈملە بار: «كېيىن BM25 / ۋېكتور ئەسلەشكە ئالماشتۇرۇشقا بولىدۇ، لېكىن ھازىرقى كۆلەم (&lt;10K Skill) ئۈچۈن ھاجەتسىز».</p>
+
+<p style="margin: 8px 0;">ھۆججەتلەشتۈرۈشنىڭ ئاخىرقى نۇقتىسى تارقىتىش. HexClaw، Skill ئۈچۈن <strong style="color:var(--article-accent, #3f8fd4);">تور ماھارەت بازىرى</strong> تەمىنلىگەن: رەسمىي hub ئامبىرىدىن ماھارەت مۇندەرىجىسىنى تارتىدۇ، ئىزدەش، كۆرۈش، قاچىلاش ۋە ئۆچۈرۈشنى قوللايدۇ؛ يەرلىكتە تورسىز زاپاس مۇندەرىجىمۇ سىڭدۈرۈلگەن. MCP مۇ ئوخشاش بازار مېخانىزمىدا ئىشلەيدۇ. بۇنىڭ مەنىسىنى ئويلاپ بېقىڭ: <strong style="color:var(--article-accent, #3f8fd4);">كېلىشىم قاتلىمىنىڭ ئۆزىگە تەۋە بوغچا باشقۇرغۇچىسى پەيدا بولدى</strong>. كود دۇنياسى ماڭغان يول — ھۆججەتلەشتۈرۈش، مودۇللاشتۇرۇش، بوغچا باشقۇرۇش — prompt دىمۇ قايتا تەكرارلىنىۋاتىدۇ.</p>
+
+<h2 style="font-size: 19px; font-weight: 700; color:var(--article-ink, #12324c); margin: 32px 0 12px; padding-left: 10px; border-left: 4px solid #5fb3ea;">كود يېزىدىغان قىسمى: ھەر نۆۋەت ھەرىكەتچان قوشۇلىدىغان تاكتىكا قاتلىمى</h2>
+
+<p style="margin: 8px 0;">كېلىشىم قاتلىمىنىڭ ئەڭ ئۈستىدىكى قىسمىنى ئادەم ئەمەس، ھەر نۆۋەت ئىجرا ۋاقتىدا كود يېزىپ چىقىدۇ. كىرىشتىكى قايتا ئوقۇشقا قارشى guard بىر مىسال؛ ئۇ پەقەت Agent تىن ھاسىل بولغان سىنارىيەگە قوشۇلىدۇ، چۈنكى مەسىلە شۇ يەردىلا كۆرۈلگەن. تېخىمۇ تولۇق مىسال ۋاقىتلىق ۋەزىپە نىيىتىنى يېتەكلەش: ئىشلەتكۈچى پاراڭدا «ھەر كۈنى ماڭا بىر ئىش قىلىپ بەر» دېگەندەك ۋاقىتلىق ۋەزىپىگە ئوخشايدىغان، لېكىن ئۇچۇرى كەم گەپ يازغاندا، ئالدى تەرەپ تۈرلىگۈچىسى بىلەن قۇرۇلمىلىق يېشىش ئالدىنقى ئىككى مۇداپىئە. ئىككىسىمۇ تۇتالمىسا، ئۈچىنچى زاپاس باشلىنىدۇ: ئاچقۇچلۇق سۆزنى سىكانېرلاش (نۆل تەننەرخ) نىيەتنى تونۇپ، system prompt قا «ئىشلەتكۈچىدىن تولۇقلاشنى سورا» يېتەكچىسىنى قوشىدۇ. شۇنىڭ بىلەن شۇ نۆۋەتتىكى قورال دائىرىسى قاتتىق تارىيىدۇ: cron_task بولسا پەقەت شۇلا قالىدۇ، بولمىسا قورال تىزىملىكى <strong style="color:var(--article-accent, #3f8fd4);">قۇرۇقدىلىدۇ</strong>؛ بۇ ئارقىلىق مەلۇم بولغان قورال چاقىرىش زەنجىرىدىكى 400 خاتالىقى كېلىشىم قاتلىمىدىن توسۇلىدۇ. ئىزاھات بۇنى belt-and-suspenders (كەمەر بىلەن ئاسما بەلۋاغنى تەڭ ئىشلىتىش) دەيدۇ. بۇ بىرلەشمە ھەرىكەتنىڭ يېرىمى prompt (قايتا سوراش يېتەكچىسى)، يېرىمى قاتتىق چەكلىمە (قورال دائىرىسىنى تارىتىش، ھەتتا Tools=nil): <strong style="color:var(--article-accent, #3f8fd4);">يۇمشاق ۋە قاتتىق قاتلام بىر تۈزىتىشتە ئۆز ۋەزىپىسىنى قىلىدۇ</strong>. كېلىشىم قاتلىمى بىلەن ئالدىنقى ماقالىدىكى قاتتىق توسۇقلارنىڭ توغرا مۇناسىۋىتى مۇشۇ.</p>
+
+<p style="margin: 8px 0;">بۇ قاتلامدا «خەت يازمايدىغان» ئىككى قارارمۇ يوشۇرۇنغان؛ بىر خەتمۇ ئۆزگەرمەيدۇ، لېكىن ئۇلارمۇ كېلىشىمنىڭ قىسمى. بىرىنچىسى، نەچچە مىڭ خەتلىك system prompt نىڭ <strong style="color:var(--article-accent, #3f8fd4);">ئەڭ سىرتقى قاتلىمى</strong> مۇقىم رول ئەمەس، بەلكى ئىجرا ۋاقتىدا كىيدۈرۈلىدىغان «ھالەت قالپىقى». auto ھالىتىدە ماتور شۇ نۆۋەت ئەسلەنگەن <strong style="color:var(--article-accent, #3f8fd4);">بىرىنچى Skill</strong> نىڭ frontmatter دا ئېلان قىلغان <code dir="ltr" style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">preferred_mode</code> قىممىتىگە ئالدى بىلەن قارايدۇ، شۇنىڭ بىلەن پۈتكۈل prompt نىڭ ئاھاڭىنى بەلگىلەيدۇ. دېمەك، كۆرسەتمە قاتلىمىنىڭ چوققىسى شۇ نۆۋەت <strong style="color:var(--article-accent, #3f8fd4);">ھەرىكەتچان تاللىنىدۇ</strong>؛ قايسىسى تاللىنىشى context نىڭ قايسى Skill غا ماس كەلگەنلىكىگە باغلىق. Top-K تاللايدىغان Skill تاللىغۇچىسىنىڭ بىرىنچى ماھارىتى قايتىدىن پۈتكۈل كېلىشىم قاتلىمىغا ئاھاڭ بېرىدۇ. ئىككىنچىسى، ھەر قاتلامنىڭ <strong style="color:var(--article-accent, #3f8fd4);">ئۇچۇرلار سانلار گۇرۇپپىسىدا قايسى ئورۇنغا قويۇلۇشى</strong>: KB ئىزدەش، ئەستە ساقلاشنى ئەسلەش، نۆۋەتتىكى ۋاقىت دېگەندەك «ھەر نۆۋەت ئۆزگىرىدىغان» مەزمۇنلار <em>مەخسۇس</em> system prompt تىن چىقىرىلىپ، history دىن كېيىنكى شۇ نۆۋەتتىكى user ئۇچۇرىغا قويۇلىدۇ. چۈنكى system ئۆزگەرسە، ئۇنىڭدىن كېيىنكى پۈتۈن history ئالدى قوشۇمچە cache دا miss بولىدۇ؛ ئۆزگىرىشچان مەزمۇننى تۆۋەنگە چۈشۈرگەندىلا، <code dir="ltr" style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">system + history</code> مۇقىم، cache قىلغىلى بولىدىغان ئالدى قوشۇمچە بولۇپ قالىدۇ. بۇ token نى تېجەپ، كېچىكىشنىمۇ ئازايتىدۇ؛ ئىزاھات بۇ ئورۇنلاشتۇرۇشنى frozen-snapshot، يەنى توڭلىتىلغان سۈرەت دەپ ئاتايدۇ.<strong style="color:var(--article-accent, #3f8fd4);">نېمە يېزىش كېلىشىم؛ قەيەرگە، قاچان يېزىشمۇ كېلىشىم.</strong></p>
+
+<p style="margin: 8px 0;">ئاسان نەزەردىن ساقىت بولىدىغان يەنە بىر «prompt» بار: قورال schema سى. ھەر قورالنىڭ description ۋە پارامېتىر چۈشەندۈرۈشى ئەمەلىيەتتە مودېلغا يېزىلغان man page. مەسىلە يېشىش قورالىدا <code dir="ltr" style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">method_diversity</code> دېگەن bool پارامېتىر بار؛ description ى مودېلغا بىۋاسىتە ئوقۇتىلىدىغان ئىنگلىزچە تېكىست: «solve with TWO deliberately different methods and cross-check them» (قەستەن ئوخشىمايدىغان ئىككى ئۇسۇلدا يېشىپ، ئۆزئارا تەكشۈر). كەينىدىكى «catches systematic method errors» بولسا مەقسىتىنى ئېنىق ئېيتىدۇ: بىرلا يولدا خاتا كېتىدىغان سىستېمىلىق ئۇسۇل خاتالىقىنى تۇتىدۇ؛ ئىختىلاپنى كود تەكشۈرگۈچىسى ھەل قىلىدۇ. مودېلنىڭ قورالنى ياخشى ئىشلىتىشىنىڭ كۆپ قىسمى مۇشۇ چۈشەندۈرۈشنىڭ ئېنىق يېزىلغانلىقىغا باغلىق. قورال چۈشەندۈرۈشىنى API ھۆججىتىدەك يېزىش، كۆرۈنمە يۈز كېلىشىمىدەك تەكشۈرۈش — Prompt Engineering تۆۋەنگە چۆككەندىن كېيىنكى ئەڭ «قۇرۇلۇش» خاراكتېرلىك قىسمى. كېلىشىمنىڭ يەنە بىر يېرىمى <strong style="color:var(--article-accent, #3f8fd4);">چىقىرىش فورماتى</strong>: ئالدىنقى ماقالىدە پەقەت بىرلا سۆز قايتۇرالايدىغان خەۋپ ھۆكۈمچىسى بار؛ prompt تا «Reply with EXACTLY one word» دەپ يېزىلغان. بۇ ئەڭ كىچىك ئىشلىتىشكە بولىدىغان قۇرۇلمىلىق چىقىرىش كېلىشىمى. كىرگۈزۈشنىڭ schema سى بار، چىقىرىشنىڭمۇ schema سى بار؛ ئىككى ئۇچى ئېنىق بولغاندا، prompt «سۆھبەت»تىن «كۆرۈنمە يۈز»گە ئايلىنىدۇ.</p>
+
+<h2 style="font-size: 19px; font-weight: 700; color:var(--article-ink, #12324c); margin: 32px 0 12px; padding-left: 10px; border-left: 4px solid #5fb3ea;">كېلىشىم قاتلىمى باشقۇرالمايدىغان ئىشلار ۋە قالغان قەرزلەر</h2>
+
+<p style="margin: 8px 0;">Prompt نى كېلىشىم قاتلىمىغا كۆتۈرۈش، ئۇ ھەممىنى قىلالايدۇ دېگەنلىك ئەمەس. ئەكسىچە، قاتلام ئېنىق بولسا، چېگرامۇ ئېنىق بولىدۇ. ئىجرا قوللانمىسىغا «X نى قىلما» دېيىلسە، مودېل كۆپ ئېھتىمالدا ئەمەل قىلىدۇ؛ لېكىن بىخەتەرلىك مۇھىتىدا «كۆپ ئېھتىمال» نىڭ قىممىتى نۆل. ھەقىقىي زاپاس قوغداش <a href="https://mp.weixin.qq.com/s/kDi-LSWB4UHtS_6jbTfvow" style="color:var(--article-accent, #3f8fd4); text-decoration: none; border-bottom: 1px dashed #3f8fd4;">ئالدىنقى ماقالىدىكى</a> ئىجازەت توسۇقى ۋە ھۆكۈمچى ئائىلىسى: تەستىق كۆزنىكى مودېلنىڭ ئەدەپلىكلىكىگە قارىمايدۇ، C1 قوغدىغۇچىسى مودېلنىڭ ئاغزاكى دوكلاتىنى ئاڭلىمايدۇ. ئوخشاشلا، <a href="https://mp.weixin.qq.com/s/H6BoZUcQfBBqh-ScXQyTWw" style="color:var(--article-accent, #3f8fd4); text-decoration: none; border-bottom: 1px dashed #3f8fd4;">ئىزدەش ماقالىسىنىڭ</a> ئاخىرىدىكى «ماتېرىيال يېتەرلىك بولمىسا راستىنى ئېيت» دېگەن سۆزمۇ يۇمشاق چەكلىمە؛ ھەقىقىي توسۇق باھالاش ۋە نەشر ئېلان قىلىش دەرۋازىسى. يەنە بىر خەۋپ بىۋاسىتە كېلىشىم قاتلىمىغا ھۇجۇم قىلىدۇ: سىرتقى تېكىست كۆرسەتمىگە يوشۇرۇن بۇيرۇق قىستۇرىدۇ (prompt injection). شۇڭا ماتور ئىشلەتكۈچى كىرگۈزۈشى ۋە ئىزدەشتىن قايتقان تېكىستكە «ئېنىق يامان نىيەت»نى تېز توسۇش مېخانىزمى قويغان. بۇ مۇداپىئەنىڭ شەكلىگە دىققەت قىلىڭ: ئۇ كود توسۇقى، prompt تا مودېلدىن «يامان گەپنى ئاڭلىما» دەپ تىلەش ئەمەس: <strong style="color:var(--article-accent, #3f8fd4);">كىرگۈزۈش ھۇجۇمىغا قارشى تۇرۇشتا، كېلىشىم قاتلىمىنىڭ ئۆزى ھۇجۇم يۈزى؛ ياردەم قاتلام سىرتىدىن كېلىشى كېرەك</strong>. ئۈچ ماقالە بىرلىشىپ تولۇق ۋەزىپە تەقسىماتىغا ئايلىنىدۇ: <strong style="color:var(--article-accent, #3f8fd4);">يۇمشاق چەكلىمە كۈتۈلگەن ھەرىكەتنى بەلگىلەيدۇ، قاتتىق توسۇق مەغلۇبىيەتنى تۇتىدۇ؛ prompt سىستېمىنى كۆپ ۋاقىتتا توغرا قىلدۇرىدۇ، Harness خاتا قىلغاندا بەدىلىنى كونترول قىلىدۇ.</strong>پەقەت يۇمشاق چەكلىمە بولسا قوغدىنىشسىز، پەقەت قاتتىق چەكلىمە بولسا قىممەت ۋە ئەخمەق بولىدۇ.</p>
+
+<p style="margin: 8px 0;">قالغان قەرزلەرنىمۇ ئادەت بويىچە ئېچىپ قوياي. ئايرىشنىڭ ئۆزى قايتىش سىنىقى بىلەن مۇقىملانغان، لېكىن <strong style="color:var(--article-accent, #3f8fd4);">رول تېكىستىنىڭ ھەرىكەتكە تەسىرى ئۈچۈن eval يوق</strong>. «مىجەزىم»دىكى بىر جۈملىنى ئۆزگەرتسىڭىز، قايسى مودېل ھەرىكىتى ئۆزگەرگەنلىكىنى كۆرسىتىدىغان golden توپلىمى يوق؛ SOUL.md نىڭ نەشر باشقۇرۇشىمۇ يوق، ئىشلەتكۈچى بۇزۇپ قويسا diff تارىخى ئارقىلىق قايتۇرالمايدۇ. ئۆزى git ئامبىرىغا قويۇپ باشقۇرالايدۇ، لېكىن مەھسۇلات باشقۇرۇپ بەرمەيدۇ. Prompt كود مۇئامىلىسىنىڭ يېرىمىغا ئېرىشتى: سىنىقى، bug ئىزلاش، بوغچا باشقۇرغۇچىسى (ماھارەت بازىرى) بار؛ ئۈستەل يۈزىدە كۆپ ئىشلىتىدىغان كۆرسەتمىلەرنى يىغىدىغان مەخسۇس Prompt باشقۇرۇش بېتىمۇ بار. لېكىن باھالاش ۋە نەشرلەشتۈرۈش كەم.<strong style="color:var(--article-accent, #3f8fd4);">بوغچا باشقۇرغۇچىسى بار، semver بىلەن CI تېخى يېتىشىپ كەلمىدى</strong>. ساھەدە يول ئاچقۇچىلار بار؛ DSPy غا ئوخشاش رامكىلار prompt نى بىۋاسىتە تەرجىمە-قۇراشتۇرغىلى بولىدىغان پروگرامما دەپ بىر تەرەپ قىلىدۇ. بۇ يېرىم قەدەم، مۇشۇ قاتلامنىڭ كېيىنكى يولى.</p>
+
+<h2 style="font-size: 19px; font-weight: 700; color:var(--article-ink, #12324c); margin: 32px 0 12px; padding-left: 10px; border-left: 4px solid #5fb3ea;">ئاخىرقى سۆز: ئۈچ قاتلام سىرتقا كېڭەيدى، ئاخىرقى قەدەم يەنىلا تېكىست</h2>
+
+<p style="margin: 8px 0;">بۇ يۈرۈشلۈكنىڭ ئومۇمىي پروگرامما ماقالىسى بىر ئاساسىي يولنى بەلگىلىگەن: تۆت ئەۋلاد پارادىگما كونترول يۈزىنىڭ سىرتقا كېڭىيىشى — سۆز تاللاشتىن ئۇچۇر تاللاش ھوقۇقىغا، جەريان كونترول ھوقۇقىغا، ئاندىن باشلاش ۋە قوبۇل قىلىش ھوقۇقىغا. ھەر قاتلام سىرتقا سۈرۈلگەندە، بىر قاتلام قارار سىستېمىغا بېرىلىدۇ. تۆت ماقالىنى تاماملاپ قايتا قارىسام، بۇ يولنىڭ ئاخىرىدا قىزىقارلىق بىر زىددىيەت بار: <strong style="color:var(--article-accent, #3f8fd4);">كونترول يۈزى قانچە يىراققا كېڭەيسىمۇ، ھەر قاتلام چەكلىمىنى ئەمەلىيلەشتۈرۈشنىڭ ئاخىرقى قەدىمى يەنىلا مودېلغا يېزىلغان بىر پارچە تېكىست.</strong>نازارەتچىنىڭ ھۆكۈم ئۆلچىمى prompt، ھۆكۈمچىنىڭ نومۇر ئۆلچىمى prompt، ئىزدەش چىقىشىدىكى «راستىنى ئېيت» prompt، ھەتتا «شۇنىڭ بويىچە قىل، شۇنى يادلاپ ئوقۇما»مۇ prompt. بىرىنچى ئەۋلادنىڭ ئورنىنى كېيىنكى ئۈچ ئەۋلاد ئالغان ئەمەس؛ ئۇ كېيىنكى ئۈچ ئەۋلادنىڭ ئاساسىغا ئايلاندى.</p>
+
+<p style="margin: 8px 0;">شۇڭا ھەر يىلى قايتا ئېلان قىلىنىدىغان ئۆلۈم خەۋەرلىرى پۈتۈنلەي خاتامۇ ئەمەس، پەقەت <strong style="color:var(--article-accent, #3f8fd4);">«تۆۋەنگە چۆكۈش»نى «ئۆلۈم» دەپ خاتا دىئاگنوز قىلغان</strong>. بىر ھۈنەر ئايرىم مۇنازىرە قىلىنمىسا، بەزىدە ئۇ يوقالغانلىقىدىن ئەمەس، ئۇلغا ئايلانغانلىقىدىن. ھېچكىم ھەر كۈنى ئۇلنى ماختىمايدۇ، لېكىن ھەر قاتلام شۇنىڭ ئۈستىدە تۇرىدۇ.</p>
+
+<p style="margin: 8px 0;">تۆت ماقالە بىرلەشكەندە، تەڭلىمە ئاخىرى تولۇق بولىدۇ:<strong style="color:var(--article-accent, #3f8fd4);">Agent = Prompt × Context × Harness × Loop</strong> — كېلىشىم كۈتۈلگەننى بەلگىلەيدۇ، دەلىل ھۆكۈمگە ئوزۇق بېرىدۇ، جابدۇق ھەرىكەتنى چەكلەيدۇ، ھالقا نىشاننى ئەمەلىيلەشتۈرىدۇ. ھەر قاتلامنىڭ بۇ ئوچۇق ئامباردا ھەقىقىي كودى بار؛ قايسى جايغىچە قىلىنغانلىقى، قايسى قىسمى قىلىنمىغانلىقى تۆت ماقالىدە كۆرسىتىلدى. يۈرۈشلۈك مۇشۇ يەردە ئاخىرلىشىدۇ. رەقەملىك ئىشچى داۋاملىق ئىشلەيدۇ، بىز جابدۇقنى داۋاملىق ياسايمىز.</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<p style="margin: 16px 0 8px; font-size: 14px; color:var(--article-secondary, #5f7b9c);"><strong>تۆت ئەۋلاد پارادىگما يۈرۈشلۈكى · تولۇق توپلام</strong></p>
+<p style="margin: 4px 0; font-size: 14px; line-height: 2.1;">
+▸ <span style="display: inline-block; font-size: 12px; padding: 0 8px; background:var(--article-panel, #edf7ff); color:var(--article-accent, #3f8fd4); border-radius: 10px; font-weight: 700;">Loop · ئومۇمىي پروگرامما</span>&nbsp;<a href="https://mp.weixin.qq.com/s/h60ymjjj3eF9hQyhl0jVcQ" style="color:var(--article-accent, #3f8fd4); text-decoration: none;">ئوچۇق كودلۇق Agent نىڭ كودىنى ئېچىپ، Prompt تىن Loop قىچە تۆت ئەۋلاد پارادىگمىنى قاتلاممۇقاتلام تەكشۈرۈش</a><br/>
+▸ <span style="display: inline-block; font-size: 12px; padding: 0 8px; background:var(--article-panel, #edf7ff); color:var(--article-accent, #3f8fd4); border-radius: 10px; font-weight: 700;">Context · ماتېرىيال تەرىپى</span>&nbsp;<a href="https://mp.weixin.qq.com/s/H6BoZUcQfBBqh-ScXQyTWw" style="color:var(--article-accent, #3f8fd4); text-decoration: none;">RAG نىڭ ھەقىقىي قىيىنلىقى قايتا ئەسلەش ئەمەس، «جاۋابقا ئوخشايدىغان شاۋقۇن»نى Loop سىرتىدا تۇتۇش</a><br/>
+▸ <span style="display: inline-block; font-size: 12px; padding: 0 8px; background:var(--article-panel, #edf7ff); color:var(--article-accent, #3f8fd4); border-radius: 10px; font-weight: 700;">Context · ئەستە ساقلاش تەرىپى</span>&nbsp;<a href="https://mp.weixin.qq.com/s/YvGGPBZX0V7R6-09unnrcQ" style="color:var(--article-accent, #3f8fd4); text-decoration: none;">«چۈش كۆرىدىغان» Agent ئەسلىمىسى: HexClaw نىڭ چۈشى كومپيۇتېرىڭىزدا</a><br/>
+▸ <span style="display: inline-block; font-size: 12px; padding: 0 8px; background:var(--article-panel, #edf7ff); color:var(--article-accent, #3f8fd4); border-radius: 10px; font-weight: 700;">Harness · جابدۇق</span>&nbsp;<a href="https://mp.weixin.qq.com/s/kDi-LSWB4UHtS_6jbTfvow" style="color:var(--article-accent, #3f8fd4); text-decoration: none;">«رەقەملىك ئىشچى»نىڭ ئەقلىنى مودېل بېرىدۇ، ئۇنى ئىشقا قويۇش ئىشەنچىسىنى «جابدۇق» بېرىدۇ</a><br/>
+▸ <span style="display: inline-block; font-size: 12px; padding: 0 8px; background: #3f8fd4; color: #ffffff; border-radius: 10px; font-weight: 700;">Prompt · ئاخىرقى ماقالە</span>&nbsp;<span style="color:var(--article-ink, #12324c);">بۇ ماقالە</span>
+</p>
+
+<p style="margin: 14px 0 8px; font-size: 14px; color:var(--article-secondary, #5f7b9c);"><strong>باشقا بۇرۇنقى ماقالىلەر</strong></p>
+<p style="margin: 4px 0; font-size: 14px; line-height: 2;">
+▸ <a href="https://mp.weixin.qq.com/s/2tHlfZYHxQdQwvVZQEoLRg" style="color:var(--article-accent, #3f8fd4); text-decoration: none;">مەن بۇرۇنقى رەھبىرىمنى HexClaw AI Skill غا ئايلاندۇردۇم (Skill ئايرىپ چىقىرىش دەرسلىكى بىلەن)</a><br/>
+▸ <a href="https://mp.weixin.qq.com/s/EvQT0VqH9ep6LXo89ZM-fw" style="color:var(--article-accent, #3f8fd4); text-decoration: none;">HexClaw AI «رەقەملىك ئىشچى»نى قانداق تەربىيەلەيدۇ: بىر جۈملىنى ئۆزىنى تۈزىتىدىغان sandbox سكرىپتىغا قۇراشتۇرۇش</a>
+</p>
+
+<p style="margin: 16px 0 8px; font-size: 14px; color:var(--article-secondary, #5f7b9c);"><strong>پايدىلانغان مەنبەلەر</strong></p>
+<p style="margin: 4px 0; font-size: 13px; color:var(--article-muted, #7b8fa3); line-height: 2;">
+· OpenAI، <a href="https://model-spec.openai.com" style="color:var(--article-muted, #7b8fa3);">Model Spec</a> — كۆرسەتمە ئالدىنلىق قاتلىمى / Chain of Command (Root &gt; System &gt; Developer &gt; User &gt; Guideline)<br/>
+· Kalai قاتارلىقلار، <bdi dir="ltr">Why Language Models Hallucinate (2025)</bdi> — ئالدىن مەشىقتىكى ستاتىستىكىلىق خاتالىق + ئاساسىي باھالاشلارنىڭ پەرەزنى مۇكاپاتلاپ، ئېنىقسىزلىقنى جازالىشى<br/>
+· OpenAI، <bdi dir="ltr">Sycophancy in GPT-4o (2025)</bdi> — قىسقا مۇددەتلىك ئىنكاسقا بەك ئېغىرلىق بېرىش مودېلنى ھەددىدىن زىيادە قوللايدىغان، لېكىن سەمىمىي بولمىغان جاۋابقا باشلايدۇ<br/>
+· Anthropic قاتارلىقلار، <bdi dir="ltr">Towards Understanding Sycophancy in Language Models (2023)</bdi> — ئادەم مايىللىقى ۋە مايىللىق مودېللىرى بەزى ئەھۋاللاردا كۆڭۈلگە ياقىدىغان جاۋابنى مۇكاپاتلايدۇ<br/>
+· Anthropic، Claude system prompts ۋە prompt engineering رەسمىي ھۆججەتلىرى<br/>
+· Andrej Karpathy، X (2023-01)، "The hottest new programming language is English"<br/>
+· 2023-يىلدىن بېرى داۋاملاشقان «Prompt Engineering Is Dead» مۇنازىرىسى<br/>
+· Anthropic Claude Code، CLAUDE.md ۋە Agent Skills (SKILL.md) — prompt نى ھۆججەتلەشتۈرۈشنىڭ ساھە ئەمەلىيىتى<br/>
+· DSPy — prompt نى تەرجىمە-قۇراشتۇرغىلى بولىدىغان پروگرامما دەپ بىر تەرەپ قىلىدىغان رامكا يۆنىلىشى<br/>
+· بۇ ماقالىنىڭ ئېلان قىلىشتىن بۇرۇنقى تېكىست ۋە ئۇلانما تەكشۈرۈشى 2026-07-05 كۈنى؛ HexClaw تەرەپتىكى مېخانىزم كودىنىڭ تەكشۈرۈشى 2026-07-04 كۈنى، ماس ئامبارلارنىڭ main تارمىقى كودىغا ئاساسەن قىلىنغان
+</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0 16px;"/>
+
+<p class="blog-brand-footer" data-blog-brand-footer="ug" data-blog-brand-overrides="{}" style="text-align: center; color: var(--article-muted, #7b8fa3); font-size: 13px; margin: 16px 0 0; line-height: 2;">
+<strong style="color: var(--article-ink, #12324c); font-size: 14px;">HexClaw ھېشى AI</strong><br/>
+يەرلىكتە ياكى بۇلۇتتا ئورۇنلاشتۇرۇش · سانلىق مەلۇماتنى ئۆزىڭىز باشقۇرۇش · ئوچۇق كودلۇق ۋە ھەقسىز يۇمشاق دېتال<br/>
+<a href="https://hexclaw.net" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">تور بېكەت: <bdi dir="ltr">hexclaw.net</bdi></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://github.com/hexagon-codes" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">GitHub: <bdi dir="ltr">hexagon-codes</bdi></a><br/>
+<a href="https://weibo.com/u/4097207240" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">Weibo: <bdi dir="ltr">@HexClaw</bdi></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">X: <bdi dir="ltr">@hexclawapp</bdi></a><br/>
+<a href="mailto:ai@hexclaw.net" style="color: var(--article-muted, #999); text-decoration: none;">ئېلخەت: <bdi dir="ltr">ai@hexclaw.net</bdi></a>
+</p>
+    </article>
+
+
+
+    <nav class="blog-series-nav" aria-label="ئالدىنقى ۋە كېيىنكى ماقالە">
+      <a href="/ug/blog/" class="blog-nav-card prev">
+  <span class="blog-nav-label">&larr; تىزىملىككە قايتىش</span>
+  <span class="blog-nav-title">تېخنىكا بىلوگى مۇندەرىجىسى</span>
+</a>
+      <a href="/ug/blog/harness-engineering" class="blog-nav-card next">
+  <span class="blog-nav-label">كېيىنكى ماقالە &rarr;</span>
+  <span class="blog-nav-title">HexClaw AI نىڭ Harness Engineering ى: «رەقەملىك ئىشچى»نىڭ ئەقلىنى مودېل، ئۇنى ئىشقا قويۇش ئىشەنچىسىنى «جابدۇق» بېرىدۇ</span>
+</a>
+    </nav>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-main">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-col-title">مەھسۇلات</div>
+        <a href="/ug/#download">ئۈستەلئۈستى نۇسخىسىنى چۈشۈرۈش</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="/ug/changelog">يېڭىلىنىش خاتىرىسى</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">ئىجادكار</div>
+        <a href="/ug/docs/">ھۆججەتلەر مەركىزى</a>
+        <a href="/ug/blog/">تېخنىكا بىلوگى</a>
+        <a href="/ug/docs/getting-started">تېز باشلاش</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">Apache-2.0</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">جامائەت</div>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/issues" target="_blank" rel="noopener noreferrer">Issues</a>
+        <a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer">Twitter / X</a>
+        <a href="mailto:ai@hexclaw.net">بىز بىلەن ئالاقىلىشىش</a>
+        <a href="mailto:support@hexclaw.net">سوئال-پىكىر</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">ھەققىدە</div>
+        <a href="/ug/about">بىز ھەققىدە</a>
+        <a href="/ug/privacy">شەخسىيەت سىياسىتى</a>
+        <a href="/ug/terms">ئىشلىتىش شەرتلىرى</a>
+        <a href="/ug/third-party-ai-services">ئۈچىنچى تەرەپ AI مۇلازىمىتى</a>
+      </div>
+    </div>
+    <div class="footer-wechat">
+      <img width="430" height="430" loading="lazy" decoding="async" src="../../assets/brand/wechat-qr.jpg" alt="HexClaw ۋېيشىن رەسمىي ھېسابات QR كودى">
+      <span class="footer-wechat-label">ۋېيشىن رەسمىي ھېساباتى</span>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">&copy; 2025&ndash;2026 hexagon-codes</span>
+  </div>
+</footer>
+<script src="../../assets/js/theme.js?v=2e4a1828feef"></script>
+<script src="../../assets/js/docs-nav.js?v=5a103861aec2"></script>
+<button type="button" class="back-to-top" id="backToTop" aria-label="بەت بېشىغا قايتىش" title="بەت بېشىغا قايتىش">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg>
+  <span>ئۈستىگە</span>
+</button>
+
+<script src="../../assets/js/blog.js?v=c72e1db5a6ec"></script>
+</body>
+</html>

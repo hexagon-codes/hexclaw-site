@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ug" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/favicon-32.png">
+<title>HexClaw نىڭ Harness Engineering ى: «رەقەملىك ئىش ھايۋىنى»نىڭ ئەقلى مودېلدىن، ئۇنى ئىشقا سېلىش ئىشەنچى جابدۇقتىن كېلىدۇ｜HexClaw تېخنىكا بىلوگى</title>
+<meta name="description" content="Harness ئەسلىدە ئىش ھايۋىنىغا سېلىنىدىغان جابدۇق — ئىجازەت دەرۋازىسى × ئىجراچىغا ئىشەنمەيدىغان باھالىغۇچىلار × خامچوت ۋە كونترول قىلىنغان مەغلۇبىيەت ئوخشاش مودېل، باشقا جابدۇق بىلەن باشقا سىستېما ئىقتىدارى؛ پەقەت كود پارچىسىنى ئىجرا قىلىشتىن ھەقىقىي تۈرىڭىزنى ئىجرا قىلىشقىچە بىر پۈتۈن جابدۇق بار — ھەممىسى ھەقىقىي مەنبە كود ۋە تۇراقلىق سانلار بىلەن كۆرسىتىلدى">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:site_name" content="HexClaw">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HexClaw نىڭ Harness Engineering ى: «رەقەملىك ئىش ھايۋىنى»نىڭ ئەقلى مودېلدىن، ئۇنى ئىشقا سېلىش ئىشەنچى جابدۇقتىن كېلىدۇ｜HexClaw تېخنىكا بىلوگى">
+<meta property="og:description" content="Harness ئەسلىدە ئىش ھايۋىنىغا سېلىنىدىغان جابدۇق — ئىجازەت دەرۋازىسى × ئىجراچىغا ئىشەنمەيدىغان باھالىغۇچىلار × خامچوت ۋە كونترول قىلىنغان مەغلۇبىيەت ئوخشاش مودېل، باشقا جابدۇق بىلەن باشقا سىستېما ئىقتىدارى؛ پەقەت كود پارچىسىنى ئىجرا قىلىشتىن ھەقىقىي تۈرىڭىزنى ئىجرا قىلىشقىچە بىر پۈتۈن جابدۇق بار — ھەممىسى ھەقىقىي مەنبە كود ۋە تۇراقلىق سانلار بىلەن كۆرسىتىلدى">
+<meta property="og:url" content="https://hexclaw.net/ug/blog/harness-engineering">
+<meta property="og:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta property="og:image:alt" content="HexClaw بەلگىسى">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta property="og:locale" content="ug_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="HexClaw نىڭ Harness Engineering ى: «رەقەملىك ئىش ھايۋىنى»نىڭ ئەقلى مودېلدىن، ئۇنى ئىشقا سېلىش ئىشەنچى جابدۇقتىن كېلىدۇ｜HexClaw تېخنىكا بىلوگى">
+<meta name="twitter:description" content="Harness ئەسلىدە ئىش ھايۋىنىغا سېلىنىدىغان جابدۇق — ئىجازەت دەرۋازىسى × ئىجراچىغا ئىشەنمەيدىغان باھالىغۇچىلار × خامچوت ۋە كونترول قىلىنغان مەغلۇبىيەت ئوخشاش مودېل، باشقا جابدۇق بىلەن باشقا سىستېما ئىقتىدارى؛ پەقەت كود پارچىسىنى ئىجرا قىلىشتىن ھەقىقىي تۈرىڭىزنى ئىجرا قىلىشقىچە بىر پۈتۈن جابدۇق بار — ھەممىسى ھەقىقىي مەنبە كود ۋە تۇراقلىق سانلار بىلەن كۆرسىتىلدى">
+<meta name="twitter:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta name="twitter:image:alt" content="HexClaw بەلگىسى">
+<link rel="canonical" href="https://hexclaw.net/ug/blog/harness-engineering">
+<link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/harness-engineering">
+<link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/harness-engineering">
+<link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/harness-engineering">
+<link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/harness-engineering">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "HexClaw نىڭ Harness Engineering ى: «رەقەملىك ئىش ھايۋىنى»نىڭ ئەقلى مودېلدىن، ئۇنى ئىشقا سېلىش ئىشەنچى جابدۇقتىن كېلىدۇ",
+  "description": "Harness ئەسلىدە ئىش ھايۋىنىغا سېلىنىدىغان جابدۇق — ئىجازەت دەرۋازىسى × ئىجراچىغا ئىشەنمەيدىغان باھالىغۇچىلار × خامچوت ۋە كونترول قىلىنغان مەغلۇبىيەت ئوخشاش مودېل، باشقا جابدۇق بىلەن باشقا سىستېما ئىقتىدارى؛ پەقەت كود پارچىسىنى ئىجرا قىلىشتىن ھەقىقىي تۈرىڭىزنى ئىجرا قىلىشقىچە بىر پۈتۈن جابدۇق بار — ھەممىسى ھەقىقىي مەنبە كود ۋە تۇراقلىق سانلار بىلەن كۆرسىتىلدى",
+  "url": "https://hexclaw.net/ug/blog/harness-engineering",
+  "inLanguage": "ug",
+  "datePublished": "2026-07-04",
+  "image": "https://hexclaw.net/assets/brand/hexclaw-logo.png",
+  "publisher": {
+    "@type": "Organization",
+    "name": "hexagon-codes",
+    "url": "https://hexclaw.net/",
+    "@id": "https://hexclaw.net/#organization"
+  },
+  "@id": "https://hexclaw.net/ug/blog/harness-engineering#article"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "HexClaw", "item": "https://hexclaw.net/ug/"},
+    {"@type": "ListItem", "position": 2, "name": "تېخنىكا بىلوگى", "item": "https://hexclaw.net/ug/blog/"},
+    {"@type": "ListItem", "position": 3, "name": "HexClaw نىڭ Harness Engineering ى: «رەقەملىك ئىش ھايۋىنى»نىڭ ئەقلى مودېلدىن، ئۇنى ئىشقا سېلىش ئىشەنچى جابدۇقتىن كېلىدۇ", "item": "https://hexclaw.net/ug/blog/harness-engineering"}
+  ],
+  "@id": "https://hexclaw.net/ug/blog/harness-engineering#breadcrumb"
+}
+</script>
+<link rel="stylesheet" href="../../assets/css/docs-eb2895dd79c5.css">
+<link rel="stylesheet" href="../../assets/css/blog-a8e5008ac3d1.css">
+</head>
+<body class="blog-page blog-article-page">
+<a href="#main" class="skip-link">ئاساسلىق مەزمۇنغا ئاتلاش</a>
+<nav class="tn topnav" id="nav">
+  <a href="/ug/" class="tn-b topnav-brand"><img width="72" height="72" src="../../assets/brand/hexclaw-icon-72.png" class="tn-l topnav-logo" alt="ھېشى AI"><span class="tn-n topnav-name">ھېشى AI</span></a>
+  <button type="button" class="tn-burger topnav-burger" aria-label="تىزىملىك" aria-expanded="false" aria-controls="primary-navigation"><span></span><span></span><span></span></button><div class="tn-r topnav-links" id="primary-navigation"><a href="/ug/">باش بەت</a><a href="/ug/#cases">ئىشلىتىش كۆرۈنۈشلىرى</a><a href="/ug/#features">ئىقتىدارلار</a><a href="/ug/#quickstart">باشلاش</a><a href="/ug/#ecosystem">ئوچۇق ئېكولوگىيە</a><a href="/ug/blog/" class="is-active">تېخنىكا بىلوگى</a><a href="/ug/docs/">ھۆججەتلەر مەركىزى</a><div class="lang-menu" data-lang-menu><button type="button" class="lang-trigger" aria-haspopup="menu" aria-expanded="false" aria-label="تىل ئالماشتۇرۇش"><svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 0 20"></path><path d="M12 2a15.3 15.3 0 0 0 0 20"></path></svg><span class="lang-current" lang="zh-CN" dir="ltr">维吾尔语</span><svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="lang-menu-list" role="menu"><a href="/zh/blog/harness-engineering" role="menuitem">中文</a><a href="/en/blog/harness-engineering" role="menuitem">English</a><a href="/ug/blog/harness-engineering" role="menuitem" class="is-active" aria-current="true" lang="zh-CN" dir="ltr">维吾尔语</a></div></div><button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="ئۇسلۇب ئالماشتۇرۇش"><svg class="ti-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="ti-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="nav-cta">GitHub <span class="nav-star-badge" id="gh-stars">&#9733;</span></a></div>
+</nav>
+
+<main id="main" class="blog-main">
+  <div class="blog-article-container">
+    <nav class="blog-breadcrumb" aria-label="面包屑导航">
+      <a href="/ug/">باش بەت</a>
+      <span class="blog-breadcrumb-sep">/</span>
+      <a href="/ug/blog/">تېخنىكا بىلوگى</a>
+      <span class="blog-breadcrumb-sep">/</span>
+      <span aria-current="page">Agent نىڭ تۆت ئەۋلاد ئەندىزىسى</span>
+    </nav>
+
+    <header class="blog-header">
+      <div class="blog-header-tags">
+        <span class="blog-badge-series">تۆت ئەۋلاد ئەندىزە · ئۈچىنچى ماقالە</span>
+      </div>
+      <h1 class="blog-article-title">HexClaw نىڭ Harness Engineering ى: «رەقەملىك ئىش ھايۋىنى»نىڭ ئەقلى مودېلدىن، ئۇنى ئىشقا سېلىش ئىشەنچى جابدۇقتىن كېلىدۇ</h1>
+      <p class="blog-article-subtitle">Harness ئەسلىدە ئىش ھايۋىنىغا سېلىنىدىغان جابدۇق — ئىجازەت دەرۋازىسى × ئىجراچىغا ئىشەنمەيدىغان باھالىغۇچىلار × خامچوت ۋە كونترول قىلىنغان مەغلۇبىيەت<br>ئوخشاش مودېل، باشقا جابدۇق بىلەن باشقا سىستېما ئىقتىدارى؛ پەقەت كود پارچىسىنى ئىجرا قىلىشتىن ھەقىقىي تۈرىڭىزنى ئىجرا قىلىشقىچە بىر پۈتۈن جابدۇق بار — ھەممىسى ھەقىقىي مەنبە كود ۋە تۇراقلىق سانلار بىلەن كۆرسىتىلدى</p>
+      <div class="article-provenance-banner">
+        <div class="provenance-left">
+          <span class="provenance-origin-badge">تۇنجى قېتىم WeChat رەسمىي ھېساباتىدا ئېلان قىلىنغان</span>
+          <span class="provenance-text">بۇ ماقالە ئالدى بىلەن WeChat رەسمىي ھېساباتى<strong>「hexclaw」</strong>(ID: hexclaw) نىڭ رەسمىي تېخنىكا سەھىپىسىدە ئېلان قىلىنغان · ئېلان ۋاقتى: <strong>2026-يىلى 7-ئاينىڭ 4-كۈنى</strong> · ئوقۇشقا تەخمىنەن 12 مىنۇت</span>
+        </div>
+        <a href="https://mp.weixin.qq.com/s/kDi-LSWB4UHtS_6jbTfvow" target="_blank" rel="noopener noreferrer" class="provenance-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          WeChat دىكى ئەسلى ماقالە ↗
+        </a>
+      </div>
+    </header>
+
+    <article class="blog-content">
+
+
+<p style="margin: 16px 0;">ئالدى بىلەن بىر سۆزنى ئىزدەپ كۆرەيلى.<strong style="color:var(--article-accent, #3f8fd4);">harness</strong>دېگەن ئىسىمنىڭ لۇغەتتىكى بىرىنچى مەنىسى تېخنىكىلىق ئاتالغۇ ئەمەس، بەلكى<strong style="color:var(--article-accent, #3f8fd4);">جابدۇق</strong>— كالا ياكى ئاتقا سېلىنىپ، ھارۋا تارتقۇزىدىغان ۋە يۈگۈرۈپ كونترولدىن چىقىپ كېتىشتىن ساقلايدىغان بىر يۈرۈش ئۈسكۈنە. تېخىمۇ ئېنىق ئېيتساق، harness پەقەت<strong style="color:var(--article-accent, #3f8fd4);">ھارۋا تارتىپ ئىش قىلىدىغان</strong>جابدۇقنى كۆرسىتىدۇ؛ مىنىش ئېگىرى ۋە ئۈزەڭگۈ ئۇنىڭغا كىرمەيدۇ. بۇ سۆز تۇغۇلغاندىنلا ئىش ھايۋىنىغا قارىتىلغان. تىزگىن يۆنىلىشنى، ئېغىزلىق جىددىي توختاشنى باشقۇرىدۇ، ھارۋا ئوقى كۈچنى ھارۋىغا ئۆتكۈزىدۇ، قوغدىغۇچ تاسادىپىي زەخىمدىن ساقلايدۇ. ساھە يېقىنقى ئىككى يىلدا مودېلنى ئوراپ تۇرىدىغان سىستېمىنى Harness دەپ ئاتىدى؛ بۇ تاللاش راستچىل:<a href="https://mp.weixin.qq.com/s/EvQT0VqH9ep6LXo89ZM-fw" style="color:var(--article-accent, #3f8fd4); text-decoration: none; border-bottom: 1px dashed #3f8fd4;">ئىلگىرىكى بىر ماقالىدە</a>بىز سىز ئۈچۈن 7×24 ئىش قىلىدىغان Agent نى «رەقەملىك ئىش ھايۋىنى» دەپ ئاتىغان. ئىش ھايۋىنىنى ئىشقا سېلىشتىن بۇرۇن جابدۇق سېلىش كېرەك.</p>
+
+<p style="margin: 8px 0;">بۇ قەۋەتكە نېمىشقا ئايرىم ماقالە يېزىش كېرەك؟ چۈنكى كۆپ تىلغا ئېلىنمايدىغان بىر پاكىت بار:<strong style="color:var(--article-accent, #3f8fd4);">مودېلنىڭ ئەقلى ئىجارىگە ئېلىنغان.</strong>سىز بىلەن رىقابەتچىڭىز ئىشلىتىدىغان API لار شۇ بىر نەچچىسى؛ مودېل ئىقتىدارىنىڭ يۇقىرى چېكى ھەممىگە ئوخشاش. سىزگە ھەقىقىي تەۋە بولغىنى مودېل سىرتىدىكى جابدۇق. ئوخشاش مودېلنىڭ قولىڭىزدا پاراڭ كۆزنىكى بولۇشى ياكى سىرتقا قويۇپ ئىش قىلدۇرالايدىغان سىستېما بولۇشىنى شۇ بەلگىلەيدۇ. ھازىر ساھە بۇنى بىر تەڭلىمە بىلەن ئىپادىلەيدۇ:<strong style="color:var(--article-accent, #3f8fd4);">Agent = Model + Harness</strong>. ئومۇمىي بايان ماقالىسىدە LangChain نىڭ تەجرىبىسى نەقىل قىلىنغان: مودېلنىڭ بىر قۇر كودىنىمۇ ئۆزگەرتمەي، پەقەت Harness نى ئالماشتۇرغاندا تېرمىنال ۋەزىپە نەتىجىسى 52.8% تىن 66.5% كە چىققان. ئون نەچچە پىرسەنت پەرق جابدۇقتىن كەلگەن.</p>
+
+<p style="margin: 8px 0;">شۇڭا بۇ ماقالە مودېلنى ئەمەس، جابدۇقنى چۇۋۇپ كۆرسىتىدۇ. تەركىبلەر تىزىملىكى بويىچە ماڭمايمىز؛ ئۇ ئاسرىغۇچىغا لازىم. ئىشلەتكۈچى كۆڭۈل بۆلىدىغىنى بىر سوئال:<strong style="color:var(--article-accent, #3f8fd4);">نېمىگە تايىنىپ ئۇنى ئىشقا سېلىشقا جۈرئەت قىلىمەن؟</strong>بۇنى تۆت كىچىك سوئالغا بۆلگىلى بولىدۇ: ئۇ نېمىگە تېگەلەيدۇ؟ ئىشنى بۇزسا قانداق قىلىمىز؟ ئۇنى كىم كۆزىتىدۇ؟ ئۇ قەيەردە ئىشلەيدۇ؟ HexClaw ماتورىنىڭ مەنبە كودىنى دەل مۇشۇ تۆت سوئال بويىچە تەكشۈرگىلى بولىدۇ.</p>
+
+<section style="margin: 20px 0; padding: 12px 16px 14px; background:var(--article-panel, #f7fafd); border: 1px solid #d5e6f3; border-radius: 8px; text-align: center; font-size: 13px; line-height: 2.2; color:var(--article-muted, #7b8fa3);">
+<span style="font-size: 12px; color:var(--article-muted, #9db2c4); letter-spacing: 1px;">بۇ يۈرۈشلۈك · AGENT نىڭ تۆت ئەۋلاد ئەندىزىسى</span><br/>
+<span style="color:var(--article-muted, #7b8fa3);">Prompt<span style="font-size: 12px; color:var(--article-muted, #9db2c4);">(ئاخىرقى ماقالە)</span></span><span style="color: #b8cbdc;">&nbsp;→&nbsp;</span><a href="https://mp.weixin.qq.com/s/H6BoZUcQfBBqh-ScXQyTWw" style="color:var(--article-accent, #3f8fd4); text-decoration: none;">Context<span style="font-size: 12px;">(ئالدىنقى ماقالە)</span></a><span style="color: #b8cbdc;">&nbsp;→&nbsp;</span><span style="display: inline-block; padding: 0 12px; background: #3f8fd4; color: #ffffff; border-radius: 12px; font-weight: 700;">Harness ▸ بۇ ماقالە</span><span style="color: #b8cbdc;">&nbsp;→&nbsp;</span><a href="https://mp.weixin.qq.com/s/h60ymjjj3eF9hQyhl0jVcQ" style="color:var(--article-accent, #3f8fd4); text-decoration: none;">Loop<span style="font-size: 12px;">(ئومۇمىي بايان)</span></a><br/>
+<span style="font-size: 12px; color:var(--article-muted, #9db2c4);">Context نىڭ ئەستە ساقلاش تەرىپى ئۈچۈن <a href="https://mp.weixin.qq.com/s/YvGGPBZX0V7R6-09unnrcQ" style="color: #5fa5d8; text-decoration: none;">«چۈش كۆرىدىغان Agent ئەستە ساقلىشى»غا قاراڭ</a></span>
+</section>
+
+<p style="margin: 8px 0; text-align: center; color:var(--article-muted, #7b8fa3); font-size: 13px;">(جابدۇقنىڭ ئومۇمىي كۆرۈنۈشى. تۆت ئىشەنچ سوئالى تۆت بۇلۇڭدا، ئوتتۇرىدا ئىجارىگە ئېلىنغان ماتور؛ قوغدىغۇچ قەۋىتى يېقىندا چوڭ رېمونتتىن ئۆتتى.)</p>
+
+<figure><img src="../../assets/blog/河蟹AI-Harness马具全景图.png" alt="HexClaw Harness جابدۇقىنىڭ ئومۇمىي كۆرۈنۈش دىئاگراممىسى" width="2120" height="2500" loading="lazy" decoding="async"><figcaption>HexClaw Harness جابدۇقىنىڭ ئومۇمىي كۆرۈنۈش دىئاگراممىسى</figcaption></figure>
+
+<h2 style="font-size: 19px; font-weight: 700; color:var(--article-ink, #12324c); margin: 32px 0 12px; padding-left: 10px; border-left: 4px solid #5fb3ea;">بىرىنچى سوئال: ئۇ نېمىگە تېگەلەيدۇ — قورال دائىرىسى ۋە ئىجازەت دەرۋازىسى</h2>
+
+<p style="margin: 8px 0;">جابدۇقنىڭ بىرىنچى تاسمىسى تىزگىن. HexClaw ماتورىنىڭ قورال ئايلىنىشى بىرلا يولدا ماڭىدۇ، ھازىرقى Agent لارنىڭ ئاساسلىق ئۇسۇلىنى قوللىنىدۇ: ھەر ئايلانمىدا تولۇق قورال تىزىملىكى مودېلغا بېرىلىدۇ؛ مودېل قورال چاقىرىش قايتۇرسا ئىجرا قىلىپ داۋاملىشىدۇ، قايتۇرمىسا ئۇ جاۋاب بولىدۇ. ئادەتتىكى ئاساسلىق يولدا «بۇ ئايلانمىدا قورال بېرىلەمدۇ» دېگەن شاخ يوق —<strong style="color:var(--article-accent, #3f8fd4);">نېمىگە تېگەلەيدىغانلىقىنى قورالنى يوشۇرۇش ئەمەس، دەرۋازا بەلگىلەيدۇ</strong>. (بەزى كېلىشىم ئەھۋاللىرىدا قورال دائىرىسى تارىيىدۇ: مودېل مەلۇم قورالنىلا ئىشلىتىشكە مەجبۇرلىنىدۇ ياكى مەنبەگە قاراپ قورال تۆۋەن چېكى بېكىتىلىدۇ. بۇ يۆنىلىش بەلگىلەش ۋە خاتالىقنىڭ ئالدىنى ئېلىش؛ «كۆرمىسۇن»نى بىخەتەرلىك تەدبىرى قىلىش ئەمەس.)</p>
+
+<p style="margin: 8px 0;">ئىككى دەرۋازا بار. بىرىنچىسى ئىجازەت تەستىقى، سۈكۈتتىمۇ ئېچىلغان. ھەر قورالغا خەتەر دەرىجىسى بېرىلىدۇ —<code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);" dir="ltr">safe / sensitive / dangerous</code> دېگەن ئۈچ دەرىجە. ئاقىۋەت پەيدا قىلىدىغان ھەرىكەتلەر (shell ئىجرا قىلىش، ھۆججەت يېزىش، سىرتقا ئۇچۇر ئەۋەتىش، ئىقتىدار ئۆزگەرتىش) قورال نامى، پارامېتىر ۋە سەۋەب بىلەن تەستىق تەلىپىگە ئورىلىپ ئالدى يۈزگە يوللىنىدۇ، سىزنىڭ ماقۇللۇقىڭىزنى كۈتىدۇ. تەستىقلىغاندا «بۇ سۆھبەتتە ئەستە ساقلا»نى تاللىسىڭىز، ئوخشاش قورال قايتا-قايتا ئاۋارە قىلمايدۇ. بۇ بانكا پۇكىيىدىكى قايتا تەكشۈرۈشكە ئوخشايدۇ: ھەرىكەت ئۆزى يامان نىيەتنى باھالىيالمايدۇ، ئەمما<strong style="color:var(--article-accent, #3f8fd4);">«ئاقىۋىتى بار» بولۇشنىڭ ئۆزى بىر توختاشقا ئەرزىيدۇ</strong>— ئۆزئارا تەسىرلىك ئەھۋالدا كود ئىجرا قىلىش، ھۆججەت ئۆزگەرتىش ۋە ئىقتىدار ئۆزگەرتىشنىڭ ھەممىسى ئالدى بىلەن سىزدىن سورايدۇ، ھېچكىم بۇنىڭ سىرتىدا ئەمەس.</p>
+
+<p style="margin: 8px 0;">ئىككىنچى دەرۋازا ھۆججەت سىستېمىسىنىڭ يېنىدا، ئۇسۇلى تېخىمۇ قىزىق. Agent يەرلىك ھۆججەتلەرنى توپلاپ بىلىم ئامبىرىغا كىرگۈزمەكچى بولسا، <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);" dir="ltr">knowledge_ingest_path</code>قورالىنى چاقىرىدۇ. دىققەت: ئۇ پەقەت<strong style="color:var(--article-accent, #3f8fd4);">يولنى</strong>قوبۇل قىلىدۇ، مەزمۇننى ئەمەس. ھۆججەتنى كود ئۆزى ئوقۇيدۇ: بىر قېتىمدا ئەڭ كۆپ 200 ھۆججەت، توغرا UTF-8 تېكىست، بىخەتەر يول يېشىش تەلەپ قىلىنىدۇ؛ سىمۋوللۇق ئۇلانما ئارقىلىق چىقىپ كېتىش ۋە <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);" dir="ltr">..</code> ئارقىلىق چەكتىن ئۆتۈش بىۋاسىتە رەت قىلىنىدۇ. مۇندەرىجە سانالغاندا ھەر تۈر قايتا يېشىلىپ، سىمۋوللۇق ئۇلانمىنىڭ ئايلىنىپ ئۆتۈشى توسۇلىدۇ. بۇ لايىھەنىڭ مەنىسى ئۈستىدە ئويلىنىشقا ئەرزىيدۇ:<strong style="color:var(--article-accent, #3f8fd4);">مودېل «ئوقۇدۇم» دېسە ھېساب ئەمەس؛ كود ئوقۇغان نەرسە ھېساب.</strong>«سانلىق مەلۇمات ئېلىش» ھوقۇقىنى مودېلدىن قايتۇرۇۋېلىش تەستىق كۆزنىكىدىنمۇ تۈپ دەرۋازا.</p>
+
+<p style="margin: 8px 0;">قورال دائىرىسىنىڭ يەنە بىر زامانىۋى ئاۋارىچىلىقى بار: زاۋۇتتىلا مۇقىملاپ قويۇلمايدۇ. MCP ئارقىلىق ئۈچىنچى تەرەپ قوراللىرى خالىغان چاغدا ئۇلىنىدۇ، Skill نى ئورنىتىش ۋە يېڭى قۇرۇشمۇ بولىدۇ. HexClaw بۇنىڭغا رەسمىي يول تەييارلىدى: ئىچىگە قۇرۇلغان<strong style="color:var(--article-accent, #3f8fd4);">Skill / MCP بازىرى</strong>رەسمىي hub ئامبىرىدىن تىزىملىك ئېلىپ، ئىزدەش، كۆرۈش ۋە بىر چېكىشتە ئورنىتىشنى تەمىنلەيدۇ. جابدۇققا داۋاملىق يېڭى زاپچاس قوشقىلى بولىدۇ، تەمىنلەش يولى ئوچۇق. بۇ Harness قا ئۆزىگە قايتىدىغان تەلەپ قويىدۇ:<strong style="color:var(--article-accent, #3f8fd4);">«جابدۇقنى ئۆزگەرتىش» ھەرىكىتىنىڭ ئۆزىمۇ جابدۇق دەرۋازىسىدىن ئۆتۈشى كېرەك.</strong>HexClaw create_skill، manage_skill، manage_mcp_server نىڭ ھەممىسىنى sensitive دەپ بېكىتىپ، تەستىق تەلەپ قىلىدۇ. كود بۇ ھەرىكەتلەرنى ئېنىق «ئىقتىدار كىرگۈزۈش / ئىقتىدار ئۆزگەرتىش» دەپ ئاتايدۇ (قايتىش سىنىقىدىكى ئىنگلىزچە ئات تېخىمۇ جانلىق:<code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);" dir="ltr">capability mutation</code>). ھەقىقىي قىيىنى ئادەمسىز ئىشلىتىش: يېنىدا «رۇخسەت»نى چېكىدىغان ئادەم بولمىسا دەرۋازا قانداق ساقلىنىدۇ؟ HexClaw نىڭ ئۇسۇلى<strong style="color:var(--article-accent, #3f8fd4);">بۇ قوراللارنى قورال ساندۇقىدىن يوشۇرۇش ئەمەس</strong>— ئۇ كونا نۇسخىنىڭ ئۇسۇلى، قاتتىق كودلانغان چىقىرىۋېتىش تىزىملىكى ئىدى؛ ھازىر ماسلىشىش ئۈچۈنلا ساقلانغان قۇرۇق مەشغۇلاتقا ئايلاندى. ئۇنىڭ ئورنىنى ھەممە كۆرەلەيدىغان ۋە تەڭشىيەلەيدىغان ئاپتوماتىك رۇخسەت ماترىتساسى ئالدى. سۈكۈتتىكى دەرىجىدە (مەنبە كودتىكى function-first) ئادەمسىز ۋاقىتلىق ۋەزىپە ۋە webhook لار پەقەت ئوقۇش، تور كۆرۈش،<strong style="color:var(--article-accent, #3f8fd4);">قۇم ساندۇقىدا</strong>ئىجرا قىلىش، ھۆججەت تەھرىرلەش ۋە سىرتقا يەتكۈزۈش قاتارلىق كۈندىلىك ئىشلارنى ئاپتوماتىك رۇخسەت قىلىدۇ. ساھىب ماشىنىدا بىۋاسىتە shell ئىجرا قىلىشتەك «چەكتىن چىقىدىغان» ئىجرا يەنىلا تەستىققا ئۆتىدۇ. قەتئىي تۇتۇپ قالىدىغىنى ئىككى تۈر:<strong style="color:var(--article-accent, #3f8fd4);">ئىقتىدار ئۆزگەرتىش</strong>(يۇقىرىدىكى ئۈچ قورال) ۋە<strong style="color:var(--article-accent, #3f8fd4);">ئۆزىگە يېڭى ۋاقىتلىق ۋەزىپە ئورۇنلاشتۇرۇش</strong>(ئىزاھ ئۇنى بىۋاسىتە «ئۆزىنى كۆپەيتىش ئايلىنىشى» — job نىڭ job قۇرۇشى دەپ ئاتايدۇ). تۈگمەن تارتىۋاتقان ھايۋان ئۆز جابدۇقىنى ئۆزگەرتەلمەيدۇ، ئۆزىگە يەنە ھايۋانمۇ ياللىيالمايدۇ. ئەمما ئۇنى توسۇۋاتقىنى «قورال يوشۇرۇلدى» ئەمەس، «دەرۋازا ياق دېدى». بۇ بۆلەكنىڭ بېشىدىكى سۆزگە ئۇلىنىدۇ:<strong style="color:var(--article-accent, #3f8fd4);">چەك دەرۋازىدىن كېلىدۇ، يوشۇرۇشتىن ئەمەس</strong>。</p>
+
+<p style="margin: 8px 0;">شۇنچە دەرۋازا دېگەندىن كېيىن، ئەمەلىي سوئال شۇ: بۇلار جانسىز بىر خىل چەكمۇ ياكى ئېھتىياجغا قاراپ تەڭشەلەمدۇ؟ تەڭشەكلەردىكى<strong style="color:var(--article-accent, #3f8fd4);">ئاپتوماتلاشتۇرۇش ئىجازەتلىرى</strong>بېتى جاۋاب بېرىدۇ: يۇقىرىدىكى ماترىتسانى قولدا تەڭشىيەلەيدىغان تاختا قىلىپ يېيىپ بېرىدۇ:<code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);" dir="ltr">ئىقتىدار ئالدىن / قاتتىق تەستىق / تولۇق ئىقتىدار</code> دېگەن ئۈچ تاللاش بار (ماتوردا «تەڭپۇڭ» ھالىتىمۇ بار، ئەمما تاللاشنى زىيادە كۆپەيتمەسلىك ئۈچۈن ئۈستەل يۈزى ئۇنىڭغا ئايرىم كارتا بەرمىگەن). ھەر دەرىجىنىڭ يېنىدا قايسى ئىقتىدار ئاپتوماتىك ئىجرا بولىدىغانلىقى، قايسىسى تەستىققا ئۆتىدىغانلىقى بىۋاسىتە يېزىلغان؛ «ئىقتىدار ئورنىتىش / ئۆزگەرتىش»مۇ ئايرىم قۇر. يېڭى Webhook نى ئۇلاپ، تېخى خاتىرجەم ئەمەسمۇ؟ ئالدى بىلەن «قاتتىق تەستىق»قا ئۆتۈپ، ھەر ئاپتوماتىك ۋەزىپىنىڭ سورىشىنى تەلەپ قىلىڭ؛ بىر نەچچە كۈن كۆزەتكەندىن كېيىن بوشىتىڭ. ئومۇمىي دەرىجىدىنمۇ ئىنچىكە قەۋەت<strong style="color:var(--article-accent, #3f8fd4);">ۋەزىپە دەرىجىلىك ئىجازەت</strong>: بىر ۋەزىپە ئۈچۈن ئومۇمىي سۈكۈتنى بوشىتىش ھاجەتسىز، پەقەت شۇ ۋەزىپىگە كېرەكلىك ئىقتىدارنى رۇخسەت قىلىڭ. ۋەزىپە ئۆچۈرۈلسە ئىجازەتمۇ قايتۇرۇلىدۇ. ئىچىگە قۇرۇلغان تۈرى بولمىغان MCP ئۇلىغۇچ قوراللىرى ئادەمسىز ھالەتتە دەل مۇشۇ يولدىن ئۆتىدۇ.<strong style="color:var(--article-accent, #3f8fd4);">شۇڭا «ئۇنى ئىشقا سېلىشقا جۈرئەت قىلىش» ھەممىنى قويۇۋېتىش ياكى ھەممىنى چەكلەش دېگەن گەپ ئەمەس؛ ئۆلچىمى بار دەرۋازا.</strong>كېيىنكى ماقالە بىلەن چېگرانىمۇ ئايرىپ قويايلى: markdown شەكلىدىكى Skill باشقا نەرسە؛ ئۇ قورال ئەمەس، مودېلغا يېزىلغان يوليورۇق، ئاخىرقى ماقالىنىڭ تېمىسى.</p>
+
+<!-- 此处对应已发布稿的自动化权限页截图，原始图片尚未归档。 -->
+<p style="margin: 8px 0; font-size: 13px; color:var(--article-muted, #7b8fa3); text-align: center;">(ئاپتوماتلاشتۇرۇش ئىجازەت بېتى. ئۈستىدە ئومۇمىي ئۈچ دەرىجە، ئاستىدا ئۈنۈملۈك سىياسەت ماترىتساسى: قايسى ۋەزىپە ئاپتوماتىك ئۆتىدۇ، قايسىسى تەستىققا ئۆتىدۇ — بۇ شۇئار ئەمەس، كۆرگىلى، تەڭشىگىلى ۋە تەكشۈرگىلى بولىدىغان دەرۋازا.)</p>
+
+<h2 style="font-size: 19px; font-weight: 700; color:var(--article-ink, #12324c); margin: 32px 0 12px; padding-left: 10px; border-left: 4px solid #5fb3ea;">ئىككىنچى سوئال: ئىشنى بۇزسا قانداق قىلىمىز — كونترول قىلىنغان مەغلۇبىيەت</h2>
+
+<p style="margin: 8px 0;">ھايۋان پۇتلىشىدۇ، قورال ۋاقىتتىن ئېشىپ كېتىدۇ. جابدۇق يىقىلماسلىققا كاپالەت ئەمەس، يىقىلىشقا بەرداشلىق بېرىش ئۈچۈن. HexClaw ھەر قورال ئىجراسىنى قايتا سىناش قەۋىتىگە ئورايدۇ؛ سانلار چوڭ ئەمەس، ئەمما ھەر بىرىنىڭ سەۋەبى بار:</p>
+
+<section style="margin: 18px 0; padding: 18px 20px; background: #272822; border-radius: 8px; overflow-x: auto; text-align: left; letter-spacing: 0; font-size: 13px; line-height: 1.8; font-family: 'SF Mono', SFMono-Regular, Menlo, Monaco, Consolas, 'Courier New', monospace; color: #F8F8F2; box-shadow: 0 1px 10px rgba(0,0,0,0.12);"><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">1</span>DefaultTimeout: <span style="color: #AE81FF;">30</span> * time.Second,</span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">2</span>TimeoutOverrides: map[<span style="color: #66D9EF;">string</span>]time.Duration{</span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">3</span>    <span style="color: #E6DB74;">"browser"</span>:   <span style="color: #AE81FF;">120</span> * time.Second,</span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">4</span>    <span style="color: #E6DB74;">"code_exec"</span>: <span style="color: #AE81FF;">60</span> * time.Second,</span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">5</span>},</span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">6</span>retry.Delay(time.Second),          <span style="color: #75715E; font-style: italic;">// تۇنجى چېكىنىش 1s</span></span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">7</span>retry.MaxDelay(<span style="color: #AE81FF;">8</span>*time.Second),    <span style="color: #75715E; font-style: italic;">// يۇقىرى چېكى 8s</span></span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">8</span>retry.Multiplier(<span style="color: #AE81FF;">2.0</span>),             <span style="color: #75715E; font-style: italic;">// ئېكسپونېنتلىق ھەسسىلەش</span></span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">9</span>retry.RetryIf(isTransientError),   <span style="color: #75715E; font-style: italic;">// پەقەت ۋاقىتلىق خاتالىقنى قايتا سىناش</span></span></section>
+
+<p style="margin: 8px 0;">ئاخىرقى قۇر ئاچقۇچ. مەنبە كودنىڭ سىياسەت ئىزاھى روشەن: «پەقەت ئېنىق ۋاقىتلىق خاتالىقلارنى قايتا سىنا، نامەلۇم خاتالىققا ئېھتىياتچان مۇئامىلە قىل». تور تەۋرەپ كەتسە قايتا سىناشقا ئەرزىيدۇ؛ پارامېتىر خاتا بولسا يۈز قېتىم سىنىسىمۇ خاتا —<strong style="color:var(--article-accent, #3f8fd4);">قايتا سىناش تەلەي ئۈچۈن، bug ئۈچۈن ئەمەس</strong>. تور كۆرگۈچكە 120 سېكۇنت، كود ئىجراسىغا 60 سېكۇنت بېرىشمۇ ھەر بىرىنىڭ ھەقىقىي ۋاقىت تەقسىماتىغا ئاساسەن، بىر ئومۇمىي ساننىلا قويۇش ئەمەس.</p>
+
+<p style="margin: 8px 0;">بىر قېتىملىق مەغلۇبىيەتتىنمۇ كۆپرەك باشقۇرۇشقا تېگىشلىكى «پۈتمەي تۇرۇش». قورال ئايلىنىشىنىڭ ئايلانما خامچوتى بار: سۈكۈتتىكى چېكى 25. ئىزاھتا بۇ ساننىڭ نورمال ۋەزىپىگە يېتەرلىك بوشلۇق بېرىدىغانلىقى، «چەككە يېتىش نورمال ئاخىرلىشىش» ئىكەنلىكى، خاتالىق ئەمەسلىكى چۈشەندۈرۈلگەن. budget ھالىتىدە يەنە 50 ئايلانمىلىق مۇتلەق بىخەتەرلىك چېكى بار. ئومۇمىي باياندا كۆرگەن بۇ ئىككى ساننى بۇ يەردە قايتا ئوقۇغاندا مەنىسى باشقىچە:<strong style="color:var(--article-accent, #3f8fd4);">خامچوت ئىقتىدارنى چەكلەش ئەمەس، «بۇ ئىش پۈتمەيدۇ» دېگەن ئەھۋالغا مۇۋاپىق ئاخىرلىشىش بېرىش</strong>. كونترولدىن چىققان ئۇزۇن ۋەزىپە مەغلۇپ بولغان قىسقا ۋەزىپىدىن كۆپ قىممەت.</p>
+
+<h2 style="font-size: 19px; font-weight: 700; color:var(--article-ink, #12324c); margin: 32px 0 12px; padding-left: 10px; border-left: 4px solid #5fb3ea;">ئۈچىنچى سوئال: ئۇنى كىم كۆزىتىدۇ — ئىجراچىغا ئىشەنمەيدىغان باھالىغۇچىلار</h2>
+
+<p style="margin: 8px 0;">بۇ مەن ئەڭ يېيىپ چۈشەندۈرگۈم كەلگەن بۆلەك. چۈنكى ئۇ جابدۇقتىكى ئەڭ كۈتۈلمىگەن نەرسىگە توغرا كېلىدۇ: ئىش ھايۋىنىغا<strong style="color:var(--article-accent, #3f8fd4);">ئۆزى باشقۇرالمايدىغان نازارەتچى</strong>بېرىش. پۇل-مۇئامىلە سىستېمىسىدا بۇ maker/checker دەپ ئاتىلىدۇ: ئىشنى بېجىرگۈچى بىلەن تەكشۈرگۈچى ئىككى ئادەم بولۇشى كېرەك. HexClaw ماتورىدا بىر ئائىلە باھالىغۇچى بار؛ ئورتاق يېرى بىرلا —<strong style="color:var(--article-accent, #3f8fd4);">ئىجراچىنىڭ ئۆزى توغرىسىدىكى دوكلاتىغا ھەرگىز ئىشەنمەيدۇ</strong>。</p>
+
+<p style="margin: 8px 0;">بىرىنچى باھالىغۇچى ئادەمسىز قوبۇل قىلىشتىكى<em>قاتتىقلاشتۇرۇش قەۋىتى</em>. ئادەمسىز ھالەت نېمىگە تېگەلەيدىغانلىقىنى سۈكۈتتە بىرىنچى سوئالدىكى ماترىتسا بەلگىلەيدۇ. ئەمما ماتور ئۇنىڭ ئۈستىگە چېتىشقا بولىدىغان تېخىمۇ قاتتىق باھالىغۇچى — مۇستەقىل خەتەر تەكشۈرگۈچى قالدۇرغان. ۋەزىپە تەسۋىرىنى بېرىپ، prompt پەقەت low / medium / high دېگەن بىر سۆز تەلەپ قىلىدۇ. بۇ چاقىرىشنىڭ MaxTokens ى پەقەت <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);" dir="ltr">16</code>(ئىزاھمۇ تېجەشچان: «a one-word verdict — keep it cheap»، بىر سۆزلۈك ھۆكۈم، ئەرزان بولسۇن). قائىدىسى ئىنتايىن قاتتىق:<strong style="color:var(--article-accent, #3f8fd4);">پەقەت low ئۆتىدۇ؛ medium، high، دەرىجە ئايرىش مەغلۇبىيىتى ياكى باھالىغۇچىنىڭ ئۆزىمۇ تەڭشەلمىگەن بولسا ھەممىسى رەت</strong>. جاۋاب ئېنىق low بولمىسا high تەرەپكە ئېلىنىدۇ. مەنبە كود ئېنىق دەيدۇ: ئۇ سۈكۈتتە ماترىتسانى ئالماشتۇرمايدۇ، پەقەت «تېخىمۇ چىڭ تۇتۇش» ئۈچۈن؛ تېخىمۇ ئېھتىياتچان سىياسەتكە ئېھتىياجلىق ئورۇنلاشتۇرۇشلار ئۆزى ئۇلايدۇ. بۇ لايىھە fail-closed نىڭ دەرسلىك مىسالى: دەرۋازا بۇزۇلسا قۇلۇپلىنىدۇ، ئېچىلىپ كەتمەيدۇ.</p>
+
+<p style="margin: 8px 0;">ئىككىنچى باھالىغۇچى سۈپەتكە نومۇر بېرىدۇ: Agent نىڭ ھەر قورال چاقىرىش ئىپادىسى LLM-as-judge ئارقىلىق ئەۋرىشكىلەپ باھالىنىدۇ، ناچار ئىپادە Skill ياخشىلاش لايىھەسىگە ئايلىنىدۇ. ئۇنىڭ لايىھە تاللىشى توغرىسىدىكى ئىزاھنى ئەسلى مەنىسى بىلەن نەقىل قىلايلى:</p>
+
+<blockquote style="border-left: 3px solid #3f8fd4; padding: 12px 18px; margin: 16px 0; background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); font-size: 14px; border-radius: 0 8px 8px 0; line-height: 1.8;">
+«ھەر قورال چاقىرىشنى نومۇرلاش LLM نورمىسىنى سەرپ قىلىدۇ، شۇڭا ئەۋرىشكىلەش نىسبىتى قوللىنىلىدۇ (سۈكۈت 0.1 = 10%)… LLM چاقىرىش مەغلۇپ بولسا، ۋاقىتتىن ئاشسا ياكى يېشىش مەغلۇپ بولسا 10 نومۇر قايتۇر (fail-open)،<strong style="color:var(--article-accent, #3f8fd4);">judge تەۋرىنىشى سەۋەبىدىن خاتا draft شاۋقۇنى پەيدا قىلما</strong>。"<br/>
+<span style="color:var(--article-muted, #7b8fa3); font-size: 13px;">— skill_judge.go بېشىدىكى ئىزاھ (بۇ ماقالىدىكى «ياخشى جۈملىلەر» سەھنىدىن ئەمەس، كود ئىزاھىدىن كەلگەن)</span>
+</blockquote>
+
+<p style="margin: 8px 0;">بۇ ئىككى باھالىغۇچىنى بىللە كۆرسەك، كۆزدىن قاچىدىغان بىر قارىمۇقارشىلىق بار: خەتەر تەكشۈرگۈچى بۇزۇلسا high (fail-closed)، سۈپەت باھالىغۇچى بۇزۇلسا تولۇق نومۇر (fail-open) قايتۇرىدۇ —<strong style="color:var(--article-accent, #3f8fd4);">بىر سىستېمىدىكى ئىككى دەرۋازا قەستەن قارىمۇقارشى يۆنىلىشتە مەغلۇپ بولىدۇ</strong>. بۇ بىردەك ئەمەسلىك ئەمەس؛ ئەكسىچە ئەڭ بىردەك جايى: كىرىشنى ساقلايدىغان دەرۋازا بۇزۇلسا قۇلۇپلىنىشى، قوشۇمچە پايدا بېرىدىغان دەرۋازا بۇزۇلسا يول بېرىشى كېرەك. دەرۋازىنىڭ يۆنىلىشى ئۇنىڭ بارلىقىدىن مۇھىم؛ ئورنىتىشتىن بۇرۇن بۇزۇلغان كۈنى قايسى تەرەپكە يىقىلىشىنى ئويلاڭ.</p>
+
+<p style="margin: 8px 0;">ئۈچىنچى باھالىغۇچى ماتېماتىكا قاتارلىق قايتا ھېسابلاپ تەكشۈرگىلى بولىدىغان ئىشلارغا مەسئۇل. ھەل قىلغۇچى Agent جاۋاب بەرگەندىن كېيىن verifier ناملىق كىچىك رول<strong style="color:var(--article-accent, #3f8fd4);">پۈتۈنلەي يېڭى كونتېكىستتا</strong>كود بىلەن مۇستەقىل ھېسابلاپ، ئاندىن سېلىشتۇرىدۇ. ئۇنىڭدا پەقەت <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);" dir="ltr">code_exec</code> بىرلا قورال بار؛ ھەل قىلىش جەريانىنى كۆرمەيدۇ، ئۆزى ھېسابلىشى كېرەك. تۆتىنچى باھالىغۇچى ئەڭ ئاددىي، ئەڭ كەسكىن؛ «دېگەن بىلەن ھېساب ئەمەس»نى باشقۇرىدۇ: ۋاقىتلىق ۋەزىپە ماتېرىيالنى بىلىم ئامبىرىغا ساقلىدىم دېدىمۇ؟ قورال چاقىرىش خاتىرىسىنى تەكشۈر:</p>
+
+<section style="margin: 18px 0; padding: 18px 20px; background: #272822; border-radius: 8px; overflow-x: auto; text-align: left; letter-spacing: 0; font-size: 13px; line-height: 1.8; font-family: 'SF Mono', SFMono-Regular, Menlo, Monaco, Consolas, 'Courier New', monospace; color: #F8F8F2; box-shadow: 0 1px 10px rgba(0,0,0,0.12);"><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">1</span><span style="color: #75715E; font-style: italic;">// C1: a job whose stated purpose is to store knowledge must</span></span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">2</span><span style="color: #75715E; font-style: italic;">// actually invoke knowledge_ingest ... A "done" verdict with no</span></span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">3</span><span style="color: #75715E; font-style: italic;">// such tool call means the agent hallucinated the ingest.</span></span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">4</span><span style="color: #F92672;">if</span> jobRequiresIngest(job) &amp;&amp; !containsToolFold(res.ToolNames, knowledgeIngestTool) {</span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">5</span>    <span style="color: #F92672;">return</span> &amp;RunResult{Status: <span style="color: #E6DB74;">"failed"</span>,</span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">6</span>        Error: <span style="color: #E6DB74;">"agent reported success but never called knowledge_ingest — no document was stored"</span>}</span><span style="display: block; white-space: pre;"><span style="display: inline-block; width: 1.6em; margin-right: 16px; text-align: right; color: #90908A;">7</span>}</span></section>
+
+<p style="margin: 8px 0;">ۋەزىپە «ئامبارغا كىرگۈزۈش تامام» دېسىمۇ، قورال چاقىرىش تىزىملىكىدە شۇ قېتىملىق <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);" dir="ltr">knowledge_ingest</code>يوق بولسا مەغلۇپ دەپ ھۆكۈم قىلىنىدۇ. سەۋەبى بىۋاسىتە: «مۇۋەپپەقىيەت دوكلات قىلدى، ئەمما ئامبارغا كىرگۈزۈش قورالىنى چاقىرمىدى — ھېچقانداق ھۆججەت ساقلانمىدى». بۇ يەتتە قۇر كود پۈتكۈل باھالىغۇچى ئائىلىسىنىڭ دۇنيا قارىشىنى يىغىنچاقلايدۇ:<strong style="color:var(--article-accent, #3f8fd4);">دېگەن ھېساب ئەمەس، چاقىرغان ھېساب؛ چىقىرىلما ئەمەس، ئەمەلىي تەسىر ھېساب.</strong>يەنە بىرى تەرتىپكە مەسئۇل: كۆپ Agent تارماقلىنىشىنىڭ fan-out قوغدىغۇچىسى بار؛ دەرەخلەر ئارا ئومۇمىي سان چەككە يەتسە يېڭى تارماق ۋەزىپە رەت قىلىنىدۇ. بۇ Loop ئومۇمىي بايانىنىڭ دائىرىسى، بۇ يەردە تەكرارلىمايمىز.</p>
+
+<h2 style="font-size: 19px; font-weight: 700; color:var(--article-ink, #12324c); margin: 32px 0 12px; padding-left: 10px; border-left: 4px solid #5fb3ea;">تۆتىنچى سوئال: ئۇ قەيەردە ئىشلەيدۇ — يېقىندا چوڭ رېمونت قىلىنغان قۇم ساندۇقى</h2>
+
+<p style="margin: 8px 0;">ئالدىنقى ئۈچ سوئالغا HexClaw تولۇق جاۋاب بېرىدۇ. تۆتىنچىسىنى ئايرىپ ئېيتىش كېرەك، ئالدى بىلەن بار بولغىنىنى: كود ئىجرا قىلىدىغان <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);" dir="ltr">code_exec</code> مۇستەقىل قۇم ساندۇقى ئابستراكسىيە قەۋىتىدىن ئۆتىدۇ. تەڭشەكنى قىزىق يېڭىلىغىلى بولىدۇ؛ چەك ئۆزگەرسە قايتا قوزغىتىشسىز قۇم ساندۇقى نۇسخىسى قايتا قۇرۇلىدۇ. macOS تا Seatbelt profile چەكلىمىسى بار. ۋاقىتلىق ۋەزىپىنىڭ script قۇم ساندۇقى<a href="https://mp.weixin.qq.com/s/EvQT0VqH9ep6LXo89ZM-fw" style="color:var(--article-accent, #3f8fd4); text-decoration: none; border-bottom: 1px dashed #3f8fd4;">«رەقەملىك ئىش ھايۋىنى» ماقالىسىدە</a>تەپسىلىي يېزىلغان: Starlark تەرجىمانى، بىر HTTP ئېلىشنىڭ چېكى 8 MiB، يۈز مىليون يوليورۇق قەدىمى، 300 سېكۇنت ۋاقىت چېكى — ئۆزىنى ئوڭشايدىغان script قەپەز ئىچىگە تۈزۈلىدۇ.</p>
+
+<p style="margin: 8px 0;">بۇ قوغدىغۇچ يېقىندا چوڭ رېمونتتىن ئۆتتى. كونا <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);" dir="ltr">code_exec</code> تېخىمۇ كۆپ كود پارچىسى ئىجراچىسىغا ئوخشايتتى: كودنى بېرىپ، نەتىجە ئېلىش بىلەنلا تۈگەيتتى. رېمونت ئىجرا ھالىتىنى تۆت دەرىجىگە كېڭەيتتى —<code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);" dir="ltr">snippet / file / module / project</code>: بىر كود پارچىسىدىن ئامباردىكى ھۆججەت، مودۇل، ئاندىن خىزمەت رايونىدا تۈر بۇيرۇقى ئىجرا قىلىشقىچە. نەتىجە ھۆججەتلىرى (دىئاگرامما، CSV، خاتىرە) قايتۇرۇلىدۇ؛ ئۇزۇن چىقىرىلما چەكلىنىدۇ. رۇخسەتسىز ساھىب يولى ئايرىۋېتىلگەن ئىجرا مۇھىتىغا ئاشكارىلانمايدۇ (project پەقەت ئېنىق رۇخسەت قىلىنغان تۈر يىلتىزىنى كۆرسىتىدۇ، secrets deny قائىدىسى يەنە ئالدىن يوشۇرىدۇ). ھەتتا قورال ئىقتىدارى ئاجىز مودېلغا كىرىش يەكۈنىمۇ بار: پەقەت mode=file ئەۋەتىدىغان مودېلمۇ توغرا ئىجرا ئۇسۇلىغا يېتەكلىنىدۇ. ئەڭ ئېغىر سالماقلىق ئۆزگىرىش شۇكى، بۇ قۇم ساندۇقىنىڭ<strong style="color:var(--article-accent, #3f8fd4);">ئۆزىگە خاس CI سى</strong>بار؛ مەشغۇلات سىستېمىلىرى ئارا ماترىتسا ئېقىمى مەخسۇس ئۇنى سىنايدۇ. «كۆپ سۇپىدا ئىشلىگەندەك كۆرۈنۈش» كونا كېسىلى CI غا قادالدى. جابدۇقنىڭ تۆت قىسمى بۇنىڭ بىلەن ئورنىدا. قوغداشنى يەنە چوڭقۇرلاشتۇرغىلى بولىدۇ (تېخىمۇ تولۇق تايىنىشچانلىق ئورنىتىش، چوڭقۇر سۇپا ئايرىمىسى پىلاندا)، ئەمما<strong style="color:var(--article-accent, #3f8fd4);">«ئىشقا سېلىش»تىكى ئىش «بىر پارچە كودنى ئىجرا قىل»دىن «مېنىڭ تۈرىمنى ئىشلىتىپ بەر»گە كۆتۈرۈلدى</strong>。</p>
+
+<p style="margin: 8px 0;">بۇ قۇم ساندۇقىدا ئاسان كۆزدىن قاچىدىغىنى بىر نەچچە مەنبە چېكى ئەمەس، بەلكى<strong style="color:var(--article-accent, #3f8fd4);">مەخپىي ئۇچۇرلىرىڭىزنىمۇ سىرتتا قالدۇرىدىغانلىقى</strong>. ھەتتا <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);" dir="ltr">project</code> ھالىتىدە پۈتۈن <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);" dir="ltr">$HOME</code> نى خىزمەت رايونى قىلىپ بەرسىڭىزمۇ، سۈكۈتتىكى deny قائىدىلىرى بەزى يوللارنى ئالدىن يوشۇرىدۇ: سىرتقى كىنىشكا مۇندەرىجىلىرى <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);" dir="ltr">~/.ssh</code>、<code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);" dir="ltr">~/.aws</code>، gcloud، gnupg، شۇنداقلا HexClaw نىڭ ئۆز ھايات تومۇرى — باش ئاچقۇچ <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);" dir="ltr">master.key</code>(ساقلانغان بارلىق شىفىرلانغان كىنىشكىنى يېشەلەيدۇ)، تەڭشەك ھۆججىتى <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);" dir="ltr">hexclaw.yaml</code>(ھەر provider نىڭ API key ى)، شىفىرلانغان ئامبار <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);" dir="ltr">data.db</code>. بۇنىڭغا يەنە <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);" dir="ltr">DenyLoopback</code>قوشۇلىدۇ: كود تورغا چىقىپ بەت ئالالايدۇ، API چاقىرالايدۇ، ئەمما يەرلىك loopback قا يېتەلمەيدۇ؛ ئادەمسىز Agent نىڭ loopback ئارقىلىق يەرلىك باشقۇرۇش ئېغىزىغا تەگكۈزۈپ ئۆز ھوقۇقىنى ئۆستۈرۈشىگە يول قويۇلمايدۇ (SSRF ئارقىلىق ھوقۇق ئۆستۈرۈشنىڭ تىپىك يۈزى). بۇ يەردە سۇپا چېكىنى راست ئېيتىش كېرەك: macOS تا loopback نى Seatbelt قۇم ساندۇقى قەۋىتىدىن مەجبۇرىي توسىدۇ؛ Linux تا ھازىر net namespace ئايرىلمىغان، loopback قا يەتكىلى بولىدۇ. بۇ مەلۇم ئىقتىدار بوشلۇقى، ئۈستۈنكى قەۋەت ياكى ئورۇنلاشتۇرۇش تەرەپ تولدۇرۇشى كېرەك.<strong style="color:var(--article-accent, #3f8fd4);">ئەمما قەپەزنىڭ مەقسىتى روشەن: قانچىلىك ئۇزۇن ئىجرا بولۇشنىلا ئەمەس، نېمىنى ئوقۇيالايدىغانلىقى ۋە قەيەرگە ئۇلىنالايدىغانلىقىنىمۇ باشقۇرىدۇ.</strong></p>
+
+<h2 style="font-size: 19px; font-weight: 700; color:var(--article-ink, #12324c); margin: 32px 0 12px; padding-left: 10px; border-left: 4px solid #5fb3ea;">ساھە باشلامچىلىرى ئوخشاش ئىشنى قىلىۋاتىدۇ، پەقەت ئاتىلىشى باشقا</h2>
+
+<p style="margin: 8px 0;">كەڭرەك قارايدىغان بولساق، ئالدىنقى قاتاردىكى مودېل شىركەتلىرىنىڭ Agent مەھسۇلات ھۆججىتىدىكى ئەڭ ئۇزۇن بابلارنىڭ ھەممىسى جابدۇق توغرىسىدا. بۇ قەۋەتنىڭ ئورتاق نامى harness («جابدۇق» لۇغەۋى تەرجىمە، بىز ئىش ھايۋىنى مىسالىغا ئۇلاپ ئىشلەتتۇق). ئەمما ھەر مەھسۇلات ھۆججىتىدە نامى ئوخشىمايدۇ: OpenAI Agents SDK كىرگۈزۈش-چىقىرىش قوغداشنى بىرىنچى دەرىجىلىك قىلىپ guardrails دەيدۇ. Codex يەرلىك قۇم ساندۇقى سۇپىغا بۆلۈنىدۇ: macOS تا Seatbelt، Linux/WSL2 ئاساسلىق يولىدا bubblewrap (CLI sandbox helper نىڭ Landlock/seccomp ئۇسۇلىمۇ بار)، Windows تا يەرلىك Windows sandbox. Anthropic Claude Agent ئۈچۈن تولۇق permissions ۋە sandboxing ھۆججىتى يازغان، ئۆز sandbox-runtime ىنىمۇ ئوچۇق مەنبە قىلغان. ئۇنىڭ چۈشەندۈرگەن تەھدىت مودېلى يۇقىرىدىكى secrets يوشۇرۇش بىلەن ئوخشاش: تور ئايرىمىسى بولمىسا بۇزۇپ كىرىلگەن Agent SSH key ڭىزنى سىرتقا ئەۋەتەلەيدۇ. Google ADK بولسا callbacks ئارقىلىق قورال چاقىرىش ئالدى-كەينىدە دەرۋازا قويىدۇ. ئىبارىسى ئوخشىمىسىمۇ، يۆنىلىشى ئوخشاش —<strong style="color:var(--article-accent, #3f8fd4);">مودېل ساتقۇچىلارنىڭ ئۆزىمۇ قايتا-قايتا «پەقەت مودېل بىلەن يولغا چىققىلى بولمايدۇ» دەيدۇ</strong>. بۇ «Agent = Model + Harness» تەڭلىمىسىنىڭ ئەڭ كۈچلۈك ئىسپاتى بولسا كېرەك: ئوڭ تەرەپنىڭ بىرىنچى قىسمىنى ياسىغۇچىلار ئىككىنچىسىنى پۈتۈن كۈچى بىلەن تولۇقلاۋاتىدۇ. ئاكادېمىيەمۇ بۇ يىل گەپنى ئېنىق قىلدى؛ بىر ماقالىنىڭ نامى <strong style="color:var(--article-accent, #3f8fd4);">Harness as an Asset</strong>— جابدۇقنى مۈلۈك دەپ قاراش. بۇ تۆت سۆز «مودېل ئىجارىگە، جابدۇق ئۆزىڭىزگە» دېگەننىڭ ئاكادېمىيەچە ئىپادىسى.</p>
+
+<p style="margin: 8px 0;">بۇ يەردە ئاتالغۇنىمۇ ئايرىش كېرەك: «Harness Engineering» نى بۇ يىل ئىككى تۈركۈم ئىككى يۆنىلىشكە تارتىۋاتىدۇ، ئاسان ئارىلىشىدۇ. OpenAI نىڭ 2-ئايدىكى Codex ماقالىسى بىلەن Martin Fowler نىڭ ئوخشاش ناملىق ئۇزۇن ماقالىسى ئۇنى بىر<strong style="color:var(--article-accent, #3f8fd4);">تەتقىق قىلىپ ئېچىش ئەندىزىسى</strong>دەپ قوللىنىدۇ: ئىنژېنېر كودنى ئۆزى يېزىش ئورنىغا چەكلىمە (AGENTS.md، lint قائىدىسى، Ralph تىپىدىكى ئۆزى ئايلىنىش) يېزىپ، پۈتۈن كود ئامبىرىنى Agent كە يازدۇرۇدۇ. بۇ «Agent بىلەن يۇمشاق دېتال ياساش» جابدۇقى، ئېچىش ئۈستىلىگە يۈزلەنگەن. بۇ ماقالە بولسا باشتىن-ئاخىر يەنە بىر قەۋەت —<strong style="color:var(--article-accent, #3f8fd4);">ئىجرا ۋاقتىدا</strong>مودېلنى ئوراپ، مەھسۇلاتىڭىزدىكى Agent نى ئىش قىلىشقا جۈرئەت قىلدۇرۇپ، ئاۋارىچىلىكتىن ساقلايدىغان جابدۇقنى سۆزلەيدۇ. ئىككىسىمۇ ھەقىقىي، ئىككىسىمۇ تېز تەرەققىي قىلىۋاتىدۇ، ئەمما بىر نەرسە دەپ ئارلاشتۇرماڭ. بۇ يۈرۈشلۈك كېيىنكىسىنى سۆزلەيدۇ؛ ئالدىنقىسى بىزنىڭ<a href="https://mp.weixin.qq.com/s/1rza-Ye3NF89KNAJp_PttA" style="color:var(--article-accent, #3f8fd4); text-decoration: none; border-bottom: 1px dashed #3f8fd4;">Claude Code SOP ماقالىمىزگە</a> تېخىمۇ يېقىن، كېيىن ئايرىم يېزىمىز.</p>
+
+<p style="margin: 8px 0;">يۈرۈشلۈك تېمىسىغا قايتايلى. ئالدىنقى ماقالە ئىزدەپ ئېلىش زەنجىرى Agent نىڭ ھەر ئايلانمىدا<strong style="color:var(--article-accent, #3f8fd4);">كۆرگەن نەرسىسىنى ئىشەنچلىك قىلىشقا</strong>مەسئۇل دېگەن. بۇ ماقالە بولسا كۆرىدىغاننى كۆرگەندىن كېيىن ئۇنىڭ<strong style="color:var(--article-accent, #3f8fd4);">قىلىدىغان ھەرىكىتى كونترولدا بولۇشىنى</strong>سۆزلەيدۇ. ئىسپات ئىشەنچلىك، ھەرىكەت كونترولدا؛ بۇ ئىككى قەۋەت بىللە بولغاندىلا «ئۇنى ئىشقا سېلىشقا جۈرئەت قىلىش» تېخنىكىلىق مەنىگە ئىگە، قۇرۇق باتۇرلۇق ئەمەس.</p>
+
+<p style="margin: 8px 0;">ئەمما جابدۇق بىلەنلا ھېكايە تۈگىمەيدۇ. سىز بۇ ماقالىدە سۆزلەنگەنلەرنىڭ ھەممىسىنىڭ<strong style="color:var(--article-accent, #3f8fd4);">قاتتىق دەرۋازا</strong>ئىكەنلىكىنى بايقىغان بولۇشىڭىز مۇمكىن: تەستىق، ۋاقىت چېكى، ھۆكۈم، قەپەز — ھەممىسى كود بىلەن مەجبۇرىي ئىجرا قىلىنىدۇ. لېكىن ماتور ھەر ئايلانمىدا مودېلغا بەرگەن نەچچە مىڭ خەتلىك system prompt تا يەنە كۆپ «يۇمشاق» چەكلىمە بار: خاراكتېرى، ئىنتىزامى، قاچان سورىشى ۋە قاچان قىلماسلىقى. قاتتىق دەرۋازا مەغلۇبىيەتنى باشقۇرىدۇ، يۇمشاق چەكلىمە كۈتۈلمىنى بەلگىلەيدۇ. بۇ ئەڭ يۇمشاق، ئەڭ ئاستىدىكى قەۋەت ساھەدە Prompt دەپ ئاتىلىدۇ، تۆت ئەۋلاد ئەندىزىنىڭ بىرىنچىسى. كېيىنكى ئاخىرقى ماقالىدە ئۇنىڭ ئۆلمىگەنلىكى، بەلكى كېلىشىمگە چۆككەنلىكىنى سۆزلەيمىز.</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<p style="margin: 16px 0 8px; font-size: 14px; color:var(--article-secondary, #5f7b9c);"><strong>تۆت ئەۋلاد ئەندىزە يۈرۈشلۈكى</strong></p>
+<p style="margin: 4px 0; font-size: 14px; line-height: 2.1;">
+▸ <span style="display: inline-block; font-size: 12px; padding: 0 8px; background:var(--article-panel, #edf7ff); color:var(--article-accent, #3f8fd4); border-radius: 10px; font-weight: 700;">Loop · ئومۇمىي بايان</span>&nbsp;<a href="https://mp.weixin.qq.com/s/h60ymjjj3eF9hQyhl0jVcQ" style="color:var(--article-accent, #3f8fd4); text-decoration: none;">ئوچۇق مەنبە Agent نىڭ كودىنى ئېچىپ، Prompt تىن Loop قا قەدەر تۆت ئەۋلاد ئەندىزىنى قەۋەتمۇ-قەۋەت سېلىشتۇرۇش</a><br/>
+▸ <span style="display: inline-block; font-size: 12px; padding: 0 8px; background:var(--article-panel, #edf7ff); color:var(--article-accent, #3f8fd4); border-radius: 10px; font-weight: 700;">Context · ماتېرىيال تەرىپى</span>&nbsp;<a href="https://mp.weixin.qq.com/s/H6BoZUcQfBBqh-ScXQyTWw" style="color:var(--article-accent, #3f8fd4); text-decoration: none;">RAG نىڭ ھەقىقىي قىيىنى ئىزدەپ قايتۇرۇش ئەمەس، «جاۋابقا ئوخشايدىغان شاۋقۇن»نى Loop سىرتىدا قالدۇرۇش</a><br/>
+▸ <span style="display: inline-block; font-size: 12px; padding: 0 8px; background:var(--article-panel, #edf7ff); color:var(--article-accent, #3f8fd4); border-radius: 10px; font-weight: 700;">Context · ئەستە ساقلاش تەرىپى</span>&nbsp;<a href="https://mp.weixin.qq.com/s/YvGGPBZX0V7R6-09unnrcQ" style="color:var(--article-accent, #3f8fd4); text-decoration: none;">«چۈش كۆرىدىغان» Agent ئەستە ساقلىشى: HexClaw نىڭ چۈشى ئۆز كومپيۇتېرىڭىزدا</a><br/>
+▸ <span style="display: inline-block; font-size: 12px; padding: 0 8px; background:var(--article-panel, #f0f4f8); color:var(--article-muted, #7b8fa3); border-radius: 10px; font-weight: 700;">Prompt · ئاخىرقى ماقالە</span>&nbsp;<span style="color:var(--article-muted, #9db2c4);">ھەممە ئۇنى ئۆلدى دەيدۇ، ئەمەلىيەتتە ئۇ Agent نىڭ ئەڭ ئاستىدىكى كېلىشىمگە چۆكتى (ئاخىرقى ماقالە، پات يېقىندا ئېلان قىلىنىدۇ)</span>
+</p>
+
+<p style="margin: 14px 0 8px; font-size: 14px; color:var(--article-secondary, #5f7b9c);"><strong>تېخىمۇ كۆپ ئالدىنقى ماقالىلەر</strong></p>
+<p style="margin: 4px 0; font-size: 14px; line-height: 2;">
+▸ <a href="https://mp.weixin.qq.com/s/EvQT0VqH9ep6LXo89ZM-fw" style="color:var(--article-accent, #3f8fd4); text-decoration: none;">HexClaw نىڭ «رەقەملىك ئىش ھايۋىنى»نى يېتىشتۈرۈش خاتىرىسى: بىر جۈملىنى ئۆزىنى ئوڭشايدىغان قۇم ساندۇقى script ىغا تۈزۈش</a><br/>
+▸ <a href="https://mp.weixin.qq.com/s/1rza-Ye3NF89KNAJp_PttA" style="color:var(--article-accent, #3f8fd4); text-decoration: none;">HexClaw ئارقىسىدىكى Claude Code SOP: لايىھە يېتەكچىلىكى × سىناقنى تاماملاش × كۆپ Agent ھەمكارلىقى</a>
+</p>
+
+<p style="margin: 16px 0 8px; font-size: 14px; color:var(--article-secondary, #5f7b9c);"><strong>پايدىلانغان مەنبەلەر</strong></p>
+<p style="margin: 4px 0; font-size: 13px; color:var(--article-muted, #7b8fa3); line-height: 2;">
+· OpenAI، Agents SDK — Guardrails رەسمىي ھۆججىتى؛ Codex قۇم ساندۇقى (macOS Seatbelt / Linux·WSL2 bubblewrap، CLI helper دا Landlock+seccomp / Windows يەرلىك sandbox، unelevated قايتىش يولىدا چەكلەنگەن token)<br/>
+· Anthropic، Claude Agent نىڭ permissions / sandboxing ھۆججىتى؛ ئوچۇق مەنبە sandbox-runtime<br/>
+· Google، Agent Development Kit (ADK) — callbacks مېخانىزمى<br/>
+· LangChain، ئوخشاش مودېلنى (GPT-5.2-Codex مۇقىم) ساقلاپ Harness ئالماشتۇرۇلغان Terminal-Bench 2.0 سېلىشتۇرما تەجرىبىسى (52.8% → 66.5%، بۇ يۈرۈشلۈكنىڭ ئومۇمىي بايانىغا قاراڭ)<br/>
+· Harness as an Asset: Enforcing Determinism via the Convergent AI Agent Framework (CAAF)، arXiv:2604.17025 — «جابدۇق مۈلۈك»نىڭ ئاكادېمىيەچە ئىپادىسى<br/>
+· ئاتالغۇ ئايرىمىسى: OpenAI نىڭ «Harness engineering: leveraging Codex in an agent-first world» (2026-02) ۋە Martin Fowler نىڭ ئوخشاش ناملىق ماقالىسى «ئادەم چەكلىمە يازىدۇ، Agent كود يازىدۇ» دېگەن ئېچىش ئەندىزىسىنى كۆرسىتىدۇ؛ بۇ يەردىكى «ئىجرا ۋاقتى جابدۇقى» بىلەن نامى ئوخشاش، مەنىسى ئايرىم.<br/>
+· maker/checker (تۆت كۆز پىرىنسىپى)، بانكا ساھەسىدىكى ئورتاق ئىككى ئادەملىك قايتا تەكشۈرۈش كونتروللۇقى<br/>
+· ماقالىدىكى بارلىق HexClaw مېخانىزمى ۋە تۇراقلىق سانلار 2026-07-04 كۈنى ئامبارنىڭ main تارمىقىدىكى كودقا قاراپ تەكشۈرۈلگەن (code_exec قۇم ساندۇقىنىڭ يېڭىلىنىشى، snippet / file / module / project تۆت ئىجرا ھالىتى ۋە كۆپ سۇپا CI سى ھەممىسى main غا كىرگۈزۈلگەن).
+</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0 16px;"/>
+
+<p class="blog-brand-footer" data-blog-brand-footer="ug" data-blog-brand-overrides="{}" style="text-align: center; color: var(--article-muted, #7b8fa3); font-size: 13px; margin: 16px 0 0; line-height: 2;">
+<strong style="color: var(--article-ink, #12324c); font-size: 14px;">HexClaw ھېشى AI</strong><br/>
+يەرلىكتە ياكى بۇلۇتتا ئورۇنلاشتۇرۇش · سانلىق مەلۇماتنى ئۆزىڭىز باشقۇرۇش · ئوچۇق كودلۇق ۋە ھەقسىز يۇمشاق دېتال<br/>
+<a href="https://hexclaw.net" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">تور بېكەت: <bdi dir="ltr">hexclaw.net</bdi></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://github.com/hexagon-codes" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">GitHub: <bdi dir="ltr">hexagon-codes</bdi></a><br/>
+<a href="https://weibo.com/u/4097207240" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">Weibo: <bdi dir="ltr">@HexClaw</bdi></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">X: <bdi dir="ltr">@hexclawapp</bdi></a><br/>
+<a href="mailto:ai@hexclaw.net" style="color: var(--article-muted, #999); text-decoration: none;">ئېلخەت: <bdi dir="ltr">ai@hexclaw.net</bdi></a>
+</p>
+    </article>
+
+
+
+    <nav class="blog-series-nav" aria-label="上一篇与下一篇">
+      <a href="/ug/blog/prompt-engineering" class="blog-nav-card prev">
+  <span class="blog-nav-label">← ئالدىنقى ماقالە</span>
+  <span class="blog-nav-title">HexClaw نىڭ Prompt Engineering ى: ھەممە ئۇنى ئۆلدى دەيدۇ، ئەمەلىيەتتە ئۇ Agent نىڭ ئەڭ ئاستىدىكى كېلىشىمگە چۆكتى</span>
+</a>
+      <a href="/ug/blog/context-engineering" class="blog-nav-card next">
+  <span class="blog-nav-label">كېيىنكى ماقالە →</span>
+  <span class="blog-nav-title">HexClaw نىڭ Context Engineering ى: RAG نىڭ ھەقىقىي قىيىنى ئىزدەپ قايتۇرۇش ئەمەس، «جاۋابقا ئوخشايدىغان شاۋقۇن»نى Loop سىرتىدا قالدۇرۇش</span>
+</a>
+    </nav>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-main">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-col-title">مەھسۇلات</div>
+        <a href="/ug/#download">ئۈستەلئۈستى نۇسخىسىنى چۈشۈرۈش</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="/ug/changelog">يېڭىلىنىش خاتىرىسى</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">ئىجادكار</div>
+        <a href="/ug/docs/">ھۆججەتلەر مەركىزى</a>
+        <a href="/ug/blog/">تېخنىكا بىلوگى</a>
+        <a href="/ug/docs/getting-started">تېز باشلاش</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">Apache-2.0</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">جامائەت</div>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/issues" target="_blank" rel="noopener noreferrer">Issues</a>
+        <a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer">Twitter / X</a>
+        <a href="mailto:ai@hexclaw.net">بىز بىلەن ئالاقىلىشىش</a>
+        <a href="mailto:support@hexclaw.net">سوئال-پىكىر</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">ھەققىدە</div>
+        <a href="/ug/about">بىز ھەققىدە</a>
+        <a href="/ug/privacy">شەخسىيەت سىياسىتى</a>
+        <a href="/ug/terms">ئىشلىتىش شەرتلىرى</a>
+        <a href="/ug/third-party-ai-services">ئۈچىنچى تەرەپ AI مۇلازىمىتى</a>
+      </div>
+    </div>
+    <div class="footer-wechat">
+      <img width="430" height="430" loading="lazy" decoding="async" src="../../assets/brand/wechat-qr.jpg" alt="HexClaw ۋېيشىن رەسمىي ھېسابات QR كودى">
+      <span class="footer-wechat-label">ۋېيشىن رەسمىي ھېساباتى</span>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">&copy; 2025&ndash;2026 hexagon-codes</span>
+  </div>
+</footer>
+<script src="../../assets/js/theme.js?v=2e4a1828feef"></script>
+<script src="../../assets/js/docs-nav.js?v=5a103861aec2"></script>
+<button type="button" class="back-to-top" id="backToTop" aria-label="بەت بېشىغا قايتىش" title="بەت بېشىغا قايتىش">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg>
+  <span>باشقا</span>
+</button>
+
+<script src="../../assets/js/blog.js?v=c72e1db5a6ec"></script>
+</body>
+</html>

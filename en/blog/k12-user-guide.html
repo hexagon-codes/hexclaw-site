@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/favicon-32.png">
+<title>A Calmer Homework Routine: A Hands-on Guide to Tutoring with HexClaw AI | HexClaw Technical Blog</title>
+<meta name="description" content="Create a tutor, send homework photos, inspect answers and evidence, manage mistakes, and review through Desktop or a bound DingTalk private chat. Guide for v0.5.0-beta.3.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:site_name" content="HexClaw">
+<meta property="og:type" content="article">
+<meta property="og:title" content="A Calmer Homework Routine: A Hands-on Guide to Tutoring with HexClaw AI | HexClaw Technical Blog">
+<meta property="og:description" content="Create a tutor, send homework photos, inspect answers and evidence, manage mistakes, and review through Desktop or a bound DingTalk private chat. Guide for v0.5.0-beta.3.">
+<meta property="og:url" content="https://hexclaw.net/en/blog/k12-user-guide">
+<meta property="og:image" content="https://hexclaw.net/assets/blog/covers/k12-user-guide-cover.webp">
+<meta property="og:image:alt" content="「父慈子笑」上手篇：手把手用河蟹 AI 辅导作业（K12 使用教程） - 官方技术专栏封面">
+<meta property="og:image:width" content="1920">
+<meta property="og:image:height" content="819">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="A Calmer Homework Routine: A Hands-on Guide to Tutoring with HexClaw AI | HexClaw Technical Blog">
+<meta name="twitter:description" content="Create a tutor, send homework photos, inspect answers and evidence, manage mistakes, and review through Desktop or a bound DingTalk private chat. Guide for v0.5.0-beta.3.">
+<meta name="twitter:image" content="https://hexclaw.net/assets/blog/covers/k12-user-guide-cover.webp">
+<meta name="twitter:image:alt" content="「父慈子笑」上手篇：手把手用河蟹 AI 辅导作业（K12 使用教程） - 官方技术专栏封面">
+<link rel="canonical" href="https://hexclaw.net/en/blog/k12-user-guide">
+<link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/k12-user-guide">
+<link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/k12-user-guide">
+<link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/k12-user-guide">
+<link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/k12-user-guide">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "A Calmer Homework Routine: A Hands-on Guide to Tutoring with HexClaw AI",
+  "description": "Create a tutor, send homework photos, inspect answers and evidence, manage mistakes, and review through Desktop or a bound DingTalk private chat. Guide for v0.5.0-beta.3.",
+  "url": "https://hexclaw.net/en/blog/k12-user-guide",
+  "inLanguage": "en",
+  "datePublished": "2026-10-04",
+  "image": "https://hexclaw.net/assets/blog/covers/k12-user-guide-cover.webp",
+  "publisher": {
+    "@type": "Organization",
+    "name": "hexagon-codes",
+    "url": "https://hexclaw.net/",
+    "@id": "https://hexclaw.net/#organization"
+  },
+  "@id": "https://hexclaw.net/en/blog/k12-user-guide#article"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "HexClaw AI",
+      "item": "https://hexclaw.net/en/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Technical Blog",
+      "item": "https://hexclaw.net/en/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "「父慈子笑」上手篇：手把手用河蟹 AI 辅导作业（K12 使用教程）",
+      "item": "https://hexclaw.net/en/blog/k12-user-guide"
+    }
+  ],
+  "@id": "https://hexclaw.net/en/blog/k12-user-guide#breadcrumb"
+}
+</script>
+<link rel="stylesheet" href="../../assets/css/docs-eb2895dd79c5.css">
+<link rel="stylesheet" href="../../assets/css/blog-a8e5008ac3d1.css">
+</head>
+<body class="blog-page blog-article-page">
+<a href="#main" class="skip-link">Skip to main content</a>
+<nav class="tn topnav" id="nav">
+  <a href="/en/" class="tn-b topnav-brand"><img width="72" height="72" src="../../assets/brand/hexclaw-icon-72.png" class="tn-l topnav-logo" alt="HexClaw"><span class="tn-n topnav-name">HexClaw</span></a>
+  <button type="button" class="tn-burger topnav-burger" aria-label="Menu" aria-expanded="false" aria-controls="primary-navigation"><span></span><span></span><span></span></button><div class="tn-r topnav-links" id="primary-navigation"><a href="/en/">Home</a><a href="/en/#cases">Scenarios</a><a href="/en/#features">Features</a><a href="/en/#quickstart">Quickstart</a><a href="/en/#ecosystem">Ecosystem</a><a href="/en/blog/" class="is-active">Tech Blog</a><a href="/en/docs/">Docs Center</a><div class="lang-menu" data-lang-menu><button type="button" class="lang-trigger" aria-haspopup="menu" aria-expanded="false" aria-label="Switch language"><svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 0 20"></path><path d="M12 2a15.3 15.3 0 0 0 0 20"></path></svg><span class="lang-current">English</span><svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="lang-menu-list" role="menu"><a href="/zh/blog/k12-user-guide" role="menuitem">中文</a><a href="/en/blog/k12-user-guide" role="menuitem" class="is-active" aria-current="true">English</a><a href="/ug/blog/k12-user-guide" role="menuitem" lang="zh-CN" dir="ltr">维吾尔语</a></div></div><button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"><svg class="ti-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="ti-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="nav-cta">GitHub <span class="nav-star-badge" id="gh-stars">&#9733;</span></a></div>
+</nav>
+
+<main id="main" class="blog-main">
+  <div class="blog-article-container">
+    <nav class="blog-breadcrumb" aria-label="Breadcrumb">
+      <a href="/en/"> Home </a>
+      <span class="blog-breadcrumb-sep">/</span>
+      <a href="/en/blog/"> Technical Blog </a>
+      <span class="blog-breadcrumb-sep">/</span>
+      <span aria-current="page"> Scenarios &amp; Practice </span>
+    </nav>
+
+    <header class="blog-header">
+      <div class="blog-header-tags">
+        <span class="blog-badge-series"> K12 Tutorial </span>
+      </div>
+      <h1 class="blog-article-title"> A calmer homework routine: a hands-on guide to tutoring with HexClaw AI <span class="u-nobr">  (K12 User Guide) </span></h1>
+      <p class="blog-article-subtitle"> It is nine at night. You can solve your child's problem, but you do not know how to explain it. Follow this illustrated guide: create a tutor, send a homework photo, and get a complete answer plus a teacher-style explanation suited to the child's grade. What to ask first, how to help when they get stuck, and how to check understanding are all included. </p>
+      <div class="article-provenance-banner">
+        <div class="provenance-left">
+          <span class="provenance-origin-badge"> First published on WeChat </span>
+          <span class="provenance-text"> This article first appeared in the official WeChat <strong>“hexclaw”</strong>  (ID: hexclaw) technical column · Published  <strong> October 4, 2026 </strong>  · Approximately 12 minutes to read </span>
+        </div>
+        <a href="https://mp.weixin.qq.com/s/kwuKtzo7PTpYA8kmuQzv_A" target="_blank" rel="noopener noreferrer" class="provenance-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+           Original on WeChat ↗
+        </a>
+      </div>
+    </header>
+
+    <article class="blog-content">
+
+
+<p style="text-align: center; color:var(--article-muted, #a5bdd3); font-size: 12px; margin: 0 0 20px;"> Updated October 4, 2026. This guide covers Desktop v0.5.0-beta.3. Screenshots retain the existing K12 theme demonstration; homework and artwork shown are labeled “AI-generated example · Not real student work.” </p>
+
+
+<p style="margin: 16px 0;"> The previous article, “ <a href="https://mp.weixin.qq.com/s/8xUoFrig10zxpxni1rgm9Q" style="color:var(--article-accent, #5fb3ea);"> Calmer homework time with HexClaw AI </a> ,” explains why you can trust it enough to teach a child: calculation evidence, locally owned mistake records, and a scenario package removable at compile time. This article leaves the underlying design aside and does one thing: <strong style="color:var(--article-accent, #3f8fd4);"> walk you through using the whole workflow from scratch </strong> . Once your model is configured, follow the screenshots and send your first homework photo. </p>
+
+<blockquote style="border-left: 3px solid #5fb3ea; padding: 10px 16px; margin: 16px 0; background:var(--article-panel, #f4fbff); color:var(--article-secondary, #3f5f7b); font-size: 14px; border-radius: 0 8px 8px 0;">
+<strong style="color:var(--article-accent, #3f8fd4);"> Keep one principle in mind </strong> : the child does not work directly with AI; <strong style="color:var(--article-accent, #3f8fd4);"> you, the parent, use AI to prepare a lesson, then teach the child </strong> . This walkthrough connects Desktop to a local service, so mistakes, learning records, and photos are stored on this computer. With a cloud service, learning assets are stored on the machine hosting that service. When using a cloud model, the questions, images, and context needed for processing are sent to your configured provider. The first step is therefore to create a dedicated tutor for your child, rather than start chatting with AI.
+</blockquote>
+
+<p style="margin: 8px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> Check the version before starting </strong> : download and install <a href="https://github.com/hexagon-codes/hexclaw-desktop/releases/tag/v0.5.0-beta.3" style="color:var(--article-accent, #5fb3ea);"><strong style="color:var(--article-accent, #3f8fd4);"> HexClaw AI Desktop v0.5.0-beta.3 </strong></a> , then configure a model in Settings → LLM Providers. For photos, choose <strong style="color:var(--article-accent, #3f8fd4);"> a model that can read images and reason </strong> . The software is open source and free; third-party model calls are billed by the provider. </p>
+
+<p style="margin: 8px 0;"> For the appearance shown here, go to Settings → System Settings and switch K12 Appearance to <strong style="color:var(--article-accent, #3f8fd4);"> “K12 Theme” </strong> . Both light and dark modes are available. </p>
+
+<figure style="margin: 16px 0; text-align: center;">
+<img src="../../assets/blog/河蟹K12教程/29.png" alt="System Settings: K12 Theme selected, with light, dark, and system appearance options above" width="2560" height="1642" loading="lazy" decoding="async">
+<figcaption style="color:var(--article-secondary, #5f7b9c); font-size: 13px; margin-top: 8px; line-height: 1.6;"> Select K12 Theme in System Settings → K12 Appearance to apply the learning-oriented interface throughout the app. The appearance controls above let you choose light, dark, or system mode. </figcaption>
+</figure>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;"> Step 1 · Create a tutor for your child </h2>
+
+<p style="margin: 8px 0;"> In the left sidebar, choose <strong style="color:var(--article-accent, #3f8fd4);"> Agents → Template Library </strong> . On the <strong style="color:var(--article-accent, #3f8fd4);"> Homework Tutor </strong> card, click Use This Template. New Agent → Start from Template Library at the top right opens the same place. </p>
+
+<figure style="margin: 16px 0; text-align: center;">
+<img src="../../assets/blog/河蟹K12教程/022.png" alt="Agent template library: the Homework Tutor and Use This Template entry" width="2560" height="1642" loading="lazy" decoding="async">
+<figcaption style="color:var(--article-secondary, #5f7b9c); font-size: 13px; margin-top: 8px; line-height: 1.6;"> Choose Homework Tutor in the template library to open its dedicated profile form. </figcaption>
+</figure>
+
+<p style="margin: 8px 0;"> In the Create K12 Tutor dialog, fill in three things first: </p>
+
+<ul style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> Child's preferred name </strong>  (for example, “Xiaohong”)—how the tutor will address the child; </li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> Grade · Term </strong>  (for example, “Grade 6, first term”)—the most important field, because it determines how the AI <strong style="color:var(--article-accent, #3f8fd4);"> chooses methods for the child's grade and textbook progress </strong> , rather than imposing secondary-school formulas on a primary-school student; </li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> Math textbook edition </strong>  (People's Education Press / Beijing Normal University / Jiangsu Education Press)—only the math textbook is configured here; other subjects do not need separate setup. </li>
+</ul>
+
+<figure style="margin: 16px 0; text-align: center;">
+<img src="../../assets/blog/河蟹K12教程/023.png" alt="Create K12 Tutor: child&#x27;s name, grade, term, math textbook edition, and included capabilities" width="2560" height="1642" loading="lazy" decoding="async">
+<figcaption style="color:var(--article-secondary, #5f7b9c); font-size: 13px; margin-top: 8px; line-height: 1.6;"> The screenshot defaults to Grade 5, first term; change it to match your child. Skills are already configured. The current scope is primary grades 1–6, covering math, Chinese, English, science, information technology, and art. </figcaption>
+</figure>
+
+<p style="margin: 8px 0;"> The model follows global settings by default. To assign a different model to this tutor, expand <strong style="color:var(--article-accent, #3f8fd4);"> Model </strong> in the profile, choose the provider and model, and save. You can change it later through Edit Profile. </p>
+
+<p style="margin: 8px 0;"> The display name is generated automatically as “ <strong style="color:var(--article-accent, #3f8fd4);"> Xiaohong's Tutor · Grade 6 </strong> ”. Click Create to return automatically to <strong style="color:var(--article-accent, #3f8fd4);"> My Agents </strong>. <strong style="color:var(--article-accent, #3f8fd4);"> If you have two children, create two tutors </strong> —each child's mistakes, learning records, and memory are stored separately. The following examples use Grade 6, first term. </p>
+
+<p style="margin: 8px 0;"> Remember the three buttons on each tutor card: <strong style="color:var(--article-accent, #3f8fd4);"> Start Tutoring </strong> for homework photos and explanations; <strong style="color:var(--article-accent, #3f8fd4);"> Learning Profile </strong> for mistakes and review planning; <strong style="color:var(--article-accent, #3f8fd4);"> Edit Profile </strong> to change the name, grade, textbook progress, or model. </p>
+
+<figure style="margin: 16px 0; text-align: center;">
+<img src="../../assets/blog/004.png" alt="My Agents: separate tutors for two children, with Start Tutoring, Learning Profile, and Edit Profile entries" width="2560" height="1584" loading="lazy" decoding="async">
+<figcaption style="color:var(--article-secondary, #5f7b9c); font-size: 13px; margin-top: 8px; line-height: 1.6;"> After creation, find your child's card in My Agents. Each child has a separate tutoring entry, learning profile, and textbook progress. </figcaption>
+</figure>
+
+<p style="margin: 8px 0;"> To see where the teaching capabilities come from, open <strong style="color:var(--article-accent, #3f8fd4);"> Capabilities → Skills </strong> in the left sidebar to inspect installed skills. The template already includes the skills needed for this scenario; enter through your child's tutor for everyday use. </p>
+
+<figure style="margin: 16px 0; text-align: center;">
+<img src="../../assets/blog/005.png" alt="Installed Skills on the Capabilities page: k12-pedagogy and other general teaching skills" width="2560" height="1584" loading="lazy" decoding="async">
+<figcaption style="color:var(--article-secondary, #5f7b9c); font-size: 13px; margin-top: 8px; line-height: 1.6;"> This page shows installed application skills, including K12 pedagogy and other general skills. Some descriptions mention secondary school; that does not mean the K12 product has opened support for those grades. The tutor in this article currently targets primary grades 1–6. </figcaption>
+</figure>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;"> Step 2 (optional) · Add the textbook for explanations closer to class </h2>
+
+<p style="margin: 8px 0;"> You can use the tutor without this step. Adding it gives the AI <strong style="color:var(--article-accent, #3f8fd4);">  the actual textbook your child uses </strong> as another source. In the sidebar, click <strong style="color:var(--article-accent, #3f8fd4);"> Knowledge Base </strong> , then <strong style="color:var(--article-accent, #3f8fd4);"> Add Document </strong> at the top right and upload the textbook PDF. The system parses, chunks, and indexes it automatically. TXT, Markdown, and DOCX are also supported; assemble photographed textbook pages into a PDF first. </p>
+
+<p style="margin: 8px 0;"> Obtain the textbook PDF yourself online and then import it. HexClaw AI does not provide textbook downloads. </p>
+
+<figure style="margin: 16px 0; text-align: center;">
+<img src="../../assets/blog/002.png" alt="Knowledge-base documents: Grade 6 textbooks, Add Document, Retrieval Test, and text/semantic index status" width="2560" height="1584" loading="lazy" decoding="async">
+<figcaption style="color:var(--article-secondary, #5f7b9c); font-size: 13px; margin-top: 8px; line-height: 1.6;"> The document list after importing textbooks. Text retrieval becomes ready first; semantic indexing follows. Add more documents at the top right, or switch to Retrieval Test above. </figcaption>
+</figure>
+
+<p style="margin: 8px 0;"> After uploading, open the knowledge base's <strong style="color:var(--article-accent, #3f8fd4);"> Retrieval Test </strong> and try a phrase that actually appears in the book—for example, “deep friendship between Mongolian and Han people” from Grassland in the Grade 6 Chinese textbook—and see whether the matching passage is found. </p>
+
+<p style="margin: 8px 0;"> The math textbook needs one more step: return to the tutor's <strong style="color:var(--article-accent, #3f8fd4);"> Edit Profile → Math Textbook and Current Progress </strong> . Once its table of contents is ready, choose a confirmable Linked Textbook File, set the Current Unit, optionally add the lesson or page number, and click <strong style="color:var(--article-accent, #3f8fd4);"> Save </strong>. </p>
+
+<p style="margin: 8px 0;"> Being able to retrieve the textbook's text and having <strong style="color:var(--article-accent, #3f8fd4);">  a table of contents ready to link learning progress </strong> are separate states; use the textbook processing status shown in the profile. After linking and saving, curriculum-aligned consolidation follows that progress. A “📖 Textbook-based” label is justified only when the textbook's actual text has been retrieved and used. </p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;"> Step 3 · Enter tutoring and try a text problem first </h2>
+
+<p style="margin: 8px 0;"> Click <strong style="color:var(--article-accent, #3f8fd4);"> Start Tutoring </strong> on the tutor card to enter the chat. At the top are three tabs: <strong style="color:var(--article-accent, #3f8fd4);"> Tutoring / Learning Profile / Learning Overview </strong> . Try a text question first: “A book has 120 pages. On day one, a child reads 1/6 of it; on day two, they read 1/4 of the remainder. How many pages do they read on day two?” </p>
+
+<figure style="margin: 16px 0; text-align: center;">
+<img src="../../assets/blog/013.png" alt="Text explanation example: answer, step-by-step calculation, and a parent-facing explanation for a 120-page reading problem" width="2862" height="1498" loading="lazy" decoding="async">
+<figcaption style="color:var(--article-secondary, #5f7b9c); font-size: 13px; margin-top: 8px; line-height: 1.6;"> A text explanation example. It gives you <strong> the complete answer, solution steps, and a clear plan for explaining it as a parent </strong> : what to explain first, what to ask, how to guide a stuck child, and how to check understanding afterward. This is its teaching approach, rather than a polite extra. </figcaption>
+</figure>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;"> Step 4 · Send a homework photo for automatic recognition and marking </h2>
+
+<p style="margin: 8px 0;"> This is the most frequent action. In the tutoring view's <strong style="color:var(--article-accent, #3f8fd4);"> regular input box </strong> , attach, drag in, or paste a homework photo and send it. The system identifies the subject and task type automatically: completed homework is marked, blank worksheets are solved, and essays or artwork receive feedback. <strong style="color:var(--article-accent, #3f8fd4);"> Clear content is processed automatically, without choosing a subject or confirming every question first. </strong></p>
+
+<figure style="margin: 16px 0; text-align: center;">
+<img src="../../assets/blog/006.png" alt="A completed homework photo sent in the tutoring conversation: questions are being recognized and separated, and clear content is processed automatically" width="2560" height="1584" loading="lazy" decoding="async">
+<figcaption style="color:var(--article-secondary, #5f7b9c); font-size: 13px; margin-top: 8px; line-height: 1.6;"> Send the photo directly into the tutoring conversation. Watch progress during processing and read the results afterward; there is no separate question-recognition form to open. </figcaption>
+</figure>
+
+<p style="margin: 8px 0;"> Expand <strong style="color:var(--article-accent, #3f8fd4);"> Processing Steps </strong> to see the actual stages: image recognition, question and answer recognition, per-question processing, marking, parent explanation guide, and annotated-image generation. When marking a question-based assignment finishes, first read <strong style="color:var(--article-accent, #3f8fd4);"> the annotated original and the page summary </strong> , then expand questions needing attention. Correct questions are grouped and collapsed; original answers, correct answers, causes of mistakes, and parent explanations sit with the corresponding question. </p>
+
+<figure style="margin: 16px 0; text-align: center;">
+<img src="../../assets/blog/007.png" alt="Processing Steps expanded after marking: recognition, per-question processing, marking, parent explanation guide, and annotated-image generation" width="2560" height="1584" loading="lazy" decoding="async">
+<figcaption style="color:var(--article-secondary, #5f7b9c); font-size: 13px; margin-top: 8px; line-height: 1.6;"> Expand Processing Steps to see progress through question recognition, per-question marking, and annotated-image generation. Scroll down to the full-page results once it finishes. </figcaption>
+</figure>
+
+<figure style="margin: 16px 0; text-align: center;">
+<img src="../../assets/blog/008.png" alt="Annotated original for completed homework: ticks for correct answers, crosses for incorrect answers, and text results for questions without reliable positions" width="2560" height="1584" loading="lazy" decoding="async">
+<figcaption style="color:var(--article-secondary, #5f7b9c); font-size: 13px; margin-top: 8px; line-height: 1.6;"> Annotations return to the original homework photo while its content stays intact. Questions without reliable positions receive separate text results. The demonstration material is labeled “AI-generated example · Not real student work.” </figcaption>
+</figure>
+
+<p style="margin: 8px 0;"> Questions that remain unreadable after automatic recognition are labeled <strong style="color:var(--article-accent, #3f8fd4);"> Unrecognizable </strong> in the results. The system does not guess an answer, mark them wrong, or enter them into mistake or mastery conclusions; other readable questions complete normally. Send a clearer photo later if you wish. If you discover that a question or original answer was read incorrectly, use that question's source entry to check it again; <strong style="color:var(--article-accent, #3f8fd4);"> correcting recognition does not count as another attempt by the child </strong> and does not overwrite later genuine attempts. </p>
+
+<blockquote style="border-left: 3px solid #5fb3ea; padding: 10px 16px; margin: 16px 0; background:var(--article-panel, #f4fbff); color:var(--article-secondary, #3f5f7b); font-size: 14px; border-radius: 0 8px 8px 0;">
+<strong style="color:var(--article-accent, #3f8fd4);"> Tip </strong> : completed homework is marked against what the child actually wrote, and incorrect answers enter the mistake notebook automatically. Unanswered questions on an otherwise completed sheet are displayed separately. A wholly blank worksheet produces a parent explanation guide; <strong style="color:var(--article-accent, #3f8fd4);"> it never invents a “student answer” </strong> and pretends to mark it.
+</blockquote>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;"> Step 5 · Read the parent explanation guide, then inspect its evidence </h2>
+
+<p style="margin: 8px 0;"> Send a blank worksheet through the same tutoring input. After recognition, its task is labeled <strong style="color:var(--article-accent, #3f8fd4);"> Blank Worksheet · Parent Explanation Guide </strong> . It recognizes and separates the questions, then solves them one by one: </p>
+
+<figure style="margin: 16px 0; text-align: center;">
+<img src="../../assets/blog/009.png" alt="Question recognition and separation for a blank worksheet uploaded in the tutoring conversation" width="2560" height="1584" loading="lazy" decoding="async">
+<figcaption style="color:var(--article-secondary, #5f7b9c); font-size: 13px; margin-top: 8px; line-height: 1.6;"> Recognition state after uploading a blank worksheet. Wait for this task to finish before reading the per-question guide. </figcaption>
+</figure>
+
+<p style="margin: 8px 0;"> Expand <strong style="color:var(--article-accent, #3f8fd4);"> Processing Steps </strong> to see progress through image recognition, question and answer recognition, per-question processing, solving, and the parent explanation guide. </p>
+
+<figure style="margin: 16px 0; text-align: center;">
+<img src="../../assets/blog/河蟹K12教程/025.png" alt="Completed processing for a blank worksheet: image recognition, question and answer recognition, per-question processing, solving, and the parent explanation guide" width="2560" height="1642" loading="lazy" decoding="async">
+<figcaption style="color:var(--article-secondary, #5f7b9c); font-size: 13px; margin-top: 8px; line-height: 1.6;"> After all blank-worksheet stages finish, scroll down to the explanations. This is processing progress, not a score for the child's work. </figcaption>
+</figure>
+
+<p style="margin: 8px 0;"> The completed <strong style="color:var(--article-accent, #3f8fd4);"> Blank Worksheet · Parent Explanation Guide </strong> follows the original question order. Each question includes an answer, necessary steps, grade-appropriate methods, common pitfalls, how a parent can explain it, follow-up questions, and checks. Understand the explanation yourself before working through it with the child: </p>
+
+<figure style="margin: 16px 0; text-align: center;">
+<img src="../../assets/blog/河蟹K12教程/026.png" alt="Blank-worksheet guide: per-question answers, necessary steps, grade-appropriate methods, pitfalls, parent explanations, and checks" width="2560" height="1642" loading="lazy" decoding="async">
+<figcaption style="color:var(--article-secondary, #5f7b9c); font-size: 13px; margin-top: 8px; line-height: 1.6;"> A blank worksheet produces a guide for lesson preparation, not a mark for the child. Parents receive both “how to explain” and “how to check.” </figcaption>
+</figure>
+
+<p style="margin: 8px 0;"> For completed homework, <strong style="color:var(--article-accent, #3f8fd4);"> a correct answer with a problematic process </strong> is flagged separately and is not automatically treated as a mistake; Unrecognizable does not mean incorrect either. Also inspect the <strong style="color:var(--article-accent, #3f8fd4);"> calculation and source labels in the result or tutoring notes: </strong>: </p>
+
+<ul style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> 📖 Textbook-based </strong> —supported by actual retrieved text from the linked textbook; </li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> ✅ Programmatically checked </strong> —inspect the calculations and results actually covered for this question; a normal paragraph answer alone is not proof of a successful programmatic check; </li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> 🧠 Learning signal </strong> —drawn from this child's own mistakes or learning records; </li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> 🤖 AI synthesis · For reference </strong> —the AI's own summary; <strong style="color:var(--article-accent, #3f8fd4);"> double-check it yourself when you see this label </strong>. </li>
+</ul>
+
+<blockquote style="border-left: 3px solid #3f8fd4; padding: 14px 18px; margin: 20px 0; background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); font-size: 14px; border-radius: 0 8px 8px 0; line-height: 1.85;">
+ Remember: <strong style="color:var(--article-accent, #3f8fd4);"> check what the verification covers, and give 🤖-marked material another look. </strong> If the original question was misread, even a beautifully presented solution must first be checked against the question itself.
+</blockquote>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;"> Step 6 · The mistake notebook collects incorrect answers automatically </h2>
+
+<p style="margin: 8px 0;"> Switch to the <strong style="color:var(--article-accent, #3f8fd4);"> Learning Profile </strong> tab at the top right. Questions marked incorrect appear automatically; no manual copying is needed. There are five smaller tabs: <strong style="color:var(--article-accent, #3f8fd4);"> Due This Week / All Mistakes / Practice Sets / Collection / Work </strong> ; Learning Overview is a separate tab at the top. </p>
+
+<figure style="margin: 16px 0; text-align: center;">
+<img src="../../assets/blog/015.png" alt="All Mistakes in Learning Profile: filter by subject and status, and inspect concepts, causes, and practice actions" width="2854" height="1484" loading="lazy" decoding="async">
+<figcaption style="color:var(--article-secondary, #5f7b9c); font-size: 13px; margin-top: 8px; line-height: 1.6;"> Every mistake records its concept and what went wrong. All Mistakes handles finding and organizing entries; to see <strong> whether anything is due for review this week </strong> , open Due This Week. Status advances through genuine answers. </figcaption>
+</figure>
+
+<p style="margin: 8px 0;"> Here is what the buttons do: </p>
+<ul style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> Due This Week </strong> —queues mistakes whose reviews are due; curriculum-aligned consolidation and mental-arithmetic warmups can also be prepared as needed; </li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> Add to Practice Set </strong> —prepares review questions for this mistake and, after validation, adds them to the practice set for the child (see the next step); </li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> Skip This Week / Stop Reviewing </strong> —the former postpones only this week's review, while the latter removes it from automatic review and can be reversed later. Neither means the child has mastered it; </li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> Details </strong> —revisit the question, answer, and cause of the mistake; </li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> Record a Mistake </strong>  (top right)—manually add questions that were not marked from a photo: a teacher's spoken feedback, a workbook question, or something the child says they did not understand. Enter the question and answer to put it in the review queue. </li>
+</ul>
+
+<p style="margin: 8px 0;"> Click <strong style="color:var(--article-accent, #3f8fd4);"> Details </strong> to revisit the original question, concept, and mistake cause first. Understand the issue, then return to the list to prepare practice. </p>
+
+<figure style="margin: 16px 0; text-align: center;">
+<img src="../../assets/blog/河蟹K12教程/027.png" alt="Mistake details: original question, concept, and a mix-up between the shares corresponding to boys and girls" width="2560" height="1642" loading="lazy" decoding="async">
+<figcaption style="color:var(--article-secondary, #5f7b9c); font-size: 13px; margin-top: 8px; line-height: 1.6;"> Example mistake details: the recorded cause is reversing the shares for boys and girls. The dialog's bottom “Practice Again / Parent Confirms Mastery” wording differs from the list buttons; follow Add to Practice Set / Stop Reviewing as explained above. Leaving automatic review does not establish mastery, which still requires evidence from real answers and system re-marking. </figcaption>
+</figure>
+
+<p style="margin: 8px 0;"> The adjacent <strong style="color:var(--article-accent, #3f8fd4);"> Collection </strong> tab is for Chinese and English—save vocabulary, useful sentences, or classical poems without putting them in the mistake-review queue. Enter the content and let the system classify it; to test recall, click <strong style="color:var(--article-accent, #3f8fd4);"> Generate Dictation Questions and Add to Practice Set </strong>. </p>
+
+<p style="margin: 8px 0;"> Essays and artwork can also be sent through the tutoring input. They are recognized and reviewed automatically, and can be revisited in <strong style="color:var(--article-accent, #3f8fd4);"> Work </strong> . Feedback follows <strong style="color:var(--article-accent, #3f8fd4);"> Visible Evidence / Start with This Encouragement / What Parents Can Ask or Explain / Try Just One Thing Next Time </strong> to give you a teaching approach. Essays can include revision demonstrations and reference drafts while preserving the child's original separately; art feedback follows visible evidence in the image. </p>
+
+<figure style="margin: 16px 0; text-align: center;">
+<img src="../../assets/blog/016.png" alt="Work in Learning Profile: essays and artwork, with Add Work and View Feedback entries" width="2856" height="1496" loading="lazy" decoding="async">
+<figcaption style="color:var(--article-secondary, #5f7b9c); font-size: 13px; margin-top: 8px; line-height: 1.6;"> Find the child's essay or artwork in Work, then click View Feedback. The original and feedback are kept together for later review. </figcaption>
+</figure>
+
+<figure style="margin: 16px 0; text-align: center;">
+<img src="../../assets/blog/河蟹K12教程/017.png" alt="Artwork details: the drawing and feedback grounded in visible evidence; the sample is labeled AI-generated example" width="2560" height="1642" loading="lazy" decoding="async">
+<figcaption style="color:var(--article-secondary, #5f7b9c); font-size: 13px; margin-top: 8px; line-height: 1.6;"> Work details first list what is visibly present, then show parents how to encourage and ask questions. Farther down, the next attempt focuses on one thing. Essay feedback likewise starts from the child's actual sentences. </figcaption>
+</figure>
+
+<p style="margin: 8px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> Learning Overview </strong> summarizes this child's learning and updates through marking, review, and other records. Manually recording a result or removing a question from the review queue does not mean the system has confirmed mastery: </p>
+
+<figure style="margin: 16px 0; text-align: center;">
+<img src="../../assets/blog/河蟹K12教程/028.png" alt="Four Learning Overview measures: mistakes this term, evidence-backed mastery, reviews due this week, and practice awaiting printing" width="2560" height="1642" loading="lazy" decoding="async">
+<figcaption style="color:var(--article-secondary, #5f7b9c); font-size: 13px; margin-top: 8px; line-height: 1.6;"> The four tiles show mistakes this term, evidence-backed mastery, reviews due this week, and practice awaiting printing. Mastery requires accumulated real answers and system re-marking, so starting at zero is normal. </figcaption>
+</figure>
+
+<p style="margin: 8px 0;"> To keep a copy of learning records, open the menu at the top right of Learning Profile → All Mistakes: <strong style="color:var(--article-accent, #3f8fd4);">“…”</strong> it offers PDF, Word, and Markdown exports, plus Backup / Restore. Print worksheets for the child from Practice Sets, described below. </p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;"> Step 7 · Prepare review, then photograph and return the completed work </h2>
+
+<p style="margin: 8px 0;"> Beside a mistake not yet in a set, click <strong style="color:var(--article-accent, #3f8fd4);"> Add to Practice Set </strong> to prepare its review questions. Math problems keep the concept while <strong style="color:var(--article-accent, #3f8fd4);"> changing numbers and situations </strong> so the child learns the method; Chinese and English dictation keeps the original words. </p>
+
+<figure style="margin: 16px 0; text-align: center;">
+<img src="../../assets/blog/014.png" alt="Due This Week: scheduled review, consolidation aligned with current textbook progress, and mental-arithmetic warmups" width="2866" height="1478" loading="lazy" decoding="async">
+<figcaption style="color:var(--article-secondary, #5f7b9c); font-size: 13px; margin-top: 8px; line-height: 1.6;"> Choose among three paths: review what is due first; prepare consolidation against current progress if needed; or prepare a mental-arithmetic warmup. The latter two are on demand with adjustable question counts. Add prepared questions to a practice set afterward. </figcaption>
+</figure>
+
+<blockquote style="border-left: 3px solid #5fb3ea; padding: 10px 16px; margin: 16px 0; background:var(--article-panel, #f4fbff); color:var(--article-secondary, #3f5f7b); font-size: 14px; border-radius: 0 8px 8px 0;">
+ New questions must <strong style="color:var(--article-accent, #3f8fd4);"> pass validation before entering the practice set </strong> . Failures remain in place with a message. Only genuine answers, system re-marking, and evidence accumulated over review intervals can lead to Mastered.
+</blockquote>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;"> Printing · Give the worksheet to the child and keep the answers </h2>
+
+<p style="margin: 8px 0;"> In Learning Profile, click <strong style="color:var(--article-accent, #3f8fd4);"> Practice Sets → Print Worksheet </strong> . Added questions are arranged into a worksheet. Check the preview, then open the system print dialog. To keep a file, the preview offers <strong style="color:var(--article-accent, #3f8fd4);"> Save as PDF… </strong>. <strong style="color:var(--article-accent, #3f8fd4);"> Give the question sheet to the child and keep the answer sheet for yourself </strong> ; do not hand over the answer copy as well. </p>
+
+<p style="margin: 8px 0;"> To send it to your phone, click <strong style="color:var(--article-accent, #3f8fd4);"> Send to… </strong> . It is sent to every currently active private-chat target bound to this tutor, without choosing recipients. Successful printing or creation of a send task freezes the questions as a historical worksheet; <strong style="color:var(--article-accent, #3f8fd4);"> canceling printing does not clear questions awaiting printing </strong>. </p>
+
+<p style="margin: 8px 0;"> When the child finishes, <strong style="color:var(--article-accent, #3f8fd4);"> send an answer photo directly through the Tutoring input or the bound DingTalk private chat </strong> . The system recognizes the questions and compares them with this child's historical mistakes and practice sheets. You do not need to choose “new homework or review” or locate the worksheet first. Keeping the sheet number and question numbers visible helps matching. </p>
+
+<p style="margin: 8px 0;"> Only real answers that can be reliably matched update review records. Unmatched work is still marked as a new assignment; <strong style="color:var(--article-accent, #3f8fd4);"> it does not guess updates to an old sheet's status </strong> . A partly completed sheet can be supplemented later. On the same practice sheet, repeated identical re-marking conclusions for already assessed questions do not advance review records again. Historical sheets also keep a <strong style="color:var(--article-accent, #3f8fd4);"> Return Answers </strong> entry. If a photo is inconvenient, Record Result Manually saves a parent's note, but Evidence-backed Mastery still depends on real answers and system re-marking. </p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;"> Let it work automatically · A review list every Friday at 7 p.m. </h2>
+
+<p style="margin: 8px 0;"> The last obstacle is often that parents forget to open the app. Creating a tutor automatically <strong style="color:var(--article-accent, #3f8fd4);"> registers four scheduled tasks </strong> for that child, handling due review and answer-return reminders at the scheduled times: </p>
+
+<table style="width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px;">
+<thead>
+<tr>
+<th style="background: #5fb3ea; color: #fff; padding: 10px 12px; text-align: left; font-weight: 600;"> Task </th>
+<th style="background: #5fb3ea; color: #fff; padding: 10px 12px; text-align: left; font-weight: 600;"> When </th>
+<th style="background: #5fb3ea; color: #fff; padding: 10px 12px; text-align: left; font-weight: 600;"> What you receive </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding: 10px 12px; border-bottom: 1px solid var(--article-border, #d8e6f0); background:var(--article-panel, #f9fcff);"> Mistake review list </td>
+<td style="padding: 10px 12px; border-bottom: 1px solid var(--article-border, #d8e6f0); background:var(--article-panel, #f9fcff);"> Every Friday, 19:00 </td>
+<td style="padding: 10px 12px; border-bottom: 1px solid var(--article-border, #d8e6f0); background:var(--article-panel, #f9fcff);"> Original text of mistakes due for review, without answers </td>
+</tr>
+<tr>
+<td style="padding: 10px 12px; border-bottom: 1px solid var(--article-border, #d8e6f0);"> Answer-return reminder </td>
+<td style="padding: 10px 12px; border-bottom: 1px solid var(--article-border, #d8e6f0);"> Every day, 20:00 </td>
+<td style="padding: 10px 12px; border-bottom: 1px solid var(--article-border, #d8e6f0);"> Worksheets printed or sent the day before whose answers are still incomplete; one reminder per sheet </td>
+</tr>
+<tr>
+<td style="padding: 10px 12px; border-bottom: 1px solid var(--article-border, #d8e6f0); background:var(--article-panel, #f9fcff);"> Spring term confirmation </td>
+<td style="padding: 10px 12px; border-bottom: 1px solid var(--article-border, #d8e6f0); background:var(--article-panel, #f9fcff);"> March 1, 09:00 </td>
+<td style="padding: 10px 12px; border-bottom: 1px solid var(--article-border, #d8e6f0); background:var(--article-panel, #f9fcff);"> A reminder that the term should change; the profile updates after confirmation </td>
+</tr>
+<tr>
+<td style="padding: 10px 12px; border-bottom: 1px solid var(--article-border, #d8e6f0);"> Autumn term confirmation </td>
+<td style="padding: 10px 12px; border-bottom: 1px solid var(--article-border, #d8e6f0);"> September 1, 09:00 </td>
+<td style="padding: 10px 12px; border-bottom: 1px solid var(--article-border, #d8e6f0);"> A prompt to decide whether the profile should advance to the next term </td>
+</tr>
+</tbody>
+</table>
+
+<p style="margin: 8px 0;"> If creation reports <strong style="color:var(--article-accent, #3f8fd4);"> Automatic reminders were not fully registered </strong> , open <strong style="color:var(--article-accent, #3f8fd4);"> Automation → Scheduled Tasks </strong> and check these four tasks. Then open the child's tutor's <strong style="color:var(--article-accent, #3f8fd4);"> Edit Profile </strong> and save once to retry missing tasks; existing tasks remain intact. </p>
+
+<figure style="margin: 16px 0; text-align: center;">
+<img src="../../assets/blog/003.png" alt="Automation: separate answer-return reminders, mistake-review lists, and term-confirmation tasks for several children" width="2560" height="1584" loading="lazy" decoding="async">
+<figcaption style="color:var(--article-secondary, #5f7b9c); font-size: 13px; margin-top: 8px; line-height: 1.6;"> The Automation page lists each child's tasks separately. To check execution, inspect its history and then the private chat for delivery. Pause a task when it is not needed. </figcaption>
+</figure>
+
+<p style="margin: 8px 0;"> These tasks <strong style="color:var(--article-accent, #3f8fd4);"> stay quiet when there is nothing to send </strong> —on a Friday with no due mistakes, you do not get an empty “No mistakes this week!” message. Friday's message is <strong style="color:var(--article-accent, #3f8fd4);">  a text list of the original questions due for review </strong> ; it does not automatically generate a PDF or add new questions to Practice Sets. To prepare variants and print them, add each question from Due This Week. At term changes it also asks whether to update the profile; <strong style="color:var(--article-accent, #3f8fd4);"> the update follows the parent's confirmation </strong>. </p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;"> Use it on your phone · Bind DingTalk and message the tutor privately </h2>
+
+<p style="margin: 8px 0;"> Prefer not to sit at the computer every time? Bind the tutor to DingTalk to <strong style="color:var(--article-accent, #3f8fd4);"> message the bot privately and send homework photos from your phone </strong> while HexClaw keeps running on the computer. This is the most technical step because you need to create a bot in <strong style="color:var(--article-accent, #3f8fd4);"> DingTalk's own developer console </strong> . Follow the sequence below. This version's K12 mobile channel supports only <strong style="color:var(--article-accent, #3f8fd4);"> one-to-one DingTalk private chats </strong>. </p>
+
+<p style="margin: 8px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> ① Start in HexClaw </strong> : click Connections → Add in the left sidebar. In New Channel and Account, choose <strong style="color:var(--article-accent, #3f8fd4);"> DingTalk </strong>. </p>
+
+<figure style="margin: 16px 0; text-align: center;">
+<img src="../../assets/blog/河蟹K12教程/024.png" alt="HexClaw&#x27;s New Channel and Account dialog: select DingTalk" width="2560" height="1642" loading="lazy" decoding="async">
+<figcaption style="color:var(--article-secondary, #5f7b9c); font-size: 13px; margin-top: 8px; line-height: 1.6;"> Choose DingTalk, then enter App Key, App Secret, and Robot Code. Development Documentation in the form opens the platform instructions. <strong> Enter these values only in your own app; do not post them in an article or group chat. </strong></figcaption>
+</figure>
+
+<p style="margin: 8px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> ② Create a bot in DingTalk's developer console </strong> : DingTalk requires bot credentials. Follow the form's <strong style="color:var(--article-accent, #3f8fd4);"> Development Documentation </strong> to create an Internal Enterprise App. Give it a name such as “Xiaohong's Homework Tutor,” enable the bot, and use <strong style="color:var(--article-accent, #3f8fd4);"> Stream mode </strong> for receiving messages. You do not need to configure a public callback URL. </p>
+
+<figure style="margin: 16px 0; text-align: center;">
+<img src="../../assets/blog/河蟹K12教程/018.png" alt="DingTalk developer console: Internal Enterprise Apps and the Create App entry" width="3348" height="1804" loading="lazy" decoding="async">
+<figcaption style="color:var(--article-secondary, #5f7b9c); font-size: 13px; margin-top: 8px; line-height: 1.6;"> Create an app under Internal Enterprise Apps, then open its details to obtain  <strong>AppKey / AppSecret</strong> and enter them back in HexClaw shortly. </figcaption>
+</figure>
+
+<figure style="margin: 16px 0; text-align: center;">
+<img src="../../assets/blog/河蟹K12教程/019.png" alt="DingTalk app bot configuration: enable the bot and copy RobotCode" width="3338" height="1802" loading="lazy" decoding="async">
+<figcaption style="color:var(--article-secondary, #5f7b9c); font-size: 13px; margin-top: 8px; line-height: 1.6;"> Enable the bot and copy its  <strong>RobotCode</strong> ; HexClaw uses this configuration to identify the bot that sends and receives messages. </figcaption>
+</figure>
+
+<p style="margin: 8px 0;"> Open the app's <strong style="color:var(--article-accent, #3f8fd4);"> Permission Management </strong> and use the relevant bot integration documentation to check permissions for messaging, images, and files. The screenshot below only locates the page; its enabled items are not this tutorial's permission checklist. </p>
+
+<figure style="margin: 16px 0; text-align: center;">
+<img src="../../assets/blog/河蟹K12教程/020.png" alt="Permission Management in the DingTalk developer platform; shown items do not define K12&#x27;s required permissions" width="3330" height="1796" loading="lazy" decoding="async">
+<figcaption style="color:var(--article-secondary, #5f7b9c); font-size: 13px; margin-top: 8px; line-height: 1.6;"> The DingTalk Permission Management entry. Do not copy the phone-number, Alipay-linking, or calendar permissions shown; configure the permissions specified by the bot integration documentation. </figcaption>
+</figure>
+
+<p style="margin: 8px 0;"> After configuring permissions, publish an app version and make sure <strong style="color:var(--article-accent, #3f8fd4);">  the parent's own DingTalk account is within its availability scope </strong>. </p>
+
+<figure style="margin: 16px 0; text-align: center;">
+<img src="../../assets/blog/河蟹K12教程/021.png" alt="DingTalk app version management and publishing: the app is shown as live" width="3354" height="1800" loading="lazy" decoding="async">
+<figcaption style="color:var(--article-secondary, #5f7b9c); font-size: 13px; margin-top: 8px; line-height: 1.6;"> Do not skip publishing. Confirm the app is Live before returning to configure the HexClaw connection. Later platform configuration changes also need to be published as the platform requires. </figcaption>
+</figure>
+
+<p style="margin: 8px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> ③ Return to HexClaw, enter credentials, and bind the agent </strong> : paste AppKey / AppSecret / RobotCode into Connections and create the connection. On that connection card, use <strong style="color:var(--article-accent, #3f8fd4);"> Agent </strong> to select your child's tutor. Even after DingTalk shows Connected, one step remains: <strong style="color:var(--article-accent, #3f8fd4);"> use the parent's own phone to send the bot a private message first </strong> , establishing this real private chat as a receiving target for the tutor. </p>
+
+<figure style="margin: 16px 0; text-align: center;">
+<img src="../../assets/blog/001.png" alt="HexClaw DingTalk connection card: Connected, with the child&#x27;s tutor selected as Agent" width="2560" height="1584" loading="lazy" decoding="async">
+<figcaption style="color:var(--article-secondary, #5f7b9c); font-size: 13px; margin-top: 8px; line-height: 1.6;"> After connecting, select this child's tutor as Agent. The channel model follows the bound tutor. Bind multiple children's tutors separately and avoid sending homework to the wrong child's tutor. </figcaption>
+</figure>
+
+<p style="margin: 8px 0;"> After the first private exchange, send a homework photo and check the automatically returned result in <strong style="color:var(--article-accent, #3f8fd4);"> that same private chat </strong> : completed question-based work returns marking text and an annotated image; blank questions return answers and explanations; essays and drawings return feedback text. </p>
+
+<figure style="margin: 16px 0; text-align: center;">
+<img src="../../assets/blog/012.png" alt="DingTalk desktop private chat: a homework-marking summary returned after sending a completed worksheet" width="2560" height="1588" loading="lazy" decoding="async">
+<figcaption style="color:var(--article-secondary, #5f7b9c); font-size: 13px; margin-top: 8px; line-height: 1.6;"> This is the same one-to-one private chat in the DingTalk desktop client: send a homework photo and receive the marking summary. Open the same bot conversation on your phone to send photos and read results there too. </figcaption>
+</figure>
+
+<figure style="margin: 16px 0; text-align: center;">
+<img src="../../assets/blog/010.png" alt="A drawing sent in DingTalk private chat, followed by bot feedback based on visible evidence" width="2560" height="1584" loading="lazy" decoding="async">
+<figcaption style="color:var(--article-secondary, #5f7b9c); font-size: 13px; margin-top: 8px; line-height: 1.6;"> Drawings can be sent directly too. Read the visible evidence first, then use the feedback to talk with the child. The sample material bears the label “AI-generated example · Not real student work.” </figcaption>
+</figure>
+
+<blockquote style="border-left: 3px solid #5fb3ea; padding: 10px 16px; margin: 16px 0; background:var(--article-panel, #f4fbff); color:var(--article-secondary, #3f5f7b); font-size: 14px; border-radius: 0 8px 8px 0;">
+ The automatic mistake-review lists and answer-return reminders described above also go to the bound private chat. Send to Phone delivers once to all currently active receiving targets bound to this tutor, with no additional recipient selection. <strong style="color:var(--article-accent, #3f8fd4);"> One reminder </strong> : content sent through DingTalk reaches a third-party platform. This is a channel you deliberately enable, and its switch remains in your hands.
+</blockquote>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;"> An honest look · What you should know </h2>
+
+<p style="margin: 8px 0;"> Following HexClaw's usual practice, here are the incomplete parts so you can work around them: </p>
+
+<ul style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> Annotated images still depend on photo quality </strong> —the ✓/✗ marks are overlaid beside questions with reliable positions; questions without reliable positions receive text explanations, <strong style="color:var(--article-accent, #3f8fd4);"> without putting a red cross on another question </strong> . The original is retained and annotations are generated as a separate copy. If annotated-image generation fails, this result is incomplete; follow the message and check the annotated image afterward. </li>
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> Marking accuracy depends heavily on the model </strong> —handwriting recognition and marking accuracy underpin the whole product. With a cloud model, images, questions, and relevant context are sent to the selected provider as needed and may involve multiple calls. Calculations that can be determined are checked by the current service first. This walkthrough connects to a local service, so mistakes, learning records, and profiles are <strong style="color:var(--article-accent, #3f8fd4);"> stored locally </strong>. </li>
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> Hard method boundaries currently focus on math </strong> —math explanations use grade, term, and linked textbook progress to constrain methods. Other subjects follow the primary-school scope and their teaching Skills. Middle and high school remain longer-term plans. </li>
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> Distinguish Unrecognizable from processing failure </strong> —unreadable questions or answers may finish as “Unrecognizable · Not assessed,” without guessing or creating a mistake record. Send a clearer photo if you want to continue. Connection or model-call failures need the displayed error handled; confirm the task's state before sending repeatedly. </li>
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);"> Scheduled tasks require the local service to be online </strong> —when the computer is shut down or asleep, or the HexClaw service exits, tasks cannot run on time. Phone delivery also depends on that service and channel connection. Keep them running for scheduled messages. </li>
+</ul>
+
+<blockquote style="border-left: 3px solid #3f8fd4; padding: 14px 18px; margin: 20px 0; background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); font-size: 14px; border-radius: 0 8px 8px 0; line-height: 1.85;">
+ Before teaching, check what was verified, then use the answers and explanations with your child. Give anything marked 🤖 another look. <strong style="color:var(--article-accent, #3f8fd4);"> Photo question search gives an answer; this toolkit aims to support the twenty minutes spent helping your child understand it. </strong>
+</blockquote>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<p style="margin: 24px 0 16px; color:var(--article-secondary, #5f7b9c); font-size: 14.5px; line-height: 2; text-align: center; font-style: italic; padding: 8px 16px;"> Create the profile once and make the routine easier. <br/> Send homework, read feedback, explain it, and return practice answers— <br/> so each tutoring session connects with the child's next step forward. </p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<p style="margin: 8px 0; font-size: 14px; color:var(--article-muted, #7b8fa3);"> Website tutorial: <a href="https://hexclaw.net/zh/docs/k12" style="color:var(--article-accent, #5fb3ea);">https://hexclaw.net/zh/docs/k12</a></p>
+
+<p style="margin: 8px 0; font-size: 14px; color:var(--article-muted, #7b8fa3);"><strong style="color:var(--article-accent, #3f8fd4);"> Want to know what makes it trustworthy? </strong> Read its companion, “ <a href="https://mp.weixin.qq.com/s/8xUoFrig10zxpxni1rgm9Q" style="color:var(--article-accent, #5fb3ea);"> Calmer Homework Time with HexClaw AI: Engineering the First K12 Flagship Scenario </a> ”—the explanation of calculation evidence, locally owned mistake records, and a scenario package removable at compile time. </p>
+
+<p class="blog-brand-footer" data-blog-brand-footer="en" data-blog-brand-overrides="{}" style="text-align: center; color: var(--article-muted, #7b8fa3); font-size: 13px; margin: 16px 0 0; line-height: 2;">
+<strong style="color: var(--article-ink, #12324c); font-size: 14px;">HexClaw</strong><br/>
+Deploy locally or in the cloud · Control your data · Free and open-source software<br/>
+<a href="https://hexclaw.net" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">Website: <bdi dir="ltr">hexclaw.net</bdi></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://github.com/hexagon-codes" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">GitHub: <bdi dir="ltr">hexagon-codes</bdi></a><br/>
+<a href="https://weibo.com/u/4097207240" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">Weibo: <bdi dir="ltr">@HexClaw</bdi></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">X: <bdi dir="ltr">@hexclawapp</bdi></a><br/>
+<a href="mailto:ai@hexclaw.net" style="color: var(--article-muted, #999); text-decoration: none;">Email: <bdi dir="ltr">ai@hexclaw.net</bdi></a>
+</p>
+    </article>
+
+
+
+    <nav class="blog-series-nav" aria-label="Previous and next articles">
+      <a href="/en/blog/k12-engineering-practice" class="blog-nav-card prev">
+  <span class="blog-nav-label"> ← Previous article </span>
+  <span class="blog-nav-title"> Calmer Homework Time with HexClaw AI: Engineering the First K12 Flagship Scenario </span>
+</a>
+      <a href="/en/blog/" class="blog-nav-card next">
+  <span class="blog-nav-label"> Back to list → </span>
+  <span class="blog-nav-title"> Technical Blog Index </span>
+</a>
+    </nav>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-main">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-col-title">Product</div>
+        <a href="/en/#download">Download</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="/en/changelog">Changelog</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Developers</div>
+        <a href="/en/docs/">Documentation</a>
+        <a href="/en/blog/">Technical Blog</a>
+        <a href="/en/docs/getting-started">Getting Started</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">Apache-2.0</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Community</div>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/issues" target="_blank" rel="noopener noreferrer">Issues</a>
+        <a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer">Twitter / X</a>
+        <a href="mailto:ai@hexclaw.net">Contact Us</a>
+        <a href="mailto:support@hexclaw.net">Feedback</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">About</div>
+        <a href="/en/about">About Us</a>
+        <a href="/en/privacy">Privacy Policy</a>
+        <a href="/en/terms">Terms of Service</a>
+        <a href="/en/third-party-ai-services">Third-Party AI Services</a>
+      </div>
+    </div>
+    <div class="footer-wechat">
+      <img width="430" height="430" loading="lazy" decoding="async" src="../../assets/brand/wechat-qr.jpg" alt="HexClaw WeChat QR Code">
+      <span class="footer-wechat-label">WeChat Official Account</span>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">&copy; 2025&ndash;2026 hexagon-codes</span>
+  </div>
+</footer>
+<script src="../../assets/js/theme.js?v=2e4a1828feef"></script>
+<script src="../../assets/js/docs-nav.js?v=5a103861aec2"></script>
+<button type="button" class="back-to-top" id="backToTop" aria-label="Back to top" title="Back to top">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg>
+  <span>Top</span>
+</button>
+
+<script src="../../assets/js/blog.js?v=c72e1db5a6ec"></script>
+</body>
+</html>

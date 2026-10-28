@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/favicon-32.png">
+<title>The Claude Code SOP Behind HexClaw: Design-Driven Development, Testing Feedback, and Multi-Agent Collaboration | HexClaw Technical Blog</title>
+<meta name="description" content="One person, spare time, six core repositories, and 680,000 lines of code. The key is a development SOP that connects design, tests, and multiple Agents into a complete feedback loop.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:site_name" content="HexClaw">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The Claude Code SOP Behind HexClaw: Design-Driven Development, Testing Feedback, and Multi-Agent Collaboration | HexClaw Technical Blog">
+<meta property="og:description" content="One person, spare time, six core repositories, and 680,000 lines of code. The key is a development SOP that connects design, tests, and multiple Agents into a complete feedback loop.">
+<meta property="og:url" content="https://hexclaw.net/en/blog/claude-code-sop">
+<meta property="og:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta property="og:image:alt" content="HexClaw logo">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Claude Code SOP Behind HexClaw: Design-Driven Development, Testing Feedback, and Multi-Agent Collaboration | HexClaw Technical Blog">
+<meta name="twitter:description" content="One person, spare time, six core repositories, and 680,000 lines of code. The key is a development SOP that connects design, tests, and multiple Agents into a complete feedback loop.">
+<meta name="twitter:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta name="twitter:image:alt" content="HexClaw logo">
+<link rel="canonical" href="https://hexclaw.net/en/blog/claude-code-sop">
+<link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/claude-code-sop">
+<link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/claude-code-sop">
+<link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/claude-code-sop">
+<link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/claude-code-sop">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "The Claude Code SOP Behind HexClaw: Design-Driven Development, Testing Feedback, and Multi-Agent Collaboration",
+  "description": "One person, spare time, six core repositories, and 680,000 lines of code. The key is a development SOP that connects design, tests, and multiple Agents into a complete feedback loop.",
+  "url": "https://hexclaw.net/en/blog/claude-code-sop",
+  "inLanguage": "en",
+  "datePublished": "2026-04-18",
+  "image": "https://hexclaw.net/assets/brand/hexclaw-logo.png",
+  "publisher": {
+    "@type": "Organization",
+    "name": "hexagon-codes",
+    "url": "https://hexclaw.net/",
+    "@id": "https://hexclaw.net/#organization"
+  },
+  "@id": "https://hexclaw.net/en/blog/claude-code-sop#article"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "HexClaw", "item": "https://hexclaw.net/en/"},
+    {"@type": "ListItem", "position": 2, "name": "Technical Blog", "item": "https://hexclaw.net/en/blog/"},
+    {"@type": "ListItem", "position": 3, "name": "The Claude Code SOP Behind HexClaw: Design-Driven Development, Testing Feedback, and Multi-Agent Collaboration", "item": "https://hexclaw.net/en/blog/claude-code-sop"}
+  ],
+  "@id": "https://hexclaw.net/en/blog/claude-code-sop#breadcrumb"
+}
+</script>
+<link rel="stylesheet" href="../../assets/css/docs-eb2895dd79c5.css">
+<link rel="stylesheet" href="../../assets/css/blog-a8e5008ac3d1.css">
+</head>
+<body class="blog-page blog-article-page">
+<a href="#main" class="skip-link">Skip to main content</a>
+<nav class="tn topnav" id="nav">
+  <a href="/en/" class="tn-b topnav-brand"><img width="72" height="72" src="../../assets/brand/hexclaw-icon-72.png" class="tn-l topnav-logo" alt="HexClaw"><span class="tn-n topnav-name">HexClaw</span></a>
+  <button type="button" class="tn-burger topnav-burger" aria-label="Menu" aria-expanded="false" aria-controls="primary-navigation"><span></span><span></span><span></span></button><div class="tn-r topnav-links" id="primary-navigation"><a href="/en/">Home</a><a href="/en/#cases">Scenarios</a><a href="/en/#features">Features</a><a href="/en/#quickstart">Quickstart</a><a href="/en/#ecosystem">Ecosystem</a><a href="/en/blog/" class="is-active">Tech Blog</a><a href="/en/docs/">Docs Center</a><div class="lang-menu" data-lang-menu><button type="button" class="lang-trigger" aria-haspopup="menu" aria-expanded="false" aria-label="Switch language"><svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 0 20"></path><path d="M12 2a15.3 15.3 0 0 0 0 20"></path></svg><span class="lang-current">English</span><svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="lang-menu-list" role="menu"><a href="/zh/blog/claude-code-sop" role="menuitem">中文</a><a href="/en/blog/claude-code-sop" role="menuitem" class="is-active" aria-current="true">English</a><a href="/ug/blog/claude-code-sop" role="menuitem" lang="zh-CN" dir="ltr">维吾尔语</a></div></div><button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"><svg class="ti-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="ti-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="nav-cta">GitHub <span class="nav-star-badge" id="gh-stars">&#9733;</span></a></div>
+</nav>
+
+<main id="main" class="blog-main">
+  <div class="blog-article-container">
+    <nav class="blog-breadcrumb" aria-label="Breadcrumb">
+      <a href="/en/">Home</a>
+      <span class="blog-breadcrumb-sep">/</span>
+      <a href="/en/blog/">Technical Blog</a>
+      <span class="blog-breadcrumb-sep">/</span>
+      <span aria-current="page">Architecture and Engineering</span>
+    </nav>
+
+    <header class="blog-header">
+      <div class="blog-header-tags">
+        <span class="blog-badge-series">Development SOP</span>
+      </div>
+      <h1 class="blog-article-title">The Claude Code SOP Behind HexClaw: Design-Driven Development, Testing Feedback, and Multi-Agent Collaboration</h1>
+      <p class="blog-article-subtitle">One person, spare time, six core repositories, and 680,000 lines of code. The key is a development SOP that connects design, tests, and multiple Agents into a complete feedback loop.</p>
+      <div class="article-provenance-banner">
+        <div class="provenance-left">
+          <span class="provenance-origin-badge">First published on WeChat</span>
+          <span class="provenance-text">Originally published in the official technical column of the WeChat account <strong>「hexclaw」</strong> (ID: hexclaw) · Published  <strong>April 18, 2026</strong>  · About 11 minutes</span>
+        </div>
+        <a href="https://mp.weixin.qq.com/s/1rza-Ye3NF89KNAJp_PttA" target="_blank" rel="noopener noreferrer" class="provenance-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          WeChat original ↗
+        </a>
+      </div>
+    </header>
+
+    <article class="blog-content">
+      <hr style="border: none; border-top: 1px solid var(--article-border, #d8e6f0); margin: 28px 0;">
+
+<h2 style="font-size: 20px; font-weight: 700; color:var(--article-ink, #12324c); margin: 32px 0 12px; padding-bottom: 8px; border-bottom: 2px solid #5fb3ea;">How It Started: A Friend Asked About AI Development</h2>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">A few days ago, an old friend in Beijing contacted me. As a technical lead building an automated AI workflow for his team, he had two questions: <strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">how do you reduce hallucinations, and how do you build the workflow?</strong>The three threads below are essentially my answer.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">My experience was running inside projects rather than organized into presentation material. I asked Claude to assemble those fragments into documentation—the same package linked at the end—and sent it with my custom Skills and commands. Instead of a one-way presentation, my friend created a WeChat technical discussion group. People read, tried things, and asked questions together, giving each question time for a solid answer. That was end-to-end technical sharing in a practical sense: documentation, hands-on work, questions, and answers in one feedback loop.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">He also invited a product-manager friend to discuss a product-side Skill system. That friend's PRDs were systematic and detailed. I tried the Skill on a login module and got a set of test cases plus a test report. <strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">More detailed PRDs produced better generation</strong>. Product-side methodology is that colleague's specialty; I found it useful, but a proper explanation should come from its author.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">Organizing the material made me realize I had never systematically documented how I use Claude Code to build a working product. A feature list is easy; a working method is different.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">The three threads are <strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">design and implementation, a testing feedback loop, and multi-Agent collaboration</strong>. I will examine them in order.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">This article is the condensed version of that documentation. It does not list twenty-six Claude Code shortcuts. It describes the workflow needed to build a product that runs, can be tested, and can evolve.</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #d8e6f0); margin: 28px 0;">
+
+<h2 style="font-size: 20px; font-weight: 700; color:var(--article-ink, #12324c); margin: 32px 0 12px; padding-bottom: 8px; border-bottom: 2px solid #5fb3ea;">The Numbers First</h2>
+
+<ul style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Approximately 680,000 lines of code</strong>: across Go / TypeScript / Vue / Rust, roughly counted from currently Git-tracked files in six repositories</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Six core repositories</strong>: toolkit → ai-core → hexagon → hexclaw → hexclaw-desktop / hexagon-ui; see the full dependency chain in the <a href="https://mp.weixin.qq.com/s/wIRiJsWLRPWBiTEQtlVQkg">architecture article</a>）</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">One person, spare time</strong>: normal work during the day; evenings, weekends, and holidays for this ecosystem</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Pair programming with Claude Code</strong>: dozens to over a hundred exchanges daily. Claude Code generated most code; I supplied requirements, chose designs, reviewed changes, and performed final acceptance</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Models</strong>: Claude Opus 4.5 / 4.6 did the work described above, and within a few months they became previous generations. Whether the newly released 4.7 or a later version, the workflow stays the constant while stronger models raise its ceiling</li>
+</ul>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">These figures are not for showing off. Even looking back, I find them slightly absurd.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">The unexpected part was that <strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">the resulting quality exceeded my own expectations</strong>: comprehensive tests, an ADR for every key decision, stricter review than many projects I previously worked on, clear dependency layers, and no circular references.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">This did not happen because Claude Code suddenly became powerful in 2026. Many independent developers used it last year with vastly different results. The difference lies in how it is used.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">One industry observation: the rapid iterations of Claude Code, Codex, Cursor, and Chinese coding assistants, together with stronger subscription competition, suggest that <strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">AI coding has moved from experimentation into the everyday toolchain</strong>. A recent joke in technical groups and on Zhihu exaggerates it this way: <strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Traditional hand-written code needs heritage protection soon, before it ends up in a museum.</strong></p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">Reality is less extreme. The Stack Overflow 2025 Developer Survey found that <strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">84% of developers use or plan to use AI tools, but 46% distrust the accuracy of AI output</strong>. Adoption is established; trust remains the central question. A more realistic view is that hand-writing everything is becoming specialist work for selected situations, while generated code needs a loop of design, tests, and review to earn trust.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">In 2026, the question is how well to use AI coding. Tool adoption does not equal output quality: some Claude Code users build working products, while others stop at demos.</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #d8e6f0); margin: 28px 0;">
+
+<h2 style="font-size: 20px; font-weight: 700; color:var(--article-ink, #12324c); margin: 32px 0 12px; padding-bottom: 8px; border-bottom: 2px solid #5fb3ea;">The Three Threads</h2>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">A terminology check: around 2026, the industry began using  <strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Agentic Engineering</strong>  to distinguish a more disciplined approach from casual Vibe coding.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">Vibe coding, Karpathy's term, means letting AI write by feel and accepting that it runs, suitable for toy projects and quick prototypes. Agentic Engineering emphasizes <strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">humans orchestrating Agents, setting quality gates, and verifying outputs</strong> so generated code enters an engineering feedback loop. Ultimately, <strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">AI can write code, but cannot take your engineering responsibility</strong>。</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">This article describes my particular implementation of Agentic Engineering:</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">① <strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Design and implementation</strong>: ask Claude to compare designs before coding, choose one, split it into small stages, then use red–green–refactor where TDD applies.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">② <strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Testing feedback loop</strong>: should pass and probably OK do not count as completion. Run verification and obtain evidence. High coverage does not imply effective tests.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">③ <strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Multi-Agent collaboration</strong>: Claude writes, Codex reviews, and humans decide. Cross-review between different models helps prevent one model's blind spots accumulating into failures.</p>
+
+<div style="margin: 20px 0;">
+  <div style="background:var(--article-panel, #f4fbff); border: 1px solid var(--article-border, #d8e6f0); border-top: 3px solid #5fb3ea; border-radius: 8px; padding: 14px 16px; margin: 0 0 12px;">
+    <div style="font-size: 15px; font-weight: 700; color:var(--article-ink, #12324c); margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1px dashed #c9dce9;">✏️ 1. Design and Implementation</div>
+    <ul style="margin: 0; padding-left: 18px; font-size: 13px; color:var(--article-secondary, #3f5f7b); line-height: 1.8;">
+      <li style="margin: 3px 0;">Compare designs and record ADRs</li>
+      <li style="margin: 3px 0;">Small stages, one at a time</li>
+      <li style="margin: 3px 0;">TDD: red → green → refactor</li>
+      <li style="margin: 3px 0;">Refactoring protected by tests</li>
+    </ul>
+  </div>
+  <div style="background:var(--article-panel, #f4fbff); border: 1px solid var(--article-border, #d8e6f0); border-top: 3px solid #5fb3ea; border-radius: 8px; padding: 14px 16px; margin: 0 0 12px;">
+    <div style="font-size: 15px; font-weight: 700; color:var(--article-ink, #12324c); margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1px dashed #c9dce9;">✅ 2. Testing Feedback Loop</div>
+    <ul style="margin: 0; padding-left: 18px; font-size: 13px; color:var(--article-secondary, #3f5f7b); line-height: 1.8;">
+      <li style="margin: 3px 0;">Verification-driven: no should pass</li>
+      <li style="margin: 3px 0;">Change type → verification depth</li>
+      <li style="margin: 3px 0;">Completion checks with grep</li>
+      <li style="margin: 3px 0;">DevTestOps workflow Skill</li>
+    </ul>
+  </div>
+  <div style="background:var(--article-panel, #f4fbff); border: 1px solid var(--article-border, #d8e6f0); border-top: 3px solid #5fb3ea; border-radius: 8px; padding: 14px 16px; margin: 0;">
+    <div style="font-size: 15px; font-weight: 700; color:var(--article-ink, #12324c); margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1px dashed #c9dce9;">🤖 3. Multi-Agent Collaboration</div>
+    <ul style="margin: 0; padding-left: 18px; font-size: 13px; color:var(--article-secondary, #3f5f7b); line-height: 1.8;">
+      <li style="margin: 3px 0;">Claude writes / Codex reviews / humans decide</li>
+      <li style="margin: 3px 0;">Cross-model code review</li>
+      <li style="margin: 3px 0;">Requirements review against the design</li>
+      <li style="margin: 3px 0;">Past failures become checks</li>
+    </ul>
+  </div>
+</div>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">Each thread below includes actual practice: the problem encountered, the solution used, and the corresponding prompts or shell commands.</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #d8e6f0); margin: 28px 0;">
+
+<h2 style="font-size: 20px; font-weight: 700; color:var(--article-ink, #12324c); margin: 32px 0 12px; padding-bottom: 8px; border-bottom: 2px solid #5fb3ea;">Thread One: Design and Implementation</h2>
+
+<h3 style="font-size: 17px; font-weight: 600; color:var(--article-ink, #12324c); margin: 24px 0 8px;">What Happens Without Design</h3>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">When I started with Claude Code five months ago, my first instinct was familiar: implement feature X for me. Claude produced 200 lines immediately, and they ran.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">Over time, asking AI to jump straight into code exposed three specific problems:</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">1. Architecture degrades quietly</strong>. Claude follows the most recently seen patterns in its context. As modules accumulate, it mixes styles. The codebase looks as though five people with different habits wrote it, because each conversation starts with a newcomer who does not remember yesterday's rules.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">2. Design selection becomes passive</strong>. Claude normally supplies one workable design without alternatives. But the value of technical selection lies in comparison: goroutines or channels, REST or WebSocket. Without comparison, the decision has not really been made.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">3. The change radius becomes unpredictable</strong>. A request to implement a feature may trigger unrelated changes across several files. Their correctness is unknown until you inspect each diff.</p>
+
+<h3 style="font-size: 17px; font-weight: 600; color:var(--article-ink, #12324c); margin: 24px 0 8px;">The Better Approach: Three Design Steps</h3>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">I established one firm rule: </p>
+
+<blockquote style="border-left: 3px solid #5fb3ea; padding: 10px 16px; margin: 16px 0; background:var(--article-panel, #f4fbff); color:var(--article-secondary, #3f5f7b); font-size: 14px; border-radius: 0 8px 8px 0;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">complete the design phase before coding.</strong></blockquote>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">By default, switch the whole design phase to  <strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Plan mode</strong>（<code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">Shift+Tab</code>). Claude reads without editing and concentrates on analysis and alternatives.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">The three steps:</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Step 1: Describe the Intended Work Clearly</strong></p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">A request to build X lacks enough context for a precise design. My usual template is:</p>
+
+<section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;"><span style="display: block; white-space: pre; min-height: 1.4em;">I want to implement feature XXX. Context:</span><span style="display: block; white-space: pre; min-height: 1.4em;">- Current system: X (stack / architecture / key constraints)</span><span style="display: block; white-space: pre; min-height: 1.4em;">- Related existing code is at Y</span><span style="display: block; white-space: pre; min-height: 1.4em;">- Expected behavior is Z</span><span style="display: block; white-space: pre; min-height: 1.4em;">- Non-functional requirements: performance / compatibility / concurrency scale</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;">Do not rush into a solution. Ask what context is missing first,</span><span style="display: block; white-space: pre; min-height: 1.4em;">and begin design only after the context is confirmed.</span></code></section>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">The instruction not to rush matters. Claude otherwise starts immediately; this makes it expose ambiguities for confirmation before designing.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Step 2: Ask for Two or Three Alternatives</strong></p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">Only after the context is complete should Claude propose designs. Each must be directly comparable:</p>
+
+<section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;"><span style="display: block; white-space: pre; min-height: 1.4em;">Using the completed context above, propose 2–3 designs. For each explain:</span><span style="display: block; white-space: pre; min-height: 1.4em;">- Core idea in one sentence</span><span style="display: block; white-space: pre; min-height: 1.4em;">- Complexity versus extensibility</span><span style="display: block; white-space: pre; min-height: 1.4em;">- Modules to add or change</span><span style="display: block; white-space: pre; min-height: 1.4em;">- Risks</span><span style="display: block; white-space: pre; min-height: 1.4em;">- Situations where it is unsuitable</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;">Do not recommend one. I will choose.</span></code></section>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">That last instruction matters: <strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Claude lays out the choices, and you choose</strong>. Otherwise it tends to recommend the apparently safest option and let you follow it.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Step 3: Choose and Write an ADR</strong></p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">After choosing, ask Claude to record an Architecture Decision Record:</p>
+
+<section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;"><span style="display: block; white-space: pre; min-height: 1.4em;"># ADR-XXX: [Decision title]</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;">## Context</span><span style="display: block; white-space: pre; min-height: 1.4em;">[Why this decision is needed and its context]</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;">## Decision</span><span style="display: block; white-space: pre; min-height: 1.4em;">[The chosen design]</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;">## Alternatives</span><span style="display: block; white-space: pre; min-height: 1.4em;">[Other designs considered and why they were rejected]</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;">## Consequences</span><span style="display: block; white-space: pre; min-height: 1.4em;">[Effects on code, architecture, and the team]</span></code></section>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">Three months later, you or a successor can understand the reason immediately. The rejected alternatives remain available too, so switching does not require starting research again.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">These three steps are a compact version of the industry's  <strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Spec-Driven Development（SDD）</strong>. The open-source  <a href="https://github.com/github/spec-kit">Spec Kit（github.com/github/spec-kit）</a>  on GitHub divides planning into more reviewable stages. For my product work, these three steps provide enough structure.</p>
+
+<h3 style="font-size: 17px; font-weight: 600; color:var(--article-ink, #12324c); margin: 24px 0 8px;">Implementation: From ADR to Code</h3>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">A completed design is not a reason to ask Claude to implement everything at once. I use three practices:</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Practice 1: Small Stages, One at a Time</strong></p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">Split the ADR's design into independently releasable stages. Each has a manageable diff, independent testing, and low rollback cost. Implementing everything at once produces a diff nobody can review, an unclear rollback point, and wasted work if an early assumption fails.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">Let Claude propose the stages, confirm them, and proceed individually:</p>
+
+<section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;"><span style="display: block; white-space: pre; min-height: 1.4em;">Using the chosen design in ADR-023, split implementation into independently releasable stages:</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;">Requirements:</span><span style="display: block; white-space: pre; min-height: 1.4em;">1. Each stage is independently testable, without unfinished dependencies</span><span style="display: block; white-space: pre; min-height: 1.4em;">2. Each stage has clear acceptance criteria</span><span style="display: block; white-space: pre; min-height: 1.4em;">3. Give the execution order, highest priority first</span><span style="display: block; white-space: pre; min-height: 1.4em;">4. Identify each stage's risks</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;">List the stages first. Wait for my confirmation before beginning stage one.</span></code></section>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Practice 2: TDD, Red → Green → Refactor</strong></p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">For a task suited to TDD, use this prompt:</p>
+
+<section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;"><span style="display: block; white-space: pre; min-height: 1.4em;">Implement circuit-breaker logic using TDD:</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;">Step 1 (red): write tests for these scenarios</span><span style="display: block; white-space: pre; min-height: 1.4em;">  - Three consecutive failures open the circuit</span><span style="display: block; white-space: pre; min-height: 1.4em;">  - All requests are rejected while open</span><span style="display: block; white-space: pre; min-height: 1.4em;">  - After 60 seconds, transition to half-open</span><span style="display: block; white-space: pre; min-height: 1.4em;">  - One half-open success closes it; failure reopens it</span><span style="display: block; white-space: pre; min-height: 1.4em;">  - Concurrency safety</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;">Step 2 (green): write the minimum code to pass the tests</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;">Step 3 (refactor): improve structure while keeping tests green</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;">Actually run the tests and show the result at every step.</span></code></section>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">But TDD is  <strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">not a silver bullet</strong>; choose by scenario:</p>
+
+<ul style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Suited to TDD</strong>: core pure logic / state machines / algorithms / bug fixes / interface contracts</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Less suited to TDD</strong>: exploratory work with unclear requirements / frontend interactions difficult to express in unit tests / third-party integration depending on external behavior / one-off scripts</li>
+</ul>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">When TDD is unsuitable, run a spike first and add appropriate verification afterward rather than forcing the method.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Practice 3: Refactor Under Test Protection</strong></p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">When changing existing code, follow a strict sequence:</p>
+
+<section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;"><span style="display: block; white-space: pre; min-height: 1.4em;">I want to refactor the large switch in adaptor_factory.go (30+ cases).</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;">Follow these steps:</span><span style="display: block; white-space: pre; min-height: 1.4em;">1. Run existing tests and establish a green baseline</span><span style="display: block; white-space: pre; min-height: 1.4em;">2. Analyze the switch patterns and identify shared behavior</span><span style="display: block; white-space: pre; min-height: 1.4em;">3. Design a strategy-pattern or registry replacement</span><span style="display: block; white-space: pre; min-height: 1.4em;">4. Replace it incrementally, testing after each step</span><span style="display: block; white-space: pre; min-height: 1.4em;">5. Confirm all tests pass and behavior is unchanged</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;">Constraint: preserve public API behavior. If any step fails its tests, roll back that step immediately.</span></code></section>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">The critical instruction is to test after each step, <strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">not after the entire rewrite</strong>. Otherwise, a failure gives no clue which step introduced it.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">Three design steps and three implementation practices may look slow. In my experience, an extra hour in design saves ten times that during implementation and evolution. Compared options and recorded decisions keep alternatives available and switching costs low. Skipping them leaves every change's radius unpredictable and every problem requiring fresh research.</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #d8e6f0); margin: 28px 0;">
+
+<h2 style="font-size: 20px; font-weight: 700; color:var(--article-ink, #12324c); margin: 32px 0 12px; padding-bottom: 8px; border-bottom: 2px solid #5fb3ea;">Thread Two: A Testing Feedback Loop</h2>
+
+<h3 style="font-size: 17px; font-weight: 600; color:var(--article-ink, #12324c); margin: 24px 0 8px;">The Trap in AI-Written Tests</h3>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">Ask for unit tests and Claude can produce them in thirty seconds. The serious problem is that it may <strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">write to cover code rather than verify behavior</strong>。</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">A typical false sense of safety:</p>
+
+<section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;"><span style="display: block; white-space: pre; min-height: 1.4em;">func TestCalculateDiscount(t *testing.T) {</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;&nbsp;&nbsp;&nbsp;result := CalculateDiscount(100, 0.1)</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;&nbsp;&nbsp;&nbsp;// 没有 assert，只是调用了函数</span><span style="display: block; white-space: pre; min-height: 1.4em;">}</span></code></section>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">Or:</p>
+
+<section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;"><span style="display: block; white-space: pre; min-height: 1.4em;">func TestParseConfig(t *testing.T) {</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;&nbsp;&nbsp;&nbsp;_, err := ParseConfig("valid.yaml")</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;&nbsp;&nbsp;&nbsp;assert.NoError(t, err)</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;&nbsp;&nbsp;&nbsp;// 只测了 happy path，没测任何异常</span><span style="display: block; white-space: pre; min-height: 1.4em;">}</span></code></section>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">Such tests can yield high coverage while missing real defects. I learned this directly: a project once had over 90% coverage but omitted a key boundary condition, and production failed after release.</p>
+
+<h3 style="font-size: 17px; font-weight: 600; color:var(--article-ink, #12324c); margin: 24px 0 8px;">The Better Approach: Verification and Completion Checks</h3>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Rule 1: Verification-Driven Work</strong>（Anthropic <a href="https://code.claude.com/docs/en/best-practices">The official best practices (code.claude.com/docs/en/best-practices)</a> emphasize this repeatedly:</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">Giving Claude a way to verify its work has high leverage. <strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Output quality improves greatly when Claude can check itself</strong>。</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">Four ways to supply verification:</p>
+
+<section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;"><span style="display: block; white-space: pre; min-height: 1.4em;">Refactor the auth middleware to JWT. Run the existing test suite afterward,</span><span style="display: block; white-space: pre; min-height: 1.4em;">and fix every failing case before finishing.</span></code></section>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">(Tests as verification)</p>
+
+<section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;"><span style="display: block; white-space: pre; min-height: 1.4em;">Change the login-page layout. Provide screenshots afterward to check for UI regressions.</span></code></section>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">(Screenshots as verification)</p>
+
+<section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;"><span style="display: block; white-space: pre; min-height: 1.4em;">Run the verification instead of assuming the change works.</span></code></section>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">(Reject an unverified belief that it runs)</p>
+
+<section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;"><span style="display: block; white-space: pre; min-height: 1.4em;">Review these changes carefully for omissions before committing.</span></code></section>
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">(Self-review)</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">The point is to <strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">reject should pass and probably OK</strong>. Tests must actually run and provide evidence.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Rule 2: Map Change Types to Verification Depth</strong></p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">Different changes call for different verification depth:</p>
+
+<table style="width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13px;">
+<thead>
+<tr><th style="background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); padding: 8px 12px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;">Change type</th><th style="background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); padding: 8px 12px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;">Required</th><th style="background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); padding: 8px 12px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;">Suggested additions</th></tr>
+</thead>
+<tbody>
+<tr><td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);">Pure logic change</td><td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);">Unit + module + regression</td><td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);">Boundary values + error paths</td></tr>
+<tr><td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c); background:var(--article-panel, #fafcfe);">Interface change</td><td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c); background:var(--article-panel, #fafcfe);">+ API tests + compatibility checks</td><td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c); background:var(--article-panel, #fafcfe);">Error codes + authentication</td></tr>
+<tr><td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);">Cross-module change</td><td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);">+ integration tests + data consistency</td><td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);">Timeouts and retries</td></tr>
+<tr><td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c); background:var(--article-panel, #fafcfe);">Core-flow change</td><td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c); background:var(--article-panel, #fafcfe);">+ E2E + targeted checks</td><td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c); background:var(--article-panel, #fafcfe);">Release verification checklist</td></tr>
+<tr><td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);">High-risk change</td><td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);">+ performance baseline + rollback exercise</td><td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);">Failure-scenario exercises</td></tr>
+</tbody>
+</table>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">Put this table in the project's  <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">CLAUDE.md</code>  so Claude consults it when writing tests.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Rule 3: Check Completion</strong></p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">After claiming a fix, use grep to look for remaining instances.</p>
+
+<section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;"><span style="display: block; white-space: pre; min-height: 1.4em;"># After claiming context discontinuity is fixed, run</span><span style="display: block; white-space: pre; min-height: 1.4em;">grep -c 'context.Background()' &lt;all-relevant-files&gt;</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;"># Results must be zero or entirely legitimate uses, with no omissions</span></code></section>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">I think it is fixed is not evidence; <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">grep -c</code>  results are.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">The purpose is to <strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">stop an AI's sense of completion replacing evidence</strong>. Coverage and case requirements vary by project, but the loop remains: claim completion, search for remnants, and fix omissions.</p>
+
+<h3 style="font-size: 17px; font-weight: 600; color:var(--article-ink, #12324c); margin: 24px 0 8px;">Automate Checks with Hooks</h3>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">A manual grep check eventually gets forgotten. Claude Code's  <strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Hooks mechanism</strong> can run shell checks automatically on specified events, making delegated execution more dependable.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">Two particularly useful hooks:</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Pre-commit hook</strong> — intercept a proposed commit to prevent sensitive-file leakage:</p>
+
+<section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;"><span style="display: block; white-space: pre; min-height: 1.4em;"># ~/.claude/hooks/pre-commit.sh</span><span style="display: block; white-space: pre; min-height: 1.4em;">if git diff --cached --name-only | grep -E '\.(env|pem|key|secret)$'; then</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;&nbsp;echo "❌ 阻止：检测到敏感文件"</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;&nbsp;exit 1</span><span style="display: block; white-space: pre; min-height: 1.4em;">fi</span></code></section>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Post-edit hook</strong> — run lint / compilation / tests automatically after edits:</p>
+
+<section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;"><span style="display: block; white-space: pre; min-height: 1.4em;"># ~/.claude/hooks/post-edit.sh</span><span style="display: block; white-space: pre; min-height: 1.4em;">for f in "$@"; do</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;&nbsp;case "$f" in</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;&nbsp;&nbsp;&nbsp;*.go)   go vet "$f" || exit 1 ;;</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;&nbsp;&nbsp;&nbsp;*.ts)   npx tsc --noEmit "$f" || exit 1 ;;</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;&nbsp;&nbsp;&nbsp;*.py)   ruff check "$f" || exit 1 ;;</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;&nbsp;esac</span><span style="display: block; white-space: pre; min-height: 1.4em;">done</span></code></section>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">Moving checks from something to remember into automatic execution is <strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">central to unattended Claude Code operation</strong>. My daily environment has six or seven hooks covering sensitive files, lint, compilation, and key tests. Changes cannot enter the repository without passing them.</p>
+
+<h3 style="font-size: 17px; font-weight: 600; color:var(--article-ink, #12324c); margin: 24px 0 8px;">The Full DevTestOps Workflow Skill</h3>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">Those three rules are only the common part of the testing loop. I packaged the complete version as a Skill called  <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">devtestops</code>. Install it into Claude Code's  <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">~/.claude/skills/</code> and the pipeline can trigger automatically.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">It includes:</p>
+
+<ul style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Seven delivery stages</strong>: requirements clarification → design and case preparation → baseline quality verification → main-flow verification → specialized and performance checks → testing handoff and regression → release and observation</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Triggers for eight types of specialized verification</strong>: E2E / API / permissions and security / concurrency and idempotency / data consistency / asynchronous queues / configuration compatibility / rollback and observability</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Testing-handoff admission baseline</strong>: minimum quality requirements calculated by change type</li>
+</ul>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">Compared with the table above, the Skill can identify relevant checks automatically during a change, without a reminder each time.</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #d8e6f0); margin: 28px 0;">
+
+<h2 style="font-size: 20px; font-weight: 700; color:var(--article-ink, #12324c); margin: 32px 0 12px; padding-bottom: 8px; border-bottom: 2px solid #5fb3ea;">Thread Three: Multi-Agent Collaboration</h2>
+
+<h3 style="font-size: 17px; font-weight: 600; color:var(--article-ink, #12324c); margin: 24px 0 8px;">The Anti-Pattern: One AI Does Everything</h3>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">Claude is strong; let it design, code, review, and test everything.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">It sounds efficient.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">In practice, it is an anti-pattern.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">Three reasons:</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">1. A single model has systematic blind spots.</strong></p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">Claude and Codex have different model families, training data, and reasoning preferences.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">When Claude reviews its own code, <strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">it can miss problems characteristic of its own style</strong>。</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">. Humans have the same weakness; reviewing your own code is difficult.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">2. A normal conversational exchange is poorly suited to review.</strong></p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">Review needs adversarial thinking: actively look for problems instead of following the implementation's logic.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">But Claude has already reached agreement with you in that conversation and may preserve that agreement even after switching to review mode.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">3. One model does not provide cross-validation.</strong></p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">A good review brings two independent perspectives together to expose blind spots.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">Two conversations with the same model <strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">are not independent perspectives</strong>。</p>
+
+<h3 style="font-size: 17px; font-weight: 600; color:var(--article-ink, #12324c); margin: 24px 0 8px;">The Better Approach: Claude, Codex, and a Human</h3>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">Make the responsibilities explicit:</p>
+
+<table style="width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13px;">
+<thead>
+<tr><th style="background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); padding: 8px 12px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;">Role</th><th style="background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); padding: 8px 12px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;">Responsibility</th><th style="background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); padding: 8px 12px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;">Source</th></tr>
+</thead>
+<tbody>
+<tr><td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Claude</strong></td><td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);">Design, architecture analysis, implementation, TDD</td><td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);">The main Claude Code session</td></tr>
+<tr><td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c); background:var(--article-panel, #fafcfe);"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Codex</strong></td><td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c); background:var(--article-panel, #fafcfe);">Code review, missing-test analysis, design-document review</td><td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c); background:var(--article-panel, #fafcfe);">The Codex plugin inside Claude Code</td></tr>
+<tr><td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Human</strong></td><td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);">Requirements, design decisions, final confirmation</td><td style="padding: 7px 12px; border-bottom: 1px solid var(--article-border, #edf7ff); color:var(--article-ink, #12324c);">You</td></tr>
+</tbody>
+</table>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">There is no need for two terminals. OpenAI provides the  <a href="https://github.com/openai/codex-plugin-cc"><code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">codex-plugin-cc</code></a>（<code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">github.com/openai/codex-plugin-cc</code>) plugin on GitHub, which installs inside Claude Code and makes Codex available in the main session.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Install Once</strong>：</p>
+
+<section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;"><span style="display: block; white-space: pre; min-height: 1.4em;">/plugin marketplace add openai/codex-plugin-cc</span><span style="display: block; white-space: pre; min-height: 1.4em;">/plugin install codex@openai-codex</span><span style="display: block; white-space: pre; min-height: 1.4em;">/reload-plugins</span><span style="display: block; white-space: pre; min-height: 1.4em;">/codex:setup</span></code></section>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">The collaboration then uses four slash commands. Prerequisites: Node.js 18.18+, and either a signed-in ChatGPT subscription or a configured Codex API key.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Step A: Claude Finishes Writing →  <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">/codex:review</code> Codex Reviews</strong></p>
+
+<section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;"><span style="display: block; white-space: pre; min-height: 1.4em;"># In the main Claude Code session, after writing code:</span><span style="display: block; white-space: pre; min-height: 1.4em;">/codex:review --base main</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;"># For a more adversarial review questioning design and implementation choices:</span><span style="display: block; white-space: pre; min-height: 1.4em;">/codex:adversarial-review --base main challenge whether this is the right design</span></code></section>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">Codex runs independently, without Claude's conversation context. Both models inspect the diff from their own starting points, giving an independent review.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Step B: Claude Responds to Each Review Finding</strong></p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">After the Codex report arrives, stay in the same Claude Code session:</p>
+
+<section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;"><span style="display: block; white-space: pre; min-height: 1.4em;">Respond to each Codex finding:</span><span style="display: block; white-space: pre; min-height: 1.4em;">Accept and fix / refute with technical evidence / mark for discussion.</span><span style="display: block; white-space: pre; min-height: 1.4em;">Do not agree performatively. If the reviewer is wrong, explain why with technical evidence.</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;">For bugs and logic errors, first write a test reproducing the failure (red),</span><span style="display: block; white-space: pre; min-height: 1.4em;">then make it pass with the fix (green). Supply before-failure / after-success evidence instead of merely claiming a change.</span><span style="display: block; white-space: pre; min-height: 1.4em;">Do not force tests for architecture suggestions, naming style, or readability.</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;">[The review findings are already in context; no copying is needed]</span></code></section>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">The key phrase is <strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">do not agree performatively</strong>. Claude tends to be polite; without this instruction, it may accept most findings and undermine adversarial review.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Step C: Codex Finds Testing Blind Spots</strong></p>
+
+<section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;"><span style="display: block; white-space: pre; min-height: 1.4em;"># In the main Claude Code session, ask Codex to identify missing tests</span><span style="display: block; white-space: pre; min-height: 1.4em;">@codex Read src/xxx.go and its existing tests. Identify blind spots:</span><span style="display: block; white-space: pre; min-height: 1.4em;">- Which boundary cases are uncovered?</span><span style="display: block; white-space: pre; min-height: 1.4em;">- Which concurrency scenarios are untested?</span><span style="display: block; white-space: pre; min-height: 1.4em;">- Which error paths are unverified?</span></code></section>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">This often finds scenarios Claude missed, particularly races and error paths.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Step D: Review Requirements Against the Design</strong></p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">Running code does not imply all requirements are implemented. This final defense catches technically correct code that leaves the product unfinished.</p>
+
+<section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;"><span style="display: block; white-space: pre; min-height: 1.4em;"># In the main Claude Code session</span><span style="display: block; white-space: pre; min-height: 1.4em;">Compare the design document with git diff, item by item:</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;">## A. Requirements coverage</span><span style="display: block; white-space: pre; min-height: 1.4em;">Mark each functional requirement:</span><span style="display: block; white-space: pre; min-height: 1.4em;">- ✅ Implemented (give the code location)</span><span style="display: block; white-space: pre; min-height: 1.4em;">- ❌ Missing</span><span style="display: block; white-space: pre; min-height: 1.4em;">- ⚠️ Partially implemented (explain what is absent)</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;">## B. Complete workflows</span><span style="display: block; white-space: pre; min-height: 1.4em;">Trace every business process end to end:</span><span style="display: block; white-space: pre; min-height: 1.4em;">Entry → processing → storage → response → frontend display</span><span style="display: block; white-space: pre; min-height: 1.4em;">Find code that exists but is disconnected: written data with no reader, state changes without notification, or APIs the frontend never calls.</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;">## C. Failure scenarios</span><span style="display: block; white-space: pre; min-height: 1.4em;">Timeouts, concurrency, duplicates, and partial failures each need corresponding handling.</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;">## D. Non-functional requirements</span><span style="display: block; white-space: pre; min-height: 1.4em;">Does performance meet requirements? Are security constraints implemented? Are monitoring metrics instrumented?</span></code></section>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">Then ask Codex to perform the same review independently.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">Compare the reports:</p>
+<ul style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 4px 0;">Both find it → fix with high priority</li>
+<li style="margin: 4px 0;">Only one finds it → verify whether it exists</li>
+<li style="margin: 4px 0;">They contradict → list the disagreement for human decision</li>
+</ul>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">For high-priority bugs, use Step B: reproduce red, fix, verify green. For non-bug gaps such as missing requirements, disconnected flows, or non-functional omissions, complete the original design intent. <strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Do not let the final review become a verbal promise to add something</strong>. Every finding needs verifiable evidence.</p>
+
+<h3 style="font-size: 17px; font-weight: 600; color:var(--article-ink, #12324c); margin: 24px 0 8px;">The Complete Flow</h3>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">The three threads combine into a full cycle:</p>
+
+
+<div style="background:var(--article-panel, #fafcfe); border: 1px solid var(--article-border, #d8e6f0); border-radius: 10px; padding: 18px 10px; margin: 20px 0;">
+
+<table style="width: 100%; border-collapse: separate; border-spacing: 3px; margin: 0;">
+<tr>
+<td style="background:var(--article-panel, #e9f5ec); border: 1px solid #9cc8a0; border-radius: 8px; padding: 9px 4px; text-align: center; width: 22%;">
+<div style="font-size: 10px; color: #5f7b97; font-weight: 500; margin-bottom: 3px;">Human</div>
+<div style="font-size: 12px; font-weight: 600; color:var(--article-ink, #12324c);">Requirements +<br/>context</div>
+</td>
+<td style="text-align: center; color:var(--article-accent, #5fb3ea); font-weight: 700; font-size: 16px; width: 4%;">→</td>
+<td style="background:var(--article-panel, #e6f2fb); border: 1px solid #5fb3ea; border-radius: 8px; padding: 9px 4px; text-align: center; width: 22%;">
+<div style="font-size: 10px; color: #5f7b97; font-weight: 500; margin-bottom: 3px;">Claude</div>
+<div style="font-size: 12px; font-weight: 600; color:var(--article-ink, #12324c);">Compare designs<br/>+ ADR</div>
+</td>
+<td style="text-align: center; color:var(--article-accent, #5fb3ea); font-weight: 700; font-size: 16px; width: 4%;">→</td>
+<td style="background:var(--article-panel, #e6f2fb); border: 1px solid #5fb3ea; border-radius: 8px; padding: 9px 4px; text-align: center; width: 22%;">
+<div style="font-size: 10px; color: #5f7b97; font-weight: 500; margin-bottom: 3px;">Claude</div>
+<div style="font-size: 12px; font-weight: 600; color:var(--article-ink, #12324c);">TDD<br/>Implement</div>
+</td>
+<td style="text-align: center; color:var(--article-accent, #5fb3ea); font-weight: 700; font-size: 16px; width: 4%;">→</td>
+<td style="background:var(--article-panel, #fff1e0); border: 1px solid #f2b06a; border-radius: 8px; padding: 9px 4px; text-align: center; width: 22%;">
+<div style="font-size: 10px; color: #5f7b97; font-weight: 500; margin-bottom: 3px;">Codex</div>
+<div style="font-size: 12px; font-weight: 600; color:var(--article-ink, #12324c);">Code<br/>Review</div>
+</td>
+</tr>
+</table>
+
+<p style="text-align: center; color:var(--article-accent, #5fb3ea); font-size: 12px; font-weight: 600; letter-spacing: 1px; margin: 10px 0;">↓ On failure, go back; this is not a one-way assembly line ↓</p>
+
+<table style="width: 100%; border-collapse: separate; border-spacing: 3px; margin: 0;">
+<tr>
+<td style="background:var(--article-panel, #e9f5ec); border: 1px solid #9cc8a0; border-radius: 8px; padding: 9px 4px; text-align: center; width: 22%;">
+<div style="font-size: 10px; color: #5f7b97; font-weight: 500; margin-bottom: 3px;">Human</div>
+<div style="font-size: 12px; font-weight: 600; color:var(--article-ink, #12324c);">confirm<br/>release</div>
+</td>
+<td style="text-align: center; color:var(--article-accent, #5fb3ea); font-weight: 700; font-size: 16px; width: 4%;">←</td>
+<td style="background:var(--article-panel, #f0e7f5); border: 1px solid #b18dcf; border-radius: 8px; padding: 9px 4px; text-align: center; width: 22%;">
+<div style="font-size: 10px; color: #5f7b97; font-weight: 500; margin-bottom: 3px;">Claude + Codex</div>
+<div style="font-size: 12px; font-weight: 600; color:var(--article-ink, #12324c);">Requirements<br/>review</div>
+</td>
+<td style="text-align: center; color:var(--article-accent, #5fb3ea); font-weight: 700; font-size: 16px; width: 4%;">←</td>
+<td style="background:var(--article-panel, #e6f2fb); border: 1px solid #5fb3ea; border-radius: 8px; padding: 9px 4px; text-align: center; width: 22%;">
+<div style="font-size: 10px; color: #5f7b97; font-weight: 500; margin-bottom: 3px;">Claude</div>
+<div style="font-size: 12px; font-weight: 600; color:var(--article-ink, #12324c);">Fix<br/>bug</div>
+</td>
+<td style="text-align: center; color:var(--article-accent, #5fb3ea); font-weight: 700; font-size: 16px; width: 4%;">←</td>
+<td style="background:var(--article-panel, #fff1e0); border: 1px solid #f2b06a; border-radius: 8px; padding: 9px 4px; text-align: center; width: 22%;">
+<div style="font-size: 10px; color: #5f7b97; font-weight: 500; margin-bottom: 3px;">Codex</div>
+<div style="font-size: 12px; font-weight: 600; color:var(--article-ink, #12324c);">Missing-test<br/>analysis</div>
+</td>
+</tr>
+</table>
+
+</div>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">The first pass is <strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">human requirements and context → Claude compares designs and records an ADR → Claude implements with TDD → Codex reviews independently</strong>. Findings take the lower loop: <strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Codex identifies missing tests → Claude fixes bugs → both review requirements → human approves release</strong>。</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">The loop between these rows matters: any failed step can return to an earlier one. If Codex finds an unfixed recursive fallback branch, return to TDD, add verification, and fix again.</p>
+
+<h3 style="font-size: 17px; font-weight: 600; color:var(--article-ink, #12324c); margin: 24px 0 8px;">Practice: Package the SOP as Slash Commands</h3>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">I packaged this pipeline as custom commands.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">One slash command triggers it.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">Two core commands:</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;"><code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">/review-go</code> — Deep Go Backend Review</strong></p>
+
+<section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;"><span style="display: block; white-space: pre; min-height: 1.4em;">Review all changes on the current branch relative to main:</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;">1. Mechanical checks first; do not skip:</span><span style="display: block; white-space: pre; min-height: 1.4em;">   - Remaining context.Background calls</span><span style="display: block; white-space: pre; min-height: 1.4em;">   - http.NewRequest without ctx</span><span style="display: block; white-space: pre; min-height: 1.4em;">   - io.ReadAll without LimitReader</span><span style="display: block; white-space: pre; min-height: 1.4em;">   - Per-call Transport/Client construction</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;">2. Recursive review:</span><span style="display: block; white-space: pre; min-height: 1.4em;">   - Follow calls to HTTP / DB / file-IO leaves</span><span style="display: block; white-space: pre; min-height: 1.4em;">   - Cover success / failure / fallback / retry branches</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;">3. Completion checks:</span><span style="display: block; white-space: pre; min-height: 1.4em;">   - grep for remaining unfixed instances</span><span style="display: block; white-space: pre; min-height: 1.4em;">   - go build to verify interface adaptation</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;">4. Check the historical anti-pattern list</span></code></section>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;"><code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">/review-fullstack</code> — Full-Stack Review</strong></p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">In addition to  <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">/review-go</code> , check frontend/backend contracts, complete business flows, and effects across repositories in the ecosystem.</p>
+
+<h3 style="font-size: 17px; font-weight: 600; color:var(--article-ink, #12324c); margin: 24px 0 8px;">The Most Valuable Part: Lessons from Failures</h3>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">The command templates are not the most valuable part of this SOP.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">It is the <strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">lessons from past failures</strong> that become mandatory pipeline checks.</p>
+
+<blockquote style="border-left: 3px solid #5fb3ea; padding: 10px 16px; margin: 16px 0; background:var(--article-panel, #f4fbff); color:var(--article-secondary, #3f5f7b); font-size: 14px; border-radius: 0 8px 8px 0;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Every bug missed by AI review becomes an anti-pattern added to the pipeline.</strong></blockquote>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">One actual example involved a  <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">ctx</code>  discontinuity. I asked Claude to replace an outer function's  <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">context.Background()</code>  with a propagated  <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">ctx</code>. It made the change, ran tests, and claimed completion.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">After a  <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">/codex:review</code>  review, Codex reported that the outer  <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">ctx</code>  was fixed, but the fallback branch of <strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;"> in the same file <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">if err != nil</code>  still called  <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">Background</code></strong>. Two other helpers in the same module also created new contexts with  <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">context.Background()</code> .</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">It was correct. Claude's completion covered only the entry point within its immediate change radius, not the full recursive call chain.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">After fixing it, I turned <strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">following only the success path while ignoring fallbacks</strong> into a grep check in  <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">/review-go</code> . Since then, that type of bug has not escaped the checks.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">That is the value of recording failures. A single incident is tolerable; repeated incidents of the same kind are not. Turning each into a mandatory check makes Claude and Codex inspect it next time.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">Here are checks I actually added during those five months:</p>
+
+<ol style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Reviewing only the modified function, without following its callees</strong>  — the outer ctx was fixed, but its helper still used  <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">context.Background()</code></li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Following only the success path, ignoring fallback branches</strong>  — normal context propagation worked, but the fallback after  <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">if err != nil</code>  still used Background</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Changing an interface without checking every implementation</strong>  — dev contained an implementation absent from main, breaking compilation after merge</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Claiming completion without searching for remnants</strong>  — context discontinuity was said to be fixed, while several helpers in the same file still used Background</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Missing the same problem in neighboring functions</strong>  — one per-call Transport was fixed, while other functions in the file still constructed one per call</li>
+</ol>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">The list grows with use. Each entry reduces the chance of missing that defect class again: failures accumulate into mandatory checks.</p>
+
+<h3 style="font-size: 17px; font-weight: 600; color:var(--article-ink, #12324c); margin: 24px 0 8px;">A Terminology Clarification</h3>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">In Claude Code discussions, multi-agent often means its built-in  <strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">subagent</strong>  mechanism, where multiple instances of one model research in parallel. More broadly, it includes collaboration across models, toolchains, and context windows. Anthropic's official blog provides a frequently quoted result <a href="https://www.anthropic.com/engineering/built-multi-agent-research-system">《How we built our multi-agent research system》</a> (anthropic.com/engineering/built-multi-agent-research-system): in 2025, an Opus 4 lead with Sonnet 4 subagents outperformed a single Opus 4 by 90.2% on an internal research evaluation. That is a research evaluation, not a code-review evaluation, and cannot be directly extrapolated to software development.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">This article's collaboration is  <strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">cross-model</strong>—Claude × Codex—to reduce blind spots from one model.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">The two approaches are compatible. For important features I use both: <strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Claude subagents research code in parallel → Claude designs and implements → Codex cross-reviews</strong>. A later article will cover built-in subagents specifically.</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #d8e6f0); margin: 28px 0;">
+
+<h2 style="font-size: 20px; font-weight: 700; color:var(--article-ink, #12324c); margin: 32px 0 12px; padding-bottom: 8px; border-bottom: 2px solid #5fb3ea;">What AI Cannot Do</h2>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">After those three threads, three boundaries have become clear to me:</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">1. Architecture decisions.</strong></p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">Claude can enumerate designs, but <strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">a human must choose</strong>。</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">. That decision needs intuition about the business's future direction, for which the AI lacks data.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">2. Cross-system consistency judgments.</strong></p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">Claude works well within one repository.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">But deciding whether three repositories have sensible interface agreements, or how a change affects the rest of an ecosystem, requires more: </p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">its context window cannot hold that entire picture</strong></p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">. A human must maintain the global map.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">3. Product-experience intuition.</strong></p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">Will users like this interaction? Will this error message alarm them? Should this feature be enabled by default? </p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">The AI has no direct user feedback for these questions and can only suggest common practice.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">AI amplifies judgment you already have. The judgment itself remains your responsibility.</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #d8e6f0); margin: 28px 0;">
+
+<h2 style="font-size: 20px; font-weight: 700; color:var(--article-ink, #12324c); margin: 32px 0 12px; padding-bottom: 8px; border-bottom: 2px solid #5fb3ea;">Does Opus 4.7 Require Changing the SOP?</h2>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><a href="https://www.anthropic.com/news/claude-opus-4-7">Claude Opus 4.7（anthropic.com/news/claude-opus-4-7）</a>  has just launched, with official claims of improvements in coding, long tasks, and instruction following. A frequent question is whether this SOP must change for 4.7.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">My answer: <strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">keep the backbone, but rerun regression checks on prompts, review gates, and the test harness</strong>。</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">. Upgrading a model does not invalidate the need for design, tests, or cross-review; those are workflow decisions. But stronger capabilities can change whether an old prompt and its verification thresholds remain appropriate:</p>
+
+<ul style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Prompt wording</strong>: ambiguous instructions tolerated by older versions may be followed more literally by 4.7, requiring more precise scope and output formats</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Review gates</strong>: if your  <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">/review-go</code>  strictness was tuned to 4.6 behavior, recalibrate noise versus real findings after upgrading</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Test-harness expectations</strong>: cases previously treated tolerantly because they usually failed may now pass reliably, allowing appropriately stricter expectations</li>
+</ul>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">I am rerunning the SOP with 4.7, focusing on Plan-mode architecture analysis, ingesting a repository in long context, and adversarial cross-review. A separate article will follow once there are results and cases.</p>
+
+<p style="font-size: 13px; color: #5f7b97; margin: 8px 0;">(This section reflects April 2026; details will evolve with subsequent versions.)</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #d8e6f0); margin: 28px 0;">
+
+<h2 style="font-size: 20px; font-weight: 700; color:var(--article-ink, #12324c); margin: 32px 0 12px; padding-bottom: 8px; border-bottom: 2px solid #5fb3ea;">Where to Get the SOP</h2>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">This SOP grew out of building HexClaw rather than being written as a standalone guide.</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">Now that it is organized, I have published the complete package on GitHub. It is a workflow you can put into a project and try:</p>
+
+<ul style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Four practical guides</strong>: user guide / prompt collection / extension list / design, testing feedback, and multi-Agent collaboration</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Seven copyable Claude Code command templates with supporting data templates</strong>：<code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">/review-go</code>、<code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">/review-fullstack</code>、<code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">/apple-design</code>、<code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">/test-dev</code>、<code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">/adr-new</code>  and others, plus runtime reference data such as  <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">data/api-test-cases.md</code> </li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">Two CLAUDE.md templates</strong>: global user preferences (<code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">~/.claude/CLAUDE.md</code>) and a project-level override (at the project root,  <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">CLAUDE.md</code>）</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">A Hooks collection</strong>: three ready-to-use scripts for sensitive-file interception, post-edit linting, and pre-completion tests, plus a  <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">settings.json</code>  configuration sample</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">The Complete DevTestOps Skill</strong>: seven delivery stages and triggers for eight types of specialized checks (<code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">~/.claude/skills/devtestops/</code>）</li>
+</ul>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">Everything is in the  <strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">hexclaw-desktop</strong> desktop repository, under  <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">docs/claude-code-practices/</code> :</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">GitHub</strong>：<code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">github.com/hexagon-codes/hexclaw-desktop</code></p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">Clone it and try it directly. I recommend starting with a real project and running  <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">/review-go</code>  or  <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">/review-fullstack</code> once. See the first findings before deciding whether to adopt the SOP in your team.</p>
+
+<section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;"><span style="display: block; white-space: pre; min-height: 1.4em;">git clone https://github.com/hexagon-codes/hexclaw-desktop</span><span style="display: block; white-space: pre; min-height: 1.4em;">cd hexclaw-desktop</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;"># 一次性建好所有目标目录</span><span style="display: block; white-space: pre; min-height: 1.4em;">mkdir -p ~/.claude/commands ~/.claude/data ~/.claude/skills ~/.claude/hooks</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;"># 1. Command 模板（/review-go、/review-fullstack、/adr-new 等）</span><span style="display: block; white-space: pre; min-height: 1.4em;">cp docs/claude-code-practices/command/*.md ~/.claude/commands/</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;"># 2. 命令运行时引用的数据模板（/test-dev 用的 API 测试用例等）</span><span style="display: block; white-space: pre; min-height: 1.4em;">cp docs/claude-code-practices/data/*.md ~/.claude/data/</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;"># 3. DevTestOps Skill（自动触发完整测试流程）</span><span style="display: block; white-space: pre; min-height: 1.4em;">cp -r docs/claude-code-practices/skill/devtestops ~/.claude/skills/</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;"># 4. CLAUDE.md 偏好模板（用户全局）</span><span style="display: block; white-space: pre; min-height: 1.4em;">cp docs/claude-code-practices/templates/USER-CLAUDE.md.template ~/.claude/CLAUDE.md</span><span style="display: block; white-space: pre; min-height: 1.4em;">&nbsp;</span><span style="display: block; white-space: pre; min-height: 1.4em;"># 5. Hooks（改完自动 lint / 收尾前跑测试 / 拦截敏感文件）</span><span style="display: block; white-space: pre; min-height: 1.4em;">cp docs/claude-code-practices/hooks/*.sh ~/.claude/hooks/</span><span style="display: block; white-space: pre; min-height: 1.4em;">chmod +x ~/.claude/hooks/*.sh</span><span style="display: block; white-space: pre; min-height: 1.4em;"># 最后把 hooks/README.md 里的 settings.json 片段合并到 ~/.claude/settings.json</span></code></section>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">The repository also contains the product built with this SOP: </p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;"><strong style="color:var(--article-accent, #3f8fd4); font-weight: 600;">HexClaw</strong>, a local, open-source desktop AI Agent application whose data stays on your machine (<a href="https://mp.weixin.qq.com/s/PdJRKkH4qiBS-IZBifbuag">five-minute getting-started guide</a>）。</p>
+
+<p style="margin: 8px 0; color:var(--article-ink, #12324c); line-height: 1.85; font-size: 15px;">If you found this useful, visit  <a href="https://github.com/hexagon-codes">github.com/hexagon-codes</a>  and consider starring the six core repositories: toolkit / ai-core / hexagon / hexclaw / hexclaw-desktop / hexagon-ui. The ecosystem is open source, so explore whichever layer interests you. The commands, Skills, Hooks, and failure lessons will continue evolving in  <code style="background: #edf7ff; padding: 1px 6px; border-radius: 4px; font-size: 13px; color: #3f8fd4; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;">hexclaw-desktop/docs/claude-code-practices/</code> . Contributions of stronger checks through issues and PRs are welcome.</p>
+
+
+
+
+<p class="blog-brand-footer" data-blog-brand-footer="en" data-blog-brand-overrides="{}" style="text-align: center; color: var(--article-muted, #7b8fa3); font-size: 13px; margin: 16px 0 0; line-height: 2;">
+<strong style="color: var(--article-ink, #12324c); font-size: 14px;">HexClaw</strong><br/>
+Deploy locally or in the cloud · Control your data · Free and open-source software<br/>
+<a href="https://hexclaw.net" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">Website: <bdi dir="ltr">hexclaw.net</bdi></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://github.com/hexagon-codes" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">GitHub: <bdi dir="ltr">hexagon-codes</bdi></a><br/>
+<a href="https://weibo.com/u/4097207240" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">Weibo: <bdi dir="ltr">@HexClaw</bdi></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">X: <bdi dir="ltr">@hexclawapp</bdi></a><br/>
+<a href="mailto:ai@hexclaw.net" style="color: var(--article-muted, #999); text-decoration: none;">Email: <bdi dir="ltr">ai@hexclaw.net</bdi></a>
+</p>
+    </article>
+
+
+
+    <nav class="blog-series-nav" aria-label="Previous and next articles">
+      <a href="/en/blog/vs-openclaw-hermes" class="blog-nav-card prev">
+  <span class="blog-nav-label">← Previous article</span>
+  <span class="blog-nav-title">HexClaw vs OpenClaw / Hermes: Three Paths for Local AI Agents in 2026</span>
+</a>
+      <a href="/en/blog/hexclaw-user-guide" class="blog-nav-card next">
+  <span class="blog-nav-label">Next article →</span>
+  <span class="blog-nav-title">The Complete HexClaw Guide: From Zero to a Working Local AI Agent in Five Minutes, with Model Selection</span>
+</a>
+    </nav>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-main">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-col-title">Product</div>
+        <a href="/en/#download">Download</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="/en/changelog">Changelog</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Developers</div>
+        <a href="/en/docs/">Documentation</a>
+        <a href="/en/blog/">Technical Blog</a>
+        <a href="/en/docs/getting-started">Getting Started</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">Apache-2.0</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Community</div>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/issues" target="_blank" rel="noopener noreferrer">Issues</a>
+        <a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer">Twitter / X</a>
+        <a href="mailto:ai@hexclaw.net">Contact Us</a>
+        <a href="mailto:support@hexclaw.net">Feedback</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">About</div>
+        <a href="/en/about">About Us</a>
+        <a href="/en/privacy">Privacy Policy</a>
+        <a href="/en/terms">Terms of Service</a>
+        <a href="/en/third-party-ai-services">Third-Party AI Services</a>
+      </div>
+    </div>
+    <div class="footer-wechat">
+      <img width="430" height="430" loading="lazy" decoding="async" src="../../assets/brand/wechat-qr.jpg" alt="HexClaw WeChat QR Code">
+      <span class="footer-wechat-label">WeChat Official Account</span>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">&copy; 2025&ndash;2026 hexagon-codes</span>
+  </div>
+</footer>
+<script src="../../assets/js/theme.js?v=2e4a1828feef"></script>
+<script src="../../assets/js/docs-nav.js?v=5a103861aec2"></script>
+<button type="button" class="back-to-top" id="backToTop" aria-label="Back to top" title="Back to top">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg>
+  <span>Top</span>
+</button>
+
+<script src="../../assets/js/blog.js?v=c72e1db5a6ec"></script>
+</body>
+</html>

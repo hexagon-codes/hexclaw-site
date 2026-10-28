@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/favicon-32.png">
+<title>Building HexClaw&#x27;s Cyber Workhorse: Compile a Sentence into a Self-Healing Sandbox Script That Works Around the Clock | HexClaw Technical Blog</title>
+<meta name="description" content="Compile natural language into a self-healing sandbox script and automatically decide whether the task should run as a script or as an Agent.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:site_name" content="HexClaw">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Building HexClaw&#x27;s Cyber Workhorse: Compile a Sentence into a Self-Healing Sandbox Script That Works Around the Clock | HexClaw Technical Blog">
+<meta property="og:description" content="Compile natural language into a self-healing sandbox script and automatically decide whether the task should run as a script or as an Agent.">
+<meta property="og:url" content="https://hexclaw.net/en/blog/cyber-niuma-cron-sandbox">
+<meta property="og:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta property="og:image:alt" content="HexClaw logo">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Building HexClaw&#x27;s Cyber Workhorse: Compile a Sentence into a Self-Healing Sandbox Script That Works Around the Clock | HexClaw Technical Blog">
+<meta name="twitter:description" content="Compile natural language into a self-healing sandbox script and automatically decide whether the task should run as a script or as an Agent.">
+<meta name="twitter:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta name="twitter:image:alt" content="HexClaw logo">
+<link rel="canonical" href="https://hexclaw.net/en/blog/cyber-niuma-cron-sandbox">
+<link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/cyber-niuma-cron-sandbox">
+<link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/cyber-niuma-cron-sandbox">
+<link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/cyber-niuma-cron-sandbox">
+<link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/cyber-niuma-cron-sandbox">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Building HexClaw's Cyber Workhorse: Compile a Sentence into a Self-Healing Sandbox Script That Works Around the Clock",
+  "description": "Compile natural language into a self-healing sandbox script and automatically decide whether the task should run as a script or as an Agent.",
+  "url": "https://hexclaw.net/en/blog/cyber-niuma-cron-sandbox",
+  "inLanguage": "en",
+  "datePublished": "2026-06-24",
+  "image": "https://hexclaw.net/assets/brand/hexclaw-logo.png",
+  "publisher": {
+    "@type": "Organization",
+    "name": "hexagon-codes",
+    "url": "https://hexclaw.net/",
+    "@id": "https://hexclaw.net/#organization"
+  },
+  "@id": "https://hexclaw.net/en/blog/cyber-niuma-cron-sandbox#article"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "HexClaw", "item": "https://hexclaw.net/en/"},
+    {"@type": "ListItem", "position": 2, "name": "Technical Blog", "item": "https://hexclaw.net/en/blog/"},
+    {"@type": "ListItem", "position": 3, "name": "Building HexClaw's Cyber Workhorse: Compile a Sentence into a Self-Healing Sandbox Script That Works Around the Clock", "item": "https://hexclaw.net/en/blog/cyber-niuma-cron-sandbox"}
+  ],
+  "@id": "https://hexclaw.net/en/blog/cyber-niuma-cron-sandbox#breadcrumb"
+}
+</script>
+<link rel="stylesheet" href="../../assets/css/docs-eb2895dd79c5.css">
+<link rel="stylesheet" href="../../assets/css/blog-a8e5008ac3d1.css">
+</head>
+<body class="blog-page blog-article-page">
+<a href="#main" class="skip-link">Skip to main content</a>
+<nav class="tn topnav" id="nav">
+  <a href="/en/" class="tn-b topnav-brand"><img width="72" height="72" src="../../assets/brand/hexclaw-icon-72.png" class="tn-l topnav-logo" alt="HexClaw"><span class="tn-n topnav-name">HexClaw</span></a>
+  <button type="button" class="tn-burger topnav-burger" aria-label="Menu" aria-expanded="false" aria-controls="primary-navigation"><span></span><span></span><span></span></button><div class="tn-r topnav-links" id="primary-navigation"><a href="/en/">Home</a><a href="/en/#cases">Scenarios</a><a href="/en/#features">Features</a><a href="/en/#quickstart">Quickstart</a><a href="/en/#ecosystem">Ecosystem</a><a href="/en/blog/" class="is-active">Tech Blog</a><a href="/en/docs/">Docs Center</a><div class="lang-menu" data-lang-menu><button type="button" class="lang-trigger" aria-haspopup="menu" aria-expanded="false" aria-label="Switch language"><svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 0 20"></path><path d="M12 2a15.3 15.3 0 0 0 0 20"></path></svg><span class="lang-current">English</span><svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="lang-menu-list" role="menu"><a href="/zh/blog/cyber-niuma-cron-sandbox" role="menuitem">中文</a><a href="/en/blog/cyber-niuma-cron-sandbox" role="menuitem" class="is-active" aria-current="true">English</a><a href="/ug/blog/cyber-niuma-cron-sandbox" role="menuitem" lang="zh-CN" dir="ltr">维吾尔语</a></div></div><button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"><svg class="ti-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="ti-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="nav-cta">GitHub <span class="nav-star-badge" id="gh-stars">&#9733;</span></a></div>
+</nav>
+
+<main id="main" class="blog-main">
+  <div class="blog-article-container">
+    <nav class="blog-breadcrumb" aria-label="Breadcrumb">
+      <a href="/en/">Home</a>
+      <span class="blog-breadcrumb-sep">/</span>
+      <a href="/en/blog/">Technical Blog</a>
+      <span class="blog-breadcrumb-sep">/</span>
+      <span aria-current="page">Core Systems Deep Dive</span>
+    </nav>
+
+    <header class="blog-header">
+      <div class="blog-header-tags">
+        <span class="blog-badge-series">Automation Engine</span>
+      </div>
+      <h1 class="blog-article-title">Building HexClaw's Cyber Workhorse: Compile a Sentence into a Self-Healing Sandbox Script That Works Around the Clock</h1>
+      <div class="article-provenance-banner">
+        <div class="provenance-left">
+          <span class="provenance-origin-badge">First published on WeChat</span>
+          <span class="provenance-text">Originally published in the official technical column of the WeChat account <strong>「hexclaw」</strong> (ID: hexclaw) · Published  <strong>June 24, 2026</strong>  · About 12 minutes</span>
+        </div>
+        <a href="https://mp.weixin.qq.com/s/EvQT0VqH9ep6LXo89ZM-fw" target="_blank" rel="noopener noreferrer" class="provenance-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          WeChat original ↗
+        </a>
+      </div>
+    </header>
+
+    <article class="blog-content">
+
+
+<p style="margin: 16px 0;">Watch competitors daily and send only updates since the last run to Feishu. Fetch new content from several sources and add it to the knowledge base. Organize these local documents into a weekly report. Repetitive, mechanical, scheduled work used to be scattered across cron scripts, Zapier / IFTTT, and glue code nobody wanted to maintain.</p>
+
+<p style="margin: 8px 0;">With AI Agents, the entry point should collapse into a sentence: <strong style="color:var(--article-accent, #3f8fd4);">state your intent and let it break down, execute, and finish the task</strong>. The result is <strong style="color:var(--article-accent, #3f8fd4);">handled the way you request</strong>—sent to you, posted to a group, or saved as a file. One particularly valuable destination is <strong style="color:var(--article-accent, #3f8fd4);">the Agent's own knowledge base and memory</strong>. It feeds itself fresh data and learns more about you with use: an around-the-clock cyber workhorse that never complains and keeps acquiring skills.</p>
+
+<p style="margin: 8px 0;">Between saying a sentence and trusting it to work reliably for months lie many engineering problems. This engine must <strong style="color:var(--article-accent, #3f8fd4);">compile natural language into a self-healing sandbox script and automatically decide whether the task should run as a script or as an Agent</strong>。</p>
+
+<p style="margin: 8px 0;">This article skips the obvious claim that AI can automate things and <strong style="color:var(--article-accent, #3f8fd4);">examines the engineering required for an Agent to take over scheduled work</strong>。</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<blockquote style="border-left: 3px solid #3f8fd4; padding: 14px 18px; margin: 20px 0; background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); font-size: 14px; border-radius: 0 8px 8px 0; line-height: 1.85;">
+<strong style="color:var(--article-accent, #3f8fd4);">The Core Judgment</strong><br/>
+The first and most important design decision for Agent-driven scheduled work is: <strong style="color:var(--article-accent, #3f8fd4);">should every trigger call a large model?</strong><br/>
+HexClaw's answer is <strong style="color:var(--article-accent, #3f8fd4);">no</strong>. Call an LLM at task creation to <strong style="color:var(--article-accent, #3f8fd4);">compile the request into a script</strong>. Every later execution runs deterministic code without a runtime model call.<br/>
+That decision forces four further questions. This article answers them.
+</blockquote>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">First Decision: Compile Once, Rather Than Reason Every Time</h2>
+
+<p style="margin: 8px 0;">The simplest AI implementation of a scheduled job is to <strong style="color:var(--article-accent, #3f8fd4);">send the description to a model at every trigger and let it work out what to do</strong>. It works, but each run incurs a complete LLM call: money, connectivity, latency, and <strong style="color:var(--article-accent, #3f8fd4);">uncertainty</strong>. Fetch the ranking might work today and drift tomorrow. An hourly job means 720 conversations a month for the same mechanical operation. At a few thousand tokens per run and typical cloud-model prices, a rough estimate is <strong style="color:var(--article-accent, #3f8fd4);">a few to tens of yuan per month just for one job's heartbeat overhead</strong>. More jobs or higher frequency increase the bill linearly. Compilation reduces that runtime model overhead <strong style="color:var(--article-accent, #3f8fd4);">to zero</strong>; only creation needs a call. This is an order-of-magnitude estimate, not a measurement; actual costs vary with the model and token volume.</p>
+
+<p style="margin: 8px 0;">HexClaw divides the <strong style="color:var(--article-accent, #3f8fd4);">timeline</strong> into creation and execution. The compiler contract states this plainly (<code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">cron/compiler.go</code>）：</p>
+
+<section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;"><span style="display: block; white-space: pre; min-height: 1.4em;">// JobSpecCompiler 把用户的自然语言任务需求编译成可执行 JobSpec（一次性 LLM 调用）。</span><span style="display: block; white-space: pre; min-height: 1.4em;">// 实现要求：</span><span style="display: block; white-space: pre; min-height: 1.4em;">//   - 创建期一次性消耗 LLM tokens；运行时不再调用 LLM</span><span style="display: block; white-space: pre; min-height: 1.4em;">//   - 失败必须返回错误（拒绝入库），避免空 Spec 进入运行时</span><span style="display: block; white-space: pre; min-height: 1.4em;">//   - 输出脚本须通过 validators.go 中的安全校验</span></code></section>
+
+<p style="margin: 8px 0;">Those three requirements determine the engine's character:</p>
+
+<ul style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">Cost</strong> — spend tokens once at creation, then none even over ten thousand executions. High-frequency runs have zero marginal model-token cost. To be precise, the saving is in <strong style="color:var(--article-accent, #3f8fd4);">runtime</strong> tokens. Compilation still uses cloud compute or your local CPU/GPU; that expense moves from every run to one initial call.</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">Offline model independence</strong> — scripts use sandbox built-ins and do not depend on an available model at runtime. Compiled jobs keep running if the cloud model is down or its API key expires.</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">Determinism</strong> — the same script follows the same logic today and tomorrow, without model-driven drift.</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">Auditability</strong> — the output is readable, editable code rather than a black box. That matters especially for unattended automation on your own machine.</li>
+</ul>
+
+<blockquote style="border-left: 3px solid #3f8fd4; padding: 14px 18px; margin: 20px 0; background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); font-size: 14px; border-radius: 0 8px 8px 0; line-height: 1.85;">
+Separate understanding intent from executing it in time: <strong style="color:var(--article-accent, #3f8fd4);">tokens at compilation, none at execution</strong>. This is the common source of the design's benefits.
+</blockquote>
+
+<h3 style="font-size: 16px; font-weight: 700; color:var(--article-ink, #12324c); margin: 24px 0 10px;">What Happens During Compilation</h3>
+
+<p style="margin: 8px 0;">Compilation uses  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">temperature = 0</code> for stability rather than creativity, asking the model for pure JSON containing runtime, script, and timeout. Two engineering details matter:</p>
+
+<ul style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">The compilation model follows your current choice</strong> — it is resolved dynamically from your current default on every compilation, not fixed at startup. Switch from a cloud model to local Ollama in the interface and the next compilation follows immediately, without a restart.</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">Failed compilation never enters storage</strong> — incomplete scripts do not reach runtime. A visible creation error is better than a silent failure at midnight. The compiler automatically retries 5xx responses, timeouts, and rate limits with exponential backoff, at most three times, without interrupting you.</li>
+</ul>
+
+<p style="margin: 8px 0;">Several hard rules in the system prompt came from actual failures and determine whether collection scripts survive small page changes:</p>
+
+<ul style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">Check the status after every HTTP call</strong>; any non-2xx response is a failure. Sending a request does not prove success.</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">Use URLs verbatim</strong>; the model must not invent or rewrite them.</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">Prefer structured JSON embedded in the page</strong> over mutable CSS classes, which can break after a redesign.</li>
+</ul>
+
+<p style="margin: 8px 0;">Prompt constraints alone are insufficient. The engine supplies another safeguard: every  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">http_get / http_post</code> <strong style="color:var(--article-accent, #3f8fd4);"> gets a browser User-Agent by default</strong>. This also came from experience: some sites, including Baidu's trending page in an actual incident, respond to Go's default  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">Go-http-client/1.1</code>  with anti-bot HTML. The script's  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">json_decode</code>  then fails immediately at the opening  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">&lt;</code> . Scripts may still override the UA through  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">headers</code> , but the default avoids rejection simply for looking like a crawler.</p>
+
+<p style="margin: 8px 0;">The compiled script looks like this. Notice that it has <strong style="color:var(--article-accent, #3f8fd4);">no import statements</strong>; all capabilities are injected:</p>
+
+<section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;"><span style="display: block; white-space: pre; min-height: 1.4em;">def run():</span><span style="display: block; white-space: pre; min-height: 1.4em;">    resp = http_get("https://example.com/board", headers = {"User-Agent": "Mozilla/5.0"})</span><span style="display: block; white-space: pre; min-height: 1.4em;">    if resp["status"] &lt; 200 or resp["status"] &gt;= 300:</span><span style="display: block; white-space: pre; min-height: 1.4em;">        return {"status": "error", "error": "fetch non-2xx: %d" % resp["status"]}</span><span style="display: block; white-space: pre; min-height: 1.4em;">    blocks = re_findall("(?s)&lt;!--data:(.*?)--&gt;", resp["body"])</span><span style="display: block; white-space: pre; min-height: 1.4em;">    data = json_decode(blocks[0])</span><span style="display: block; white-space: pre; min-height: 1.4em;">    titles = [it["title"].strip() for it in data.get("list", [])]</span><span style="display: block; white-space: pre; min-height: 1.4em;">    return {"status": "success", "data": {"title": "榜单 " + now()["date"], "content": "\n".join(titles)}}</span><span style="display: block; white-space: pre; min-height: 1.4em;">emit(run())</span></code></section>
+
+<p style="margin: 8px 0;">Compiling a fixed script immediately creates four unavoidable questions:</p>
+
+<ul style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">Question 1</strong>: Why trust newly AI-written code to run on your machine?</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">Question 2</strong>: What if the task should not be compiled into a fixed script at all?</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">Question 3</strong>: Scripts stay fixed while the world changes. What happens when a website redesign breaks one?</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">Question 4</strong>: What if the user's small local model cannot reliably produce well-formed JSON?</li>
+</ul>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">Question 1: Why Trust AI-Written Code on Your Machine?</h2>
+
+<p style="margin: 8px 0;">Generating and executing code raises an obvious fear: what if the model, or someone manipulating it, writes  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">os.system("rm -rf ~")</code>  on the user's machine?</p>
+
+<p style="margin: 8px 0;">The guiding assumption is therefore: <strong style="color:var(--article-accent, #3f8fd4);">treat every generated program as untrusted and potentially adversarial input</strong>. The model may be manipulated, hallucinate, or simply make a mistake. The sandbox must <strong style="color:var(--article-accent, #3f8fd4);">contain the program even when it is wrong</strong>. Every safeguard below follows from that premise.</p>
+
+<p style="margin: 8px 0;">A common approach is an <strong style="color:var(--article-accent, #3f8fd4);">AST denylist</strong> that blocks  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">import os</code>,  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">eval</code>,  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">__import__</code>, and more. The fundamental problem is that <strong style="color:var(--article-accent, #3f8fd4);">you are always chasing escapes</strong>. Capabilities start open, and defenders must close each hole. An attacker needs only one overlooked path. The history of bypassed Python sandboxes illustrates this problem.</p>
+
+<p style="margin: 8px 0;">HexClaw takes the opposite approach, known as <strong style="color:var(--article-accent, #3f8fd4);">capability-based security</strong>: no authority by default, with capabilities granted explicitly. The default engine uses  <strong style="color:var(--article-accent, #3f8fd4);">Starlark</strong>, Google's Python dialect for Bazel, implemented entirely in Go and designed for deterministic, repeatable builds. <strong style="color:var(--article-accent, #3f8fd4);">It has no import, eval, exec, filesystem, or network</strong>. By default, a Starlark script can do nothing outside its computation.</p>
+
+<p style="margin: 8px 0;">Every operation a script can perform is a built-in function <strong style="color:var(--article-accent, #3f8fd4);">explicitly injected</strong> by the host (<code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">cron/engine_starlark.go</code>）：</p>
+
+<section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;"><span style="display: block; white-space: pre; min-height: 1.4em;">predeclared := starlark.StringDict{</span><span style="display: block; white-space: pre; min-height: 1.4em;">    "http_get":    ...,   // GET，返回 {"status", "body"}</span><span style="display: block; white-space: pre; min-height: 1.4em;">    "http_post":   ...,</span><span style="display: block; white-space: pre; min-height: 1.4em;">    "json_decode": ..., "json_encode": ...,</span><span style="display: block; white-space: pre; min-height: 1.4em;">    "re_findall":  ..., "re_sub": ..., "html_unescape": ...,</span><span style="display: block; white-space: pre; min-height: 1.4em;">    "url_encode":  ..., "sha256": ..., "now": ...,</span><span style="display: block; white-space: pre; min-height: 1.4em;">    "kb_ingest":   ...,   // 写入本地知识库（in-process）</span><span style="display: block; white-space: pre; min-height: 1.4em;">    "state_get":   ..., "state_set": ...,  // 跨运行持久化状态（增量采集 / 去重）</span><span style="display: block; white-space: pre; min-height: 1.4em;">    "wake_agent":  ...,   // "有料"才升级成完整 Agent（见问题二）</span><span style="display: block; white-space: pre; min-height: 1.4em;">    "emit":        ...,   // 提交最终结果（脚本必须调一次）</span><span style="display: block; white-space: pre; min-height: 1.4em;">}</span></code></section>
+
+<blockquote style="border-left: 3px solid #3f8fd4; padding: 14px 18px; margin: 20px 0; background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); font-size: 14px; border-radius: 0 8px 8px 0; line-height: 1.85;">
+<strong style="color:var(--article-accent, #3f8fd4);">An AST denylist starts with all capabilities and removes them, leaving you chasing escapes.<br/>A structured sandbox starts with none and grants them individually; there is no ambient outside capability to escape into.</strong>
+</blockquote>
+
+<p style="margin: 8px 0;">The script-validation surface is consequently just three things (<code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">validateStarlarkSource</code>）：</p>
+
+<section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;"><span style="display: block; white-space: pre; min-height: 1.4em;">func validateStarlarkSource(script string) error {</span><span style="display: block; white-space: pre; min-height: 1.4em;">    f, err := opts.Parse("job.star", script, 0)    // 1. 能不能解析</span><span style="display: block; white-space: pre; min-height: 1.4em;">    if err != nil { return ... }</span><span style="display: block; white-space: pre; min-height: 1.4em;">    for _, stmt := range f.Stmts {</span><span style="display: block; white-space: pre; min-height: 1.4em;">        if _, ok := stmt.(*syntax.LoadStmt); ok {   // 2. 禁 load() 加载外部模块</span><span style="display: block; white-space: pre; min-height: 1.4em;">            return fmt.Errorf("load() is not allowed in cron scripts")</span><span style="display: block; white-space: pre; min-height: 1.4em;">        }</span><span style="display: block; white-space: pre; min-height: 1.4em;">    }</span><span style="display: block; white-space: pre; min-height: 1.4em;">    if !strings.Contains(script, "emit(") &amp;&amp;        // 3. 必须产出结果（emit</span><span style="display: block; white-space: pre; min-height: 1.4em;">        !strings.Contains(script, "wake_agent(") {  //    或 wake_agent，门任务可只 wake）</span><span style="display: block; white-space: pre; min-height: 1.4em;">        return fmt.Errorf("must call emit({...}) or wake_agent(...)")</span><span style="display: block; white-space: pre; min-height: 1.4em;">    }</span><span style="display: block; white-space: pre; min-height: 1.4em;">    return nil</span><span style="display: block; white-space: pre; min-height: 1.4em;">}</span></code></section>
+
+<p style="margin: 8px 0;">Parse successfully, forbid  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">load()</code> , and require a result through <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">emit()</code> or, for a gate task,  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">wake_agent()</code>. No long prohibited-function list is needed because the capability surface is closed.</p>
+
+<h3 style="font-size: 16px; font-weight: 700; color:var(--article-ink, #12324c); margin: 24px 0 10px;">Two Resource Guards and a Counterintuitive Network Choice</h3>
+
+<p style="margin: 8px 0;">The sandbox defines callable capabilities. Two resource risks remain, followed by one network tradeoff:</p>
+
+<ul style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">Memory exhaustion</strong> — an individual HTTP response is capped at 8 MiB, so one uncontrolled large page cannot overwhelm the process.</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">Infinite loops</strong> — each Starlark execution is capped at 100 million steps. <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">while True</code>  is stopped by the step budget rather than waiting for a timeout. A declared execution timeout,  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">timeout_s</code>, defaults to 300 seconds, with cooperative cancellation as another fallback.</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">Network access</strong>——<code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">http_get / http_post</code>  is the script's only reach outside the process. Should the engine also fence in its network? We tried that, then <strong style="color:var(--article-accent, #3f8fd4);">deliberately removed the restriction</strong>. That choice needs explanation.</li>
+</ul>
+
+<p style="margin: 8px 0;">A textbook solution is an  <strong style="color:var(--article-accent, #3f8fd4);">SSRF guard</strong> that blocks resolved IPs at dial time: loopback, private ranges, link-local addresses, and cloud metadata addresses such as <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">169.254.169.254</code>—the credential-theft entry point in the 2019 Capital One SSRF incident. This also guards against DNS rebinding. That was our initial implementation.</p>
+
+<p style="margin: 8px 0;">We removed it for a specific reason. Many users run  <strong style="color:var(--article-accent, #3f8fd4);">transparent proxies in fake-IP mode</strong>, such as Clash or Surge. They map public domains into reserved addresses before forwarding internally. The guard saw those addresses and blocked them, so <strong style="color:var(--article-accent, #3f8fd4);">legitimate public-web collection was rejected by our own guard</strong>。</p>
+
+<p style="margin: 8px 0;">That exposed a product boundary: <strong style="color:var(--article-accent, #3f8fd4);">a desktop application running on your machine should share your network context</strong>—your proxy, hosts file, and LAN. Local tools commonly access localhost and use the host proxy; IDEs, Docker, and development servers do so daily. Imposing a blanket intranet block obstructs legitimate work without necessarily stopping the real threat.</p>
+
+<p style="margin: 8px 0;">More fundamentally, <strong style="color:var(--article-accent, #3f8fd4);">a script's authority depends on its injected capabilities, not just on the destination IP</strong>. The structured sandbox already limits it to roughly a dozen built-ins. It has no files, shell, or arbitrary sockets; its only external reach is  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">http_get / http_post</code>. Within that design, destination-IP policy is orthogonal. Rather than guessing which ranges to block and breaking normal traffic, we <strong style="color:var(--article-accent, #3f8fd4);">preserve the host's network semantics and concentrate enforcement on the capability surface</strong>。</p>
+
+<blockquote style="border-left: 3px solid #5fb3ea; padding: 10px 16px; margin: 16px 0; background:var(--article-panel, #f4fbff); color:var(--article-secondary, #3f5f7b); font-size: 14px; border-radius: 0 8px 8px 0;">
+The intended security boundary is <strong style="color:var(--article-accent, #3f8fd4);">the capability surface rather than an IP denylist</strong>. With the callable surface constrained, this local tool shares the host network like the browser and terminal.
+</blockquote>
+
+<p style="margin: 8px 0;">Starlark is the default but not the only engine. The abstraction lets the scheduler route by  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">Runtime</code> . There is also an <strong style="color:var(--article-accent, #3f8fd4);">optional python3 engine</strong> for legacy jobs requiring more expressiveness. It invokes the system interpreter through a shell, so it is not the default. HexClaw's requirement is <strong style="color:var(--article-accent, #3f8fd4);">a single binary with no external dependencies</strong>. Pure-Go Starlark behaves consistently across the three major platforms and requires no user installation, making it suitable as the default.</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">Question 2: What If This Should Not Be a Script?</h2>
+
+<p style="margin: 8px 0;">Compilation suits mechanical fetch–clean–store pipelines. But a task such as <strong style="color:var(--article-accent, #3f8fd4);">summarize and comment on yesterday's news every day</strong> loses its purpose when frozen into a script. Summarizing and commenting require fresh reasoning over different content each day.</p>
+
+<p style="margin: 8px 0;">The engine therefore classifies the task before compiling (<code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">cron/agent_mode.go</code>）：</p>
+
+<section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;"><span style="display: block; white-space: pre; min-height: 1.4em;">// 命中"认知动词" → 每次都要 Agent 现场推理 → agent 模式</span><span style="display: block; white-space: pre; min-height: 1.4em;">var reasoningVerbs = []string{</span><span style="display: block; white-space: pre; min-height: 1.4em;">    "总结", "分析", "判断", "评估", "筛选出最", "点评",</span><span style="display: block; white-space: pre; min-height: 1.4em;">    "撰写", "起草", "解读", "建议", "诊断", ...</span><span style="display: block; white-space: pre; min-height: 1.4em;">}</span><span style="display: block; white-space: pre; min-height: 1.4em;">// 采集 / 下载 / 保存 / 同步 等机械动词，刻意不在表里 → 编译成脚本</span><span style="display: block; white-space: pre; min-height: 1.4em;"></span><span style="display: block; white-space: pre; min-height: 1.4em;">func ClassifyTaskMode(prompt string) string {</span><span style="display: block; white-space: pre; min-height: 1.4em;">    lower := strings.ToLower(prompt)</span><span style="display: block; white-space: pre; min-height: 1.4em;">    for _, v := range reasoningVerbs {</span><span style="display: block; white-space: pre; min-height: 1.4em;">        if strings.Contains(lower, v) { return RuntimeAgent }</span><span style="display: block; white-space: pre; min-height: 1.4em;">    }</span><span style="display: block; white-space: pre; min-height: 1.4em;">    return ""   // 默认：脚本模式（零 LLM 执行）</span><span style="display: block; white-space: pre; min-height: 1.4em;">}</span></code></section>
+
+<p style="margin: 8px 0;">Mechanical I/O becomes a script with no runtime LLM calls. Cognitive work becomes  <strong style="color:var(--article-accent, #3f8fd4);">Agent mode</strong>, running a full Agent on every trigger. Classification uses deterministic keywords, not another LLM call, so it is free of model cost and directly testable.</p>
+
+<p style="margin: 8px 0;">This routing expands scheduled work into two categories:</p>
+
+<ul style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">Script mode: mechanical, zero tokens</strong> — fetch pages or APIs on a schedule, detect page changes using <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">sha256</code>  and persistent cross-run  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">state_get/set</code>  for deduplication, collect only content new since the last run, clean structured data, and write results directly into the knowledge base through  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">kb_ingest</code> .</li>
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">Agent mode: cognitive, a reasoning run with the full toolchain each time</strong> — organize local files, compile weekly reports, and summarize, analyze, or comment on collected content. It uses the same  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">eng.Process</code> as chat, so filesystem tools, the knowledge base, Skills, and MCP are all available.</li>
+</ul>
+
+<p style="margin: 8px 0;">There is a useful capability boundary here too: the Starlark sandbox <strong style="color:var(--article-accent, #3f8fd4);">has no filesystem access</strong>, so organizing local documents naturally belongs in Agent mode. <strong style="color:var(--article-accent, #3f8fd4);">Routing aligns cost with a capability boundary</strong>: mechanical work stays in the sandbox, while cognitive tasks unlock the full toolchain.</p>
+
+<p style="margin: 8px 0;">The choice is no longer entirely static. A script can also serve as a <strong style="color:var(--article-accent, #3f8fd4);">cheap gate</strong>: each tick costs no tokens, and only meaningful new information causes it to call the built-in  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">wake_agent(context)</code> and temporarily upgrade that run into a full Agent, at most once per hour. <strong style="color:var(--article-accent, #3f8fd4);">The workhorse conserves feed until there is work worth thinking about</strong>. This conditional upgrade gate draws on Hermes's wakeAgent. Gate scripts may call  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">wake_agent</code>  without  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">emit</code> and still satisfy the output contract.</p>
+
+<p style="margin: 8px 0;">Why use such simple keyword classification? Because <strong style="color:var(--article-accent, #3f8fd4);">the costs of the two misclassifications differ</strong>. The code comments explain that misclassifying a cognitive task as a script produces a script that fails, with self-healing as a fallback. Misclassifying mechanical work as an Agent merely spends additional tokens. <strong style="color:var(--article-accent, #3f8fd4);">With a cheap error in one direction and a fallback in the other, the verb list stays conservative</strong>, marking fewer cognitive terms rather than needlessly routing work into paid inference.</p>
+
+<p style="margin: 8px 0;">Agent mode has two further guards drawn from actual needs:</p>
+
+<ul style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">Frequency guard</strong> — each Agent run consumes a full conversation, so the minimum interval is one hour. An analyze-every-minute request is rejected during creation with a suggestion to use @hourly / @daily.</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">Hallucination guard</strong> — a task promising ingestion must actually call a  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">knowledge_ingest</code>  tool. If the Agent claims completion without an ingestion call, the engine records <strong style="color:var(--article-accent, #3f8fd4);">failure</strong>. Content that was never stored remains unstored; claiming completion is not a result.</li>
+</ul>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">Question 3: Fixed Code Meets a Changing World</h2>
+
+<p style="margin: 8px 0;">A compiled script reflects the page structure at creation time. Websites change: a collector that works today may return nothing next month after the page's  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">&lt;!--data:--&gt;</code>  comment format changes.</p>
+
+<p style="margin: 8px 0;">This is the price of compiling once and spending no runtime tokens: <strong style="color:var(--article-accent, #3f8fd4);">the script stays fixed while the world changes</strong>. It is easy to overlook, but determines whether the work can actually be left unattended.</p>
+
+<p style="margin: 8px 0;">HexClaw answers with <strong style="color:var(--article-accent, #3f8fd4);">self-healing</strong>. After consecutive failures reach a threshold, the engine recompiles the script using the failure context (<code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">maybeSelfHeal</code>）：</p>
+
+<section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;"><span style="display: block; white-space: pre; min-height: 1.4em;">const selfHealThreshold    = 3              // 连续失败 3 次才触发</span><span style="display: block; white-space: pre; min-height: 1.4em;">const selfHealMaxPerWindow = 2              // 24h 内最多自愈 2 次</span><span style="display: block; white-space: pre; min-height: 1.4em;">const selfHealWindow       = 24 * time.Hour</span><span style="display: block; white-space: pre; min-height: 1.4em;"></span><span style="display: block; white-space: pre; min-height: 1.4em;">// 把失败原因拼进 prompt，让模型针对性地改</span><span style="display: block; white-space: pre; min-height: 1.4em;">enriched := fmt.Sprintf(</span><span style="display: block; white-space: pre; min-height: 1.4em;">  "%s\n\n[自愈上下文] 该任务此前编译的脚本已连续失败 %d 次，最近错误：\n%s\n"+</span><span style="display: block; white-space: pre; min-height: 1.4em;">  "请根据错误原因生成修正后的脚本。",</span><span style="display: block; white-space: pre; min-height: 1.4em;">  job.SourcePrompt, selfHealThreshold, failCtx)</span></code></section>
+
+<p style="margin: 8px 0;">A code comment gives a particularly apt analogy: <strong style="color:var(--article-accent, #3f8fd4);">JIT compiler deoptimization</strong>：</p>
+
+<blockquote style="border-left: 3px solid #3f8fd4; padding: 14px 18px; margin: 20px 0; background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); font-size: 14px; border-radius: 0 8px 8px 0; line-height: 1.85;">
+. A JIT first assumes a hot path can use compiled machine code. If runtime evidence breaks an assumption, such as a type change, it <strong style="color:var(--article-accent, #3f8fd4);">returns to the slower interpreter path and optimizes again</strong>。<br/>
+. Here, the fast path is a zero-token script. When its assumption about page structure fails, the engine falls back to an LLM recompilation and produces a new fast-path script.
+</blockquote>
+
+<p style="margin: 8px 0;">A realistic example: a ranking collector parses embedded JSON under  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">&lt;!--data:...--&gt;</code> . A redesign changes the marker to  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">&lt;!--board:...--&gt;</code>. The script's  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">re_findall</code>  finds nothing, and <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">emit</code>  reports an error. After three failed ticks, the engine sends the original request and the latest error, data block missing, back to the model. A replacement script reads  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">&lt;!--board:--&gt;</code>  instead. The next tick works; you may never notice the interruption.</p>
+
+<p style="margin: 8px 0;">Crucially, healing is <strong style="color:var(--article-accent, #3f8fd4);">bounded rather than endless retry</strong>：</p>
+
+<ul style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">At most two repairs per 24 hours</strong> — a permanently unavailable upstream cannot trigger infinite recompilation and token spending. Once the allowance is exhausted, the engine requests human attention. That alert is itself throttled to one per cooldown window, avoiding repeated overnight notifications.</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">Count only failures since the last successful repair</strong> — old failures cannot trigger premature healing after a fix. The check uses insertion-ordered row IDs rather than comparisons of datetime strings.</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">Agent tasks do not self-heal this way</strong> — they have no compiled script to repair. Repeated failures instead trigger an alert for human intervention.</li>
+</ul>
+
+<blockquote style="border-left: 3px solid #5fb3ea; padding: 10px 16px; margin: 16px 0; background:var(--article-panel, #f4fbff); color:var(--article-secondary, #3f5f7b); font-size: 14px; border-radius: 0 8px 8px 0;">
+Healing has <strong style="color:var(--article-accent, #3f8fd4);">a threshold of three consecutive failures, a quota of two repairs per day, and an endpoint of handing unresolved problems to a person</strong>. That is what makes unattended operation credible. <br/>The cyber workhorse finds a new route when the world breaks its old one; after two unsuccessful detours, it calls you.
+</blockquote>
+
+<p style="margin: 8px 0;">Many similar schedulers can run scripts without an LLM. The distinction is <strong style="color:var(--article-accent, #3f8fd4);">where the script comes from, where it runs, and who repairs it</strong>：</p>
+
+<ul style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">A common approach</strong> — you or an Agent write a shell command or script and schedule it in the machine's <strong style="color:var(--article-accent, #3f8fd4);">full-authority</strong> environment, constrained by OS permissions. When it breaks, you repair it.</li>
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">HexClaw</strong> — <strong style="color:var(--article-accent, #3f8fd4);">compiles</strong> your natural-language request into a <strong style="color:var(--article-accent, #3f8fd4);">structured sandbox with no ambient authority</strong>. When it breaks, it <strong style="color:var(--article-accent, #3f8fd4);">recompiles using the error context</strong>。</li>
+</ul>
+
+<blockquote style="border-left: 3px solid #3f8fd4; padding: 14px 18px; margin: 20px 0; background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); font-size: 14px; border-radius: 0 8px 8px 0; line-height: 1.85;">
+Both schedule code, but the difference is: <strong style="color:var(--article-accent, #3f8fd4);">in the common approach you operate it; HexClaw maintains its own script.</strong>
+</blockquote>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">Question 4: A Small Local Model That Struggles with JSON</h2>
+
+<p style="margin: 8px 0;">The design so far assumes the model can write the script. But HexClaw runs locally, and <strong style="color:var(--article-accent, #3f8fd4);">you cannot choose the user's model</strong>. People use models such as local glm-4-flash or small Qwen variants. They may write collection logic well enough, but struggle with pure JSON containing a multiline script: perhaps fenced Python instead of JSON, or correct JSON around a script containing an unescaped regex backslash.</p>
+
+<p style="margin: 8px 0;">The compiler adds <strong style="color:var(--article-accent, #3f8fd4);">three layers of self-correction</strong>（<code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">cron/llm_compiler.go</code>):</p>
+
+<ul style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">Layer 1: Correct the Format</strong> — if JSON parsing fails, send the output back with a request for pure JSON without fences. The script already exists, so this extra turn is cheap and usually sufficient.</li>
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">Layer 2: Salvage the Script</strong> — if the retry still cannot produce valid JSON, extract the script with a regex from a fenced code block or badly escaped  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">script</code>  field, then add fixed metadata. A model that cannot wrap JSON may still have produced usable code.</li>
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">Layer 3: Correct Validation Failures</strong> — if the structure is correct but validation fails, return the <strong style="color:var(--article-accent, #3f8fd4);">engine's exact error</strong> and request a fix limited to that error.</li>
+</ul>
+
+<section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;"><span style="display: block; white-space: pre; min-height: 1.4em;">// 第三层：把"精确的引擎报错"反馈给模型，让它只修这一处</span><span style="display: block; white-space: pre; min-height: 1.4em;">user("The Starlark script failed validation with this exact error:\n" +</span><span style="display: block; white-space: pre; min-height: 1.4em;">     verr.Error() +</span><span style="display: block; white-space: pre; min-height: 1.4em;">     "\nFix ONLY that error, then re-emit one pure JSON object.")</span></code></section>
+
+<p style="margin: 8px 0;">I like the comment on this third layer: <strong style="color:var(--article-accent, #3f8fd4);">It can recover most small mistakes that changing to a larger model would not fix.</strong>  A larger model addresses ability; these are slips. Identifying the exact mistake is more useful than changing brains.</p>
+
+<blockquote style="border-left: 3px solid #3f8fd4; padding: 14px 18px; margin: 20px 0; background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); font-size: 14px; border-radius: 0 8px 8px 0; line-height: 1.85;">
+<strong style="color:var(--article-accent, #3f8fd4);">Demand fault tolerance from the system, not perfection from the model.</strong> Local deployment means accepting the user's model. Accommodating its imperfections is what lets smaller models use this automation.
+</blockquote>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">Connecting Four Answers to One Sentence</h2>
+
+<p style="margin: 8px 0;">Those four questions concern whether the system works. Users experience what happens after they state their intent, and that layer needs engineering too.</p>
+
+<p style="margin: 8px 0;">LLM compilation can take thirty to fifty seconds. A spinner without explanation is poor feedback. Creation is split into four observable stages streamed to the frontend using SSE (<code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">cron/compiler.go</code>）：</p>
+
+<section style="background: #1a2332; border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto; box-shadow: inset 0 0 0 1px #2a3a4e;"><code style="display: block; background: transparent; color: #d6e4f0; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;"><span style="display: block; white-space: pre; min-height: 1.4em;">const (</span><span style="display: block; white-space: pre; min-height: 1.4em;">    StageAnalyzing  = "analyzing"    // 解析需求 / 选 provider</span><span style="display: block; white-space: pre; min-height: 1.4em;">    StageCallingLLM = "calling_llm"  // 调 LLM 生成脚本（最长一段）</span><span style="display: block; white-space: pre; min-height: 1.4em;">    StageValidating = "validating"   // AST + 语法 + 输出契约校验</span><span style="display: block; white-space: pre; min-height: 1.4em;">    StagePersisting = "persisting"   // 序列化 + 入库</span><span style="display: block; white-space: pre; min-height: 1.4em;">)</span></code></section>
+
+<p style="margin: 8px 0;">A small but useful detail is that <strong style="color:var(--article-accent, #3f8fd4);">the backend detects interface support before choosing streaming</strong>. Compilers implementing the progress extension emit each stage; other compilers are treated as one stage. <strong style="color:var(--article-accent, #3f8fd4);">They still work, with less detail</strong>. Progress is an enhancement rather than an all-or-nothing capability. Format correction also emits a progress message explaining that malformed output is being automatically corrected, so users can distinguish recovery from a hang.</p>
+
+<p style="margin: 8px 0;">Compilation does not create the task immediately. It first presents a <strong style="color:var(--article-accent, #3f8fd4);">confirmation card</strong>（<code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">CronJobConfirmCard.vue</code>）：</p>
+
+<ul style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">Interpretation-source badges</strong> — the card explains how the intent was understood: <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">⌘ Slash</code> (slash command, highest confidence) /  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">⚡ Recognized</code> (deterministic fast path, no LLM) /  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">🤖 AI-assisted</code> / <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">💬 More information needed</code>. Simple rule-recognizable intent never invokes a large model.</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">A plain-language cron preview</strong>——<code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">0 8 * * *</code>  shows every day at 08:00 beside the expression, making the schedule understandable without cron expertise.</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">Editable Before Confirmation, with AI Help</strong> — edit the name, timing, action, and delivery destination (chat / push / feishu / discord / wechat) on the card. If the interpretation is wrong, choose the AI editing action to parse it again. <strong style="color:var(--article-accent, #3f8fd4);">A human confirms before the AI creates a job.</strong></li>
+</ul>
+
+<p style="margin: 8px 0;">The complete chain looks like this:</p>
+
+<figure style="margin: 18px 0; text-align: center;">
+<img src="../../assets/blog/河蟹AI-cron架构图.png" alt="HexClaw scheduled-task engine architecture" width="1800" height="1800" loading="lazy" decoding="async">
+<figcaption style="color:var(--article-secondary, #5f7b9c); font-size: 13px; margin-top: 8px; line-height: 1.6;">The full chain: 1. creation-time compilation with four stages and three correction layers → SQLite persistence → 2. runtime without LLM calls for scripts, with script and full-Agent engines → results feed knowledge and memory, optionally delivered through Feishu / WeChat / email and other channels → 3. self-healing after three consecutive failures, with at most two repairs per 24 hours.</figcaption>
+</figure>
+
+<p style="margin: 8px 0;">One actual collection-to-knowledge-base run looks like this:</p>
+
+<figure style="margin: 18px 0; text-align: center;">
+<img src="../../assets/blog/河蟹AI-本地Zapier-cron编译自愈-wechat-image/demo-0-automation.png" alt="Automation page: two actual scheduled tasks running" width="2000" height="1241" loading="lazy" decoding="async">
+<img src="../../assets/blog/河蟹AI-本地Zapier-cron编译自愈-wechat-image/demo-1-source.png" alt="Data source: Baidu's live trending list" width="2850" height="1468" loading="lazy" decoding="async">
+<img src="../../assets/blog/河蟹AI-本地Zapier-cron编译自愈-wechat-image/demo-2-kb.png" alt="Result: a Baidu TOP20 document automatically written into the knowledge base" width="2000" height="1241" loading="lazy" decoding="async">
+<img src="../../assets/blog/河蟹AI-本地Zapier-cron编译自愈-wechat-image/demo-3-kb-list.png" alt="The time series of documents accumulated by cron in the knowledge base" width="2000" height="1241" loading="lazy" decoding="async">
+<figcaption style="color:var(--article-secondary, #5f7b9c); font-size: 13px; margin-top: 8px; line-height: 1.6;">From top to bottom: 1. two real jobs on the automation page, <strong style="color:var(--article-accent, #3f8fd4);">created from natural language, labeled pure-Go engine with zero dependencies, with successful executions around one second, no runtime LLM calls, and a View Script action</strong>; 2. a job's source, the Baidu trending list; 3. its cleaned TOP20 knowledge-base document, indexed into eight chunks with a collection timestamp; 4. a time series whose sources are marked  <strong style="color:var(--article-accent, #3f8fd4);">cron-gh-stars / cron-baidu-hotsearch</strong>, one document daily, twenty-one so far. The Agent continually feeds itself and <strong style="color:var(--article-accent, #3f8fd4);">its second brain keeps growing</strong>. On the next question, the material is already there.</figcaption>
+</figure>
+
+<p style="margin: 8px 0;">Several lower-level safeguards support this. Creation uses a unified entry point (<code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">POST /api/v1/cronjob</code>), with an idempotency key preventing duplicate creation for the same request within five minutes, a quota of thirty active tasks per user, and atomic replacement on update with automatic restoration of the original on failure. On restart, active jobs are restored from SQLite (<strong style="color:var(--article-accent, #3f8fd4);">restarts do not lose jobs</strong>). Run history is trimmed to the latest 200 records per task on writes to avoid unbounded growth slowing startup. Failures may have a separate delivery target; otherwise they use throttled alerts. Execution errors and delivery errors are recorded independently and cleared on their respective successes, so one failed notification does not falsely mark the whole job as broken. Scheduling uses one  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">runLoop</code>  goroutine to dispatch by next-run time, with a separate goroutine per due job so jobs do not block each other. Cron semantics also need care: <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">@hourly</code>  and the union versus intersection of day-of-month and day-of-week can otherwise fire jobs at the wrong time. These details stop an accidental request, restart, or network hiccup from scrambling unattended work.</p>
+
+<p style="margin: 8px 0;">Two further scheduling problems are handled as well; readers interested only in usage may skip these details. <strong style="color:var(--article-accent, #3f8fd4);">Misfires</strong> — if sleep or restart misses a trigger by more than half a period, bounded between 120 seconds and two hours, advance to the next future time. <strong style="color:var(--article-accent, #3f8fd4);">Skip rather than replaying an accumulated backlog</strong> to avoid flooding the machine at startup. Within the grace period, run once as normal. One-time reminders are an exception and still ring when late. <strong style="color:var(--article-accent, #3f8fd4);">Overlapping executions</strong> — if the previous run is unfinished when the next tick arrives, an in-process  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">running</code>  flag skips that tick. Failures remain visible: execution failures use  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">LastError</code>, delivery failures use  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">LastDeliveryError</code>, and per-job history makes problematic tasks identifiable in the automation page.</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">The Boundaries: What It Cannot Do</h2>
+
+<p style="margin: 8px 0;">Engineering notes need limitations. Know these before creating jobs:</p>
+
+<ul style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">Starlark is not full Python</strong>. It has no imports or third-party libraries, only the injected built-ins. Jobs needing numpy, pandas, or complex parsing libraries cannot use the default engine; use the optional python3 engine with Python installed, or leave script mode. <strong style="color:var(--article-accent, #3f8fd4);">It suits fetch–clean–store/send I/O pipelines rather than general computation.</strong></li>
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">Self-healing is not universal</strong>. It can adapt to small page changes by giving the model a new error, but cannot fix a closed website, a new login wall, or an IP block. Once the daily allowance is exhausted, it stops and alerts a person. That is an intentional boundary.</li>
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">The healing window is held in memory</strong>. The two-per-day counter resets on a sidecar restart. For this desktop application, restarting is uncommon and the worst case is some additional repair calls; the count stays bounded within one process lifetime. Strict persistence is a known simplification.</li>
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">This is a single-machine desktop engine, not a server</strong>. Concurrency is approximately one. Capacity concerns job counts, thirty per user by default, and per-run bounds of 8 MiB responses, 100 million steps, and a default 300-second timeout, rather than QPS. A multi-tenant service would require process/container isolation and replacing the local  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">runLoop</code>  scheduler with a distributed delay queue. The present reentrancy guard is an in-process  <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">running</code>  flag preventing only local overlap. Multiple replicas would each trigger the same tick without an additional external lock or deduplication mechanism. That is a different engineering project outside this article.</li>
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">Classification uses keywords rather than an LLM</strong>. Mixed requests involving both collection and analysis can be misclassified. Human confirmation and self-healing contain the cost, but this is not deep semantic classification.</li>
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">Agent mode spends a full conversation each run</strong>. The enforced minimum one-hour interval suits low-frequency cognitive work such as daily summaries or weekly reports. High frequency plus inference is not free.</li>
+</ul>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">This Is Work an AI Agent Should Handle</h2>
+
+<p style="margin: 8px 0;">The technical details support one point: <strong style="color:var(--article-accent, #3f8fd4);">scheduled, repetitive, mechanical tasks should not require human attention or fresh model reasoning every time</strong>. Taking them over is an Agent's proper job.</p>
+
+<p style="margin: 8px 0;">Looking back, each design layer arose from a problem in the previous one: <strong style="color:var(--article-accent, #3f8fd4);">compile into a script</strong> to reduce cost and uncertainty → ask whether AI code can run safely on a user's machine, then add a <strong style="color:var(--article-accent, #3f8fd4);">sandbox with no ambient authority</strong> (we also tried fencing its network, then removed the guard after it blocked legitimate traffic through transparent proxies, settling the boundary on callable capabilities rather than IPs) → encounter tasks unsuited to compilation, then add <strong style="color:var(--article-accent, #3f8fd4);">mechanical/cognitive routing</strong>  → scripts break as the world changes, so add <strong style="color:var(--article-accent, #3f8fd4);">self-healing</strong>  → small local models struggle with JSON, so add <strong style="color:var(--article-accent, #3f8fd4);">three correction layers</strong>. Each layer responds to a concrete cost introduced earlier.</p>
+
+<p style="margin: 8px 0;">Taking over work requires more than a successful demo. Anyone can generate code, run it once, and show a screenshot. The difficult part is infrastructure that can be <strong style="color:var(--article-accent, #3f8fd4);">left unattended and safely forgotten</strong>:</p>
+
+<ul style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">Feed the Agent itself</strong> — collected and organized results return to its knowledge and memory, so the next time you ask, <strong style="color:var(--article-accent, #3f8fd4);">it already knows</strong>. A simple tool pushes results to you; an Agent also feeds them back into itself. That is the feedback loop beyond RSS or Zapier alone.</li>
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">Low cost</strong> — compile once, then use no runtime tokens, rather than increasing model costs linearly.</li>
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">Local, with model-independent execution</strong> — deterministic code runs in the structured sandbox, with data remaining on your machine.</li>
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">Contained execution on your machine</strong> — capability-based authority granted explicitly to a default-empty sandbox, rather than an expanding list of escape patches.</li>
+<li style="margin: 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">Repair when the world changes</strong> — recompile broken scripts with error context, requesting human help only when repair fails.</li>
+</ul>
+
+<p style="margin: 8px 0;">Together, these turn scheduled Agent automation into something that can actually be delegated. <strong style="color:var(--article-accent, #3f8fd4);">Notifications are only one output. The deeper value is maintaining an increasingly current second brain over time.</strong></p>
+
+<blockquote style="border-left: 3px solid #3f8fd4; padding: 14px 18px; margin: 20px 0; background:var(--article-panel, #f4fbff); color:var(--article-ink, #12324c); font-size: 14px; border-radius: 0 8px 8px 0; line-height: 1.85;">
+Compile intent into code and run it on your machine. Use the restricted capability surface for containment, routing for affordable execution, and self-healing for changing conditions, then feed results into the Agent's knowledge and memory.<strong style="color:var(--article-accent, #3f8fd4);">That is HexClaw's engineering answer to scheduled Agent automation: maintain a continuously refreshed brain through the work it performs.</strong>
+</blockquote>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<p style="margin: 24px 0 16px; color:var(--article-secondary, #5f7b9c); font-size: 14.5px; line-height: 2; text-align: center; font-style: italic; padding: 8px 16px;">The best automation starts with one sentence,<br/>then lets you stop thinking about it, because it runs and attempts its own recovery.</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h3 style="font-size: 15px; font-weight: 600; color:var(--article-accent, #3f8fd4); margin: 24px 0 8px;">Postscript: What Has Grown Since the Previous Article</h3>
+
+<p style="margin: 8px 0; font-size: 14px;">Since Making an AI Agent Speak Uyghur: HexClaw v0.4.0 Localization in Practice, the product has reached v0.4.6 and added or improved the following, some to be covered separately:</p>
+
+<ul style="padding-left: 22px; margin: 8px 0; font-size: 14px;">
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">🔌 Data connectors</strong> — GitHub / Yuque cloud notes / Feishu Docs / email integrations, with encrypted credential storage</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">🧩 Workflows</strong> — webhook triggers and task graphs</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">🪪 Unified permission gates and an unattended risk adviser</strong> — risk assessment before automated actions</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">🧠 Editable assistant personality (SOUL) and memory library</strong></li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">📝 Prompt management</strong> — store frequently used prompts for reuse</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">🎯 Skill / Prompt retrieval</strong> — manually search and attach relevant Skills and prompts in chat; automatic retrieval already existed</li>
+<li style="margin: 4px 0;"><strong style="color:var(--article-accent, #3f8fd4);">🧪 Evaluation framework</strong> — regression checks for Agent behavior</li>
+</ul>
+
+<p style="margin: 8px 0; font-size: 13px; color:var(--article-muted, #7b8fa3);">Data connectors with scheduled collection, and webhook workflows, will extend this article's feedback-loop theme in later articles.</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<p style="margin: 8px 0; font-size: 14px; color:var(--article-muted, #7b8fa3);"><strong style="color:var(--article-accent, #3f8fd4);">Further Reading</strong> — Earlier articles:</p>
+
+<ol style="padding-left: 22px; margin: 8px 0; font-size: 14px;">
+<li style="margin: 4px 0;"><a href="https://mp.weixin.qq.com/s/CuVTbUv2kJRePybo_MudYA" style="color:var(--article-accent, #5fb3ea);">HexClaw vs OpenClaw / Hermes</a>  — Three paths for local AI Agents in 2026</li>
+<li style="margin: 4px 0;"><a href="https://mp.weixin.qq.com/s/1rza-Ye3NF89KNAJp_PttA" style="color:var(--article-accent, #5fb3ea);">Claude Code SOP</a>  — Design-driven development, testing feedback, and multi-Agent collaboration</li>
+<li style="margin: 4px 0;"><a href="https://mp.weixin.qq.com/s/wIRiJsWLRPWBiTEQtlVQkg" style="color:var(--article-accent, #5fb3ea);">Architecture Deep Dive</a>  — One person, Claude Code, five months, six repositories</li>
+<li style="margin: 4px 0;"><a href="https://mp.weixin.qq.com/s/RX-2QOSV2cBEmddwAUj5cg" style="color:var(--article-accent, #5fb3ea);">The Thinking Process</a>  — The last mile for Qwen / Gemma / DeepSeek-R1</li>
+<li style="margin: 4px 0;"><a href="https://mp.weixin.qq.com/s/PdJRKkH4qiBS-IZBifbuag" style="color:var(--article-accent, #5fb3ea);">Complete Guide</a>  — From zero to a working local AI Agent in five minutes</li>
+<li style="margin: 4px 0;"><a href="https://mp.weixin.qq.com/s/2tHlfZYHxQdQwvVZQEoLRg" style="color:var(--article-accent, #5fb3ea);">Former Leader Skill</a>  — Distilling a leader into an AI Skill</li>
+<li style="margin: 4px 0;"><a href="https://mp.weixin.qq.com/s/S49q9gsXABAzcJyNOC7FjQ" style="color:var(--article-accent, #5fb3ea);">From Raising Lobsters to Raising Crabs</a>  — Product launch and the OpenClaw starting point</li>
+</ol>
+
+<h3 style="font-size: 15px; font-weight: 600; color:var(--article-accent, #3f8fd4); margin: 24px 0 8px;">References</h3>
+
+<ul style="padding-left: 22px; margin: 8px 0; font-size: 13px; color:var(--article-secondary, #5f7b9c);">
+<li style="margin: 3px 0;">HexClaw ecosystem repositories: <code style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 12px; color:var(--article-accent, #3f8fd4);">github.com/hexagon-codes</code></li>
+<li style="margin: 3px 0;">Starlark language specification (Google's Python dialect for Bazel): <a href="https://github.com/bazelbuild/starlark" style="color:var(--article-accent, #5fb3ea);">github.com/bazelbuild/starlark</a></li>
+<li style="margin: 3px 0;">starlark-go (pure-Go implementation): <a href="https://github.com/google/starlark-go" style="color:var(--article-accent, #5fb3ea);">github.com/google/starlark-go</a></li>
+<li style="margin: 3px 0;">Capability-based security: <a href="https://en.wikipedia.org/wiki/Capability-based_security" style="color:var(--article-accent, #5fb3ea);">en.wikipedia.org/wiki/Capability-based_security</a></li>
+<li style="margin: 3px 0;">OWASP · Server-Side Request Forgery (SSRF)：<a href="https://owasp.org/www-community/attacks/Server_Side_Request_Forgery" style="color:var(--article-accent, #5fb3ea);">owasp.org/www-community/attacks/Server_Side_Request_Forgery</a></li>
+<li style="margin: 3px 0;">Background on JIT deoptimization: <a href="https://en.wikipedia.org/wiki/Deoptimization" style="color:var(--article-accent, #5fb3ea);">en.wikipedia.org/wiki/Deoptimization</a></li>
+</ul>
+
+<p style="margin: 8px 0; font-size: 12px; color:var(--article-muted, #a5bdd3);">Upstream repositories are authoritative for the code and behavior described here. Checked on 2026-06-23.</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<p class="blog-brand-footer" data-blog-brand-footer="en" data-blog-brand-overrides="{}" style="text-align: center; color: var(--article-muted, #7b8fa3); font-size: 13px; margin: 16px 0 0; line-height: 2;">
+<strong style="color: var(--article-ink, #12324c); font-size: 14px;">HexClaw</strong><br/>
+Deploy locally or in the cloud · Control your data · Free and open-source software<br/>
+<a href="https://hexclaw.net" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">Website: <bdi dir="ltr">hexclaw.net</bdi></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://github.com/hexagon-codes" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">GitHub: <bdi dir="ltr">hexagon-codes</bdi></a><br/>
+<a href="https://weibo.com/u/4097207240" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">Weibo: <bdi dir="ltr">@HexClaw</bdi></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">X: <bdi dir="ltr">@hexclawapp</bdi></a><br/>
+<a href="mailto:ai@hexclaw.net" style="color: var(--article-muted, #999); text-decoration: none;">Email: <bdi dir="ltr">ai@hexclaw.net</bdi></a>
+</p>
+    </article>
+
+
+
+    <nav class="blog-series-nav" aria-label="Previous and next articles">
+      <a href="/en/blog/memory-dreaming" class="blog-nav-card prev">
+  <span class="blog-nav-label">← Previous article</span>
+  <span class="blog-nav-title">Agent Memory That Dreams: Claude and ChatGPT Dream in the Cloud; HexClaw Dreams on Your Machine</span>
+</a>
+      <a href="/en/blog/thinking-chain-local-models" class="blog-nav-card next">
+  <span class="blog-nav-label">Next article →</span>
+  <span class="blog-nav-title">The HexClaw Thinking Process: The Last Mile for Local Qwen 3.5, Gemma 4, and DeepSeek-R1</span>
+</a>
+    </nav>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-main">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-col-title">Product</div>
+        <a href="/en/#download">Download</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="/en/changelog">Changelog</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Developers</div>
+        <a href="/en/docs/">Documentation</a>
+        <a href="/en/blog/">Technical Blog</a>
+        <a href="/en/docs/getting-started">Getting Started</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">Apache-2.0</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Community</div>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/issues" target="_blank" rel="noopener noreferrer">Issues</a>
+        <a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer">Twitter / X</a>
+        <a href="mailto:ai@hexclaw.net">Contact Us</a>
+        <a href="mailto:support@hexclaw.net">Feedback</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">About</div>
+        <a href="/en/about">About Us</a>
+        <a href="/en/privacy">Privacy Policy</a>
+        <a href="/en/terms">Terms of Service</a>
+        <a href="/en/third-party-ai-services">Third-Party AI Services</a>
+      </div>
+    </div>
+    <div class="footer-wechat">
+      <img width="430" height="430" loading="lazy" decoding="async" src="../../assets/brand/wechat-qr.jpg" alt="HexClaw WeChat QR Code">
+      <span class="footer-wechat-label">WeChat Official Account</span>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">&copy; 2025&ndash;2026 hexagon-codes</span>
+  </div>
+</footer>
+<script src="../../assets/js/theme.js?v=2e4a1828feef"></script>
+<script src="../../assets/js/docs-nav.js?v=5a103861aec2"></script>
+<button type="button" class="back-to-top" id="backToTop" aria-label="Back to top" title="Back to top">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg>
+  <span>Top</span>
+</button>
+
+<script src="../../assets/js/blog.js?v=c72e1db5a6ec"></script>
+</body>
+</html>

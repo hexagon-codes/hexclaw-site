@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ug" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/favicon-32.png">
+<title>«چۈش كۆرىدىغان» Agent ئەسلەتمىسى: Claude بىلەن ChatGPT بۇلۇتتا، HexClaw ئۆز كومپيۇتېرىڭىزدا چۈش كۆرىدۇ｜HexClaw تېخنىكا بىلوگى</title>
+<meta name="description" content="بۇلۇتقا چىقمايدىغان، git diff بىلەن كۆرگىلى بولىدىغان يەرلىك يولغا قويۇش: ئۈچ قاتلام، ئۈچ ئۆلچەملىك ئەسلەش ۋە ئىككى باسقۇچلۇق چۈش كۆرۈش. بىر «مەن قەيەردە» ئەسلەتمىسىگە ئەگىشىپ، يەرلىك Agent نىڭ ئۇيقۇ دەۋرىدە ئۇچۇرنى قانداق رەتلەيدىغانلىقى، ئايرىپ چىقىرىدىغانلىقى ۋە ئۇنتۇيدىغانلىقىنى كۆرىمىز.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:site_name" content="河蟹 AI">
+<meta property="og:type" content="article">
+<meta property="og:title" content="«چۈش كۆرىدىغان» Agent ئەسلەتمىسى: Claude بىلەن ChatGPT بۇلۇتتا، HexClaw ئۆز كومپيۇتېرىڭىزدا چۈش كۆرىدۇ｜HexClaw تېخنىكا بىلوگى">
+<meta property="og:description" content="بۇلۇتقا چىقمايدىغان، git diff بىلەن كۆرگىلى بولىدىغان يەرلىك يولغا قويۇش: ئۈچ قاتلام، ئۈچ ئۆلچەملىك ئەسلەش ۋە ئىككى باسقۇچلۇق چۈش كۆرۈش. بىر «مەن قەيەردە» ئەسلەتمىسىگە ئەگىشىپ، يەرلىك Agent نىڭ ئۇيقۇ دەۋرىدە ئۇچۇرنى قانداق رەتلەيدىغانلىقى، ئايرىپ چىقىرىدىغانلىقى ۋە ئۇنتۇيدىغانلىقىنى كۆرىمىز.">
+<meta property="og:url" content="https://hexclaw.net/ug/blog/memory-dreaming">
+<meta property="og:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta property="og:image:alt" content="HexClaw بەلگىسى">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta property="og:locale" content="ug_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="«چۈش كۆرىدىغان» Agent ئەسلەتمىسى: Claude بىلەن ChatGPT بۇلۇتتا، HexClaw ئۆز كومپيۇتېرىڭىزدا چۈش كۆرىدۇ｜HexClaw تېخنىكا بىلوگى">
+<meta name="twitter:description" content="بۇلۇتقا چىقمايدىغان، git diff بىلەن كۆرگىلى بولىدىغان يەرلىك يولغا قويۇش: ئۈچ قاتلام، ئۈچ ئۆلچەملىك ئەسلەش ۋە ئىككى باسقۇچلۇق چۈش كۆرۈش. بىر «مەن قەيەردە» ئەسلەتمىسىگە ئەگىشىپ، يەرلىك Agent نىڭ ئۇيقۇ دەۋرىدە ئۇچۇرنى قانداق رەتلەيدىغانلىقى، ئايرىپ چىقىرىدىغانلىقى ۋە ئۇنتۇيدىغانلىقىنى كۆرىمىز.">
+<meta name="twitter:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta name="twitter:image:alt" content="HexClaw بەلگىسى">
+<link rel="canonical" href="https://hexclaw.net/ug/blog/memory-dreaming">
+<link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/memory-dreaming">
+<link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/memory-dreaming">
+<link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/memory-dreaming">
+<link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/memory-dreaming">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "«چۈش كۆرىدىغان» Agent ئەسلەتمىسى: Claude بىلەن ChatGPT بۇلۇتتا، HexClaw ئۆز كومپيۇتېرىڭىزدا چۈش كۆرىدۇ",
+  "description": "بۇلۇتقا چىقمايدىغان، git diff بىلەن كۆرگىلى بولىدىغان يەرلىك يولغا قويۇش: ئۈچ قاتلام، ئۈچ ئۆلچەملىك ئەسلەش ۋە ئىككى باسقۇچلۇق چۈش كۆرۈش. بىر «مەن قەيەردە» ئەسلەتمىسىگە ئەگىشىپ، يەرلىك Agent نىڭ ئۇيقۇ دەۋرىدە ئۇچۇرنى قانداق رەتلەيدىغانلىقى، ئايرىپ چىقىرىدىغانلىقى ۋە ئۇنتۇيدىغانلىقىنى كۆرىمىز.",
+  "url": "https://hexclaw.net/ug/blog/memory-dreaming",
+  "inLanguage": "ug",
+  "datePublished": "2026-06-27",
+  "image": "https://hexclaw.net/assets/brand/hexclaw-logo.png",
+  "publisher": {
+    "@type": "Organization",
+    "name": "hexagon-codes",
+    "url": "https://hexclaw.net/",
+    "@id": "https://hexclaw.net/#organization"
+  },
+  "@id": "https://hexclaw.net/ug/blog/memory-dreaming#article"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "河蟹 AI", "item": "https://hexclaw.net/ug/"},
+    {"@type": "ListItem", "position": 2, "name": "تېخنىكا بىلوگى", "item": "https://hexclaw.net/ug/blog/"},
+    {"@type": "ListItem", "position": 3, "name": "«چۈش كۆرىدىغان» Agent ئەسلەتمىسى: Claude بىلەن ChatGPT بۇلۇتتا، HexClaw ئۆز كومپيۇتېرىڭىزدا چۈش كۆرىدۇ", "item": "https://hexclaw.net/ug/blog/memory-dreaming"}
+  ],
+  "@id": "https://hexclaw.net/ug/blog/memory-dreaming#breadcrumb"
+}
+</script>
+<link rel="stylesheet" href="../../assets/css/docs-eb2895dd79c5.css">
+<link rel="stylesheet" href="../../assets/css/blog-a8e5008ac3d1.css">
+</head>
+<body class="blog-page blog-article-page">
+<a href="#main" class="skip-link">ئاساسىي مەزمۇنغا ئۆتۈش</a>
+<nav class="tn topnav" id="nav">
+  <a href="/ug/" class="tn-b topnav-brand"><img width="72" height="72" src="../../assets/brand/hexclaw-icon-72.png" class="tn-l topnav-logo" alt="ھېشى AI"><span class="tn-n topnav-name">ھېشى AI</span></a>
+  <button type="button" class="tn-burger topnav-burger" aria-label="تىزىملىك" aria-expanded="false" aria-controls="primary-navigation"><span></span><span></span><span></span></button><div class="tn-r topnav-links" id="primary-navigation"><a href="/ug/">باش بەت</a><a href="/ug/#cases">ئىشلىتىش كۆرۈنۈشلىرى</a><a href="/ug/#features">ئىقتىدارلار</a><a href="/ug/#quickstart">باشلاش</a><a href="/ug/#ecosystem">ئوچۇق ئېكولوگىيە</a><a href="/ug/blog/" class="is-active">تېخنىكا بىلوگى</a><a href="/ug/docs/">ھۆججەتلەر مەركىزى</a><div class="lang-menu" data-lang-menu><button type="button" class="lang-trigger" aria-haspopup="menu" aria-expanded="false" aria-label="تىل ئالماشتۇرۇش"><svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 0 20"></path><path d="M12 2a15.3 15.3 0 0 0 0 20"></path></svg><span class="lang-current" lang="zh-CN" dir="ltr">维吾尔语</span><svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="lang-menu-list" role="menu"><a href="/zh/blog/memory-dreaming" role="menuitem">中文</a><a href="/en/blog/memory-dreaming" role="menuitem">English</a><a href="/ug/blog/memory-dreaming" role="menuitem" class="is-active" aria-current="true" lang="zh-CN" dir="ltr">维吾尔语</a></div></div><button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="ئۇسلۇب ئالماشتۇرۇش"><svg class="ti-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="ti-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="nav-cta">GitHub <span class="nav-star-badge" id="gh-stars">&#9733;</span></a></div>
+</nav>
+
+<main id="main" class="blog-main">
+  <div class="blog-article-container">
+    <nav class="blog-breadcrumb" aria-label="يول كۆرسەتكۈچ">
+      <a href="/ug/">باش بەت</a>
+      <span class="blog-breadcrumb-sep">/</span>
+      <a href="/ug/blog/">تېخنىكا بىلوگى</a>
+      <span class="blog-breadcrumb-sep">/</span>
+      <span aria-current="page">يادرولۇق سىستېما تەپسىلاتى</span>
+    </nav>
+
+    <header class="blog-header">
+      <div class="blog-header-tags">
+        <span class="blog-badge-series">ئەسلەتمە سىستېمىسى</span>
+      </div>
+      <h1 class="blog-article-title">«چۈش كۆرىدىغان» Agent ئەسلەتمىسى: Claude بىلەن ChatGPT بۇلۇتتا، HexClaw ئۆز كومپيۇتېرىڭىزدا چۈش كۆرىدۇ</h1>
+      <p class="blog-article-subtitle">بۇلۇتقا چىقمايدىغان، git diff بىلەن كۆرگىلى بولىدىغان يەرلىك يولغا قويۇش: ئۈچ قاتلام، ئۈچ ئۆلچەملىك ئەسلەش ۋە ئىككى باسقۇچلۇق چۈش كۆرۈش. بىر «مەن قەيەردە» ئەسلەتمىسىگە ئەگىشىپ، يەرلىك Agent نىڭ ئۇيقۇ دەۋرىدە ئۇچۇرنى قانداق رەتلەيدىغانلىقى، ئايرىپ چىقىرىدىغانلىقى ۋە ئۇنتۇيدىغانلىقىنى كۆرىمىز.</p>
+      <div class="article-provenance-banner">
+        <div class="provenance-left">
+          <span class="provenance-origin-badge">ئالدى بىلەن WeChat تا ئېلان قىلىنغان</span>
+          <span class="provenance-text">بۇ ماقالە تۇنجى قېتىم WeChat رەسمىي ھېسابىدا ئېلان قىلىنغان: <strong>「hexclaw」</strong>، ID: hexclaw، رەسمىي تېخنىكا سەھىپىسى · ئېلان ۋاقتى: <strong>2026-06-27</strong> · تەخمىنەن 11 مىنۇتلۇق ئوقۇشلۇق</span>
+        </div>
+        <a href="https://mp.weixin.qq.com/s/YvGGPBZX0V7R6-09unnrcQ" target="_blank" rel="noopener noreferrer" class="provenance-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          WeChat تىكى خەنزۇچە ئەسلى ↗
+        </a>
+      </div>
+    </header>
+
+    <article class="blog-content">
+<p>بىر نەچچە كۈن ئىلگىرى HexClaw نىڭ ئەسلەتمە ھۆججىتىنى ۋاراقلاپ، مۇنداق بىر قۇرنى كۆردۈم:</p>
+<section dir="ltr" style="overflow-x:auto"><code style="display:block;white-space:pre">- 我在西湖区 &lt;!--m:subj=所在地;
+  vf=2026-06-20;conf=0.90;hc=2--&gt;</code></section>
+<p>قۇر ئاخىرىدىكى HTML ئىزاھى Markdown كۆرسىتىلگەندە كۆرۈنمەيدۇ. داۋامىنى كۆرۈپ، «شىخۇ رايونى» دېگەن ئەسلەتمىنىڭ <strong>يەنىلا بارلىقىنى</strong> بايقىدىم؛ پەقەت كۈچتىن قالغان ۋاقتى يېزىلىپتۇ، چۈنكى ئالدىنقى ھەپتە ئۇ يەرگە بېرىپ كەلگەنىدىم. ھازىر كۈچكە ئىگە بولغىنى كېيىن يېزىلغان «مەن يۈخاڭ رايونىدا» دېگەن ئەسلەتمە، ئۇ مەن ئادەتتە تۇرىدىغان جاي. ئۇ <strong>شىخۇ رايونىنى ئۆچۈرمەپتۇ</strong>، پەقەت ۋاقىت تامغىسى بېسىپتۇ.</p>
+<p>يېقىندا Claude بىلەن ChatGPT ئەسلەتمە سىستېمىسىغا «چۈش كۆرۈش»نى قوشتى: ئارقا سۇپىدا سىز ئېيتقان گەپلەرنى ئۆزلۈكىدىن رەتلەپ، بىر شەخسىي ئارخىپقا ئايلاندۇرىدۇ. Anthropic مايدا ئېلان قىلغىنىنى Claude Dreaming، OpenAI ئىيۇندا ئېلان قىلغىنىنى Dreaming V3 دەپ ئاتىدى؛ ھەر ئىككىسى ئىنسان ئۇخلىغاندا مېڭىنىڭ ئەستە ساقلاشنى مۇستەھكەملەش جەريانىنى مىسال قىلدى. مەنمۇ HexClaw غا شۇنداق ئەسلەتمە سىستېمىسى قوشماقچى بولدۇم. ئەمەلىي ئىشلەشكە كىرىشكەندە، ئىككى نۇقتىنى قەستەن باشقىچە قىلدىم:</p>
+<ul>
+<li>ئەسلەتمە رەتلەشنىڭ ھەر بىر قەدىمى <code dir="ltr">cat</code> بىلەن كۆرەلەيدىغان، <code dir="ltr">git diff</code> بىلەن سېلىشتۇرالايدىغان ئاددىي تېكىستكە يېزىلىدۇ؛ كۆرگىلى بولمايدىغان بۇلۇتقا ئەمەس.</li>
+<li>«چۈش كۆرۈش»نىڭ ھەقىقەتەن توقۇلما چىقىرىشى مۇمكىن بولغان قىسمىنى، يەنى LLM غا ئەسلەتمىنى قايتا يازدۇرۇشنى، چېگراسى بار بىر قەپەسكە سولىدىم. ئۇ <strong>سۈكۈتتىكى ھالەتتە قۇلۇپلانغان</strong>، ئېچىش-تاقاشنى سىزگە قالدۇردۇم.</li>
+</ul>
+<p>بۇ ئىككىسى سېتىش نۇقتىسى ئەمەس، ئۆزۈم خاتىرجەم ئىشلىتىش ئۈچۈن بەلگىلىگەن ئاخىرقى چەك. ئەمدى باشتىكى «تۇرۇشلۇق جاي» ئەسلەتمىسىگە ئەگىشىپ، ئۇنىڭ HexClaw دا قانداق بىر ئۆمۈرنى باشتىن كەچۈرىدىغانلىقىنى كۆرەيلى.</p>
+<hr>
+<h2>ئاۋۋال پۈتۈن بىنانى كۆرەيلى: ئۈچ قەۋەت ۋە ئالتە تۈر</h2>
+<p>ئەسلەتمىگە ئەگىشىشتىن بۇرۇن پۈتۈن قۇرۇلمىنى كۆرۈش كېرەك. HexClaw نىڭ ئەسلەتمىسى <strong>بىر چوڭ كۆلچەك ئەمەس</strong>، ئۈچ قەۋەتلىك بىنا. بۇ قۇرۇلما مەشغۇلات سىستېمىسىنىڭ ئىچكى ساقلىغۇچ باشقۇرۇش ئىدىيەسىدىن پايدىلىنىدۇ: <strong>Letta / MemGPT ئۇنى core / recall / archival دەپ ئاتايدۇ</strong>؛ ماھىيىتى مەۋھۇم ئىچكى ساقلىغۇچ باشقۇرۇش ئۇسۇلى بىلەن ئەسلەتمىنى باشقۇرۇش.</p>
+<ul>
+<li><strong>دائىمىي قاتلام، ئۈستۈنكى قەۋەت:</strong> سىز كىم، بەلگىلىگەن قاتتىق قائىدىلىرىڭىز ۋە ئۇزاق مۇددەتلىك مايىللىقىڭىز. سۆھبەت باشلىنىشىدا <strong>مۇقىم سۈرەت قىلىپ توڭلىتىلىپ</strong> كىرگۈزۈلىدۇ، ھەر ئايلانمىدا بولۇشى كاپالەتلەندۈرۈلىدۇ.</li>
+<li><strong>ئىزدەپ ئەسلەش قاتلىمى، ئوتتۇرا قەۋەت:</strong> «يۈخاڭ رايونىدا»، «ئالدىنقى ھەپتە RAG خاتالىقىنى تۈزەتتى»، «تېخنىكا توپلىمى Go» دېگەندەك پارچە پاكىتلار. ھەر ئايلانمىدا ھەممىسى كىرگۈزۈلمەيدۇ؛ <strong>نۆۋەتتىكى سوئالغا قاراپ ئۈچ ئۆلچەمدە نومۇر بېرىپ، ئەڭ مۇناسىۋەتلىك بىر نەچچىسى ئەسلىتىلىدۇ</strong>.</li>
+<li><strong>ئەسلى قاتلام، يەر ئاستى:</strong> بارلىق سۆھبەتلەرنىڭ تولۇق تېكىستى. ئادەتتە ئۆزگەرمەيدۇ، لازىم بولغاندا <strong>تولۇق تېكىست ئىزدەش</strong> ئارقىلىق تېپىلىدۇ.</li>
+</ul>
+<p>ئەسلەتمىنىڭ قايسى قاتلامغا چۈشىدىغانلىقىنى ئۇنىڭ <strong>تۈرى</strong> ئۆزلۈكىدىن بەلگىلەيدۇ، قولدا تولدۇرۇش ھاجەتسىز. قائىدە، سالاھىيەت، بۇيرۇق ۋە مايىللىق دائىمىي قاتلامغا؛ ئادەتتىكى پاكىت بىلەن كونتېكىست ئىزدەپ ئەسلەش قاتلىمىغا كىرىدۇ. ھەر بىر ئەسلەتمىنىڭ <code dir="ltr">(user, persona)</code> تەۋەلىكىمۇ بار. Feishu غا ئۇلىنىپ بىر نەچچە ئادەم بىر Agent نى ئورتاق ئىشلەتسىمۇ، <strong>كىشىلەرنىڭ ئەسلەتمىلىرى ئارىلاشمايدۇ</strong>.</p>
+<p>بۇ بىنا ئىچىدىكى ھەر بىر ئۆزگىرىش، سىز ئېغىز ئۇچىدا ئېيتقان، AI ئۆزى خاتىرىلىگەن، كېچىدە چۈش كۆرۈپ رەتلىگەن ياكى سىز ھۆججەتتە قولدا ئۆزگەرتكەنلىرىڭىزنىڭ ھەممىسى <strong>بىرلا «يەككە يازغۇچ»تىن</strong> ئۆتۈپ ئۆچرەت بىلەن دىسكىغا يېزىلىدۇ. يېزىش ئاتوملۇق، ئۆزئارا قاپلىمايدۇ؛ ھەتتا قولدا ئۆزگەرتكەن تۈرلەرنىمۇ ئاۋۋال سېلىشتۇرۇپ، قارىغۇلارچە قاپلىمايدۇ. تۆۋەندە قاتلاممۇقاتلام كۆرىمىز؛ بۇ رەسىمدىنمۇ پۈتۈن كۆرۈنۈشنى ئىگىلىيەلەيسىز.</p>
+<figure><img src="../../assets/blog/河蟹AI-记忆系统流程图.png" alt="HexClaw ئەسلەتمە سىستېمىسى: يېزىش، ئوقۇش ۋە چۈش كۆرۈش ئارقا ئايلانمىسى" width="1520" height="2290" loading="lazy" decoding="async"><figcaption>بىر ئەسلەتمىنىڭ ئۆمرى: ① يېزىش، تەكرارنى چىقىرىش ۋە تارىخنى ساقلاپ ئورۇن بېسىش؛ ② ئوقۇش، ئۈچ قاتلامنى قۇراشتۇرۇپ كىرگۈزۈش؛ ③ چۈش كۆرۈش، مېخانىكىلىق يېنىك باسقۇچ ۋە LLM چوڭقۇر باسقۇچىدىن كېيىن قايتا يېزىش.</figcaption></figure>
+<h2>ساقلاش: بىر قۇر ئادەتتىكى گەپ، ئاخىرىدا يوشۇرۇن ئىزاھ</h2>
+<p>سىز «مەن يۈخاڭ رايونىدا» دېسىڭىز، HexClaw ئۇنى خاتىرىلەيدۇ. قەيەردە ساقلاش ھەققىدە ساھەدە ئىككى يول بار: ChatGPT بۇلۇتتا ساقلايدۇ، تەڭشەكتىن تىزىملىكنىلا كۆرەلەيسىز؛ Claude Code يەرلىك ھۆججەتتە ساقلايدۇ. HexClaw كېيىنكى يولنى تاللىدى، بىراق قوشۇمچە بىر ئىش قىلدى: <strong>ھەر بىر ئەسلەتمىگە كۆرۈنمەيدىغان بىر يوشۇرۇن ئىزاھ تىكتى</strong>، يولغا قويۇلۇشى <code dir="ltr">structured_entry.go</code> دا.</p>
+<p>ئۇ دەل باشتىكى قۇر ئاخىرى ئىزاھى: <code dir="ltr">subj</code> پاكىتنىڭ «سۇبيېكتى»، بۇ يەردە تۇرۇشلۇق جاي؛ <code dir="ltr">vf</code> كۈچكە ئىگە بولغان ۋاقىت؛ <code dir="ltr">conf</code> ئىشەنچ دەرىجىسى؛ <code dir="ltr">hc</code> قانچە قېتىم ئەسلىتىلگەنلىكى. <strong>بىر مەيدانمۇ سانلىق مەلۇمات ئامبىرىغا تايانمايدۇ</strong>، ھەممىسى Markdown قۇر ئاخىرىدىكى ئىزاھقا يوشۇرۇنغان. ھۆججەت يەنىلا <code dir="ltr">cat</code> بىلەن كۆرەلەيدىغان، تەھرىرلىيەلەيدىغان، <code dir="ltr">git diff</code> بىلەن سېلىشتۇرالايدىغان ئاددىي تېكىست، ئەمما ئەسلەتمە قۇرۇلمىلىق بولدى: رەتلىگىلى، سېلىشتۇرغىلى ۋە كۈچتىن قالغانلىقىنى بەلگىلىگىلى بولىدۇ. كونا تۈردە بۇ ئىزاھ يوقمۇ؟ پارس قىلغاندا مەيدانلار نۆل قىممەت ئالىدۇ، يەنىلا نورمال ئىشلەيدۇ.</p>
+<p>نېمىشقا مېتا سانلىق مەلۇماتنى سانلىق مەلۇمات ياكى ۋېكتور ئامبىرىغا سالمايمىز دەپ سورىشىڭىز مۇمكىن. <strong>چۈنكى ئامبارغا كىرگەندىن كېيىن cat، git diff ياكى قولدا تەھرىرلەش ئاسان بولمايدۇ</strong>. HexClaw «ئاددىي تېكىست + قۇر ئىچى ئىزاھ + يەككە يازغۇچ بىلەن تەرتىپلىك دىسكىغا يېزىش» ئارقىلىق قۇرۇلمىنى ساقلاپ، «كۆرەلەيسىز، ئۆزگەرتەلەيسىز، كەينىگە ياندۇرالايسىز» دېگەن ئالاھىدىلىكنى قوغدايدۇ. بۇ ئاڭلىق تاللاش: <strong>بىر ئاز يېزىش ئۆتكۈزۈشچانلىقىنى بېرىپ، پۈتۈن جەرياننىڭ ئوچۇق بولۇشىنى ئالىدۇ</strong>. ئۆز كومپيۇتېرىڭىزدا ئىشلەپ، كېچىدە ئۆز ئەسلەتمىسىنى ئۆزى ئۆزگەرتىدىغان سىستېما ئۈچۈن بۇ مۇۋاپىق سودىدۇر.</p>
+<h2>پىكىر ئۆزگىرىشى: كونىسىنى ئۆچۈرمەي، كۈچتىن قېلىش تامغىسى بېسىش</h2>
+<p>ئاۋۋال بۇ قۇرۇلمىنىڭ قانداق شەكىللەنگەنلىكىنى ئېيتاي. دەسلەپ ئۇ <strong>append-only ئېقىملىق خاتىرە</strong> ئىدى: ھۆججەتكە قۇر قوشاتتى، كەينىگە قارىمايتتى. ئۇزاق ئىشلىتىلگەندە ئىككى مەسىلە چىقتى: <strong>زىت پاكىتلار توقۇنۇشاتتى</strong>، بىر ئىشقا ئىككى قىممەت ئېيتىلسا قايسىسىغا ئىشىنىدۇ؟ يەنە <strong>توپلانغانسېرى قالايمىقانلىشاتتى</strong>. كېيىنكى supersede ئارقىلىق تارىخ ساقلاش ۋە كېچىلىك چۈش كۆرۈپ رەتلەش دەل شۇ ئىككى مەسىلىدىن كەلدى.</p>
+<p>سىز ئادەتتە يۈخاڭ رايونىدا تۇرىسىز، بىر نەچچە كۈندىن كېيىن شىخۇ رايونىغا بېرىپ Agent غا دەيسىز. بۇ ۋاقىتتا نۇرغۇن ئەسلەتمە سىستېمىسى مەن خاتىرجەم بولالمايدىغان ئىشنى قىلىدۇ: <strong>«يۈخاڭ رايونى»نى بىۋاسىتە «شىخۇ رايونى»غا ئۆزگەرتىدۇ</strong>. ChatGPT Dreaming مۇ بۇ تۈرگە كىرىدۇ: ئارقا سۇپىدا قايتا يېزىپ، كونا قىممەت يوقىلىدۇ، زادى نېمە ئۆزگەرگەنلىكىنى قايتا كۆرۈشمۇ قىيىن.</p>
+<p>HexClaw قاپلىمايدۇ. ئاۋۋال <code dir="ltr">upsert.go</code> دا تەكرارلىقنى باھالايدۇ: يېڭى گەپ بىلەن ساقلانغان بىر تۈرنىڭ ھەرپ جۈپى ئوخشاشلىق دەرىجىسى <strong dir="ltr">0.65</strong> تىن ئاشسا، شۇ ئىشنىڭ قايتا يېزىلىشى ھېسابلىنىدۇ. ئەمما «تۇرۇشلۇق جاي» سۇبيېكتىدا يۈخاڭ بىلەن شىخۇ ئوخشاش ئەمەس، بۇ <strong>زىتلىق</strong>. شۇڭا قاپلاشنىڭ ئورنىغا supersede، يەنى ۋاقىت بويىچە ئورۇن بېسىش يولىغا كىرىدۇ. <strong>ھەر بىر پاكىتنىڭ «كۈچكە ئىگە ۋاقىت كۆزنىكى» بار؛ زىتلىق بولسا يوقىتىش ئەمەس، ئورۇن بېسىش بولىدۇ. Zep / Graphiti بۇنى bi-temporal، ئىككى ۋاقىت ئوقى دەپ ئاتايدۇ</strong>:</p>
+<section dir="ltr" style="overflow-x:auto"><code style="display:block;white-space:pre">// 召回默认只取"当前有效"的条目
+func IsCurrentlyValid(e, now) bool {
+  if e.ValidTo != nil &amp;&amp;
+     !now.Before(*e.ValidTo) {
+    return false  // 已被取代,失效
+  }
+  return true
+}</code></section>
+<p>«يۈخاڭ رايونى» ئۆچۈرۈلمەيدۇ؛ يوشۇرۇن ئىزاھىغا <code dir="ltr">vt</code>، يەنى كۈچتىن قالغان ۋاقىت قوشۇلىدۇ. «شىخۇ رايونى» يېڭىدىن يېزىلىپ، <code dir="ltr">sup</code> بىلەن كونىسىنى كۆرسىتىدۇ. كېيىن ئەسلەتكەندە سۈكۈتتىكى ھالەتتە پەقەت نۆۋەتتە كۈچكە ئىگە تۈر تاللىنىدۇ: شىخۇدا بولسىڭىز شىخۇ دەپ جاۋاب بېرىدۇ؛ يۈخاڭغا قايتسىڭىز يەنە بىر supersede قىلىپ تۇرۇشلۇق جاينى قايتۇرىدۇ. قايسى كۈنى يۈخاڭدا، قايسى كۈنى شىخۇغا بارغانلىقىڭىزنىڭ ھەممىسى ھۆججەتتە تولۇق ساقلىنىدۇ؛ <code dir="ltr">git log</code> دىن ئېنىق كۆرەلەيسىز.</p>
+<blockquote><strong>قاپلاش تارىخنى ئۆچۈرىدۇ؛ ئورۇن بېسىش تارىخقا ۋاقىت تامغىسى باسىدۇ. بىرىنچىسىگە پەقەت ئىشىنىسىز، ئىككىنچىسىنى تەكشۈرەلەيسىز.</strong></blockquote>
+<h2>ئەسلەش: دائىمىي قاتلامنى توڭلىتىش، ئۈچ ئۆلچەملىك نومۇر ۋە تەشەببۇسكار ئەسلەش</h2>
+<p>ئەسلەتمە لازىم بولغاندا، ئۈچ قەۋەت ئۆز ۋەزىپىسىنى ئورۇندايدۇ.</p>
+<p><strong>ئۈستۈنكى دائىمىي قاتلام ھەر ئايلانمىدا كىرگۈزۈلىدۇ.</strong> سۆھبەت باشلىنىشىدا ماتور ئۇنى <strong>بىر مۇقىم سۈرەتكە توڭلىتىدۇ</strong>، token خامچوتىغا ئاساسەن تاللايدۇ: pinned تۈرلەر ئالدىن، ئاندىن مۇھىملىق، ئاخىرىدا يېقىنلىق بويىچە. بۇ <code dir="ltr">resident.go</code> دا. قاتتىق قائىدە بىلەن سالاھىيىتىڭىز ھەر ئايلانمىدا بولىدۇ، «تەلىيىگە ئىزدەپ تېپىش»قا تايانمايدۇ.</p>
+<p><strong>ئوتتۇرىدىكى ئىزدەپ ئەسلەش قاتلىمى ئېھتىياج بويىچە تاللايدۇ.</strong> ئەسلەتمە كۆپەيسە ھەممىسىنى سىغدۇرغىلى بولمايدۇ. ئەڭ ئاددىي ئۇسۇل <strong>ۋېكتور ئوخشاشلىقى</strong> بىلەن تاللاش: نۆۋەتتىكى سوئالغا كىم ئەڭ ئوخشىسا شۇ ئەسلىتىلىدۇ. بىراق بۇ يولدىكى مەسىلىگە تېزلا يولۇقتۇم: <strong>ساپ ئوخشاشلىق «مۇھىم، ئەمما كونا» ئىشنى كۆمۈۋېتىدۇ</strong>. مەسىلەن ئىككى ئاي ئىلگىرى «كونا API بەزىدە ئىشلىمەي قالىدۇ، ۋاقىت چەكلىمىسى بىلەن زاپاس تەدبىر قوشۇشنى چوقۇم ئۇنتۇما» دەپ ئالاھىدە ئەسكەرتكەنسىز. كېيىنكى سوئالىڭىز ئۇ گەپكە مەنىدىن ئانچە يېقىن ئەمەس، ئەمما شۇ ئەسكەرتىشنى تاپمىسا يەنە ئوخشاش ئازگالغا چۈشىشىڭىز مۇمكىن. شۇڭا HexClaw <strong>ئۈچ ئۆلچەملىك</strong> نومۇر بېرىدۇ. <strong>recency × importance × relevance دەل Stanford نىڭ Generative Agents ماقالىسىدىكى نومۇرلاش ئۇسۇلى</strong>؛ <code dir="ltr">recall/entry.go</code> دا يولغا قويۇلغان:</p>
+<section dir="ltr" style="overflow-x:auto"><code style="display:block;white-space:pre">// 三维加权,确定性,零 LLM
+Score = 新近度 + 重要度 + 相关度
+
+// 重要度 = 类型先验 + 显著性 + 召回频次
+//   规则/身份 1.0 · 指令 0.8
+//   偏好 0.6 · 普通事实 0.4</code></section>
+<ul>
+<li><strong>مۇناسىۋەت دەرىجىسى:</strong> ۋېكتور مودېلى سەپلەنسە cosine <bdi dir="ltr">0.7</bdi> ۋە ئاچقۇچلۇق سۆز BM25 <bdi dir="ltr">0.3</bdi> نى ئېغىرلىق بىلەن ئارىلاشتۇرىدۇ؛ سەپلەنمىسە <strong>پەقەت ئاچقۇچلۇق سۆزگە يۇمشاق تۆۋەنلەيدۇ</strong>، چۆكمەيدۇ.</li>
+<li><strong>يېقىنلىق:</strong> ئېكسپونېنتسىيال ئاجىزلاش، يېرىم ئۆمرى 30 كۈن.</li>
+<li><strong>مۇھىملىق:</strong> LLM نىڭ دەرھال باھا بېرىشىگە تايانمايدۇ؛ «تۈر ئالدىنقى قىممىتى + روشەنلىك + ئەسلەنگەن قېتىم سانى» بىلەن ھېسابلىنىدۇ. «ئاللېرگىيە»، «جەزمەن»، «چوقۇم» قاتارلىق سۆزلەر بولسا نومۇر قوشۇلىدۇ، شۇڭا مۇھىم يېڭى پاكىت تۇنجى قېتىمدىلا ئەسلەشكە يېتەرلىك نومۇر ئالىدۇ. ھەر مۇۋەپپەقىيەتلىك ئەسلەشتە يەنە بىر ئاز كۆپىيىپ، يۇقىرى چەككە توختايدۇ.</li>
+</ul>
+<p>«ۋاقىت چەكلىمىسى بىلەن زاپاس تەدبىر قوشۇشنى چوقۇم ئۇنتۇما» مۇھىم كونا ئەسكەرتىش. «چوقۇم» دېگەن سۆز روشەنلىك قوشۇمچىسىنى قوزغاپ، مۇھىملىقنى ئۆستۈرىدۇ؛ كونا بولسىمۇ، بۈگۈنكى سوئالغا مەنىدىن ئەڭ ئوخشاش بولمىسىمۇ، ئۈچ ئۆلچەم ئېغىرلىقى ئۇنى يۇقىرىغا چىقىرالايدۇ. بۇ يەردە قەستەن قىلىنغان يەنە بىر لايىھە بار: <strong>ئۈچ ئۆلچەمنىڭ دائىرىسى ئوخشاش ئەمەس</strong>. مۇھىملىق تۈر ئالدىنقى قىممىتى، روشەنلىك ۋە ئەسلەش قوشۇلۇپ <bdi dir="ltr">2.0</bdi> غا يېتەلەيدۇ؛ يېقىنلىق ۋە مۇناسىۋەتنىڭ ھەر بىرى <bdi dir="ltr">1.0</bdi> دا توختايدۇ. دېمەك <strong>يېتەرلىك مۇھىم ئىش نومۇردا يېتەرلىك ئوخشاش ئىشتىن تەبىئىي ئۈستۈن كېلەلەيدۇ</strong>. ساپ ئوخشاشلىق «ئوخشىمامدۇ؟» دەپلا سورايدۇ، HexClaw «مۇھىممۇ؟» دەپمۇ سورايدۇ؛ بۇ مۇھىملىق سۆز بىلەنلا دېيىلمەي، ھېسابلىنىدۇ.</p>
+<p><strong>يەر ئاستىدىكى ئەسلى قاتلام لازىم بولغاندا ۋاراقلىنىدۇ.</strong> بۇ يەردە ئىككى مۇستەقىل يول بار، ئارىلاشمايدۇ: ئىشەنچلىك <strong>تاللاپ رەتلەنگەن پاكىتلار</strong> ھەر ئايلانمىدا ئۆزلۈكىدىن كىرگۈزۈلىدۇ، <strong>ئەسلى سۆھبەتنىڭ تولۇق تېكىستى</strong> ئېھتىياج بويىچە ئىشلىتىلىدۇ. مودېل ئۆزى ئىزدەشنى خالىغاندىن سىرت، HexClaw جاۋاب بېرىشتىن <strong>بۇرۇن</strong> تارىخىي سۆھبەتنى ئۆزى بىر قېتىم ئىزدەيدۇ. بۇ <code dir="ltr">active_recall.go</code> دا، سۈكۈتتىكى ھالەتتە ئوچۇق؛ «ئەستە بولۇشى كېرەك» كونا پارچىلارنى ئالدىن چىقىرىدۇ. ئەمما چەكلىك: ئەڭ كۆپ 3 تۈر، <bdi dir="ltr">1.5</bdi> سېكۇنت ۋاقىت چەكلىمىسى، ساپ يەرلىك تولۇق تېكىست ئىزدەش ۋە <strong>نۆل LLM</strong>. ئارقا-ئارقىدىن 3 قېتىم مەغلۇپ بولسا 60 سېكۇنت توختايدۇ؛ پەقەت بىرگە-بىر پاراڭدا ئىجرا بولىدۇ. مەغلۇپ بولسا جىمجىت چېكىنىپ، <strong>جاۋابىڭىزنى ھەرگىز توسمايدۇ</strong>.</p>
+<h2>چۈش كۆرۈش: رەتلەيدۇ، ئەمما توقۇلما چىقىرىدىغان يېرىمىنى قۇلۇپلىدىم</h2>
+<p>يۇقىرىقىلار كۈندىلىك ئىشلىتىشكە يېتىدۇ. ئەمما ئەسلەتمە <strong>توپلانغانسېرى پارچىلىنىدۇ</strong>: بۇ ھەپتە بىر تۈرنى ئۈچ قېتىم تىلغا ئالغان، بەش پارچە مايىللىق ئېيتقان بولۇشىڭىز مۇمكىن. ئۇلارنى دائىم بىر پاكىز گەپ ياكى مۇقىم شەخسىي ئارخىپقا رەتلەش كېرەك. بۇ «چۈش كۆرۈش»، ماقالە نامىمۇ شۇنىڭدىن كەلگەن. HexClaw نىڭ چۈش كۆرۈشى <strong>ئىككى باسقۇچلۇق</strong>؛ پەرقى قايسى قىسمىغا LLM تېگىدىغانلىقىدا.</p>
+<h3>يېنىك باسقۇچ: مېخانىكىلىق رەتلەش، LLM غا يول يوق</h3>
+<p>يېنىك باسقۇچ <code dir="ltr">reflect.go</code> دا پەقەت يۆتكەش ۋە بەلگىلەش قىلىدۇ: يېقىن تەكرارلارنى بىرلەشتۈرۈپ چىقىرىش، زىت تۈرلەرنى كۈچتىن قالدى دېيىش، كۆپ ئەسلەنگەنلەرنى دائىمىي قاتلامغا ئۆستۈرۈش، كونىلارنى ئارخىپلاش. ئارقىسىدا <code dir="ltr">lifecycle.go</code> دىكى ئېنىق <strong>ھاياتلىق دەۋرى ھالەت ماشىنىسى</strong> بار؛ بوسۇغىلار مۇقىم، LLM ئىشلىتىلمەيدۇ:</p>
+<section dir="ltr" style="overflow-x:auto"><code style="display:block;white-space:pre">被取代/失效        → 归档(可恢复,非删)
+检索条召回 ≥ 3 次   → 晋升常驻
+又旧又不重要        → 归档
+常驻偏好长期零召回   → 降级回检索
+pinned / 硬规则      → 永远不动</code></section>
+<p>ئاچقۇچى شۇكى، <strong>بۇ باسقۇچتا «ئاساسىي تېكىستنى قايتا يېزىش» ئىقتىدارى يوق</strong>. ئۇ پەقەت يۆتكەيدۇ ۋە بەلگىلەيدۇ، ئەسلەتمىنىڭ ھەقىقىي سۆزلىرىگە تېگەلمەيدۇ؛ شۇڭا <strong>توقۇلما چىقىرالمايدۇ</strong>. كۆپ ئەسلەنگەن پاكىت ئۆزلۈكىدىن دائىمىي قاتلامغا كۆتۈرۈلىدۇ، ئۇزاقتىن بېرى سورالمىغانلىرى تۆۋەنگە چۈشۈپ ئارخىپلىنىدۇ. پۈتۈن جەرياندا بىر قېتىممۇ مودېل چاقىرىش كېرەك ئەمەس، چاقىرىلمايدۇ.</p>
+<h3>چوڭقۇر باسقۇچ: LLM بىرىكتۈرىدۇ، ئەمما قەپەس ئىچىدە</h3>
+<p>چوڭقۇر باسقۇچ <code dir="ltr">dreaming.go</code> دالا LLM نى چاقىرىدۇ: ئۆزئارا مۇناسىۋەتلىك ۋە تەكرار پارچە ئەسلەتمىلەرنى بىر تۇتاش تۈرگە <strong>بىرىكتۈرىدۇ</strong>. بۇ ھەقىقەتەن چۈش كۆرۈشكە ئوخشايدىغان قىسىم، <strong>يېڭى تېكىست يارىتىشقا رۇخسەت قىلىنغان بىردىنبىر جاي</strong>. توقۇلما چىقىرىش ئېھتىمالى بولغاچقا، ئۇنىڭغا قاتتىق چەك قويۇلدى:</p>
+<ul>
+<li><strong>پەقەت ئىزدەپ ئەسلەش قاتلىمىغا تېگىدۇ، دائىمىي قاتلامغا تەگمەيدۇ.</strong> قائىدە، سالاھىيەت، pinned، كۆپ ئەسلەنگەن تۈرلەر، يەنى <bdi dir="ltr">≥ 3</bdi> قېتىم، ۋە ئىنتايىن يېڭى، تەخمىنەن <bdi dir="ltr">4.5</bdi> كۈن ئىچىدىكى تۈرلەر قاتلانمايدۇ. تەرەققىي قىلىۋاتقان ياكى ئەڭ مۇھىم نەرسە چۈش كۆرۈشتە ئۆزگەرمەيدۇ.</li>
+<li><strong>دائىرىسى چەكلىك.</strong> بىر ئايلانمىدا ئەڭ كۆپ 4 توپ بىرىكتۈرۈلىدۇ، ھەر توپتىن ئەڭ كۆپ 8 تۈر prompt غا كىرىدۇ. بىر كېچىدە پۈتۈن ئەسلەتمە ئامبىرىنى قايتا يېزىشقا يول قويۇلمايدۇ.</li>
+<li><strong>بىرىكتۈرگەندىمۇ قاپلىمايدۇ.</strong> يېڭى تۈر يەنىلا supersede ئارقىلىق تارىخنى ساقلايدۇ: كونىسىغا كۈچتىن قالدى دەپ بەلگە قويۇلىدۇ، قاتتىق ئۆچۈرۈلمەيدۇ، يېڭىسى كونىسىنى كۆرسىتىدۇ. چۈش كۆرۈش نېمىنى ئۆزگەرتتى، <code dir="ltr">git diff</code> بىلەن يەنىلا كۆرگىلى بولىدۇ.</li>
+<li><strong>prompt توقۇماسلىقنى ئېنىق بەلگىلەيدۇ.</strong> بىرىكتۈرۈش بۇيرۇقىدا بارلىق ئاچقۇچلۇق ئۇچۇرنى ساقلاش، پاكىتنى يوقاتماسلىق ۋە تىلغا ئېلىنمىغان نەرسىنى توقۇماسلىق تەلەپ قىلىنىدۇ.</li>
+</ul>
+<h3>قايتا قويۇش باسقۇچى ۋە پارچىلاردىن بىر «سىز»نى قۇراش</h3>
+<p>چوڭقۇر باسقۇچتىن باشقا يەنە ئىككى قەدەم بار. بىرى <strong>قايتا قويۇش باسقۇچى</strong>؛ ماتور قاتلىمىدا، ئىدىيەسى Claude Dreaming نىڭ «تارىخىي سۆھبەتنى قايتا قويۇشى»غا يېقىن: تۆۋەن چاستوتىدا كونا سۆھبەتلەرنى ۋاراقلاپ، ئۇ ۋاقىتتا توردا خاتىرىلەنمىگەن پاكىتلارنى تولۇقلايدۇ. ئىككىنچىسى <strong>شەخسىي ئارخىپ ئايرىپ چىقىرىش</strong>؛ <code dir="ltr">profile.go</code> دا سىز پارچە-پارچە ئېيتقان مايىللىق ۋە ئادەتلەر، مەسىلەن پەقەت يېرىم كېچىدە كۆرۈنۈش، دائىم ھاردىم دېيىش، گەپ ئاچسىلا Go دېيىش، بىر مۇقىم <strong>ئىشلەتكۈچى ئارخىپىغا</strong> ئايلاندۇرۇلۇپ دائىمىي قاتلامنىڭ ئۈستىگە قويۇلىدۇ. مەسىلەن «كۆپىنچە سەھەر سائەت 5 كىچە ئىشلەيدىغان ھارغىن ئىنژېنېر». ماقالە نامىدىكى «ئارخىپقا رەتلەش» شۇ. يېنىك باسقۇچ كۆپ، چوڭقۇر ۋە قايتا قويۇش باسقۇچلىرى ئاز ئىجرا بولىدۇ.</p>
+<h3>چۈش كۆرۈش Agent ئۈچۈن زادى نېمىنى ھەل قىلىدۇ؟</h3>
+<p>مېخانىزم ھەققىدە ئۇزۇن سۆزلىدۇق، ئەمدى ئەمەلىي پەرقنى ئېيتاي: چۈش كۆرىدىغان Agent بىلەن چۈش كۆرمەيدىغان Agent نىڭ پەرقى نېمە؟</p>
+<ul>
+<li><strong>ئەسلەتمە «ئەخلەت تارتمىسى»غا ئايلانمايدۇ.</strong> ئۇزاق ئىشلىتىلگەنچە پارچىلار كۆپىيىدۇ؛ رەتلەنمىسە شاۋقۇنغا تولۇپ، ئەسلەش توغرىلىقى تۆۋەنلەيدۇ. چۈش كۆرۈش قەرەللىك تەكرارنى چىقىرىدۇ، ئارخىپلايدۇ، بىرلەشتۈرىدۇ، دائىمىي قاتلام خامچوتى ۋە ئىزدەش كۆلچىكىنى ئىخچام ساقلايدۇ. OpenAI مۇ چۈش كۆرمىگەن ئەسلەتمىنى «junk drawer» دەپ تەسۋىرلىگەن.</li>
+<li><strong>پارچىلاردىن بىر «سىز» شەكىللىنىدۇ.</strong> بۈگۈن قېنىق رەڭنى ياخشى كۆرىدىغانلىقىڭىزنى ئېيتىسىز، ئەتىسى بىر رامكىنى سۆز كۆپ دەپ ياقتۇرمايسىز. ئايرىم كۆرگەندە پارچە، چۈش كۆرۈش ئۇلارنى مۇقىم ئارخىپقا ئايلاندۇرىدۇ؛ Agent كېيىن گەپ ئاچقاندا سىزنى چۈشىنىدىغان ئادەمگە ئوخشايدۇ، ھەر قېتىم نۆلدىن تونۇشمايدۇ.</li>
+<li><strong>ۋاقتى ئۆتكەن ئۇچۇر بىلەن جاۋاب بەرمەيدۇ.</strong> شەھەر ياكى تېخنىكا توپلىمىنى ئالماشتۇرسىڭىز، بىر نەرسىنى تاشلىسىڭىز، زىت كونا پاكىت كۈچتىن قالدى دەپ بەلگىلىنىدۇ؛ Agent نۆۋەتتە كۈچكە ئىگە تۈرنىلا ئالىدۇ.</li>
+<li><strong>سۆھبەتلەر ئارا ساۋاقنى ساقلايدۇ.</strong> قايتا قويۇش باسقۇچى كونا سۆھبەتلەرنى كۆرۈپ، «بۇ تۈردىكى ئىشتا دائىم قەيەردە يىقىلىمەن» دېگەن ئەندىزىنى ئايرىيدۇ. Harvey نىڭ دوكلاتىدا Claude Dreaming ئېچىلغاندىن كېيىن قايتا-قايتا مەغلۇپ بولغان قانۇن لايىھە يېزىش ۋەزىپىسىنىڭ تاماملىنىش نىسبىتى تەخمىنەن <strong>6 ھەسسە</strong> ئاشقان؛ Agent ئوخشاش خاتالىقنى ھەر قېتىم تەكرارلىمايدۇ.</li>
+<li><strong>شۇ چاغدا قالدۇرۇپ قويغاننى تولۇقلايدۇ.</strong> پاراڭلاشقاندا ئەسلەتمە تاقاق بولغان، ئاجىز مودېل ساقلىمىغان ياكى كونا سۆھبەتلەرنى ئىمپورت قىلغان بولۇشىڭىز مۇمكىن. قايتا قويۇش باسقۇچى بۇ قالغان پاكىتلارنى كېيىن تولۇقلايدۇ.</li>
+</ul>
+<blockquote>بىر جۈملە بىلەن ئېيتقاندا، <strong>چۈش كۆرۈش Agent ئۇزاق مۇددەتلىك ئەسلەتمىسىنىڭ «ئاسراش جەريانى»</strong>. ئۇ بولمىسا ئەسلەتمە پەقەت كۆپىيىپ، زىتلىق توپلىنىپ، ئارخىپ تارقىلىدۇ؛ Agent ئۇزاق ئىشلىتىلگەنچە قالايمىقانلىشىدۇ. ئۇ بولسا ئەسلەتمە ئىخچاملىشىدۇ، ئارخىپ توغرىلىنىدۇ، سۆھبەتلەر ئارا ئۆگىنىدۇ. شۇندىلا «ئىشلەتكەنسېرى سىزنى ياخشى چۈشىنىش» ھەققىدە سۆز قىلغىلى بولىدۇ.</blockquote>
+<p>قاچان ئىجرا بولىدۇ، سىز باشقۇرۇشىڭىز كېرەكمۇ؟ <strong>سۈكۈتتىكى ھالەتتە ئوچۇق</strong>، ئارقا سۇپىدا تۆۋەن چاستوتىدا ئىجرا بولۇپ كومپيۇتېرىڭىزنى دائىم ئاۋارە قىلمايدۇ. توقۇلما چىقىرىش ئېھتىمالى بار LLM بىرىكتۈرۈش باسقۇچىدا قوشۇمچە قوغداش بار: <strong>مودېلنى ئۆزىڭىز سەپلىگەندە ئاندىن ئېچىلىدۇ</strong>. سەپلىمىسىڭىز نۆل توقۇلمىلىق مېخانىكىلىق رەتلەشلا بولىدۇ، LLM ئەسلەتمىگە تەگمەيدۇ. ئۈستەل يۈزىگە خاس يەنە بىر نۇقتا: <strong>كومپيۇتېر تاقالسىمۇ قالمايدۇ؛ كېيىن ئېچىلغاندا ئاخىرقى قېتىمدىن يېتەرلىك ۋاقىت ئۆتكەن بولسا، ئاۋۋال كەم قالغان ئۇيقۇنى تولۇقلاپ</strong>، ئاندىن تۆۋەن چاستوتىدا داۋاملىشىدۇ. خالىمىسىڭىز ھەر ۋاقىت تاقىيالايسىز؛ «مودېل ئەسلەتمىنى ئۆزگەرتىش» قەدىمىنى «مودېلنى ئۆزىڭىز تەشەببۇسكارلىق بىلەن سەپلىشىڭىز كېرەك» دېگەن شەرتكە باغلىدىم، شۇڭا سۈكۈتتىكى ھالەت بىخەتەر.</p>
+<h2>قارار سىزنىڭ، بىخەتەرلىكمۇ بار</h2>
+<p><strong>ئاسان باشقۇرۇش</strong> <code dir="ltr">manage_memory.go</code> ئارقىلىق: «قېنىق تېمىنى ياخشى كۆرىدىغانلىقىمنى ئېسىڭدە تۇت»، «بايىقىنى ئۇنتۇ»، «بۇنىڭدىن كېيىن ماڭا خەنزۇچە جاۋاب بەر» دېسىڭىز، مودېل قوشىدۇ، ئۆزگەرتىدۇ، ئۆچۈرىدۇ ياكى ئۈستىگە قويىدۇ. پاراڭدا نېمىنى ساقلاش كېرەكلىكىنىمۇ ئۆزى باھالايدۇ. ئەمما ئىككى سىزىق ئۆزگەرمەيدۇ: <strong>كىنىشكا ئەسلەتمىگە ھەرگىز كىرمەيدۇ</strong>. مەزمۇن پارول ياكى مەخپىي ئاچقۇچقا ئوخشىسا بىۋاسىتە رەت قىلىنىپ، شىفىرلانغان ئۇلىنىش مەركىزىگە يوللىنىدۇ. بارلىق يېزىش <strong>ئوخشاش يەككە يازغۇچ، تەكرارنى چىقىرىش ۋە تارىخ ساقلاش قائىدىسىدىن</strong> ئۆتىدۇ. AI ئۆزى ساقلىغان، سىز قولدا ئۆزگەرتكەن ياكى كېچىدە چۈش كۆرۈپ رەتلىگەن بولسۇن، ھېچقايسىسى بۇ قائىدىدىن ھالقىيالمايدۇ.</p>
+<hr>
+<p>«تۇرۇشلۇق جاي» ئەسلەتمىسىنىڭ ئۆمرى مۇشۇ يەردە تاماملاندى: ئۇ يوشۇرۇن ئىزاھلىق بىر قۇر Markdown غا ساقلىنىدۇ، پىكىر ئۆزگەرگەندە ئۆچۈرۈلمەي <strong>كۈچتىن قالدى دەپ بەلگىلىنىدۇ</strong>، <strong>ئۈچ ئۆلچەملىك نومۇر</strong> بىلەن ئەسلىتىلىدۇ، كېچىدە <strong>ئىككى باسقۇچلۇق چۈش كۆرۈش</strong> ئارقىلىق ئارخىپقا رەتلىنىدۇ. باشتىن-ئاخىر ئۇنى <code dir="ltr">cat</code> بىلەن كۆرەلەيسىز، <code dir="ltr">git diff</code> بىلەن سېلىشتۇرالايسىز ۋە بىر جۈملە بىلەن ئۆزگەرتەلەيسىز.</p>
+<p>ئادىل بىر گەپنىمۇ ئېيتىشىم كېرەك: ماقالە نامىدىكى «ئۇلارنىڭ چۈشى بۇلۇتتا» دېگەن سۆز تولۇق توغرا ئەمەس. Claude Code نىڭ Auto Dream مۇ <strong>يەرلىك</strong> ھۆججەتلەرنى رەتلەيدۇ. HexClaw نىڭ ھەقىقىي پەرقى ئۈچ نۇقتىنىڭ بىرلىكىدە: چۈش كۆرۈش <strong>لوگىكىسى ئوچۇق كود</strong>، ئوقۇيالايسىز؛ ھېسابلاشنى <strong>پۈتۈنلەي يەرلىكتە</strong> ئىجرا قىلغىلى بولىدۇ، Ollama ئۇلىسىڭىز ئەسلەتمىنى رەتلىگەندىمۇ باشقىلارغا يوللاش ھاجەتسىز؛ پۈتۈن جەريان ئاددىي تېكىست بولۇپ، <strong>git بىلەن كەينىگە ياندۇرغىلى بولىدۇ</strong>. ھەر بىرىنى ئايرىم ئالساق بىردىنبىر ئەمەس، بىرلەشكەندىلا پەرق چىقىدۇ. بۇ ماقالىدە HexClaw ئۈچۈن ھېچقانداق benchmark نەتىجىسى ئېلان قىلمىدىم: يۇقىرىدا تىلغا ئېلىنغان ChatGPT نىڭ <bdi dir="ltr">82.8%</bdi> ى بىلەن Harvey نىڭ 6 ھەسسىسى ئۇلارنىڭ ئاشكارا نەتىجىسى. HexClaw ئۈچۈن پەقەت مېخانىزم بىلەن تۇراقلىق قىممەتنى كۆرسەتتىم؛ سېلىشتۇرما باھالاش قىلمىغاچقا ئەمەلىي ئۆلچەش سانىنى توقۇمىدىم.</p>
+<p>سىز ئۇخلاۋاتقاندا، ئۇ كۈندۈزى ئېيتقان پارچە گەپلەرنى سىزنى تېخىمۇ چۈشىنىدىغان ئارخىپقا رەتلەيدۇ. بۇ «چۈش» بۇلۇتتا ئەمەس، ئۆز كومپيۇتېرىڭىزدىكى قەغەزدە، ھەر بىر قۇرىنى ۋاراقلىغىلى بولىدۇ.</p>
+<p>بۇ ماقالە پەقەت <strong>ئەسلەتمە</strong>، يەنى ئۆزى ئۆگىنىپ، ئۆزى رەتلەيدىغان «ئىككىنچى مېڭە»نىڭ يېرىمىنى سۆزلىدى. يەنە يېرىمى سىز تەشەببۇسكارلىق بىلەن بەرگەن ماتېرىيال، ھۆججەت ۋە مەنبە كود، يەنى <strong>بىلىم ئامبىرى</strong>. بۇ ئىككىسى ئوخشاش يەرلىك ئىزدەش ئاساسىنى ئورتاق ئىشلىتىدۇ، ئەمما پۈتۈنلەي ئوخشىمايدىغان ئىككى خىل «ئەستە تۇتۇش»قا ئايلاندى: ئەسلەتمە چۈش كۆرىدۇ، بىلىم ئامبىرى كۆرمەيدۇ. بۇ كېيىنكى ماقالىنىڭ تېمىسى.</p>
+<hr>
+<h3>ئىلگىرىكى HexClaw ماقالىلىرى</h3>
+<ul>
+<li><a href="https://mp.weixin.qq.com/s/EvQT0VqH9ep6LXo89ZM-fw">ئالدىنقى ماقالە: «تور ئىش كۈچى»نى تەربىيەلەش</a> — بىر جۈملىنى ئۆزلۈكىدىن ئەسلىگە كېلەلەيدىغان sandbox سكرىپتىغا تۈزۈپ، ھەپتىسىگە 7 كۈن، كۈنىگە 24 سائەت ۋاقىت بويىچە ئىشلەش.</li>
+<li><a href="https://mp.weixin.qq.com/s/CuVTbUv2kJRePybo_MudYA">OpenClaw / Hermes بىلەن سېلىشتۇرۇش</a> — 2026-يىلىدىكى يەرلىك AI Agent نىڭ ئۈچ يولى.</li>
+<li><a href="https://mp.weixin.qq.com/s/1rza-Ye3NF89KNAJp_PttA">Claude Code SOP</a> — لايىھە يېتەكچىلىكى، سىناقنىڭ يېپىق ھالقىسى ۋە كۆپ Agent ھەمكارلىقى.</li>
+<li><a href="https://mp.weixin.qq.com/s/wIRiJsWLRPWBiTEQtlVQkg">قۇرۇلما تەپسىلاتى</a> — بىر ئادەم، Claude ۋە 5 ئاي؛ Go بىلەن نۆلدىن ئالتە ئامبار قۇرۇش.</li>
+<li><a href="https://mp.weixin.qq.com/s/RX-2QOSV2cBEmddwAUj5cg">يەرلىك پىكىر يۈرگۈزۈش مودېللىرىنى تولۇق ئۇلاش</a> — Qwen 3.5 / Gemma 4 / DeepSeek-R1 نىڭ ئاخىرقى بىر مۇساپىسى.</li>
+</ul>
+<hr>
+<h3>پايدىلانغان مەنبەلەر</h3>
+<ul>
+<li>OpenAI · <a href="https://openai.com/index/chatgpt-memory-dreaming/">Dreaming: تېخىمۇ پايدىلىق ChatGPT ئۈچۈن تېخىمۇ ياخشى ئەسلەتمە</a><br><span dir="ltr">openai.com/index/chatgpt-memory-dreaming/</span></li>
+<li>TechTimes · <a href="https://www.techtimes.com/articles/317840/20260605/chatgpt-memory-dreaming-update-openai-rewrites-personalization-engine-limits-audit-trail.htm">ChatGPT ئەسلەتمە چۈش كۆرۈش يېڭىلىنىشى: خاسلاشتۇرۇش ماتورىنى قايتا يېزىش ۋە تەكشۈرۈش ئىزىنىڭ چەكلىنىشى</a><br><span dir="ltr">techtimes.com/articles/317840</span></li>
+<li>Claude Platform Docs · <a href="https://platform.claude.com/docs/en/managed-agents/dreams">Dreams، باشقۇرۇلىدىغان Agent لار</a><br><span dir="ltr">platform.claude.com/docs/en/managed-agents/dreams</span></li>
+<li><a href="https://decodethefuture.org/en/claude-code-auto-dream-explained/">Claude Code Auto Dream چۈشەندۈرۈلۈشى: REM ئۇيقۇسىغا ئوخشاش ئەسلەتمە</a><br><span dir="ltr">decodethefuture.org/en/claude-code-auto-dream-explained</span></li>
+<li><a href="https://www.grandlinux.com/en/blogs/claude-dreaming.html">Claude Dreaming: AI «چۈش كۆرۈش»نى باشلىغاندا، نېمىشقا تېخىمۇ كۆپ توقۇلما چىقىرىشى مۇمكىن؟</a><br><span dir="ltr">grandlinux.com/en/blogs/claude-dreaming.html</span></li>
+<li>لايىھە مەنبەسى · <a href="https://arxiv.org/abs/2304.03442">Generative Agents: ئىنسان ھەرىكىتىنىڭ ئۆزئارا تەسىرلىك تەقلىدى، Park قاتارلىقلار، 2023 — recency × importance × relevance ئۈچ ئۆلچەملىك نومۇرنىڭ مەنبەسى</a><br><span dir="ltr">arxiv.org/abs/2304.03442</span></li>
+</ul>
+<p>ماقالىدىكى مېخانىزم ۋە تۇراقلىق قىممەت HexClaw memory تارماق سىستېمىسىنىڭ يۇقىرى ئېقىم مەنبە كودىغا ئاساسلانغان؛ تەكشۈرۈلگەن ۋاقىت <bdi dir="ltr">2026-06-27</bdi>. ئوخشاش سىستېما ۋە لايىھە ھەققىدىكى ئۇچۇرلار يۇقىرىدىكى ئاشكارا مەنبەلەردىن ئېلىنغان.</p>
+<hr>
+<p class="blog-brand-footer" data-blog-brand-footer="ug" data-blog-brand-overrides="{}" style="text-align: center; color: var(--article-muted, #7b8fa3); font-size: 13px; margin: 16px 0 0; line-height: 2;">
+<strong style="color: var(--article-ink, #12324c); font-size: 14px;">HexClaw ھېشى AI</strong><br/>
+يەرلىكتە ياكى بۇلۇتتا ئورۇنلاشتۇرۇش · سانلىق مەلۇماتنى ئۆزىڭىز باشقۇرۇش · ئوچۇق كودلۇق ۋە ھەقسىز يۇمشاق دېتال<br/>
+<a href="https://hexclaw.net" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">تور بېكەت: <bdi dir="ltr">hexclaw.net</bdi></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://github.com/hexagon-codes" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">GitHub: <bdi dir="ltr">hexagon-codes</bdi></a><br/>
+<a href="https://weibo.com/u/4097207240" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">Weibo: <bdi dir="ltr">@HexClaw</bdi></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">X: <bdi dir="ltr">@hexclawapp</bdi></a><br/>
+<a href="mailto:ai@hexclaw.net" style="color: var(--article-muted, #999); text-decoration: none;">ئېلخەت: <bdi dir="ltr">ai@hexclaw.net</bdi></a>
+</p>
+    </article>
+
+
+
+    <nav class="blog-series-nav" aria-label="ئالدىنقى ۋە كېيىنكى ماقالە">
+      <a href="/ug/blog/loop-engineering" class="blog-nav-card prev">
+  <span class="blog-nav-label">&larr; ئالدىنقى ماقالە</span>
+  <span class="blog-nav-title">HexClaw نىڭ Loop Engineering ى: ئوچۇق كودلۇق Agent نى ئېچىپ، Prompt تىن Loop قىچە تۆت ئەندىزىنى قاتلاممۇقاتلام سېلىشتۇرۇش</span>
+</a>
+      <a href="/ug/blog/cyber-niuma-cron-sandbox" class="blog-nav-card next">
+  <span class="blog-nav-label">كېيىنكى ماقالە &rarr;</span>
+  <span class="blog-nav-title">HexClaw نىڭ «تور ئىش كۈچى»: بىر جۈملىنى ئۆزلۈكىدىن ئەسلىگە كېلىدىغان sandbox سكرىپتىغا تۈزۈپ، 7×24 سىز ئۈچۈن ئىشلىتىش</span>
+</a>
+    </nav>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-main">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-col-title">مەھسۇلات</div>
+        <a href="/ug/#download">ئۈستەلئۈستى نۇسخىسىنى چۈشۈرۈش</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="/ug/changelog">يېڭىلىنىش خاتىرىسى</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">ئىجادكار</div>
+        <a href="/ug/docs/">ھۆججەتلەر مەركىزى</a>
+        <a href="/ug/blog/">تېخنىكا بىلوگى</a>
+        <a href="/ug/docs/getting-started">تېز باشلاش</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">Apache-2.0</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">جامائەت</div>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/issues" target="_blank" rel="noopener noreferrer">Issues</a>
+        <a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer">Twitter / X</a>
+        <a href="mailto:ai@hexclaw.net">بىز بىلەن ئالاقىلىشىش</a>
+        <a href="mailto:support@hexclaw.net">سوئال-پىكىر</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">ھەققىدە</div>
+        <a href="/ug/about">بىز ھەققىدە</a>
+        <a href="/ug/privacy">شەخسىيەت سىياسىتى</a>
+        <a href="/ug/terms">ئىشلىتىش شەرتلىرى</a>
+        <a href="/ug/third-party-ai-services">ئۈچىنچى تەرەپ AI مۇلازىمىتى</a>
+      </div>
+    </div>
+    <div class="footer-wechat">
+      <img width="430" height="430" loading="lazy" decoding="async" src="../../assets/brand/wechat-qr.jpg" alt="HexClaw ۋېيشىن رەسمىي ھېسابات QR كودى">
+      <span class="footer-wechat-label">ۋېيشىن رەسمىي ھېساباتى</span>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">&copy; 2025&ndash;2026 hexagon-codes</span>
+  </div>
+</footer>
+<script src="../../assets/js/theme.js?v=2e4a1828feef"></script>
+<script src="../../assets/js/docs-nav.js?v=5a103861aec2"></script>
+<button type="button" class="back-to-top" id="backToTop" aria-label="ئۈستىگە قايتىش" title="ئۈستىگە قايتىش">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg>
+  <span>ئۈستىگە</span>
+</button>
+
+<script src="../../assets/js/blog.js?v=c72e1db5a6ec"></script>
+</body>
+</html>

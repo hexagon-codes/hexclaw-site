@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="ug" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/favicon-32.png">
+<title>HexClaw AI تولۇق قوللانمىسى: 5 مىنۇتتا نۆلدىن باشلاپ سىزگە ئىش قىلىدىغان يەرلىك AI Agent غىچە(مودېل تاللاش تەۋسىيەلىرى بىلەن)｜HexClaw تېخنىكا بىلوگى</title>
+<meta name="description" content="يەرلىك Ollama ياكى بۇلۇت API نى نۆلدىن سەپلەش، Agent ياردەمچى قۇرۇش، بىلىم ئامبىرى ۋە Skill يۈكلەش. 5 مىنۇتتا ئۆزىڭىزگە تەۋە شەخسىي ئۈستەل يۈزى AI ياردەمچىسىنى باشلاڭ.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:site_name" content="HexClaw">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HexClaw AI تولۇق قوللانمىسى: 5 مىنۇتتا نۆلدىن باشلاپ سىزگە ئىش قىلىدىغان يەرلىك AI Agent غىچە(مودېل تاللاش تەۋسىيەلىرى بىلەن)｜HexClaw تېخنىكا بىلوگى">
+<meta property="og:description" content="يەرلىك Ollama ياكى بۇلۇت API نى نۆلدىن سەپلەش، Agent ياردەمچى قۇرۇش، بىلىم ئامبىرى ۋە Skill يۈكلەش. 5 مىنۇتتا ئۆزىڭىزگە تەۋە شەخسىي ئۈستەل يۈزى AI ياردەمچىسىنى باشلاڭ.">
+<meta property="og:url" content="https://hexclaw.net/ug/blog/hexclaw-user-guide">
+<meta property="og:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta property="og:image:alt" content="HexClaw بەلگىسى">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta property="og:locale" content="ug_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="HexClaw AI تولۇق قوللانمىسى: 5 مىنۇتتا نۆلدىن باشلاپ سىزگە ئىش قىلىدىغان يەرلىك AI Agent غىچە(مودېل تاللاش تەۋسىيەلىرى بىلەن)｜HexClaw تېخنىكا بىلوگى">
+<meta name="twitter:description" content="يەرلىك Ollama ياكى بۇلۇت API نى نۆلدىن سەپلەش، Agent ياردەمچى قۇرۇش، بىلىم ئامبىرى ۋە Skill يۈكلەش. 5 مىنۇتتا ئۆزىڭىزگە تەۋە شەخسىي ئۈستەل يۈزى AI ياردەمچىسىنى باشلاڭ.">
+<meta name="twitter:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta name="twitter:image:alt" content="HexClaw بەلگىسى">
+<link rel="canonical" href="https://hexclaw.net/ug/blog/hexclaw-user-guide">
+<link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/hexclaw-user-guide">
+<link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/hexclaw-user-guide">
+<link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/hexclaw-user-guide">
+<link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/hexclaw-user-guide">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "HexClaw AI تولۇق قوللانمىسى: 5 مىنۇتتا نۆلدىن باشلاپ سىزگە ئىش قىلىدىغان يەرلىك AI Agent غىچە (مودېل تاللاش تەۋسىيەلىرى بىلەن)",
+  "description": "يەرلىك Ollama ياكى بۇلۇت API نى نۆلدىن سەپلەش، Agent ياردەمچى قۇرۇش، بىلىم ئامبىرى ۋە Skill يۈكلەش. 5 مىنۇتتا ئۆزىڭىزگە تەۋە شەخسىي ئۈستەل يۈزى AI ياردەمچىسىنى باشلاڭ.",
+  "url": "https://hexclaw.net/ug/blog/hexclaw-user-guide",
+  "inLanguage": "ug",
+  "datePublished": "2026-04-12",
+  "image": "https://hexclaw.net/assets/brand/hexclaw-logo.png",
+  "publisher": {
+    "@type": "Organization",
+    "name": "hexagon-codes",
+    "url": "https://hexclaw.net/",
+    "@id": "https://hexclaw.net/#organization"
+  },
+  "@id": "https://hexclaw.net/ug/blog/hexclaw-user-guide#article"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "HexClaw", "item": "https://hexclaw.net/ug/"},
+    {"@type": "ListItem", "position": 2, "name": "تېخنىكا بىلوگى", "item": "https://hexclaw.net/ug/blog/"},
+    {"@type": "ListItem", "position": 3, "name": "HexClaw AI تولۇق قوللانمىسى: 5 مىنۇتتا نۆلدىن باشلاپ سىزگە ئىش قىلىدىغان يەرلىك AI Agent غىچە (مودېل تاللاش تەۋسىيەلىرى بىلەن)", "item": "https://hexclaw.net/ug/blog/hexclaw-user-guide"}
+  ],
+  "@id": "https://hexclaw.net/ug/blog/hexclaw-user-guide#breadcrumb"
+}
+</script>
+<link rel="stylesheet" href="../../assets/css/docs-eb2895dd79c5.css">
+<link rel="stylesheet" href="../../assets/css/blog-a8e5008ac3d1.css">
+</head>
+<body class="blog-page blog-article-page">
+<a href="#main" class="skip-link">ئاساسىي مەزمۇنغا ئۆتۈش</a>
+<nav class="tn topnav" id="nav">
+  <a href="/ug/" class="tn-b topnav-brand"><img width="72" height="72" src="../../assets/brand/hexclaw-icon-72.png" class="tn-l topnav-logo" alt="ھېشى AI"><span class="tn-n topnav-name">ھېشى AI</span></a>
+  <button type="button" class="tn-burger topnav-burger" aria-label="تىزىملىك" aria-expanded="false" aria-controls="primary-navigation"><span></span><span></span><span></span></button><div class="tn-r topnav-links" id="primary-navigation"><a href="/ug/">باش بەت</a><a href="/ug/#cases">ئىشلىتىش كۆرۈنۈشلىرى</a><a href="/ug/#features">ئىقتىدارلار</a><a href="/ug/#quickstart">باشلاش</a><a href="/ug/#ecosystem">ئوچۇق ئېكولوگىيە</a><a href="/ug/blog/" class="is-active">تېخنىكا بىلوگى</a><a href="/ug/docs/">ھۆججەتلەر مەركىزى</a><div class="lang-menu" data-lang-menu><button type="button" class="lang-trigger" aria-haspopup="menu" aria-expanded="false" aria-label="تىل ئالماشتۇرۇش"><svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 0 20"></path><path d="M12 2a15.3 15.3 0 0 0 0 20"></path></svg><span class="lang-current" lang="zh-CN" dir="ltr">维吾尔语</span><svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="lang-menu-list" role="menu"><a href="/zh/blog/hexclaw-user-guide" role="menuitem">中文</a><a href="/en/blog/hexclaw-user-guide" role="menuitem">English</a><a href="/ug/blog/hexclaw-user-guide" role="menuitem" class="is-active" aria-current="true" lang="zh-CN" dir="ltr">维吾尔语</a></div></div><button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="ئۇسلۇب ئالماشتۇرۇش"><svg class="ti-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="ti-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="nav-cta">GitHub <span class="nav-star-badge" id="gh-stars">&#9733;</span></a></div>
+</nav>
+
+<main id="main" class="blog-main">
+  <div class="blog-article-container">
+    <nav class="blog-breadcrumb" aria-label="يول باشلاش">
+      <a href="/ug/">باش بەت</a>
+      <span class="blog-breadcrumb-sep">/</span>
+      <a href="/ug/blog/">تېخنىكا بىلوگى</a>
+      <span class="blog-breadcrumb-sep">/</span>
+      <span aria-current="page">ئەمەلىي سىنارىيە ۋە قوللىنىش</span>
+    </nav>
+
+    <header class="blog-header">
+      <div class="blog-header-tags">
+        <span class="blog-badge-series">تولۇق باشلاش قوللانمىسى</span>
+      </div>
+      <h1 class="blog-article-title">HexClaw AI تولۇق قوللانمىسى: 5 مىنۇتتا نۆلدىن باشلاپ سىزگە ئىش قىلىدىغان يەرلىك AI Agent غىچە<span class="u-nobr">(مودېل تاللاش تەۋسىيەلىرى بىلەن)</span></h1>
+      <p class="blog-article-subtitle">يەرلىك Ollama ياكى بۇلۇت API نى نۆلدىن سەپلەش، Agent ياردەمچى قۇرۇش، بىلىم ئامبىرى ۋە Skill يۈكلەش. 5 مىنۇتتا ئۆزىڭىزگە تەۋە شەخسىي ئۈستەل يۈزى AI ياردەمچىسىنى باشلاڭ.</p>
+      <div class="article-provenance-banner">
+        <div class="provenance-left">
+          <span class="provenance-origin-badge">تۇنجى نەشرى WeChat تا</span>
+          <span class="provenance-text">بۇ ماقالە تۇنجى قېتىم WeChat ئاممىۋى ھېساباتى <strong>「hexclaw」</strong> (ID: hexclaw) نىڭ رەسمىي تېخنىكا سەھىپىسىدە ئېلان قىلىنغان · ۋاقتى: <strong>2026-يىلى 4-ئاينىڭ 12-كۈنى</strong> · ئوقۇش ۋاقتى تەخمىنەن 10 مىنۇت</span>
+        </div>
+        <a href="https://mp.weixin.qq.com/s/PdJRKkH4qiBS-IZBifbuag" target="_blank" rel="noopener noreferrer" class="provenance-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>WeChat تىكى ئەسلى ماقالە ↗</a>
+      </div>
+    </header>
+
+    <article class="blog-content">
+      <p style="margin: 16px 0;">ئالدىنقى ماقالىدە HexClaw AI نىڭ ئالتە ئامبىرىنى ئايرىپ، تۆۋەنكى رامكىدىن ئۈستەل يۈزى خېرىدارىغىچە ئارخىتېكتۇرىنى قاتلاممۇقاتلام چۈشەندۈرگەن ئىدۇق.</p>
+
+<p style="margin: 8px 0;">ئارخىتېكتۇرىنى چۈشەنگەن بىلەن، مەھسۇلاتنىڭ قولايلىق ياكى ئەمەسلىكىنى ئۆز قولىمىز بىلەن ئىشلىتىپ باقماي بىلگىلى بولمايدۇ. بۇ ماقالە <strong style="color:var(--article-accent, #3f8fd4);">پرىنسىپنى ئەمەس، پەقەت مەشغۇلاتنى چۈشەندۈرىدۇ</strong> — قاچىلاشتىن AI غا ھۆججەت ئوقۇتۇش، بىلىم ئامبىرىدىن ئىزدەش، Feishu غا ئۇلاشقىچە 5 مىنۇتتا بىر قېتىم ئۆتۈپ چىقىمىز.</p>
+
+<p style="margin: 8px 0;">ئوقۇپ بولغاندا، كومپيۇتېرىڭىزدا ئىجرا بولىدىغان AI Agent غا ئىگە بولىسىز: سانلىق مەلۇمات كومپيۇتېردىن چىقمايدۇ، ھەقسىز، ئوچۇق كودلۇق.</p>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 32px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">قاچىلاش: بىر قۇر بۇيرۇق</h2>
+
+<p style="margin: 8px 0; text-align: center; background:var(--article-panel, #f4fbff); padding: 10px 16px; border-radius: 8px; font-size: 14px; color:var(--article-secondary, #3f5f7b);">رەسمىي تور بېكەتتىن چۈشۈرۈش: <strong style="color:var(--article-accent, #3f8fd4);">hexclaw.net</strong>(توركۆرگۈچكە كۆچۈرۈپ ئېچىڭ؛ macOS / Windows / Linux نىڭ ھەممىسىنى قوللايدۇ)</p>
+
+<p style="margin: 8px 0;"><strong style="color:var(--article-accent, #3f8fd4);">macOS：</strong></p>
+
+<p style="background: #1a2332; color: #d6e4f0; padding: 14px 16px; border-radius: 8px; font-size: 13px; line-height: 1.6; font-family: 'SF Mono', Menlo, Monaco, monospace; margin: 10px 0; overflow-x: auto;">brew tap hexagon-codes/tap && brew install --cask hexclaw</p>
+
+<p style="margin: 8px 0;">Homebrew قاچىلانمىغانمۇ؟ curl ئىشلىتىڭ:</p>
+
+<p style="background: #1a2332; color: #d6e4f0; padding: 14px 16px; border-radius: 8px; font-size: 13px; line-height: 1.6; font-family: 'SF Mono', Menlo, Monaco, monospace; margin: 10px 0; overflow-x: auto;">curl -fsSL https://raw.githubusercontent.com/hexagon-codes/hexclaw-desktop/main/install.sh | bash</p>
+
+<p style="margin: 8px 0;"><strong style="color:var(--article-accent, #3f8fd4);">Windows / Linux：</strong> <strong style="color:var(--article-accent, #3f8fd4);">hexclaw.net</strong> بېتىدىن ماس قاچىلاش بوغچىسىنى (.exe / .deb / .AppImage) چۈشۈرۈپ، قوش چېكىپ قاچىلاڭ.</p>
+
+<p style="margin: 8px 0;">قاچىلىغاندىن كېيىن HexClaw AI نى ئاچسىڭىز، سەپلىمە يېتەكچىسى چىقىدۇ. ئۈچ باسقۇچ، 30 سېكۇنتتا تامام.</p>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">سەپلەشتىن تۇنجى سۆھبەتكىچە</h2>
+
+<p style="margin: 8px 0;"><strong style="color:var(--article-accent, #3f8fd4);">مودېل تاللاڭ. </strong>HexClaw AI، OpenAI، DeepSeek، Zhipu، Qwen ۋە Ollama يەرلىك مودېللىرىنى قوللايدۇ. API Key نى كىرگۈزۈپ، «测试连接» (ئۇلىنىشنى سىناش) نى چېكىڭ؛ مۇۋەپپەقىيەتلىك ئۆتسە بولدى.</p>
+
+<figure><img src="../../assets/blog/setup-1.png" alt="" width="2560" height="1570" loading="lazy" decoding="async"></figure>
+
+<p style="margin: 8px 0;"><strong style="color:var(--article-accent, #3f8fd4);">رول تاللاڭ. </strong>ئومۇمىي ياردەمچى، كود ياردەمچىسى، يېزىقچىلىق ياردەمچىسى — بۇ AI نىڭ سۈكۈتتىكى مىجەزىنى بەلگىلەيدۇ؛ كېيىن خالىغان ۋاقىتتا ئالماشتۇرالايسىز.</p>
+
+<figure><img src="../../assets/blog/setup-2.png" alt="" width="2560" height="1570" loading="lazy" decoding="async"></figure>
+
+<p style="margin: 8px 0;"><strong style="color:var(--article-accent, #3f8fd4);">جەزملەپ باشلاڭ. </strong>سەپلىمە خۇلاسىسىنى تەكشۈرۈپ، «开始使用» (ئىشلىتىشنى باشلاش) نى چېكىڭ.</p>
+
+<figure><img src="../../assets/blog/setup-3.png" alt="" width="2560" height="1570" loading="lazy" decoding="async"></figure>
+
+<p style="margin: 8px 0;">ئاساسىي كۆرۈنمە يۈزىگە كىرگەندە، ئومۇمىي كۆرۈنۈش بېتىدە ئىشلىتىش سانلىق مەلۇماتى ۋە كۆپ ئىشلىتىلىدىغان خىزمەت ئېقىملىرى كۆرۈنىدۇ:</p>
+
+<figure><img src="../../assets/blog/dashboard.png" alt="" width="2560" height="1570" loading="lazy" decoding="async"></figure>
+
+<p style="margin: 8px 0;">سەپلىمە تەييار بولسا، بىۋاسىتە پاراڭلىشىڭ. پاراڭ بېتىنى ئاچسىڭىز، كىچىك قىسقۇچپاقا ئالدى بىلەن سالام بېرىدۇ:</p>
+
+<figure><img src="../../assets/blog/012.png" alt="" width="2560" height="1588" loading="lazy" decoding="async"></figure>
+
+<p style="margin: 8px 0;">مەن <strong style="color:var(--article-accent, #3f8fd4);">«خاڭجۇ تاماقلىرىنى قانداق يېيىش توغرا؟»</strong> دەپ سورىدىم. كىچىك قىسقۇچپاقا بىلىم ئامبىرىدىكى ھۆججەتلەرنى ئاپتوماتىك ئىزدەپ، نەقىل مەنبەسى بار جاۋاب بەردى:</p>
+
+<figure><img src="../../assets/blog/001.png" alt="" width="2560" height="1584" loading="lazy" decoding="async"></figure>
+
+<p style="margin: 8px 0;">پاراڭ رامكىسىنىڭ ئاستىغا قاراڭ: <strong style="color:var(--article-accent, #3f8fd4);">مودېل بەلگىسى</strong> ھازىر <code dir="ltr" style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">qwen3.5:9b</code> (يەرلىك مودېل) ئىشلىتىلىۋاتقانلىقىنى كۆرسىتىدۇ؛ چېكىپ ئالماشتۇرغىلى بولىدۇ؛ <strong style="color:var(--article-accent, #3f8fd4);">چوڭقۇر پىكىر يۈرگۈزۈش</strong> ئالماشتۇرغۇچىسى مودېلنى ئالدى بىلەن پىكىر يۈرگۈزۈپ ئاندىن جاۋاب بېرىشكە قويىدۇ؛ <strong style="color:var(--article-accent, #3f8fd4);">قەغەز قىسقۇچ بەلگىسى</strong> ئارقىلىق سۈرەت ۋە PDF يۈكلەپ، AI غا بىۋاسىتە ئوقۇتۇپ تەھلىل قىلدۇرغىلى بولىدۇ.</p>
+
+<p style="margin: 8px 0;">تۇنجى ئۇچۇرنى ئەۋەتكەن ھامان ئىشلىتىش باشلانغان بولىدۇ. لېكىن پاراڭ پەقەت باشلىنىش؛ HexClaw AI نىڭ ئەڭ قىزىقارلىق يېرى، ئۇنىڭ سىزگە <strong style="color:var(--article-accent, #3f8fd4);">ھەقىقىي ئىش قىلىپ بېرىشى</strong>。</p>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">قورال چاقىرىش: AI پەقەت ئېغىزدا سۆزلىمەيدۇ</h2>
+
+<p style="margin: 8px 0;">مەن «hexclaw مۇندەرىجەمدە قانداق ھۆججەتلەر بار؟» دەپ سورىدىم؛ كىچىك قىسقۇچپاقا <code dir="ltr" style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">list_directory</code> قورالىنى چاقىرىپ، ھەقىقىي يەرلىك ھۆججەت سىستېمىسىنى ئوقۇدى:</p>
+
+<figure><img src="../../assets/blog/002.png" alt="" width="2560" height="1584" loading="lazy" decoding="async"></figure>
+
+<p style="margin: 8px 0;">بۇ توقۇلما ئەمەس، ھەقىقىي ئوقۇلغان نەتىجە. قورال چاقىرىش نەتىجىسى ئۇچۇر ئاستىدا يىغىق كۆرسىتىلىدۇ؛ كېڭەيتسىڭىز تولۇق مەزمۇننى كۆرەلەيسىز.</p>
+
+<p style="margin: 8px 0;">قورال چاقىرىشنىڭ ئارقىسىدىكى مېخانىزم <strong style="color:var(--article-accent, #3f8fd4);">MCP</strong> (Model Context Protocol) دەپ ئاتىلىدۇ. ئۇنى <strong style="color:var(--article-accent, #3f8fd4);">ھەممىباب USB ماسلاشتۇرغۇچ</strong> دەپ تەسەۋۋۇر قىلسىڭىز بولىدۇ: AI ھۆججەت سىستېمىسىنى مەشغۇلات قىلماقچى بولسا filesystem ماسلاشتۇرغۇچىنى، ساندان ئىزدىمەكچى بولسا database ماسلاشتۇرغۇچىنى چېتىدۇ. HexClaw AI، MCP نى ئەسلىدىن قوللايدۇ؛ سەپلىسىڭىزلا ئىشلىتىدۇ، كود يېزىش كېرەك ئەمەس.</p>
+
+<p style="margin: 8px 0;">پۈتكۈل جەريان ئاپتوماتىك: سىز ئۇچۇر ئەۋەتىسىز → LLM قايسى قورالنى چاقىرىشنى بەلگىلەيدۇ → ماتور تەلەپنى ماس MCP Server غا يوللايدۇ → ئىجرا نەتىجىسى قايتىدۇ → LLM نەتىجىگە ئاساسەن جاۋاب ھاسىل قىلىدۇ. بىر قەدەم يېتەرلىك بولمىسا، ھالقا داۋاملىشىدۇ: ئالدى بىلەن ئىزدەيدۇ، ئاندىن ئوقۇيدۇ، ئاخىرى خۇلاسىلەيدۇ؛ ئاخىرقى جاۋاب چىققۇچە ئارقا-ئارقىدىن چاقىرىدۇ. بۇ ئالدىنقى ئارخىتېكتۇرا سۈرىتىدىكى <strong style="color:var(--article-accent, #3f8fd4);">ReAct قورال ھالقىسى</strong>。</p>
+
+<p style="margin: 8px 0;">ئاندىن مەن يەنە <strong style="color:var(--article-accent, #3f8fd4);">«ئۆتكەن يىلى نېمە سېتىۋالغان ئىدىم؟»</strong> دەپ سورىدىم — بۇنى بۇرۇنقى پاراڭدا ئېغىز ئۇچىدا ئېيتقان ئىدىم. كىچىك قىسقۇچپاقا ئەستە ساقلاپتۇ:</p>
+
+<figure><img src="../../assets/blog/003.png" alt="" width="2560" height="1584" loading="lazy" decoding="async"></figure>
+
+<p style="margin: 8px 0;">ئۇ بۇرۇنقى سۆھبەتنى ئەسلەپ، توغرا جاۋاب بەردى. بۇ پەقەت كونتېكىست كۆزنىكىگە تايىنىش ئەمەس، بەلكى <strong style="color:var(--article-accent, #3f8fd4);">ئۇزاق مۇددەتلىك ئەستە ساقلاش</strong> — ئۇچۇر ھەقىقىي ساقلانغان، يېڭى سۆھبەتتىمۇ قايتا ئەسلىگىلى بولىدۇ. ئەستە ساقلاشنىڭ قانداق ئىشلەيدىغانلىقىنى كېيىنكى بۆلەكتە سۆزلەيمىز.</p>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">بىلىم ئامبىرى ۋە ئەستە ساقلاش: AI نىڭ ئىككى خىل «ئەستە تۇتۇشى»</h2>
+
+<p style="margin: 8px 0;">كىچىك قىسقۇچپاقا نەرسىلەرنى ئىككى خىل ئۇسۇلدا «ئەستە تۇتىدۇ»: بىرىنى سىز مەخسۇس بېرىسىز، يەنە بىرىنى ئۇ ئۆزى ئۆگىنىدۇ.</p>
+
+<p style="margin: 8px 0;"><strong style="color:var(--article-accent, #3f8fd4);">بىلىم ئامبىرى: سىز يۈكلەيسىز، ئۇ مەنبەگە ئاساسەن جاۋاب بېرىدۇ.</strong>بىلىم ئامبىرى بېتىنى ئېچىپ، PDF، TXT ياكى Markdown نى تاشلاڭ؛ ئىندېكس ئاپتوماتىك قۇرۇلىدۇ:</p>
+
+<figure><img src="../../assets/blog/005.png" alt="" width="2560" height="1584" loading="lazy" decoding="async"></figure>
+
+<p style="margin: 8px 0;">ئۇنىڭدىن كېيىن پاراڭلاشقاندا، AI ۋېكتورلۇق ئىزدەش بىلەن ھۆججەتلىرىڭىزدىن ئەڭ مۇناسىۋەتلىك ئابزاسلارنى تېپىپ، كۆرسەتمىگە قوشىدۇ. يۇقىرىدىكى «خاڭجۇ تامىقى» جاۋابىمۇ بىلىم ئامبىرىدىن تېپىلغان؛ AI قۇرۇق توقۇمايدۇ، بەلكى <strong style="color:var(--article-accent, #3f8fd4);">مەنبەگە ئاساسلىنىدۇ</strong>. بۇ RAG، يەنى ئىزدەش بىلەن كۈچەيتىلگەن ھاسىل قىلىش.</p>
+
+<p style="margin: 8px 0;"><strong style="color:var(--article-accent, #3f8fd4);">ئەستە ساقلاش: پاراڭدىكى مۇھىم ئۇچۇر ئاپتوماتىك ساقلىنىپ، ئاپتوماتىك قايتا ئەسلىنىدۇ.</strong></p>
+
+<figure><img src="../../assets/blog/006.png" alt="" width="2560" height="1584" loading="lazy" decoding="async"></figure>
+
+<p style="margin: 8px 0;">سۆھبەت ئاخىرلاشقاندىن كېيىن، ماتور مەزمۇننى ئاسىنخرون تەھلىل قىلىپ، ئەستە تۇتۇشقا ئەرزىيدىغان ئۇچۇرنى ئايرىپ چىقىرىدۇ. كېيىنكى پاراڭدا مۇناسىۋەتلىك ئەسلىمىلەرنى كونتېكىستقا ئاپتوماتىك قوشىدۇ؛ كىچىك قىسقۇچپاقا شۇنىڭ بىلەن «ئېسىگە ئالىدۇ». سىز قولدا قوشۇش، تەھرىرلەش ۋە ئۆچۈرۈشنىمۇ قىلالايسىز.</p>
+
+<p style="margin: 8px 0;">ئاددىي ئېيتقاندا، بىلىم ئامبىرى <strong style="color:var(--article-accent, #3f8fd4);">سىرتقى ماتېرىيال ئامبىرى</strong>، ئەستە ساقلاش بولسا <strong style="color:var(--article-accent, #3f8fd4);">AI نىڭ خاتىرە دەپتىرى</strong>. بىرى ھۆججەتنى، يەنە بىرى پاراڭنىڭ مۇھىم نۇقتىلىرىنى ساقلايدۇ.</p>
+
+<p style="margin: 8px 0;">بۇ يەرگىچە پاراڭ، قورال چاقىرىش، بىلىم ئامبىرى ۋە ئەستە ساقلاشنى كۆردىڭىز. سىز كىرگۈزگەندىن AI جاۋاب بەرگۈچە ئارىلىقتا قانچە قەدەم بارلىقىغا قىزىقامسىز؟ تۆۋەندىكى سۈرەت <strong style="color:var(--article-accent, #3f8fd4);">تولۇق بىر تەرەپ قىلىش زەنجىرى</strong>：</p>
+
+<figure><img src="../../assets/blog/flow-diagram.png" alt="" width="1440" height="1656" loading="lazy" decoding="async"></figure>
+
+<p style="margin: 8px 0;">قارىماققا ئۇزۇن، لېكىن ماتور بۇ باسقۇچلارنى مىللىسېكۇنت دەرىجىسىدە تاماملايدۇ؛ سىز ھېس قىلىدىغىنىڭىز «ئېقىم شەكلىدە خەت يېزىلىش».</p>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">IM قانىلى: گۇرۇپپا Feishu دا بىۋاسىتە @ قىلىدۇ</h2>
+
+<p style="margin: 8px 0;">گۇرۇپپىڭىز بولسا، ھەممە كىشىگە خېرىدار قاچىلىتىش ھاجەتسىز. HexClaw AI نى <strong style="color:var(--article-accent, #3f8fd4);">Feishu، DingTalk، Discord، Telegram</strong> غا ئۇلاپ، IM قانىلى بېتىدە قوزغىتىڭ؛ يېشىل رەڭ ئىجرا بولۇۋاتقانلىقىنى بىلدۈرىدۇ:</p>
+
+<figure><img src="../../assets/blog/009.png" alt="" width="2560" height="1584" loading="lazy" decoding="async"></figure>
+
+<p style="margin: 8px 0;">ئاندىن Feishu دا ئۇنى @ قىلسىڭىزلا بولدى. مەن «ئايرىلىپ كەتكەن خىزمەتدىشىمىز نەگە بارغان؟» دەپ سورىدىم؛ ئۇ بىلىم ئامبىرىنى ئىزدەپ جاۋاب بەردى:</p>
+
+<figure><img src="../../assets/blog/011.png" alt="" width="2136" height="1446" loading="lazy" decoding="async"></figure>
+
+<p style="margin: 8px 0;">Feishu ماشىنا ئادىمى «پىكىر يۈرگۈزۈۋاتىدۇ» ھالىتىنى كۆرسىتىپ، جاۋاب تەييار بولغاندا ئاپتوماتىك ئەۋەتىدۇ. گۇرۇپپا ئەزالىرى Feishu دا بىۋاسىتە ئىشلىتىدۇ؛ قوشۇمچە قاچىلاش ھاجەتسىز.</p>
+
+<h3 style="font-size: 16px; font-weight: 600; color:var(--article-ink, #12324c); margin: 24px 0 8px;">Feishu ماشىنا ئادىمىنى سەپلەش (3 مىنۇت)</h3>
+
+<p style="margin: 8px 0;">HexClaw AI نى Feishu دا كۆرسىتىش ئۈچۈن، <strong style="color:var(--article-accent, #3f8fd4);">Feishu ئوچۇق سۇپىسى</strong> دا ئۆزىڭىز قۇرغان بىر ئەپ لازىم. جەريان مۇرەككەپ ئەمەس:</p>
+
+<p style="margin: 8px 0;"><strong style="color:var(--article-accent, #3f8fd4);">1. ئەپ قۇرۇپ، كىملىك ئۇچۇرىنى ئېلىڭ.</strong>Feishu ئوچۇق سۇپىسىغا كىرىپ، كارخانا ئۆزى قۇرغان ئەپ قۇرۇڭ. «凭证与基础信息» (كىملىك ئۇچۇرى ۋە ئاساسىي ئۇچۇر) بېتىدىن <strong style="color:var(--article-accent, #3f8fd4);">App ID</strong> ۋە <strong style="color:var(--article-accent, #3f8fd4);">App Secret</strong>：</p>
+
+<figure><img src="../../assets/blog/014.png" alt="" width="2866" height="1478" loading="lazy" decoding="async"></figure>
+
+<p style="margin: 8px 0;"><strong style="color:var(--article-accent, #3f8fd4);">2. ئىجازەتلەرنى سەپلەڭ.</strong>«权限管理» (ئىجازەت باشقۇرۇش) بېتىدە «批量导入/导出权限» (ئىجازەتلەرنى توپلاپ كىرگۈزۈش/چىقىرىش) نى چېكىپ، تۆۋەندىكى JSON نى چاپلاڭ. ئۇچۇر قوبۇل قىلىش ۋە ئەۋەتىش، گۇرۇپپا/شەخسىي پاراڭنى ئوقۇش، بايلىق ھۆججەتلىرى، گۇرۇپپا ئۇچۇرى، ئىشلەتكۈچى ئۇچۇرى، ھۆججەت ئوقۇش قاتارلىق تولۇق ئىجازەتلەرنى بىر قېتىمدا كىرگۈزىدۇ:</p>
+
+<p style="background: #1a2332; color: #d6e4f0; padding: 14px 16px; border-radius: 8px; font-size: 13px; line-height: 1.7; font-family: 'SF Mono', Menlo, Monaco, monospace; margin: 10px 0; overflow-x: auto; white-space: pre-wrap;">{
+  "scopes": {
+    "tenant": [
+      "im:message",
+      "im:message:send_as_bot",
+      "im:message.group_at_msg",
+      "im:message.group_at_msg:readonly",
+      "im:message.p2p_msg",
+      "im:message.p2p_msg:readonly",
+      "im:message:readonly",
+      "im:resource",
+      "im:chat",
+      "im:chat:readonly",
+      "contact:user.base:readonly",
+      "document:readonly"
+    ],
+    "user": [
+      "docs:document:readonly"
+    ]
+  }
+}</p>
+
+<figure><img src="../../assets/blog/016.png" alt="" width="2856" height="1496" loading="lazy" decoding="async"></figure>
+
+<p style="margin: 8px 0;"><strong style="color:var(--article-accent, #3f8fd4);">3. ھادىسە مۇشتەرىلىكىنى سەپلەڭ.</strong>«事件与回调» (ھادىسە ۋە قايتۇرما چاقىرىش) بېتىدە، «使用快速通道 接收事件» (تېز قانال ئارقىلىق ھادىسە قوبۇل قىلىش) نى تاللاپ، <code dir="ltr" style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">im.message.receive_v1</code> ھادىسىسىنى قوشۇڭ (گۇرۇپپا ۋە شەخسىي پاراڭ ئۇچۇرلىرىنى قوبۇل قىلىدۇ):</p>
+
+<figure><img src="../../assets/blog/013.png" alt="" width="2862" height="1498" loading="lazy" decoding="async"></figure>
+
+<p style="margin: 8px 0;"><strong style="color:var(--article-accent, #3f8fd4);">4. نەشرىنى ئېلان قىلىڭ.</strong>«版本管理与发布» (نەشر باشقۇرۇش ۋە ئېلان قىلىش) بېتىدە نەشر قۇرۇپ، ئۈستەل يۈزىنىڭ سۈكۈتتىكى ئىقتىدارىنى «机器人» (ماشىنا ئادەم) قىلىپ، ئېلان قىلىشقا تاپشۇرۇڭ:</p>
+
+<figure><img src="../../assets/blog/015.png" alt="" width="2854" height="1484" loading="lazy" decoding="async"></figure>
+
+<p style="margin: 8px 0;"><strong style="color:var(--article-accent, #3f8fd4);">5. HexClaw AI غا قايتىڭ.</strong>IM قانىلى بېتىدە يېڭى Feishu نۇسخىسى قۇرۇپ، App ID بىلەن App Secret نى تولدۇرۇپ قوزغىتىڭ. يېشىل «运行中» (ئىجرا بولۇۋاتىدۇ) نى كۆرسىڭىز، تەييار بولدى.</p>
+
+<p style="border-left: 3px solid #5fb3ea; padding: 10px 16px; margin: 16px 0; background:var(--article-panel, #f4fbff); color:var(--article-secondary, #3f5f7b); font-size: 14px; border-radius: 0 6px 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">DingTalk / Discord / Telegram</strong> نى ئۇلاش جەريانى ئوخشاش: ماس سۇپىدا ماشىنا ئادەم ئەپى قۇرۇپ، كىملىك ئۇچۇرىنى ئېلىپ، HexClaw AI نىڭ IM قانىلى سەپلىمە بېتىگە تولدۇرۇڭ.</p>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">مودېل سەپلىمىسى: بۇلۇت + يەرلىك، تاللاش ئۆزىڭىزدە</h2>
+
+<p style="margin: 8px 0;">HexClaw AI <strong style="color:var(--article-accent, #3f8fd4);">بىرلا ۋاقىتتا كۆپ مودېل سەپلەش</strong> نى قوللاپ، سىياسەتكە ئاساسەن ئاپتوماتىك يوللايدۇ. سەپلىمە بېتى ئۈستىدە سۈكۈتتىكى مودېل ۋە يوللاش سىياسىتىنى (تەننەرخ ئالدىنقى / سۈپەت ئالدىنقى) تاللاپ، ئاستىدا تەمىنلىگۈچىلەرنى باشقۇرالايسىز:</p>
+
+<figure><img src="../../assets/blog/004.png" alt="" width="2560" height="1584" loading="lazy" decoding="async"></figure>
+
+<p style="margin: 8px 0;">سانلىق مەلۇماتنىڭ كومپيۇتېردىن چىقىشىنى خالىمامسىز؟ <strong style="color:var(--article-accent, #3f8fd4);">يەرلىك مودېل</strong> ئىشلىتىڭ. HexClaw AI غا Ollama باشقۇرۇشى قوشۇلغان؛ مودېلنى ئىزدەپ بىۋاسىتە چۈشۈرەلەيسىز:</p>
+
+<figure><img src="../../assets/blog/010.png" alt="" width="2560" height="1584" loading="lazy" decoding="async"></figure>
+
+<p style="margin: 8px 0;">ھەقسىز، تورسىز، سانلىق مەلۇمات كومپيۇتېردىن چىقمايدۇ. ئەپ قوزغالغاندا ئاپتوماتىك ئالدىن تەييارلىنىدۇ، ئاچسىڭىزلا پاراڭلىشالايسىز. قايسى مودېلنى تاللاش ۋە قانداق قاتتىق دېتال كېرەكلىكى ھەققىدە، ماقالە ئاخىرىدىكى قوشۇمچىدا تەپسىلىي تەۋسىيە جەدۋىلى بار.</p>
+
+<p style="margin: 8px 0;">ئاساسىي پىكىر بىرلا: <strong style="color:var(--article-accent, #3f8fd4);">بۇلۇت بىلەن يەرلىكنىڭ ئىككىسىنى سەپلەڭ</strong>، يوللاش سىياسىتىنى «تەننەرخ ئالدىنقى» قىلىڭ؛ ئاددىي سوئال يەرلىك ھەقسىز مودېلغا، مۇرەككەپ سوئال ئاپتوماتىك بۇلۇتقا يوللىنىدۇ. سەزگۈر سانلىق مەلۇماتلىق سىنارىيەدە باشتىن-ئاخىر يەرلىكنى ئىشلىتىڭ؛ بىر API تەلىپىمۇ كومپيۇتېرىڭىزدىن چىقمايدۇ.</p>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">Skill بىلەن MCP: يۇقىرى ۋە تۆۋەن قاتلاملىق ئىككى كېڭەيتىش</h2>
+
+<p style="margin: 8px 0;">HexClaw AI نىڭ قىلالايدىغان ئىشلىرى قاتتىق بەلگىلەپ قويۇلمىغان؛ ئۇنىڭ ئىككى كېڭەيتىش مېخانىزمى بار.</p>
+
+<p style="margin: 8px 0;"><strong style="color:var(--article-accent, #3f8fd4);">Skill (ماھارەت)</strong> يۇقىرى قاتلامدىكى رول: Markdown بىلەن قوزغىلىش شەرتى، سىستېما كۆرسەتمىسى ۋە ئىشلىتىدىغان قوراللىرىنى بەلگىلەيدۇ. <code dir="ltr" style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">cron-scheduler</code> ماھارىتىنى قاچىلىغاندىن كېيىن، «ھەر كۈنى سائەت 10 دا خەۋەر يىغىپ بەر» دېسىڭىز، AI بۇ Skill نى ئاپتوماتىك چاقىرىپ ۋاقىتلىق ۋەزىپە قۇرىدۇ. ماھارەتنىڭ بارلىقىنى بىلىشىڭىز شەرت ئەمەس؛ ئىشلىتىش-ئىشلەتمەسلىكنى AI ئۆزى بەلگىلەيدۇ.</p>
+
+<figure><img src="../../assets/blog/007.png" alt="" width="2560" height="1584" loading="lazy" decoding="async"></figure>
+
+<p style="margin: 8px 0;"><strong style="color:var(--article-accent, #3f8fd4);">MCP（Model Context Protocol）</strong> تۆۋەنكى قاتلامدىكى قول-پۇت: ھەر بىر MCP Server بىر گۇرۇپپا قورالنى تەمىنلەيدۇ؛ ماتور قوزغالغاندا بارلىق قورال ئېنىقلىمىسىنى ئاپتوماتىك يىغىدۇ، AI لازىم بولغاندا چاقىرىدۇ. تۆۋەندىكىسى ئەپ ئىچىدىكى <code dir="ltr" style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">filesystem</code> MCP Server؛ ئۇ 14 قورال تەمىنلەيدۇ:</p>
+
+<figure><img src="../../assets/blog/008.png" alt="" width="2560" height="1584" loading="lazy" decoding="async"></figure>
+
+<p style="margin: 8px 0;">مىسالغا ئالساق، Skill — «كەسپىي بوغالتىر تەكلىپ قىلىش»، MCP — «بوغالتىرغا ھېسابلىغۇچ ۋە Excel بېرىش». بىرى رول بىلەن سىياسەتنى بەلگىلەيدۇ، يەنە بىرى كونكرېت مەشغۇلات ئىقتىدارى بىلەن تەمىنلەيدۇ. پەقەت بىرىنىلا ئىشلىتىشكە بولىدۇ، لېكىن <strong style="color:var(--article-accent, #3f8fd4);">ئىككىسىنى بىرلەشتۈرۈش ئەڭ كۈچلۈك</strong>。</p>
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">Agent لار ۋە ئوچۇق كودلۇق ئېكولوگىيە</h2>
+
+<p style="margin: 8px 0;">HexClaw AI ئىچىدە 6 <strong style="color:var(--article-accent, #3f8fd4);">ئالدىن تەڭشەلگەن Agent</strong> بار: سانلىق مەلۇمات تەھلىلچىسى، كود ياردەمچىسى، تەتقىقات تەھلىلچىسى، تەرجىمان، يېزىقچىلىق ياردەمچىسى. «聊天» (پاراڭ) نى چېكىپ رولنى بىۋاسىتە ئالماشتۇرىسىز؛ ھەر بىر Agent نىڭ سىستېما كۆرسەتمىسى ۋە ھەرىكەت ئەندىزىسى پەرقلىق:</p>
+
+<figure><img src="../../assets/blog/agents.png" alt="" width="2560" height="1570" loading="lazy" decoding="async"></figure>
+
+<p style="margin: 8px 0;">بۇلارنىڭ ئارقىسىدا <strong style="color:var(--article-accent, #3f8fd4);">تولۇق ئوچۇق كودلۇق ئېكولوگىيە</strong> بار: 7 ئامبار قاتلاملار بويىچە ئايرىلغان، تۆۋەنكى ئۇل قۇرۇلمىدىن يۇقىرىقى خېرىدارغىچە ھەر بىر قاتلامنى مۇستەقىل ئىشلىتىشكە بولىدۇ:</p>
+
+<figure><img src="../../assets/blog/ecosystem.png" alt="" width="1352" height="766" loading="lazy" decoding="async"></figure>
+
+<p style="margin: 8px 0;">پەقەت ئۈستەل يۈزى خېرىدارىنى ئىشلىتەلەيسىز، ياكى hexagon رامكىسى بىلەن ئۆز Agent ىڭىزنى ياسىيالايسىز. ئوچۇق كودلۇق، ھەقسىز، <strong style="color:var(--article-accent, #3f8fd4);">سانلىق مەلۇماتىڭىزغا ئۆزىڭىز ئىگە</strong>。</p>
+
+
+
+
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 32px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">قوشۇمچە: مودېل تەۋسىيەسى ۋە قاتتىق دېتال ئۇچۇرى</h2>
+
+<h3 style="font-size: 16px; font-weight: 600; color:var(--article-ink, #12324c); margin: 20px 0 8px;">يەرلىك مودېللار (Ollama)</h3>
+
+<table style="width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 13px;">
+<tr>
+<th style="background:var(--article-panel, #f4fbff); padding: 6px 8px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;">مودېل</th>
+<th style="background:var(--article-panel, #f4fbff); padding: 6px 8px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;">چوڭلۇقى</th>
+<th style="background:var(--article-panel, #f4fbff); padding: 6px 8px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;">تەۋسىيە قىلىنغان ئىچكى ساقلىغۇچ</th>
+<th style="background:var(--article-panel, #f4fbff); padding: 6px 8px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;">ئالاھىدىلىكى</th>
+</tr>
+<tr><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff);"><strong style="color:var(--article-accent, #3f8fd4);">qwen3.5:9b</strong></td><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff);">5.6 GB</td><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff);">16 GB</td><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff);">خەنزۇچىدا ئەڭ كۈچلۈك، پىكىر يۈرگۈزۈشى ياخشى، بىرىنچى تاللاش</td></tr>
+<tr><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe);">qwen3:8b</td><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe);">4.9 GB</td><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe);">16 GB</td><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe);">تەڭپۇڭ تاللاش، جاۋابى تېز</td></tr>
+<tr><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff);">deepseek-r1:7b</td><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff);">4.7 GB</td><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff);">16 GB</td><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff);">چوڭقۇر پىكىر يۈرگۈزۈش، ماتېماتىكا/كودتا كۈچلۈك</td></tr>
+<tr><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe);">llama3.1:8b</td><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe);">4.7 GB</td><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe);">16 GB</td><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe);">Meta نىڭ ئوچۇق مودېلى، ئىنگلىزچىسى ياخشى</td></tr>
+<tr><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff);">qwen3:32b</td><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff);">20 GB</td><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff);">32 GB+</td><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff);">پارامېتىرى چوڭ، نەتىجىسى بۇلۇتقا يېقىن</td></tr>
+</table>
+
+<p style="border-left: 3px solid #5fb3ea; padding: 10px 16px; margin: 14px 0; background:var(--article-panel, #f4fbff); color:var(--article-secondary, #3f5f7b); font-size: 14px; border-radius: 0 6px 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">قاتتىق دېتال تەۋسىيەسى: </strong>8GB ئىچكى ساقلىغۇچتا 3b كىچىك مودېلنى سىناشقا بولىدۇ؛ 16GB دا 7-9b مودېل راۋان ئىجرا بولىدۇ (تەۋسىيە قىلىنىدۇ)؛ 32GB+ بولسا 32b چوڭ مودېلنى ئىجرا قىلىپ، بۇلۇتقا يېقىن نەتىجىگە ئېرىشكىلى بولىدۇ. Apple Silicon Mac نىڭ ئەۋزەللىكى ئېنىق: بىرلەشمە ئىچكى ساقلىغۇچنى بىۋاسىتە سىن ئىچكى ساقلىغۇچى قىلىپ ئىشلىتىدۇ.</p>
+
+<h3 style="font-size: 16px; font-weight: 600; color:var(--article-ink, #12324c); margin: 20px 0 8px;">بۇلۇت مودېللىرى — ھەقسىز ۋە ھەقلىق تەۋسىيەلەر</h3>
+
+<table style="width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 13px;">
+<tr>
+<th style="background:var(--article-panel, #f4fbff); padding: 6px 8px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;">تەمىنلىگۈچى</th>
+<th style="background:var(--article-panel, #f4fbff); padding: 6px 8px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;">تەۋسىيە قىلىنغان مودېل</th>
+<th style="background:var(--article-panel, #f4fbff); padding: 6px 8px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;">باھا</th>
+<th style="background:var(--article-panel, #f4fbff); padding: 6px 8px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea;">ئالاھىدىلىكى</th>
+</tr>
+<tr><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff);"><strong style="color: #52c41a;">Zhipu AI</strong></td><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff);">glm-4-flash</td><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff); color: #52c41a; font-weight: 600;">ھەقسىز</td><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff);">تىزىملاتقاندا ھەقسىز نورما بېرىدۇ، خەنزۇچىسى ياخشى، باشلىغۇچىلارغا بىرىنچى تاللاش</td></tr>
+<tr><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe);"><strong style="color: #52c41a;">DeepSeek</strong></td><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe);">deepseek-chat</td><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe); color: #52c41a; font-weight: 600;">ئىنتايىن ئەرزان</td><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe);">بىر مىليون token غا 1 يۈەن، باھاغا نىسبەتەن ناھايىتى ياخشى</td></tr>
+<tr><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff);"><strong style="color: #52c41a;">Qwen</strong></td><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff);">qwen-max</td><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff); color: #52c41a; font-weight: 600;">ھەقسىز نورمىسى بار</td><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff);">Alibaba مەھسۇلاتى، قورال چاقىرىشى مۇقىم</td></tr>
+<tr><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe);">Zhipu AI</td><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe);">glm-z1-airx</td><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe);">ھەقلىق</td><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe);">چوڭقۇر پىكىر يۈرگۈزۈش، مۇرەككەپ ۋەزىپىدە كۈچلۈك</td></tr>
+<tr><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff);">OpenAI</td><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff);">gpt-4o</td><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff);">ھەقلىق</td><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff);">ئومۇمىي ئىقتىدارى ئەڭ كۈچلۈك، كۆپ ۋاسىتىلىك ئىقتىدارى ياخشى</td></tr>
+<tr><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe);">Anthropic</td><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe);">claude-sonnet-4</td><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe);">ھەقلىق</td><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff); background:var(--article-panel, #fafcfe);">كود/ئۇزۇن تېكىست/پىكىر يۈرگۈزۈشتە ئالدىنقى سەپتە</td></tr>
+<tr><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff);">Google</td><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff);">gemini-2.5-flash</td><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff); color: #52c41a; font-weight: 600;">ھەقسىز نورمىسى بار</td><td style="padding: 5px 8px; border-bottom: 1px solid var(--article-border, #edf7ff);">بىر مىليون token كونتېكىست، تېز</td></tr>
+</table>
+
+<p style="border-left: 3px solid #5fb3ea; padding: 10px 16px; margin: 14px 0; background:var(--article-panel, #f4fbff); color:var(--article-secondary, #3f5f7b); font-size: 14px; border-radius: 0 6px 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">نۆل تەننەرخ پىلانى: </strong>Zhipu نىڭ ھەقسىز نورمىسى + Ollama qwen3.5:9b بىلەن بىر تىيىن خەجلىمەي تولۇق AI Agent نى ئىشلىتەلەيسىز. قولغا كۆنۈپ بولغاندا باشقا مودېللارنى ئېھتىياج بويىچە قوشۇڭ. بارلىق تەمىنلىگۈچىلەر OpenAI غا ماس كېلىدىغان كۆرۈنمە يۈز ئىشلىتىدۇ؛ API Key + Base URL نى تولدۇرسىڭىزلا ئۇلىنىدۇ.</p>
+
+<p style="border-left: 3px solid #5fb3ea; padding: 10px 16px; margin: 14px 0; background:var(--article-panel, #f4fbff); color:var(--article-secondary, #3f5f7b); font-size: 14px; border-radius: 0 6px 6px 0;"><strong style="color:var(--article-accent, #3f8fd4);">يەرلىك مودېل كىمگە ماس كېلىدۇ؟</strong>ئادۋوكات، دوختۇر، پۇل مۇئامىلە خادىملىرى، كارخانا ئىچىدىكى ئىشلار — سانلىق مەلۇمات مەخپىيەتلىكىگە تەلىپى بار ھەر قانداق سىنارىيە. پاراڭ مەزمۇنى، بىلىم ئامبىرى ھۆججەتلىرى ۋە ئەستە ساقلاش سانلىق مەلۇماتى يەرلىك SQLite دا ساقلىنىدۇ، ئۈچىنچى تەرەپ مۇلازىمېتىرىدىن ئۆتمەيدۇ.</p>
+
+
+
+
+
+<h2 style="font-size: 18px; font-weight: 700; color:var(--article-ink, #12324c); margin: 28px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">سوۋغا: بۇرۇنقى leader.skill 🐍</h2>
+
+<p style="margin: 8px 0;">ئاخىرىدا بىر كىچىك سوۋغا.</p>
+
+<p style="margin: 8px 0;">مەن بۇرۇنقى رەھبىرىمنى بىر <strong style="color:var(--article-accent, #3f8fd4);">HexClaw AI Skill</strong>。</p>
+
+<p style="margin: 8px 0;">توغرا، دەل شۇنداق ئادەم: ئادەتتە كود يازمايدۇ، ئاندا-ساندا كۇنۇپكا تاختىسىغا تەگسە پۈتۈن گۇرۇپپىنى بىر ھەپتە ئىسمېنا قوشۇشقا مەجبۇر قىلىدۇ. HRBP بىلەن بىرلىشىپ ئىشچىنى تۆلەمسىز ئىشتىن بوشىتىدۇ، سىناق مەزگىلىدە يېڭىلارنى ھەقسىز ئىشلىتىدۇ، قول ئاستىدىكىلەرگە PUA قىلىدۇ، نەتىجە باھاسى بىلەن بېسىدۇ، مەسئۇلىيەتنى ئىتتىرىپ شەرەپنى ئۆزى ئالىدۇ، ئۈستەلنى ئۇرۇپ ۋاقىرايدۇ، ئۆزى ۋاقتىدا قايتىپ باشقىلارنى 996 ئىشلىتىدۇ.</p>
+
+<p style="margin: 8px 0;">بۇ Skill نى قاچىلىغاندىن كېيىن، پاراڭدا ئاچقۇچلۇق سۆزلەرنى (<code dir="ltr" style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">ئىسمېنا قوشۇش</code>、<code dir="ltr" style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">bug</code>、<code dir="ltr" style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">PUA</code>、<code dir="ltr" style="background:var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color:var(--article-accent, #3f8fd4);">مەسئۇلىيەتنى ئىتتىرىش</code> قاتارلىقلارنى) قوزغاتسىڭىز، AI غا «بەش قەدەملىك يىلان»نىڭ قالدۇق ئېڭى قوشۇلىدۇ: ئالدى بىلەن ئۇنىڭ ئاھاڭىدا كودنىڭ نېمىشقا مۇنداق يېزىلغانلىقىنى «چۈشەندۈرىدۇ» (ئېغىزىمۇ تىترەيدۇ)، ئاندىن نورمال ھالەتكە قايتىپ bug تۈزىتىشكە ياردەم بېرىدۇ.</p>
+
+<p style="border-left: 3px solid #f5a623; padding: 10px 16px; margin: 16px 0; background:var(--article-panel, #fffbe6); color: #8a6d3b; font-size: 14px; border-radius: 0 6px 6px 0;">
+<strong style="color: #d48806;">🐍 مىسال سۆھبەت:</strong><br/>سىز: «سەھەر ئۈچتە ئىشلەپچىقىرىشتىكى bug مېنى ئويغاتتى، catch نىڭ ئىچى قۇرۇق، بۇنى كىم يازغان؟»<br/>بەش قەدەملىك يىلان: «نېنېنېمە؟ سېسېسەن ئاشۇ قۇرۇق catch نى دەۋاتامسەن؟ ئۇ، ئۇ بولسا <strong style="color: #d48806;">مۇداپىئەلىك پروگرامما تۈزۈش</strong>! خاتالىق كۆزىتىلمىسە، ئۇ مەۋجۇت ئەمەس. بۇ <strong style="color: #d48806;">كۋانت پروگرامما تۈزۈش</strong> دېگەن گەپ، سەن چۈشەنمەيسەن! [ئۈستەلنى ئۇرىدۇ]»<br/>ئاندىن AI ئەستايىدىل ھالدا bug نى تۈزىتىپ بېرىدۇ.</p>
+
+<p style="margin: 12px 0;"><strong style="color:var(--article-accent, #3f8fd4);">بۇ Skill نى خالامسىز؟ باھا رايونىغا «前 leader» دەپ يېزىڭ، سىزگە ئەۋەتىمەن.</strong></p>
+
+<p style="margin: 8px 0; font-size: 13px; color:var(--article-muted, #999);">(خىزمەت جەريانىدىكى جاراھەتنى ھەجۋىي يۇمۇر بىلەن يېڭىپ، ناچار كودنى توغرا كود بىلەن ئالماشتۇرۇش — بەش قەدەملىك يىلاندىن ئېلىنىدىغان ئەڭ ياخشى ئۆچ مۇشۇ. ئەخلاقىڭ بۇزۇلسا، ھەممە كىشى تەنقىد قىلىشقا ھەقلىق.)</p>
+
+
+
+<p class="blog-brand-footer" data-blog-brand-footer="ug" data-blog-brand-overrides="{}" style="text-align: center; color: var(--article-muted, #7b8fa3); font-size: 13px; margin: 16px 0 0; line-height: 2;">
+<strong style="color: var(--article-ink, #12324c); font-size: 14px;">HexClaw ھېشى AI</strong><br/>
+يەرلىكتە ياكى بۇلۇتتا ئورۇنلاشتۇرۇش · سانلىق مەلۇماتنى ئۆزىڭىز باشقۇرۇش · ئوچۇق كودلۇق ۋە ھەقسىز يۇمشاق دېتال<br/>
+<a href="https://hexclaw.net" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">تور بېكەت: <bdi dir="ltr">hexclaw.net</bdi></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://github.com/hexagon-codes" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">GitHub: <bdi dir="ltr">hexagon-codes</bdi></a><br/>
+<a href="https://weibo.com/u/4097207240" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">Weibo: <bdi dir="ltr">@HexClaw</bdi></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">X: <bdi dir="ltr">@hexclawapp</bdi></a><br/>
+<a href="mailto:ai@hexclaw.net" style="color: var(--article-muted, #999); text-decoration: none;">ئېلخەت: <bdi dir="ltr">ai@hexclaw.net</bdi></a>
+</p>
+    </article>
+
+
+
+    <nav class="blog-series-nav" aria-label="ئالدىنقى ۋە كېيىنكى ماقالە">
+      <a href="/ug/blog/claude-code-sop" class="blog-nav-card prev">
+  <span class="blog-nav-label">&larr; ئالدىنقى ماقالە</span>
+  <span class="blog-nav-title">HexClaw AI نىڭ ئارقىسىدىكى Claude Code SOP: لايىھە يېتەكچىلىكى × سىناق ھالقىسى × كۆپ Agent ھەمكارلىقى</span>
+</a>
+      <a href="/ug/blog/k12-engineering-practice" class="blog-nav-card next">
+  <span class="blog-nav-label">كېيىنكى ماقالە &rarr;</span>
+  <span class="blog-nav-title">HexClaw AI ئاتا-بالىنىڭ خوشاللىقىغا ياردەم بېرىدۇ: تۇنجى ئۈلگە سىنارىيەدىكى K12 قۇرۇلۇش ئەمەلىيىتى</span>
+</a>
+    </nav>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-main">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-col-title">مەھسۇلات</div>
+        <a href="/ug/#download">ئۈستەلئۈستى نۇسخىسىنى چۈشۈرۈش</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="/ug/changelog">يېڭىلىنىش خاتىرىسى</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">ئىجادكار</div>
+        <a href="/ug/docs/">ھۆججەتلەر مەركىزى</a>
+        <a href="/ug/blog/">تېخنىكا بىلوگى</a>
+        <a href="/ug/docs/getting-started">تېز باشلاش</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">Apache-2.0</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">جامائەت</div>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/issues" target="_blank" rel="noopener noreferrer">Issues</a>
+        <a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer">Twitter / X</a>
+        <a href="mailto:ai@hexclaw.net">بىز بىلەن ئالاقىلىشىش</a>
+        <a href="mailto:support@hexclaw.net">سوئال-پىكىر</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">ھەققىدە</div>
+        <a href="/ug/about">بىز ھەققىدە</a>
+        <a href="/ug/privacy">شەخسىيەت سىياسىتى</a>
+        <a href="/ug/terms">ئىشلىتىش شەرتلىرى</a>
+        <a href="/ug/third-party-ai-services">ئۈچىنچى تەرەپ AI مۇلازىمىتى</a>
+      </div>
+    </div>
+    <div class="footer-wechat">
+      <img width="430" height="430" loading="lazy" decoding="async" src="../../assets/brand/wechat-qr.jpg" alt="HexClaw ۋېيشىن رەسمىي ھېسابات QR كودى">
+      <span class="footer-wechat-label">ۋېيشىن رەسمىي ھېساباتى</span>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">&copy; 2025&ndash;2026 hexagon-codes</span>
+  </div>
+</footer>
+<script src="../../assets/js/theme.js?v=2e4a1828feef"></script>
+<script src="../../assets/js/docs-nav.js?v=5a103861aec2"></script>
+<button type="button" class="back-to-top" id="backToTop" aria-label="بەت بېشىغا قايتىش" title="بەت بېشىغا قايتىش">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg>
+  <span>ئۈستىگە</span>
+</button>
+
+<script src="../../assets/js/blog.js?v=c72e1db5a6ec"></script>
+</body>
+</html>
