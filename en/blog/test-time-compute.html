@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/favicon-32.png">
+<title>HexClaw’s Test-Time Compute: How Compound Agents Pair Generation with Verification | HexClaw Technical Blog</title>
+<meta name="description" content="Explore isolated solving and verification, step-level audits, execution receipts, diverse sampling and tolerance checks, with their limitations.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:site_name" content="HexClaw">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HexClaw’s Test-Time Compute: How Compound Agents Pair Generation with Verification | HexClaw Technical Blog">
+<meta property="og:description" content="Explore isolated solving and verification, step-level audits, execution receipts, diverse sampling and tolerance checks, with their limitations.">
+<meta property="og:url" content="https://hexclaw.net/en/blog/test-time-compute">
+<meta property="og:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta property="og:image:alt" content="HexClaw logo">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="HexClaw’s Test-Time Compute: How Compound Agents Pair Generation with Verification | HexClaw Technical Blog">
+<meta name="twitter:description" content="Explore isolated solving and verification, step-level audits, execution receipts, diverse sampling and tolerance checks, with their limitations.">
+<meta name="twitter:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta name="twitter:image:alt" content="HexClaw logo">
+<link rel="canonical" href="https://hexclaw.net/en/blog/test-time-compute">
+<link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/test-time-compute">
+<link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/test-time-compute">
+<link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/test-time-compute">
+<link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/test-time-compute">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "HexClaw’s Test-Time Compute: How Compound Agents Pair Generation with Verification",
+  "description": "Explore isolated solving and verification, step-level audits, execution receipts, diverse sampling and tolerance checks, with their limitations.",
+  "url": "https://hexclaw.net/en/blog/test-time-compute",
+  "inLanguage": "en",
+  "dateModified": "2026-11-01",
+  "image": "https://hexclaw.net/assets/brand/hexclaw-logo.png",
+  "publisher": {
+    "@type": "Organization",
+    "name": "hexagon-codes",
+    "url": "https://hexclaw.net/",
+    "@id": "https://hexclaw.net/#organization"
+  },
+  "@id": "https://hexclaw.net/en/blog/test-time-compute#article"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "HexClaw",
+      "item": "https://hexclaw.net/en/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Technical Blog",
+      "item": "https://hexclaw.net/en/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "HexClaw’s Test-Time Compute: How Compound Agents Pair Generation with Verification",
+      "item": "https://hexclaw.net/en/blog/test-time-compute"
+    }
+  ],
+  "@id": "https://hexclaw.net/en/blog/test-time-compute#breadcrumb"
+}
+</script>
+<link rel="stylesheet" href="../../assets/css/docs-5a7266a4b884.css">
+<link rel="stylesheet" href="../../assets/css/blog-cb7de6377424.css">
+</head>
+<body class="blog-page blog-article-page">
+<a href="#main" class="skip-link">Skip to main content</a>
+<nav class="tn topnav" id="nav">
+  <a href="/en/" class="tn-b topnav-brand"><img width="72" height="72" src="../../assets/brand/hexclaw-icon-72.png" class="tn-l topnav-logo" alt="HexClaw"><span class="tn-n topnav-name">HexClaw</span></a>
+  <button type="button" class="tn-burger topnav-burger" aria-label="Menu" aria-expanded="false" aria-controls="primary-navigation"><span></span><span></span><span></span></button><div class="tn-r topnav-links" id="primary-navigation"><a href="/en/">Home</a><a href="/en/#cases">Scenarios</a><a href="/en/#features">Features</a><a href="/en/#quickstart">Quickstart</a><a href="/en/#ecosystem">Ecosystem</a><a href="/en/blog/" class="is-active">Tech Blog</a><a href="/en/docs/">Docs Center</a><div class="lang-menu" data-lang-menu><button type="button" class="lang-trigger" aria-haspopup="menu" aria-expanded="false" aria-label="Switch language"><svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 0 20"></path><path d="M12 2a15.3 15.3 0 0 0 0 20"></path></svg><span class="lang-current">English</span><svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="lang-menu-list" role="menu"><a href="/zh/blog/test-time-compute" role="menuitem">中文</a><a href="/en/blog/test-time-compute" role="menuitem" class="is-active" aria-current="true">English</a><a href="/ug/blog/test-time-compute" role="menuitem" lang="zh-CN" dir="ltr">维吾尔语</a></div></div><button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"><svg class="ti-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="ti-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="nav-cta">GitHub <span class="nav-star-badge" id="gh-stars">&#9733;</span></a></div>
+</nav>
+
+<main id="main" class="blog-main">
+  <div class="blog-article-container">
+    <nav class="blog-breadcrumb" aria-label="Breadcrumb">
+      <a href="/en/">Home</a>
+      <span class="blog-breadcrumb-sep">/</span>
+      <a href="/en/blog/">Technical Blog</a>
+      <span class="blog-breadcrumb-sep">/</span>
+      <span aria-current="page">Core Systems</span>
+    </nav>
+
+    <header class="blog-header">
+      <div class="blog-header-tags">
+        <span class="blog-badge-series">Test-Time Compute</span>
+      </div>
+      <h1 class="blog-article-title">HexClaw’s Test-Time Compute: How Compound Agents Pair Generation with Verification</h1>
+      <p class="blog-article-subtitle">From probabilistic chains of thought to executable evidence: HexClaw’s open-source dual-agent test-time compute implementation</p>
+      <div class="article-provenance-banner">
+        <div class="provenance-left">
+          <span class="provenance-origin-badge">First published on WeChat</span>
+          <span class="provenance-text">This article was first published in Chinese on the official WeChat account “hexclaw” (ID: hexclaw).</span>
+        </div>
+        <a href="https://mp.weixin.qq.com/s/lgB-kbClMSEaU4imUWkMCw" target="_blank" rel="noopener noreferrer" class="provenance-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          Original on WeChat ↗
+        </a>
+      </div>
+    </header>
+
+    <article class="blog-content">
+
+<p style="text-align: center; color: var(--article-muted, #7b8fa3); font-size: 13px; margin: 0 0 20px;">Three layers of architecture · Step-by-step process audits · Code execution receipts · How model-level reasoning and system-level controls complement each other</p>
+
+<p style="margin: 16px 0 12px;">Ask a language model to write creatively or comment on the AI industry and its verbal fluency can be impressive. In HexClaw Desktop, we asked “Who are the heroes of AI?” The assistant responded in the style of a conversation over wine, weaving familiar AI personalities into the story:</p>
+
+<div style="margin: 18px 0 16px; text-align: center;">
+<img width="2550" height="1632" loading="lazy" decoding="async" src="../../assets/blog/test-time-compute/hero-dialogue.png" alt="A HexClaw desktop conversation about AI models" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid #d5e6f3; box-shadow: 0 2px 10px rgba(0,0,0,0.05);"/>
+<p style="margin: 6px 0 0; font-size: 13px; color: var(--article-secondary, #5f7b9c); font-weight: 600;">Figure 1: “Who are the heroes of AI?” in HexClaw Desktop, with the K12 skin in dark mode.</p>
+</div>
+
+<p style="margin: 8px 0;">From Claude as a frost-wielding “Night King of the North” to Gemini with its mountain of supplies; from Grok flying through an ETC toll lane and launching rockets to DeepSeek opening its stores to help others: pattern matching and literary rhetoric can make for a playful response.</p>
+
+<p style="margin: 8px 0;">The challenge changes when the task moves from creative writing to calculation. Consider the sixth-grade storage problem discussed in <a href="https://mp.weixin.qq.com/s/LaQbmp7OwDmAcIfdhYYiSw" style="color: var(--article-accent, #3f8fd4); text-decoration: none; border-bottom: 1px dashed var(--article-accent, #3f8fd4);">"How to calculate 12 TB from 4.8 TB?"</a>:</p>
+<p style="margin: 8px 0;">A language model performing mathematical reasoning still predicts the next token. A long reasoning trace can look rigorous even when a small numerical or dimensional error appears in an intermediate step. Subsequent text may build on that error, and language-only self-reflection can rationalize rather than correct it. Tutoring and engineering systems therefore need ways to check the work and show when the evidence is insufficient.</p>
+
+<p style="margin: 8px 0;">Why can the same model write a playful dialogue but still need external checks for symbolic logic and numerical calculations?</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<section style="border-left: 3px solid var(--article-accent, #3f8fd4); padding: 14px 18px; margin: 20px 0; background: var(--article-panel, #f4fbff); color: var(--article-ink, #12324c); font-size: 14px; border-radius: 0 8px 8px 0; line-height: 1.85;">
+<p style="margin: 0 0 6px;"><strong style="color: var(--article-accent, #3f8fd4); font-size: 15px;">Core judgment of this article:</strong></p>
+<p style="margin: 0 0 6px; font-size: 13px; color: var(--article-secondary, #5f7b9c); font-style: italic;">This article focuses on checking computable and strictly symbolic tasks. Execution evidence can show that a program ran, but it cannot by itself prove that the program modeled the problem correctly. Open-ended subjective questions may remain UNVERIFIABLE and require human review.</p>
+<p style="margin: 0 0 6px;">1. A model reviewing its own work in the same context can be anchored by its earlier reasoning. Spending more reasoning tokens alone does not establish ground truth;</p>
+<p style="margin: 0 0 6px;">2. The design combines <strong style="color: var(--article-accent, #3f8fd4);">separate generation and verification</strong> with <strong style="color: var(--article-accent, #3f8fd4);">execution-guided verification</strong>. The verifier receives a fresh context and a restricted tool set. Its prompt asks it to recalculate independently before auditing the proposed solution; a real execution receipt supplies evidence for numerical comparison, but cannot prove that the model built the right program;</p>
+<p style="margin: 0;">3. A four-line process-audit protocol, sandbox execution, and solution-diversity checks provide practical controls without training a dedicated process reward model. They can be used with local models such as <a href="https://arxiv.org/abs/2501.12948" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">DeepSeek-R1</a> and the Qwen distilled models discussed in <a href="https://mp.weixin.qq.com/s/RX-2QOSV2cBEmddwAUj5cg" style="color: var(--article-accent, #3f8fd4); text-decoration: none; border-bottom: 1px dashed var(--article-accent, #3f8fd4);">"Bridge the Last Mile for Local Inference Models"</a>. Their reliability still depends on the model, problem, execution environment, and evaluation; no particular model size guarantees correctness.</p>
+</section>
+
+<blockquote style="border-left: 3px solid #5fb3ea; padding: 10px 16px; margin: 16px 0; background: var(--article-panel, #f4fbff); color: var(--article-secondary, #3f5f7b); font-size: 14px; border-radius: 0 8px 8px 0; line-height: 1.85;">
+<p style="margin: 0 0 6px;"><span style="color: var(--article-accent, #3f8fd4); font-weight: 700;">30-second version:</span></p>
+<p style="margin: 0;">Relying on a model to review itself in a closed context can reinforce its own mistakes. Using HexClaw’s <code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);"><a href="https://github.com/hexagon-codes/hexclaw/blob/d4aff21560c3b4c6e3de83d9e761dde7a03ec386/engine/solve.go" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">engine/solve.go</a></code> and <code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);"><a href="https://github.com/hexagon-codes/hexclaw/blob/d4aff21560c3b4c6e3de83d9e761dde7a03ec386/engine/solve_verifier_node.go" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">engine/solve_verifier_node.go</a></code> as examples, this article covers fresh-context isolation (<code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">memory: off, knowledge: off</code>), an instruction to calculate independently before auditing, a four-line process-audit protocol, and task-bound execution receipts. It then examines diverse solution sampling and the <code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">1e-6</code> comparison tolerance. A receipt is execution evidence, not proof that the mathematical formulation or model judgment is correct.</p>
+</blockquote>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h2 style="font-size: 18px; font-weight: 700; color: var(--article-ink, #12324c); margin: 32px 0 12px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">From fast thinking to slow thinking: test-time compute and the limits of self-correction</h2>
+
+<p style="margin: 8px 0;">AI researcher <a href="https://www.youtube.com/watch?v=zjkBMFhNj_g" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">Andrej Karpathy</a> has used the contrast between <strong style="color: var(--article-accent, #3f8fd4);">System 1 (fast thinking)</strong> and <strong style="color: var(--article-accent, #3f8fd4);">System 2 (slower, deliberate reasoning)</strong> to discuss language models. <strong style="color: var(--article-accent, #3f8fd4);">Test-Time Compute</strong> explores how additional computation at inference can support reasoning, search, and verification.</p>
+
+<p style="margin: 8px 0;">At TED AI 2024, OpenAI researcher <a href="https://www.ted.com/talks/noam_brown_ai_won_t_plateau_if_we_give_it_time_to_think" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">Noam Brown</a> described a poker experiment: <strong>in that setting, giving a poker bot 20 seconds to search produced a gain comparable to scaling both model size and training time by 100,000 times</strong>. This comparison is specific to the experiment; it is not a universal conversion between extra thinking time and language-model pretraining compute.</p>
+
+<p style="margin: 8px 0;">In 2020, Dario Amodei and collaborators published <a href="https://arxiv.org/abs/2001.08361" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">Scaling Laws for Neural Language Models</a>. Their work reported empirical <strong>pretraining scaling laws</strong> relating language-model loss to model size, data, and compute. These observations helped motivate substantial investment in training larger models.</p>
+
+<p style="margin: 8px 0;">More recently, researchers have also investigated <strong>test-time scaling</strong>: allocating additional computation while answering. <a href="https://openai.com/index/introducing-openai-o1-preview/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">OpenAI o1</a> demonstrated a reasoning-oriented model; the <a href="https://arxiv.org/abs/2501.12948" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">DeepSeek-R1</a> paper explored reinforcement learning with <a href="https://arxiv.org/abs/2501.12948" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">DeepSeek-R1-Zero</a> and combined cold-start data with further training for <a href="https://arxiv.org/abs/2501.12948" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">DeepSeek-R1</a>. <a href="https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">DeepSeek-V4.1-Flash</a> and the <a href="https://github.com/deepseek-ai/DeepInfer" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">DeepInfer</a> inference framework (<code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);"><a href="https://github.com/deepseek-ai/DeepInfer" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">github.com/deepseek-ai/DeepInfer</a></code>) illustrate another part of the engineering landscape: efficient model serving. Model-side reasoning and system-side verification address different parts of the problem.</p>
+
+<p style="margin: 8px 0;">When reasoning models are used in demanding workflows, longer responses do not guarantee correction. <strong>A model may instead rationalize an earlier mistake.</strong> In <a href="https://arxiv.org/abs/2403.04121" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">Can Large Language Models Reason and Plan?</a>, Subbarao Kambhampati discusses the limits of self-correction and planning in language models. External feedback can help evaluate an output, but the checks themselves must also be examined.</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h2 style="font-size: 18px; font-weight: 700; color: var(--article-ink, #12324c); margin: 32px 0 12px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">Architecture overview: three layers and five test-time compute pillars</h2>
+
+<p style="margin: 8px 0;">Research and products such as <a href="https://openai.com/index/introducing-openai-o1-preview/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">OpenAI o1</a>/<a href="https://openai.com/index/introducing-o3-and-o4-mini/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">o3</a>, <a href="https://arxiv.org/abs/2501.12948" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">DeepSeek-R1</a>, and <a href="https://arxiv.org/abs/2501.19393" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">Stanford s1</a> explore how extra computation can improve reasoning. HexClaw applies related ideas in a three-layer architecture of generation, verification, and adjudication. The following diagram maps five engineering pillars to the open-source implementation:</p>
+
+<!-- 图 2：5 大工程支柱架构全景图 -->
+<div style="margin: 18px auto 16px; text-align: center;">
+<img width="2092" height="752" loading="lazy" decoding="async" src="../../assets/blog/test-time-compute/ttc-architecture-en.png" alt="The five pillars of test-time compute in HexClaw" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid #d5e6f3; box-shadow: 0 2px 10px rgba(0,0,0,0.05);"/>
+<p style="margin: 6px 0 0; font-size: 13px; color: var(--article-secondary, #5f7b9c); font-weight: 600;">Figure 2: Five test-time compute pillars and their HexClaw implementations</p>
+</div>
+
+<p style="margin: 8px 0;">These five pillars illustrate how the system separates generation, verification, and decision-making. Each supplies a distinct check or constraint; none alone guarantees a correct answer.</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h2 style="font-size: 18px; font-weight: 700; color: var(--article-ink, #12324c); margin: 32px 0 12px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">How model-level reasoning and system-level verification complement each other</h2>
+
+<p style="margin: 8px 0;">In technical exchanges, a common question from many engineers is: '<a href="https://openai.com/index/introducing-openai-o1-preview/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">OpenAI o1</a> and <a href="https://arxiv.org/abs/2501.12948" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">DeepSeek-R1</a> already support long thinking within the model; why does the application layer still need to implement dual-agent and code sandbox verification externally?'</p>
+
+<p style="margin: 8px 0;">The key distinction is that <strong style="color: var(--article-accent, #3f8fd4);">model-level reasoning and system-level verification can complement each other</strong>.</p>
+
+<div style="max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch;">
+<table style="width: 100%; min-width: 600px; border-collapse: collapse; margin: 16px 0; font-size: 13px; line-height: 1.8;">
+<tr>
+  <th style="background: var(--article-panel, #f4fbff); color: var(--article-ink, #12324c); padding: 8px 12px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea; width: 16%;">Comparison Dimension</th>
+  <th style="background: var(--article-panel, #f4fbff); color: var(--article-ink, #12324c); padding: 8px 12px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea; width: 42%;"><a href="https://openai.com/index/introducing-openai-o1-preview/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">OpenAI o1</a> / <a href="https://arxiv.org/abs/2501.12948" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">DeepSeek-R1</a></th>
+  <th style="background: var(--article-panel, #f4fbff); color: var(--article-ink, #12324c); padding: 8px 12px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea; width: 42%;">HexClaw's open-source architecture for <a href="https://github.com/hexagon-codes/hexclaw/blob/d4aff21560c3b4c6e3de83d9e761dde7a03ec386/engine/solve.go" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">solve.go</a></th>
+</tr>
+<tr>
+  <td style="padding: 10px 12px; border-bottom: 1px solid var(--article-border, #e0ecf5); font-weight: bold; color: var(--article-accent, #3f8fd4);">implementation hierarchy</td>
+  <td style="padding: 10px 12px; border-bottom: 1px solid var(--article-border, #e0ecf5);"><strong>Model level</strong><br/>Train the model for reasoning, including with reinforcement learning; some models expose reasoning in &lt;think&gt; tokens</td>
+  <td style="padding: 10px 12px; border-bottom: 1px solid var(--article-border, #e0ecf5);"><strong>System / Harness-Level (system framework layer)</strong><br/>Orchestrate Solver + Verifier dual agents + code execution sandbox using external harnesses</td>
+</tr>
+<tr>
+  <td style="padding: 10px 12px; border-bottom: 1px solid var(--article-border, #e0ecf5); font-weight: bold; color: var(--article-accent, #3f8fd4);">working mode</td>
+  <td style="padding: 10px 12px; border-bottom: 1px solid var(--article-border, #e0ecf5);">Model-generated reasoning within the inference process</td>
+  <td style="padding: 10px 12px; border-bottom: 1px solid var(--article-border, #e0ecf5);">A fresh verifier context excludes session memory; the prompt asks it to recalculate before auditing the supplied solution. The candidate is still visible in that prompt.</td>
+</tr>
+<tr>
+  <td style="padding: 10px 12px; border-bottom: 1px solid var(--article-border, #e0ecf5); font-weight: bold; color: var(--article-accent, #3f8fd4);">verification means</td>
+  <td style="padding: 10px 12px; border-bottom: 1px solid var(--article-border, #e0ecf5);">Model-generated reasoning; the model itself does not guarantee an external execution check</td>
+  <td style="padding: 10px 12px; border-bottom: 1px solid var(--article-border, #e0ecf5);">For supported numerical tasks, sandbox execution can produce a receipt; the structured verifier and general tool loop handle missing or failed execution differently</td>
+</tr>
+<tr>
+  <td style="padding: 10px 12px; border-bottom: 1px solid var(--article-border, #e0ecf5); font-weight: bold; color: var(--article-accent, #3f8fd4);">computing power threshold</td>
+  <td style="padding: 10px 12px; border-bottom: 1px solid var(--article-border, #e0ecf5);">Training a reasoning model can require substantial data and compute; the exact requirements depend on the training method</td>
+  <td style="padding: 10px 12px; border-bottom: 1px solid var(--article-border, #e0ecf5);">Local 7B/14B models can use the system controls for supported tasks, subject to their capabilities and the execution environment; the arrangement does not guarantee correctness.</td>
+</tr>
+<tr>
+  <td style="padding: 10px 12px; border-bottom: 1px solid var(--article-border, #e0ecf5); font-weight: bold; color: var(--article-accent, #3f8fd4);">Evidence and limitations</td>
+  <td style="padding: 10px 12px; border-bottom: 1px solid var(--article-border, #e0ecf5);">may still produce more rhetorically deceptive 'high-confidence hallucinations' after lengthy self-reflection</td>
+  <td style="padding: 10px 12px; border-bottom: 1px solid var(--article-border, #e0ecf5);">Two tracks: a complete sandbox receipt supplies execution evidence, while model-produced verdicts and process checks remain model judgments. Failure handling differs between the structured verifier and general tool loop.</td>
+</tr>
+<tr>
+  <td style="padding: 10px 12px; border-bottom: 1px solid var(--article-border, #e0ecf5); font-weight: bold; color: var(--article-accent, #3f8fd4);">relationship between both</td>
+  <td style="padding: 10px 12px; border-bottom: 1px solid var(--article-border, #e0ecf5);">Focus on the model's internal reasoning and hypothesis generation (Generator cornerstone)</td>
+  <td style="padding: 10px 12px; border-bottom: 1px solid var(--article-border, #e0ecf5);"><strong>Complementary roles:</strong> model reasoning proposes a solution; system-level checks supply execution evidence and control the decision flow.</td>
+</tr>
+</table>
+</div>
+
+<p style="margin: 8px 0;">Our earlier <a href="https://mp.weixin.qq.com/s/h60ymjjj3eF9hQyhl0jVcQ" style="color: var(--article-accent, #3f8fd4); text-decoration: none; border-bottom: 1px dashed var(--article-accent, #3f8fd4);">Loop Engineering</a> article discussed moving control into the surrounding system. Anthropic’s <a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">Building Effective Agents</a> describes the <strong style="color: var(--article-accent, #3f8fd4);">evaluator–optimizer</strong> workflow as an iterative pattern with a generator and an evaluator:</p>
+
+<blockquote style="border-left: 3px solid var(--article-accent, #3f8fd4); padding: 12px 18px; margin: 16px 0; background: var(--article-panel, #f4fbff); color: var(--article-ink, #12324c); font-size: 14px; border-radius: 0 8px 8px 0; line-height: 1.8;">Anthropic describes evaluator–optimizer as a useful workflow when evaluation criteria are clear and feedback can demonstrably improve an output. Its guidance also discusses environmental feedback for agents. The following distinction is our engineering interpretation: an execution receipt can verify that a program ran, while the program’s modeling and the evaluator’s judgment still require scrutiny.<br/><span style="color: var(--article-muted, #7b8fa3); font-size: 12px;">— Anthropic Engineering, <em><a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">Building Effective Agents</a></em> (2024-12)</span></blockquote>
+
+<p style="margin: 8px 0;">A common question from architects is: “If inference acceleration already uses <a href="https://github.com/deepseek-ai/DeepInfer" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">DeepInfer</a>, or the base model is <a href="https://arxiv.org/abs/2501.12948" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">DeepSeek-R1</a> / <a href="https://openai.com/index/introducing-openai-o1-preview/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">o1</a> with long thinking, why does the application need an external dual-agent system and sandbox?”</p>
+
+<p style="margin: 8px 0;">These layers can complement each other. <a href="https://github.com/deepseek-ai/DeepInfer" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">DeepInfer</a> addresses inference serving and latency; reasoning models such as R1/<a href="https://openai.com/index/introducing-openai-o1-preview/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">o1</a> generate candidate reasoning; HexClaw’s system layer can record actual program execution and compare results. A successful receipt is useful evidence of execution, not independent proof that the generated code models the question correctly.</p>
+
+<p style="margin: 8px 0;">The following sections trace the five pillars through HexClaw’s implementation.</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h2 style="font-size: 18px; font-weight: 700; color: var(--article-ink, #12324c); margin: 32px 0 12px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">Pillar 1 · Separate solving and verification (Dual-Agent)</h2>
+
+<p style="margin: 8px 0;">Our <a href="https://mp.weixin.qq.com/s/kDi-LSWB4UHtS_6jbTfvow" style="color: var(--article-accent, #3f8fd4); text-decoration: none; border-bottom: 1px dashed var(--article-accent, #3f8fd4);">Harness Engineering</a> article introduced a maker/checker pattern: in finance, the person performing a transaction and the person reviewing it are separate. The <a href="https://mp.weixin.qq.com/s/EvQT0VqH9ep6LXo89ZM-fw" style="color: var(--article-accent, #3f8fd4); text-decoration: none; border-bottom: 1px dashed var(--article-accent, #3f8fd4);">cyber workhorse</a> should not simply certify its own work.</p>
+
+<p style="margin: 8px 0;">In HexClaw’s <code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);"><a href="https://github.com/hexagon-codes/hexclaw/blob/d4aff21560c3b4c6e3de83d9e761dde7a03ec386/engine/solve.go" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">engine/solve.go</a></code>, the solving flow assigns distinct roles to separate subagents:</p>
+
+<section style="margin: 14px 0; padding: 14px 16px; overflow-x: auto; background: #102a3d; color: #d9edf7; border-radius: 8px; font-size: 12.5px; line-height: 1.7; font-family: SFMono-Regular, Menlo, Monaco, Consolas, 'Courier New', monospace; box-sizing: border-box;">
+<span style="display: block; white-space: pre; min-height: 1.7em; color: var(--article-muted, #7b8fa3);">// <a href="https://github.com/hexagon-codes/hexclaw/blob/d4aff21560c3b4c6e3de83d9e761dde7a03ec386/engine/solve.go#L78" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">hexclaw/engine/solve.go:78</a></span>
+<span style="display: block; white-space: pre; min-height: 1.7em;"><strong style="color: #5fb3ea;">const</strong> (</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">    solverAgentName   = <span style="color: #a8ff60;">"solver"</span></span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">    verifierAgentName = <span style="color: #a8ff60;">"verifier"</span></span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">    graderAgentName   = <span style="color: #a8ff60;">"grader"</span></span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">    codeExecToolName  = <span style="color: #a8ff60;">"code_exec"</span></span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">)</span>
+</section>
+
+<p style="margin: 8px 0;">A common two-stage review simply appends the solver’s full conversation and asks whether the answer is correct. Seeing the earlier reasoning can anchor the verifier and encourage it to agree, even when the derivation contains an error.</p>
+
+<p style="margin: 8px 0;">HexClaw gives the verifier <strong style="color: var(--article-accent, #3f8fd4);">a fresh runtime context</strong>:</p>
+
+<section style="margin: 14px 0; padding: 14px 16px; overflow-x: auto; background: #102a3d; color: #d9edf7; border-radius: 8px; font-size: 12.5px; line-height: 1.7; font-family: SFMono-Regular, Menlo, Monaco, Consolas, 'Courier New', monospace; box-sizing: border-box;">
+<span style="display: block; white-space: pre; min-height: 1.7em; color: var(--article-muted, #7b8fa3);">// <a href="https://github.com/hexagon-codes/hexclaw/blob/d4aff21560c3b4c6e3de83d9e761dde7a03ec386/engine/solve_verifier_node.go#L52" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">hexclaw/engine/solve_verifier_node.go:52</a></span>
+<span style="display: block; white-space: pre; min-height: 1.7em;"><strong style="color: #5fb3ea;">func</strong> <span style="color: #ffc66d;">standaloneVerificationInput</span>(ctx context.Context, msg *adapter.Message, ...) (*verificationInput, <strong style="color: #5fb3ea;">bool</strong>) {</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">    ...</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">    <strong style="color: #5fb3ea;">if</strong> msg.Metadata[<span style="color: #a8ff60;">"source"</span>] != solveDispatchSource || </span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">       msg.Metadata[<span style="color: #a8ff60;">"role"</span>] != verifierAgentName ||</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">       msg.Metadata[<span style="color: #a8ff60;">"memory"</span>] != <span style="color: #a8ff60;">"off"</span> || </span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">       msg.Metadata[<span style="color: #a8ff60;">"knowledge"</span>] != <span style="color: #a8ff60;">"off"</span> {</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">        <strong style="color: #5fb3ea;">return</strong> <strong style="color: #5fb3ea;">nil</strong>, <strong style="color: #5fb3ea;">false</strong></span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">    }</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">    ...</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">}</span>
+</section>
+
+<p style="margin: 8px 0;">The metadata excludes the main session history and long-term memory (<code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">memory: off</code>); see <a href="https://mp.weixin.qq.com/s/YvGGPBZX0V7R6-09unnrcQ" style="color: var(--article-accent, #3f8fd4); text-decoration: none; border-bottom: 1px dashed var(--article-accent, #3f8fd4);">"Agent Memory That Can 'Dream'"</a>. It also disables the external knowledge base (<code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">knowledge: off</code>) discussed in <a href="https://mp.weixin.qq.com/s/H6BoZUcQfBBqh-ScXQyTWw" style="color: var(--article-accent, #3f8fd4); text-decoration: none; border-bottom: 1px dashed var(--article-accent, #3f8fd4);">Context Engineering</a>. This <strong>fresh-context isolation</strong> reduces interference from prior session history and unrelated tools. The verifier still receives the original problem, the full proposed solution, and the candidate answer; those are not hidden.</p>
+
+<p style="margin: 8px 0;">At the prompt level, the verifier is instructed to recalculate independently before auditing the proposed solution:</p>
+
+<blockquote style="border-left: 3px solid var(--article-accent, #3f8fd4); padding: 12px 16px; margin: 16px 0; background: var(--article-panel, #f8fcff); color: var(--article-ink, #244b6e); font-size: 13.5px; line-height: 1.8;">
+“For numerical questions, <strong>first write code using code_exec to calculate an answer independently, without trusting the proposed solution</strong>. Then audit the complete solution step by step.”
+<div style="font-size: 12px; color: var(--article-secondary, #3f5f7b); margin-top: 4px;">— Translated excerpt from <code style="color: var(--article-accent, #3f8fd4);"><a href="https://github.com/hexagon-codes/hexclaw/blob/d4aff21560c3b4c6e3de83d9e761dde7a03ec386/engine/solve.go#L1230" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">hexclaw/engine/solve.go:1230</a></code> prompt template</div>
+</blockquote>
+
+<p style="margin: 8px 0;">The problem, candidate answer, and complete solution are supplied in the same prompt. “Calculate first, audit second” is therefore a <strong>prompt-level ordering constraint</strong>, not a two-round blind review that physically hides the candidate answer. The instruction can reduce anchoring but cannot guarantee that the model follows the intended order.</p>
+
+<!-- 图 3: Dual-Agent 隔离交互与物理代码执行闭环时序 -->
+<div style="margin: 20px auto 16px; text-align: center;">
+<img width="2091" height="752" loading="lazy" decoding="async" src="../../assets/blog/test-time-compute/dual-agent-sequence-en.png" alt="Dual-agent isolation and code execution sequence" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid #d5e6f3; box-shadow: 0 2px 10px rgba(0,0,0,0.05);"/>
+<p style="margin: 6px 0 0; font-size: 13px; color: var(--article-secondary, #5f7b9c); font-weight: 600;">Figure 3: Solver, verifier, and code execution flow. Exit code 0 alone is insufficient: the receipt must also be task-bound and complete, and successful execution cannot prove the model is correct. An out-of-scope answer is replaced after an in-scope re-solve; disagreement alone does not imply replacement.</p>
+</div>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h2 style="font-size: 18px; font-weight: 700; color: var(--article-ink, #12324c); margin: 32px 0 12px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">Pillar 2 · Step-by-step process audits: a lightweight engineering protocol</h2>
+
+<p style="margin: 8px 0;">Checking only the final answer can miss an important case: <strong>an accidentally correct result</strong>. Two errors in the reasoning may cancel out, leaving the right number for the wrong reasons.</p>
+
+<p style="margin: 8px 0;">An <strong>outcome reward model (ORM)</strong> evaluates the result and can miss faulty intermediate reasoning. OpenAI’s <a href="https://arxiv.org/abs/2305.20050" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">Let's Verify Step by Step</a> discusses <strong>process reward models (PRMs)</strong> that assess individual steps. Training a dedicated PRM requires labeled step-level data and compute; the engineering cost can be substantial.</p>
+
+<p style="margin: 8px 0;">HexClaw does not train a dedicated PRM here. As discussed in <a href="https://mp.weixin.qq.com/s/ZJ9ehZtG_jUhtTMUnPCDxA" style="color: var(--article-accent, #3f8fd4); text-decoration: none; border-bottom: 1px dashed var(--article-accent, #3f8fd4);">Prompt Engineering</a>, it uses a structured four-line prompt and an LLM as a judge to represent the process-audit result. This is an engineering protocol, not a trained PRM or a guarantee of equivalent accuracy:</p>
+
+<p style="margin: 8px 0;">The format below applies when a curriculum constraint is supplied; without one, the verdict line does not include <code>OUT_OF_SCOPE</code>.</p>
+
+<section style="margin: 14px 0; padding: 14px 16px; overflow-x: auto; background: #102a3d; color: #d9edf7; border-radius: 8px; font-size: 12.5px; line-height: 1.7; font-family: SFMono-Regular, Menlo, Monaco, Consolas, 'Courier New', monospace; box-sizing: border-box;">
+<span style="display: block; white-space: pre; min-height: 1.7em; color: var(--article-muted, #7b8fa3);">// <a href="https://github.com/hexagon-codes/hexclaw/blob/d4aff21560c3b4c6e3de83d9e761dde7a03ec386/engine/solve.go#L1241" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">hexclaw/engine/solve.go:1241</a></span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">最后严格按以下格式输出（四行）：</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;"><strong style="color: #ff7b72;">VERDICT</strong>: AGREE 或 DISAGREE 或 UNVERIFIABLE 或 OUT_OF_SCOPE</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;"><strong style="color: #ff7b72;">PROCESS</strong>: VALID 或 INVALID 或 NOT_PROVIDED</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;"><strong style="color: #ff7b72;">COMPUTED</strong>: &lt;你独立算出的答案；若本题无法用代码计算则写 N/A&gt;</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;"><strong style="color: #ff7b72;">说明</strong>: &lt;一句话&gt;</span>
+</section>
+
+<p style="margin: 8px 0;">In <code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">verifySolutionWithGuides</code> (<code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);"><a href="https://github.com/hexagon-codes/hexclaw/blob/d4aff21560c3b4c6e3de83d9e761dde7a03ec386/engine/solve.go#L874-L876" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">solve.go:874-876</a></code>), an invalid process verdict takes precedence over an otherwise matching answer, except for the separate out-of-scope case:</p>
+
+<section style="margin: 14px 0; padding: 14px 16px; overflow-x: auto; background: #102a3d; color: #d9edf7; border-radius: 8px; font-size: 12.5px; line-height: 1.7; font-family: SFMono-Regular, Menlo, Monaco, Consolas, 'Courier New', monospace; box-sizing: border-box;">
+<span style="display: block; white-space: pre; min-height: 1.7em; color: var(--article-muted, #7b8fa3);">// <a href="https://github.com/hexagon-codes/hexclaw/blob/d4aff21560c3b4c6e3de83d9e761dde7a03ec386/engine/solve.go#L874" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">hexclaw/engine/solve.go:874</a> 核心过程否决</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;"><strong style="color: #5fb3ea;">if</strong> process == <span style="color: #a8ff60;">"INVALID"</span> &amp;&amp; verdict != verdictOutOfScope {</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">    verdict = verdictDisagree</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">}</span>
+</section>
+
+<p style="margin: 8px 0;">When the process is marked <code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">PROCESS: INVALID</code>, the verdict becomes <code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">DISAGREE</code> unless the solution is out of scope. <code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">formatSolve</code> (<code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);"><a href="https://github.com/hexagon-codes/hexclaw/blob/d4aff21560c3b4c6e3de83d9e761dde7a03ec386/engine/solve.go#L1570" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">solve.go:1570</a></code>; warning rendering at <a href="https://github.com/hexagon-codes/hexclaw/blob/d4aff21560c3b4c6e3de83d9e761dde7a03ec386/engine/solve.go#L1614" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">line 1614</a>) presents the warning but does not make the decision. In the structured verifier, <code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);"><a href="https://github.com/hexagon-codes/hexclaw/blob/d4aff21560c3b4c6e3de83d9e761dde7a03ec386/engine/solve_verifier_node.go" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">solve_verifier_node.go</a></code> also defines a <code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">verificationStep</code> JSON contract for step-level audit data.</p>
+
+<p style="margin: 8px 0;">If the answers match but the process is marked invalid, the system reports a failed verification. This protects against a correct final number reached through a faulty process; the accuracy of the process label still depends on the verifier.</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h2 style="font-size: 18px; font-weight: 700; color: var(--article-ink, #12324c); margin: 32px 0 12px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">Pillar 3 · Execution receipts: dual-track decisions and task binding</h2>
+
+<p style="margin: 8px 0;">A model evaluating another model’s natural-language output can make its own errors. <a href="https://arxiv.org/abs/2211.10435" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">Program-Aided Language Models</a> (PAL, Gao et al., 2022) illustrates a different division of labor: the model formulates a program, while an interpreter performs the calculation. The interpreter’s result still depends on the program it was given.</p>
+
+<p style="margin: 8px 0;">The essential distinction is: <strong>successful execution does not prove correct mathematical modeling.</strong></p>
+
+<p style="margin: 8px 0;">Take the storage example: 4.8 TB represents 2/5 of the total, so the total is 12 TB. A model could mistakenly use multiplication instead of division:</p>
+
+<section style="margin: 14px 0; padding: 14px 16px; overflow-x: auto; background: #102a3d; color: #d9edf7; border-radius: 8px; font-size: 12.5px; line-height: 1.7; font-family: SFMono-Regular, Menlo, Monaco, Consolas, 'Courier New', monospace; box-sizing: border-box;">
+<span style="display: block; white-space: pre; min-height: 1.7em; color: var(--article-muted, #7b8fa3);"># 最小边界反例演示：代码跑通 ≠ 题意建模正确</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;"><strong style="color: #5fb3ea;">from</strong> fractions <strong style="color: #5fb3ea;">import</strong> Fraction</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">used, ratio = Fraction(<span style="color: #a8ff60;">"4.8"</span>), Fraction(2, 5)</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">print(<span style="color: #a8ff60;">"total:"</span>, used / ratio)                 <span style="color: var(--article-muted, #7b8fa3);"># 正确建模输出：12</span></span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">print(<span style="color: #a8ff60;">"wrong formula:"</span>, float(used * ratio))  <span style="color: var(--article-muted, #7b8fa3);"># 错误乘法输出：1.92</span></span>
+<span style="display: block; white-space: pre; min-height: 1.7em; color: var(--article-muted, #7b8fa3);"># 进程退出码 ExitCode 均为 0</span>
+</section>
+
+<p style="margin: 8px 0;">Exit code 0 establishes that the Python process completed successfully; it does not establish that “part divided by proportion” was modeled correctly. A verification chain must ask three separate questions: <strong>did the program execute, can its output be compared, and does the proposed reasoning hold?</strong> Calling all three simply “verified” hides those distinctions.</p>
+
+<p style="margin: 8px 0;">HexClaw restricts the verifier’s available tool to <code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">code_exec</code>. The scheduler <code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">verifySolutionWithGuides</code> (<code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);"><a href="https://github.com/hexagon-codes/hexclaw/blob/d4aff21560c3b4c6e3de83d9e761dde7a03ec386/engine/solve.go#L845-L856" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">solve.go:845-856</a></code>) uses <code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">computedOutput(attempt.Task)</code> to inspect the execution receipt:</p>
+
+<section style="margin: 14px 0; padding: 14px 16px; overflow-x: auto; background: #102a3d; color: #d9edf7; border-radius: 8px; font-size: 12.5px; line-height: 1.7; font-family: SFMono-Regular, Menlo, Monaco, Consolas, 'Courier New', monospace; box-sizing: border-box;">
+<span style="display: block; white-space: pre; min-height: 1.7em; color: var(--article-muted, #7b8fa3);">// <a href="https://github.com/hexagon-codes/hexclaw/blob/d4aff21560c3b4c6e3de83d9e761dde7a03ec386/engine/solve_execution_receipt.go#L174" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">hexclaw/engine/solve_execution_receipt.go:174</a></span>
+<span style="display: block; white-space: pre; min-height: 1.7em;"><strong style="color: #5fb3ea;">func</strong> (r *CodeExecutionReceipt) <span style="color: #ffc66d;">completeFor</span>(task <strong style="color: #5fb3ea;">string</strong>) <strong style="color: #5fb3ea;">bool</strong> {</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">    <strong style="color: #5fb3ea;">if</strong> r == <strong style="color: #5fb3ea;">nil</strong> || r.InputDigest != executionInputDigest(task) || r.RunID == <span style="color: #a8ff60;">""</span> ||</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">       r.Status != <span style="color: #a8ff60;">"success"</span> || r.ExitCode != 0 || r.Timeout || r.RuntimeMissing || r.Error != <span style="color: #a8ff60;">""</span> ||</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">       r.Truncated || r.StdoutTruncated || r.StderrTruncated ||</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">       r.StdoutBytes &lt;= 0 || int64(len(r.Stdout)) != r.StdoutBytes {</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">        <strong style="color: #5fb3ea;">return</strong> <strong style="color: #5fb3ea;">false</strong></span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">    }</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">    <strong style="color: #5fb3ea;">return</strong> <strong style="color: #5fb3ea;">true</strong></span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">}</span>
+</section>
+
+<p style="margin: 8px 0;">The receipt cannot establish a successful, complete execution if it reports a timeout, missing runtime, error, nonzero exit code, or truncated output. <code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">executionInputDigest(task)</code> binds the receipt to a SHA-256 digest of the task input. These checks do not establish that the generated code implements the intended mathematics.</p>
+
+<p style="margin: 8px 0;">Output parsing first looks for a line matching <code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">(?im)^COMPUTED:[ \t]*([^\r\n]+)</code>. If there is no marker, a single clean output line is accepted as a fallback. The test at <code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);"><a href="https://github.com/hexagon-codes/hexclaw/blob/d4aff21560c3b4c6e3de83d9e761dde7a03ec386/engine/solve_storage_quantity_test.go#L72" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">engine/solve_storage_quantity_test.go:72</a></code> checks receipt recognition and the <code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">solve_evidence=numeric_exec</code> metadata binding.</p>
+
+<p style="margin: 8px 0;">A subtler issue is <strong>audit tampering during syntax repair</strong>. A verifier’s Python program can fail to compile, for example because of an <code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">IndentationError</code>. If the whole task is regenerated, the model might also change an earlier INVALID process judgment to VALID. In <code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);"><a href="https://github.com/hexagon-codes/hexclaw/blob/d4aff21560c3b4c6e3de83d9e761dde7a03ec386/engine/solve_verifier_node.go" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">solve_verifier_node.go</a></code>, the structured verifier allows a limited syntax repair while retaining the first audit result:</p>
+
+<section style="margin: 14px 0; padding: 14px 16px; overflow-x: auto; background: #102a3d; color: #d9edf7; border-radius: 8px; font-size: 12.5px; line-height: 1.7; font-family: SFMono-Regular, Menlo, Monaco, Consolas, 'Courier New', monospace; box-sizing: border-box;">
+<span style="display: block; white-space: pre; min-height: 1.7em; color: var(--article-muted, #7b8fa3);">// <a href="https://github.com/hexagon-codes/hexclaw/blob/d4aff21560c3b4c6e3de83d9e761dde7a03ec386/engine/solve_verifier_node.go" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">hexclaw/engine/solve_verifier_node.go</a>：语法修复锁死原审计</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">program.Scope, program.Checks, program.Note, program.ParentGuideAudits =</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">    originalProgram.Scope, originalProgram.Checks,</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">    originalProgram.Note, originalProgram.ParentGuideAudits</span>
+</section>
+
+<p style="margin: 8px 0;">Even if the repaired program runs successfully, the original process veto is retained. The behavior is covered by <code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);"><a href="https://github.com/hexagon-codes/hexclaw/blob/d4aff21560c3b4c6e3de83d9e761dde7a03ec386/engine/solve_verifier_syntax_repair_test.go#L16" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">solve_verifier_syntax_repair_test.go</a>: preserve_invalid_audit</code>.</p>
+
+<p style="margin: 8px 0;">The decision has two tracks: a sandbox receipt supplies evidence of program execution; VERDICT and PROCESS remain model-produced judgments. The structured verifier returns an error when it cannot obtain a valid receipt. The general tool path can fall back to weaker <code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">solve_evidence: model</code> evidence in applicable missing-receipt cases; known failures and timeouts have separate handling. The <code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">hexclaw-desktop</code> UI badge (<code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">VerifyBadge.vue</code>) distinguishes program execution evidence from model-only review.</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h2 style="font-size: 18px; font-weight: 700; color: var(--article-ink, #12324c); margin: 32px 0 12px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">Pillar 4 · Test-time sampling and solution diversity</h2>
+
+<p style="margin: 8px 0;">Another use of test-time compute is <strong>sampling and voting</strong>. Here, “search” means multiple candidate solutions and cross-checks, not a claim that the system uses Monte Carlo tree search or beam search.</p>
+
+<p style="margin: 8px 0;">HexClaw exposes two controls in the tool input:</p>
+
+<section style="margin: 14px 0; padding: 14px 16px; overflow-x: auto; background: #102a3d; color: #d9edf7; border-radius: 8px; font-size: 12.5px; line-height: 1.7; font-family: SFMono-Regular, Menlo, Monaco, Consolas, 'Courier New', monospace; box-sizing: border-box;">
+<span style="display: block; white-space: pre; min-height: 1.7em; color: var(--article-muted, #7b8fa3);">// <a href="https://github.com/hexagon-codes/hexclaw/blob/d4aff21560c3b4c6e3de83d9e761dde7a03ec386/engine/solve.go#L69" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">hexclaw/engine/solve.go:69</a></span>
+<span style="display: block; white-space: pre; min-height: 1.7em;"><span style="color: #a8ff60;">"self_consistency"</span>: {Type: <span style="color: #a8ff60;">"integer"</span>, Description: <span style="color: var(--article-muted, #7b8fa3);">"Optional number of independent same-method solver samples to majority-vote"</span>},</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;"><span style="color: #a8ff60;">"method_diversity"</span>: {Type: <span style="color: #a8ff60;">"boolean"</span>, Description: <span style="color: var(--article-muted, #7b8fa3);">"Optional. When true, solve with TWO deliberately different methods and cross-check them"</span>},</span>
+</section>
+
+<p style="margin: 8px 0;">In <a href="https://arxiv.org/abs/2203.11171" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">Self-Consistency</a> (<a href="https://arxiv.org/abs/2203.11171" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">Wang et al., ICLR 2023</a>), multiple solutions are sampled using the same prompt and combined by majority vote. If the problem contains a systematic trap, similarly prompted samples can repeat the same mistake; voting alone may not remove the bias.</p>
+
+<p style="margin: 8px 0;">The engine also supports <strong>method diversity</strong>: varying the requested solution method, rather than only the sampling temperature.</p>
+
+<p style="margin: 6px 0; font-style: italic; color: var(--article-secondary, #5f7b9c); padding-left: 12px; border-left: 2px solid #5fb3ea;">“Use a conventional derivation for method one. For method two, deliberately use a different approach, such as a substitution, a reverse tape diagram, or a visual argument.”</p>
+
+<p style="margin: 8px 0;">Agreement between two different methods and a sandbox result provides additional cross-checking evidence, but does not rule out a shared modeling error. If the methods disagree, the system attempts to use the independent verifier’s valid numerical execution evidence as a <strong>tie-breaker</strong>: when the computed result matches a candidate group, it returns that solution only if the verdict is not <code>DISAGREE</code> or the match is not the primary solution. A matching primary solution with a <code>DISAGREE</code> verdict instead proceeds to process-warning handling. When the result matches no group, the system preserves the disagreement and calls for human review. A valid receipt still cannot establish that the program models the problem correctly. The excerpt below omits the remaining branches and warning handling:</p>
+
+<section style="margin: 14px 0; padding: 14px 16px; overflow-x: auto; background: #102a3d; color: #d9edf7; border-radius: 8px; font-size: 12.5px; line-height: 1.7; font-family: SFMono-Regular, Menlo, Monaco, Consolas, 'Courier New', monospace; box-sizing: border-box;">
+<span style="display: block; white-space: pre; min-height: 1.7em; color: var(--article-muted, #7b8fa3);">// <a href="https://github.com/hexagon-codes/hexclaw/blob/d4aff21560c3b4c6e3de83d9e761dde7a03ec386/engine/solve.go#L1574" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">hexclaw/engine/solve.go:1574</a></span>
+<span style="display: block; white-space: pre; min-height: 1.7em;"><strong style="color: #5fb3ea;">if</strong> len(groups) &gt; 1 {</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">    <strong style="color: #5fb3ea;">if</strong> numericGrounded &amp;&amp; verdict != verdictUnverifiable &amp;&amp; computed != <span style="color: #a8ff60;">""</span> {</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">        <strong style="color: #5fb3ea;">if</strong> g := findGroup(groups, computed, problem...); g != <strong style="color: #5fb3ea;">nil</strong> {</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">            <strong style="color: #5fb3ea;">if</strong> verdict != verdictDisagree || g != &amp;groups[0] {</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">                <strong style="color: #5fb3ea;">return</strong> g.sols[0].output</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">            }</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">        }</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">    }</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">}</span>
+</section>
+
+<p style="margin: 8px 0;">A previously fixed issue (<code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);"><a href="https://github.com/hexagon-codes/hexclaw/blob/d4aff21560c3b4c6e3de83d9e761dde7a03ec386/engine/solve.go#L436" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">engine/solve.go:436</a> BUG-20260708</code>) illustrates why result voting alone is insufficient. In the <a href="https://mp.weixin.qq.com/s/8xUoFrig10zxpxni1rgm9Q" style="color: var(--article-accent, #3f8fd4); text-decoration: none; border-bottom: 1px dashed var(--article-accent, #3f8fd4);">"K12 Engineering Practice"</a> scenario, a verifier could mark a method <code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">OUT_OF_SCOPE</code> and request a new solution under stricter constraints. If both methods produced the same number, ordinary vote merging could keep the original out-of-scope method first. The corrective replacement instead removes that method in favor of the revised solution.</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h2 style="font-size: 18px; font-weight: 700; color: var(--article-ink, #12324c); margin: 32px 0 12px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">Pillar 5 · Symbolic and semantic equivalence with tolerances</h2>
+
+<p style="margin: 8px 0;">An equivalence check can reject correct answers solely because their formats differ. For example, the solver may output <code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">0.5</code> while the verifier outputs <code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">1/2</code>, or unordered answers may appear as <code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">8 and 12</code> and <code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">12 and 8</code>. A plain <code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">string == string</code> comparison would treat them as different.</p>
+
+<p style="margin: 8px 0;">The comparison primitives in <code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);"><a href="https://github.com/hexagon-codes/hexclaw/blob/d4aff21560c3b4c6e3de83d9e761dde7a03ec386/engine/solve.go#L1283-L1464" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">engine/solve.go:1283-1464</a></code> address these cases:</p>
+
+<section style="margin: 14px 0; padding: 14px 16px; overflow-x: auto; background: #102a3d; color: #d9edf7; border-radius: 8px; font-size: 12.5px; line-height: 1.7; font-family: SFMono-Regular, Menlo, Monaco, Consolas, 'Courier New', monospace; box-sizing: border-box;">
+<span style="display: block; white-space: pre; min-height: 1.7em; color: var(--article-muted, #7b8fa3);">// <a href="https://github.com/hexagon-codes/hexclaw/blob/d4aff21560c3b4c6e3de83d9e761dde7a03ec386/engine/solve.go#L1283" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">hexclaw/engine/solve.go:1283</a>（容差常数）与 <a href="https://github.com/hexagon-codes/hexclaw/blob/d4aff21560c3b4c6e3de83d9e761dde7a03ec386/engine/solve.go#L1454" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">line 1454</a>（等值判定原语）</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;"><strong style="color: #5fb3ea;">const</strong> answerTol = 1e-6</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;"><br/></span>
+<span style="display: block; white-space: pre; min-height: 1.7em;"><strong style="color: #5fb3ea;">func</strong> <span style="color: #ffc66d;">answersEqual</span>(a, b <strong style="color: #5fb3ea;">string</strong>) <strong style="color: #5fb3ea;">bool</strong> {</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">    as, aok := numberSet(a)</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">    bs, bok := numberSet(b)</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">    <strong style="color: #5fb3ea;">if</strong> aok &amp;&amp; bok {</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">        <strong style="color: #5fb3ea;">return</strong> numberSetsEqual(as, bs)</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">    }</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">    <strong style="color: #5fb3ea;">if</strong> equal, comparable := sameUnitAnswersEqual(a, b); comparable {</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">        <strong style="color: #5fb3ea;">return</strong> equal</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">    }</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">    <strong style="color: #5fb3ea;">return</strong> normalizeAnswer(a) == normalizeAnswer(b)</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">}</span>
+</section>
+
+<p style="margin: 8px 0;">The core logic here consists of three progressive layers:</p>
+<p style="margin: 6px 0;">1. <strong>Numbers and tolerance:</strong> Parse numeric values and compare them using a <code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">1e-6</code> absolute/relative tolerance. This permits <code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">1/2 == 0.5</code> while distinguishing values such as 42 and 48. <code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">sameUnitAnswersEqual</code> also handles supported same-unit quantities, such as TB, km/h, or percentages;</p>
+<p style="margin: 6px 0;">2. <strong>Unordered solution sets:</strong> Normalize unordered answers before comparison. For explicitly named or positional answers, such as “A: 8, B: 12” versus “A: 12, B: 8,” preserve the name and position bindings rather than swapping them;</p>
+<p style="margin: 6px 0;">3. <strong>Conservative decisions:</strong> <code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">answersEqual</code> requires sufficient evidence for equality, while <code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">answersDefinitelyDiffer</code> handles supported numeric sets and comparable same-unit quantities. Unclear text forms are treated cautiously rather than forcing a definitive verdict.</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h2 style="font-size: 18px; font-weight: 700; color: var(--article-ink, #12324c); margin: 32px 0 12px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">Engineering cost and adaptive triage: spending expensive inference compute where it matters most</h2>
+
+<p style="margin: 8px 0;">The full generation-and-verification path can require multiple model calls and sandbox execution. Latency and token use depend on the model, hardware, problem, and execution path. The source article’s illustrative timings and multipliers were not accompanied by those measurement details, so they should not be treated as general guarantees.</p>
+
+<p style="margin: 8px 0;">Research by UC Berkeley and Google DeepMind (<a href="https://arxiv.org/abs/2408.03314" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">Snell et al., 2024</a>) studies allocating test-time search and verification compute according to problem difficulty. HexClaw applies a related engineering idea at its entry point: <strong style="color: var(--article-accent, #3f8fd4);">adaptive complexity triage</strong>.</p>
+
+<section style="margin: 14px 0; padding: 14px 16px; overflow-x: auto; background: #102a3d; color: #d9edf7; border-radius: 8px; font-size: 12.5px; line-height: 1.7; font-family: SFMono-Regular, Menlo, Monaco, Consolas, 'Courier New', monospace; box-sizing: border-box;">
+<span style="display: block; white-space: pre; min-height: 1.7em; color: var(--article-muted, #7b8fa3);">// <a href="https://github.com/hexagon-codes/hexclaw/blob/d4aff21560c3b4c6e3de83d9e761dde7a03ec386/engine/solve.go#L342" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">hexclaw/engine/solve.go:342</a></span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">complexity := assessComplexity(complexityProblem)</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;"><strong style="color: #5fb3ea;">if</strong> auto &amp;&amp; complexity == complexityHard {</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">    methodDiversity = <strong style="color: #5fb3ea;">true</strong></span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">}</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">skipVerify := auto &amp;&amp; complexity == complexityTrivial &amp;&amp; !gradingMode &amp;&amp; outputVersion == <span style="color: #a8ff60;">""</span></span>
+</section>
+
+<p style="margin: 8px 0;">The policy is <strong>light by default, more work when needed</strong>. The triage logic uses local rules rather than another model call; the source does not provide a timing benchmark for those rules:</p>
+<p style="margin: 6px 0;"><strong>Simple problems:</strong> when automatic triage selects <code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">complexityTrivial</code>, grading is off, and no new explanation is requested, the solver can answer without invoking the independent verifier;</p>
+<p style="margin: 6px 0;"><strong>Hard problems:</strong> in automatic mode, <code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">complexityHard</code> can trigger <code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">method_diversity</code> and two solution methods. Sandbox-based numeric verification applies only where the task supports computation;</p>
+<p style="margin: 6px 0;"><strong>Independence:</strong> in the default single-model configuration, Solver and Verifier use the same base model. Their contexts and available tools differ, and the prompt asks the verifier to calculate independently first. This is not independent model training or a guaranteed blind review.</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h2 style="font-size: 18px; font-weight: 700; color: var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">The limits of this version</h2>
+<p style="margin: 8px 0;">No system should promise zero errors. The current approach has practical limits and costs:</p>
+<ul style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 6px 0;"><strong>Open-ended questions:</strong> a sandbox cannot provide decisive verification for every subjective or qualitative answer. For general concepts without a unique numerical result, the verifier may return <code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">UNVERIFIABLE</code> and the result requires human review;</li>
+<li style="margin: 6px 0;"><strong>Latency and cost:</strong> more model calls and sandbox execution can increase response time and token use. The impact depends on the task, model, hardware, and execution path;</li>
+<li style="margin: 6px 0;"><strong>Curriculum scope:</strong> <code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">OUT_OF_SCOPE</code> depends on the allowed-method constraints supplied to the verifier. Without clear constraints, the system cannot guarantee that a solution follows a particular grade’s curriculum;</li>
+<li style="margin: 6px 0;"><strong>Execution environment:</strong> the verifier needs an available, trusted Python runtime. If execution fails or a receipt is missing, the structured verifier can return an error; the general tool path can fall back to model-only evidence in applicable missing-receipt cases. Known execution failures and timeouts retain their own error handling.</li>
+</ul>
+
+<p style="margin: 8px 0;">The source article also discusses development on <code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);"><a href="https://github.com/hexagon-codes/hexclaw/tree/feat/code-exec-sandbox-autonomy" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">feat/code-exec-sandbox-autonomy</a></code>, including streaming local-model reasoning and work toward streaming execution receipts. It identifies faster sandbox startup and deterministic parsing for more non-numeric logic as areas for further work, not as a guarantee for every released configuration.</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h2 style="font-size: 18px; font-weight: 700; color: var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">Back to the fraction problem: two engineering constraints for reliable test-time compute</h2>
+<p style="margin: 8px 0;">Return to the sixth-grade example: 4.8 TB is 2/5 of the total (see <a href="https://mp.weixin.qq.com/s/LaQbmp7OwDmAcIfdhYYiSw" style="color: var(--article-accent, #3f8fd4); text-decoration: none; border-bottom: 1px dashed var(--article-accent, #3f8fd4);">"How to calculate 12 TB from 4.8 TB?"</a> for the full derivation). Reliable tutoring requires more than the model’s self-assessment. The two controls below provide useful evidence and constraints, but do not eliminate every possible error:</p>
+<p style="margin: 6px 0;"><strong>Fresh context and prompt ordering:</strong> the verifier’s context excludes session memory and knowledge (<code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">memory: off, knowledge: off</code>). It is instructed to calculate independently before auditing the supplied solution. Because the candidate and solution are still in the same prompt, this is an instruction-level constraint rather than a physical blind review;</p>
+<p style="margin: 6px 0;"><strong>Task-bound execution receipts:</strong> a successful receipt binds actual program execution to the task and can support numerical comparison or tie-breaking. It does not establish that the generated code models the problem correctly or that every reasoning step is valid.</p>
+<p style="margin: 8px 0;">The value of this arrangement is a clearer evidence chain: separate the model’s proposed reasoning, an independent verification attempt, and actual execution evidence. Its reliability must still be assessed for the model and task in use.</p>
+
+<p style="margin: 24px 0 16px; color: var(--article-secondary, #5f7b9c); font-size: 14.5px; line-height: 2; text-align: center; font-style: italic; padding: 8px 16px;">More thinking time does not automatically produce truth.<br/>An execution receipt shows what ran;<br/>the model, formulation, and reasoning still need verification.</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0 16px;"/>
+
+<h3 style="font-size: 15px; font-weight: 600; color: var(--article-accent, #3f8fd4); margin: 24px 0 8px;">Previous articles · HexClaw AI series</h3>
+<p style="margin: 4px 0; font-size: 14px; line-height: 2; color: var(--article-secondary, #5f7b9c);">
+▸ <a href="https://mp.weixin.qq.com/s/h60ymjjj3eF9hQyhl0jVcQ" style="color: var(--article-accent, #3f8fd4); text-decoration: none;">Loop Engineering in HexClaw: Four Generations, from Prompt to Loop, Through an Open-Source Agent’s Code</a><br/>
+　<span style="color: var(--article-secondary, #5f7b9c);">Series overview: the control plane and the agent execution loop</span>
+</p>
+<p style="margin: 4px 0; font-size: 14px; line-height: 2; color: var(--article-secondary, #5f7b9c);">
+▸ <a href="https://mp.weixin.qq.com/s/kDi-LSWB4UHtS_6jbTfvow" style="color: var(--article-accent, #3f8fd4); text-decoration: none;">Harness Engineering in HexClaw: the Model Supplies the Intelligence, the Harness Makes It Fit for Work</a><br/>
+　<span style="color: var(--article-secondary, #5f7b9c);">Permission gates, maker/checker roles, and independent verification</span>
+</p>
+<p style="margin: 4px 0; font-size: 14px; line-height: 2; color: var(--article-secondary, #5f7b9c);">
+▸ <a href="https://mp.weixin.qq.com/s/H6BoZUcQfBBqh-ScXQyTWw" style="color: var(--article-accent, #3f8fd4); text-decoration: none;">Context Engineering in HexClaw: Keeping Answer-Like Noise Out of the Loop</a><br/>
+　<span style="color: var(--article-secondary, #5f7b9c);">Retrieval noise filtering and release evaluation</span>
+</p>
+<p style="margin: 4px 0; font-size: 14px; line-height: 2; color: var(--article-secondary, #5f7b9c);">
+▸ <a href="https://mp.weixin.qq.com/s/ZJ9ehZtG_jUhtTMUnPCDxA" style="color: var(--article-accent, #3f8fd4); text-decoration: none;">Prompt Engineering in HexClaw AI: Declared Dead, It Became the Agent’s Lowest-Level Protocol</a><br/>
+　<span style="color: var(--article-secondary, #5f7b9c);">Structured outputs and process protocols</span>
+</p>
+<p style="margin: 4px 0; font-size: 14px; line-height: 2; color: var(--article-secondary, #5f7b9c);">
+▸ <a href="https://mp.weixin.qq.com/s/YvGGPBZX0V7R6-09unnrcQ" style="color: var(--article-accent, #3f8fd4); text-decoration: none;">Agent Memory That Dreams: Claude and ChatGPT Dream in the Cloud; HexClaw Dreams on Your Machine</a><br/>
+　<span style="color: var(--article-secondary, #5f7b9c);">Memory management and fresh-context verification</span>
+</p>
+<p style="margin: 4px 0; font-size: 14px; line-height: 2; color: var(--article-secondary, #5f7b9c);">
+▸ <a href="https://mp.weixin.qq.com/s/RX-2QOSV2cBEmddwAUj5cg" style="color: var(--article-accent, #3f8fd4); text-decoration: none;">HexClaw AI’s Thinking Process: The Last Mile for Qwen 3.5, Gemma 4, and DeepSeek-R1</a><br/>
+　<span style="color: var(--article-secondary, #5f7b9c);">Local reasoning models and thinking-tag processing</span>
+</p>
+<p style="margin: 4px 0; font-size: 14px; line-height: 2; color: var(--article-secondary, #5f7b9c);">
+▸ <a href="https://mp.weixin.qq.com/s/8xUoFrig10zxpxni1rgm9Q" style="color: var(--article-accent, #3f8fd4); text-decoration: none;">Calmer Homework Time with HexClaw AI: Engineering the First K12 Flagship Scenario</a><br/>
+　<span style="color: var(--article-secondary, #5f7b9c);">K12 verification evidence and scenario architecture</span>
+</p>
+<p style="margin: 4px 0; font-size: 14px; line-height: 2; color: var(--article-secondary, #5f7b9c);">
+▸ <a href="https://mp.weixin.qq.com/s/LaQbmp7OwDmAcIfdhYYiSw" style="color: var(--article-accent, #3f8fd4); text-decoration: none;">How Does 4.8 TB Become 12 TB? A Teacher’s Approach to a Sixth-Grade Fraction Problem</a><br/>
+　<span style="color: var(--article-secondary, #5f7b9c);">A real example of visual reasoning and Socratic questioning</span>
+</p>
+
+<h3 style="font-size: 15px; font-weight: 600; color: var(--article-accent, #3f8fd4); margin: 24px 0 8px;">References</h3>
+<ul style="padding-left: 22px; margin: 8px 0; font-size: 13px; color: var(--article-muted, #7b8fa3); line-height: 1.9;">
+<li style="margin: 8px 0;">Jared Kaplan, Dario Amodei et al., <em>Scaling Laws for Neural Language Models</em>, OpenAI, 2020.<br/><span style="color: #a5bdd3; font-size: 12px; word-break: break-all;"><a href="https://arxiv.org/abs/2001.08361" target="_blank" rel="noopener noreferrer" style="color: var(--article-secondary, #3f5f7b); text-decoration: underline; overflow-wrap: anywhere;">https://arxiv.org/abs/2001.08361</a></span></li>
+<li style="margin: 8px 0;">Andrej Karpathy, <em>Intro to Large Language Models</em>, 2023.<br/><span style="color: #a5bdd3; font-size: 12px; word-break: break-all;">Public Lectures &amp; Cognitive Architecture Discussions · <a href="https://www.youtube.com/watch?v=zjkBMFhNj_g" target="_blank" rel="noopener noreferrer" style="color: var(--article-secondary, #3f5f7b); text-decoration: underline; overflow-wrap: anywhere;">Intro to Large Language Models (2023)</a></span></li>
+<li style="margin: 8px 0;">Noam Brown, <em>AI won’t plateau — if we give it time to think</em>, TEDAI San Francisco, October 2024.<br/><span style="color: #a5bdd3; font-size: 12px; word-break: break-all;"><a href="https://www.ted.com/talks/noam_brown_ai_won_t_plateau_if_we_give_it_time_to_think" target="_blank" rel="noopener noreferrer" style="color: var(--article-secondary, #3f5f7b); text-decoration: underline; overflow-wrap: anywhere;">TED talk</a></span></li>
+<li style="margin: 8px 0;">Anthropic Engineering (Erik Schluntz, Barry Zhang), <em>Building Effective Agents</em>, 2024-12.<br/><span style="color: #a5bdd3; font-size: 12px; word-break: break-all;"><a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" rel="noopener noreferrer" style="color: var(--article-secondary, #3f5f7b); text-decoration: underline; overflow-wrap: anywhere;">https://www.anthropic.com/research/building-effective-agents</a></span></li>
+<li style="margin: 8px 0;">Subbarao Kambhampati, <em>Can Large Language Models Reason and Plan?</em>, Annals of The New York Academy of Sciences, 2024.<br/><span style="color: #a5bdd3; font-size: 12px; word-break: break-all;">DOI: <a href="https://doi.org/10.1111/nyas.15125" target="_blank" rel="noopener noreferrer" style="color: var(--article-secondary, #3f5f7b); text-decoration: underline; overflow-wrap: anywhere;">10.1111/nyas.15125</a>; <a href="https://arxiv.org/abs/2403.04121" target="_blank" rel="noopener noreferrer" style="color: var(--article-secondary, #3f5f7b); text-decoration: underline; overflow-wrap: anywhere;">arXiv:2403.04121</a></span></li>
+<li style="margin: 8px 0;">Niklas Muennighoff et al., <em>s1: Simple test-time scaling</em>, 2025.<br/><span style="color: #a5bdd3; font-size: 12px; word-break: break-all;"><a href="https://arxiv.org/abs/2501.19393" target="_blank" rel="noopener noreferrer" style="color: var(--article-secondary, #3f5f7b); text-decoration: underline; overflow-wrap: anywhere;">https://arxiv.org/abs/2501.19393</a></span></li>
+<li style="margin: 8px 0;">Lightman et al., <em>Let's Verify Step by Step</em> (Process Reward Models, PRM), OpenAI, 2023.<br/><span style="color: #a5bdd3; font-size: 12px; word-break: break-all;"><a href="https://arxiv.org/abs/2305.20050" target="_blank" rel="noopener noreferrer" style="color: var(--article-secondary, #3f5f7b); text-decoration: underline; overflow-wrap: anywhere;">https://arxiv.org/abs/2305.20050</a></span></li>
+<li style="margin: 8px 0;">Wang et al., <em>Self-Consistency Improves Chain of Thought Reasoning in Language Models</em>, ICLR 2023.<br/><span style="color: #a5bdd3; font-size: 12px; word-break: break-all;"><a href="https://arxiv.org/abs/2203.11171" target="_blank" rel="noopener noreferrer" style="color: var(--article-secondary, #3f5f7b); text-decoration: underline; overflow-wrap: anywhere;">https://arxiv.org/abs/2203.11171</a></span></li>
+<li style="margin: 8px 0;">Luyu Gao et al., <em>PAL: Program-aided Language Models</em>, ICML 2023.<br/><span style="color: #a5bdd3; font-size: 12px; word-break: break-all;"><a href="https://arxiv.org/abs/2211.10435" target="_blank" rel="noopener noreferrer" style="color: var(--article-secondary, #3f5f7b); text-decoration: underline; overflow-wrap: anywhere;">https://arxiv.org/abs/2211.10435</a></span></li>
+<li style="margin: 8px 0;">Snell et al., <em>Scaling LLM Test-Time Compute Optimally can be More Effective than Scaling Model Parameters</em>, UC Berkeley &amp; Google DeepMind, 2024.<br/><span style="color: #a5bdd3; font-size: 12px; word-break: break-all;"><a href="https://arxiv.org/abs/2408.03314" target="_blank" rel="noopener noreferrer" style="color: var(--article-secondary, #3f5f7b); text-decoration: underline; overflow-wrap: anywhere;">https://arxiv.org/abs/2408.03314</a></span></li>
+<li style="margin: 8px 0;">DeepSeek-AI, <em>DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning</em>, 2025.<br/><span style="color: #a5bdd3; font-size: 12px; word-break: break-all;"><a href="https://arxiv.org/abs/2501.12948" target="_blank" rel="noopener noreferrer" style="color: var(--article-secondary, #3f5f7b); text-decoration: underline; overflow-wrap: anywhere;">https://arxiv.org/abs/2501.12948</a></span></li>
+<li style="margin: 8px 0;">DeepSeek-AI, <em><a href="https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash" target="_blank" rel="noopener noreferrer" style="color: var(--article-secondary, #3f5f7b); text-decoration: underline; text-underline-offset: 2px;">DeepSeek-V4.1-Flash</a></em> and <em>DeepInfer: High-performance, large-scale inference framework for DeepSeek models</em>.<br/><span style="color: #a5bdd3; font-size: 12px; word-break: break-all;"><a href="https://github.com/deepseek-ai/DeepInfer" target="_blank" rel="noopener noreferrer" style="color: var(--article-secondary, #3f5f7b); text-decoration: underline; overflow-wrap: anywhere;">https://github.com/deepseek-ai/DeepInfer</a></span></li>
+</ul>
+<p style="margin: 8px 0; font-size: 12px; color: var(--article-secondary, #3f5f7b);">Source code verification is based on the HexClaw main branch and the <a href="https://github.com/hexagon-codes/hexclaw/tree/feat/code-exec-sandbox-autonomy" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">feat/code-exec-sandbox-autonomy</a> evolution branch (2026-10-31), involving <code><a href="https://github.com/hexagon-codes/hexclaw/blob/d4aff21560c3b4c6e3de83d9e761dde7a03ec386/engine/solve.go" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">engine/solve.go</a></code>, <code><a href="https://github.com/hexagon-codes/hexclaw/blob/d4aff21560c3b4c6e3de83d9e761dde7a03ec386/engine/solve_verifier_node.go" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">engine/solve_verifier_node.go</a></code> with <code><a href="https://github.com/hexagon-codes/hexclaw/blob/d4aff21560c3b4c6e3de83d9e761dde7a03ec386/engine/solve_execution_receipt.go" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">engine/solve_execution_receipt.go</a></code>.</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0 16px;"/>
+
+
+
+<p class="blog-brand-footer" data-blog-brand-footer="en" data-blog-brand-overrides="{}" style="text-align: center; color: var(--article-muted, #7b8fa3); font-size: 13px; margin: 16px 0 0; line-height: 2;">
+<strong style="color: var(--article-ink, #12324c); font-size: 14px;">HexClaw</strong><br/>
+Deploy locally or in the cloud · Control your data · Free and open-source software<br/>
+<a href="https://hexclaw.net" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">Website: <bdi dir="ltr">hexclaw.net</bdi></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://github.com/hexagon-codes" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">GitHub: <bdi dir="ltr">hexagon-codes</bdi></a><br/>
+<a href="https://weibo.com/u/4097207240" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">Weibo: <bdi dir="ltr">@HexClaw</bdi></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">X: <bdi dir="ltr">@hexclawapp</bdi></a><br/>
+<a href="mailto:ai@hexclaw.net" style="color: var(--article-muted, #999); text-decoration: none;">Email: <bdi dir="ltr">ai@hexclaw.net</bdi></a>
+</p>
+
+
+</article>
+
+
+
+    <nav class="blog-series-nav" aria-label="Related articles">
+      <a href="/en/blog/" class="blog-nav-card prev"><span class="blog-nav-label">&larr; 返回列表</span><span class="blog-nav-title">技术博客目录</span></a>
+      <a href="/en/blog/context-engineering" class="blog-nav-card next"><span class="blog-nav-label">延伸阅读 &rarr;</span><span class="blog-nav-title">Context Engineering：检索降噪流水线</span></a>
+    </nav>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-main">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-col-title">Product</div>
+        <a href="/en/#download">Download</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="/en/changelog">Changelog</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Developers</div>
+        <a href="/en/docs/">Documentation</a>
+        <a href="/en/blog/">Technical Blog</a>
+        <a href="/en/docs/getting-started">Getting Started</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">Apache-2.0</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Community</div>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/issues" target="_blank" rel="noopener noreferrer">Issues</a>
+        <a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer">Twitter / X</a>
+        <a href="mailto:ai@hexclaw.net">Contact Us</a>
+        <a href="mailto:support@hexclaw.net">Feedback</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">About</div>
+        <a href="/en/about">About Us</a>
+        <a href="/en/privacy">Privacy Policy</a>
+        <a href="/en/terms">Terms of Service</a>
+        <a href="/en/third-party-ai-services">Third-Party AI Services</a>
+      </div>
+    </div>
+    <div class="footer-wechat">
+      <img width="430" height="430" loading="lazy" decoding="async" src="../../assets/brand/wechat-qr.jpg" alt="HexClaw WeChat QR Code">
+      <span class="footer-wechat-label">WeChat Official Account</span>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">&copy; 2025&ndash;2026 hexagon-codes</span>
+  </div>
+</footer>
+<script src="../../assets/js/theme.js?v=2e4a1828feef"></script>
+<script src="../../assets/js/docs-nav.js?v=eb248fcf1d64"></script>
+<button type="button" class="back-to-top" id="backToTop" aria-label="Back to top" title="Back to top">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg>
+  <span>Top</span>
+</button>
+
+<script src="../../assets/js/blog.js?v=c72e1db5a6ec"></script>
+</body>
+</html>

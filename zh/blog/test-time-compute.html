@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/favicon-32.png">
+<title>河蟹 AI 的 Test-Time Compute：复合式 Agent 如何用“生成-验证对偶”约束幻觉？｜HexClaw 技术博客</title>
+<meta name="description" content="从独立求解与步骤审计到沙箱回执、多样性采样和容差比较，拆解推理期算力的工程实现及其边界。">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:site_name" content="河蟹 AI">
+<meta property="og:type" content="article">
+<meta property="og:title" content="河蟹 AI 的 Test-Time Compute：复合式 Agent 如何用“生成-验证对偶”约束幻觉？｜HexClaw 技术博客">
+<meta property="og:description" content="从独立求解与步骤审计到沙箱回执、多样性采样和容差比较，拆解推理期算力的工程实现及其边界。">
+<meta property="og:url" content="https://hexclaw.net/zh/blog/test-time-compute">
+<meta property="og:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta property="og:image:alt" content="河蟹 AI 标志">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="河蟹 AI 的 Test-Time Compute：复合式 Agent 如何用“生成-验证对偶”约束幻觉？｜HexClaw 技术博客">
+<meta name="twitter:description" content="从独立求解与步骤审计到沙箱回执、多样性采样和容差比较，拆解推理期算力的工程实现及其边界。">
+<meta name="twitter:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta name="twitter:image:alt" content="河蟹 AI 标志">
+<link rel="canonical" href="https://hexclaw.net/zh/blog/test-time-compute">
+<link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/test-time-compute">
+<link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/test-time-compute">
+<link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/test-time-compute">
+<link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/test-time-compute">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "河蟹 AI 的 Test-Time Compute：复合式 Agent 如何用“生成-验证对偶”约束幻觉？",
+  "description": "从独立求解与步骤审计到沙箱回执、多样性采样和容差比较，拆解推理期算力的工程实现及其边界。",
+  "url": "https://hexclaw.net/zh/blog/test-time-compute",
+  "inLanguage": "zh-CN",
+  "dateModified": "2026-11-01",
+  "image": "https://hexclaw.net/assets/brand/hexclaw-logo.png",
+  "publisher": {
+    "@type": "Organization",
+    "name": "hexagon-codes",
+    "url": "https://hexclaw.net/",
+    "@id": "https://hexclaw.net/#organization"
+  },
+  "@id": "https://hexclaw.net/zh/blog/test-time-compute#article"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "河蟹 AI", "item": "https://hexclaw.net/zh/"},
+    {"@type": "ListItem", "position": 2, "name": "技术博客", "item": "https://hexclaw.net/zh/blog/"},
+    {"@type": "ListItem", "position": 3, "name": "河蟹 AI 的 Test-Time Compute：复合式 Agent 如何用“生成-验证对偶”约束幻觉？", "item": "https://hexclaw.net/zh/blog/test-time-compute"}
+  ],
+  "@id": "https://hexclaw.net/zh/blog/test-time-compute#breadcrumb"
+}
+</script>
+<link rel="stylesheet" href="../../assets/css/docs-5a7266a4b884.css">
+<link rel="stylesheet" href="../../assets/css/blog-cb7de6377424.css">
+</head>
+<body class="blog-page blog-article-page">
+<a href="#main" class="skip-link">跳转到主要内容</a>
+<nav class="tn topnav" id="nav">
+  <a href="/zh/" class="tn-b topnav-brand"><img width="72" height="72" src="../../assets/brand/hexclaw-icon-72.png" class="tn-l topnav-logo" alt="河蟹 AI"><span class="tn-n topnav-name">河蟹 AI</span></a>
+  <button type="button" class="tn-burger topnav-burger" aria-label="菜单" aria-expanded="false" aria-controls="primary-navigation"><span></span><span></span><span></span></button><div class="tn-r topnav-links" id="primary-navigation"><a href="/zh/">首页</a><a href="/zh/#cases">使用场景</a><a href="/zh/#features">产品能力</a><a href="/zh/#quickstart">开始使用</a><a href="/zh/#ecosystem">开源生态</a><a href="/zh/blog/" class="is-active">技术博客</a><a href="/zh/docs/">文档中心</a><div class="lang-menu" data-lang-menu><button type="button" class="lang-trigger" aria-haspopup="menu" aria-expanded="false" aria-label="切换语言"><svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 0 20"></path><path d="M12 2a15.3 15.3 0 0 0 0 20"></path></svg><span class="lang-current">中文</span><svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="lang-menu-list" role="menu"><a href="/zh/blog/test-time-compute" role="menuitem" class="is-active" aria-current="true">中文</a><a href="/en/blog/test-time-compute" role="menuitem">English</a><a href="/ug/blog/test-time-compute" role="menuitem" lang="zh-CN" dir="ltr">维吾尔语</a></div></div><button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="切换主题"><svg class="ti-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="ti-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="nav-cta">GitHub <span class="nav-star-badge" id="gh-stars">&#9733;</span></a></div>
+</nav>
+
+<main id="main" class="blog-main">
+  <div class="blog-article-container">
+    <nav class="blog-breadcrumb" aria-label="面包屑导航">
+      <a href="/zh/">首页</a>
+      <span class="blog-breadcrumb-sep">/</span>
+      <a href="/zh/blog/">技术博客</a>
+      <span class="blog-breadcrumb-sep">/</span>
+      <span aria-current="page">核心系统深度</span>
+    </nav>
+
+    <header class="blog-header">
+      <div class="blog-header-tags">
+        <span class="blog-badge-series">推理期算力</span>
+      </div>
+      <h1 class="blog-article-title">河蟹 AI 的 Test-Time Compute：复合式 Agent 如何用“生成-验证对偶”约束幻觉？</h1>
+      <p class="blog-article-subtitle">从概率性思维链到可执行证据：扒开 HexClaw 的双智能体推理期算力（TTC）开源实现</p>
+      <div class="article-provenance-banner">
+        <div class="provenance-left">
+          <span class="provenance-origin-badge">微信公众号首发</span>
+          <span class="provenance-text">本文首发于微信公众号<strong>「hexclaw」</strong>（ID: hexclaw）；官网版对验证边界与引用作了校订</span>
+        </div>
+        <a href="https://mp.weixin.qq.com/s/lgB-kbClMSEaU4imUWkMCw" target="_blank" rel="noopener noreferrer" class="provenance-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          微信原文 ↗
+        </a>
+      </div>
+    </header>
+
+    <article class="blog-content">
+
+<p style="text-align: center; color: var(--article-muted, #7b8fa3); font-size: 13px; margin: 0 0 20px;">三层架构映射 × 步骤级过程审计协议 × 代码执行硬回执 × Model-Level 与 System-Level 协同全景</p>
+
+<p style="margin: 16px 0 12px;">你瞧，如果让当下的大语言模型去干“文科”，搞文学创作、评判行业风云，它的语言表现力往往让人拍案叫绝。比如我们在 HexClaw 桌面端向它抛出一句“天下 AI 谁是英雄？”，它借小蟹之口给出的这段“煮酒论道”，就把整个 AI 圈的顶流名场面缝得浑然天成：</p>
+
+<div style="margin: 18px 0 16px; text-align: center;">
+<img width="2550" height="1632" loading="lazy" decoding="async" src="../../assets/blog/test-time-compute/hero-dialogue.png" alt="ChatGPT 举杯，谓河蟹曰：天下 AI 谁是英雄？" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid #d5e6f3; box-shadow: 0 2px 10px rgba(0,0,0,0.05);"/>
+<p style="margin: 6px 0 0; font-size: 13px; color: var(--article-secondary, #5f7b9c); font-weight: 600;">（图 1：ChatGPT 举杯，谓河蟹曰：天下 AI 谁是英雄？· HexClaw 桌面端 K12 皮肤暗色版截图）</p>
+</div>
+
+<p style="margin: 8px 0;">从“号北境夜王、抬手间万号冰封”的 Claude，到“粮草如山、稳居宇宙中心”的 Gemini；从“御飞车腾空直闯 ETC、驾火箭叩南天门”的 Grok，再到“潜东海、广聚鱼虾开仓济民”的 DeepSeek……自回归注意力的模式匹配与文学修辞，在这里展现出了恰到好处的幽默与灵性。</p>
+
+<p style="margin: 8px 0;">然而，只要把题目从“写段子”切到“算账目”——面对严谨的数值推导与符号逻辑（比如我们在<a href="https://mp.weixin.qq.com/s/LaQbmp7OwDmAcIfdhYYiSw" style="color: var(--article-accent, #3f8fd4); text-decoration: none; border-bottom: 1px dashed var(--article-accent, #3f8fd4);">《4.8 TB 怎么算出 12 TB？》</a>中作为真实讲题案例的那道六年级应用题），工程落地的挑战就完全不同了：</p>
+<p style="margin: 8px 0;">大语言模型在做数理推导时，底层依然是在预测下一个 token 的概率分布。即使给它充足的推理预算、开启各家标配的“深度思考（Reasoning）”模式，模型在封闭的上下文里输出了数千字的内心独白，推导看似逻辑严密、步步有据，但如果在中间步骤发生微小的量纲或数值偏差，自回归机制往往会把前置偏差层层固化，单靠语言层面的“自我反思”极易陷入自我合理化的死循环。对于严谨的生产级辅导或工程系统，这种偶发的概率性幻觉是不可接受的。</p>
+
+<p style="margin: 8px 0;">为什么同一台机器，写《煮酒论英雄》时文采飞扬、接梗自如，处理严谨符号逻辑与数值推导时却需要外部机制来兜底？</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<section style="border-left: 3px solid var(--article-accent, #3f8fd4); padding: 14px 18px; margin: 20px 0; background: var(--article-panel, #f4fbff); color: var(--article-ink, #12324c); font-size: 14px; border-radius: 0 8px 8px 0; line-height: 1.85;">
+<p style="margin: 0 0 6px;"><strong style="color: var(--article-accent, #3f8fd4); font-size: 15px;">本文核心判断：</strong></p>
+<p style="margin: 0 0 6px; font-size: 13px; color: var(--article-secondary, #5f7b9c); font-style: italic;">（注：本文所说的约束幻觉，是用独立审查与可追溯执行证据减少无依据计算；执行成功不保证建模或结论正确。无法客观验证时，可标记 UNVERIFIABLE 并提示人工复核。）</p>
+<p style="margin: 0 0 6px;">1. 单一上下文内的自我纠错可能受到既有推导的锚定；让同一个模型既解题又裁判，增加推理 Token 仍不能单独证明答案正确；</p>
+<p style="margin: 0 0 6px;">2. 工业级 Test-Time Compute 的破局点在于<strong style="color: var(--article-accent, #3f8fd4);">“生成与验证解耦（Dual-Agent 对偶）”</strong>与<strong style="color: var(--article-accent, #3f8fd4);">“代码执行驱动验证（Execution-guided Verification）”</strong>——验证者使用新上下文和工具白名单，并由提示词要求先独立计算、后审计解法；候选答案仍同时可见，执行回执提供运行证据，不能保证建模正确；</p>
+<p style="margin: 0;">3. 普通工程团队无需千万美元训练专用 PRM 神经模型；在框架层（Harness-Level）通过状态机协议、代码沙箱和解法多样性检查，能让普通的 7B/14B 本地开源模型（正如我们在<a href="https://mp.weixin.qq.com/s/RX-2QOSV2cBEmddwAUj5cg" style="color: var(--article-accent, #3f8fd4); text-decoration: none; border-bottom: 1px dashed var(--article-accent, #3f8fd4);">《打通本地推理模型最后一公里》</a>中介绍过的 <a href="https://arxiv.org/abs/2501.12948" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">DeepSeek-R1</a> 与 Qwen 蒸馏系）引入可检查的计算证据；结果仍受模型、建模与题目范围影响，不能保证零错误。</p>
+</section>
+
+<blockquote style="border-left: 3px solid #5fb3ea; padding: 10px 16px; margin: 16px 0; background: var(--article-panel, #f4fbff); color: var(--article-secondary, #3f5f7b); font-size: 14px; border-radius: 0 8px 8px 0; line-height: 1.85;">
+<p style="margin: 0 0 6px;"><span style="color: var(--article-accent, #3f8fd4); font-weight: 700;">30 秒版：</span></p>
+<p style="margin: 0;">单靠大模型在封闭上下文里“自我反思”极易陷入自我合理化的死循环。本文基于 HexClaw 的 <code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);"><a href="https://github.com/hexagon-codes/hexclaw/blob/d4aff21560c3b4c6e3de83d9e761dde7a03ec386/engine/solve.go" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">engine/solve.go</a></code> 与 <code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);"><a href="https://github.com/hexagon-codes/hexclaw/blob/d4aff21560c3b4c6e3de83d9e761dde7a03ec386/engine/solve_verifier_node.go" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">engine/solve_verifier_node.go</a></code> 源码，拆解推理期算力（TTC）在工程层面的三层落地：看系统如何通过运行期上下文冷隔离（<code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">memory: off, knowledge: off</code>）与提示词中的“先独立算后审计”减少顺从偏差；如何用四行轻量协议落地步骤级过程审计，并在数值验证路径中检查任务绑定的执行回执；回执无效时按具体路径报错或降级；最后借助解法多样性采样与容差原语（<code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">1e-6</code>）完成平局仲裁，全景对比 Model-Level 慢思考与 System-Level Harness 的潜在协同作用。</p>
+</blockquote>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h2 style="font-size: 18px; font-weight: 700; color: var(--article-ink, #12324c); margin: 32px 0 12px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">从快思考到慢思考：推理期算力（TTC）的演进与自纠错“硬墙”</h2>
+
+<p style="margin: 8px 0;">借用“快思考”与“慢思考”的视角，并参考前 OpenAI 联合创始人、AI 科学家 <a href="https://www.youtube.com/watch?v=zjkBMFhNj_g" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">Andrej Karpathy</a> 对大语言模型工作方式的介绍，可以这样理解：自回归生成可类比 <strong style="color: var(--article-accent, #3f8fd4);">System 1（快思考）</strong>——依靠自回归概率模式匹配本能地吐出下一个词；而行业追逐的 <strong style="color: var(--article-accent, #3f8fd4);">Test-Time Compute</strong>，正是通往 <strong style="color: var(--article-accent, #3f8fd4);">System 2（慢思考、试错、规划与外部验证）</strong> 的一种工程路径。</p>
+
+<p style="margin: 8px 0;">OpenAI 研究科学家 <a href="https://www.ted.com/talks/noam_brown_ai_won_t_plateau_if_we_give_it_time_to_think" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">Noam Brown</a>（曾主导开发 Libratus 与 Pluribus）在 TED AI 2024 谈及博弈决策与推理期扩展时曾给出一个形象换算：<strong>在一项扑克对局实验中，额外思考 20 秒获得的提升，可与将模型规模和训练时长分别扩大约 100,000 倍的效果作对照。</strong>这是该实验中的比较，不能视为所有语言模型任务的通用换算。</p>
+
+<p style="margin: 8px 0;">把技术演进的逻辑线往前拉：如今执掌 Anthropic 的创始人兼 CEO 达里奥·阿莫代伊（Dario Amodei），早在 2020 年担任 OpenAI 研究副总裁期间，便带队发表了奠基性的论文《<a href="https://arxiv.org/abs/2001.08361" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">Scaling Laws for Neural Language Models</a>》，正式确立了<strong>预训练扩展律（Pre-training Scaling Law）</strong>——参数规模、语料规模与预训练算力每呈指数级增加，模型的性能损耗便呈现出极其平稳的幂律下降。这条定律直接拉开了全球万卡集群算力角逐的序幕，也构筑了行业对“大力出奇迹”长达数年的工程信仰。</p>
+
+<p style="margin: 8px 0;">但当海量高质量语料逐渐耗尽、预训练的边际收益逼近物理墙面时，行业的算力重心开始向第二曲线迁移：<strong>推理期扩展律（Test-Time Scaling Law）</strong>。<a href="https://openai.com/index/introducing-openai-o1-preview/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">OpenAI o1</a> 率先验证了让模型在推理阶段“慢思考”的巨大潜力；而真正以极具颠覆性的姿态打破技术垄断并彻底引爆全行业的，则是 <strong><a href="https://arxiv.org/abs/2501.12948" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">DeepSeek-R1</a> 系列</strong>——其中 <strong><a href="https://arxiv.org/abs/2501.12948" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">DeepSeek-R1-Zero</a></strong> 率先在学术界实证了跳过监督微调（SFT）冷启动、仅凭纯强化学习（Pure RL）与规则奖励，模型便能在测试期自发涌现出顿悟（Aha moment）、反思与长链推导能力；随后的正式版 <strong><a href="https://arxiv.org/abs/2501.12948" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">DeepSeek-R1</a></strong> 则结合冷启动数据与多阶段训练，将其推向工业可用。从 DeepSeek 团队在 2026 年 9 月中旬正式发布 <a href="https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">DeepSeek-V4.1-Flash</a>，到 10 月开源其生产级高性能推理框架 <strong style="color: var(--article-accent, #3f8fd4);"><a href="https://github.com/deepseek-ai/DeepInfer" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">DeepInfer</a></strong>（开源至今已迅速突破 24k GitHub Star，官方仓库：<code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);"><a href="https://github.com/deepseek-ai/DeepInfer" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">github.com/deepseek-ai/DeepInfer</a></code>），开源与闭源阵营都在把主战场转向<strong>推理期算力（Test-Time Compute）</strong>——让模型在回答时“多想一会儿、多搜索几次、多自我反思”。</p>
+
+<p style="margin: 8px 0;">然而，当工程师把 R1 这类推理模型真正接入严谨的生产业务时，另一道硬墙随之浮现：<strong>模型单靠封闭上下文内的自言自语反思，很多时候并不是在修正错误，而是在用更自洽的修辞进行“自我合理化”</strong>。AAAI Fellow、著名 AI 推理学者 Subbarao Kambhampati 教授在论文《<a href="https://arxiv.org/abs/2403.04121" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">Can Large Language Models Reason and Plan?</a>》中分析指出：自回归模型在封闭的自然语言循环里很难实现真正的自纠错（Self-Correction）；在缺乏外部物理环境验证器介入时，单纯的语言反思容易退化为近似检索（Approximate Retrieval）的再次采样。如果不对这一过程套上硬性的工程约束，所谓的推理期算力，往往只是在成倍放大幻觉的置信度。</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h2 style="font-size: 18px; font-weight: 700; color: var(--article-ink, #12324c); margin: 32px 0 12px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">架构全景：推理期算力（TTC）的三层体系与 HexClaw 5 大工程支柱</h2>
+
+<p style="margin: 8px 0;">在 HexClaw 的开源工程实践中，我们将学术界关于推理期算力（以 <a href="https://openai.com/index/introducing-openai-o1-preview/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">OpenAI o1</a>/<a href="https://openai.com/index/introducing-o3-and-o4-mini/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">o3</a>、<a href="https://arxiv.org/abs/2501.12948" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">DeepSeek-R1</a>、<a href="https://arxiv.org/abs/2501.19393" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">Stanford s1</a> 为代表）的前沿探索，归纳并映射为基于“生成、验证、裁决”三层架构的 5 个关键工程支柱。我们先用一张架构全景图，将这五大支柱与 HexClaw 的开源实现逐一对齐：</p>
+
+<!-- 图 2：5 大工程支柱架构全景图 -->
+<div style="margin: 18px auto 16px; text-align: center;">
+<img width="2091" height="752" loading="lazy" decoding="async" src="../../assets/blog/test-time-compute/ttc-architecture-zh.png" alt="推理期算力（TTC）5 大工程支柱与 HexClaw 开源源码映射全景" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid #d5e6f3; box-shadow: 0 2px 10px rgba(0,0,0,0.05);"/>
+<p style="margin: 6px 0 0; font-size: 13px; color: var(--article-secondary, #5f7b9c); font-weight: 600;">（图 2：推理期算力（TTC）5 大工程支柱与 HexClaw 开源源码映射全景）</p>
+</div>
+
+<p style="margin: 8px 0;">梳理完这 5 个工程支柱，可以看到只在 Prompt 层自省缺少独立执行证据；各环节能降低特定风险，但不能消除所有错误。</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h2 style="font-size: 18px; font-weight: 700; color: var(--article-ink, #12324c); margin: 32px 0 12px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">关键辨析：模型内推理（Model-Level）与系统级编排（System-Level）的协同互补</h2>
+
+<p style="margin: 8px 0;">在技术交流中，很多工程师常问的一个问题是：“<a href="https://openai.com/index/introducing-openai-o1-preview/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">OpenAI o1</a> 和 <a href="https://arxiv.org/abs/2501.12948" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">DeepSeek-R1</a> 已经在模型内部支持了 long thinking，应用层为什么还要在外部做双智能体与代码沙箱核算？”</p>
+
+<p style="margin: 8px 0;">这个问题的背后，涉及一个最关键的技术定位：<strong style="color: var(--article-accent, #3f8fd4);">Model-Level 慢思考与 System-Level 外部 Harness 的协同互补</strong>。</p>
+
+<div style="max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch;">
+<table style="width: 100%; min-width: 600px; border-collapse: collapse; margin: 16px 0; font-size: 13px; line-height: 1.8;">
+<tr>
+  <th style="background: var(--article-panel, #f4fbff); color: var(--article-ink, #12324c); padding: 8px 12px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea; width: 16%;">对比维度</th>
+  <th style="background: var(--article-panel, #f4fbff); color: var(--article-ink, #12324c); padding: 8px 12px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea; width: 42%;"><a href="https://openai.com/index/introducing-openai-o1-preview/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">OpenAI o1</a> / <a href="https://arxiv.org/abs/2501.12948" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">DeepSeek-R1</a></th>
+  <th style="background: var(--article-panel, #f4fbff); color: var(--article-ink, #12324c); padding: 8px 12px; text-align: left; font-weight: 600; font-size: 12px; border-bottom: 2px solid #5fb3ea; width: 42%;">HexClaw 的 <a href="https://github.com/hexagon-codes/hexclaw/blob/d4aff21560c3b4c6e3de83d9e761dde7a03ec386/engine/solve.go" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">solve.go</a> 开源架构</th>
+</tr>
+<tr>
+  <td style="padding: 10px 12px; border-bottom: 1px solid var(--article-border, #e0ecf5); font-weight: bold; color: var(--article-accent, #3f8fd4);">实现层级</td>
+  <td style="padding: 10px 12px; border-bottom: 1px solid var(--article-border, #e0ecf5);"><strong>Model-Level（模型权重内）</strong><br/>在模型权重内部通过大规模强化学习（RL）硬训出长思考链（&lt;think&gt; tokens）</td>
+  <td style="padding: 10px 12px; border-bottom: 1px solid var(--article-border, #e0ecf5);"><strong>System / Harness-Level（系统框架层）</strong><br/>用外部 Harness 编排 Solver + Verifier 双智能体 + 代码执行沙箱</td>
+</tr>
+<tr>
+  <td style="padding: 10px 12px; border-bottom: 1px solid var(--article-border, #e0ecf5); font-weight: bold; color: var(--article-accent, #3f8fd4);">工作方式</td>
+  <td style="padding: 10px 12px; border-bottom: 1px solid var(--article-border, #e0ecf5);">单模型单上下文“脑内独白”，依靠自回归概率逐步展开思考生成</td>
+  <td style="padding: 10px 12px; border-bottom: 1px solid var(--article-border, #e0ecf5);">独立上下文与工具白名单；提示词要求先独立复算、再审计每一步，候选答案并未隐藏</td>
+</tr>
+<tr>
+  <td style="padding: 10px 12px; border-bottom: 1px solid var(--article-border, #e0ecf5); font-weight: bold; color: var(--article-accent, #3f8fd4);">验证手段</td>
+  <td style="padding: 10px 12px; border-bottom: 1px solid var(--article-border, #e0ecf5);">模型内自回归长思考链（纯语言推导，默认脱离外部物理沙箱硬回执）</td>
+  <td style="padding: 10px 12px; border-bottom: 1px solid var(--article-border, #e0ecf5);">外部代码沙箱（code_exec）可提供与任务输入摘要绑定的执行回执；具体行为依验证路径而异</td>
+</tr>
+<tr>
+  <td style="padding: 10px 12px; border-bottom: 1px solid var(--article-border, #e0ecf5); font-weight: bold; color: var(--article-accent, #3f8fd4);">算力门槛</td>
+  <td style="padding: 10px 12px; border-bottom: 1px solid var(--article-border, #e0ecf5);">取决于模型架构与训练方式；训练推理模型可能需要大量数据和算力</td>
+  <td style="padding: 10px 12px; border-bottom: 1px solid var(--article-border, #e0ecf5);">可复用 7B/14B 本地开源模型，但仍需模型和沙箱资源；不能因此保证结果正确</td>
+</tr>
+<tr>
+  <td style="padding: 10px 12px; border-bottom: 1px solid var(--article-border, #e0ecf5); font-weight: bold; color: var(--article-accent, #3f8fd4);">证据与边界</td>
+  <td style="padding: 10px 12px; border-bottom: 1px solid var(--article-border, #e0ecf5);">依然可能在冗长的自我反思后产生更具修辞欺骗性的“高置信度幻觉”</td>
+  <td style="padding: 10px 12px; border-bottom: 1px solid var(--article-border, #e0ecf5);">双轨证据：回执记录执行情况，模型负责过程审计；回执失败时行为依路径及错误而异</td>
+</tr>
+<tr>
+  <td style="padding: 10px 12px; border-bottom: 1px solid var(--article-border, #e0ecf5); font-weight: bold; color: var(--article-accent, #3f8fd4);">两者关系</td>
+  <td style="padding: 10px 12px; border-bottom: 1px solid var(--article-border, #e0ecf5);">专注模型内在推演与假设生成（Generator 基石）</td>
+  <td style="padding: 10px 12px; border-bottom: 1px solid var(--article-border, #e0ecf5);"><strong>可以协同，收益需评测</strong>：模型内长思维链 × 系统外物理沙箱硬回执</td>
+</tr>
+</table>
+</div>
+
+<p style="margin: 8px 0;">在我们此前拆解四代范式演进的<a href="https://mp.weixin.qq.com/s/h60ymjjj3eF9hQyhl0jVcQ" style="color: var(--article-accent, #3f8fd4); text-decoration: none; border-bottom: 1px dashed var(--article-accent, #3f8fd4);">《Loop Engineering》</a>中，核心就是把控制面外推；而 Anthropic 在其 2024 年底发布的《<a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">Building Effective Agents</a>》中，也将这种架构归纳为经典的 <strong style="color: var(--article-accent, #3f8fd4);">Evaluator-Optimizer（评估器-优化器）</strong> 范式：</p>
+
+<blockquote style="border-left: 3px solid var(--article-accent, #3f8fd4); padding: 12px 18px; margin: 16px 0; background: var(--article-panel, #f4fbff); color: var(--article-ink, #12324c); font-size: 14px; border-radius: 0 8px 8px 0; line-height: 1.8;">
+Anthropic 将 Evaluator-Optimizer 描述为一个生成、另一个评价并反馈的迭代模式，适合有明确评价标准且迭代价值可衡量的任务；其 Agent 部分另强调利用工具结果等环境反馈。本文在这一思路上讨论执行回执：回执提供运行证据，但不能代替对建模和问题前提的检查。<br/>
+<span style="color: var(--article-muted, #7b8fa3); font-size: 12px;">—— 核心思想源自 Anthropic Engineering, <em><a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">Building Effective Agents</a></em> (2024-12)</span>
+</blockquote>
+
+<p style="margin: 8px 0;">很多架构师看到这里会问一个关键问题：“如果我的底层推理加速已经换上了 <a href="https://github.com/deepseek-ai/DeepInfer" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">DeepInfer</a>，或者底座直接选用了自带 long thinking 的 <a href="https://arxiv.org/abs/2501.12948" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">DeepSeek-R1</a> / <a href="https://openai.com/index/introducing-openai-o1-preview/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">o1</a>，应用层为什么还要做这套外部双智能体和沙箱？”</p>
+
+<p style="margin: 8px 0;">答案是两层可以<strong style="color: var(--article-accent, #3f8fd4);">协同</strong>，实际收益仍需评测。<a href="https://github.com/deepseek-ai/DeepInfer" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">DeepInfer</a> 等框架在基础设施层解决的是推理算力的高吞吐调度与端到端延迟；R1/<a href="https://openai.com/index/introducing-openai-o1-preview/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">o1</a> 在权重层解决的是内部思维链（&lt;think&gt; tokens）的探索广度；而 HexClaw 在系统层解决的，则是<strong>让思考落地为可检验确定性执行证据的裁判硬回执</strong>。哪怕底座是具备极强慢思考能力的大模型，在封闭的自回归自然语言循环中依然无法为自身的四则运算出具客观程序执行背书；模型内推演与系统外沙箱结合，可以让执行过程更可追溯，但模型建模或审计仍可能出错，效果需要结合实际任务评估。</p>
+
+<p style="margin: 8px 0;">接下来，我们就扒开 HexClaw 开源源码，逐一拆解这五大支柱在工程中的真实实现。</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h2 style="font-size: 18px; font-weight: 700; color: var(--article-ink, #12324c); margin: 32px 0 12px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">支柱一 · 求解与验证解耦（Dual-Agent）：避免自回归的“顺从偏差与先入为主”</h2>
+
+<p style="margin: 8px 0;">在上一篇<a href="https://mp.weixin.qq.com/s/kDi-LSWB4UHtS_6jbTfvow" style="color: var(--article-accent, #3f8fd4); text-decoration: none; border-bottom: 1px dashed var(--article-accent, #3f8fd4);">《Harness Engineering》</a>里我们聊过一个反直觉的组件：裁判家族。金融系统里叫 maker/checker——办业务的和复核的必须是两个人。拉磨的“<a href="https://mp.weixin.qq.com/s/EvQT0VqH9ep6LXo89ZM-fw" style="color: var(--article-accent, #3f8fd4); text-decoration: none; border-bottom: 1px dashed var(--article-accent, #3f8fd4);">赛博牛马</a>”，绝不能自己给自己签发质检单。</p>
+
+<p style="margin: 8px 0;">在 HexClaw 的推理引擎核心调度器 <code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);"><a href="https://github.com/hexagon-codes/hexclaw/blob/d4aff21560c3b4c6e3de83d9e761dde7a03ec386/engine/solve.go" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">engine/solve.go</a></code> 中，解题流程从常数定义阶段就被拆解为不同职责的子智能体：</p>
+
+<section style="margin: 14px 0; padding: 14px 16px; overflow-x: auto; background: #102a3d; color: #d9edf7; border-radius: 8px; font-size: 12.5px; line-height: 1.7; font-family: SFMono-Regular, Menlo, Monaco, Consolas, 'Courier New', monospace; box-sizing: border-box;">
+<span style="display: block; white-space: pre; min-height: 1.7em; color: var(--article-muted, #7b8fa3);">// <a href="https://github.com/hexagon-codes/hexclaw/blob/d4aff21560c3b4c6e3de83d9e761dde7a03ec386/engine/solve.go#L78" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">hexclaw/engine/solve.go:78</a></span>
+<span style="display: block; white-space: pre; min-height: 1.7em;"><strong style="color: #5fb3ea;">const</strong> (</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">    solverAgentName   = <span style="color: #a8ff60;">"solver"</span></span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">    verifierAgentName = <span style="color: #a8ff60;">"verifier"</span></span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">    graderAgentName   = <span style="color: #a8ff60;">"grader"</span></span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">    codeExecToolName  = <span style="color: #a8ff60;">"code_exec"</span></span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">)</span>
+</section>
+
+<p style="margin: 8px 0;">常见的两阶段审核实现，往往只是把求解者的完整对话拼接在末尾，追加一句“请检查上述解答是否正确”。在这种输入构造下，自注意力机制顺着前文的概率分布展开，验证器极易受到前置思维链的锚定偏差（Anchoring Bias）影响，倾向于顺从先前的推导并得出“逻辑严密、完全正确”的附和结论。</p>
+
+<p style="margin: 8px 0;">HexClaw 对 Verifier 实施的是<strong style="color: var(--article-accent, #3f8fd4);">运行期无状态隔离</strong>：</p>
+
+<section style="margin: 14px 0; padding: 14px 16px; overflow-x: auto; background: #102a3d; color: #d9edf7; border-radius: 8px; font-size: 12.5px; line-height: 1.7; font-family: SFMono-Regular, Menlo, Monaco, Consolas, 'Courier New', monospace; box-sizing: border-box;">
+<span style="display: block; white-space: pre; min-height: 1.7em; color: var(--article-muted, #7b8fa3);">// <a href="https://github.com/hexagon-codes/hexclaw/blob/d4aff21560c3b4c6e3de83d9e761dde7a03ec386/engine/solve_verifier_node.go#L52" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">hexclaw/engine/solve_verifier_node.go:52</a></span>
+<span style="display: block; white-space: pre; min-height: 1.7em;"><strong style="color: #5fb3ea;">func</strong> <span style="color: #ffc66d;">standaloneVerificationInput</span>(ctx context.Context, msg *adapter.Message, ...) (*verificationInput, <strong style="color: #5fb3ea;">bool</strong>) {</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">    ...</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">    <strong style="color: #5fb3ea;">if</strong> msg.Metadata[<span style="color: #a8ff60;">"source"</span>] != solveDispatchSource || </span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">       msg.Metadata[<span style="color: #a8ff60;">"role"</span>] != verifierAgentName ||</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">       msg.Metadata[<span style="color: #a8ff60;">"memory"</span>] != <span style="color: #a8ff60;">"off"</span> || </span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">       msg.Metadata[<span style="color: #a8ff60;">"knowledge"</span>] != <span style="color: #a8ff60;">"off"</span> {</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">        <strong style="color: #5fb3ea;">return</strong> <strong style="color: #5fb3ea;">nil</strong>, <strong style="color: #5fb3ea;">false</strong></span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">    }</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">    ...</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">}</span>
+</section>
+
+<p style="margin: 8px 0;">这里的元数据断言排除了所有主会话历史、长期记忆（<code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">memory: off</code>，屏蔽掉<a href="https://mp.weixin.qq.com/s/YvGGPBZX0V7R6-09unnrcQ" style="color: var(--article-accent, #3f8fd4); text-decoration: none; border-bottom: 1px dashed var(--article-accent, #3f8fd4);">《会“做梦”的 Agent 记忆》</a>中沉淀的长期画像）与外部知识库（<code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">knowledge: off</code>，切断了在<a href="https://mp.weixin.qq.com/s/H6BoZUcQfBBqh-ScXQyTWw" style="color: var(--article-accent, #3f8fd4); text-decoration: none; border-bottom: 1px dashed var(--article-accent, #3f8fd4);">《Context Engineering》</a>中详述的检索增强通道）。这里的隔离属于<strong>运行期上下文冷隔离（Fresh Context Isolation）</strong>：排除主会话累积的注意力干扰与无用工具；Verifier 拿到的是原始题目、待校验的完整解法和候选答案，并未遮蔽解法内容。</p>
+
+<p style="margin: 8px 0;">而在调度协议的提示词层，系统进一步固化了“先独立复算、后审计解法”的时序防顺从设计：</p>
+
+<blockquote style="border-left: 3px solid var(--article-accent, #3f8fd4); padding: 12px 16px; margin: 16px 0; background: var(--article-panel, #f8fcff); color: var(--article-ink, #244b6e); font-size: 13.5px; line-height: 1.8;">
+“对数值计算题，<strong>请先完全独立地用 code_exec 写代码重新计算正确答案，不要先相信待校验内容</strong>；独立计算后，再逐步审计提供的完整解法。”
+<div style="font-size: 12px; color: var(--article-secondary, #5f7b9c); margin-top: 4px;">—— 节选自 <code style="color: var(--article-accent, #3f8fd4);"><a href="https://github.com/hexagon-codes/hexclaw/blob/d4aff21560c3b4c6e3de83d9e761dde7a03ec386/engine/solve.go#L1230" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">hexclaw/engine/solve.go:1230</a></code> Prompt 约束模板</div>
+</blockquote>
+
+<p style="margin: 8px 0;">需要客观看待的是：当前实现是一次性将题目与候选注入提示词中，所谓“先算后审”属于<strong>提示词层面的时序约束协议（In-Context Temporal Protocol）</strong>，通过强指令驱动模型优先独立列式建模，尽可能弱化候选答案带来的先入为主与锚定偏见，而非网络线路上分两轮隐藏答案的物理盲审。</p>
+
+<!-- 图 3: Dual-Agent 隔离交互与物理代码执行闭环时序 -->
+<div style="margin: 20px auto 16px; text-align: center;">
+<img width="2092" height="752" loading="lazy" decoding="async" src="../../assets/blog/test-time-compute/dual-agent-sequence-zh.png" alt="Dual-Agent 隔离交互与物理代码执行闭环时序" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid #d5e6f3; box-shadow: 0 2px 10px rgba(0,0,0,0.05);"/>
+<p style="margin: 6px 0 0; font-size: 13px; color: var(--article-secondary, #5f7b9c); font-weight: 600;">（图 3：Dual-Agent 隔离交互与物理代码执行闭环时序。退出码为 0 只是回执校验条件之一，还需检查任务绑定和输出完整性；执行成功不能证明建模正确。）</p>
+</div>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h2 style="font-size: 18px; font-weight: 700; color: var(--article-ink, #12324c); margin: 32px 0 12px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">支柱二 · 步骤级过程审计协议：轻量级工程化 PRM 落地</h2>
+
+<p style="margin: 8px 0;">如果校验只看最终答案，系统就会放过一类极其隐蔽的问题：<strong style="color: var(--article-accent, #3f8fd4);">歪打正着</strong>。推导过程中的参数关系完全搞反，两处算术错误巧合抵消，最终碰巧凑出了正确的数字。</p>
+
+<p style="margin: 8px 0;">这正是 <strong>ORM（Outcome Reward Model，结果奖励模型）</strong> 的固有盲区——只根据终态打分，容易放过中间步骤的逻辑坍塌。OpenAI 在 2023 年发表的《<a href="https://arxiv.org/abs/2305.20050" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">Let's Verify Step by Step</a>》中提出了 <strong>PRM（Process Reward Model，过程奖励模型）</strong>，主张对每一个中间推导步骤单独判定。理论上很严谨，但针对具体业务单独标注上万条步骤数据、从头训练一个专用的 PRM 判分模型，显存与工程成本非常高。</p>
+
+<p style="margin: 8px 0;">需要客观澄清的是：HexClaw 在这里并没有耗费数千万美元去训练一个专门的过程奖励神经网络；正如在<a href="https://mp.weixin.qq.com/s/ZJ9ehZtG_jUhtTMUnPCDxA" style="color: var(--article-accent, #3f8fd4); text-decoration: none; border-bottom: 1px dashed var(--article-accent, #3f8fd4);">《Prompt Engineering》</a>中所讨论的——让 Prompt 沉下去作为 Agent 最底层的交互协议，在框架层（Harness-Level）通过 LLM-as-Judge 结合严格的四行协议，实现了基于模型判断的步骤级过程否决；这是协议化审计，并不等同于训练过的 PRM，也不能保证审计准确。以下示例展示提供学段约束时的格式；未提供约束时不包含 OUT_OF_SCOPE：</p>
+
+<section style="margin: 14px 0; padding: 14px 16px; overflow-x: auto; background: #102a3d; color: #d9edf7; border-radius: 8px; font-size: 12.5px; line-height: 1.7; font-family: SFMono-Regular, Menlo, Monaco, Consolas, 'Courier New', monospace; box-sizing: border-box;">
+<span style="display: block; white-space: pre; min-height: 1.7em; color: var(--article-muted, #7b8fa3);">// <a href="https://github.com/hexagon-codes/hexclaw/blob/d4aff21560c3b4c6e3de83d9e761dde7a03ec386/engine/solve.go#L1241" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">hexclaw/engine/solve.go:1241</a></span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">最后严格按以下格式输出（四行）：</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;"><strong style="color: #ff7b72;">VERDICT</strong>: AGREE 或 DISAGREE 或 UNVERIFIABLE 或 OUT_OF_SCOPE</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;"><strong style="color: #ff7b72;">PROCESS</strong>: VALID 或 INVALID 或 NOT_PROVIDED</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;"><strong style="color: #ff7b72;">COMPUTED</strong>: &lt;你独立算出的答案；若本题无法用代码计算则写 N/A&gt;</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;"><strong style="color: #ff7b72;">说明</strong>: &lt;一句话&gt;</span>
+</section>
+
+<p style="margin: 8px 0;">而在核心裁决流 <code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">verifySolutionWithGuides</code>（<code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);"><a href="https://github.com/hexagon-codes/hexclaw/blob/d4aff21560c3b4c6e3de83d9e761dde7a03ec386/engine/solve.go#L874-L876" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">solve.go:874-876</a></code>）中，系统对过程有效性做出了强制否决：</p>
+
+<section style="margin: 14px 0; padding: 14px 16px; overflow-x: auto; background: #102a3d; color: #d9edf7; border-radius: 8px; font-size: 12.5px; line-height: 1.7; font-family: SFMono-Regular, Menlo, Monaco, Consolas, 'Courier New', monospace; box-sizing: border-box;">
+<span style="display: block; white-space: pre; min-height: 1.7em; color: var(--article-muted, #7b8fa3);">// <a href="https://github.com/hexagon-codes/hexclaw/blob/d4aff21560c3b4c6e3de83d9e761dde7a03ec386/engine/solve.go#L874" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">hexclaw/engine/solve.go:874</a> 核心过程否决</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;"><strong style="color: #5fb3ea;">if</strong> process == <span style="color: #a8ff60;">"INVALID"</span> &amp;&amp; verdict != verdictOutOfScope {</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">    verdict = verdictDisagree</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">}</span>
+</section>
+
+<p style="margin: 8px 0;">解析到 <code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">PROCESS: INVALID</code> 后，只要不是超纲题，系统无条件把 verdict 改为 <code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">DISAGREE</code>。随后的 <code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">formatSolve</code>（<code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);"><a href="https://github.com/hexagon-codes/hexclaw/blob/d4aff21560c3b4c6e3de83d9e761dde7a03ec386/engine/solve.go#L1570" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">solve.go:1570</a></code>，警告渲染见 <a href="https://github.com/hexagon-codes/hexclaw/blob/d4aff21560c3b4c6e3de83d9e761dde7a03ec386/engine/solve.go#L1614" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">line 1614</a>）只负责在判定未通过时向用户渲染警告行，不参与裁决本身。同时，在高级校验路径中，系统还通过 <code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);"><a href="https://github.com/hexagon-codes/hexclaw/blob/d4aff21560c3b4c6e3de83d9e761dde7a03ec386/engine/solve_verifier_node.go" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">solve_verifier_node.go</a></code> 预留了结构化 <code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">verificationStep</code> JSON 契约，为特定年级教学大纲的深度检查提供标准化数据规范。</p>
+
+<p style="margin: 8px 0;">当求解者的最终答案与验证器算出的数字一致，但某个关键步骤被标为无效时，系统依然判定其未通过验证，并输出明确警告。答案凑对但过程错，也必须判 DISAGREE。在工程落地中，过程错误的结论即使碰巧答对也不能放行，避免引入虚假的确定性。</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h2 style="font-size: 18px; font-weight: 700; color: var(--article-ink, #12324c); margin: 32px 0 12px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">支柱三 · 代码执行硬回执（Execution-Guided）：双轨混合裁决与任务摘要绑定</h2>
+
+<p style="margin: 8px 0;">用自然语言去审计自然语言，本质上是用一段可能产生幻觉的概率文本，去评价另一段概率文本；两端都在按概率猜测，系统无法形成闭环判定。正如 <a href="https://arxiv.org/abs/2211.10435" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">Program-Aided Language Models</a>（PAL, Gao et al., 2022）所确立的核心分工：让大模型负责符号理解与程序编写，将具体数值计算彻底剥离并委托给外部确定性解释器。</p>
+
+<p style="margin: 8px 0;">但这里必须划清一条绝不能混淆的工程红线：<strong style="color: var(--article-accent, #3f8fd4);">解释器执行成功，不等于数学建模正确</strong>。</p>
+
+<p style="margin: 8px 0;">看一个足够直观的反例：开篇那道已用 4.8 TB、占总量 2/5 的存储题，正确总量应为 12 TB。如果大模型在编写 Python 时错误地把除法建模成了乘法：</p>
+
+<section style="margin: 14px 0; padding: 14px 16px; overflow-x: auto; background: #102a3d; color: #d9edf7; border-radius: 8px; font-size: 12.5px; line-height: 1.7; font-family: SFMono-Regular, Menlo, Monaco, Consolas, 'Courier New', monospace; box-sizing: border-box;">
+<span style="display: block; white-space: pre; min-height: 1.7em; color: var(--article-muted, #7b8fa3);"># 最小边界反例演示：代码跑通 ≠ 题意建模正确</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;"><strong style="color: #5fb3ea;">from</strong> fractions <strong style="color: #5fb3ea;">import</strong> Fraction</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">used, ratio = Fraction(<span style="color: #a8ff60;">"4.8"</span>), Fraction(2, 5)</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">print(<span style="color: #a8ff60;">"total:"</span>, used / ratio)                 <span style="color: var(--article-muted, #7b8fa3);"># 正确建模输出：12</span></span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">print(<span style="color: #a8ff60;">"wrong formula:"</span>, float(used * ratio))  <span style="color: var(--article-muted, #7b8fa3);"># 错误乘法输出：1.92</span></span>
+<span style="display: block; white-space: pre; min-height: 1.7em; color: var(--article-muted, #7b8fa3);"># 进程退出码 ExitCode 均为 0</span>
+</section>
+
+<p style="margin: 8px 0;">退出码 0 只证明 Python 解释器忠实跑通了脚本，根本无法替你检查“部分量除以占比”这个建模关系。因此，一条可靠的验证链必须同时回答三个独立问题：<strong>程序是否执行成功（执行证据）、计算结果能否比较（等价判定）、解题过程是否成立（步骤审计）</strong>。把这三件事混在一起只看一个模糊的“已验证”，隐患就被藏起来了。</p>
+
+<p style="margin: 8px 0;">在 HexClaw 的验证器设计上，系统为验证器注入单一确定性工具——<code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">code_exec</code>。真正的回执校验发生在核心调度流程 <code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">verifySolutionWithGuides</code>（<code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);"><a href="https://github.com/hexagon-codes/hexclaw/blob/d4aff21560c3b4c6e3de83d9e761dde7a03ec386/engine/solve.go#L845-L856" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">solve.go:845-856</a></code>）中，系统用 <code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">computedOutput(attempt.Task)</code> 检查执行是否成功：</p>
+
+<section style="margin: 14px 0; padding: 14px 16px; overflow-x: auto; background: #102a3d; color: #d9edf7; border-radius: 8px; font-size: 12.5px; line-height: 1.7; font-family: SFMono-Regular, Menlo, Monaco, Consolas, 'Courier New', monospace; box-sizing: border-box;">
+<span style="display: block; white-space: pre; min-height: 1.7em; color: var(--article-muted, #7b8fa3);">// <a href="https://github.com/hexagon-codes/hexclaw/blob/d4aff21560c3b4c6e3de83d9e761dde7a03ec386/engine/solve_execution_receipt.go#L174" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">hexclaw/engine/solve_execution_receipt.go:174</a></span>
+<span style="display: block; white-space: pre; min-height: 1.7em;"><strong style="color: #5fb3ea;">func</strong> (r *CodeExecutionReceipt) <span style="color: #ffc66d;">completeFor</span>(task <strong style="color: #5fb3ea;">string</strong>) <strong style="color: #5fb3ea;">bool</strong> {</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">    <strong style="color: #5fb3ea;">if</strong> r == <strong style="color: #5fb3ea;">nil</strong> || r.InputDigest != executionInputDigest(task) || r.RunID == <span style="color: #a8ff60;">""</span> ||</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">       r.Status != <span style="color: #a8ff60;">"success"</span> || r.ExitCode != 0 || r.Timeout || r.RuntimeMissing || r.Error != <span style="color: #a8ff60;">""</span> ||</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">       r.Truncated || r.StdoutTruncated || r.StderrTruncated ||</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">       r.StdoutBytes &lt;= 0 || int64(len(r.Stdout)) != r.StdoutBytes {</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">        <strong style="color: #5fb3ea;">return</strong> <strong style="color: #5fb3ea;">false</strong></span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">    }</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">    <strong style="color: #5fb3ea;">return</strong> <strong style="color: #5fb3ea;">true</strong></span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">}</span>
+</section>
+
+<p style="margin: 8px 0;">这里的约束由机器硬性保障：超时（Timeout）、内存异常、死循环、标准输出截断或非零退出码全部一票否决；通过 <code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">executionInputDigest(task)</code> 计算输入任务的 SHA256 摘要进行精确绑定，确保回执不会被跨任务错配或挪用。</p>
+
+<p style="margin: 8px 0;">在输出解析上，系统采用“优先标记解析与单行回退”策略：优先提取匹配正则 <code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">(?im)^COMPUTED:[ \t]*([^\r\n]+)</code> 的标记行；为了兼容只输出一行结果的极简脚本，若无标记且标准输出为非空单行，也会提取该行。提取成功本身不等于已获得数值证明，后续仍需校验答案。在自动化契约测试 <code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);"><a href="https://github.com/hexagon-codes/hexclaw/blob/d4aff21560c3b4c6e3de83d9e761dde7a03ec386/engine/solve_storage_quantity_test.go#L72" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">engine/solve_storage_quantity_test.go:72</a></code> 中，测试桩便精准验证了回执识别与 <code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">solve_evidence=numeric_exec</code> 的元数据绑定链。</p>
+
+<p style="margin: 8px 0;">而在真实生产链路中，系统还会拦截一个极其隐蔽的模型漏洞：<strong>语法修复时的顺手篡改（Syntax Repair Audit Tampering）</strong>。验证器写出的 Python 脚本可能偶尔因为格式瑕疵（如缩进多了一格 <code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">IndentationError</code>）导致沙箱报错。如果简单粗暴地把整个任务退回重算，模型很可能在修缩进的同时，顺手把在第一轮已经判为“过程无效（INVALID）”的审计结论改写成了“有效（VALID）”！在 HexClaw 的结构化验证节点（<code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);"><a href="https://github.com/hexagon-codes/hexclaw/blob/d4aff21560c3b4c6e3de83d9e761dde7a03ec386/engine/solve_verifier_node.go" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">solve_verifier_node.go</a></code>）中，系统设计了极其受限的单次语法恢复，并用代码硬性锁死了第一轮的审计判定：</p>
+
+<section style="margin: 14px 0; padding: 14px 16px; overflow-x: auto; background: #102a3d; color: #d9edf7; border-radius: 8px; font-size: 12.5px; line-height: 1.7; font-family: SFMono-Regular, Menlo, Monaco, Consolas, 'Courier New', monospace; box-sizing: border-box;">
+<span style="display: block; white-space: pre; min-height: 1.7em; color: var(--article-muted, #7b8fa3);">// <a href="https://github.com/hexagon-codes/hexclaw/blob/d4aff21560c3b4c6e3de83d9e761dde7a03ec386/engine/solve_verifier_node.go" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">hexclaw/engine/solve_verifier_node.go</a>：语法修复锁死原审计</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">program.Scope, program.Checks, program.Note, program.ParentGuideAudits =</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">    originalProgram.Scope, originalProgram.Checks,</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">    originalProgram.Note, originalProgram.ParentGuideAudits</span>
+</section>
+
+<p style="margin: 8px 0;">即便第二次重写的代码成功跑通，原先的过程否决依然被铁律保留（对应自动化测试用例 <code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);"><a href="https://github.com/hexagon-codes/hexclaw/blob/d4aff21560c3b4c6e3de83d9e761dde7a03ec386/engine/solve_verifier_syntax_repair_test.go#L16" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">solve_verifier_syntax_repair_test.go</a>: preserve_invalid_audit</code>）。</p>
+
+<p style="margin: 8px 0;">需要说明的是，系统的裁决是<strong>双轨混合的（Dual-Track Verdict）</strong>：代码沙箱出具可追溯的程序执行证据（程序是否运行以及输出了什么），而 VERDICT 与 PROCESS 依然保留模型的逻辑判定。如果独立结构化节点未捕获有效回执会直接报错拒绝；而通用工具循环在部分缺失回执的情况下可以降级为 <code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">solve_evidence: model</code> 级弱证据，绝不冒充拥有物理执行背书。这种证据严谨性同样穿透到了前端桌面端（<code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">hexclaw-desktop</code>）：UI 徽章（<code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">VerifyBadge.vue</code>）严格区分“已程序验算”与“模型自检审查”，绝不为了好看把不同强度的证据混淆为一个笼统的“绿勾”。</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h2 style="font-size: 18px; font-weight: 700; color: var(--article-ink, #12324c); margin: 32px 0 12px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">支柱四 · 推理期采样与解法多样性校验（Sampling & Diversity Check）</h2>
+
+<p style="margin: 8px 0;">除了单点验证，Test-Time Compute 的另一个核心维度是<strong style="color: var(--article-accent, #3f8fd4);">采样扩展（Sampling）与交叉表决（Voting）</strong>。这里的“搜索”不是昂贵的蒙特卡洛树搜索（MCTS）或 Beam Search，而是面向工程性价比设计的多次采样与跨提示词交叉校验：</p>
+
+<p style="margin: 8px 0;">HexClaw 在工具入参中开放了两个核心控制维度：</p>
+
+<section style="margin: 14px 0; padding: 14px 16px; overflow-x: auto; background: #102a3d; color: #d9edf7; border-radius: 8px; font-size: 12.5px; line-height: 1.7; font-family: SFMono-Regular, Menlo, Monaco, Consolas, 'Courier New', monospace; box-sizing: border-box;">
+<span style="display: block; white-space: pre; min-height: 1.7em; color: var(--article-muted, #7b8fa3);">// <a href="https://github.com/hexagon-codes/hexclaw/blob/d4aff21560c3b4c6e3de83d9e761dde7a03ec386/engine/solve.go#L69" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">hexclaw/engine/solve.go:69</a></span>
+<span style="display: block; white-space: pre; min-height: 1.7em;"><span style="color: #a8ff60;">"self_consistency"</span>: {Type: <span style="color: #a8ff60;">"integer"</span>, Description: <span style="color: var(--article-muted, #7b8fa3);">"Optional number of independent same-method solver samples to majority-vote"</span>},</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;"><span style="color: #a8ff60;">"method_diversity"</span>: {Type: <span style="color: #a8ff60;">"boolean"</span>, Description: <span style="color: var(--article-muted, #7b8fa3);">"Optional. When true, solve with TWO deliberately different methods and cross-check them"</span>},</span>
+</section>
+
+<p style="margin: 8px 0;">单纯的自洽采样（<a href="https://arxiv.org/abs/2203.11171" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">Self-Consistency</a>，<a href="https://arxiv.org/abs/2203.11171" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">Wang et al., ICLR 2023</a>）是在相同提示词下依靠采样温度获取多次解法并进行多数表决。但如果题目本身存在系统性的思维陷阱（例如题干中的混淆性已知条件），同构采样可能会连续多次掉入同一个陷阱。这叫方法层面的系统性偏见。</p>
+
+<p style="margin: 8px 0;">因此，引擎引入了<strong style="color: var(--article-accent, #3f8fd4);">解法多样性（Method Diversity）</strong>：跨方法，不跨温度。</p>
+
+<p style="margin: 6px 0; font-style: italic; color: var(--article-secondary, #5f7b9c); padding-left: 12px; border-left: 2px solid #5fb3ea;">
+“方法一采用常规推导；方法二刻意采用一种与最常规解法不同的思路（如方程换元、线段图逆推或数形结合归纳）。”
+</p>
+
+<p style="margin: 8px 0;">当不同解法得出相同数值，且与沙箱执行结果一致时，可以提供额外的交叉核验依据，但仍不能排除共同建模错误。如果解法产生分歧，系统会尝试用独立 Verifier 的有效数值执行证据作为<strong style="color: var(--article-accent, #3f8fd4);">平局裁决依据（Tie-breaker）</strong>：计算结果命中候选分组后，仅在审计结论不是 DISAGREE 或命中非主解时直接返回对应解法；若命中被否决的主解，则继续输出过程警告。结果未命中任何候选分组时，保留分歧并提示人工复核。</p>
+
+<section style="margin: 14px 0; padding: 14px 16px; overflow-x: auto; background: #102a3d; color: #d9edf7; border-radius: 8px; font-size: 12.5px; line-height: 1.7; font-family: SFMono-Regular, Menlo, Monaco, Consolas, 'Courier New', monospace; box-sizing: border-box;">
+<span style="display: block; white-space: pre; min-height: 1.7em; color: var(--article-muted, #7b8fa3);">// <a href="https://github.com/hexagon-codes/hexclaw/blob/d4aff21560c3b4c6e3de83d9e761dde7a03ec386/engine/solve.go#L1574" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">hexclaw/engine/solve.go:1574</a></span>
+<span style="display: block; white-space: pre; min-height: 1.7em;"><strong style="color: #5fb3ea;">if</strong> len(groups) &gt; 1 {</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">    <strong style="color: #5fb3ea;">if</strong> numericGrounded &amp;&amp; verdict != verdictUnverifiable &amp;&amp; computed != <span style="color: #a8ff60;">""</span> {</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">        <strong style="color: #5fb3ea;">if</strong> g := findGroup(groups, computed, problem...); g != <strong style="color: #5fb3ea;">nil</strong> {</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">            <strong style="color: #5fb3ea;">if</strong> verdict != verdictDisagree || g != &amp;groups[0] {</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">                <strong style="color: #5fb3ea;">return</strong> g.sols[0].output</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">            }</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">        }</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">    }</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">}</span>
+</section>
+<p style="margin: 8px 0; font-size: 13px; color: var(--article-secondary, #5f7b9c);">以上为节选；未命中候选组的提示和后续过程警告处理见完整源码。</p>
+
+<p style="margin: 8px 0;">顺带提一个真实修复过的缺陷（<code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);"><a href="https://github.com/hexagon-codes/hexclaw/blob/d4aff21560c3b4c6e3de83d9e761dde7a03ec386/engine/solve.go#L436" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">engine/solve.go:436</a> BUG-20260708</code>）：在<a href="https://mp.weixin.qq.com/s/8xUoFrig10zxpxni1rgm9Q" style="color: var(--article-accent, #3f8fd4); text-decoration: none; border-bottom: 1px dashed var(--article-accent, #3f8fd4);">《K12 工程实践》</a>面对的真实辅导场景中，Verifier 判定解法超纲（<code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">OUT_OF_SCOPE</code>）后，强化约束重解了一次。结果代码如果走朴素的投票合并，超纲解和重解答案数值相同、归为同组，原解先入仍居首位，最终呈现给学生的依然是超纲技巧！所以这里必须执行“纠正性替换”，直接干掉超纲解。这就是真实开源工程和 Demo 代码的区别。</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h2 style="font-size: 18px; font-weight: 700; color: var(--article-ink, #12324c); margin: 32px 0 12px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">支柱五 · 符号与语义容差等价性（Semantic Equivalence）：绕过字符串比对的工程深水区</h2>
+
+<p style="margin: 8px 0;">跑实际测试集时，验证管道最频繁的误报往往来自<strong style="color: var(--article-accent, #3f8fd4);">等价输出的格式差异</strong>。例如：求解者输出 <code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">0.5</code>，验证器执行 Python 脚本输出 <code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">1/2</code>；或者两个答案分别是 <code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">8 和 12</code> 与 <code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">12 和 8</code>。如果只做朴素的 <code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">string == string</code> 字符比对，整套验证逻辑就会频繁误判。</p>
+
+<p style="margin: 8px 0;">在 <code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);"><a href="https://github.com/hexagon-codes/hexclaw/blob/d4aff21560c3b4c6e3de83d9e761dde7a03ec386/engine/solve.go#L1283-L1464" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">engine/solve.go:1283-1464</a></code> 中，系统实现了一整套语义等值比较原语：</p>
+
+<section style="margin: 14px 0; padding: 14px 16px; overflow-x: auto; background: #102a3d; color: #d9edf7; border-radius: 8px; font-size: 12.5px; line-height: 1.7; font-family: SFMono-Regular, Menlo, Monaco, Consolas, 'Courier New', monospace; box-sizing: border-box;">
+<span style="display: block; white-space: pre; min-height: 1.7em; color: var(--article-muted, #7b8fa3);">// <a href="https://github.com/hexagon-codes/hexclaw/blob/d4aff21560c3b4c6e3de83d9e761dde7a03ec386/engine/solve.go#L1283" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">hexclaw/engine/solve.go:1283</a>（容差常数）与 <a href="https://github.com/hexagon-codes/hexclaw/blob/d4aff21560c3b4c6e3de83d9e761dde7a03ec386/engine/solve.go#L1454" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">line 1454</a>（等值判定原语）</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;"><strong style="color: #5fb3ea;">const</strong> answerTol = 1e-6</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;"><br/></span>
+<span style="display: block; white-space: pre; min-height: 1.7em;"><strong style="color: #5fb3ea;">func</strong> <span style="color: #ffc66d;">answersEqual</span>(a, b <strong style="color: #5fb3ea;">string</strong>) <strong style="color: #5fb3ea;">bool</strong> {</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">    as, aok := numberSet(a)</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">    bs, bok := numberSet(b)</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">    <strong style="color: #5fb3ea;">if</strong> aok &amp;&amp; bok {</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">        <strong style="color: #5fb3ea;">return</strong> numberSetsEqual(as, bs)</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">    }</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">    <strong style="color: #5fb3ea;">if</strong> equal, comparable := sameUnitAnswersEqual(a, b); comparable {</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">        <strong style="color: #5fb3ea;">return</strong> equal</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">    }</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">    <strong style="color: #5fb3ea;">return</strong> normalizeAnswer(a) == normalizeAnswer(b)</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">}</span>
+</section>
+
+<p style="margin: 8px 0;">这里的核心逻辑包含三层递进：</p>
+<p style="margin: 6px 0;">1. <strong>数集提取与容差比较</strong>：将字符串解析为浮点数列表，利用相对与绝对容差结合的 <code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">1e-6</code> 阈值，既能保证 <code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">1/2 == 0.5</code> 判定为真，又不会放过类似 42 与 48 的实际错误；同时借助 <code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">sameUnitAnswersEqual</code> 支持同单位单量（如 TB、km/h、百分比）的量纲剥离，避免因候选解带了物理单位而被生硬误杀；</p>
+<p style="margin: 6px 0;">2. <strong>无序解集归一化</strong>：并列无序解集自动转为集合对比，消除“甲和乙”与“乙和甲”的顺序噪音；但对具有明确命名对应与有序填空关系的问题（如“甲 8、乙 12”与“甲 12、乙 8”），系统严格保留键值与位置绑定，绝非盲目任意交换；</p>
+<p style="margin: 6px 0;">3. <strong>非对称谨慎判定</strong>：相等用 <code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">answersEqual</code>（能确信相等才为真），不等用 <code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">answersDefinitelyDiffer</code>（综合处理纯数值集合与同量纲单量比较，对未明确的文字形式保持谨慎，不轻易下调判定等级）。</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h2 style="font-size: 18px; font-weight: 700; color: var(--article-ink, #12324c); margin: 32px 0 12px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">工程代价与自适应 Triage：把昂贵的推理算力花在刀刃上</h2>
+
+<p style="margin: 8px 0;">坦白讲代价：引入完整的生成-验证对偶会增加模型调用和执行开销；具体耗时与 Token 消耗取决于模型、题目和运行环境，需要结合实际任务测量。对所有请求都开启完整流程，也会增加系统负担。</p>
+
+<p style="margin: 8px 0;">正如 UC Berkeley 与 Google DeepMind 在关于计算最优推理期扩展（Compute-optimal TTC, <a href="https://arxiv.org/abs/2408.03314" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">Snell et al., 2024</a>）研究所指出的：推理期算力（TTC）的收益不仅取决于预算绝对值的大小，更取决于如何根据题目本身的难度自适应动态分配搜索与验证算力。HexClaw 的解法是在入口处做<strong style="color: var(--article-accent, #3f8fd4);">自适应复杂度分流（Complexity Triage）</strong>：</p>
+
+<section style="margin: 14px 0; padding: 14px 16px; overflow-x: auto; background: #102a3d; color: #d9edf7; border-radius: 8px; font-size: 12.5px; line-height: 1.7; font-family: SFMono-Regular, Menlo, Monaco, Consolas, 'Courier New', monospace; box-sizing: border-box;">
+<span style="display: block; white-space: pre; min-height: 1.7em; color: var(--article-muted, #7b8fa3);">// <a href="https://github.com/hexagon-codes/hexclaw/blob/d4aff21560c3b4c6e3de83d9e761dde7a03ec386/engine/solve.go#L342" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">hexclaw/engine/solve.go:342</a></span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">complexity := assessComplexity(complexityProblem)</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;"><strong style="color: #5fb3ea;">if</strong> auto &amp;&amp; complexity == complexityHard {</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">    methodDiversity = <strong style="color: #5fb3ea;">true</strong></span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">}</span>
+<span style="display: block; white-space: pre; min-height: 1.7em;">skipVerify := auto &amp;&amp; complexity == complexityTrivial &amp;&amp; !gradingMode &amp;&amp; outputVersion == <span style="color: #a8ff60;">""</span></span>
+</section>
+
+<p style="margin: 8px 0;">自动分流仅在调用方未显式提供 method_diversity 和 self_consistency 时生效。分流逻辑遵循<strong style="color: var(--article-accent, #3f8fd4);">“默认轻、按需重”</strong>的原则。这里体现出一个核心架构底线：分流器本身绝不能再调大模型（否则复杂度判定本身就会沦为新的延迟与成本瓶颈），而是依托本地静态规则启发式完成分类，不为分类额外调用 LLM；实际响应时间依模型和运行环境而异：</p>
+<p style="margin: 6px 0;">- <strong>简单题（单步算术、基础规则）</strong>：评定为 <code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">complexityTrivial</code>，在自动分流、非批改模式且 outputVersion 为空时，直接作答并跳过独立验证器；</p>
+<p style="margin: 6px 0;">- <strong>难题（多问、综合应用题）</strong>：在自动分流时评定为 <code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">complexityHard</code>，并开启 <code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">method_diversity</code> 双解法；验证结果取决于题目及实际执行路径；</p>
+<p style="margin: 6px 0;">- <strong>底座独立性说明</strong>：在默认单模型配置下，Solver 与 Verifier 跑在同一个底座模型上，独立性来自于上下文隔离与工具白名单，“先独立手算后审计”是提示词要求而非物理盲审。代码沙箱提供独立于模型语言输出的执行证据，但执行成功不等于建模正确。</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h2 style="font-size: 18px; font-weight: 700; color: var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">诚实写一下：这一版的边界</h2>
+<p style="margin: 8px 0;">任何标榜“零错误”的技术方案都是不符合软件工程规律的。在当前的架构实现中，这套系统同样有清晰的能力边界与已知代价：</p>
+<ul style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 6px 0;"><strong style="color: var(--article-accent, #3f8fd4);">主观与定性问题无法获得沙箱强裁决</strong>——代码沙箱只能执行可编程验证，不能保证代码表达了题意；面对纯哲学辨析或开放性文风问题，系统可以返回 <code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">UNVERIFIABLE</code> 并提示人工复核，但模型判断仍可能出错；</li>
+<li style="margin: 6px 0;"><strong style="color: var(--article-accent, #3f8fd4);">延迟与算力成本是硬性代价</strong>——高复杂度任务可能需要多轮 LLM 调用与沙箱执行，端到端耗时及成本取决于模型、任务和环境，实时交互场景应先实测；</li>
+<li style="margin: 6px 0;"><strong style="color: var(--article-accent, #3f8fd4);">超纲判定依赖规则注入的完备性</strong>——<code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">OUT_OF_SCOPE</code> 的拦截效果高度依赖传入的知识点范围说明；如果调用方未定义清晰的方法白名单，系统只能判定算术是否正确，无法保证推导步骤一定符合特定年级的教学规范；</li>
+<li style="margin: 6px 0;"><strong style="color: var(--article-accent, #3f8fd4);">沙箱依赖本地运行环境的健康度</strong>——系统要求本地或容器内提供可信的 Python 执行运行时，若运行时缺失或被外部拦截，独立结构化验证节点可能直接返回错误；通用工具循环在部分情况下可降级为无程序背书的模型证据，具体取决于执行路径和错误。</li>
+</ul>
+
+<p style="margin: 8px 0;">接下来的演进顺序：在当前活跃的特性分支（如 <code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);"><a href="https://github.com/hexagon-codes/hexclaw/tree/feat/code-exec-sandbox-autonomy" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">feat/code-exec-sandbox-autonomy</a></code>）中，团队已合入本地思考模型的流式推理（streaming thinking），并在推进沙箱执行凭证的流式挂载（Streaming Receipt），在模型推导过程中实时预热后台沙箱进程，压减冷启动等待；其次是进一步扩充非数值逻辑公式的确定性解析语法树，让离散逻辑题也能进入代码验证闭环。</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h2 style="font-size: 18px; font-weight: 700; color: var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">回到这道分数题：让推理期算力稳定落地的两个工程约束</h2>
+<p style="margin: 8px 0;">回看开篇那道“已用 4.8 TB，占总容量 2/5”的真实六年级案例（在<a href="https://mp.weixin.qq.com/s/LaQbmp7OwDmAcIfdhYYiSw" style="color: var(--article-accent, #3f8fd4); text-decoration: none; border-bottom: 1px dashed var(--article-accent, #3f8fd4);">《4.8 TB 怎么算出 12 TB？》</a>中有完整推导复盘）：要让这类数学应用题在生产级辅导系统中降低计算错误的风险并保留核验依据，关键就在于不能只依赖模型的“脑内自评”，而必须引入两道系统层 Harness：</p>
+<p style="margin: 6px 0;">一是<strong>上下文与时序防顺从隔离</strong>：让验证者持有独立无状态上下文（<code style="background: var(--article-panel, #edf7ff); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">memory: off, knowledge: off</code>），通过提示词要求“先独立写代码复算、后对照审计解法每一步”，以降低先入为主与附和偏见，但候选答案仍可见，也不能保证模型总会遵循；</p>
+<p style="margin: 6px 0;">二是<strong>物理沙箱硬回执仲裁</strong>：使用绑定任务输入摘要、真实退出码为 0 的沙箱执行回执作为数值比对的执行证据，并在分歧时辅助裁决；回执不能判断建模是否正确。</p>
+<p style="margin: 8px 0;">推理期算力真正的工程落地价值，正在于此。通过这两道 Harness 约束，普通工程团队也可以为本地开源模型提供可检查的执行证据；验证效果仍需结合实际模型与任务评测。</p>
+
+<p style="margin: 24px 0 16px; color: var(--article-secondary, #5f7b9c); font-size: 14.5px; line-height: 2; text-align: center; font-style: italic; padding: 8px 16px;">
+思考时间拉长，并不等同于真理自然显现；<br/>
+可追溯的执行记录能帮助核验；<br/>
+建模与推导仍需检查。
+</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0 16px;"/>
+
+<h3 style="font-size: 15px; font-weight: 600; color: var(--article-accent, #3f8fd4); margin: 24px 0 8px;">往期 · 河蟹 AI 系列</h3>
+<p style="margin: 4px 0; font-size: 14px; line-height: 2; color: var(--article-secondary, #5f7b9c);">
+▸ <a href="https://mp.weixin.qq.com/s/h60ymjjj3eF9hQyhl0jVcQ" style="color: var(--article-accent, #3f8fd4); text-decoration: none;">河蟹 AI 的 Loop Engineering：扒开一个开源 Agent 的源码，从 Prompt 到 Loop 逐层对完这四代范式</a><br/>
+　<span style="color: var(--article-secondary, #5f7b9c);">系列总纲篇（控制面外推与 Agent 循环执行哲学）</span>
+</p>
+<p style="margin: 4px 0; font-size: 14px; line-height: 2; color: var(--article-secondary, #5f7b9c);">
+▸ <a href="https://mp.weixin.qq.com/s/kDi-LSWB4UHtS_6jbTfvow" style="color: var(--article-accent, #3f8fd4); text-decoration: none;">河蟹 AI 的 Harness Engineering：“赛博牛马”的聪明是模型给的，敢让它干活的底气是“Harness”给的</a><br/>
+　<span style="color: var(--article-secondary, #5f7b9c);">安全执行篇（权限硬闸、Maker/Checker 与独立裁判家族，对应本文验证器架构前身）</span>
+</p>
+<p style="margin: 4px 0; font-size: 14px; line-height: 2; color: var(--article-secondary, #5f7b9c);">
+▸ <a href="https://mp.weixin.qq.com/s/H6BoZUcQfBBqh-ScXQyTWw" style="color: var(--article-accent, #3f8fd4); text-decoration: none;">河蟹 AI 的 Context Engineering：RAG 真正的难点不是召回，是把“像答案的噪声”挡在 Loop 外面</a><br/>
+　<span style="color: var(--article-secondary, #5f7b9c);">检索降噪篇（检索降噪流水线与发版评测门）</span>
+</p>
+<p style="margin: 4px 0; font-size: 14px; line-height: 2; color: var(--article-secondary, #5f7b9c);">
+▸ <a href="https://mp.weixin.qq.com/s/ZJ9ehZtG_jUhtTMUnPCDxA" style="color: var(--article-accent, #3f8fd4); text-decoration: none;">河蟹 AI 的 Prompt Engineering：人人都说它死了，其实它沉下去，成了 Agent 最底层的协议</a><br/>
+　<span style="color: var(--article-secondary, #5f7b9c);">协议沉降篇（结构化输出与过程状态机底层协议）</span>
+</p>
+<p style="margin: 4px 0; font-size: 14px; line-height: 2; color: var(--article-secondary, #5f7b9c);">
+▸ <a href="https://mp.weixin.qq.com/s/YvGGPBZX0V7R6-09unnrcQ" style="color: var(--article-accent, #3f8fd4); text-decoration: none;">会“做梦”的 Agent 记忆：Claude、ChatGPT 的梦在云端，河蟹的梦在你本机</a><br/>
+　<span style="color: var(--article-secondary, #5f7b9c);">记忆隔离篇（两相做梦机制与验证期 memory: off 冷隔离）</span>
+</p>
+<p style="margin: 4px 0; font-size: 14px; line-height: 2; color: var(--article-secondary, #5f7b9c);">
+▸ <a href="https://mp.weixin.qq.com/s/RX-2QOSV2cBEmddwAUj5cg" style="color: var(--article-accent, #3f8fd4); text-decoration: none;">河蟹 AI 的思考过程：打通本地推理模型 Qwen 3.5/Gemma 4/DeepSeek-R1 的最后一公里</a><br/>
+　<span style="color: var(--article-secondary, #5f7b9c);">端侧算力篇（思考标签解析与本地小尺寸推理模型实测）</span>
+</p>
+<p style="margin: 4px 0; font-size: 14px; line-height: 2; color: var(--article-secondary, #5f7b9c);">
+▸ <a href="https://mp.weixin.qq.com/s/8xUoFrig10zxpxni1rgm9Q" style="color: var(--article-accent, #3f8fd4); text-decoration: none;">河蟹 AI 让你「父慈子笑」：首个灯塔场景的 K12 工程实践</a><br/>
+　<span style="color: var(--article-secondary, #5f7b9c);">垂直落地篇（验算证据链与六缝场景包架构）</span>
+</p>
+<p style="margin: 4px 0; font-size: 14px; line-height: 2; color: var(--article-secondary, #5f7b9c);">
+▸ <a href="https://mp.weixin.qq.com/s/LaQbmp7OwDmAcIfdhYYiSw" style="color: var(--article-accent, #3f8fd4); text-decoration: none;">4.8 TB 怎么算出 12 TB？一道六年级分数题背后的名师式讲法</a><br/>
+　<span style="color: var(--article-secondary, #5f7b9c);">真实案例篇（数形结合与苏格拉底追问的真实推导实证）</span>
+</p>
+
+<h3 style="font-size: 15px; font-weight: 600; color: var(--article-accent, #3f8fd4); margin: 24px 0 8px;">参考来源</h3>
+<ul style="padding-left: 22px; margin: 8px 0; font-size: 13px; color: var(--article-muted, #7b8fa3); line-height: 1.9;">
+<li style="margin: 8px 0;">Jared Kaplan, Dario Amodei et al., <em>Scaling Laws for Neural Language Models</em>, OpenAI, 2020.<br/><span style="color: var(--article-secondary, #3f5f7b); font-size: 12px; word-break: break-all;"><a href="https://arxiv.org/abs/2001.08361" target="_blank" rel="noopener noreferrer" style="color: var(--article-secondary, #3f5f7b); text-decoration: underline; overflow-wrap: anywhere;">https://arxiv.org/abs/2001.08361</a></span></li>
+<li style="margin: 8px 0;">Andrej Karpathy, <em>Intro to Large Language Models</em>, 2023.<br/><span style="color: var(--article-secondary, #3f5f7b); font-size: 12px; word-break: break-all;">相关讲座： <a href="https://www.youtube.com/watch?v=zjkBMFhNj_g" target="_blank" rel="noopener noreferrer" style="color: var(--article-secondary, #3f5f7b); text-decoration: underline; overflow-wrap: anywhere;">Intro to Large Language Models (2023)</a></span></li>
+<li style="margin: 8px 0;">Noam Brown, <em>AI won’t plateau — if we give it time to think</em>, TED AI, 2024.<br/><span style="color: var(--article-secondary, #3f5f7b); font-size: 12px; word-break: break-all;"><a href="https://www.ted.com/talks/noam_brown_ai_won_t_plateau_if_we_give_it_time_to_think" target="_blank" rel="noopener noreferrer" style="color: var(--article-secondary, #3f5f7b); text-decoration: underline; overflow-wrap: anywhere;">Public Keynote on Game Tree Search &amp; Decision Scaling</a></span></li>
+<li style="margin: 8px 0;">Anthropic Engineering (Erik Schluntz, Barry Zhang), <em>Building Effective Agents</em>, 2024-12.<br/><span style="color: var(--article-secondary, #3f5f7b); font-size: 12px; word-break: break-all;"><a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" rel="noopener noreferrer" style="color: var(--article-secondary, #3f5f7b); text-decoration: underline; overflow-wrap: anywhere;">https://www.anthropic.com/research/building-effective-agents</a></span></li>
+<li style="margin: 8px 0;">Subbarao Kambhampati, <em>Can Large Language Models Reason and Plan?</em>, Annals of The New York Academy of Sciences, 2024.<br/><span style="color: var(--article-secondary, #3f5f7b); font-size: 12px; word-break: break-all;">DOI: <a href="https://doi.org/10.1111/nyas.15125" target="_blank" rel="noopener noreferrer" style="color: var(--article-secondary, #3f5f7b); text-decoration: underline; overflow-wrap: anywhere;">10.1111/nyas.15125</a>；<a href="https://arxiv.org/abs/2403.04121" target="_blank" rel="noopener noreferrer" style="color: var(--article-secondary, #3f5f7b); text-decoration: underline; overflow-wrap: anywhere;">arXiv:2403.04121</a></span></li>
+<li style="margin: 8px 0;">Niklas Muennighoff et al., <em>s1: Simple test-time scaling</em>, 2025.<br/><span style="color: var(--article-secondary, #3f5f7b); font-size: 12px; word-break: break-all;"><a href="https://arxiv.org/abs/2501.19393" target="_blank" rel="noopener noreferrer" style="color: var(--article-secondary, #3f5f7b); text-decoration: underline; overflow-wrap: anywhere;">https://arxiv.org/abs/2501.19393</a></span></li>
+<li style="margin: 8px 0;">Lightman et al., <em>Let's Verify Step by Step</em> (Process Reward Models, PRM), OpenAI, 2023.<br/><span style="color: var(--article-secondary, #3f5f7b); font-size: 12px; word-break: break-all;"><a href="https://arxiv.org/abs/2305.20050" target="_blank" rel="noopener noreferrer" style="color: var(--article-secondary, #3f5f7b); text-decoration: underline; overflow-wrap: anywhere;">https://arxiv.org/abs/2305.20050</a></span></li>
+<li style="margin: 8px 0;">Wang et al., <em>Self-Consistency Improves Chain of Thought Reasoning in Language Models</em>, ICLR 2023.<br/><span style="color: var(--article-secondary, #3f5f7b); font-size: 12px; word-break: break-all;"><a href="https://arxiv.org/abs/2203.11171" target="_blank" rel="noopener noreferrer" style="color: var(--article-secondary, #3f5f7b); text-decoration: underline; overflow-wrap: anywhere;">https://arxiv.org/abs/2203.11171</a></span></li>
+<li style="margin: 8px 0;">Luyu Gao et al., <em>PAL: Program-aided Language Models</em>, ICML 2023.<br/><span style="color: var(--article-secondary, #3f5f7b); font-size: 12px; word-break: break-all;"><a href="https://arxiv.org/abs/2211.10435" target="_blank" rel="noopener noreferrer" style="color: var(--article-secondary, #3f5f7b); text-decoration: underline; overflow-wrap: anywhere;">https://arxiv.org/abs/2211.10435</a></span></li>
+<li style="margin: 8px 0;">Snell et al., <em>Scaling LLM Test-Time Compute Optimally can be More Effective than Scaling Model Parameters</em>, UC Berkeley &amp; Google DeepMind, 2024.<br/><span style="color: var(--article-secondary, #3f5f7b); font-size: 12px; word-break: break-all;"><a href="https://arxiv.org/abs/2408.03314" target="_blank" rel="noopener noreferrer" style="color: var(--article-secondary, #3f5f7b); text-decoration: underline; overflow-wrap: anywhere;">https://arxiv.org/abs/2408.03314</a></span></li>
+<li style="margin: 8px 0;">DeepSeek-AI, <em>DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning</em>, 2025.<br/><span style="color: var(--article-secondary, #3f5f7b); font-size: 12px; word-break: break-all;"><a href="https://arxiv.org/abs/2501.12948" target="_blank" rel="noopener noreferrer" style="color: var(--article-secondary, #3f5f7b); text-decoration: underline; overflow-wrap: anywhere;">https://arxiv.org/abs/2501.12948</a></span></li>
+<li style="margin: 8px 0;">DeepSeek-AI, <em><a href="https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash" target="_blank" rel="noopener noreferrer" style="color: var(--article-secondary, #3f5f7b); text-decoration: underline; text-underline-offset: 2px;">DeepSeek-V4.1-Flash</a></em> (2026-09-10) &amp; <em>DeepInfer: High-performance, large-scale inference framework for DeepSeek models</em> (2026-10-20, 24k+ Stars).<br/><span style="color: var(--article-secondary, #3f5f7b); font-size: 12px; word-break: break-all;"><a href="https://github.com/deepseek-ai/DeepInfer" target="_blank" rel="noopener noreferrer" style="color: var(--article-secondary, #3f5f7b); text-decoration: underline; overflow-wrap: anywhere;">https://github.com/deepseek-ai/DeepInfer</a></span></li>
+</ul>
+<p style="margin: 8px 0; font-size: 12px; color: var(--article-secondary, #3f5f7b);">源码依据核验于 HexClaw 主干代码及 <a href="https://github.com/hexagon-codes/hexclaw/tree/feat/code-exec-sandbox-autonomy" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">feat/code-exec-sandbox-autonomy</a> 演进分支（2026-10-31），涉及 <code><a href="https://github.com/hexagon-codes/hexclaw/blob/d4aff21560c3b4c6e3de83d9e761dde7a03ec386/engine/solve.go" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">engine/solve.go</a></code>、<code><a href="https://github.com/hexagon-codes/hexclaw/blob/d4aff21560c3b4c6e3de83d9e761dde7a03ec386/engine/solve_verifier_node.go" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">engine/solve_verifier_node.go</a></code> 与 <code><a href="https://github.com/hexagon-codes/hexclaw/blob/d4aff21560c3b4c6e3de83d9e761dde7a03ec386/engine/solve_execution_receipt.go" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">engine/solve_execution_receipt.go</a></code>。</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0 16px;"/>
+
+
+
+<p class="blog-brand-footer" data-blog-brand-footer="zh" data-blog-brand-overrides="{}" style="text-align: center; color: var(--article-muted, #7b8fa3); font-size: 13px; margin: 16px 0 0; line-height: 2;">
+<strong style="color: var(--article-ink, #12324c); font-size: 14px;">HexClaw 河蟹 AI</strong><br/>
+本地云端均可部署 · 数据自主掌控 · 软件开源免费<br/>
+<a href="https://hexclaw.net" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">官网 <bdi dir="ltr">hexclaw.net</bdi></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://github.com/hexagon-codes" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">GitHub <bdi dir="ltr">hexagon-codes</bdi></a><br/>
+<a href="https://weibo.com/u/4097207240" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">微博 <bdi dir="ltr">@HexClaw</bdi></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">X <bdi dir="ltr">@hexclawapp</bdi></a><br/>
+<a href="mailto:ai@hexclaw.net" style="color: var(--article-muted, #999); text-decoration: none;">邮箱：<bdi dir="ltr">ai@hexclaw.net</bdi></a>
+</p>
+
+
+</article>
+
+
+
+    <nav class="blog-series-nav" aria-label="相关文章">
+      <a href="/zh/blog/" class="blog-nav-card prev"><span class="blog-nav-label">&larr; 返回列表</span><span class="blog-nav-title">技术博客目录</span></a>
+      <a href="/zh/blog/context-engineering" class="blog-nav-card next"><span class="blog-nav-label">延伸阅读 &rarr;</span><span class="blog-nav-title">Context Engineering：检索降噪流水线</span></a>
+    </nav>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-main">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-col-title">产品</div>
+        <a href="/zh/#download">下载桌面端</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="/zh/changelog">更新日志</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">开发者</div>
+        <a href="/zh/docs/">文档中心</a>
+        <a href="/zh/blog/">技术博客</a>
+        <a href="/zh/docs/getting-started">快速上手</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">Apache-2.0</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">社区</div>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/issues" target="_blank" rel="noopener noreferrer">Issues</a>
+        <a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer">Twitter / X</a>
+        <a href="mailto:ai@hexclaw.net">业务咨询</a>
+        <a href="mailto:support@hexclaw.net">问题反馈</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">关于</div>
+        <a href="/zh/about">关于我们</a>
+        <a href="/zh/privacy">隐私政策</a>
+        <a href="/zh/terms">使用条款</a>
+        <a href="/zh/third-party-ai-services">第三方 AI 服务说明</a>
+      </div>
+    </div>
+    <div class="footer-wechat">
+      <img width="430" height="430" loading="lazy" decoding="async" src="../../assets/brand/wechat-qr.jpg" alt="HexClaw 微信公众号二维码">
+      <span class="footer-wechat-label">微信公众号</span>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">&copy; 2025&ndash;2026 hexagon-codes</span>
+  </div>
+</footer>
+<script src="../../assets/js/theme.js?v=2e4a1828feef"></script>
+<script src="../../assets/js/docs-nav.js?v=eb248fcf1d64"></script>
+<button type="button" class="back-to-top" id="backToTop" aria-label="返回顶部" title="返回顶部">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg>
+  <span>顶部</span>
+</button>
+
+<script src="../../assets/js/blog.js?v=c72e1db5a6ec"></script>
+</body>
+</html>

@@ -847,4 +847,28 @@
     <xhtml:link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/uyghur-localization" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/uyghur-localization" />
   </url>
+  <url>
+    <loc>https://hexclaw.net/zh/blog/test-time-compute</loc>
+    <lastmod>2026-11-01</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/test-time-compute" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/test-time-compute" />
+    <xhtml:link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/test-time-compute" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/test-time-compute" />
+  </url>
+  <url>
+    <loc>https://hexclaw.net/en/blog/test-time-compute</loc>
+    <lastmod>2026-11-01</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/test-time-compute" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/test-time-compute" />
+    <xhtml:link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/test-time-compute" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/test-time-compute" />
+  </url>
+  <url>
+    <loc>https://hexclaw.net/ug/blog/test-time-compute</loc>
+    <lastmod>2026-11-01</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/test-time-compute" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/test-time-compute" />
+    <xhtml:link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/test-time-compute" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/test-time-compute" />
+  </url>
 </urlset>
