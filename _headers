@@ -47,5 +47,8 @@
   Content-Type: application/xml; charset=utf-8
   Cache-Control: public, max-age=3600
 
+/meta/github-stars.json
+  Cache-Control: public, max-age=0, must-revalidate
+
 /404.html
   X-Robots-Tag: noindex

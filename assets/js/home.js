@@ -266,15 +266,5 @@
     /* Eco chain staggered reveal is handled by the existing IntersectionObserver via the .reveal class on .eco-chain-wrapper */
 
   
-// GitHub stars realtime
-(function(){
-  var el=document.getElementById('gh-stars');
-  if(!el)return;
-  fetch('https://api.github.com/repos/hexagon-codes/hexclaw-desktop')
-    .then(function(r){return r.json()})
-    .then(function(d){
-      var s=d.stargazers_count;
-      if(s>0)el.textContent='★ '+( s>=1000?(s/1000).toFixed(1)+'k':s);
-    })
-    .catch(function(){});
-})();
+// 首页和内容页共用星数快照及刷新逻辑。
+import('./github-stars-6b23d53cf5fb.js').catch(() => {});

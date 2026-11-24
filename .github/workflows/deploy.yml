@@ -19,6 +19,11 @@ jobs:
           node --test scripts/*.test.mjs
           node scripts/sync-current-release.mjs --check
 
+      - name: Refresh GitHub stars snapshot
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: node scripts/sync-github-stars.mjs
+
       - name: Stamp asset cache-busters (content hash)
         run: bash scripts/stamp-cache-bust.sh
 

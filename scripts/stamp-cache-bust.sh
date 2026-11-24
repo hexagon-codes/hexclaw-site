@@ -20,6 +20,15 @@ hash_of() {
   fi
 }
 
+# 先固定共享模块身份，再计算加载方脚本及 HTML 的内容版本。
+stars_asset="assets/js/github-stars.js"
+stars_hash=$(hash_of "$stars_asset")
+stars_version="github-stars-${stars_hash}.js"
+cp "$stars_asset" "assets/js/$stars_version"
+export STARS_VERSION_NAME="$stars_version"
+perl -pi -e 's/github-stars(?:-[a-f0-9]{12})?\.js/$ENV{STARS_VERSION_NAME}/g' \
+  assets/js/home.js assets/js/docs-nav.js
+
 # Single source of truth: every asset referenced as `<basename>?v=...` in HTML.
 assets=(
   assets/css/home.css

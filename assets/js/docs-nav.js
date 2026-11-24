@@ -29,23 +29,8 @@ const nav = document.querySelector(".tn, .topnav");
   desktop.addEventListener("change", (event) => { if (event.matches) restore(); });
 })();
 
-// 导航星标读取桌面端仓库的公开计数，网络失败时保留星形标记。
-(() => {
-  const badge = document.getElementById("gh-stars");
-  if (!badge) return;
-  fetch("https://api.github.com/repos/hexagon-codes/hexclaw-desktop")
-    .then((response) => {
-      if (!response.ok) throw new Error("GitHub stars unavailable");
-      return response.json();
-    })
-    .then((data) => {
-      const count = data.stargazers_count;
-      if (Number.isInteger(count) && count >= 0) {
-        badge.textContent = "★ " + (count >= 1000 ? (count / 1000).toFixed(1) + "k" : count);
-      }
-    })
-    .catch(() => {});
-})();
+// 首页和内容页共用星数快照及刷新逻辑。
+import('./github-stars-6b23d53cf5fb.js').catch(() => {});
 
 // 横向文档导航优先露出当前页面，章节多时仍可左右滚动。
 const mobileDocNav = document.querySelector(".mobile-doc-nav");
