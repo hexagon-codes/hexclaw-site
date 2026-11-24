@@ -73,9 +73,9 @@
 </div>
 <div class="toolbar-actions">
 <div class="filter-tabs" role="group" aria-label="变更类型筛选">
-<button type="button" class="filter-tab is-active" data-filter="all">全部 <span class="filter-count">154</span></button>
+<button type="button" class="filter-tab is-active" data-filter="all">全部 <span class="filter-count">153</span></button>
 <button type="button" class="filter-tab" data-filter="new"><span class="filter-dot filter-dot-new" aria-hidden="true"></span>新增 <span class="filter-count">24</span></button>
-<button type="button" class="filter-tab" data-filter="opt"><span class="filter-dot filter-dot-opt" aria-hidden="true"></span>优化 <span class="filter-count">127</span></button>
+<button type="button" class="filter-tab" data-filter="opt"><span class="filter-dot filter-dot-opt" aria-hidden="true"></span>优化 <span class="filter-count">126</span></button>
 <button type="button" class="filter-tab" data-filter="fix"><span class="filter-dot filter-dot-fix" aria-hidden="true"></span>修复 <span class="filter-count">3</span></button>
 </div>
 <a href="/zh/#download" class="toolbar-quick-download" data-toolbar-download aria-hidden="true">下载 v0.5.3</a>
@@ -101,17 +101,16 @@
 <time datetime="2026-11-24">2026-11-24</time>
 </header>
 <ul class="release-notes">
-<li data-type="opt" class="is-spotlight"><span class="change-type change-type-opt">优化</span><strong>模型能力声明：</strong>模型管理区分手工、预设、目录与旧数据的能力来源，逐项展示探测回执；目录证据按来源指纹失效，筛选和编辑使用同一份能力事实。</li>
-<li data-type="opt"><span class="change-type change-type-opt">优化</span><strong>工具调用明细：</strong>补充执行标识、策略配置、策略版本与重放标记；服务端未提供的字段保持缺省，不伪造执行事实。</li>
-<li data-type="opt"><span class="change-type change-type-opt">优化</span><strong>知识库原文件：</strong>查阅原文件不再等待父级加载标记，正文与处理详情独立读取；详情失败不替代原文件结果。</li>
-<li data-type="opt"><span class="change-type change-type-opt">优化</span><strong>全功能授权范围：</strong>明确授权的实际覆盖范围；界面放行不等于模型、连接器或外部服务可用。</li>
-<li data-type="opt"><span class="change-type change-type-opt">优化</span><strong>会话成果附件：</strong>普通助手生成的持久 PDF 在即时回复和历史重载后使用同一附件卡，保留完整正文；预览与下载读取同一冻结文件，不依赖学生档案。</li>
-<li data-type="opt"><span class="change-type change-type-opt">优化</span><strong>文件与图片恢复：</strong>持久文件复用按后端与资源身份隔离缓存，保留 ETag、304 与文件字节一致性；恢复正文同源图片，避免迟到回执清除当前资源。</li>
-<li data-type="opt"><span class="change-type change-type-opt">优化</span><strong>会话状态恢复：</strong>恢复会话人设与待发送草稿，记忆展示只使用本轮实际检索命中。</li>
-<li data-type="opt"><span class="change-type change-type-opt">优化</span><strong>模型配置保存：</strong>统一模型草稿与默认选择的保存，保留冲突后的输入和配置来源。</li>
-<li data-type="opt"><span class="change-type change-type-opt">优化</span><strong>补充练习失败态：</strong>按实际任务及文件操作状态显示失败，保留已有成功内容。</li>
-<li data-type="opt"><span class="change-type change-type-opt">优化</span><strong>跨平台安装包：</strong>完善 Windows 浏览器运行包校验和 Linux RPM 打包，缓存运行时下载并减少重复压缩，各平台安装包和更新签名均已通过发布验证。</li>
-<li data-type="opt"><span class="change-type change-type-opt">优化</span><strong>版本协作：</strong>Desktop v0.5.3 配套已发布的 HexClaw 后端 v0.5.2，Hub v0.1.1 资源由后端管理。</li>
+<li data-type="opt" class="is-spotlight"><span class="change-type change-type-opt">优化</span><strong>模型能力标记：</strong>区分手工设置、预设、模型目录和旧配置的能力来源，逐项展示探测结果。来源变化时，旧目录证据自动失效，筛选与编辑共用同一份能力声明。</li>
+<li data-type="opt"><span class="change-type change-type-opt">优化</span><strong>工具调用详情：</strong>展示执行标识、策略配置与版本、重放标记，便于追踪每次调用。详情按服务端实际返回显示。</li>
+<li data-type="opt"><span class="change-type change-type-opt">优化</span><strong>知识库原文件：</strong>原文件正文与处理详情分别加载，查阅文件更及时。处理详情加载失败时，仍保留原文件的读取结果。</li>
+<li data-type="opt"><span class="change-type change-type-opt">优化</span><strong>全功能授权：</strong>明确授权覆盖范围，说明模型、连接器和外部服务的实际可用条件。</li>
+<li data-type="opt"><span class="change-type change-type-opt">优化</span><strong>会话 PDF 附件：</strong>普通助手生成的 PDF 随会话保存，重新打开历史消息后仍可预览和下载。附件与完整回复一并保留，预览和下载使用同一份文件，无需建立学生档案。</li>
+<li data-type="opt"><span class="change-type change-type-opt">优化</span><strong>文件与图片恢复：</strong>按后端和文件身份分别缓存附件，复用时核对文件版本与内容。恢复历史消息中的同源图片，避免旧请求的迟到结果清除当前文件。</li>
+<li data-type="opt"><span class="change-type change-type-opt">优化</span><strong>会话状态恢复：</strong>重新打开会话时恢复人设和待发送草稿，记忆区域只展示本轮实际检索到的内容。</li>
+<li data-type="opt"><span class="change-type change-type-opt">优化</span><strong>模型配置保存：</strong>统一保存模型草稿和默认选择，发生配置冲突时保留已填写内容及配置来源。</li>
+<li data-type="opt"><span class="change-type change-type-opt">优化</span><strong>补充练习状态：</strong>按生成任务和文件操作的实际结果提示失败，保留已成功生成的内容。</li>
+<li data-type="opt"><span class="change-type change-type-opt">优化</span><strong>跨平台安装包：</strong>改进 Windows 浏览器运行包校验和 Linux RPM 打包，复用运行时下载缓存，减少重复压缩。各平台安装包及更新签名已通过发布验证。</li>
 </ul>
 </section>
 
