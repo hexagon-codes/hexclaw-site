@@ -75,8 +75,8 @@
 <div class="page-kicker">河蟹 AI 文档 · K12</div>
 <h1>「父慈子笑」上手篇：<span class="keep-phrase">手把手</span>用河蟹 AI 辅导作业</h1>
 <p class="sub">从建立孩子档案开始，依次完成拍照批改、查看讲解和错题复习。教材关联、打印、定时任务与钉钉接入按需配置。</p>
-<p class="doc-version">公开下载：Desktop v0.5.0 / hexclaw v0.5.0。截图含 Beta 与开发版演示。</p>
-<details class="doc-version-details"><summary>版本差异与截图说明</summary><p>内容更新于 2026-10-24。公开下载为 Desktop v0.5.0 稳定版，配套后端为 hexclaw v0.5.0；当前 main 主线新增的独立「补充练习单」在<a href="#supplement-practice">对应段落</a>单独说明，不代表 v0.5.0 安装包已包含。多数操作截图沿用 v0.5.0-beta K12 场景基线，采用 K12 专属皮肤；「学情」、「本周该练」和「错题详情」已补充当前开发版组件示意，并在图中标明演示数据。作业与画作素材为「AI 生成示例 · 非真实学生作业」。截图用于辅助认识界面，当前操作和版本差异请结合正文阅读。</p></details>
+<p class="doc-version">公开下载：Desktop v0.5.3 / HexClaw 后端 v0.5.2。截图含 Beta 与开发版演示。</p>
+<details class="doc-version-details"><summary>版本差异与截图说明</summary><p>内容更新于 2026-11-24。公开下载为 Desktop v0.5.3 稳定版，配套后端为 HexClaw v0.5.2；安装包已包含独立「补充练习单」，用法见<a href="#supplement-practice">对应段落</a>。多数操作截图沿用 v0.5.0-beta K12 场景基线，采用 K12 专属皮肤；「学情」、「本周该练」和「错题详情」已补充当前开发版组件示意，并在图中标明演示数据。作业与画作素材为「AI 生成示例 · 非真实学生作业」。截图用于辅助认识界面，当前操作和版本差异请结合正文阅读。</p></details>
 </header>
 
 <figure class="doc-shot" style="content-visibility: visible;"><a class="doc-image-link" href="../../assets/docs/k12/tutorial-cover.webp" target="_blank" rel="noopener noreferrer" aria-label="查看大图：手把手用河蟹 AI 辅导作业：父慈子笑上手篇 K12 使用教程封面"><img width="1920" height="819" loading="lazy" decoding="async" style="aspect-ratio: auto 1920 / 819;" src="../../assets/docs/k12/tutorial-cover.webp" alt="手把手用河蟹 AI 辅导作业：父慈子笑上手篇 K12 使用教程封面"/></a></figure>
@@ -88,7 +88,7 @@
 <strong>先记住一句话</strong>：孩子不直接对着 AI，是<strong>你（家长）用 AI 备课，再去教孩子</strong>。本文按桌面版连接本机服务演示，错题、学情、照片保存在这台电脑里；若连接云端服务，学习资产则保存在服务所在机器。使用云模型时，处理所需的题目、图片和上下文会发给你配置的服务商。所以第一步不是"跟 AI 聊天"，而是"给孩子建一个专属辅导助手"。
 </blockquote>
 
-<p><strong>开始前先确认版本</strong>：请从 <a href="https://github.com/hexagon-codes/hexclaw-desktop/releases/tag/v0.5.0" target="_blank" rel="noopener noreferrer">Desktop v0.5.0 发布页</a>下载并安装，再按文中创建「作业辅导助手」。该版本配套后端为<strong>hexclaw v0.5.0</strong>；安装与配置方式见 <a href="/zh/docs/getting-started">快速上手</a>，再到「设置 → 模型服务」配好模型。拍照要用<strong>能读图、能推理的模型</strong>；软件开源免费，第三方模型调用按服务商计费。标为「当前主线」的新增交互，需对应的 Desktop 和后端版本，稳定版用户可先按已有入口完成辅导和复习。</p>
+<p><strong>开始前先确认版本</strong>：请从 <a href="https://github.com/hexagon-codes/hexclaw-desktop/releases/tag/v0.5.3" target="_blank" rel="noopener noreferrer">Desktop v0.5.3 发布页</a>下载并安装，再按文中创建「作业辅导助手」。该版本配套后端为<strong>HexClaw v0.5.2</strong>；安装与配置方式见 <a href="/zh/docs/getting-started">快速上手</a>，再到「设置 → 模型服务」配好模型。拍照要用<strong>能读图、能推理的模型</strong>；软件开源免费，第三方模型调用按服务商计费。标为「当前主线」的新增交互，需对应的 Desktop 和后端版本，稳定版用户可先按已有入口完成辅导和复习。</p>
 
 <p>想用这一篇的专属外观，到「设置 → 系统设置」，把「K12 外观」切成<strong>「K12 专属皮肤」</strong>，浅色、深色都可以。</p>
 
@@ -305,8 +305,8 @@
 <figcaption>当前开发版组件界面示意（2026-10-24）：到期复习与独立补充练习入口。使用五年级演示数据，未执行模型生成；此图不代表 v0.5.0 稳定版界面。 <span class="doc-image-hint">点击图片查看大图。</span></figcaption>
 </figure>
 
-<h3 id="supplement-practice">当前主线：单独准备同步巩固与口算练习单</h3>
-<p>当前 main 主线在「本周该练」提供<strong>「补充练习单」</strong>：选择同步巩固或口算热身、调整题数，再按需生成。同步巩固结合当前教材进度，口算热身使用相应的计算范围。生成后可直接预览、下载或打印同一份 PDF，不必先逐题加入「练习集」。这套独立练习单交互在 v0.5.0 发布后加入，<strong>v0.5.0 安装包继续使用其原有分区入口</strong>；公开安装包包含哪些更新，请查看<a href="/zh/changelog">更新日志</a>。</p>
+<h3 id="supplement-practice">单独准备同步巩固与口算练习单</h3>
+<p>在「本周该练」使用<strong>「补充练习单」</strong>：选择同步巩固或口算热身、调整题数，再按需生成。同步巩固结合当前教材进度，口算热身使用相应的计算范围。生成后可直接预览、下载或打印同一份 PDF，不必先逐题加入「练习集」。这套独立练习单交互在 v0.5.0 发布后加入，<strong>v0.5.3 安装包已包含此入口</strong>；公开安装包包含哪些更新，请查看<a href="/zh/changelog">更新日志</a>。</p>
 
 <blockquote class="tip">
 新题要<strong>验证通过才进练习集</strong>，失败会留在原处提示。孩子真实作答、系统复批、再按复习间隔积累证据，才会走到「已掌握」。

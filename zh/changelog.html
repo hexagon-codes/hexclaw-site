@@ -52,9 +52,9 @@
 <h1>更新日志</h1>
 <p class="sub">桌面端工程演进与版本发布记录。每一次迭代，都在为您的本地工作流带来更高确定性与自由度。</p>
 <div class="changelog-hero-meta">
-<span class="changelog-status-pill"><span class="pulse-dot" aria-hidden="true"></span>当前最新版 <strong>v0.5.1</strong> (2026-10-26)</span>
+<span class="changelog-status-pill"><span class="pulse-dot" aria-hidden="true"></span>当前最新版 <strong>v0.5.3</strong> (2026-11-24)</span>
 <span class="changelog-trust-tag"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg> 100% 本地优先 · 数据不离设备</span>
-<span class="changelog-stat">共计 <strong>26</strong> 个版本迭代</span>
+<span class="changelog-stat">共计 <strong>27</strong> 个版本迭代</span>
 </div>
 </div>
 <div class="changelog-hero-links">
@@ -73,12 +73,12 @@
 </div>
 <div class="toolbar-actions">
 <div class="filter-tabs" role="group" aria-label="变更类型筛选">
-<button type="button" class="filter-tab is-active" data-filter="all">全部 <span class="filter-count">143</span></button>
+<button type="button" class="filter-tab is-active" data-filter="all">全部 <span class="filter-count">154</span></button>
 <button type="button" class="filter-tab" data-filter="new"><span class="filter-dot filter-dot-new" aria-hidden="true"></span>新增 <span class="filter-count">24</span></button>
-<button type="button" class="filter-tab" data-filter="opt"><span class="filter-dot filter-dot-opt" aria-hidden="true"></span>优化 <span class="filter-count">116</span></button>
+<button type="button" class="filter-tab" data-filter="opt"><span class="filter-dot filter-dot-opt" aria-hidden="true"></span>优化 <span class="filter-count">127</span></button>
 <button type="button" class="filter-tab" data-filter="fix"><span class="filter-dot filter-dot-fix" aria-hidden="true"></span>修复 <span class="filter-count">3</span></button>
 </div>
-<a href="/zh/#download" class="toolbar-quick-download" data-toolbar-download aria-hidden="true">下载 v0.5.1</a>
+<a href="/zh/#download" class="toolbar-quick-download" data-toolbar-download aria-hidden="true">下载 v0.5.3</a>
 </div>
 </nav>
 
@@ -86,17 +86,39 @@
 <div class="milestone-divider-top">
 <span class="milestone-badge">v0.5</span>
 <h3 class="milestone-title">学习专项与工作流画布</h3>
-<span class="milestone-date-range">2026 年 10 月</span>
+<span class="milestone-date-range">2026 年 10–11 月</span>
 <div class="milestone-rule" aria-hidden="true"></div>
 </div>
 <p class="milestone-briefing">接入首个小学全学科 K12 辅导场景包，新增作业拍照批改、教学报告与 PDF 打印，上线可视化工作流画布与磁盘历史日志检索。</p>
 </div>
 
-<section class="release release-latest" aria-labelledby="release-v0-5-1">
+<section class="release release-latest" aria-labelledby="release-v0-5-3">
+<header class="release-meta">
+<div class="release-ver-wrap">
+<h2 id="release-v0-5-3"><bdi>v0.5.3</bdi><a href="#release-v0-5-3" class="release-anchor" aria-label="复制版本 v0.5.3 链接" title="复制版本链接">#</a></h2>
+<span class="badge-latest">当前最新</span>
+</div>
+<time datetime="2026-11-24">2026-11-24</time>
+</header>
+<ul class="release-notes">
+<li data-type="opt" class="is-spotlight"><span class="change-type change-type-opt">优化</span><strong>模型能力声明：</strong>模型管理区分手工、预设、目录与旧数据的能力来源，逐项展示探测回执；目录证据按来源指纹失效，筛选和编辑使用同一份能力事实。</li>
+<li data-type="opt"><span class="change-type change-type-opt">优化</span><strong>工具调用明细：</strong>补充执行标识、策略配置、策略版本与重放标记；服务端未提供的字段保持缺省，不伪造执行事实。</li>
+<li data-type="opt"><span class="change-type change-type-opt">优化</span><strong>知识库原文件：</strong>查阅原文件不再等待父级加载标记，正文与处理详情独立读取；详情失败不替代原文件结果。</li>
+<li data-type="opt"><span class="change-type change-type-opt">优化</span><strong>全功能授权范围：</strong>明确授权的实际覆盖范围；界面放行不等于模型、连接器或外部服务可用。</li>
+<li data-type="opt"><span class="change-type change-type-opt">优化</span><strong>会话成果附件：</strong>普通助手生成的持久 PDF 在即时回复和历史重载后使用同一附件卡，保留完整正文；预览与下载读取同一冻结文件，不依赖学生档案。</li>
+<li data-type="opt"><span class="change-type change-type-opt">优化</span><strong>文件与图片恢复：</strong>持久文件复用按后端与资源身份隔离缓存，保留 ETag、304 与文件字节一致性；恢复正文同源图片，避免迟到回执清除当前资源。</li>
+<li data-type="opt"><span class="change-type change-type-opt">优化</span><strong>会话状态恢复：</strong>恢复会话人设与待发送草稿，记忆展示只使用本轮实际检索命中。</li>
+<li data-type="opt"><span class="change-type change-type-opt">优化</span><strong>模型配置保存：</strong>统一模型草稿与默认选择的保存，保留冲突后的输入和配置来源。</li>
+<li data-type="opt"><span class="change-type change-type-opt">优化</span><strong>补充练习失败态：</strong>按实际任务及文件操作状态显示失败，保留已有成功内容。</li>
+<li data-type="opt"><span class="change-type change-type-opt">优化</span><strong>跨平台安装包：</strong>完善 Windows 浏览器运行包校验和 Linux RPM 打包，缓存运行时下载并减少重复压缩，各平台安装包和更新签名均已通过发布验证。</li>
+<li data-type="opt"><span class="change-type change-type-opt">优化</span><strong>版本协作：</strong>Desktop v0.5.3 配套已发布的 HexClaw 后端 v0.5.2，Hub v0.1.1 资源由后端管理。</li>
+</ul>
+</section>
+
+<section class="release" aria-labelledby="release-v0-5-1">
 <header class="release-meta">
 <div class="release-ver-wrap">
 <h2 id="release-v0-5-1"><bdi>v0.5.1</bdi><a href="#release-v0-5-1" class="release-anchor" aria-label="复制版本 v0.5.1 链接" title="复制版本链接">#</a></h2>
-<span class="badge-latest">当前最新</span>
 </div>
 <time datetime="2026-10-26">2026-10-26</time>
 </header>
@@ -521,7 +543,7 @@
 <p>本地优先、私密可控、多模型无缝协同。每一次版本演进，都直接在您的设备上生效。</p>
 </div>
 <div class="changelog-bottom-cta-actions">
-<a href="/zh/#download" class="changelog-btn-primary">免费下载安装包 (v0.5.1)</a>
+<a href="/zh/#download" class="changelog-btn-primary">免费下载安装包 (v0.5.3)</a>
 <a href="/zh/docs/getting-started" class="changelog-btn-subtle">快速上手指南 →</a>
 </div>
 </section>
