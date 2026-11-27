@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/favicon-32.png">
+<title>河蟹 AI 的 Skills over MCP：当工具自带“剧本”，本地 Agent 该把信任锁在哪？｜HexClaw 技术博客</title>
+<meta name="description" content="从 10 个因 404 隔离的 MCP 条目到 12 文件目录包校验，拆解 HexClaw 的 Skill 供应链准入、版本锁定与凭据隔离。">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:site_name" content="河蟹 AI">
+<meta property="og:type" content="article">
+<meta property="og:title" content="河蟹 AI 的 Skills over MCP：当工具自带“剧本”，本地 Agent 该把信任锁在哪？｜HexClaw 技术博客">
+<meta property="og:description" content="从 10 个因 404 隔离的 MCP 条目到 12 文件目录包校验，拆解 HexClaw 的 Skill 供应链准入、版本锁定与凭据隔离。">
+<meta property="og:url" content="https://hexclaw.net/zh/blog/skills-over-mcp">
+<meta property="og:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta property="og:image:alt" content="河蟹 AI 标志">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="河蟹 AI 的 Skills over MCP：当工具自带“剧本”，本地 Agent 该把信任锁在哪？｜HexClaw 技术博客">
+<meta name="twitter:description" content="从 10 个因 404 隔离的 MCP 条目到 12 文件目录包校验，拆解 HexClaw 的 Skill 供应链准入、版本锁定与凭据隔离。">
+<meta name="twitter:image" content="https://hexclaw.net/assets/brand/hexclaw-logo.png">
+<meta name="twitter:image:alt" content="河蟹 AI 标志">
+<link rel="canonical" href="https://hexclaw.net/zh/blog/skills-over-mcp">
+<link rel="alternate" hreflang="zh-CN" href="https://hexclaw.net/zh/blog/skills-over-mcp">
+<link rel="alternate" hreflang="en" href="https://hexclaw.net/en/blog/skills-over-mcp">
+<link rel="alternate" hreflang="ug" href="https://hexclaw.net/ug/blog/skills-over-mcp">
+<link rel="alternate" hreflang="x-default" href="https://hexclaw.net/zh/blog/skills-over-mcp">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "河蟹 AI 的 Skills over MCP：当工具自带“剧本”，本地 Agent 该把信任锁在哪？",
+  "description": "从 10 个因 404 隔离的 MCP 条目到 12 文件目录包校验，拆解 HexClaw 的 Skill 供应链准入、版本锁定与凭据隔离。",
+  "url": "https://hexclaw.net/zh/blog/skills-over-mcp",
+  "inLanguage": "zh-CN",
+  "dateModified": "2026-11-27",
+  "image": "https://hexclaw.net/assets/brand/hexclaw-logo.png",
+  "publisher": {
+    "@type": "Organization",
+    "name": "hexagon-codes",
+    "url": "https://hexclaw.net/",
+    "@id": "https://hexclaw.net/#organization"
+  },
+  "@id": "https://hexclaw.net/zh/blog/skills-over-mcp#article"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "河蟹 AI", "item": "https://hexclaw.net/zh/"},
+    {"@type": "ListItem", "position": 2, "name": "技术博客", "item": "https://hexclaw.net/zh/blog/"},
+    {"@type": "ListItem", "position": 3, "name": "河蟹 AI 的 Skills over MCP：当工具自带“剧本”，本地 Agent 该把信任锁在哪？", "item": "https://hexclaw.net/zh/blog/skills-over-mcp"}
+  ],
+  "@id": "https://hexclaw.net/zh/blog/skills-over-mcp#breadcrumb"
+}
+</script>
+<link rel="stylesheet" href="../../assets/css/docs-5a7266a4b884.css">
+<link rel="stylesheet" href="../../assets/css/blog-cb7de6377424.css">
+</head>
+<body class="blog-page blog-article-page">
+<a href="#main" class="skip-link">跳转到主要内容</a>
+<nav class="tn topnav" id="nav">
+  <a href="/zh/" class="tn-b topnav-brand"><img width="72" height="72" src="../../assets/brand/hexclaw-icon-72.png" class="tn-l topnav-logo" alt="河蟹 AI"><span class="tn-n topnav-name">河蟹 AI</span></a>
+  <button type="button" class="tn-burger topnav-burger" aria-label="菜单" aria-expanded="false" aria-controls="primary-navigation"><span></span><span></span><span></span></button><div class="tn-r topnav-links" id="primary-navigation"><a href="/zh/">首页</a><a href="/zh/#cases">使用场景</a><a href="/zh/#features">产品能力</a><a href="/zh/#quickstart">开始使用</a><a href="/zh/#ecosystem">开源生态</a><a href="/zh/blog/" class="is-active">技术博客</a><a href="/zh/docs/">文档中心</a><div class="lang-menu" data-lang-menu><button type="button" class="lang-trigger" aria-haspopup="menu" aria-expanded="false" aria-label="切换语言"><svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 0 20"></path><path d="M12 2a15.3 15.3 0 0 0 0 20"></path></svg><span class="lang-current">中文</span><svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="lang-menu-list" role="menu"><a href="/zh/blog/skills-over-mcp" role="menuitem" class="is-active" aria-current="true">中文</a><a href="/en/blog/skills-over-mcp" role="menuitem">English</a><a href="/ug/blog/skills-over-mcp" role="menuitem" lang="zh-CN" dir="ltr">维吾尔语</a></div></div><button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="切换主题"><svg class="ti-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="ti-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer" class="nav-cta">GitHub <span class="nav-star-badge" id="gh-stars">&#9733;</span></a></div>
+</nav>
+
+<main id="main" class="blog-main">
+  <div class="blog-article-container">
+    <nav class="blog-breadcrumb" aria-label="面包屑导航">
+      <a href="/zh/">首页</a>
+      <span class="blog-breadcrumb-sep">/</span>
+      <a href="/zh/blog/">技术博客</a>
+      <span class="blog-breadcrumb-sep">/</span>
+      <span aria-current="page">核心系统深度</span>
+    </nav>
+
+    <header class="blog-header">
+      <div class="blog-header-tags">
+        <span class="blog-badge-series">MCP 供应链安全</span>
+      </div>
+      <h1 class="blog-article-title">河蟹 AI 的 Skills over MCP：当工具自带“剧本”，本地 Agent 该把信任锁在哪？</h1>
+      <p class="blog-article-subtitle">从 10 个因 404 隔离的 MCP 条目，到 12 文件目录包校验，拆解河蟹 AI 的本地供应链防线</p>
+      <div class="article-provenance-banner">
+        <div class="provenance-left">
+          <span class="provenance-origin-badge">微信公众号首发</span>
+          <span class="provenance-text">本文首发于微信公众号<strong>「hexclaw」</strong>（ID: hexclaw）；官网版对验证边界与引用作了校订</span>
+        </div>
+        <a href="https://mp.weixin.qq.com/s/5ednGHlvR8cUuc6XxmfdKw" target="_blank" rel="noopener noreferrer" class="provenance-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          微信原文 ↗
+        </a>
+      </div>
+    </header>
+
+    <article class="blog-content">
+
+<p style="text-align: center; color: var(--article-muted, #7b8fa3); font-size: 13px; margin: 0 0 20px;">78 技能 × 59 MCP（49 锁 10 隔离）× --with 依赖白名单 × 离线 BOM 与凭据 fail-closed</p>
+
+<p style="margin: 16px 0 12px;">就在本周二（11 月 24 日），趁着 MCP 两周年纪念周，Anthropic 把 <strong>Skills over MCP</strong> 推上了公开 Beta。先拆个容易看反的词面：跟 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">HTTP over TLS</code> 一样，这里的 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">over</code> 指的是“走 MCP 协议对外分发 Skill”——服务端发布工作流，客户端在用得着的时候，再读 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">SKILL.md</code> 和配套文件。</p>
+
+<p style="margin: 8px 0;">翻发布说明时，一个开关细节特别值得琢磨。按 11 月 24 日公告，个人套餐（Pro / Max / Ultra）默认打开，Team 要由管理员启用，Enterprise 当时还待开放。工具开始自带“操作剧本”，接进来之后用哪一版，决定权还在宿主手里。</p>
+
+<p style="margin: 8px 0;">这道门禁到底多要命，我们在整理河蟹 AI（HexClaw）的 59 个 MCP 市场条目时就撞见过。把条目声明的包名拿去 npm 官方源核对，有 <strong style="color: var(--article-accent, #3f8fd4);">10 个返回 HTTP 404</strong>。<code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">google-drive</code>、<code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">postman</code>、<code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">wolfram-alpha</code>、<code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">ffmpeg-video-processor</code> 都是当时记录在目录里的名字。想想看，随手给本地 Agent 配个 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">@latest</code>，下次启动拿到的字节就可能已经换了一版。</p>
+
+<p style="margin: 8px 0;">接工具本身早就不难了，SDK 封装得越来越顺手；真正难的，是在能力市场越滚越大之后，不让你的 Agent 穿着隐身衣在各种“野包”和浮动脚本里裸奔。</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<section style="border-left: 3px solid var(--article-accent, #3f8fd4); padding: 14px 18px; margin: 20px 0; background: var(--article-panel, #f4fbff); color: var(--article-ink, #12324c); font-size: 14px; border-radius: 0 8px 8px 0; line-height: 1.85;">
+<p style="margin: 0 0 6px;"><strong style="color: var(--article-accent, #3f8fd4); font-size: 15px;">本文核心判断：</strong></p>
+<p style="margin: 0 0 6px;">1. <strong style="color: var(--article-accent, #3f8fd4);">Skills over MCP 把审查范围从工具描述扩到了远端剧本</strong>。带静态清单的技能要核对文件摘要。宿主还得决定采用哪一版剧本，本地依赖从哪里来则要看安装链。</p>
+<p style="margin: 0 0 6px;">2. <strong style="color: var(--article-accent, #3f8fd4);">本地市场的准入校验必须焊进类型系统和 CI 双端</strong>。HexClaw 市场里，49 个已锁版 MCP 条目记录了精确版本、官方 registry 的来源声明和哈希元数据。10 个条目因包名查询返回 404 被列入 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">quarantined</code>。PyPI 每条最多放行一组已声明的 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">--with</code>，技能目录包按清单逐一核对 12 个文件。</p>
+<p style="margin: 0;">3. <strong style="color: var(--article-accent, #3f8fd4);">发布引用和离线快照，让桌面端知道手里是哪一版目录</strong>。准入校验能查主包版本和声明，包管理器实际下载了哪个制品、解析到了哪些传递依赖，得看那一次的安装记录。</p>
+</section>
+
+<blockquote style="border-left: 3px solid #5fb3ea; padding: 10px 16px; margin: 16px 0; background: var(--article-panel, #f4fbff); color: #3f5f7b; font-size: 14px; border-radius: 0 8px 8px 0; line-height: 1.85;">
+<p style="margin: 0 0 6px;"><span style="color: var(--article-accent, #3f8fd4); font-weight: 700;">30 秒版：</span></p>
+<p style="margin: 0;">本文对照 Anthropic 的 Skills over MCP（SEP-2640）扩展，拆解 HexClaw（<code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">hexclaw-hub v0.1.1</code> + <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">hexclaw v0.5.2</code> + <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">hexagon v0.6.0</code>）如何用三组真实对象跑通供应链防线：10 个因 404 隔离的 MCP 条目、<code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">weather</code> 的 PyPI <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">--with</code> 单条依赖约束，以及 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">homework-pdf 1.1.8</code> 的 12 文件 SHA256 目录包；再收束到离线目录刷新、凭据箱 fail-closed 与底层 MCP Resources/Prompts 多模态隔离。同时明确交代：河蟹市场默认固定到 Hub 发布 Tag，尚未接入 MCP 的远端 Skills 扩展（<code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">skills/list</code> 等）。</p>
+</blockquote>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h2 style="font-size: 18px; font-weight: 700; color: var(--article-ink, #12324c); margin: 32px 0 12px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">Skills over MCP 落地后，信任面到底宽在了哪？</h2>
+
+<p style="margin: 8px 0;">把最近一个月的行业时间线连起来看，方向很清晰。2026 年 10 月 22 日，Linux 基金会旗下的 Agentic AI Foundation（AAIF）正式把 Agent Skills 纳入治理，和 MCP 放进了同一套开放标准版图；紧接着 11 月 24 日，Anthropic 推出 Skills over MCP（规范编号 <strong>SEP-2640</strong>，<code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">io.modelcontextprotocol/skills</code>），联合 Shopify、HubSpot、Atlassian 等首批生态服务，在 Claude 和 Claude Code（<code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">2.1.331+</code>）公开测试。</p>
+
+<p style="margin: 8px 0;">这套设计瞄准的是一个真实痛点。早期的 MCP 接入特别像给你丢了一箱螺丝刀却没给装配图：有些客户端一次把几十个工具的 JSON Schema 全倒进上下文，既烧 Token 又容易让模型迷失在参数细节里。Skills over MCP 的解法很克制——客户端先通过轻量元数据接口（<code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">skills/list</code>、<code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">skills/get</code>）看到有哪些可用技能，真正干活碰到相关任务时，再借 MCP 既有的 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">Resources</code> 原语按需把 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">SKILL.md</code> 和配套文件读进来，服务端可以更新剧本，客户端发现新版后再按宿主的核对和批准规则加载。行业里管这种做法叫渐进披露（Progressive Disclosure），没用到的技能正文也就不用占上下文。</p>
+
+<p style="margin: 8px 0;">问题出在硬币的另一面。2025 年 4 月，安全研究团队 Invariant Labs 披露过 <strong>MCP Tool Poisoning（工具投毒）</strong>和 <strong>Rug-Pull（抽地毯）</strong>。当时要审的就是工具描述及其变化。现在工具旁边多了一份剧本，宿主要审的内容也扩大到了技能正文和配套文件。</p>
+
+<p style="margin: 8px 0;">公平地说，Anthropic 自己也没放任裸奔。按 SEP-2640，带静态清单的技能会列出文件 URI、字节数和 SHA-256。遇到动态资源，先前的批准不能覆盖以后任意生成的文件。Claude Code 在 Manual 和 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">acceptEdits</code> 模式下提供 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">Allow this version</code>，让批准跟着那一版文件走。<code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">auto</code> 模式则由分类器判断是否加载。Claude Code 会跳过远端 MCP Skill 的内联 shell 命令。v2.1.332 加入的 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">PreSkillShellCommand</code> 钩子用于即将执行的内联命令。至于本机怎么装第三方 MCP、断网时目录还能不能看、密码怎么落盘，仍得看宿主自己的实现。</p>
+
+<p style="margin: 8px 0;">这也是为什么我们在河蟹 AI 上做技能和 MCP 市场时，把默认目录引用固定在发布版本上。两套方案在“目录包封装、正文按需载入”上思路同向，但在谁掌握变更节奏、防线焊在哪一层上，差别很清晰：</p>
+
+<section style="margin: 14px 0; padding: 14px 16px; background: var(--article-panel, #f4fbff); border-left: 3px solid #5fb3ea; border-radius: 0 8px 8px 0;">
+<p style="margin: 0 0 8px; font-size: 14px; font-weight: 700; color: var(--article-accent, #3f8fd4);">技能承载形态</p>
+<p style="margin: 0 0 8px; font-size: 13px; line-height: 1.8; color: var(--article-ink, #12324c);"><strong style="color: var(--article-secondary, #5f7b9c);">Anthropic Skills over MCP（SEP-2640 远端发布）：</strong>MCP 服务端托管 <code style="background: #edf7ff; padding: 1px 4px; border-radius: 3px; font-size: 12px; color: var(--article-accent, #3f8fd4);">SKILL.md</code> 及其配套文件，经 MCP Resources 按需读入</p>
+<p style="margin: 0; font-size: 13px; line-height: 1.8; color: var(--article-ink, #12324c);"><strong style="color: var(--article-secondary, #5f7b9c);">HexClaw 当前架构（市场目录与本地安装）：</strong>独立市场仓 <code style="background: #edf7ff; padding: 1px 4px; border-radius: 3px; font-size: 12px; color: var(--article-accent, #3f8fd4);">hexclaw-hub</code> 托管单文件与目录包（<code style="background: #edf7ff; padding: 1px 4px; border-radius: 3px; font-size: 12px; color: var(--article-accent, #3f8fd4);">bundle.json</code>），目录包安装时从出厂包或 Hub 选取候选</p>
+</section>
+
+<section style="margin: 14px 0; padding: 14px 16px; background: var(--article-panel, #f4fbff); border-left: 3px solid #5fb3ea; border-radius: 0 8px 8px 0;">
+<p style="margin: 0 0 8px; font-size: 14px; font-weight: 700; color: var(--article-accent, #3f8fd4);">更新控制权</p>
+<p style="margin: 0 0 8px; font-size: 13px; line-height: 1.8; color: var(--article-ink, #12324c);"><strong style="color: var(--article-secondary, #5f7b9c);">Anthropic Skills over MCP（SEP-2640 远端发布）：</strong>客户端发现新版后按需读取。静态清单提供逐文件 SHA-256，文件变化会使该版本的已保存批准失效。</p>
+<p style="margin: 0; font-size: 13px; line-height: 1.8; color: var(--article-ink, #12324c);"><strong style="color: var(--article-secondary, #5f7b9c);">HexClaw 当前架构（市场目录与本地安装）：</strong>官方默认固定到 Hub 发布 Tag <code style="background: #edf7ff; padding: 1px 4px; border-radius: 3px; font-size: 12px; color: var(--article-accent, #3f8fd4);">v0.1.1</code>。显式配置可指定其他来源或引用。</p>
+</section>
+
+<section style="margin: 14px 0; padding: 14px 16px; background: var(--article-panel, #f4fbff); border-left: 3px solid #5fb3ea; border-radius: 0 8px 8px 0;">
+<p style="margin: 0 0 8px; font-size: 14px; font-weight: 700; color: var(--article-accent, #3f8fd4);">防漂移与防断网</p>
+<p style="margin: 0 0 8px; font-size: 13px; line-height: 1.8; color: var(--article-ink, #12324c);"><strong style="color: var(--article-secondary, #5f7b9c);">Anthropic Skills over MCP（SEP-2640 远端发布）：</strong>读取新文件时访问远端。已核对的内容可按宿主规则缓存，手工保存的批准绑定这一版文件清单。</p>
+<p style="margin: 0; font-size: 13px; line-height: 1.8; color: var(--article-ink, #12324c);"><strong style="color: var(--article-secondary, #5f7b9c);">HexClaw 当前架构（市场目录与本地安装）：</strong>目录包安装时逐文件核对长度和 SHA-256。两份各约 52 KiB 的快照随二进制出厂，离线仍可浏览目录。</p>
+</section>
+
+<section style="margin: 14px 0; padding: 14px 16px; background: var(--article-panel, #f4fbff); border-left: 3px solid #5fb3ea; border-radius: 0 8px 8px 0;">
+<p style="margin: 0 0 8px; font-size: 14px; font-weight: 700; color: var(--article-accent, #3f8fd4);">治理边界与代价</p>
+<p style="margin: 0 0 8px; font-size: 13px; line-height: 1.8; color: var(--article-ink, #12324c);"><strong style="color: var(--article-secondary, #5f7b9c);">Anthropic Skills over MCP（SEP-2640 远端发布）：</strong>团队由管理员启用。<code style="background: #edf7ff; padding: 1px 4px; border-radius: 3px; font-size: 12px; color: var(--article-accent, #3f8fd4);">auto</code> 模式由分类器判断是否加载，工具调用仍按各自的权限策略处理。</p>
+<p style="margin: 0; font-size: 13px; line-height: 1.8; color: var(--article-ink, #12324c);"><strong style="color: var(--article-secondary, #5f7b9c);">HexClaw 当前架构（市场目录与本地安装）：</strong>官方默认目录随发布更新引用和内嵌快照。已启用的技能要等新版安装完成、运行时刷新成功后才用得上。</p>
+</section>
+
+<p style="margin: 8px 0;">对一款跑在用户自己电脑上的桌面 Agent 来说，我更愿意把默认目录固定到发布版本上。这样回头查“今天装的是哪一版”，有目录和摘要可核对。下面按数据流顺序，拆开河蟹 AI 这套从市场准入、安装校验、离线同步到协议底座的四层防线。</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h2 style="font-size: 18px; font-weight: 700; color: var(--article-ink, #12324c); margin: 32px 0 12px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">第一道闸：59 个 MCP 里，为什么 49 个上锁、10 个进隔离区？</h2>
+
+<p style="margin: 8px 0;">把 59 个 MCP 条目摊开看，结构一点都不神秘：49 个处于 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">pinned</code> 状态（37 个走 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">npx</code> 的 npm 包 + 12 个走 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">uvx</code> 的 PyPI 包），另外 10 个躺在 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">quarantined</code> 隔离区里。翻一下 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">hexclaw-hub/mcp-registry.json</code>，这 10 个隔离条目的 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">quarantine_reason</code> 清一色写着 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">declared npm package returned HTTP 404</code>，整齐得让人笑不出来。</p>
+
+<p style="margin: 8px 0;">为什么不干脆把这 10 条从 JSON 里删掉图个清净？道理很简单：如果你悄悄删掉，过两个月整理榜单时很可能又把同名仓库抄回来，顺手再踩一遍 404 或更糟的抢注包。显式保留条目、标上 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">status: "quarantined"</code>，同时用校验脚本硬规定“隔离条目不得携带 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">artifact</code>，绝不能伪装成已核验包”，等于在市场清单里给自己钉了一块墓碑，时刻提醒后来者这块地塌过。</p>
+
+<p style="margin: 8px 0;">光靠市场仓库里的 Python 脚本拦还不够，Go 客户端运行期必须有第二道锁。在 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">hexclaw/skill/hub/mcp_artifact.go</code> 里，我们用了一个典型的类型边界技巧——把原始的 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">McpServerMeta</code> 包装成内部字段不可导出的 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">ValidatedMCPServer</code>。所有从市场安装 MCP 的入口（目录校验、CLI、API、资源生命周期与内置安装技能）都必须先过 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">ValidatePinnedMCPServer</code> 拿到这个只读投影，再组装成运行时通用 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">mcp.ServerConfig</code>（手工配置自定义 MCP 另走通用入口，不绕市场锁版通道）：</p>
+
+<section style="margin: 14px 0; padding: 14px 16px; overflow-x: hidden; background: #102a3d; color: #d9edf7; border-radius: 8px; font-size: 12.5px; line-height: 1.7; font-family: SFMono-Regular, Menlo, Monaco, Consolas, 'Courier New', monospace; box-sizing: border-box;">
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em; color: var(--article-muted, #7b8fa3);">// hexclaw/skill/hub/mcp_artifact.go:19, 43-82（节选）</span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;"><strong style="color: #5fb3ea;">type</strong> ValidatedMCPServer <strong style="color: #5fb3ea;">struct</strong> { meta McpServerMeta }</span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;"><br/></span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;"><strong style="color: #5fb3ea;">func</strong> <span style="color: #ffc66d;">ValidatePinnedMCPServer</span>(meta McpServerMeta) (ValidatedMCPServer, <strong style="color: #5fb3ea;">error</strong>) {</span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;">    <strong style="color: #5fb3ea;">if</strong> meta.Status == <span style="color: #a8ff60;">"quarantined"</span> {</span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;">        reason := strings.TrimSpace(meta.QuarantineReason)</span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;">        <span style="color: var(--article-muted, #7b8fa3);">// ... 若 reason 为空则回填默认文案</span></span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;">        <strong style="color: #5fb3ea;">return</strong> ValidatedMCPServer{}, fmt.Errorf(<span style="color: #a8ff60;">"条目 %q 已隔离: %s"</span>, meta.Name, reason)</span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;">    }</span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;">    <strong style="color: #5fb3ea;">if</strong> meta.Status != <span style="color: #a8ff60;">"pinned"</span> || meta.Artifact == <strong style="color: #5fb3ea;">nil</strong> {</span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;">        <strong style="color: #5fb3ea;">return</strong> ValidatedMCPServer{}, fmt.Errorf(<span style="color: #a8ff60;">"条目 %q 缺少 pinned artifact"</span>, meta.Name)</span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;">    }</span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;">    a := *meta.Artifact</span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;">    <span style="color: var(--article-muted, #7b8fa3);">// ... 省略 package 合法性及 PyPI constraint 预检</span></span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;">    <strong style="color: #5fb3ea;">switch</strong> a.Ecosystem {</span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;">    <strong style="color: #5fb3ea;">case</strong> <span style="color: #a8ff60;">"npm"</span>:</span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;">        <span style="color: var(--article-muted, #7b8fa3);">// ... 校 npx、精确 SemVer、官方 registry 与 64 字节 sha512 SRI</span></span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;">        exactSpec = a.Package + <span style="color: #a8ff60;">"@"</span> + a.Version</span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;">        <strong style="color: #5fb3ea;">for</strong> _, arg := <strong style="color: #5fb3ea;">range</strong> meta.Args {</span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;">            <strong style="color: #5fb3ea;">if</strong> arg == <span style="color: #a8ff60;">"-p"</span> || arg == <span style="color: #a8ff60;">"--package"</span> || arg == <span style="color: #a8ff60;">"--registry"</span> ||</span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;">                strings.HasPrefix(arg, <span style="color: #a8ff60;">"--package="</span>) || strings.HasPrefix(arg, <span style="color: #a8ff60;">"--registry="</span>) {</span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;">                <strong style="color: #5fb3ea;">return</strong> ValidatedMCPServer{}, fmt.Errorf(<span style="color: #a8ff60;">"npx 条目不得注入额外 package 或 registry"</span>)</span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;">            }</span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;">        }</span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;">    <span style="color: var(--article-muted, #7b8fa3);">// ... case "pypi": 见下节</span></span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;">    }</span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;">}</span>
+</section>
+
+<p style="margin: 8px 0;">看细一点，npm 条目必须同时满足五件事才放行：启动命令是 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">npx</code>；版本号命中精确 SemVer 正则（拒绝 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">^</code>、<code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">~</code> 和 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">latest</code>，比如 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">@modelcontextprotocol/server-filesystem@2026.7.10</code> 和 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">@modelcontextprotocol/server-github@2025.4.8</code>）；<code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">source_registry</code> 钉死在 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">https://registry.npmjs.org</code>；<code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">integrity</code> 经 base64 解码后恰好是 64 字节 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">sha512-</code> SRI；且最终传给子进程的 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">Args</code> 数组里必须原样出现 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">package@version</code>，顺手把 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">-p</code>、<code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">--package</code>、<code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">--registry</code> 全部拦死。这里核的是目录里的制品声明和启动参数。</p>
+
+<p style="margin: 8px 0;">这套纪律还顺手管到了市场仓库自己头上。<code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">hexclaw-hub/scripts/validate-mcp-registry.py</code> 的文件头就记着一笔历史旧账：早期凭证注入契约全靠人工维护，Redis 错写成 env、MongoDB 和 MySQL 的环境变量名写错、SQLite 甚至一度指向已下架的 npm 包（现已迁到 PyPI 锁死为 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">mcp-server-sqlite==2025.4.25</code>）。现在这个脚本把三类门禁一起钉死在 CI 里：lines 101–172 逐条核验 59 个 MCP 的命令白名单、shell 危险字符、精确版本与哈希元数据；lines 206–252 专门给踩过坑的 5 个数据库代表服务（<code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">sqlite</code>、<code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">mysql</code>、<code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">redis</code>、<code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">mongodb</code>、<code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">postgres</code>）补上了凭据与启动参数回归断言；lines 82–98 顺带把仓库里的 GitHub Actions workflow 也全扫了一遍——引用外部 Action 必须写成 40 位 commit SHA，跑道禁止 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">ubuntu-latest</code>，脚本里禁止 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">go install ...@latest</code>。管别人之前先管住自己的构建流水线，才不至于前门上锁、后院敞开。</p>
+
+<!-- 图 1：四层供应链防线全景图 -->
+<div style="margin: 18px auto 16px; text-align: center;">
+<img width="2120" height="2880" loading="lazy" decoding="async" src="../../assets/blog/skills-over-mcp/supply-chain-defense-zh.png" alt="河蟹 AI 技能与 MCP 供应链四层防线全景图" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid #d5e6f3; box-shadow: 0 2px 10px rgba(0,0,0,0.05);"/>
+<p style="margin: 6px 0 0; font-size: 13px; color: var(--article-secondary, #5f7b9c); font-weight: 600;">（图 1：河蟹 AI 技能与 MCP 供应链四层防线与未覆盖边界全景）</p>
+</div>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h2 style="font-size: 18px; font-weight: 700; color: var(--article-ink, #12324c); margin: 32px 0 12px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">锁版本最难的不是主包，是 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 16px; color: var(--article-accent, #3f8fd4);">--with</code> 开出来的那条缝</h2>
+
+<p style="margin: 8px 0;">纸面上把主包锁死很容易，真跑进 Python 生态，第一个现实冲突马上就冒头了。主角是市场里那个看起来最无害的天气服务 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">weather</code>。</p>
+
+<p style="margin: 8px 0;">我们把主包死死钉在 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">mcp_weather_server==0.6.1</code>。PyPI 上游只给 SDK 写了下限 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">mcp[cli]&gt;=1.12.0</code>。11 月 1 日的 Linux 验收里，包管理器解析到了 SDK 2.3.0，启动时导入 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">McpError</code> 报了 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">ImportError</code>。河蟹给这个市场条目额外补上 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">&lt;2</code>，通过 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">--with</code> 传给 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">uvx</code>，原有主包版本照旧。启动命令是 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">uvx --with "mcp[cli]&gt;=1.12.0,&lt;2" --from mcp_weather_server==0.6.1 python -m mcp_weather_server</code>。11 月 2 日从应用安装接口复验，客户端列出了 8 项工具，业务调用 0 次。</p>
+
+<p style="margin: 8px 0;">这道题立刻成了一个工程两难。一刀切掉 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">--with</code>，这个安装入口就没法给天气服务带上兼容约束。什么额外依赖都放进来，主包锁得再死也架不住多开一道门。</p>
+
+<p style="margin: 8px 0;">我们的取舍是<strong style="color: var(--article-accent, #3f8fd4);">只开一条精确声明过的单通道，不给通用验证器硬编码天气特例</strong>。我们在 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">MCPArtifact</code> 里新增了一个可选标量字段 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">dependency_constraint</code>，并在 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">mcp_artifact.go</code> 和市场 CI 校验脚本里都核对声明、参数和值是否一一对应：</p>
+
+<section style="margin: 14px 0; padding: 14px 16px; overflow-x: hidden; background: #102a3d; color: #d9edf7; border-radius: 8px; font-size: 12.5px; line-height: 1.7; font-family: SFMono-Regular, Menlo, Monaco, Consolas, 'Courier New', monospace; box-sizing: border-box;">
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em; color: var(--article-muted, #7b8fa3);">// hexclaw/skill/hub/mcp_artifact.go:95-116（PyPI 唯一依赖约束与野源封堵）</span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;">withCount := 0</span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;"><strong style="color: #5fb3ea;">for</strong> i, arg := <strong style="color: #5fb3ea;">range</strong> meta.Args {</span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;">    <span style="color: var(--article-muted, #7b8fa3);">// 只接纳元数据显式声明且精确绑定的一组依赖约束。</span></span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;">    <strong style="color: #5fb3ea;">if</strong> arg == <span style="color: #a8ff60;">"--with"</span> {</span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;">        <strong style="color: #5fb3ea;">if</strong> withCount != 0 || a.DependencyConstraint == <span style="color: #a8ff60;">""</span> || i+1 &gt;= len(meta.Args) || meta.Args[i+1] != a.DependencyConstraint {</span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;">            <strong style="color: #5fb3ea;">return</strong> ValidatedMCPServer{}, fmt.Errorf(<span style="color: #a8ff60;">"uvx 条目不得注入额外 dependency source"</span>)</span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;">        }</span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;">        withCount++</span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;">        constraintArgument = i + 1</span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;">        <strong style="color: #5fb3ea;">continue</strong></span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;">    }</span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;">    <strong style="color: #5fb3ea;">if</strong> arg == <span style="color: #a8ff60;">"--with-editable"</span> || arg == <span style="color: #a8ff60;">"-r"</span> || arg == <span style="color: #a8ff60;">"--requirements"</span> ||</span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;">        arg == <span style="color: #a8ff60;">"--index-url"</span> || arg == <span style="color: #a8ff60;">"--extra-index-url"</span> || arg == <span style="color: #a8ff60;">"--find-links"</span> ||</span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;">        strings.HasPrefix(arg, <span style="color: #a8ff60;">"--with="</span>) || strings.HasPrefix(arg, <span style="color: #a8ff60;">"--requirements="</span>) ||</span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;">        strings.HasPrefix(arg, <span style="color: #a8ff60;">"--index-url="</span>) || strings.HasPrefix(arg, <span style="color: #a8ff60;">"--extra-index-url="</span>) ||</span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;">        strings.HasPrefix(arg, <span style="color: #a8ff60;">"--find-links="</span>) {</span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;">        <strong style="color: #5fb3ea;">return</strong> ValidatedMCPServer{}, fmt.Errorf(<span style="color: #a8ff60;">"uvx 条目不得注入额外 dependency source"</span>)</span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;">    }</span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;">}</span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;"><strong style="color: #5fb3ea;">if</strong> a.DependencyConstraint != <span style="color: #a8ff60;">""</span> &amp;&amp; withCount != 1 {</span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;">    <strong style="color: #5fb3ea;">return</strong> ValidatedMCPServer{}, fmt.Errorf(<span style="color: #a8ff60;">"uvx 条目不得注入额外 dependency source"</span>)</span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;">}</span>
+</section>
+
+<p style="margin: 8px 0;">看细一点，里面藏着一个很容易被忽略的兜底：第 103 行专门把 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">constraintArgument = i + 1</code> 记了下来，到了后面核对主包参数（line 123）时，特意跳过这个下标（<code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">i != constraintArgument</code>）。不然有人写出 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">uvx --with mcp_weather_server==0.6.1 python</code>，把主包塞进约束位里去跑任意解释器命令，朴素的字符串包含检查就会被骗过去。市场脚本 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">validate-mcp-registry.py:181-196</code> 用 11 组负例把未声明、重复 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">--with</code>、直链 URL、本地路径、缺版本号的裸包名、<code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">--with=</code> 拼接、私服索引和主包错位全钉死了。</p>
+
+<p style="margin: 8px 0;">但话说回来，做到这一步就等于彻底安全了吗？绝不是。在 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">hexclaw/skill/hub/hub.go:42-45</code> 的结构注释里，我们自己就把大实话写死了：<strong><code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">Integrity</code> 是官方 registry 原生准入元数据，它不证明包管理器最终拉回的全部传递依赖字节，也不是“该包绝对可信安全”的背书。</strong><code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">mcp[cli]&gt;=1.12.0,&lt;2</code> 只是把直接依赖框在一个兼容区间里，二三级传递依赖的解析权仍在 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">uvx</code> / <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">npx</code> 手里。清楚这条边界，比假装做了全链路 lockfile 重要得多。</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h2 style="font-size: 18px; font-weight: 700; color: var(--article-ink, #12324c); margin: 32px 0 12px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">从单文件到目录包：78 个技能里唯一的 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 16px; color: var(--article-accent, #3f8fd4);">homework-pdf</code> 怎么做防篡改？</h2>
+
+<p style="margin: 8px 0;">聊完 59 个 MCP，再看 78 个技能。这 78 条里（包含按河蟹场景改写、单独留档来源说明的公开社区条目），77 个目前还是单文件 Markdown，唯独 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">homework-pdf 1.1.8</code> 已经进化成了<strong>多文件目录包</strong>。它沿用 Agent Skills 的 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">SKILL.md</code> 加配套文件的形式，再由河蟹的 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">bundle.json</code> 描述整包。</p>
+
+<p style="margin: 8px 0;">原因很现实：要让 Agent 稳定输出一份出版级的作业讲解 PDF，光靠几百字 Markdown 提示词根本稳不住版式和字段契约。打开 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">hexclaw-hub/skills/homework-pdf/bundle.json</code>，里面一共列了 <strong>12 个文件</strong>：主指令 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">SKILL.md</code>、3 个 Typst 排版模板（含和通用文档共享的页眉页脚 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">assets/pdf-chrome.typ</code>）、1 份输入输出 JSON Schema（<code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">assets/report.schema.json</code>）、1 份 profile、4 个示例文件、1 份契约参考文档和 1 份 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">LICENSE</code>。它的 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">SKILL.md</code>（lines 44–46）把职责边界划得很死：Typst 组件只管排版，不自行识题、下载资源、安装依赖或调用模型；目录里放着文件，也不代表模板已经进入运行系统，是否生效要走宿主的共享 Skill 生命周期和能力回执。</p>
+
+<p style="margin: 8px 0;">可一旦技能从 1 个文件变成 12 个文件，安装链就多了几件事要管。文件下没下全？清单给出的路径能不能用？上游响应的长度跟清单对得上吗？走 Hub 下载时，<code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">PackageSource</code> 把这些检查放进候选包的暂存阶段。</p>
+
+<section style="margin: 14px 0; padding: 14px 16px; overflow-x: hidden; background: #102a3d; color: #d9edf7; border-radius: 8px; font-size: 12.5px; line-height: 1.7; font-family: SFMono-Regular, Menlo, Monaco, Consolas, 'Courier New', monospace; box-sizing: border-box;">
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em; color: var(--article-muted, #7b8fa3);">// hexclaw/skill/hub/skill_bundle.go:72-103（目录包语义摘要 + 防穿越 + 逐文件 SHA256，节选）</span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;"><strong style="color: #5fb3ea;">if</strong> manifest.SkillID != name || manifest.Version != meta.Version || manifest.ContractVersion != 1 {</span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;">    <strong style="color: #5fb3ea;">return</strong> <span style="color: #a8ff60;">""</span>, <strong style="color: #5fb3ea;">nil</strong>, fmt.Errorf(<span style="color: #a8ff60;">"skill bundle catalog identity mismatch"</span>)</span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;">}</span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;"><strong style="color: #5fb3ea;">if</strong> meta.BundleSHA256 != <span style="color: #a8ff60;">""</span> {</span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;">    digest, err := manifest.SemanticDigest()</span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;">    <strong style="color: #5fb3ea;">if</strong> err != <strong style="color: #5fb3ea;">nil</strong> { <strong style="color: #5fb3ea;">return</strong> <span style="color: #a8ff60;">""</span>, <strong style="color: #5fb3ea;">nil</strong>, err }</span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;">    <strong style="color: #5fb3ea;">if</strong> !strings.EqualFold(digest, meta.BundleSHA256) {</span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;">        <strong style="color: #5fb3ea;">return</strong> <span style="color: #a8ff60;">""</span>, <strong style="color: #5fb3ea;">nil</strong>, fmt.Errorf(<span style="color: #a8ff60;">"skill bundle semantic digest mismatch"</span>)</span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;">    }</span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;">}</span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;"><span style="color: var(--article-muted, #7b8fa3);">// ... 写入 bundle.json 后逐个拉取并校验文件</span></span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;"><strong style="color: #5fb3ea;">for</strong> _, entry := <strong style="color: #5fb3ea;">range</strong> manifest.Files {</span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;">    <strong style="color: #5fb3ea;">if</strong> !filepath.IsLocal(filepath.FromSlash(entry.Path)) || strings.Contains(entry.Path, <span style="color: #a8ff60;">"\\"</span>) {</span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;">        <strong style="color: #5fb3ea;">return</strong> <span style="color: #a8ff60;">""</span>, <strong style="color: #5fb3ea;">nil</strong>, fmt.Errorf(<span style="color: #a8ff60;">"invalid bundle resource path"</span>)</span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;">    }</span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;">    <span style="color: var(--article-muted, #7b8fa3);">// ... SKILL.md 复用正文，其余文件走 io.LimitReader(resp.Body, entry.Size+1)</span></span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;">    data, err = h.readPackageResource(ctx, resolve(entry.Path), entry.Size)</span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;">    <span style="color: var(--article-muted, #7b8fa3);">// ... 省略 err 检查</span></span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;">    sum := sha256.Sum256(data)</span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;">    <strong style="color: #5fb3ea;">if</strong> int64(len(data)) != entry.Size || !strings.EqualFold(hex.EncodeToString(sum[:]), entry.SHA256) {</span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;">        <strong style="color: #5fb3ea;">return</strong> <span style="color: #a8ff60;">""</span>, <strong style="color: #5fb3ea;">nil</strong>, fmt.Errorf(<span style="color: #a8ff60;">"skill bundle resource digest mismatch: %s"</span>, entry.Path)</span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;">    }</span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;">    <span style="color: var(--article-muted, #7b8fa3);">// ... 落盘到临时暂存目录 stage</span></span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;">}</span>
+</section>
+
+<p style="margin: 8px 0;">这里有两个小细节值得提一下。第一，直接对 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">bundle.json</code> 原文算哈希容易被换行符和缩进空格误伤，所以 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">SemanticDigest()</code>（<code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">skill/marketplace/bundle.go:60</code>）抽了四个固定根字段，按确定性 JSON 重新编码再算 SHA256——这样 Windows 和 macOS 的换行差异不会误杀合法包，可只要任意一个文件的路径、角色、字节数或哈希变了一位，摘要立刻失配。第二，读远端文件时上限设的是 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">entry.Size + 1</code>：如果只读 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">entry.Size</code> 字节，响应多出的尾巴会被悄悄截掉；多读 1 个字节，只要上游多吐了数据，<code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">int64(len(data)) != entry.Size</code> 当场抓住。</p>
+
+<p style="margin: 8px 0;">装这份 PDF 技能时，<code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">InstallFromCatalog</code> 可以选匹配的出厂包，也可以从 Hub 取候选包。两条路都进入 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">Marketplace.Install</code>，逐文件核对通过之后，再由宿主注册的 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">BundleValidator</code> 检查模板和当前引擎的契约。校验没过就留着旧版，候选下载失败也会清理临时目录。依赖排序是另一条流程，<code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">InstallWithDependencies</code> 做完 DFS 环检后，逐项调用写入单个 Markdown 的 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">Hub.Install</code>。</p>
+
+<!-- 图 2：weather 与 homework-pdf 双栏校验链路图 -->
+<div style="margin: 18px auto 16px; text-align: center;">
+<img width="2120" height="1520" loading="lazy" decoding="async" src="../../assets/blog/skills-over-mcp/mcp-bundle-validation-zh.png" alt="weather PyPI 依赖约束与 homework-pdf 目录包双栏校验链路图" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid #d5e6f3; box-shadow: 0 2px 10px rgba(0,0,0,0.05);"/>
+<p style="margin: 6px 0 0; font-size: 13px; color: var(--article-secondary, #5f7b9c); font-weight: 600;">（图 2：两条真实入厂防线——weather PyPI 约束拦截 × homework-pdf 12 文件逐项校验）</p>
+</div>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h2 style="font-size: 18px; font-weight: 700; color: var(--article-ink, #12324c); margin: 32px 0 12px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">离线 BOM、凭据箱与协议底座：把“能装”走成“断网稳、凭据密、链接不瞎拉”</h2>
+
+<p style="margin: 8px 0;">把单个包和单个目录锁住之后，还有三个最容易被忽视的系统边界：目录怎么同步、密码怎么存、协议回来带的多媒体和链接怎么处理。</p>
+
+<p style="margin: 8px 0;"><strong style="color: var(--article-accent, #3f8fd4);">先说目录同步和离线 BOM。</strong>在 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">hexclaw/config/defaults.go:4</code> 里，默认市场引用固定为 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">const DefaultSkillsHubRef = "v0.1.1"</code>。显式配置可覆盖这个默认引用。配套的 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">skill/hub/embed.go</code> 直接用 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">//go:embed</code> 把 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">index.json</code> 和 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">mcp-registry.json</code> 两份各约 52 KiB（合计约 105 KiB）的出厂快照打进二进制（经逐字节校验，与 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">hexclaw-hub v0.1.1</code> 完全一致）。</p>
+
+<p style="margin: 8px 0;">平时打开市场，内存里有目录就先读内存。内存还空着，默认远端市场读不早于出厂快照的磁盘缓存，否则用内嵌目录。磁盘缓存按仓库地址和引用分目录。目录够新的 10 分钟里，后台会跳过拉取。相邻两次后台尝试至少间隔 60 秒，从上一次开始尝试时计算，同一时刻最多跑一个后台刷新任务。</p>
+
+<p style="margin: 8px 0;">刷新阶段我们专门防了两类脏状态。只拉到了 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">index.json</code>，<code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">mcp-registry.json</code> 没到，本次返回 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">RefreshDegradedError</code>，旧目录接着用。同一来源有可比较的快照时，较旧的候选报 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">RefreshStaleError</code>。内容不同但时间戳相同，或内容不同且缺时间戳，报 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">RefreshUnorderedError</code>。落盘时，POSIX 先写并 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">fsync</code> 临时文件，再 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">rename</code> 到正式路径，最后同步父目录。Windows 的替换使用 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">MOVEFILE_WRITE_THROUGH</code>。如果 POSIX 父目录同步报错，代码会回读。回读与候选一致时，新快照已经生效，返回 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">CacheCommitOutcomeError</code> 报告落盘持久性待确认。</p>
+
+<p style="margin: 8px 0;"><strong style="color: var(--article-accent, #3f8fd4);">再说本地凭据箱。</strong>很多 MCP（比如 MySQL、MongoDB、GitHub、Linear）离不开密码和 Token，早期不少客户端直接把它们明文塞进配置文件，或者一股脑把整个 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">args</code> 数组全加密——结果把合法的数据库路径也加成了密文。在 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">hexclaw/config/mcp_secret.go:66-144</code> 里，凭据分两条轨：有密钥箱（<code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">secret.Box</code>）时，<code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">env</code> 的非空值加密落盘，<code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">args</code> 只加密被 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">ArgsSecretRefs</code> 显式标定下标的敏感参数。只要配置带了 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">ArgsSecretRefs</code> / <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">EnvSecretRefs</code> 元数据，写入路径 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">EncryptMCPSecrets</code> 缺密钥箱直接拒写；启动解密 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">DecryptMCPSecrets</code> 遇到任意密文或元数据同样 fail-closed 报错拒绝继续，绝不把一串 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">enc:v1:...</code> 密文原样透传给子进程（仅对无 secret metadata 的旧版 MCP 配置在无密钥箱写盘时保留明文兼容边界）。</p>
+
+<p style="margin: 8px 0;"><strong style="color: var(--article-accent, #3f8fd4);">最后看底层 MCP 协议底座。</strong>Anthropic 的 Skills over MCP 之所以能落地，前提是客户端完整支持 MCP 的 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">Resources</code> 原语而不只是 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">Tools</code>。在 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">hexagon v0.6.0</code> 和 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">hexclaw v0.5.2</code> 里，我们把官方 Go MCP SDK 的 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">Tools / Resources / Prompts</code> 三类会话全打通了（见 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">hexclaw/mcp/resources.go</code> 与 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">prompts.go</code>），每条资源显式绑定 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">Server + URI</code> 避免多服务撞名。</p>
+
+<p style="margin: 8px 0;">更关键的是多模态返回值的隔离处理。在 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">hexagon/mcp/content_projection.go</code> 里，协议返回的图片、音频和二进制嵌入资源会直接剥离到独立的 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">BinaryContent</code>，省得几百 KB 的 base64 文本把模型上下文糊死；<code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">Descriptor()</code> 再对实际收到的字节重算一遍大小和 SHA256，不轻信上游声明。而遇到 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">resource_link</code> 时，源码直接定死了一条红线：</p>
+
+<section style="margin: 14px 0; padding: 14px 16px; overflow-x: hidden; background: #102a3d; color: #d9edf7; border-radius: 8px; font-size: 12.5px; line-height: 1.7; font-family: SFMono-Regular, Menlo, Monaco, Consolas, 'Courier New', monospace; box-sizing: border-box;">
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em; color: var(--article-muted, #7b8fa3);">// hexagon/mcp/content_projection.go:38-42, 142-143（字节自算摘要 + 资源链接投影）</span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;"><strong style="color: #5fb3ea;">func</strong> (b BinaryContent) <span style="color: #ffc66d;">Descriptor</span>() BinaryDescriptor {</span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;">    hash := sha256.Sum256(b.Data)</span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;">    <strong style="color: #5fb3ea;">return</strong> BinaryDescriptor{Type: b.Type, Name: b.Name, MIMEType: b.MIMEType, SourceURI: b.SourceURI,</span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;">        Size: int64(len(b.Data)), Digest: <span style="color: #a8ff60;">"sha256:"</span> + hex.EncodeToString(hash[:])}</span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;">}</span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;"><br/></span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;"><strong style="color: #5fb3ea;">case</strong> <span style="color: #a8ff60;">"resource_link"</span>:</span>
+<span style="display: block; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.7em;">    projection.Text = wire.URI  <span style="color: var(--article-muted, #7b8fa3);">// 此处只记录来源 URI</span></span>
+</section>
+
+<p style="margin: 8px 0;">链接不瞎拉，听起来像个不起眼的细节。<code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">resource_link</code> 到这一层就只作为 URI 放进返回内容。后续要不要访问、用什么权限访问，得由实际调用的那一层另作决定。</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h2 style="font-size: 18px; font-weight: 700; color: var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">诚实写一下：这一版的边界</h2>
+
+<p style="margin: 8px 0;">防线列完，该把这一版明确没做完、或者这种架构本身挡不住的地方摊开说明白，免得你误判它的防护上限：</p>
+
+<ul style="padding-left: 22px; margin: 8px 0;">
+<li style="margin: 6px 0;"><strong style="color: var(--article-accent, #3f8fd4);">尚未接入 MCP 的远端 Skills 扩展（SEP-2640）。</strong>河蟹市场默认固定 Hub 的发布引用，已接通的 Resources 和 Prompts 是后续对接的基础。接入后如何发现新版、核对清单、批准加载，还要在宿主侧落实。</li>
+<li style="margin: 6px 0;"><strong style="color: var(--article-accent, #3f8fd4);">目录里的 <code style="background: #edf7ff; padding: 1px 4px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">Integrity</code> 和 <code style="background: #edf7ff; padding: 1px 4px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">dependency_constraint</code> 是准入声明，不等于锁死了所有传递依赖的最终字节</strong>——npm / PyPI 下游二三级依赖由本机 <code style="background: #edf7ff; padding: 1px 4px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">npx</code> / <code style="background: #edf7ff; padding: 1px 4px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">uvx</code> 解析，运行期安装器是否逐字节复核下载包体属于独立执行边界，不能仅由元数据存在就当作已经核对了实际下载的字节；</li>
+<li style="margin: 6px 0;"><strong style="color: var(--article-accent, #3f8fd4);">78 个技能里目录包目前只有 1 个标杆样本（<code style="background: #edf7ff; padding: 1px 4px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">homework-pdf 1.1.8</code>）</strong>——其余 77 个仍为单文件 Markdown；目录包逐文件校验和宿主兼容检查链路已经跑通，但生态规模远未铺满；</li>
+<li style="margin: 6px 0;"><strong style="color: var(--article-accent, #3f8fd4);">锁版本和隔离负责市场准入。</strong>Agent 的工具调用由宿主按权限规则处理。已启动的 stdio MCP 是宿主子进程，读写文件和出网时遵循实际部署的系统权限与隔离配置。</li>
+<li style="margin: 6px 0;"><strong style="color: var(--article-accent, #3f8fd4);">出厂快照和缓存能让目录离线可看，不是离线跑完所有第三方 MCP</strong>——首次启用需要 <code style="background: #edf7ff; padding: 1px 4px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">npx</code> 或 <code style="background: #edf7ff; padding: 1px 4px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">uvx</code> 拉包的外部 MCP 时，仍依赖本机包管理器缓存或连通官方 registry。</li>
+</ul>
+
+<p style="margin: 8px 0;">接下来的顺序也比较清楚：先继续观察 MCP 官方 Skills 扩展的规格演进，如果要接入远端技能拉取，前提一定是补齐内容哈希钉死和变更前人工确认，绝不静默热更；同时把更多带模板、脚本和 Schema 的重型技能迁进 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">bundle.json</code> 目录包体系，并评估对高频 MCP 提供更完整的本地锁文件与下载校验。</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0;"/>
+
+<h2 style="font-size: 18px; font-weight: 700; color: var(--article-ink, #12324c); margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #5fb3ea;">回到那 10 个 404 的包：接工具很容易，守住信任边界才见真章</h2>
+
+<p style="margin: 8px 0;">回头看那 10 个躺在隔离区里的 404 条目，还有为了兼容 SDK 差点把门锁撕开一道口的 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">weather</code> 服务，很多安全隐患远没到零日漏洞的级别，就是在“先跑起来再说”的时候顺手写下的一句 <code style="background: #edf7ff; padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--article-accent, #3f8fd4);">@latest</code>。工具开始自带剧本之后，Agent 还得弄清自己用的是哪一版工作流。默认市场引用固定到发布 Tag，制品声明和目录包各有校验，这几道锁看着笨，却是敢把本地机器交给 Agent 干活的底气。</p>
+
+<p style="margin: 24px 0 16px; color: var(--article-secondary, #5f7b9c); font-size: 14.5px; line-height: 2; text-align: center; font-style: italic; padding: 8px 16px;">
+工具越容易装，野包越容易混进来；<br/>
+在 Agent 替你动手之前，<br/>
+先替它把版本锁、隔离区和摘要核对焊牢。
+</p>
+
+<hr style="border: none; border-top: 1px solid var(--article-border, #e0ecf5); margin: 28px 0 16px;"/>
+
+<h3 style="font-size: 15px; font-weight: 600; color: var(--article-accent, #3f8fd4); margin: 24px 0 8px;">往期 · 河蟹 AI 系列</h3>
+<p style="margin: 4px 0; font-size: 14px; line-height: 2; color: var(--article-secondary, #5f7b9c);">
+▸ <a href="https://mp.weixin.qq.com/s/kDi-LSWB4UHtS_6jbTfvow" style="color: var(--article-accent, #3f8fd4); text-decoration: none;">河蟹 AI 的 Harness Engineering：“赛博牛马”的聪明是模型给的，敢让它干活的底气是“马具”给的</a><br/>
+　<span style="color: var(--article-secondary, #5f7b9c);">运行时马具篇（对应本文下游执行层——市场准入之后的权限硬闸与风险裁判）</span>
+</p>
+<p style="margin: 4px 0; font-size: 14px; line-height: 2; color: var(--article-secondary, #5f7b9c);">
+▸ <a href="https://mp.weixin.qq.com/s/ZJ9ehZtG_jUhtTMUnPCDxA" style="color: var(--article-accent, #3f8fd4); text-decoration: none;">河蟹 AI 的 Prompt Engineering：人人都说它死了，其实它沉下去，成了 Agent 最底层的协议</a><br/>
+　<span style="color: var(--article-secondary, #5f7b9c);">指令协议栈篇（对应本文 Skills 剧本层——SOUL、Skill 与工具 Schema 如何分层组装）</span>
+</p>
+<p style="margin: 4px 0; font-size: 14px; line-height: 2; color: var(--article-secondary, #5f7b9c);">
+▸ <a href="https://mp.weixin.qq.com/s/2tHlfZYHxQdQwvVZQEoLRg" style="color: var(--article-accent, #3f8fd4); text-decoration: none;">我把前 leader 蒸馏成了河蟹 AI Skill （附 Skill 蒸馏教程）</a><br/>
+　<span style="color: var(--article-secondary, #5f7b9c);">单文件 Skill 实战篇（对应本文目录包前传——如何从零编写一份可复用的 Markdown Skill）</span>
+</p>
+<p style="margin: 4px 0; font-size: 14px; line-height: 2; color: var(--article-secondary, #5f7b9c);">
+▸ <a href="https://mp.weixin.qq.com/s/lgB-kbClMSEaU4imUWkMCw" style="color: var(--article-accent, #3f8fd4); text-decoration: none;">河蟹 AI 的 Test-Time Compute：复合式 Agent 是如何用“生成-验证对偶”终结幻觉的？</a><br/>
+　<span style="color: var(--article-secondary, #5f7b9c);">推理期确定性验证篇（对应本文“不轻信口头声明、只认机器回执”的同一套工程纪律）</span>
+</p>
+
+<h3 style="font-size: 15px; font-weight: 600; color: var(--article-accent, #3f8fd4); margin: 24px 0 8px;">参考来源</h3>
+<ul style="padding-left: 22px; margin: 8px 0; font-size: 13px; color: var(--article-muted, #7b8fa3); line-height: 1.9;">
+<li style="margin: 8px 0;">Anthropic 11 月 24 日公测公告、MCP SEP-2640 与 Skills 扩展规范、Claude Code 的开通与批准规则（2026-11-27 核对）。<br/><span style="color: var(--article-muted, #a5bdd3); font-size: 12px; word-break: break-all;"><a href="https://claude.com/resources/articles/skills-over-mcp-tasks-and-more" target="_blank" rel="noopener noreferrer" style="color: var(--article-muted, #a5bdd3); text-decoration: underline; overflow-wrap: anywhere;">https://claude.com/resources/articles/skills-over-mcp-tasks-and-more</a><br/><a href="https://modelcontextprotocol.io/seps/2640-skills-extension" target="_blank" rel="noopener noreferrer" style="color: var(--article-muted, #a5bdd3); text-decoration: underline; overflow-wrap: anywhere;">https://modelcontextprotocol.io/seps/2640-skills-extension</a><br/><a href="https://modelcontextprotocol.io/extensions/skills/overview" target="_blank" rel="noopener noreferrer" style="color: var(--article-muted, #a5bdd3); text-decoration: underline; overflow-wrap: anywhere;">https://modelcontextprotocol.io/extensions/skills/overview</a><br/><a href="https://code.claude.com/docs/en/mcp#use-skills-from-mcp-servers" target="_blank" rel="noopener noreferrer" style="color: var(--article-muted, #a5bdd3); text-decoration: underline; overflow-wrap: anywhere;">https://code.claude.com/docs/en/mcp#use-skills-from-mcp-servers</a><br/><a href="https://code.claude.com/docs/en/skills#skills-from-mcp-servers" target="_blank" rel="noopener noreferrer" style="color: var(--article-muted, #a5bdd3); text-decoration: underline; overflow-wrap: anywhere;">https://code.claude.com/docs/en/skills#skills-from-mcp-servers</a><br/><a href="https://github.com/anthropics/claude-code/releases/tag/v2.1.332" target="_blank" rel="noopener noreferrer" style="color: var(--article-muted, #a5bdd3); text-decoration: underline; overflow-wrap: anywhere;">https://github.com/anthropics/claude-code/releases/tag/v2.1.332</a></span></li>
+<li style="margin: 8px 0;">Linux Foundation / Agentic AI Foundation (AAIF), <em>Agent Skills 加入 AAIF 开放治理公告</em>（2026-10-22 发布，2026-11-26 核对）。<br/><span style="color: var(--article-muted, #a5bdd3); font-size: 12px; word-break: break-all;"><a href="https://aaif.io/news/agentic-ai-foundation-announces-four-new-projects" target="_blank" rel="noopener noreferrer" style="color: var(--article-muted, #a5bdd3); text-decoration: underline; overflow-wrap: anywhere;">https://aaif.io/news/agentic-ai-foundation-announces-four-new-projects</a></span></li>
+<li style="margin: 8px 0;">Invariant Labs, <em>MCP Security Notification: Tool Poisoning Attacks &amp; Rug Pulls</em>（2025-04 披露，2026-11-26 核对）。<br/><span style="color: var(--article-muted, #a5bdd3); font-size: 12px; word-break: break-all;"><a href="https://invariantlabs.ai/blog/mcp-security-notification-tool-poisoning-attacks" target="_blank" rel="noopener noreferrer" style="color: var(--article-muted, #a5bdd3); text-decoration: underline; overflow-wrap: anywhere;">https://invariantlabs.ai/blog/mcp-security-notification-tool-poisoning-attacks</a></span></li>
+<li style="margin: 8px 0;">HexClaw 开源仓库源码核验：<em>hexclaw-hub v0.1.1</em>（<code style="font-size: 12px;">index.json</code>、<code style="font-size: 12px;">mcp-registry.json</code>、<code style="font-size: 12px;">skills/homework-pdf/bundle.json</code>、<code style="font-size: 12px;">scripts/validate-mcp-registry.py</code>）、<em>hexclaw v0.5.2</em>（<code style="font-size: 12px;">skill/hub/mcp_artifact.go</code>、<code style="font-size: 12px;">skill_bundle.go</code>、<code style="font-size: 12px;">hub.go</code>、<code style="font-size: 12px;">cache_commit_posix.go</code>、<code style="font-size: 12px;">cache_commit_windows.go</code>、<code style="font-size: 12px;">embed.go</code>、<code style="font-size: 12px;">dependency.go</code>、<code style="font-size: 12px;">config/defaults.go</code>、<code style="font-size: 12px;">config/mcp_secret.go</code>、<code style="font-size: 12px;">mcp/resources.go</code>）与 <em>hexagon v0.6.0</em>（<code style="font-size: 12px;">mcp/content_projection.go</code>）。<br/><span style="color: var(--article-muted, #a5bdd3); font-size: 12px; word-break: break-all;"><a href="https://github.com/hexagon-codes/hexclaw-hub/tree/v0.1.1" target="_blank" rel="noopener noreferrer" style="color: var(--article-muted, #a5bdd3); text-decoration: underline; overflow-wrap: anywhere;">https://github.com/hexagon-codes/hexclaw-hub/tree/v0.1.1</a><br/><a href="https://github.com/hexagon-codes/hexclaw/tree/v0.5.2" target="_blank" rel="noopener noreferrer" style="color: var(--article-muted, #a5bdd3); text-decoration: underline; overflow-wrap: anywhere;">https://github.com/hexagon-codes/hexclaw/tree/v0.5.2</a><br/><a href="https://github.com/hexagon-codes/hexagon/tree/v0.6.0" target="_blank" rel="noopener noreferrer" style="color: var(--article-muted, #a5bdd3); text-decoration: underline; overflow-wrap: anywhere;">https://github.com/hexagon-codes/hexagon/tree/v0.6.0</a></span></li>
+<li style="margin: 8px 0;">weather 0.6.1 的上游依赖声明与河蟹 Hub 的兼容约束。启动和工具发现结果取自 11 月 1 日、2 日留存的 Linux 验收记录。<br/><span style="color: var(--article-muted, #a5bdd3); font-size: 12px; word-break: break-all;"><a href="https://pypi.org/pypi/mcp-weather-server/0.6.1/json" target="_blank" rel="noopener noreferrer" style="color: var(--article-muted, #a5bdd3); text-decoration: underline; overflow-wrap: anywhere;">https://pypi.org/pypi/mcp-weather-server/0.6.1/json</a><br/><a href="https://github.com/hexagon-codes/hexclaw-hub/commit/0ad952985b26ce050d3b1875ec9d89f663f1a79e" target="_blank" rel="noopener noreferrer" style="color: var(--article-muted, #a5bdd3); text-decoration: underline; overflow-wrap: anywhere;">https://github.com/hexagon-codes/hexclaw-hub/commit/0ad952985b26ce050d3b1875ec9d89f663f1a79e</a></span></li>
+<li style="margin: 8px 0;">RFC 4949 的数字签名定义。<br/><span style="color: var(--article-muted, #a5bdd3); font-size: 12px; word-break: break-all;"><a href="https://www.rfc-editor.org/rfc/rfc4949.html#page-104" target="_blank" rel="noopener noreferrer" style="color: var(--article-muted, #a5bdd3); text-decoration: underline; overflow-wrap: anywhere;">https://www.rfc-editor.org/rfc/rfc4949.html#page-104</a></span></li>
+</ul>
+<p style="margin: 8px 0; font-size: 12px; color: var(--article-muted, #a5bdd3);">源码与目录数据于 2026-11-26 初核、2026-11-27 复核对应正式 Tag 快照（hexclaw v0.5.2、hexagon v0.6.0、hexclaw-hub v0.1.1）。</p>
+
+
+<p class="blog-brand-footer" data-blog-brand-footer="zh" data-blog-brand-overrides="{}" style="text-align: center; color: var(--article-muted, #7b8fa3); font-size: 13px; margin: 16px 0 0; line-height: 2;">
+<strong style="color: var(--article-ink, #12324c); font-size: 14px;">HexClaw 河蟹 AI</strong><br/>
+本地云端均可部署 · 数据自主掌控 · 软件开源免费<br/>
+<a href="https://hexclaw.net" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">官网 <bdi dir="ltr">hexclaw.net</bdi></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://github.com/hexagon-codes" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">GitHub <bdi dir="ltr">hexagon-codes</bdi></a><br/>
+<a href="https://weibo.com/u/4097207240" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">微博 <bdi dir="ltr">@HexClaw</bdi></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer" style="color: var(--article-accent, #5fb3ea); text-decoration: none;">X <bdi dir="ltr">@hexclawapp</bdi></a><br/>
+<a href="mailto:ai@hexclaw.net" style="color: var(--article-muted, #999); text-decoration: none;">邮箱：<bdi dir="ltr">ai@hexclaw.net</bdi></a>
+</p>
+
+</article>
+
+
+
+    <nav class="blog-series-nav" aria-label="相关文章">
+      <a href="/zh/blog/" class="blog-nav-card prev"><span class="blog-nav-label">&larr; 返回列表</span><span class="blog-nav-title">技术博客目录</span></a>
+      <a href="/zh/blog/test-time-compute" class="blog-nav-card next"><span class="blog-nav-label">延伸阅读 &rarr;</span><span class="blog-nav-title">Test-Time Compute：生成—验证对偶</span></a>
+    </nav>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-main">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-col-title">产品</div>
+        <a href="/zh/#download">下载桌面端</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="/zh/changelog">更新日志</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">开发者</div>
+        <a href="/zh/docs/">文档中心</a>
+        <a href="/zh/blog/">技术博客</a>
+        <a href="/zh/docs/getting-started">快速上手</a>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">Apache-2.0</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">社区</div>
+        <a href="https://github.com/hexagon-codes/hexclaw-desktop/issues" target="_blank" rel="noopener noreferrer">Issues</a>
+        <a href="https://x.com/hexclawapp" target="_blank" rel="noopener noreferrer">Twitter / X</a>
+        <a href="mailto:ai@hexclaw.net">业务咨询</a>
+        <a href="mailto:support@hexclaw.net">问题反馈</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">关于</div>
+        <a href="/zh/about">关于我们</a>
+        <a href="/zh/privacy">隐私政策</a>
+        <a href="/zh/terms">使用条款</a>
+        <a href="/zh/third-party-ai-services">第三方 AI 服务说明</a>
+      </div>
+    </div>
+    <div class="footer-wechat">
+      <img width="430" height="430" loading="lazy" decoding="async" src="../../assets/brand/wechat-qr.jpg" alt="HexClaw 微信公众号二维码">
+      <span class="footer-wechat-label">微信公众号</span>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">&copy; 2025&ndash;2026 hexagon-codes</span>
+  </div>
+</footer>
+<script src="../../assets/js/theme.js?v=2e4a1828feef"></script>
+<script src="../../assets/js/docs-nav.js?v=e5508a38956c"></script>
+<button type="button" class="back-to-top" id="backToTop" aria-label="返回顶部" title="返回顶部">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg>
+  <span>顶部</span>
+</button>
+
+<script src="../../assets/js/blog.js?v=c72e1db5a6ec"></script>
+</body>
+</html>
